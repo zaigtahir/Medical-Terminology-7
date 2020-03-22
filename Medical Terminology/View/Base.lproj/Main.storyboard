@@ -1694,9 +1694,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="HPm-GH-r3h" id="6Rb-q9-g8v"/>
-                        <outlet property="moveNextButton" destination="kXL-by-nbQ" id="U8G-qu-4vZ"/>
-                        <outlet property="movePreviousButton" destination="g4j-nY-tm7" id="v6R-iP-d1Z"/>
+                        <outlet property="nextButton" destination="kXL-by-nbQ" id="U8G-qu-4vZ"/>
                         <outlet property="optionsButton" destination="J3b-ah-3P4" id="YFP-V7-Flr"/>
+                        <outlet property="previousButton" destination="g4j-nY-tm7" id="v6R-iP-d1Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WY-tp-sia" userLabel="First Responder" sceneMemberID="firstResponder"/>

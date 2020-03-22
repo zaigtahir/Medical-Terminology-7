@@ -45,7 +45,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         
     }
     
-
+    
     //datasource function
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numItems =  learnSetVCH.learningSet.getActiveQuestionsCount()
@@ -136,8 +136,8 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         nextButton.isEnabled =  scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
         
         for b in [previousButton, nextButton] {
-                   utilities.formatButtonColor(button: b!, enabledBackground: enabledButtonColor!, enabledTint: enabledButtonTint!, disabledBackground: disabledButtonColor!, disabledTint: disabledButtonTint!)
-               }
+            utilities.formatButtonColor(button: b!, enabledBackground: enabledButtonColor!, enabledTint: enabledButtonTint!, disabledBackground: disabledButtonColor!, disabledTint: disabledButtonTint!)
+        }
     }
     
     @IBAction func optionsButtonAction(_ sender: UIBarButtonItem) {
@@ -169,5 +169,5 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         scrollDelegate.scrollNext(collectionView: collectionView)
         
     }
-        
+    
 }

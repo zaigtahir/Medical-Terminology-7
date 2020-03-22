@@ -11,14 +11,20 @@ import UIKit
 class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegate, CVCellChangedDelegate, QuizDoneCVCellDelegate {
     
     
-    @IBOutlet weak var movePreviousButton: UIButton!
-    @IBOutlet weak var moveNextButton: UIButton!
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     
     var scrollDelegate = CVScrollController()
     let quizSetVCH = QuizSetVCH()
     let utilities = Utilities()
+    
+    //button colors
+    let enabledButtonColor = myTheme.colorLhButton
+    let enabledButtonTint = myTheme.colorButtonEnabledTint
+    let disabledButtonColor = myTheme.colorButtonDisabled
+    let disabledButtonTint = myTheme.colorButtonDisabledTint
     
     override func viewDidLoad() {
         
@@ -31,8 +37,8 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         collectionView.dataSource = self
         collectionView.delegate = scrollDelegate
         
-        moveNextButton.layer.cornerRadius  = myConstants.button_cornerRadius
-        movePreviousButton.layer.cornerRadius = myConstants.button_cornerRadius
+        nextButton.layer.cornerRadius  = myConstants.button_cornerRadius
+        previousButton.layer.cornerRadius = myConstants.button_cornerRadius
         
         updateDisplay()
         
@@ -111,10 +117,12 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
     
     func updateNavigationButtons () {
         //update the status of the buttons
-        let previousButtonState = scrollDelegate.isPreviouButtonEnabled(collectionView: collectionView)
-        let nextButtonState = scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
-        utilities.setEnableState(button: movePreviousButton, isEnabled: previousButtonState)
-        utilities.setEnableState(button: moveNextButton, isEnabled: nextButtonState)
+        previousButton.isEnabled =  scrollDelegate.isPreviouButtonEnabled(collectionView: collectionView)
+        nextButton.isEnabled =  scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
+        
+        for b in [previousButton, nextButton] {
+            utilities.formatButtonColor(button: b!, enabledBackground: enabledButtonColor!, enabledTint: enabledButtonTint!, disabledBackground: disabledButtonColor!, disabledTint: disabledButtonTint!)
+        }
     }
     
     func CVCellDragging(cellIndex: Int) {
