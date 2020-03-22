@@ -12,7 +12,6 @@ import UIKit
 
 class MyTheme{
     
-    
     //for light theme, use color gray back for card, tab bar, disabled button color
     
     //colors

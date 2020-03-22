@@ -21,7 +21,7 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
     let utilities = Utilities()
     
     //button colors
-    let enabledButtonColor = myTheme.colorLhButton
+    let enabledButtonColor = myTheme.colorQuizButton
     let enabledButtonTint = myTheme.colorButtonEnabledTint
     let disabledButtonColor = myTheme.colorButtonDisabled
     let disabledButtonTint = myTheme.colorButtonDisabledTint
