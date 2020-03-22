@@ -39,6 +39,12 @@ class LearningSetVCH {
         
     }
     
+    // us for progress bar
+    func getProgress () -> (Float) {
+        return (Float(learningSet.getAnsweredQuestionsCount()) / Float(learningSet.getTotalQuestionCount()))
+    }
+    
+    
     func configure (startNew: Bool, numberOfTerms: Int = 0, isFavorite: Bool = false) {
         
         if startNew {

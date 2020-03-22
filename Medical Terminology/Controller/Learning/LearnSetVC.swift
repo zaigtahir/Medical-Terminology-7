@@ -15,6 +15,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
     @IBOutlet weak var movePreviousButton: UIButton!
     @IBOutlet weak var moveNextButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var progressView: UIProgressView!
     
     var scrollDelegate = CVScrollController()
     let utilities = Utilities()
@@ -103,6 +104,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
     func updateDisplay() {
         collectionView.reloadData()
         progressLabel.text = learnSetVCH.getProgressLabelText()
+        progressView.progress = learnSetVCH.getProgress()
         updateNavigationButtons()
         
         //configure options button
