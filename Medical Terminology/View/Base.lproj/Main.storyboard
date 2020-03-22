@@ -205,7 +205,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lS5-Wb-Opk">
-                                <rect key="frame" x="30" y="20" width="315" height="34"/>
+                                <rect key="frame" x="30" y="20" width="315" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LR0-kS-hMo">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="17"/>
@@ -214,14 +214,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KAu-t8-1DZ">
-                                        <rect key="frame" x="0.0" y="32" width="315" height="2"/>
+                                        <rect key="frame" x="0.0" y="32" width="315" height="3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="3" id="7Wu-kJ-kK1"/>
+                                        </constraints>
                                         <color key="progressTintColor" name="color main"/>
                                         <color key="trackTintColor" name="color pb background"/>
                                     </progressView>
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
-                                <rect key="frame" x="0.0" y="74" width="375" height="410"/>
+                                <rect key="frame" x="0.0" y="75" width="375" height="409"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SJO-0c-at0">
                                     <size key="itemSize" width="391" height="365"/>
@@ -499,9 +502,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="2Oe-fD-D2Q" id="Ggv-Hs-yGs"/>
-                        <outlet property="moveNextButton" destination="mtE-tE-11V" id="XYR-Iv-OFW"/>
-                        <outlet property="movePreviousButton" destination="FmB-yr-9cb" id="r4K-sr-EaB"/>
+                        <outlet property="nextButton" destination="mtE-tE-11V" id="XYR-Iv-OFW"/>
                         <outlet property="optionsButton" destination="86J-Qp-rEy" id="wo1-WQ-6l7"/>
+                        <outlet property="previousButton" destination="FmB-yr-9cb" id="r4K-sr-EaB"/>
                         <outlet property="progressLabel" destination="LR0-kS-hMo" id="qgC-45-doC"/>
                         <outlet property="progressView" destination="KAu-t8-1DZ" id="NdW-PA-82D"/>
                     </connections>

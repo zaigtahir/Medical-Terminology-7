@@ -12,8 +12,8 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
     
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var optionsButton: UIBarButtonItem!
-    @IBOutlet weak var movePreviousButton: UIButton!
-    @IBOutlet weak var moveNextButton: UIButton!
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressView: UIProgressView!
     
@@ -22,6 +22,12 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
     let learnSetVCH = LearningSetVCH()
     
     var startAtCellIndex = 0
+    
+    //button colors
+    let enabledButtonColor = myTheme.colorLhButton
+    let enabledButtonTint = myTheme.colorButtonEnabledTint
+    let disabledButtonColor = myTheme.colorButtonDisabled
+    let disabledButtonTint = myTheme.colorButtonDisabledTint
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +38,8 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         collectionView.dataSource = self
         collectionView.delegate = scrollDelegate
         
-        moveNextButton.layer.cornerRadius  = myConstants.button_cornerRadius
-        movePreviousButton.layer.cornerRadius = myConstants.button_cornerRadius
+        nextButton.layer.cornerRadius  = myConstants.button_cornerRadius
+        previousButton.layer.cornerRadius = myConstants.button_cornerRadius
         
         updateDisplay()
         
@@ -126,10 +132,12 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
     
     func updateNavigationButtons () {
         //update the status of the buttons
-        let previousButtonState = scrollDelegate.isPreviouButtonEnabled(collectionView: collectionView)
-        let nextButtonState = scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
-        utilities.setEnableState(button: movePreviousButton, isEnabled: previousButtonState)
-        utilities.setEnableState(button: moveNextButton, isEnabled: nextButtonState)
+        previousButton.isEnabled =  scrollDelegate.isPreviouButtonEnabled(collectionView: collectionView)
+        nextButton.isEnabled =  scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
+        
+        for b in [previousButton, nextButton] {
+                   utilities.formatButtonColor(button: b!, enabledBackground: enabledButtonColor!, enabledTint: enabledButtonTint!, disabledBackground: disabledButtonColor!, disabledTint: disabledButtonTint!)
+               }
     }
     
     @IBAction func optionsButtonAction(_ sender: UIBarButtonItem) {
