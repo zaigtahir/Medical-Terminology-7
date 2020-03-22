@@ -124,7 +124,7 @@ class LearningSet: QuizBase {
         return learned
         
     }
-    
+        
     /*
      will return the number questions learned in the active questions array
      learned count is items that ther person correctly got the term OR the definition

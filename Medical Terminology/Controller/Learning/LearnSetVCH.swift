@@ -26,7 +26,7 @@ class LearningSetVCH {
             //not started
           //  return "You will be learning \(learningSet.getTotalQuestionCount()/2) terms. Let's Go!"
             
-            return "You have answered \(learningSet.getAnsweredQuestionsCount()) of \(learningSet.getTotalQuestionCount()) questions correctly!"
+            return "You have answered \n\(learningSet.getAnsweredQuestionsCount()) of \(learningSet.getTotalQuestionCount()) questions correctly!"
             
      //   case 1:
             //in progress
