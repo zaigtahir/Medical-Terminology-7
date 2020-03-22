@@ -23,8 +23,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultRemarksLabel: UILabel!
     @IBOutlet weak var showAnswerButton: UIButton!
-    @IBOutlet weak var learnOneImage: UIImageView!
-    @IBOutlet weak var learnTwoImage: UIImageView!
     
     private var questionIndex: Int! //this the index of the question in the quiz, used to identify the question in the quiz for the delegate function
     
@@ -60,8 +58,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         showAnswerButton.isEnabled = true
         
         if question.isAnswered() {
-            configureLearnIndicators(learnedTerm: question.learnedTermForItem, learnedDefinition: question.learnedDefinitionForItem)
-            
+           
             if question.isCorrect() {
                 showAnswerButton.isHidden = true
                 resultView.backgroundColor = myTheme.color_correct
@@ -80,7 +77,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             let item = dIC.getDItem(itemID: question.itemID)
             question.learnedDefinitionForItem = item.learnedDefinition
             question.learnedTermForItem = item.learnedTerm
-            configureLearnIndicators(learnedTerm: item.learnedTerm, learnedDefinition: item.learnedDefinition)
+
             showAnswerButton.isHidden = true
             resultView.backgroundColor = UIColor(named: "color card border")
             resultRemarksLabel.text = ""
@@ -88,20 +85,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         
         tableView.reloadData()  //must refesh the data here so the table holds updated information
         
-    }
-    
-    private func configureLearnIndicators (learnedTerm: Bool, learnedDefinition: Bool) {
-        if learnedTerm && learnedDefinition {
-            learnOneImage.tintColor = myTheme.color_learned
-            learnTwoImage.tintColor = myTheme.color_learned
-            
-        } else if learnedTerm || learnedDefinition {
-            learnOneImage.tintColor = myTheme.color_learned
-            learnTwoImage.tintColor  = myTheme.color_notlearned
-        } else {
-            learnOneImage.tintColor = myTheme.color_notlearned
-            learnTwoImage.tintColor  = myTheme.color_notlearned
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
