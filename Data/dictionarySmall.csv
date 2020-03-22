@@ -1,0 +1,32 @@
+itemID,term,termDisplay,definition,example,category,audioFile,isFavorite,learnedTerm,learnedDefinition,answeredTerm,answeredDefinition
+0,"a-, an-",,"not, without","analgesic, apathy",,an.MP3,0,0,0,0,0
+1,ab-,,away from,"abduction: move away, abnormal: away from normal",,,0,0,0,0,0
+2,abdomin-,,Of or relating to the abdomen,"abdomen, abdominal",,,0,0,0,0,0
+3,ac,-ac,pertaining to,"cardiac, hydrophobiac",,,0,0,0,0,0
+4,acanth-,,thorn or spine,"acanthion, acanthocyte, acanthoma, acanthulus",,,0,0,0,0,0
+5,acou-,,Of or relating to hearing,"acoumeter, acoustician, hyperacusis",,,0,0,0,0,0
+6,acr-,,"extremity, topmost","acrocrany, acromegaly, acroosteolysis, acroposthia",,,0,0,0,0,0
+7,acusis,-acusis,hearing,paracusis,,,0,0,0,0,0
+8,ad,-ad,"toward, in the direction of",dorsad,,,0,0,0,0,0
+9,ad-,,"at, increase, on, toward",adduction,,,0,0,0,0,0
+10,andro,,"musculin, pertaining to man",androgen,,andro.MP3,,,,,
+11,centesis,-centesis,surgical puncture for aspiration,amniocentesis,,,0,0,0,0,0
+12,cephal(o)-,,Of or pertaining to the head (as a whole),"cephalalgy, hydrocephalus",,,0,0,0,0,0
+13,cerat(o)-,,Of or pertaining to the cornu; a horn,Ceratoid,,,0,0,0,0,0
+14,cerebell(o)-,,Of or pertaining to the cerebellum,Cerebellum,,,0,0,0,0,0
+15,cerebr-,,Of or pertaining to the brain,Cerebrology,,,0,0,0,0,0
+16,cervic-,,"Of or pertaining to the neck, the cervix",cervicodorsal,,,0,0,0,0,0
+17,cheil-,,Of or pertaining to the lips,angular cheilitis,,,0,0,0,0,0
+18,chem-,,"chemistry, drug",chemotherapy,,,0,0,0,0,0
+19,"chir-, cheir-",,Of or pertaining to the hand,chiropractor,,,0,0,0,0,0
+20,chlor-,,Denoting a green color,chlorophyll,,,0,0,0,0,0
+21,chol(e)-,,Of or pertaining to bile,"Cholaemia (UK)/ Cholemia (US), Cholecystitis",,,0,0,0,0,0
+22,cholecyst(o)-,,Of or pertaining to the gallbladder,Cholecystectomy,,,0,0,0,0,0
+23,chondr(i)o-,,"cartilage, gristle, granule, granular",Chondrocalcinosis,,,0,0,0,0,0
+24,chrom(ato)-,,color,Hemochromatosis,,,0,0,0,0,0
+25,"cidal, cide","-cidal, cide","killing, destroying",bacteriocidal,,,0,0,0,0,0
+26,cili-,,"Of or pertaining to the cilia, the eyelashes; eyelids",Ciliary,,,0,0,0,0,0
+27,circum-,,"Denoting something as ""around"" another",circumcision,,,0,0,0,0,0
+28,cis-,,on this side,cisgender,,,0,0,0,0,0
+29,clast,,break,osteoclast,,,0,0,0,0,0
+30,clostr-,,spindle,Clostridium,,,0,0,0,0,0

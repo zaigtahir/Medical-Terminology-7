@@ -1,0 +1,688 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A03478C22D39D0900749EBC /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03478422D39D0800749EBC /* FMDatabaseQueue.m */; };
+		5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03478622D39D0800749EBC /* FMResultSet.m */; };
+		5A03478E22D39D0900749EBC /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03478822D39D0900749EBC /* FMDatabase.m */; };
+		5A03478F22D39D0900749EBC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03478A22D39D0900749EBC /* FMDatabasePool.m */; };
+		5A03479022D39D0900749EBC /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03478B22D39D0900749EBC /* FMDatabaseAdditions.m */; };
+		5A03479422D3CCF700749EBC /* MyFMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A03479322D3CCF700749EBC /* MyFMDB.swift */; };
+		5A03479622D3EE7500749EBC /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A03479522D3EE7500749EBC /* Globals.swift */; };
+		5A1506252255796C00717AB8 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1506242255796C00717AB8 /* Question.swift */; };
+		5A15062A22557E7C00717AB8 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A15062922557E7C00717AB8 /* Answer.swift */; };
+		5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A189C2C216D8E8400929AB8 /* AppDelegate.swift */; };
+		5A189C32216D8E8400929AB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A189C30216D8E8400929AB8 /* Main.storyboard */; };
+		5A189C37216D8E8400929AB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A189C35216D8E8400929AB8 /* LaunchScreen.storyboard */; };
+		5A189C3F217123B900929AB8 /* DItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A189C3E217123B900929AB8 /* DItem.swift */; };
+		5A18DF71241E8AD10006825B /* MyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A18DF70241E8AD10006825B /* MyConstants.swift */; };
+		5A2A58DB22EF7F1400434910 /* QuizHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58DA22EF7F1400434910 /* QuizHomeVCH.swift */; };
+		5A2A58DD22F8C35200434910 /* QuizSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58DC22F8C35200434910 /* QuizSetVC.swift */; };
+		5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58DE22F8CE8100434910 /* QuizSetVCH.swift */; };
+		5A2A58E822F8E60400434910 /* QuizCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58E722F8E60400434910 /* QuizCVCell.swift */; };
+		5A2A58EE22FBC24900434910 /* QuizOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58ED22FBC24900434910 /* QuizOptionsVC.swift */; };
+		5A2A58F022FCA3AE00434910 /* QuizBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58EF22FCA3AE00434910 /* QuizBase.swift */; };
+		5A2A58F322FCA5F200434910 /* QuizSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58F222FCA5F200434910 /* QuizSet.swift */; };
+		5A2A58F522FCA64900434910 /* LearningSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58F422FCA64900434910 /* LearningSet.swift */; };
+		5A340420242444FD00C744E3 /* TestVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A34041F242444FD00C744E3 /* TestVCViewController.swift */; };
+		5A34042424269DBF00C744E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A34042324269DBF00C744E3 /* Assets.xcassets */; };
+		5A367D2E22EA683F003A7E4B /* LearningHomeOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D2D22EA683F003A7E4B /* LearningHomeOptionsVC.swift */; };
+		5A367D3022EF3F99003A7E4B /* QuizHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D2F22EF3F99003A7E4B /* QuizHome.swift */; };
+		5A367D3422EF513F003A7E4B /* CircularBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D3322EF513F003A7E4B /* CircularBar.swift */; };
+		5A37F87A22E74B18008A5FA5 /* CVScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37F87922E74B18008A5FA5 /* CVScrollController.swift */; };
+		5A4471552281C655008E3107 /* ListVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471542281C655008E3107 /* ListVCH.swift */; };
+		5A44715A22820D33008E3107 /* an.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A44715722820D33008E3107 /* an.MP3 */; };
+		5A44715B22820D33008E3107 /* andro.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A44715822820D33008E3107 /* andro.MP3 */; };
+		5A44715C22820D33008E3107 /* alg.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A44715922820D33008E3107 /* alg.MP3 */; };
+		5A4471612283DFB9008E3107 /* SearchLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471602283DFB9008E3107 /* SearchLists.swift */; };
+		5A4471652284EE85008E3107 /* ListCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471642284EE85008E3107 /* ListCC.swift */; };
+		5A4BB81D229A48690089A474 /* FlashCardOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4BB81C229A48690089A474 /* FlashCardOptionsVC.swift */; };
+		5A4F854822B168870016621C /* LearnCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854722B168870016621C /* LearnCVCell.swift */; };
+		5A4F854A22B16C2E0016621C /* LearnSetVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854922B16C2E0016621C /* LearnSetVCH.swift */; };
+		5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854B22B173B40016621C /* LearnSetVC.swift */; };
+		5A4F855022B310F80016621C /* AnswerTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854F22B310F80016621C /* AnswerTCell.swift */; };
+		5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FF784241207D50036480D /* MyAudioPlayer.swift */; };
+		5A67C14B231071D900BAA2A0 /* QuizDoneCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67C14A231071D900BAA2A0 /* QuizDoneCVCell.swift */; };
+		5A67C14D231077FA00BAA2A0 /* LearnDoneCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67C14C231077FA00BAA2A0 /* LearnDoneCVCell.swift */; };
+		5A6F31B7219C776000E6477E /* DItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F31B6219C776000E6477E /* DItemVC.swift */; };
+		5A6F31C421A458E100E6477E /* AlphaListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F31C321A458E100E6477E /* AlphaListController.swift */; };
+		5A6F31CA21A7032E00E6477E /* DList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F31C921A7032E00E6477E /* DList.swift */; };
+		5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78911223428AFA00F7EC48 /* InfoVC.swift */; };
+		5A88633F217226180013FC8B /* Medical Terminology.db in Resources */ = {isa = PBXBuildFile; fileRef = 5A88633D217226180013FC8B /* Medical Terminology.db */; };
+		5A88634E218560030013FC8B /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A88634D218560030013FC8B /* ListVC.swift */; };
+		5A886374218E82330013FC8B /* DItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A886373218E82330013FC8B /* DItemController.swift */; };
+		5A99D5D9233BE53B00CA518A /* FlashCardVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A99D5D8233BE53B00CA518A /* FlashCardVCH.swift */; };
+		5ABE7221226CB25F005B83C4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE7220226CB25F005B83C4 /* Utilities.swift */; };
+		5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC0C56E22D6AB77009965F1 /* LearningHomeVC.swift */; };
+		5AC0C57322D6C83C009965F1 /* LearningHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC0C57222D6C83C009965F1 /* LearningHomeVCH.swift */; };
+		5AC448B522BC072C004B47C1 /* QuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC448B422BC072C004B47C1 /* QuestionController.swift */; };
+		5AD08055227860D000962AB6 /* AlphaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD08054227860D000962AB6 /* AlphaList.swift */; };
+		5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD725E5225E4E2F007CED84 /* MyTheme.swift */; };
+		5AF85732228F22C8008929D5 /* FlashCardHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85731228F22C8008929D5 /* FlashCardHome.swift */; };
+		5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85733228F26A1008929D5 /* FlashCardController.swift */; };
+		5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5A03478022D39D0700749EBC /* Medical Terminology-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Medical Terminology-Bridging-Header.h"; sourceTree = "<group>"; };
+		5A03478122D39D0800749EBC /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		5A03478222D39D0800749EBC /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		5A03478322D39D0800749EBC /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		5A03478422D39D0800749EBC /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		5A03478522D39D0800749EBC /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		5A03478622D39D0800749EBC /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		5A03478722D39D0800749EBC /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		5A03478822D39D0900749EBC /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		5A03478922D39D0900749EBC /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		5A03478A22D39D0900749EBC /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		5A03478B22D39D0900749EBC /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		5A03479322D3CCF700749EBC /* MyFMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFMDB.swift; sourceTree = "<group>"; };
+		5A03479522D3EE7500749EBC /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		5A1506242255796C00717AB8 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		5A15062922557E7C00717AB8 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		5A189C29216D8E8400929AB8 /* Medical Terminology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Medical Terminology.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A189C2C216D8E8400929AB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5A189C31216D8E8400929AB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5A189C36216D8E8400929AB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5A189C38216D8E8400929AB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A189C3E217123B900929AB8 /* DItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItem.swift; sourceTree = "<group>"; };
+		5A18DF70241E8AD10006825B /* MyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConstants.swift; sourceTree = "<group>"; };
+		5A2A58DA22EF7F1400434910 /* QuizHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHomeVCH.swift; sourceTree = "<group>"; };
+		5A2A58DC22F8C35200434910 /* QuizSetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSetVC.swift; sourceTree = "<group>"; };
+		5A2A58DE22F8CE8100434910 /* QuizSetVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSetVCH.swift; sourceTree = "<group>"; };
+		5A2A58E722F8E60400434910 /* QuizCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizCVCell.swift; path = "Medical Terminology/Controller/Quiz/QuizCVCell.swift"; sourceTree = SOURCE_ROOT; };
+		5A2A58ED22FBC24900434910 /* QuizOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizOptionsVC.swift; sourceTree = "<group>"; };
+		5A2A58EF22FCA3AE00434910 /* QuizBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBase.swift; sourceTree = "<group>"; };
+		5A2A58F222FCA5F200434910 /* QuizSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSet.swift; sourceTree = "<group>"; };
+		5A2A58F422FCA64900434910 /* LearningSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningSet.swift; sourceTree = "<group>"; };
+		5A34041F242444FD00C744E3 /* TestVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestVCViewController.swift; path = Test/TestVCViewController.swift; sourceTree = "<group>"; };
+		5A34042324269DBF00C744E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5A367D2D22EA683F003A7E4B /* LearningHomeOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeOptionsVC.swift; sourceTree = "<group>"; };
+		5A367D2F22EF3F99003A7E4B /* QuizHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizHome.swift; path = "Medical Terminology/Controller/Quiz/QuizHome.swift"; sourceTree = SOURCE_ROOT; };
+		5A367D3322EF513F003A7E4B /* CircularBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBar.swift; sourceTree = "<group>"; };
+		5A37F87922E74B18008A5FA5 /* CVScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVScrollController.swift; sourceTree = "<group>"; };
+		5A4471542281C655008E3107 /* ListVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVCH.swift; sourceTree = "<group>"; };
+		5A44715722820D33008E3107 /* an.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = an.MP3; sourceTree = "<group>"; };
+		5A44715822820D33008E3107 /* andro.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = andro.MP3; sourceTree = "<group>"; };
+		5A44715922820D33008E3107 /* alg.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alg.MP3; sourceTree = "<group>"; };
+		5A4471602283DFB9008E3107 /* SearchLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLists.swift; sourceTree = "<group>"; };
+		5A4471642284EE85008E3107 /* ListCC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCC.swift; sourceTree = "<group>"; };
+		5A4BB81C229A48690089A474 /* FlashCardOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardOptionsVC.swift; sourceTree = "<group>"; };
+		5A4F854722B168870016621C /* LearnCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnCVCell.swift; sourceTree = "<group>"; };
+		5A4F854922B16C2E0016621C /* LearnSetVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSetVCH.swift; sourceTree = "<group>"; };
+		5A4F854B22B173B40016621C /* LearnSetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnSetVC.swift; sourceTree = "<group>"; };
+		5A4F854F22B310F80016621C /* AnswerTCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTCell.swift; sourceTree = "<group>"; };
+		5A5FF784241207D50036480D /* MyAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAudioPlayer.swift; sourceTree = "<group>"; };
+		5A67C14A231071D900BAA2A0 /* QuizDoneCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDoneCVCell.swift; sourceTree = "<group>"; };
+		5A67C14C231077FA00BAA2A0 /* LearnDoneCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDoneCVCell.swift; sourceTree = "<group>"; };
+		5A6F31B6219C776000E6477E /* DItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemVC.swift; sourceTree = "<group>"; };
+		5A6F31C321A458E100E6477E /* AlphaListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaListController.swift; sourceTree = "<group>"; };
+		5A6F31C921A7032E00E6477E /* DList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DList.swift; sourceTree = "<group>"; };
+		5A78911223428AFA00F7EC48 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
+		5A88633D217226180013FC8B /* Medical Terminology.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Medical Terminology.db"; sourceTree = "<group>"; };
+		5A88634D218560030013FC8B /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
+		5A886373218E82330013FC8B /* DItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController.swift; sourceTree = "<group>"; };
+		5A99D5D8233BE53B00CA518A /* FlashCardVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardVCH.swift; sourceTree = "<group>"; };
+		5ABE7220226CB25F005B83C4 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		5AC0C56E22D6AB77009965F1 /* LearningHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeVC.swift; sourceTree = "<group>"; };
+		5AC0C57222D6C83C009965F1 /* LearningHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeVCH.swift; sourceTree = "<group>"; };
+		5AC448B422BC072C004B47C1 /* QuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionController.swift; sourceTree = "<group>"; };
+		5AD08054227860D000962AB6 /* AlphaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaList.swift; sourceTree = "<group>"; };
+		5AD725E5225E4E2F007CED84 /* MyTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTheme.swift; sourceTree = "<group>"; };
+		5AF85731228F22C8008929D5 /* FlashCardHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardHome.swift; sourceTree = "<group>"; };
+		5AF85733228F26A1008929D5 /* FlashCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardController.swift; sourceTree = "<group>"; };
+		5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCVCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A189C26216D8E8400929AB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A03477F22D39CE400749EBC /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				5A03478722D39D0800749EBC /* FMDatabase.h */,
+				5A03478822D39D0900749EBC /* FMDatabase.m */,
+				5A03478122D39D0800749EBC /* FMDatabaseAdditions.h */,
+				5A03478B22D39D0900749EBC /* FMDatabaseAdditions.m */,
+				5A03478222D39D0800749EBC /* FMDatabasePool.h */,
+				5A03478A22D39D0900749EBC /* FMDatabasePool.m */,
+				5A03478322D39D0800749EBC /* FMDatabaseQueue.h */,
+				5A03478422D39D0800749EBC /* FMDatabaseQueue.m */,
+				5A03478922D39D0900749EBC /* FMDB.h */,
+				5A03478522D39D0800749EBC /* FMResultSet.h */,
+				5A03478622D39D0800749EBC /* FMResultSet.m */,
+				5A03478022D39D0700749EBC /* Medical Terminology-Bridging-Header.h */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		5A15062722557B4600717AB8 /* General Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5A886373218E82330013FC8B /* DItemController.swift */,
+				5A4471602283DFB9008E3107 /* SearchLists.swift */,
+				5A6F31C321A458E100E6477E /* AlphaListController.swift */,
+				5AF85733228F26A1008929D5 /* FlashCardController.swift */,
+				5AC448B422BC072C004B47C1 /* QuestionController.swift */,
+				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
+				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
+			);
+			path = "General Controllers";
+			sourceTree = "<group>";
+		};
+		5A15062822557B7500717AB8 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				5A88633D217226180013FC8B /* Medical Terminology.db */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		5A189C20216D8E8400929AB8 = {
+			isa = PBXGroup;
+			children = (
+				5A189C2B216D8E8400929AB8 /* Medical Terminology */,
+			);
+			sourceTree = "<group>";
+		};
+		5A189C2A216D8E8400929AB8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A189C29216D8E8400929AB8 /* Medical Terminology.app */,
+			);
+			name = Products;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		5A189C2B216D8E8400929AB8 /* Medical Terminology */ = {
+			isa = PBXGroup;
+			children = (
+				5A03477F22D39CE400749EBC /* FMDB */,
+				5A44715622820D33008E3107 /* Audio files */,
+				5A15062822557B7500717AB8 /* Database */,
+				5A6F31B821A1E3A200E6477E /* Singleton */,
+				5A88634C21853DC90013FC8B /* Controller */,
+				5A88636F2186AC400013FC8B /* Model */,
+				5A8863702186AC840013FC8B /* View */,
+				5A189C2A216D8E8400929AB8 /* Products */,
+				5A189C2C216D8E8400929AB8 /* AppDelegate.swift */,
+				5A189C35216D8E8400929AB8 /* LaunchScreen.storyboard */,
+				5A189C38216D8E8400929AB8 /* Info.plist */,
+				5A34042324269DBF00C744E3 /* Assets.xcassets */,
+			);
+			path = "Medical Terminology";
+			sourceTree = "<group>";
+		};
+		5A2A58E122F8DD7000434910 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				5A2A58ED22FBC24900434910 /* QuizOptionsVC.swift */,
+				5A67C14A231071D900BAA2A0 /* QuizDoneCVCell.swift */,
+				5A2A58E722F8E60400434910 /* QuizCVCell.swift */,
+				5A2A58DE22F8CE8100434910 /* QuizSetVCH.swift */,
+				5A2A58DC22F8C35200434910 /* QuizSetVC.swift */,
+				5A2A58DA22EF7F1400434910 /* QuizHomeVCH.swift */,
+				5A367D2F22EF3F99003A7E4B /* QuizHome.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		5A2A58E222F8DDB800434910 /* Learning */ = {
+			isa = PBXGroup;
+			children = (
+				5A67C14C231077FA00BAA2A0 /* LearnDoneCVCell.swift */,
+				5A4F854722B168870016621C /* LearnCVCell.swift */,
+				5A4F854922B16C2E0016621C /* LearnSetVCH.swift */,
+				5A4F854B22B173B40016621C /* LearnSetVC.swift */,
+				5A367D2D22EA683F003A7E4B /* LearningHomeOptionsVC.swift */,
+				5AC0C57222D6C83C009965F1 /* LearningHomeVCH.swift */,
+				5AC0C56E22D6AB77009965F1 /* LearningHomeVC.swift */,
+			);
+			path = Learning;
+			sourceTree = "<group>";
+		};
+		5A2A58E322F8DEA500434910 /* Flashcards */ = {
+			isa = PBXGroup;
+			children = (
+				5A4BB81C229A48690089A474 /* FlashCardOptionsVC.swift */,
+				5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */,
+				5A99D5D8233BE53B00CA518A /* FlashCardVCH.swift */,
+				5AF85731228F22C8008929D5 /* FlashCardHome.swift */,
+			);
+			path = Flashcards;
+			sourceTree = "<group>";
+		};
+		5A2A58E422F8DEC900434910 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				5A6F31B6219C776000E6477E /* DItemVC.swift */,
+				5A4471642284EE85008E3107 /* ListCC.swift */,
+				5A4471542281C655008E3107 /* ListVCH.swift */,
+				5A88634D218560030013FC8B /* ListVC.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		5A2A58F122FCA4F400434910 /* Quiz Models */ = {
+			isa = PBXGroup;
+			children = (
+				5A2A58EF22FCA3AE00434910 /* QuizBase.swift */,
+				5A2A58F222FCA5F200434910 /* QuizSet.swift */,
+				5A2A58F422FCA64900434910 /* LearningSet.swift */,
+			);
+			path = "Quiz Models";
+			sourceTree = "<group>";
+		};
+		5A37F85122E29819008A5FA5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5A37F87922E74B18008A5FA5 /* CVScrollController.swift */,
+				5A4F854F22B310F80016621C /* AnswerTCell.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		5A44715622820D33008E3107 /* Audio files */ = {
+			isa = PBXGroup;
+			children = (
+				5A44715722820D33008E3107 /* an.MP3 */,
+				5A44715822820D33008E3107 /* andro.MP3 */,
+				5A44715922820D33008E3107 /* alg.MP3 */,
+			);
+			path = "Audio files";
+			sourceTree = "<group>";
+		};
+		5A6F31B821A1E3A200E6477E /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				5A03479522D3EE7500749EBC /* Globals.swift */,
+				5AD725E5225E4E2F007CED84 /* MyTheme.swift */,
+				5A03479322D3CCF700749EBC /* MyFMDB.swift */,
+				5A5FF784241207D50036480D /* MyAudioPlayer.swift */,
+				5A18DF70241E8AD10006825B /* MyConstants.swift */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
+		5A78911123428AC600F7EC48 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				5A78911223428AFA00F7EC48 /* InfoVC.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		5A88634C21853DC90013FC8B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5A78911123428AC600F7EC48 /* Info */,
+				5A37F85122E29819008A5FA5 /* Shared */,
+				5A2A58E322F8DEA500434910 /* Flashcards */,
+				5A2A58E422F8DEC900434910 /* List */,
+				5A2A58E122F8DD7000434910 /* Quiz */,
+				5A2A58E222F8DDB800434910 /* Learning */,
+				5A15062722557B4600717AB8 /* General Controllers */,
+				5A34041F242444FD00C744E3 /* TestVCViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5A88636F2186AC400013FC8B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5A2A58F122FCA4F400434910 /* Quiz Models */,
+				5A189C3E217123B900929AB8 /* DItem.swift */,
+				5A6F31C921A7032E00E6477E /* DList.swift */,
+				5A1506242255796C00717AB8 /* Question.swift */,
+				5A15062922557E7C00717AB8 /* Answer.swift */,
+				5AD08054227860D000962AB6 /* AlphaList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5A8863702186AC840013FC8B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A189C30216D8E8400929AB8 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A189C28216D8E8400929AB8 /* Medical Terminology */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A189C3B216D8E8400929AB8 /* Build configuration list for PBXNativeTarget "Medical Terminology" */;
+			buildPhases = (
+				5A189C25216D8E8400929AB8 /* Sources */,
+				5A189C26216D8E8400929AB8 /* Frameworks */,
+				5A189C27216D8E8400929AB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Medical Terminology";
+			productName = "Medical Terminology";
+			productReference = 5A189C29216D8E8400929AB8 /* Medical Terminology.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A189C21216D8E8400929AB8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Zaigham Tahir";
+				TargetAttributes = {
+					5A189C28216D8E8400929AB8 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1100;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5A189C24216D8E8400929AB8 /* Build configuration list for PBXProject "Medical Terminology" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5A189C20216D8E8400929AB8;
+			productRefGroup = 5A189C2A216D8E8400929AB8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A189C28216D8E8400929AB8 /* Medical Terminology */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A189C27216D8E8400929AB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A44715A22820D33008E3107 /* an.MP3 in Resources */,
+				5A189C37216D8E8400929AB8 /* LaunchScreen.storyboard in Resources */,
+				5A44715C22820D33008E3107 /* alg.MP3 in Resources */,
+				5A88633F217226180013FC8B /* Medical Terminology.db in Resources */,
+				5A34042424269DBF00C744E3 /* Assets.xcassets in Resources */,
+				5A189C32216D8E8400929AB8 /* Main.storyboard in Resources */,
+				5A44715B22820D33008E3107 /* andro.MP3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A189C25216D8E8400929AB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A2A58F022FCA3AE00434910 /* QuizBase.swift in Sources */,
+				5A367D2E22EA683F003A7E4B /* LearningHomeOptionsVC.swift in Sources */,
+				5AC448B522BC072C004B47C1 /* QuestionController.swift in Sources */,
+				5A189C3F217123B900929AB8 /* DItem.swift in Sources */,
+				5A367D3422EF513F003A7E4B /* CircularBar.swift in Sources */,
+				5A03478E22D39D0900749EBC /* FMDatabase.m in Sources */,
+				5AF85732228F22C8008929D5 /* FlashCardHome.swift in Sources */,
+				5AD08055227860D000962AB6 /* AlphaList.swift in Sources */,
+				5A2A58DD22F8C35200434910 /* QuizSetVC.swift in Sources */,
+				5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */,
+				5A03479022D39D0900749EBC /* FMDatabaseAdditions.m in Sources */,
+				5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */,
+				5A2A58DB22EF7F1400434910 /* QuizHomeVCH.swift in Sources */,
+				5A03479622D3EE7500749EBC /* Globals.swift in Sources */,
+				5AC0C57322D6C83C009965F1 /* LearningHomeVCH.swift in Sources */,
+				5A03478F22D39D0900749EBC /* FMDatabasePool.m in Sources */,
+				5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */,
+				5A67C14B231071D900BAA2A0 /* QuizDoneCVCell.swift in Sources */,
+				5A18DF71241E8AD10006825B /* MyConstants.swift in Sources */,
+				5A4F854A22B16C2E0016621C /* LearnSetVCH.swift in Sources */,
+				5A4471552281C655008E3107 /* ListVCH.swift in Sources */,
+				5A88634E218560030013FC8B /* ListVC.swift in Sources */,
+				5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */,
+				5A1506252255796C00717AB8 /* Question.swift in Sources */,
+				5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */,
+				5A6F31CA21A7032E00E6477E /* DList.swift in Sources */,
+				5A99D5D9233BE53B00CA518A /* FlashCardVCH.swift in Sources */,
+				5A2A58F322FCA5F200434910 /* QuizSet.swift in Sources */,
+				5A2A58F522FCA64900434910 /* LearningSet.swift in Sources */,
+				5ABE7221226CB25F005B83C4 /* Utilities.swift in Sources */,
+				5A4F855022B310F80016621C /* AnswerTCell.swift in Sources */,
+				5A03478C22D39D0900749EBC /* FMDatabaseQueue.m in Sources */,
+				5A4BB81D229A48690089A474 /* FlashCardOptionsVC.swift in Sources */,
+				5A37F87A22E74B18008A5FA5 /* CVScrollController.swift in Sources */,
+				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
+				5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */,
+				5A886374218E82330013FC8B /* DItemController.swift in Sources */,
+				5A67C14D231077FA00BAA2A0 /* LearnDoneCVCell.swift in Sources */,
+				5A2A58E822F8E60400434910 /* QuizCVCell.swift in Sources */,
+				5A6F31C421A458E100E6477E /* AlphaListController.swift in Sources */,
+				5A2A58EE22FBC24900434910 /* QuizOptionsVC.swift in Sources */,
+				5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */,
+				5A367D3022EF3F99003A7E4B /* QuizHome.swift in Sources */,
+				5A4471612283DFB9008E3107 /* SearchLists.swift in Sources */,
+				5A4471652284EE85008E3107 /* ListCC.swift in Sources */,
+				5A340420242444FD00C744E3 /* TestVCViewController.swift in Sources */,
+				5A15062A22557E7C00717AB8 /* Answer.swift in Sources */,
+				5A03479422D3CCF700749EBC /* MyFMDB.swift in Sources */,
+				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
+				5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */,
+				5A6F31B7219C776000E6477E /* DItemVC.swift in Sources */,
+				5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5A189C30216D8E8400929AB8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A189C31216D8E8400929AB8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5A189C35216D8E8400929AB8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A189C36216D8E8400929AB8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5A189C39216D8E8400929AB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5A189C3A216D8E8400929AB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5A189C3C216D8E8400929AB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K33TSXFU97;
+				INFOPLIST_FILE = "Medical Terminology/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kenoshakidsdoctor.Medical-Terminology";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5A189C3D216D8E8400929AB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K33TSXFU97;
+				INFOPLIST_FILE = "Medical Terminology/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kenoshakidsdoctor.Medical-Terminology";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A189C24216D8E8400929AB8 /* Build configuration list for PBXProject "Medical Terminology" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A189C39216D8E8400929AB8 /* Debug */,
+				5A189C3A216D8E8400929AB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A189C3B216D8E8400929AB8 /* Build configuration list for PBXNativeTarget "Medical Terminology" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A189C3C216D8E8400929AB8 /* Debug */,
+				5A189C3D216D8E8400929AB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5A189C21216D8E8400929AB8 /* Project object */;
+}
