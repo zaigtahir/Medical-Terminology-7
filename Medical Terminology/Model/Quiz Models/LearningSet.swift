@@ -115,7 +115,7 @@ class LearningSet: QuizBase {
         for itemID in itemIDs {
             
             let item = dIC.getDItem(itemID: itemID)
-            if item.learnedTerm || item.learnedDefinition {
+            if item.learnedTerm && item.learnedDefinition {
                 learned += 1
             }
             
@@ -124,6 +124,7 @@ class LearningSet: QuizBase {
         return learned
         
     }
+    
     /*
      will return the number questions learned in the active questions array
      learned count is items that ther person correctly got the term OR the definition
@@ -136,7 +137,7 @@ class LearningSet: QuizBase {
         for itemID in itemIDs {
             
             let item = dIC.getDItem(itemID: itemID)
-            if item.learnedTerm && item.learnedDefinition {
+            if item.learnedTerm || item.learnedDefinition {
                 answered += 1
             }
         }
