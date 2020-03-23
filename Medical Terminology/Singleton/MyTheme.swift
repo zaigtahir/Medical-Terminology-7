@@ -21,7 +21,7 @@ class MyTheme{
     
     //MARK: Common colors
     let colorButtonEnabledTint = UIColor(named: "color text button")
-    let colorButtonDisabled = UIColor(named: "color card background")
+    let colorButtonDisabled = UIColor(named: "color button disabled")
     let colorButtonDisabledTint = UIColor(named: "color inactive icon")
     
     //MARK: Flashcards

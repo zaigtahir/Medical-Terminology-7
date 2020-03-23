@@ -12,19 +12,6 @@ import UIKit
 class Utilities {
     //sets the enabled and disabled state of my custom buttons
     
-    func setEnableState (button: UIButton, isEnabled: Bool) {
-
-        return 
-        if isEnabled {
-            button.isEnabled = true
-            button.backgroundColor = myTheme.colorMain
-        } else {
-            button.isEnabled = false
-            button.backgroundColor = UIColor(named: "color disabled")
-        }
-    }
-    
-
     func formatButtonColor (button: UIButton, enabledBackground: UIColor,enabledTint: UIColor, disabledBackground: UIColor, disabledTint: UIColor) {
 
         if button.isEnabled {
