@@ -119,8 +119,6 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
         if segue.identifier == "segueToLearningSet" {
             let vc = segue.destination as! LearnSetVC
             

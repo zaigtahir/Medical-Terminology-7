@@ -116,8 +116,6 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
         if segue.identifier == "segueToQuiz" {
             let vc = segue.destination as! QuizSetVC
             if quizHomeVCH.startNewQuiz {
