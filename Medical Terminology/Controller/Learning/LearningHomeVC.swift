@@ -178,6 +178,7 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
         performSegue(withIdentifier: "segueToLearningSet", sender: nil)
         
     }
+    
     @IBAction func seeCurrentSetButtonAction(_ sender: Any) {
         //will manually segue
         learningHomeVCH.startNewSet = false

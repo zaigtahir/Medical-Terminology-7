@@ -134,6 +134,11 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
         }
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        //redraw the progress bar
+        updateDisplay()
+    }
+    
     @IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
         quizHomeVCH.isFavoriteMode = sender.isOn
         updateDisplay()
