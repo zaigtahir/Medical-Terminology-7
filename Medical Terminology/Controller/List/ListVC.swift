@@ -45,7 +45,7 @@ class ListVC: UIViewController, ListTCDelagate {
         listTC.tableViewReference = tableView
         
         searchBar.delegate = listTC
-        searchBar.searchTextField.textColor = myTheme.color_searchText
+      //  searchBar.searchTextField.textColor = myTheme.color_searchText
         
         /*
         //color of search bar
