@@ -36,9 +36,6 @@
 		5A367D3422EF513F003A7E4B /* CircularBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D3322EF513F003A7E4B /* CircularBar.swift */; };
 		5A37F87A22E74B18008A5FA5 /* CVScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37F87922E74B18008A5FA5 /* CVScrollController.swift */; };
 		5A4471552281C655008E3107 /* ListVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471542281C655008E3107 /* ListVCH.swift */; };
-		5A44715A22820D33008E3107 /* an.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A44715722820D33008E3107 /* an.MP3 */; };
-		5A44715B22820D33008E3107 /* andro.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A44715822820D33008E3107 /* andro.MP3 */; };
-		5A44715C22820D33008E3107 /* alg.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A44715922820D33008E3107 /* alg.MP3 */; };
 		5A4471612283DFB9008E3107 /* SearchLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471602283DFB9008E3107 /* SearchLists.swift */; };
 		5A4471652284EE85008E3107 /* ListCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471642284EE85008E3107 /* ListCC.swift */; };
 		5A4BB81D229A48690089A474 /* FlashCardOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4BB81C229A48690089A474 /* FlashCardOptionsVC.swift */; };
@@ -421,13 +418,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A44715A22820D33008E3107 /* an.MP3 in Resources */,
 				5A189C37216D8E8400929AB8 /* LaunchScreen.storyboard in Resources */,
-				5A44715C22820D33008E3107 /* alg.MP3 in Resources */,
 				5A88633F217226180013FC8B /* Medical Terminology.db in Resources */,
 				5A34042424269DBF00C744E3 /* Assets.xcassets in Resources */,
 				5A189C32216D8E8400929AB8 /* Main.storyboard in Resources */,
-				5A44715B22820D33008E3107 /* andro.MP3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
