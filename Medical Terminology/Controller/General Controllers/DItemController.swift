@@ -54,6 +54,7 @@ class DItemController {
         //if nothing found return an empty array
         
         //null strings in database will become an empty string in the string variables here
+        
         //displayTerm will be selected instead of term for the item term if there is something in the displayTerm
         
         let selectPortion = "SELECT itemID, term, termDisplay, definition, ifnull(example, '') AS example, category, ifnull(audioFile, '') AS audioFile, isFavorite, learnedTerm, learnedDefinition, answeredTerm, answeredDefinition FROM dictionary "
@@ -67,12 +68,12 @@ class DItemController {
             while resultSet.next() {
                 
                 let itemID = Int(resultSet.int(forColumn: "itemID"))
-                var term = resultSet.string(forColumn: "term") ?? "default"
-                let termDisplay = resultSet.string(forColumn: "termDisplay") ?? "default"
-                let definition = resultSet.string(forColumn: "definition")  ?? "default"
-                let example = resultSet.string(forColumn: "example")  ?? "default"
+                var term = resultSet.string(forColumn: "term") ?? "none found"
+                let termDisplay = resultSet.string(forColumn: "termDisplay") ?? ""
+                let definition = resultSet.string(forColumn: "definition")  ?? ""
+                let example = resultSet.string(forColumn: "example")  ?? ""
                 let category = Int(resultSet.int(forColumn: "category"))
-                let audioFile = resultSet.string(forColumn: "audioFile")  ?? "default"
+                let audioFile = resultSet.string(forColumn: "audioFile")  ?? "none found"
                 let f = Int(resultSet.int(forColumn: "isFavorite"))
                 let t = Int(resultSet.int(forColumn: "learnedTerm"))
                 let d = Int(resultSet.int(forColumn: "learnedDefinition"))

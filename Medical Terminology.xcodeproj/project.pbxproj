@@ -63,14 +63,6 @@
 		5AF85732228F22C8008929D5 /* FlashCardHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85731228F22C8008929D5 /* FlashCardHome.swift */; };
 		5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85733228F26A1008929D5 /* FlashCardController.swift */; };
 		5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */; };
-		993A83302441461B00AC2290 /* adipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A83282441461A00AC2290 /* adipo.mp3 */; };
-		993A83312441461B00AC2290 /* acanth.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A83292441461B00AC2290 /* acanth.mp3 */; };
-		993A83322441461B00AC2290 /* ac.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A832A2441461B00AC2290 /* ac.mp3 */; };
-		993A83332441461B00AC2290 /* aan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A832B2441461B00AC2290 /* aan.mp3 */; };
-		993A83342441461B00AC2290 /* ab.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A832C2441461B00AC2290 /* ab.mp3 */; };
-		993A83352441461B00AC2290 /* adprefix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A832D2441461B00AC2290 /* adprefix.mp3 */; };
-		993A83362441461B00AC2290 /* adsuffix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A832E2441461B00AC2290 /* adsuffix.mp3 */; };
-		993A83372441461B00AC2290 /* acusis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A832F2441461B00AC2290 /* acusis.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,14 +131,6 @@
 		5AF85731228F22C8008929D5 /* FlashCardHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardHome.swift; sourceTree = "<group>"; };
 		5AF85733228F26A1008929D5 /* FlashCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardController.swift; sourceTree = "<group>"; };
 		5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCVCell.swift; sourceTree = "<group>"; };
-		993A83282441461A00AC2290 /* adipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adipo.mp3; sourceTree = "<group>"; };
-		993A83292441461B00AC2290 /* acanth.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = acanth.mp3; sourceTree = "<group>"; };
-		993A832A2441461B00AC2290 /* ac.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ac.mp3; sourceTree = "<group>"; };
-		993A832B2441461B00AC2290 /* aan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = aan.mp3; sourceTree = "<group>"; };
-		993A832C2441461B00AC2290 /* ab.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ab.mp3; sourceTree = "<group>"; };
-		993A832D2441461B00AC2290 /* adprefix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adprefix.mp3; sourceTree = "<group>"; };
-		993A832E2441461B00AC2290 /* adsuffix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adsuffix.mp3; sourceTree = "<group>"; };
-		993A832F2441461B00AC2290 /* acusis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = acusis.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,14 +356,6 @@
 		993A83382441462C00AC2290 /* A */ = {
 			isa = PBXGroup;
 			children = (
-				993A832B2441461B00AC2290 /* aan.mp3 */,
-				993A832C2441461B00AC2290 /* ab.mp3 */,
-				993A832A2441461B00AC2290 /* ac.mp3 */,
-				993A83292441461B00AC2290 /* acanth.mp3 */,
-				993A832F2441461B00AC2290 /* acusis.mp3 */,
-				993A83282441461A00AC2290 /* adipo.mp3 */,
-				993A832D2441461B00AC2290 /* adprefix.mp3 */,
-				993A832E2441461B00AC2290 /* adsuffix.mp3 */,
 			);
 			path = A;
 			sourceTree = "<group>";
@@ -444,16 +420,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				993A83322441461B00AC2290 /* ac.mp3 in Resources */,
-				993A83302441461B00AC2290 /* adipo.mp3 in Resources */,
-				993A83312441461B00AC2290 /* acanth.mp3 in Resources */,
-				993A83352441461B00AC2290 /* adprefix.mp3 in Resources */,
-				993A83342441461B00AC2290 /* ab.mp3 in Resources */,
-				993A83362441461B00AC2290 /* adsuffix.mp3 in Resources */,
 				5A189C37216D8E8400929AB8 /* LaunchScreen.storyboard in Resources */,
 				5A88633F217226180013FC8B /* Medical Terminology.db in Resources */,
-				993A83372441461B00AC2290 /* acusis.mp3 in Resources */,
-				993A83332441461B00AC2290 /* aan.mp3 in Resources */,
 				5A34042424269DBF00C744E3 /* Assets.xcassets in Resources */,
 				5A189C32216D8E8400929AB8 /* Main.storyboard in Resources */,
 			);
