@@ -15,11 +15,11 @@ import UIKit
 class DItem {
     
     var itemID: Int = 0
-    var term: String = "default"
-    var definition: String = "default"
-    var example: String = "default"
+    var term: String = "none loaded"
+    var definition: String = "none loaded"
+    var example: String = "none loaded"
     var category: Int = 0
-    var audioFile: String = ""
+    var audioFile: String = "none loaded"
     var isFavorite: Bool = false
     var learnedTerm: Bool = false
     var learnedDefinition: Bool = false

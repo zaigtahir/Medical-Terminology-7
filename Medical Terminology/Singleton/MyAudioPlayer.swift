@@ -23,7 +23,7 @@ class MyAudioPlayer {
                 audioPlayer?.play()
                 
             } else {
-                print("No file with specified name exists")
+                print("No file with with the name: \(audioFileWithExtension)")
                 return
             }
         } catch let error {
