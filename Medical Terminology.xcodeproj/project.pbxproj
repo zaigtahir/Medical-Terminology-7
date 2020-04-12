@@ -63,6 +63,31 @@
 		5AF85732228F22C8008929D5 /* FlashCardHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85731228F22C8008929D5 /* FlashCardHome.swift */; };
 		5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85733228F26A1008929D5 /* FlashCardController.swift */; };
 		5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */; };
+		993A8355244232E600AC2290 /* ab.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A833C244232E400AC2290 /* ab.mp3 */; };
+		993A8356244232E600AC2290 /* aan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A833D244232E400AC2290 /* aan.mp3 */; };
+		993A8357244232E600AC2290 /* algia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A833E244232E400AC2290 /* algia.mp3 */; };
+		993A8358244232E600AC2290 /* acanth.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A833F244232E400AC2290 /* acanth.mp3 */; };
+		993A8359244232E600AC2290 /* adipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8340244232E400AC2290 /* adipo.mp3 */; };
+		993A835A244232E600AC2290 /* amnio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8341244232E500AC2290 /* amnio.mp3 */; };
+		993A835B244232E600AC2290 /* ac.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8342244232E500AC2290 /* ac.mp3 */; };
+		993A835C244232E600AC2290 /* ansio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8343244232E500AC2290 /* ansio.mp3 */; };
+		993A835D244232E600AC2290 /* andro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8344244232E500AC2290 /* andro.mp3 */; };
+		993A835E244232E600AC2290 /* ante.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8345244232E500AC2290 /* ante.mp3 */; };
+		993A835F244232E600AC2290 /* arche.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8346244232E500AC2290 /* arche.mp3 */; };
+		993A8360244232E600AC2290 /* ad.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8347244232E500AC2290 /* ad.mp3 */; };
+		993A8361244232E600AC2290 /* adreno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8348244232E500AC2290 /* adreno.mp3 */; };
+		993A8362244232E600AC2290 /* adsuffix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8349244232E500AC2290 /* adsuffix.mp3 */; };
+		993A8363244232E600AC2290 /* aero.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834A244232E500AC2290 /* aero.mp3 */; };
+		993A8364244232E600AC2290 /* ankylo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834B244232E500AC2290 /* ankylo.mp3 */; };
+		993A8365244232E600AC2290 /* allo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834C244232E500AC2290 /* allo.mp3 */; };
+		993A8366244232E600AC2290 /* anti.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834D244232E500AC2290 /* anti.mp3 */; };
+		993A8367244232E600AC2290 /* adeno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834E244232E500AC2290 /* adeno.mp3 */; };
+		993A8368244232E600AC2290 /* ambi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834F244232E600AC2290 /* ambi.mp3 */; };
+		993A8369244232E600AC2290 /* acusis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8350244232E600AC2290 /* acusis.mp3 */; };
+		993A836A244232E600AC2290 /* apo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8351244232E600AC2290 /* apo.mp3 */; };
+		993A836B244232E600AC2290 /* al.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8352244232E600AC2290 /* al.mp3 */; };
+		993A836C244232E600AC2290 /* alb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8353244232E600AC2290 /* alb.mp3 */; };
+		993A836D244232E600AC2290 /* angio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8354244232E600AC2290 /* angio.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +156,31 @@
 		5AF85731228F22C8008929D5 /* FlashCardHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardHome.swift; sourceTree = "<group>"; };
 		5AF85733228F26A1008929D5 /* FlashCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardController.swift; sourceTree = "<group>"; };
 		5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCVCell.swift; sourceTree = "<group>"; };
+		993A833C244232E400AC2290 /* ab.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ab.mp3; sourceTree = "<group>"; };
+		993A833D244232E400AC2290 /* aan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = aan.mp3; sourceTree = "<group>"; };
+		993A833E244232E400AC2290 /* algia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = algia.mp3; sourceTree = "<group>"; };
+		993A833F244232E400AC2290 /* acanth.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = acanth.mp3; sourceTree = "<group>"; };
+		993A8340244232E400AC2290 /* adipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adipo.mp3; sourceTree = "<group>"; };
+		993A8341244232E500AC2290 /* amnio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = amnio.mp3; sourceTree = "<group>"; };
+		993A8342244232E500AC2290 /* ac.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ac.mp3; sourceTree = "<group>"; };
+		993A8343244232E500AC2290 /* ansio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ansio.mp3; sourceTree = "<group>"; };
+		993A8344244232E500AC2290 /* andro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = andro.mp3; sourceTree = "<group>"; };
+		993A8345244232E500AC2290 /* ante.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ante.mp3; sourceTree = "<group>"; };
+		993A8346244232E500AC2290 /* arche.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arche.mp3; sourceTree = "<group>"; };
+		993A8347244232E500AC2290 /* ad.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ad.mp3; sourceTree = "<group>"; };
+		993A8348244232E500AC2290 /* adreno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adreno.mp3; sourceTree = "<group>"; };
+		993A8349244232E500AC2290 /* adsuffix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adsuffix.mp3; sourceTree = "<group>"; };
+		993A834A244232E500AC2290 /* aero.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = aero.mp3; sourceTree = "<group>"; };
+		993A834B244232E500AC2290 /* ankylo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ankylo.mp3; sourceTree = "<group>"; };
+		993A834C244232E500AC2290 /* allo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = allo.mp3; sourceTree = "<group>"; };
+		993A834D244232E500AC2290 /* anti.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = anti.mp3; sourceTree = "<group>"; };
+		993A834E244232E500AC2290 /* adeno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adeno.mp3; sourceTree = "<group>"; };
+		993A834F244232E600AC2290 /* ambi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambi.mp3; sourceTree = "<group>"; };
+		993A8350244232E600AC2290 /* acusis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = acusis.mp3; sourceTree = "<group>"; };
+		993A8351244232E600AC2290 /* apo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = apo.mp3; sourceTree = "<group>"; };
+		993A8352244232E600AC2290 /* al.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = al.mp3; sourceTree = "<group>"; };
+		993A8353244232E600AC2290 /* alb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alb.mp3; sourceTree = "<group>"; };
+		993A8354244232E600AC2290 /* angio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = angio.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,6 +406,31 @@
 		993A83382441462C00AC2290 /* A */ = {
 			isa = PBXGroup;
 			children = (
+				993A833D244232E400AC2290 /* aan.mp3 */,
+				993A833C244232E400AC2290 /* ab.mp3 */,
+				993A8342244232E500AC2290 /* ac.mp3 */,
+				993A833F244232E400AC2290 /* acanth.mp3 */,
+				993A8350244232E600AC2290 /* acusis.mp3 */,
+				993A8347244232E500AC2290 /* ad.mp3 */,
+				993A834E244232E500AC2290 /* adeno.mp3 */,
+				993A8340244232E400AC2290 /* adipo.mp3 */,
+				993A8348244232E500AC2290 /* adreno.mp3 */,
+				993A8349244232E500AC2290 /* adsuffix.mp3 */,
+				993A834A244232E500AC2290 /* aero.mp3 */,
+				993A8352244232E600AC2290 /* al.mp3 */,
+				993A8353244232E600AC2290 /* alb.mp3 */,
+				993A833E244232E400AC2290 /* algia.mp3 */,
+				993A834C244232E500AC2290 /* allo.mp3 */,
+				993A834F244232E600AC2290 /* ambi.mp3 */,
+				993A8341244232E500AC2290 /* amnio.mp3 */,
+				993A8344244232E500AC2290 /* andro.mp3 */,
+				993A8354244232E600AC2290 /* angio.mp3 */,
+				993A834B244232E500AC2290 /* ankylo.mp3 */,
+				993A8343244232E500AC2290 /* ansio.mp3 */,
+				993A8345244232E500AC2290 /* ante.mp3 */,
+				993A834D244232E500AC2290 /* anti.mp3 */,
+				993A8351244232E600AC2290 /* apo.mp3 */,
+				993A8346244232E500AC2290 /* arche.mp3 */,
 			);
 			path = A;
 			sourceTree = "<group>";
@@ -420,10 +495,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				993A8355244232E600AC2290 /* ab.mp3 in Resources */,
+				993A835D244232E600AC2290 /* andro.mp3 in Resources */,
 				5A189C37216D8E8400929AB8 /* LaunchScreen.storyboard in Resources */,
+				993A836A244232E600AC2290 /* apo.mp3 in Resources */,
+				993A8359244232E600AC2290 /* adipo.mp3 in Resources */,
+				993A835F244232E600AC2290 /* arche.mp3 in Resources */,
+				993A8365244232E600AC2290 /* allo.mp3 in Resources */,
 				5A88633F217226180013FC8B /* Medical Terminology.db in Resources */,
+				993A8364244232E600AC2290 /* ankylo.mp3 in Resources */,
+				993A8361244232E600AC2290 /* adreno.mp3 in Resources */,
+				993A835B244232E600AC2290 /* ac.mp3 in Resources */,
+				993A835C244232E600AC2290 /* ansio.mp3 in Resources */,
+				993A8356244232E600AC2290 /* aan.mp3 in Resources */,
+				993A8360244232E600AC2290 /* ad.mp3 in Resources */,
+				993A835A244232E600AC2290 /* amnio.mp3 in Resources */,
+				993A8362244232E600AC2290 /* adsuffix.mp3 in Resources */,
 				5A34042424269DBF00C744E3 /* Assets.xcassets in Resources */,
+				993A835E244232E600AC2290 /* ante.mp3 in Resources */,
 				5A189C32216D8E8400929AB8 /* Main.storyboard in Resources */,
+				993A8357244232E600AC2290 /* algia.mp3 in Resources */,
+				993A836B244232E600AC2290 /* al.mp3 in Resources */,
+				993A8363244232E600AC2290 /* aero.mp3 in Resources */,
+				993A836D244232E600AC2290 /* angio.mp3 in Resources */,
+				993A8366244232E600AC2290 /* anti.mp3 in Resources */,
+				993A8369244232E600AC2290 /* acusis.mp3 in Resources */,
+				993A836C244232E600AC2290 /* alb.mp3 in Resources */,
+				993A8358244232E600AC2290 /* acanth.mp3 in Resources */,
+				993A8367244232E600AC2290 /* adeno.mp3 in Resources */,
+				993A8368244232E600AC2290 /* ambi.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
