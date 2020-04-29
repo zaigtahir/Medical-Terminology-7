@@ -23,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //check and see if there is a resource present for each audiofile name listed in the database
         
         let aFC = AudioFileController()
-        let fileNames = aFC.getAudioFileNamesFromDB()
-        print ("found \(fileNames.count) audioFiles names")
+        aFC.checkAudioFiles()
         
         return true
     }

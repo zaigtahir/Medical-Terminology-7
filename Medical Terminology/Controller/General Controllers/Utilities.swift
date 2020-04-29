@@ -13,7 +13,7 @@ class Utilities {
     //sets the enabled and disabled state of my custom buttons
     
     func formatButtonColor (button: UIButton, enabledBackground: UIColor,enabledTint: UIColor, disabledBackground: UIColor, disabledTint: UIColor) {
-
+        
         if button.isEnabled {
             button.backgroundColor = enabledBackground
             button.tintColor = enabledTint
@@ -140,6 +140,5 @@ class Utilities {
         dIC.saveLearnedDefinition(itemID: 14, learnedState: false)
     }
     
-   
     
 }

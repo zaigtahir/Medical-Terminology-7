@@ -10,7 +10,7 @@ import Foundation
 
 class AudioFileController {
     
-    func getAudioFileNamesFromDB () -> [String] {
+    private func getAudioFileNamesFromDB () -> [String] {
         //will return an array of audio file names from the database
         
         //return an array of audio file names
@@ -36,6 +36,26 @@ class AudioFileController {
         }
         
         return fileNames
+        
+    }
+    
+    private func isResourcePresent (fileName: String) -> Bool {
+        
+        //get url to db file in the bundle
+        guard Bundle.main.url(forResource: fileName, withExtension: nil) != nil else {
+            print("\(fileName) not found in bundle")
+            return false
+        }
+        return true
+    }
+    
+    func checkAudioFiles () {
+        //will check to see if each audiofile listed in the database has a matching file in the resources
+        
+        let fileNames = getAudioFileNamesFromDB()
+        for nameAudioFile in fileNames {
+            _ = isResourcePresent(fileName: nameAudioFile)
+        }
         
     }
     
