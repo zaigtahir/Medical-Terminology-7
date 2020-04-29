@@ -63,31 +63,341 @@
 		5AF85732228F22C8008929D5 /* FlashCardHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85731228F22C8008929D5 /* FlashCardHome.swift */; };
 		5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85733228F26A1008929D5 /* FlashCardController.swift */; };
 		5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */; };
-		993A8355244232E600AC2290 /* ab.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A833C244232E400AC2290 /* ab.mp3 */; };
-		993A8356244232E600AC2290 /* aan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A833D244232E400AC2290 /* aan.mp3 */; };
-		993A8357244232E600AC2290 /* algia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A833E244232E400AC2290 /* algia.mp3 */; };
-		993A8358244232E600AC2290 /* acanth.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A833F244232E400AC2290 /* acanth.mp3 */; };
-		993A8359244232E600AC2290 /* adipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8340244232E400AC2290 /* adipo.mp3 */; };
-		993A835A244232E600AC2290 /* amnio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8341244232E500AC2290 /* amnio.mp3 */; };
-		993A835B244232E600AC2290 /* ac.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8342244232E500AC2290 /* ac.mp3 */; };
-		993A835C244232E600AC2290 /* ansio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8343244232E500AC2290 /* ansio.mp3 */; };
-		993A835D244232E600AC2290 /* andro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8344244232E500AC2290 /* andro.mp3 */; };
-		993A835E244232E600AC2290 /* ante.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8345244232E500AC2290 /* ante.mp3 */; };
-		993A835F244232E600AC2290 /* arche.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8346244232E500AC2290 /* arche.mp3 */; };
-		993A8360244232E600AC2290 /* ad.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8347244232E500AC2290 /* ad.mp3 */; };
-		993A8361244232E600AC2290 /* adreno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8348244232E500AC2290 /* adreno.mp3 */; };
-		993A8362244232E600AC2290 /* adsuffix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8349244232E500AC2290 /* adsuffix.mp3 */; };
-		993A8363244232E600AC2290 /* aero.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834A244232E500AC2290 /* aero.mp3 */; };
-		993A8364244232E600AC2290 /* ankylo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834B244232E500AC2290 /* ankylo.mp3 */; };
-		993A8365244232E600AC2290 /* allo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834C244232E500AC2290 /* allo.mp3 */; };
-		993A8366244232E600AC2290 /* anti.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834D244232E500AC2290 /* anti.mp3 */; };
-		993A8367244232E600AC2290 /* adeno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834E244232E500AC2290 /* adeno.mp3 */; };
-		993A8368244232E600AC2290 /* ambi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A834F244232E600AC2290 /* ambi.mp3 */; };
-		993A8369244232E600AC2290 /* acusis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8350244232E600AC2290 /* acusis.mp3 */; };
-		993A836A244232E600AC2290 /* apo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8351244232E600AC2290 /* apo.mp3 */; };
-		993A836B244232E600AC2290 /* al.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8352244232E600AC2290 /* al.mp3 */; };
-		993A836C244232E600AC2290 /* alb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8353244232E600AC2290 /* alb.mp3 */; };
-		993A836D244232E600AC2290 /* angio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 993A8354244232E600AC2290 /* angio.mp3 */; };
+		996CF5FB245917DE00382B11 /* rrhea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF494245917DD00382B11 /* rrhea.mp3 */; };
+		996CF5FC245917DE00382B11 /* radi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF495245917DD00382B11 /* radi.mp3 */; };
+		996CF5FD245917DE00382B11 /* re.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF496245917DD00382B11 /* re.mp3 */; };
+		996CF5FE245917DE00382B11 /* rrhage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF497245917DD00382B11 /* rrhage.mp3 */; };
+		996CF5FF245917DE00382B11 /* rect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF498245917DD00382B11 /* rect.mp3 */; };
+		996CF600245917DE00382B11 /* rabdo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF499245917DD00382B11 /* rabdo.mp3 */; };
+		996CF601245917DE00382B11 /* rrhagia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF49A245917DD00382B11 /* rrhagia.mp3 */; };
+		996CF602245917DE00382B11 /* retro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF49B245917DD00382B11 /* retro.mp3 */; };
+		996CF603245917DE00382B11 /* ren.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF49C245917DD00382B11 /* ren.mp3 */; };
+		996CF604245917DE00382B11 /* rhino.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF49D245917DD00382B11 /* rhino.mp3 */; };
+		996CF605245917DE00382B11 /* ultra.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF49F245917DD00382B11 /* ultra.mp3 */; };
+		996CF606245917DE00382B11 /* uni.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4A0245917DD00382B11 /* uni.mp3 */; };
+		996CF607245917DE00382B11 /* iso.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4A2245917DD00382B11 /* iso.mp3 */; };
+		996CF608245917DE00382B11 /* ism.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4A3245917DD00382B11 /* ism.mp3 */; };
+		996CF609245917DE00382B11 /* iatry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4A4245917DD00382B11 /* iatry.mp3 */; };
+		996CF60A245917DE00382B11 /* ium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4A5245917DD00382B11 /* ium.mp3 */; };
+		996CF60B245917DE00382B11 /* intra.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4A6245917DD00382B11 /* intra.mp3 */; };
+		996CF60C245917DE00382B11 /* iasis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4A7245917DD00382B11 /* iasis.mp3 */; };
+		996CF60D245917DE00382B11 /* ics.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4A8245917DD00382B11 /* ics.mp3 */; };
+		996CF60E245917DE00382B11 /* isch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4A9245917DD00382B11 /* isch.mp3 */; };
+		996CF60F245917DE00382B11 /* ipsi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4AA245917DD00382B11 /* ipsi.mp3 */; };
+		996CF610245917DE00382B11 /* inter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4AB245917DD00382B11 /* inter.mp3 */; };
+		996CF611245917DE00382B11 /* itis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4AC245917DD00382B11 /* itis.mp3 */; };
+		996CF612245917DE00382B11 /* infra.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4AD245917DD00382B11 /* infra.mp3 */; };
+		996CF613245917DE00382B11 /* icle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4AE245917DD00382B11 /* icle.mp3 */; };
+		996CF614245917DE00382B11 /* idio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4AF245917DD00382B11 /* idio.mp3 */; };
+		996CF615245917DE00382B11 /* ist.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4B0245917DD00382B11 /* ist.mp3 */; };
+		996CF616245917DE00382B11 /* necro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4B2245917DD00382B11 /* necro.mp3 */; };
+		996CF617245917DE00382B11 /* narco.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4B3245917DD00382B11 /* narco.mp3 */; };
+		996CF618245917DE00382B11 /* nephro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4B4245917DD00382B11 /* nephro.mp3 */; };
+		996CF619245917DE00382B11 /* neo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4B5245917DD00382B11 /* neo.mp3 */; };
+		996CF61A245917DE00382B11 /* naso.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4B6245917DD00382B11 /* naso.mp3 */; };
+		996CF61B245917DE00382B11 /* neuro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4B7245917DD00382B11 /* neuro.mp3 */; };
+		996CF61C245917DE00382B11 /* normo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4B8245917DD00382B11 /* normo.mp3 */; };
+		996CF61D245917DE00382B11 /* galacto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4BA245917DD00382B11 /* galacto.mp3 */; };
+		996CF61E245917DE00382B11 /* gen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4BB245917DD00382B11 /* gen.mp3 */; };
+		996CF61F245917DE00382B11 /* graph.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4BC245917DD00382B11 /* graph.mp3 */; };
+		996CF620245917DE00382B11 /* gnosos.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4BD245917DD00382B11 /* gnosos.mp3 */; };
+		996CF621245917DE00382B11 /* glosso.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4BE245917DD00382B11 /* glosso.mp3 */; };
+		996CF622245917DE00382B11 /* gnatho.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4BF245917DD00382B11 /* gnatho.mp3 */; };
+		996CF623245917DE00382B11 /* gastro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4C0245917DD00382B11 /* gastro.mp3 */; };
+		996CF624245917DE00382B11 /* gingiv.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4C1245917DD00382B11 /* gingiv.mp3 */; };
+		996CF625245917DE00382B11 /* graphy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4C2245917DD00382B11 /* graphy.mp3 */; };
+		996CF626245917DE00382B11 /* gluco.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4C3245917DD00382B11 /* gluco.mp3 */; };
+		996CF627245917DE00382B11 /* gram.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4C4245917DD00382B11 /* gram.mp3 */; };
+		996CF628245917DE00382B11 /* gyneco.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4C5245917DD00382B11 /* gyneco.mp3 */; };
+		996CF629245917DE00382B11 /* thec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4C7245917DD00382B11 /* thec.mp3 */; };
+		996CF62A245917DE00382B11 /* tomy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4C8245917DD00382B11 /* tomy.mp3 */; };
+		996CF62B245917DE00382B11 /* tachy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4C9245917DD00382B11 /* tachy.mp3 */; };
+		996CF62C245917DE00382B11 /* toxi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4CA245917DD00382B11 /* toxi.mp3 */; };
+		996CF62D245917DE00382B11 /* tri.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4CB245917DD00382B11 /* tri.mp3 */; };
+		996CF62E245917DE00382B11 /* tricho.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4CC245917DD00382B11 /* tricho.mp3 */; };
+		996CF62F245917DE00382B11 /* tympano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4CD245917DD00382B11 /* tympano.mp3 */; };
+		996CF630245917DE00382B11 /* tripsy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4CE245917DD00382B11 /* tripsy.mp3 */; };
+		996CF631245917DE00382B11 /* torti.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4CF245917DD00382B11 /* torti.mp3 */; };
+		996CF632245917DE00382B11 /* thyro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4D0245917DD00382B11 /* thyro.mp3 */; };
+		996CF633245917DE00382B11 /* trans.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4D1245917DD00382B11 /* trans.mp3 */; };
+		996CF634245917DE00382B11 /* thermo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4D2245917DD00382B11 /* thermo.mp3 */; };
+		996CF635245917DE00382B11 /* thymia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4D3245917DD00382B11 /* thymia.mp3 */; };
+		996CF636245917DE00382B11 /* thermia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4D4245917DD00382B11 /* thermia.mp3 */; };
+		996CF637245917DE00382B11 /* thrombo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4D5245917DD00382B11 /* thrombo.mp3 */; };
+		996CF638245917DE00382B11 /* tome.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4D6245917DD00382B11 /* tome.mp3 */; };
+		996CF639245917DE00382B11 /* tension.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4D7245917DD00382B11 /* tension.mp3 */; };
+		996CF63A245917DE00382B11 /* toco.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4D8245917DD00382B11 /* toco.mp3 */; };
+		996CF63B245917DE00382B11 /* trophy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4D9245917DD00382B11 /* trophy.mp3 */; };
+		996CF63C245917DE00382B11 /* thel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4DA245917DD00382B11 /* thel.mp3 */; };
+		996CF63D245917DE00382B11 /* syl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4DC245917DD00382B11 /* syl.mp3 */; };
+		996CF63E245917DE00382B11 /* staxis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4DD245917DD00382B11 /* staxis.mp3 */; };
+		996CF63F245917DE00382B11 /* sarco.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4DE245917DD00382B11 /* sarco.mp3 */; };
+		996CF640245917DE00382B11 /* spondyl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4DF245917DD00382B11 /* spondyl.mp3 */; };
+		996CF641245917DE00382B11 /* scolio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4E0245917DD00382B11 /* scolio.mp3 */; };
+		996CF642245917DE00382B11 /* somno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4E1245917DD00382B11 /* somno.mp3 */; };
+		996CF643245917DE00382B11 /* stomato.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4E2245917DD00382B11 /* stomato.mp3 */; };
+		996CF644245917DE00382B11 /* semi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4E3245917DD00382B11 /* semi.mp3 */; };
+		996CF645245917DE00382B11 /* steno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4E4245917DD00382B11 /* steno.mp3 */; };
+		996CF646245917DE00382B11 /* scopy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4E5245917DD00382B11 /* scopy.mp3 */; };
+		996CF647245917DE00382B11 /* salping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4E6245917DD00382B11 /* salping.mp3 */; };
+		996CF648245917DE00382B11 /* stomy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4E7245917DD00382B11 /* stomy.mp3 */; };
+		996CF649245917DE00382B11 /* stasis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4E8245917DD00382B11 /* stasis.mp3 */; };
+		996CF64A245917DE00382B11 /* super.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4E9245917DD00382B11 /* super.mp3 */; };
+		996CF64B245917DE00382B11 /* scope.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4EA245917DD00382B11 /* scope.mp3 */; };
+		996CF64C245917DE00382B11 /* sclerosis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4EB245917DD00382B11 /* sclerosis.mp3 */; };
+		996CF64D245917DE00382B11 /* schizo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4EC245917DD00382B11 /* schizo.mp3 */; };
+		996CF64E245917DE00382B11 /* schisto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4ED245917DD00382B11 /* schisto.mp3 */; };
+		996CF64F245917DE00382B11 /* sangui.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4EE245917DD00382B11 /* sangui.mp3 */; };
+		996CF650245917DE00382B11 /* sclero.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4EF245917DD00382B11 /* sclero.mp3 */; };
+		996CF651245917DE00382B11 /* splen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4F0245917DD00382B11 /* splen.mp3 */; };
+		996CF652245917DE00382B11 /* stalsis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4F1245917DD00382B11 /* stalsis.mp3 */; };
+		996CF653245917DE00382B11 /* sub.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4F2245917DD00382B11 /* sub.mp3 */; };
+		996CF654245917DE00382B11 /* aero.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4F4245917DD00382B11 /* aero.mp3 */; };
+		996CF655245917DE00382B11 /* ation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4F5245917DD00382B11 /* ation.mp3 */; };
+		996CF656245917DE00382B11 /* al.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4F6245917DD00382B11 /* al.mp3 */; };
+		996CF657245917DE00382B11 /* ante.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4F7245917DD00382B11 /* ante.mp3 */; };
+		996CF658245917DE00382B11 /* andro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4F8245917DD00382B11 /* andro.mp3 */; };
+		996CF659245917DE00382B11 /* articulo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4F9245917DD00382B11 /* articulo.mp3 */; };
+		996CF65A245917DE00382B11 /* ase.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4FA245917DD00382B11 /* ase.mp3 */; };
+		996CF65B245917DE00382B11 /* adipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4FB245917DD00382B11 /* adipo.mp3 */; };
+		996CF65D245917DE00382B11 /* arche.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4FD245917DD00382B11 /* arche.mp3 */; };
+		996CF65E245917DE00382B11 /* apo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4FE245917DD00382B11 /* apo.mp3 */; };
+		996CF65F245917DE00382B11 /* adsuffix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF4FF245917DD00382B11 /* adsuffix.mp3 */; };
+		996CF660245917DE00382B11 /* ambi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF500245917DD00382B11 /* ambi.mp3 */; };
+		996CF661245917DE00382B11 /* algia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF501245917DD00382B11 /* algia.mp3 */; };
+		996CF663245917DE00382B11 /* alb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF503245917DD00382B11 /* alb.mp3 */; };
+		996CF664245917DE00382B11 /* azo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF504245917DD00382B11 /* azo.mp3 */; };
+		996CF665245917DE00382B11 /* asthenia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF505245917DD00382B11 /* asthenia.mp3 */; };
+		996CF666245917DE00382B11 /* angio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF506245917DD00382B11 /* angio.mp3 */; };
+		996CF667245917DE00382B11 /* ankylo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF507245917DD00382B11 /* ankylo.mp3 */; };
+		996CF668245917DE00382B11 /* aniso.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF508245917DD00382B11 /* aniso.mp3 */; };
+		996CF669245917DE00382B11 /* athero.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF509245917DE00382B11 /* athero.mp3 */; };
+		996CF66A245917DE00382B11 /* arterio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF50A245917DE00382B11 /* arterio.mp3 */; };
+		996CF66B245917DE00382B11 /* acusis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF50B245917DE00382B11 /* acusis.mp3 */; };
+		996CF66C245917DE00382B11 /* aan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF50C245917DE00382B11 /* aan.mp3 */; };
+		996CF66D245917DE00382B11 /* auri.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF50D245917DE00382B11 /* auri.mp3 */; };
+		996CF66F245917DE00382B11 /* amnio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF50F245917DE00382B11 /* amnio.mp3 */; };
+		996CF670245917DE00382B11 /* ad.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF510245917DE00382B11 /* ad.mp3 */; };
+		996CF671245917DE00382B11 /* auto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF511245917DE00382B11 /* auto.mp3 */; };
+		996CF673245917DE00382B11 /* allo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF513245917DE00382B11 /* allo.mp3 */; };
+		996CF674245917DE00382B11 /* ac.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF514245917DE00382B11 /* ac.mp3 */; };
+		996CF675245917DE00382B11 /* ab.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF515245917DE00382B11 /* ab.mp3 */; };
+		996CF676245917DE00382B11 /* acanth.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF516245917DE00382B11 /* acanth.mp3 */; };
+		996CF677245917DE00382B11 /* ary.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF517245917DE00382B11 /* ary.mp3 */; };
+		996CF678245917DE00382B11 /* anti.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF518245917DE00382B11 /* anti.mp3 */; };
+		996CF679245917DE00382B11 /* arthro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF519245917DE00382B11 /* arthro.mp3 */; };
+		996CF67A245917DE00382B11 /* form.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF51B245917DE00382B11 /* form.mp3 */; };
+		996CF67B245917DE00382B11 /* fibro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF51C245917DE00382B11 /* fibro.mp3 */; };
+		996CF67C245917DE00382B11 /* fore.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF51D245917DE00382B11 /* fore.mp3 */; };
+		996CF67D245917DE00382B11 /* oligo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF51F245917DE00382B11 /* oligo.mp3 */; };
+		996CF67E245917DE00382B11 /* oro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF520245917DE00382B11 /* oro.mp3 */; };
+		996CF67F245917DE00382B11 /* oste.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF521245917DE00382B11 /* oste.mp3 */; };
+		996CF680245917DE00382B11 /* oid.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF522245917DE00382B11 /* oid.mp3 */; };
+		996CF681245917DE00382B11 /* onco.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF523245917DE00382B11 /* onco.mp3 */; };
+		996CF682245917DE00382B11 /* oto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF524245917DE00382B11 /* oto.mp3 */; };
+		996CF683245917DE00382B11 /* omphalo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF525245917DE00382B11 /* omphalo.mp3 */; };
+		996CF684245917DE00382B11 /* opthalmo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF526245917DE00382B11 /* opthalmo.mp3 */; };
+		996CF685245917DE00382B11 /* orchi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF527245917DE00382B11 /* orchi.mp3 */; };
+		996CF686245917DE00382B11 /* oxy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF528245917DE00382B11 /* oxy.mp3 */; };
+		996CF687245917DE00382B11 /* osse.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF529245917DE00382B11 /* osse.mp3 */; };
+		996CF688245917DE00382B11 /* ovo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF52A245917DE00382B11 /* ovo.mp3 */; };
+		996CF689245917DE00382B11 /* ortho.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF52B245917DE00382B11 /* ortho.mp3 */; };
+		996CF68A245917DE00382B11 /* oculo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF52C245917DE00382B11 /* oculo.mp3 */; };
+		996CF68B245917DE00382B11 /* ole.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF52D245917DE00382B11 /* ole.mp3 */; };
+		996CF68C245917DE00382B11 /* oma.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF52E245917DE00382B11 /* oma.mp3 */; };
+		996CF68D245917DE00382B11 /* odonto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF52F245917DE00382B11 /* odonto.mp3 */; };
+		996CF68E245917DE00382B11 /* oo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF530245917DE00382B11 /* oo.mp3 */; };
+		996CF68F245917DE00382B11 /* onycho.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF531245917DE00382B11 /* onycho.mp3 */; };
+		996CF690245917DE00382B11 /* ologist.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF532245917DE00382B11 /* ologist.mp3 */; };
+		996CF691245917DE00382B11 /* opsy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF533245917DE00382B11 /* opsy.mp3 */; };
+		996CF692245917DE00382B11 /* ovario.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF534245917DE00382B11 /* ovario.mp3 */; };
+		996CF693245917DE00382B11 /* opistho.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF535245917DE00382B11 /* opistho.mp3 */; };
+		996CF694245917DE00382B11 /* hyper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF537245917DE00382B11 /* hyper.mp3 */; };
+		996CF695245917DE00382B11 /* hypo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF538245917DE00382B11 /* hypo.mp3 */; };
+		996CF696245917DE00382B11 /* histo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF539245917DE00382B11 /* histo.mp3 */; };
+		996CF697245917DE00382B11 /* homo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF53A245917DE00382B11 /* homo.mp3 */; };
+		996CF698245917DE00382B11 /* hyster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF53B245917DE00382B11 /* hyster.mp3 */; };
+		996CF699245917DE00382B11 /* hallucino.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF53C245917DE00382B11 /* hallucino.mp3 */; };
+		996CF69A245917DE00382B11 /* hetero.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF53D245917DE00382B11 /* hetero.mp3 */; };
+		996CF69B245917DE00382B11 /* hepato.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF53E245917DE00382B11 /* hepato.mp3 */; };
+		996CF69C245917DE00382B11 /* hemi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF53F245917DE00382B11 /* hemi.mp3 */; };
+		996CF69D245917DE00382B11 /* hydro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF540245917DE00382B11 /* hydro.mp3 */; };
+		996CF69E245917DE00382B11 /* hemo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF541245917DE00382B11 /* hemo.mp3 */; };
+		996CF69F245917DE00382B11 /* hemangio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF542245917DE00382B11 /* hemangio.mp3 */; };
+		996CF6A0245917DE00382B11 /* hidro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF543245917DE00382B11 /* hidro.mp3 */; };
+		996CF6A1245917DE00382B11 /* malacia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF545245917DE00382B11 /* malacia.mp3 */; };
+		996CF6A2245917DE00382B11 /* morph.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF546245917DE00382B11 /* morph.mp3 */; };
+		996CF6A3245917DE00382B11 /* macro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF547245917DE00382B11 /* macro.mp3 */; };
+		996CF6A4245917DE00382B11 /* mal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF548245917DE00382B11 /* mal.mp3 */; };
+		996CF6A5245917DE00382B11 /* micro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF549245917DE00382B11 /* micro.mp3 */; };
+		996CF6A6245917DE00382B11 /* mono.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF54A245917DE00382B11 /* mono.mp3 */; };
+		996CF6A7245917DE00382B11 /* mamo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF54B245917DE00382B11 /* mamo.mp3 */; };
+		996CF6A8245917DE00382B11 /* myo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF54C245917DE00382B11 /* myo.mp3 */; };
+		996CF6A9245917DE00382B11 /* myring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF54D245917DE00382B11 /* myring.mp3 */; };
+		996CF6AA245917DE00382B11 /* meter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF54E245917DE00382B11 /* meter.mp3 */; };
+		996CF6AB245917DE00382B11 /* metry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF54F245917DE00382B11 /* metry.mp3 */; };
+		996CF6AC245917DE00382B11 /* meta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF550245917DE00382B11 /* meta.mp3 */; };
+		996CF6AD245917DE00382B11 /* meno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF551245917DE00382B11 /* meno.mp3 */; };
+		996CF6AE245917DE00382B11 /* musculo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF552245917DE00382B11 /* musculo.mp3 */; };
+		996CF6AF245917DE00382B11 /* melano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF553245917DE00382B11 /* melano.mp3 */; };
+		996CF6B0245917DE00382B11 /* megaly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF554245917DE00382B11 /* megaly.mp3 */; };
+		996CF6B1245917DE00382B11 /* multi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF555245917DE00382B11 /* multi.mp3 */; };
+		996CF6B2245917DE00382B11 /* mega.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF556245917DE00382B11 /* mega.mp3 */; };
+		996CF6B3245917DE00382B11 /* myco.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF557245917DE00382B11 /* myco.mp3 */; };
+		996CF6B4245917DE00382B11 /* juxta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF559245917DE00382B11 /* juxta.mp3 */; };
+		996CF6B5245917DE00382B11 /* chole.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF55B245917DE00382B11 /* chole.mp3 */; };
+		996CF6B6245917DE00382B11 /* cyano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF55C245917DE00382B11 /* cyano.mp3 */; };
+		996CF6B7245917DE00382B11 /* cholecyst.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF55D245917DE00382B11 /* cholecyst.mp3 */; };
+		996CF6B8245917DE00382B11 /* chrom.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF55E245917DE00382B11 /* chrom.mp3 */; };
+		996CF6B9245917DE00382B11 /* cyto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF55F245917DE00382B11 /* cyto.mp3 */; };
+		996CF6BA245917DE00382B11 /* centesis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF560245917DE00382B11 /* centesis.mp3 */; };
+		996CF6BB245917DE00382B11 /* cervic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF561245917DE00382B11 /* cervic.mp3 */; };
+		996CF6BC245917DE00382B11 /* chemo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF562245917DE00382B11 /* chemo.mp3 */; };
+		996CF6BD245917DE00382B11 /* capit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF563245917DE00382B11 /* capit.mp3 */; };
+		996CF6BE245917DE00382B11 /* costo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF564245917DE00382B11 /* costo.mp3 */; };
+		996CF6BF245917DE00382B11 /* chondr.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF565245917DE00382B11 /* chondr.mp3 */; };
+		996CF6C0245917DE00382B11 /* con.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF566245917DE00382B11 /* con.mp3 */; };
+		996CF6C1245917DE00382B11 /* circum.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF567245917DE00382B11 /* circum.mp3 */; };
+		996CF6C2245917DE00382B11 /* cysto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF568245917DE00382B11 /* cysto.mp3 */; };
+		996CF6C3245917DE00382B11 /* col.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF569245917DE00382B11 /* col.mp3 */; };
+		996CF6C4245917DE00382B11 /* cortico.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF56A245917DE00382B11 /* cortico.mp3 */; };
+		996CF6C5245917DE00382B11 /* chiro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF56B245917DE00382B11 /* chiro.mp3 */; };
+		996CF6C6245917DE00382B11 /* cardio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF56C245917DE00382B11 /* cardio.mp3 */; };
+		996CF6C7245917DE00382B11 /* cele.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF56D245917DE00382B11 /* cele.mp3 */; };
+		996CF6C8245917DE00382B11 /* cili.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF56E245917DE00382B11 /* cili.mp3 */; };
+		996CF6C9245917DE00382B11 /* chlor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF56F245917DE00382B11 /* chlor.mp3 */; };
+		996CF6CA245917DE00382B11 /* cata.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF570245917DE00382B11 /* cata.mp3 */; };
+		996CF6CB245917DE00382B11 /* cheil.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF571245917DE00382B11 /* cheil.mp3 */; };
+		996CF6CC245917DE00382B11 /* cryo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF572245917DE00382B11 /* cryo.mp3 */; };
+		996CF6CD245917DE00382B11 /* cephalo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF573245917DE00382B11 /* cephalo.mp3 */; };
+		996CF6CE245917DE00382B11 /* carcino.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF574245917DE00382B11 /* carcino.mp3 */; };
+		996CF6CF245917DE00382B11 /* carp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF575245917DE00382B11 /* carp.mp3 */; };
+		996CF6D0245917DE00382B11 /* coron.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF576245917DE00382B11 /* coron.mp3 */; };
+		996CF6D1245917DE00382B11 /* cyte.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF577245917DE00382B11 /* cyte.mp3 */; };
+		996CF6D2245917DE00382B11 /* contra.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF578245917DE00382B11 /* contra.mp3 */; };
+		996CF6D3245917DE00382B11 /* co.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF579245917DE00382B11 /* co.mp3 */; };
+		996CF6D4245917DE00382B11 /* crine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF57A245917DE00382B11 /* crine.mp3 */; };
+		996CF6D5245917DE00382B11 /* clast.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF57B245917DE00382B11 /* clast.mp3 */; };
+		996CF6D6245917DE00382B11 /* crani.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF57C245917DE00382B11 /* crani.mp3 */; };
+		996CF6D7245917DE00382B11 /* colpo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF57D245917DE00382B11 /* colpo.mp3 */; };
+		996CF6D8245917DE00382B11 /* cidal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF57E245917DE00382B11 /* cidal.mp3 */; };
+		996CF6D9245917DE00382B11 /* coccus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF57F245917DE00382B11 /* coccus.mp3 */; };
+		996CF6DA245917DE00382B11 /* dacryo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF581245917DE00382B11 /* dacryo.mp3 */; };
+		996CF6DB245917DE00382B11 /* dactly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF582245917DE00382B11 /* dactly.mp3 */; };
+		996CF6DC245917DE00382B11 /* dys.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF583245917DE00382B11 /* dys.mp3 */; };
+		996CF6DD245917DE00382B11 /* dextro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF584245917DE00382B11 /* dextro.mp3 */; };
+		996CF6DE245917DE00382B11 /* digit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF585245917DE00382B11 /* digit.mp3 */; };
+		996CF6DF245917DE00382B11 /* de.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF586245917DE00382B11 /* de.mp3 */; };
+		996CF6E0245917DE00382B11 /* di.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF587245917DE00382B11 /* di.mp3 */; };
+		996CF6E1245917DE00382B11 /* dynia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF588245917DE00382B11 /* dynia.mp3 */; };
+		996CF6E2245917DE00382B11 /* dia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF589245917DE00382B11 /* dia.mp3 */; };
+		996CF6E3245917DE00382B11 /* dent.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF58A245917DE00382B11 /* dent.mp3 */; };
+		996CF6E4245917DE00382B11 /* dermo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF58B245917DE00382B11 /* dermo.mp3 */; };
+		996CF6E5245917DE00382B11 /* diplo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF58C245917DE00382B11 /* diplo.mp3 */; };
+		996CF6E6245917DE00382B11 /* dorso.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF58D245917DE00382B11 /* dorso.mp3 */; };
+		996CF6E7245917DE00382B11 /* dipsia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF58E245917DE00382B11 /* dipsia.mp3 */; };
+		996CF6E8245917DE00382B11 /* vagin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF590245917DE00382B11 /* vagin.mp3 */; };
+		996CF6E9245917DE00382B11 /* ventro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF591245917DE00382B11 /* ventro.mp3 */; };
+		996CF6EA245917DE00382B11 /* version.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF592245917DE00382B11 /* version.mp3 */; };
+		996CF6EB245917DE00382B11 /* varico.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF593245917DE00382B11 /* varico.mp3 */; };
+		996CF6EC245917DE00382B11 /* vescio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF594245917DE00382B11 /* vescio.mp3 */; };
+		996CF6ED245917DE00382B11 /* vaso.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF595245917DE00382B11 /* vaso.mp3 */; };
+		996CF6EE245917DE00382B11 /* ven.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF596245917DE00382B11 /* ven.mp3 */; };
+		996CF6EF245917DE00382B11 /* quadri.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF598245917DE00382B11 /* quadri.mp3 */; };
+		996CF6F0245917DE00382B11 /* xeno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF59A245917DE00382B11 /* xeno.mp3 */; };
+		996CF6F1245917DE00382B11 /* xiph.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF59B245917DE00382B11 /* xiph.mp3 */; };
+		996CF6F2245917DE00382B11 /* xero.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF59C245917DE00382B11 /* xero.mp3 */; };
+		996CF6F3245917DE00382B11 /* ecto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF59E245917DE00382B11 /* ecto.mp3 */; };
+		996CF6F4245917DE00382B11 /* endo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF59F245917DE00382B11 /* endo.mp3 */; };
+		996CF6F5245917DE00382B11 /* epi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5A0245917DE00382B11 /* epi.mp3 */; };
+		996CF6F6245917DE00382B11 /* eosino.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5A1245917DE00382B11 /* eosino.mp3 */; };
+		996CF6F7245917DE00382B11 /* ectasis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5A2245917DE00382B11 /* ectasis.mp3 */; };
+		996CF6F8245917DE00382B11 /* encephalo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5A3245917DE00382B11 /* encephalo.mp3 */; };
+		996CF6F9245917DE00382B11 /* episio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5A4245917DE00382B11 /* episio.mp3 */; };
+		996CF6FA245917DE00382B11 /* eal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5A5245917DE00382B11 /* eal.mp3 */; };
+		996CF6FB245917DE00382B11 /* ex.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5A6245917DE00382B11 /* ex.mp3 */; };
+		996CF6FC245917DE00382B11 /* extra.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5A7245917DE00382B11 /* extra.mp3 */; };
+		996CF6FD245917DE00382B11 /* emia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5A8245917DE00382B11 /* emia.mp3 */; };
+		996CF6FE245917DE00382B11 /* entero.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5A9245917DE00382B11 /* entero.mp3 */; };
+		996CF6FF245917DE00382B11 /* emesis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5AA245917DE00382B11 /* emesis.mp3 */; };
+		996CF700245917DE00382B11 /* erythro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5AB245917DE00382B11 /* erythro.mp3 */; };
+		996CF701245917DE00382B11 /* ectomy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5AC245917DE00382B11 /* ectomy.mp3 */; };
+		996CF702245917DE00382B11 /* bas.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5AE245917DE00382B11 /* bas.mp3 */; };
+		996CF703245917DE00382B11 /* blephar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5AF245917DE00382B11 /* blephar.mp3 */; };
+		996CF704245917DE00382B11 /* bacillus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5B0245917DE00382B11 /* bacillus.mp3 */; };
+		996CF705245917DE00382B11 /* bucc.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5B1245917DE00382B11 /* bucc.mp3 */; };
+		996CF706245917DE00382B11 /* balan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5B2245917DE00382B11 /* balan.mp3 */; };
+		996CF707245917DE00382B11 /* blastprefix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5B3245917DE00382B11 /* blastprefix.mp3 */; };
+		996CF708245917DE00382B11 /* brachi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5B4245917DE00382B11 /* brachi.mp3 */; };
+		996CF709245917DE00382B11 /* brady.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5B5245917DE00382B11 /* brady.mp3 */; };
+		996CF70A245917DE00382B11 /* brachy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5B6245917DE00382B11 /* brachy.mp3 */; };
+		996CF70B245917DE00382B11 /* bi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5B7245917DE00382B11 /* bi.mp3 */; };
+		996CF70C245917DE00382B11 /* bronchi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5B8245917DE00382B11 /* bronchi.mp3 */; };
+		996CF70D245917DE00382B11 /* bacterio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5B9245917DE00382B11 /* bacterio.mp3 */; };
+		996CF70E245917DE00382B11 /* burs.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5BA245917DE00382B11 /* burs.mp3 */; };
+		996CF710245917DE00382B11 /* kal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5BD245917DE00382B11 /* kal.mp3 */; };
+		996CF711245917DE00382B11 /* kypho.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5BE245917DE00382B11 /* kypho.mp3 */; };
+		996CF712245917DE00382B11 /* kine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5BF245917DE00382B11 /* kine.mp3 */; };
+		996CF713245917DE00382B11 /* lingua.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5C1245917DE00382B11 /* lingua.mp3 */; };
+		996CF714245917DE00382B11 /* lymph.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5C2245917DE00382B11 /* lymph.mp3 */; };
+		996CF715245917DE00382B11 /* lacri.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5C3245917DE00382B11 /* lacri.mp3 */; };
+		996CF716245917DE00382B11 /* logy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5C4245917DE00382B11 /* logy.mp3 */; };
+		996CF717245917DE00382B11 /* leio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5C5245917DE00382B11 /* leio.mp3 */; };
+		996CF718245917DE00382B11 /* litho.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5C6245917DE00382B11 /* litho.mp3 */; };
+		996CF719245917DE00382B11 /* lacti.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5C7245917DE00382B11 /* lacti.mp3 */; };
+		996CF71A245917DE00382B11 /* lepsis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5C8245917DE00382B11 /* lepsis.mp3 */; };
+		996CF71B245917DE00382B11 /* latero.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5C9245917DE00382B11 /* latero.mp3 */; };
+		996CF71C245917DE00382B11 /* labio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5CA245917DE00382B11 /* labio.mp3 */; };
+		996CF71D245917DE00382B11 /* lipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5CB245917DE00382B11 /* lipo.mp3 */; };
+		996CF71E245917DE00382B11 /* lumba.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5CC245917DE00382B11 /* lumba.mp3 */; };
+		996CF71F245917DE00382B11 /* leuko.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5CD245917DE00382B11 /* leuko.mp3 */; };
+		996CF720245917DE00382B11 /* lytic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5CE245917DE00382B11 /* lytic.mp3 */; };
+		996CF721245917DE00382B11 /* laparo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5CF245917DE00382B11 /* laparo.mp3 */; };
+		996CF722245917DE00382B11 /* lepto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5D0245917DE00382B11 /* lepto.mp3 */; };
+		996CF723245917DE00382B11 /* plegia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5D2245917DE00382B11 /* plegia.mp3 */; };
+		996CF724245917DE00382B11 /* ptosis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5D3245917DE00382B11 /* ptosis.mp3 */; };
+		996CF725245917DE00382B11 /* psor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5D4245917DE00382B11 /* psor.mp3 */; };
+		996CF726245917DE00382B11 /* pelvis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5D5245917DE00382B11 /* pelvis.mp3 */; };
+		996CF727245917DE00382B11 /* pathy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5D6245917DE00382B11 /* pathy.mp3 */; };
+		996CF728245917DE00382B11 /* pseudo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5D7245917DE00382B11 /* pseudo.mp3 */; };
+		996CF729245917DE00382B11 /* pauci.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5D8245917DE00382B11 /* pauci.mp3 */; };
+		996CF72A245917DE00382B11 /* poiesis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5D9245917DE00382B11 /* poiesis.mp3 */; };
+		996CF72B245917DE00382B11 /* patho.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5DA245917DE00382B11 /* patho.mp3 */; };
+		996CF72C245917DE00382B11 /* para.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5DB245917DE00382B11 /* para.mp3 */; };
+		996CF72D245917DE00382B11 /* pro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5DC245917DE00382B11 /* pro.mp3 */; };
+		996CF72E245917DE00382B11 /* pepsia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5DD245917DE00382B11 /* pepsia.mp3 */; };
+		996CF72F245917DE00382B11 /* ped.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5DE245917DE00382B11 /* ped.mp3 */; };
+		996CF730245917DE00382B11 /* phage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5DF245917DE00382B11 /* phage.mp3 */; };
+		996CF731245917DE00382B11 /* per.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5E0245917DE00382B11 /* per.mp3 */; };
+		996CF732245917DE00382B11 /* ptysis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5E1245917DE00382B11 /* ptysis.mp3 */; };
+		996CF733245917DE00382B11 /* philia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5E2245917DE00382B11 /* philia.mp3 */; };
+		996CF734245917DE00382B11 /* parvo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5E3245917DE00382B11 /* parvo.mp3 */; };
+		996CF735245917DE00382B11 /* photo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5E4245917DE00382B11 /* photo.mp3 */; };
+		996CF736245917DE00382B11 /* pyo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5E5245917DE00382B11 /* pyo.mp3 */; };
+		996CF737245917DE00382B11 /* pyelo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5E6245917DE00382B11 /* pyelo.mp3 */; };
+		996CF738245917DE00382B11 /* proct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5E7245917DE00382B11 /* proct.mp3 */; };
+		996CF739245917DE00382B11 /* poly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5E8245917DE00382B11 /* poly.mp3 */; };
+		996CF73A245917DE00382B11 /* paresis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5E9245917DE00382B11 /* paresis.mp3 */; };
+		996CF73B245917DE00382B11 /* palpebr.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5EA245917DE00382B11 /* palpebr.mp3 */; };
+		996CF73C245917DE00382B11 /* pod.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5EB245917DE00382B11 /* pod.mp3 */; };
+		996CF73D245917DE00382B11 /* phleb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5EC245917DE00382B11 /* phleb.mp3 */; };
+		996CF73E245917DE00382B11 /* pan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5ED245917DE00382B11 /* pan.mp3 */; };
+		996CF73F245917DE00382B11 /* prime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5EE245917DE00382B11 /* prime.mp3 */; };
+		996CF740245917DE00382B11 /* pyr.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5EF245917DE00382B11 /* pyr.mp3 */; };
+		996CF741245917DE00382B11 /* pneumo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5F0245917DE00382B11 /* pneumo.mp3 */; };
+		996CF742245917DE00382B11 /* psych.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5F1245917DE00382B11 /* psych.mp3 */; };
+		996CF743245917DE00382B11 /* plasty.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5F2245917DE00382B11 /* plasty.mp3 */; };
+		996CF744245917DE00382B11 /* peri.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5F3245917DE00382B11 /* peri.mp3 */; };
+		996CF745245917DE00382B11 /* pylor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5F4245917DE00382B11 /* pylor.mp3 */; };
+		996CF746245917DE00382B11 /* post.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5F5245917DE00382B11 /* post.mp3 */; };
+		996CF747245917DE00382B11 /* phago.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5F6245917DE00382B11 /* phago.mp3 */; };
+		996CF748245917DE00382B11 /* penia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5F7245917DE00382B11 /* penia.mp3 */; };
+		996CF749245917DE00382B11 /* plexy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5F8245917DE00382B11 /* plexy.mp3 */; };
+		996CF74A245917DE00382B11 /* phobia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5F9245917DE00382B11 /* phobia.mp3 */; };
+		996CF74B245917DE00382B11 /* pre.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5FA245917DE00382B11 /* pre.mp3 */; };
+		996CF74D2459283400382B11 /* blastsuffix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF74C2459283400382B11 /* blastsuffix.mp3 */; };
+		996CF753245929F500382B11 /* artio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF752245929F500382B11 /* artio.mp3 */; };
+		996CF75524592A4700382B11 /* adreno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF75424592A4700382B11 /* adreno.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,31 +466,341 @@
 		5AF85731228F22C8008929D5 /* FlashCardHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardHome.swift; sourceTree = "<group>"; };
 		5AF85733228F26A1008929D5 /* FlashCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardController.swift; sourceTree = "<group>"; };
 		5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCVCell.swift; sourceTree = "<group>"; };
-		993A833C244232E400AC2290 /* ab.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ab.mp3; sourceTree = "<group>"; };
-		993A833D244232E400AC2290 /* aan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = aan.mp3; sourceTree = "<group>"; };
-		993A833E244232E400AC2290 /* algia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = algia.mp3; sourceTree = "<group>"; };
-		993A833F244232E400AC2290 /* acanth.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = acanth.mp3; sourceTree = "<group>"; };
-		993A8340244232E400AC2290 /* adipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adipo.mp3; sourceTree = "<group>"; };
-		993A8341244232E500AC2290 /* amnio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = amnio.mp3; sourceTree = "<group>"; };
-		993A8342244232E500AC2290 /* ac.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ac.mp3; sourceTree = "<group>"; };
-		993A8343244232E500AC2290 /* ansio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ansio.mp3; sourceTree = "<group>"; };
-		993A8344244232E500AC2290 /* andro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = andro.mp3; sourceTree = "<group>"; };
-		993A8345244232E500AC2290 /* ante.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ante.mp3; sourceTree = "<group>"; };
-		993A8346244232E500AC2290 /* arche.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arche.mp3; sourceTree = "<group>"; };
-		993A8347244232E500AC2290 /* ad.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ad.mp3; sourceTree = "<group>"; };
-		993A8348244232E500AC2290 /* adreno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adreno.mp3; sourceTree = "<group>"; };
-		993A8349244232E500AC2290 /* adsuffix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adsuffix.mp3; sourceTree = "<group>"; };
-		993A834A244232E500AC2290 /* aero.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = aero.mp3; sourceTree = "<group>"; };
-		993A834B244232E500AC2290 /* ankylo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ankylo.mp3; sourceTree = "<group>"; };
-		993A834C244232E500AC2290 /* allo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = allo.mp3; sourceTree = "<group>"; };
-		993A834D244232E500AC2290 /* anti.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = anti.mp3; sourceTree = "<group>"; };
-		993A834E244232E500AC2290 /* adeno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adeno.mp3; sourceTree = "<group>"; };
-		993A834F244232E600AC2290 /* ambi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambi.mp3; sourceTree = "<group>"; };
-		993A8350244232E600AC2290 /* acusis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = acusis.mp3; sourceTree = "<group>"; };
-		993A8351244232E600AC2290 /* apo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = apo.mp3; sourceTree = "<group>"; };
-		993A8352244232E600AC2290 /* al.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = al.mp3; sourceTree = "<group>"; };
-		993A8353244232E600AC2290 /* alb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alb.mp3; sourceTree = "<group>"; };
-		993A8354244232E600AC2290 /* angio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = angio.mp3; sourceTree = "<group>"; };
+		996CF494245917DD00382B11 /* rrhea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rrhea.mp3; sourceTree = "<group>"; };
+		996CF495245917DD00382B11 /* radi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = radi.mp3; sourceTree = "<group>"; };
+		996CF496245917DD00382B11 /* re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = re.mp3; sourceTree = "<group>"; };
+		996CF497245917DD00382B11 /* rrhage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rrhage.mp3; sourceTree = "<group>"; };
+		996CF498245917DD00382B11 /* rect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rect.mp3; sourceTree = "<group>"; };
+		996CF499245917DD00382B11 /* rabdo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rabdo.mp3; sourceTree = "<group>"; };
+		996CF49A245917DD00382B11 /* rrhagia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rrhagia.mp3; sourceTree = "<group>"; };
+		996CF49B245917DD00382B11 /* retro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = retro.mp3; sourceTree = "<group>"; };
+		996CF49C245917DD00382B11 /* ren.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ren.mp3; sourceTree = "<group>"; };
+		996CF49D245917DD00382B11 /* rhino.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rhino.mp3; sourceTree = "<group>"; };
+		996CF49F245917DD00382B11 /* ultra.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ultra.mp3; sourceTree = "<group>"; };
+		996CF4A0245917DD00382B11 /* uni.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = uni.mp3; sourceTree = "<group>"; };
+		996CF4A2245917DD00382B11 /* iso.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = iso.mp3; sourceTree = "<group>"; };
+		996CF4A3245917DD00382B11 /* ism.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ism.mp3; sourceTree = "<group>"; };
+		996CF4A4245917DD00382B11 /* iatry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = iatry.mp3; sourceTree = "<group>"; };
+		996CF4A5245917DD00382B11 /* ium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ium.mp3; sourceTree = "<group>"; };
+		996CF4A6245917DD00382B11 /* intra.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intra.mp3; sourceTree = "<group>"; };
+		996CF4A7245917DD00382B11 /* iasis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = iasis.mp3; sourceTree = "<group>"; };
+		996CF4A8245917DD00382B11 /* ics.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ics.mp3; sourceTree = "<group>"; };
+		996CF4A9245917DD00382B11 /* isch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = isch.mp3; sourceTree = "<group>"; };
+		996CF4AA245917DD00382B11 /* ipsi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ipsi.mp3; sourceTree = "<group>"; };
+		996CF4AB245917DD00382B11 /* inter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = inter.mp3; sourceTree = "<group>"; };
+		996CF4AC245917DD00382B11 /* itis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = itis.mp3; sourceTree = "<group>"; };
+		996CF4AD245917DD00382B11 /* infra.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = infra.mp3; sourceTree = "<group>"; };
+		996CF4AE245917DD00382B11 /* icle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = icle.mp3; sourceTree = "<group>"; };
+		996CF4AF245917DD00382B11 /* idio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = idio.mp3; sourceTree = "<group>"; };
+		996CF4B0245917DD00382B11 /* ist.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ist.mp3; sourceTree = "<group>"; };
+		996CF4B2245917DD00382B11 /* necro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = necro.mp3; sourceTree = "<group>"; };
+		996CF4B3245917DD00382B11 /* narco.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narco.mp3; sourceTree = "<group>"; };
+		996CF4B4245917DD00382B11 /* nephro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nephro.mp3; sourceTree = "<group>"; };
+		996CF4B5245917DD00382B11 /* neo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = neo.mp3; sourceTree = "<group>"; };
+		996CF4B6245917DD00382B11 /* naso.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = naso.mp3; sourceTree = "<group>"; };
+		996CF4B7245917DD00382B11 /* neuro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = neuro.mp3; sourceTree = "<group>"; };
+		996CF4B8245917DD00382B11 /* normo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = normo.mp3; sourceTree = "<group>"; };
+		996CF4BA245917DD00382B11 /* galacto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = galacto.mp3; sourceTree = "<group>"; };
+		996CF4BB245917DD00382B11 /* gen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gen.mp3; sourceTree = "<group>"; };
+		996CF4BC245917DD00382B11 /* graph.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = graph.mp3; sourceTree = "<group>"; };
+		996CF4BD245917DD00382B11 /* gnosos.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gnosos.mp3; sourceTree = "<group>"; };
+		996CF4BE245917DD00382B11 /* glosso.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = glosso.mp3; sourceTree = "<group>"; };
+		996CF4BF245917DD00382B11 /* gnatho.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gnatho.mp3; sourceTree = "<group>"; };
+		996CF4C0245917DD00382B11 /* gastro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gastro.mp3; sourceTree = "<group>"; };
+		996CF4C1245917DD00382B11 /* gingiv.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gingiv.mp3; sourceTree = "<group>"; };
+		996CF4C2245917DD00382B11 /* graphy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = graphy.mp3; sourceTree = "<group>"; };
+		996CF4C3245917DD00382B11 /* gluco.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gluco.mp3; sourceTree = "<group>"; };
+		996CF4C4245917DD00382B11 /* gram.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gram.mp3; sourceTree = "<group>"; };
+		996CF4C5245917DD00382B11 /* gyneco.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gyneco.mp3; sourceTree = "<group>"; };
+		996CF4C7245917DD00382B11 /* thec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thec.mp3; sourceTree = "<group>"; };
+		996CF4C8245917DD00382B11 /* tomy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tomy.mp3; sourceTree = "<group>"; };
+		996CF4C9245917DD00382B11 /* tachy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tachy.mp3; sourceTree = "<group>"; };
+		996CF4CA245917DD00382B11 /* toxi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = toxi.mp3; sourceTree = "<group>"; };
+		996CF4CB245917DD00382B11 /* tri.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tri.mp3; sourceTree = "<group>"; };
+		996CF4CC245917DD00382B11 /* tricho.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tricho.mp3; sourceTree = "<group>"; };
+		996CF4CD245917DD00382B11 /* tympano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tympano.mp3; sourceTree = "<group>"; };
+		996CF4CE245917DD00382B11 /* tripsy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tripsy.mp3; sourceTree = "<group>"; };
+		996CF4CF245917DD00382B11 /* torti.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torti.mp3; sourceTree = "<group>"; };
+		996CF4D0245917DD00382B11 /* thyro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thyro.mp3; sourceTree = "<group>"; };
+		996CF4D1245917DD00382B11 /* trans.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trans.mp3; sourceTree = "<group>"; };
+		996CF4D2245917DD00382B11 /* thermo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thermo.mp3; sourceTree = "<group>"; };
+		996CF4D3245917DD00382B11 /* thymia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thymia.mp3; sourceTree = "<group>"; };
+		996CF4D4245917DD00382B11 /* thermia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thermia.mp3; sourceTree = "<group>"; };
+		996CF4D5245917DD00382B11 /* thrombo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thrombo.mp3; sourceTree = "<group>"; };
+		996CF4D6245917DD00382B11 /* tome.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tome.mp3; sourceTree = "<group>"; };
+		996CF4D7245917DD00382B11 /* tension.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tension.mp3; sourceTree = "<group>"; };
+		996CF4D8245917DD00382B11 /* toco.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = toco.mp3; sourceTree = "<group>"; };
+		996CF4D9245917DD00382B11 /* trophy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trophy.mp3; sourceTree = "<group>"; };
+		996CF4DA245917DD00382B11 /* thel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thel.mp3; sourceTree = "<group>"; };
+		996CF4DC245917DD00382B11 /* syl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = syl.mp3; sourceTree = "<group>"; };
+		996CF4DD245917DD00382B11 /* staxis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = staxis.mp3; sourceTree = "<group>"; };
+		996CF4DE245917DD00382B11 /* sarco.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sarco.mp3; sourceTree = "<group>"; };
+		996CF4DF245917DD00382B11 /* spondyl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spondyl.mp3; sourceTree = "<group>"; };
+		996CF4E0245917DD00382B11 /* scolio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scolio.mp3; sourceTree = "<group>"; };
+		996CF4E1245917DD00382B11 /* somno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = somno.mp3; sourceTree = "<group>"; };
+		996CF4E2245917DD00382B11 /* stomato.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stomato.mp3; sourceTree = "<group>"; };
+		996CF4E3245917DD00382B11 /* semi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = semi.mp3; sourceTree = "<group>"; };
+		996CF4E4245917DD00382B11 /* steno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steno.mp3; sourceTree = "<group>"; };
+		996CF4E5245917DD00382B11 /* scopy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scopy.mp3; sourceTree = "<group>"; };
+		996CF4E6245917DD00382B11 /* salping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = salping.mp3; sourceTree = "<group>"; };
+		996CF4E7245917DD00382B11 /* stomy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stomy.mp3; sourceTree = "<group>"; };
+		996CF4E8245917DD00382B11 /* stasis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stasis.mp3; sourceTree = "<group>"; };
+		996CF4E9245917DD00382B11 /* super.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = super.mp3; sourceTree = "<group>"; };
+		996CF4EA245917DD00382B11 /* scope.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scope.mp3; sourceTree = "<group>"; };
+		996CF4EB245917DD00382B11 /* sclerosis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sclerosis.mp3; sourceTree = "<group>"; };
+		996CF4EC245917DD00382B11 /* schizo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = schizo.mp3; sourceTree = "<group>"; };
+		996CF4ED245917DD00382B11 /* schisto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = schisto.mp3; sourceTree = "<group>"; };
+		996CF4EE245917DD00382B11 /* sangui.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sangui.mp3; sourceTree = "<group>"; };
+		996CF4EF245917DD00382B11 /* sclero.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sclero.mp3; sourceTree = "<group>"; };
+		996CF4F0245917DD00382B11 /* splen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = splen.mp3; sourceTree = "<group>"; };
+		996CF4F1245917DD00382B11 /* stalsis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stalsis.mp3; sourceTree = "<group>"; };
+		996CF4F2245917DD00382B11 /* sub.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sub.mp3; sourceTree = "<group>"; };
+		996CF4F4245917DD00382B11 /* aero.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = aero.mp3; sourceTree = "<group>"; };
+		996CF4F5245917DD00382B11 /* ation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ation.mp3; sourceTree = "<group>"; };
+		996CF4F6245917DD00382B11 /* al.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = al.mp3; sourceTree = "<group>"; };
+		996CF4F7245917DD00382B11 /* ante.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ante.mp3; sourceTree = "<group>"; };
+		996CF4F8245917DD00382B11 /* andro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = andro.mp3; sourceTree = "<group>"; };
+		996CF4F9245917DD00382B11 /* articulo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = articulo.mp3; sourceTree = "<group>"; };
+		996CF4FA245917DD00382B11 /* ase.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ase.mp3; sourceTree = "<group>"; };
+		996CF4FB245917DD00382B11 /* adipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adipo.mp3; sourceTree = "<group>"; };
+		996CF4FD245917DD00382B11 /* arche.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arche.mp3; sourceTree = "<group>"; };
+		996CF4FE245917DD00382B11 /* apo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = apo.mp3; sourceTree = "<group>"; };
+		996CF4FF245917DD00382B11 /* adsuffix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = adsuffix.mp3; sourceTree = "<group>"; };
+		996CF500245917DD00382B11 /* ambi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambi.mp3; sourceTree = "<group>"; };
+		996CF501245917DD00382B11 /* algia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = algia.mp3; sourceTree = "<group>"; };
+		996CF503245917DD00382B11 /* alb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alb.mp3; sourceTree = "<group>"; };
+		996CF504245917DD00382B11 /* azo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = azo.mp3; sourceTree = "<group>"; };
+		996CF505245917DD00382B11 /* asthenia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = asthenia.mp3; sourceTree = "<group>"; };
+		996CF506245917DD00382B11 /* angio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = angio.mp3; sourceTree = "<group>"; };
+		996CF507245917DD00382B11 /* ankylo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ankylo.mp3; sourceTree = "<group>"; };
+		996CF508245917DD00382B11 /* aniso.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = aniso.mp3; sourceTree = "<group>"; };
+		996CF509245917DE00382B11 /* athero.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = athero.mp3; sourceTree = "<group>"; };
+		996CF50A245917DE00382B11 /* arterio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arterio.mp3; sourceTree = "<group>"; };
+		996CF50B245917DE00382B11 /* acusis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = acusis.mp3; sourceTree = "<group>"; };
+		996CF50C245917DE00382B11 /* aan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = aan.mp3; sourceTree = "<group>"; };
+		996CF50D245917DE00382B11 /* auri.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = auri.mp3; sourceTree = "<group>"; };
+		996CF50F245917DE00382B11 /* amnio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = amnio.mp3; sourceTree = "<group>"; };
+		996CF510245917DE00382B11 /* ad.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ad.mp3; sourceTree = "<group>"; };
+		996CF511245917DE00382B11 /* auto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = auto.mp3; sourceTree = "<group>"; };
+		996CF513245917DE00382B11 /* allo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = allo.mp3; sourceTree = "<group>"; };
+		996CF514245917DE00382B11 /* ac.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ac.mp3; sourceTree = "<group>"; };
+		996CF515245917DE00382B11 /* ab.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ab.mp3; sourceTree = "<group>"; };
+		996CF516245917DE00382B11 /* acanth.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = acanth.mp3; sourceTree = "<group>"; };
+		996CF517245917DE00382B11 /* ary.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ary.mp3; sourceTree = "<group>"; };
+		996CF518245917DE00382B11 /* anti.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = anti.mp3; sourceTree = "<group>"; };
+		996CF519245917DE00382B11 /* arthro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arthro.mp3; sourceTree = "<group>"; };
+		996CF51B245917DE00382B11 /* form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = form.mp3; sourceTree = "<group>"; };
+		996CF51C245917DE00382B11 /* fibro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fibro.mp3; sourceTree = "<group>"; };
+		996CF51D245917DE00382B11 /* fore.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fore.mp3; sourceTree = "<group>"; };
+		996CF51F245917DE00382B11 /* oligo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oligo.mp3; sourceTree = "<group>"; };
+		996CF520245917DE00382B11 /* oro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oro.mp3; sourceTree = "<group>"; };
+		996CF521245917DE00382B11 /* oste.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oste.mp3; sourceTree = "<group>"; };
+		996CF522245917DE00382B11 /* oid.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oid.mp3; sourceTree = "<group>"; };
+		996CF523245917DE00382B11 /* onco.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onco.mp3; sourceTree = "<group>"; };
+		996CF524245917DE00382B11 /* oto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oto.mp3; sourceTree = "<group>"; };
+		996CF525245917DE00382B11 /* omphalo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = omphalo.mp3; sourceTree = "<group>"; };
+		996CF526245917DE00382B11 /* opthalmo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = opthalmo.mp3; sourceTree = "<group>"; };
+		996CF527245917DE00382B11 /* orchi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = orchi.mp3; sourceTree = "<group>"; };
+		996CF528245917DE00382B11 /* oxy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oxy.mp3; sourceTree = "<group>"; };
+		996CF529245917DE00382B11 /* osse.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = osse.mp3; sourceTree = "<group>"; };
+		996CF52A245917DE00382B11 /* ovo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ovo.mp3; sourceTree = "<group>"; };
+		996CF52B245917DE00382B11 /* ortho.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ortho.mp3; sourceTree = "<group>"; };
+		996CF52C245917DE00382B11 /* oculo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oculo.mp3; sourceTree = "<group>"; };
+		996CF52D245917DE00382B11 /* ole.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ole.mp3; sourceTree = "<group>"; };
+		996CF52E245917DE00382B11 /* oma.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oma.mp3; sourceTree = "<group>"; };
+		996CF52F245917DE00382B11 /* odonto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = odonto.mp3; sourceTree = "<group>"; };
+		996CF530245917DE00382B11 /* oo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oo.mp3; sourceTree = "<group>"; };
+		996CF531245917DE00382B11 /* onycho.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onycho.mp3; sourceTree = "<group>"; };
+		996CF532245917DE00382B11 /* ologist.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ologist.mp3; sourceTree = "<group>"; };
+		996CF533245917DE00382B11 /* opsy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = opsy.mp3; sourceTree = "<group>"; };
+		996CF534245917DE00382B11 /* ovario.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ovario.mp3; sourceTree = "<group>"; };
+		996CF535245917DE00382B11 /* opistho.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = opistho.mp3; sourceTree = "<group>"; };
+		996CF537245917DE00382B11 /* hyper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hyper.mp3; sourceTree = "<group>"; };
+		996CF538245917DE00382B11 /* hypo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hypo.mp3; sourceTree = "<group>"; };
+		996CF539245917DE00382B11 /* histo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = histo.mp3; sourceTree = "<group>"; };
+		996CF53A245917DE00382B11 /* homo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = homo.mp3; sourceTree = "<group>"; };
+		996CF53B245917DE00382B11 /* hyster.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hyster.mp3; sourceTree = "<group>"; };
+		996CF53C245917DE00382B11 /* hallucino.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hallucino.mp3; sourceTree = "<group>"; };
+		996CF53D245917DE00382B11 /* hetero.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hetero.mp3; sourceTree = "<group>"; };
+		996CF53E245917DE00382B11 /* hepato.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hepato.mp3; sourceTree = "<group>"; };
+		996CF53F245917DE00382B11 /* hemi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hemi.mp3; sourceTree = "<group>"; };
+		996CF540245917DE00382B11 /* hydro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hydro.mp3; sourceTree = "<group>"; };
+		996CF541245917DE00382B11 /* hemo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hemo.mp3; sourceTree = "<group>"; };
+		996CF542245917DE00382B11 /* hemangio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hemangio.mp3; sourceTree = "<group>"; };
+		996CF543245917DE00382B11 /* hidro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hidro.mp3; sourceTree = "<group>"; };
+		996CF545245917DE00382B11 /* malacia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = malacia.mp3; sourceTree = "<group>"; };
+		996CF546245917DE00382B11 /* morph.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = morph.mp3; sourceTree = "<group>"; };
+		996CF547245917DE00382B11 /* macro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = macro.mp3; sourceTree = "<group>"; };
+		996CF548245917DE00382B11 /* mal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mal.mp3; sourceTree = "<group>"; };
+		996CF549245917DE00382B11 /* micro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = micro.mp3; sourceTree = "<group>"; };
+		996CF54A245917DE00382B11 /* mono.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mono.mp3; sourceTree = "<group>"; };
+		996CF54B245917DE00382B11 /* mamo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mamo.mp3; sourceTree = "<group>"; };
+		996CF54C245917DE00382B11 /* myo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = myo.mp3; sourceTree = "<group>"; };
+		996CF54D245917DE00382B11 /* myring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = myring.mp3; sourceTree = "<group>"; };
+		996CF54E245917DE00382B11 /* meter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meter.mp3; sourceTree = "<group>"; };
+		996CF54F245917DE00382B11 /* metry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = metry.mp3; sourceTree = "<group>"; };
+		996CF550245917DE00382B11 /* meta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meta.mp3; sourceTree = "<group>"; };
+		996CF551245917DE00382B11 /* meno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meno.mp3; sourceTree = "<group>"; };
+		996CF552245917DE00382B11 /* musculo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = musculo.mp3; sourceTree = "<group>"; };
+		996CF553245917DE00382B11 /* melano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = melano.mp3; sourceTree = "<group>"; };
+		996CF554245917DE00382B11 /* megaly.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = megaly.mp3; sourceTree = "<group>"; };
+		996CF555245917DE00382B11 /* multi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = multi.mp3; sourceTree = "<group>"; };
+		996CF556245917DE00382B11 /* mega.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mega.mp3; sourceTree = "<group>"; };
+		996CF557245917DE00382B11 /* myco.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = myco.mp3; sourceTree = "<group>"; };
+		996CF559245917DE00382B11 /* juxta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = juxta.mp3; sourceTree = "<group>"; };
+		996CF55B245917DE00382B11 /* chole.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chole.mp3; sourceTree = "<group>"; };
+		996CF55C245917DE00382B11 /* cyano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cyano.mp3; sourceTree = "<group>"; };
+		996CF55D245917DE00382B11 /* cholecyst.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cholecyst.mp3; sourceTree = "<group>"; };
+		996CF55E245917DE00382B11 /* chrom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chrom.mp3; sourceTree = "<group>"; };
+		996CF55F245917DE00382B11 /* cyto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cyto.mp3; sourceTree = "<group>"; };
+		996CF560245917DE00382B11 /* centesis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = centesis.mp3; sourceTree = "<group>"; };
+		996CF561245917DE00382B11 /* cervic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cervic.mp3; sourceTree = "<group>"; };
+		996CF562245917DE00382B11 /* chemo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chemo.mp3; sourceTree = "<group>"; };
+		996CF563245917DE00382B11 /* capit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = capit.mp3; sourceTree = "<group>"; };
+		996CF564245917DE00382B11 /* costo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = costo.mp3; sourceTree = "<group>"; };
+		996CF565245917DE00382B11 /* chondr.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chondr.mp3; sourceTree = "<group>"; };
+		996CF566245917DE00382B11 /* con.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = con.mp3; sourceTree = "<group>"; };
+		996CF567245917DE00382B11 /* circum.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circum.mp3; sourceTree = "<group>"; };
+		996CF568245917DE00382B11 /* cysto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cysto.mp3; sourceTree = "<group>"; };
+		996CF569245917DE00382B11 /* col.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = col.mp3; sourceTree = "<group>"; };
+		996CF56A245917DE00382B11 /* cortico.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cortico.mp3; sourceTree = "<group>"; };
+		996CF56B245917DE00382B11 /* chiro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chiro.mp3; sourceTree = "<group>"; };
+		996CF56C245917DE00382B11 /* cardio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cardio.mp3; sourceTree = "<group>"; };
+		996CF56D245917DE00382B11 /* cele.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cele.mp3; sourceTree = "<group>"; };
+		996CF56E245917DE00382B11 /* cili.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cili.mp3; sourceTree = "<group>"; };
+		996CF56F245917DE00382B11 /* chlor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chlor.mp3; sourceTree = "<group>"; };
+		996CF570245917DE00382B11 /* cata.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cata.mp3; sourceTree = "<group>"; };
+		996CF571245917DE00382B11 /* cheil.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cheil.mp3; sourceTree = "<group>"; };
+		996CF572245917DE00382B11 /* cryo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cryo.mp3; sourceTree = "<group>"; };
+		996CF573245917DE00382B11 /* cephalo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cephalo.mp3; sourceTree = "<group>"; };
+		996CF574245917DE00382B11 /* carcino.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = carcino.mp3; sourceTree = "<group>"; };
+		996CF575245917DE00382B11 /* carp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = carp.mp3; sourceTree = "<group>"; };
+		996CF576245917DE00382B11 /* coron.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coron.mp3; sourceTree = "<group>"; };
+		996CF577245917DE00382B11 /* cyte.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cyte.mp3; sourceTree = "<group>"; };
+		996CF578245917DE00382B11 /* contra.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = contra.mp3; sourceTree = "<group>"; };
+		996CF579245917DE00382B11 /* co.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = co.mp3; sourceTree = "<group>"; };
+		996CF57A245917DE00382B11 /* crine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crine.mp3; sourceTree = "<group>"; };
+		996CF57B245917DE00382B11 /* clast.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clast.mp3; sourceTree = "<group>"; };
+		996CF57C245917DE00382B11 /* crani.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crani.mp3; sourceTree = "<group>"; };
+		996CF57D245917DE00382B11 /* colpo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = colpo.mp3; sourceTree = "<group>"; };
+		996CF57E245917DE00382B11 /* cidal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cidal.mp3; sourceTree = "<group>"; };
+		996CF57F245917DE00382B11 /* coccus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coccus.mp3; sourceTree = "<group>"; };
+		996CF581245917DE00382B11 /* dacryo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dacryo.mp3; sourceTree = "<group>"; };
+		996CF582245917DE00382B11 /* dactly.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dactly.mp3; sourceTree = "<group>"; };
+		996CF583245917DE00382B11 /* dys.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dys.mp3; sourceTree = "<group>"; };
+		996CF584245917DE00382B11 /* dextro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dextro.mp3; sourceTree = "<group>"; };
+		996CF585245917DE00382B11 /* digit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = digit.mp3; sourceTree = "<group>"; };
+		996CF586245917DE00382B11 /* de.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = de.mp3; sourceTree = "<group>"; };
+		996CF587245917DE00382B11 /* di.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = di.mp3; sourceTree = "<group>"; };
+		996CF588245917DE00382B11 /* dynia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dynia.mp3; sourceTree = "<group>"; };
+		996CF589245917DE00382B11 /* dia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dia.mp3; sourceTree = "<group>"; };
+		996CF58A245917DE00382B11 /* dent.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dent.mp3; sourceTree = "<group>"; };
+		996CF58B245917DE00382B11 /* dermo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dermo.mp3; sourceTree = "<group>"; };
+		996CF58C245917DE00382B11 /* diplo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = diplo.mp3; sourceTree = "<group>"; };
+		996CF58D245917DE00382B11 /* dorso.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dorso.mp3; sourceTree = "<group>"; };
+		996CF58E245917DE00382B11 /* dipsia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dipsia.mp3; sourceTree = "<group>"; };
+		996CF590245917DE00382B11 /* vagin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = vagin.mp3; sourceTree = "<group>"; };
+		996CF591245917DE00382B11 /* ventro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ventro.mp3; sourceTree = "<group>"; };
+		996CF592245917DE00382B11 /* version.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = version.mp3; sourceTree = "<group>"; };
+		996CF593245917DE00382B11 /* varico.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = varico.mp3; sourceTree = "<group>"; };
+		996CF594245917DE00382B11 /* vescio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = vescio.mp3; sourceTree = "<group>"; };
+		996CF595245917DE00382B11 /* vaso.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = vaso.mp3; sourceTree = "<group>"; };
+		996CF596245917DE00382B11 /* ven.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ven.mp3; sourceTree = "<group>"; };
+		996CF598245917DE00382B11 /* quadri.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = quadri.mp3; sourceTree = "<group>"; };
+		996CF59A245917DE00382B11 /* xeno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xeno.mp3; sourceTree = "<group>"; };
+		996CF59B245917DE00382B11 /* xiph.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xiph.mp3; sourceTree = "<group>"; };
+		996CF59C245917DE00382B11 /* xero.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xero.mp3; sourceTree = "<group>"; };
+		996CF59E245917DE00382B11 /* ecto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ecto.mp3; sourceTree = "<group>"; };
+		996CF59F245917DE00382B11 /* endo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = endo.mp3; sourceTree = "<group>"; };
+		996CF5A0245917DE00382B11 /* epi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = epi.mp3; sourceTree = "<group>"; };
+		996CF5A1245917DE00382B11 /* eosino.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eosino.mp3; sourceTree = "<group>"; };
+		996CF5A2245917DE00382B11 /* ectasis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ectasis.mp3; sourceTree = "<group>"; };
+		996CF5A3245917DE00382B11 /* encephalo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = encephalo.mp3; sourceTree = "<group>"; };
+		996CF5A4245917DE00382B11 /* episio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = episio.mp3; sourceTree = "<group>"; };
+		996CF5A5245917DE00382B11 /* eal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eal.mp3; sourceTree = "<group>"; };
+		996CF5A6245917DE00382B11 /* ex.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ex.mp3; sourceTree = "<group>"; };
+		996CF5A7245917DE00382B11 /* extra.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = extra.mp3; sourceTree = "<group>"; };
+		996CF5A8245917DE00382B11 /* emia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = emia.mp3; sourceTree = "<group>"; };
+		996CF5A9245917DE00382B11 /* entero.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = entero.mp3; sourceTree = "<group>"; };
+		996CF5AA245917DE00382B11 /* emesis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = emesis.mp3; sourceTree = "<group>"; };
+		996CF5AB245917DE00382B11 /* erythro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = erythro.mp3; sourceTree = "<group>"; };
+		996CF5AC245917DE00382B11 /* ectomy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ectomy.mp3; sourceTree = "<group>"; };
+		996CF5AE245917DE00382B11 /* bas.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bas.mp3; sourceTree = "<group>"; };
+		996CF5AF245917DE00382B11 /* blephar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blephar.mp3; sourceTree = "<group>"; };
+		996CF5B0245917DE00382B11 /* bacillus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bacillus.mp3; sourceTree = "<group>"; };
+		996CF5B1245917DE00382B11 /* bucc.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bucc.mp3; sourceTree = "<group>"; };
+		996CF5B2245917DE00382B11 /* balan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = balan.mp3; sourceTree = "<group>"; };
+		996CF5B3245917DE00382B11 /* blastprefix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blastprefix.mp3; sourceTree = "<group>"; };
+		996CF5B4245917DE00382B11 /* brachi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = brachi.mp3; sourceTree = "<group>"; };
+		996CF5B5245917DE00382B11 /* brady.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = brady.mp3; sourceTree = "<group>"; };
+		996CF5B6245917DE00382B11 /* brachy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = brachy.mp3; sourceTree = "<group>"; };
+		996CF5B7245917DE00382B11 /* bi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bi.mp3; sourceTree = "<group>"; };
+		996CF5B8245917DE00382B11 /* bronchi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bronchi.mp3; sourceTree = "<group>"; };
+		996CF5B9245917DE00382B11 /* bacterio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bacterio.mp3; sourceTree = "<group>"; };
+		996CF5BA245917DE00382B11 /* burs.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = burs.mp3; sourceTree = "<group>"; };
+		996CF5BD245917DE00382B11 /* kal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = kal.mp3; sourceTree = "<group>"; };
+		996CF5BE245917DE00382B11 /* kypho.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = kypho.mp3; sourceTree = "<group>"; };
+		996CF5BF245917DE00382B11 /* kine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = kine.mp3; sourceTree = "<group>"; };
+		996CF5C1245917DE00382B11 /* lingua.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lingua.mp3; sourceTree = "<group>"; };
+		996CF5C2245917DE00382B11 /* lymph.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lymph.mp3; sourceTree = "<group>"; };
+		996CF5C3245917DE00382B11 /* lacri.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lacri.mp3; sourceTree = "<group>"; };
+		996CF5C4245917DE00382B11 /* logy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = logy.mp3; sourceTree = "<group>"; };
+		996CF5C5245917DE00382B11 /* leio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = leio.mp3; sourceTree = "<group>"; };
+		996CF5C6245917DE00382B11 /* litho.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = litho.mp3; sourceTree = "<group>"; };
+		996CF5C7245917DE00382B11 /* lacti.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lacti.mp3; sourceTree = "<group>"; };
+		996CF5C8245917DE00382B11 /* lepsis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lepsis.mp3; sourceTree = "<group>"; };
+		996CF5C9245917DE00382B11 /* latero.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = latero.mp3; sourceTree = "<group>"; };
+		996CF5CA245917DE00382B11 /* labio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = labio.mp3; sourceTree = "<group>"; };
+		996CF5CB245917DE00382B11 /* lipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lipo.mp3; sourceTree = "<group>"; };
+		996CF5CC245917DE00382B11 /* lumba.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lumba.mp3; sourceTree = "<group>"; };
+		996CF5CD245917DE00382B11 /* leuko.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = leuko.mp3; sourceTree = "<group>"; };
+		996CF5CE245917DE00382B11 /* lytic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lytic.mp3; sourceTree = "<group>"; };
+		996CF5CF245917DE00382B11 /* laparo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laparo.mp3; sourceTree = "<group>"; };
+		996CF5D0245917DE00382B11 /* lepto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lepto.mp3; sourceTree = "<group>"; };
+		996CF5D2245917DE00382B11 /* plegia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = plegia.mp3; sourceTree = "<group>"; };
+		996CF5D3245917DE00382B11 /* ptosis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ptosis.mp3; sourceTree = "<group>"; };
+		996CF5D4245917DE00382B11 /* psor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = psor.mp3; sourceTree = "<group>"; };
+		996CF5D5245917DE00382B11 /* pelvis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pelvis.mp3; sourceTree = "<group>"; };
+		996CF5D6245917DE00382B11 /* pathy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pathy.mp3; sourceTree = "<group>"; };
+		996CF5D7245917DE00382B11 /* pseudo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pseudo.mp3; sourceTree = "<group>"; };
+		996CF5D8245917DE00382B11 /* pauci.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pauci.mp3; sourceTree = "<group>"; };
+		996CF5D9245917DE00382B11 /* poiesis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = poiesis.mp3; sourceTree = "<group>"; };
+		996CF5DA245917DE00382B11 /* patho.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = patho.mp3; sourceTree = "<group>"; };
+		996CF5DB245917DE00382B11 /* para.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = para.mp3; sourceTree = "<group>"; };
+		996CF5DC245917DE00382B11 /* pro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pro.mp3; sourceTree = "<group>"; };
+		996CF5DD245917DE00382B11 /* pepsia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pepsia.mp3; sourceTree = "<group>"; };
+		996CF5DE245917DE00382B11 /* ped.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ped.mp3; sourceTree = "<group>"; };
+		996CF5DF245917DE00382B11 /* phage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = phage.mp3; sourceTree = "<group>"; };
+		996CF5E0245917DE00382B11 /* per.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = per.mp3; sourceTree = "<group>"; };
+		996CF5E1245917DE00382B11 /* ptysis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ptysis.mp3; sourceTree = "<group>"; };
+		996CF5E2245917DE00382B11 /* philia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = philia.mp3; sourceTree = "<group>"; };
+		996CF5E3245917DE00382B11 /* parvo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = parvo.mp3; sourceTree = "<group>"; };
+		996CF5E4245917DE00382B11 /* photo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = photo.mp3; sourceTree = "<group>"; };
+		996CF5E5245917DE00382B11 /* pyo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pyo.mp3; sourceTree = "<group>"; };
+		996CF5E6245917DE00382B11 /* pyelo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pyelo.mp3; sourceTree = "<group>"; };
+		996CF5E7245917DE00382B11 /* proct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = proct.mp3; sourceTree = "<group>"; };
+		996CF5E8245917DE00382B11 /* poly.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = poly.mp3; sourceTree = "<group>"; };
+		996CF5E9245917DE00382B11 /* paresis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = paresis.mp3; sourceTree = "<group>"; };
+		996CF5EA245917DE00382B11 /* palpebr.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = palpebr.mp3; sourceTree = "<group>"; };
+		996CF5EB245917DE00382B11 /* pod.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pod.mp3; sourceTree = "<group>"; };
+		996CF5EC245917DE00382B11 /* phleb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = phleb.mp3; sourceTree = "<group>"; };
+		996CF5ED245917DE00382B11 /* pan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pan.mp3; sourceTree = "<group>"; };
+		996CF5EE245917DE00382B11 /* prime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prime.mp3; sourceTree = "<group>"; };
+		996CF5EF245917DE00382B11 /* pyr.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pyr.mp3; sourceTree = "<group>"; };
+		996CF5F0245917DE00382B11 /* pneumo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pneumo.mp3; sourceTree = "<group>"; };
+		996CF5F1245917DE00382B11 /* psych.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = psych.mp3; sourceTree = "<group>"; };
+		996CF5F2245917DE00382B11 /* plasty.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = plasty.mp3; sourceTree = "<group>"; };
+		996CF5F3245917DE00382B11 /* peri.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = peri.mp3; sourceTree = "<group>"; };
+		996CF5F4245917DE00382B11 /* pylor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pylor.mp3; sourceTree = "<group>"; };
+		996CF5F5245917DE00382B11 /* post.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = post.mp3; sourceTree = "<group>"; };
+		996CF5F6245917DE00382B11 /* phago.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = phago.mp3; sourceTree = "<group>"; };
+		996CF5F7245917DE00382B11 /* penia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = penia.mp3; sourceTree = "<group>"; };
+		996CF5F8245917DE00382B11 /* plexy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = plexy.mp3; sourceTree = "<group>"; };
+		996CF5F9245917DE00382B11 /* phobia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = phobia.mp3; sourceTree = "<group>"; };
+		996CF5FA245917DE00382B11 /* pre.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pre.mp3; sourceTree = "<group>"; };
+		996CF74C2459283400382B11 /* blastsuffix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blastsuffix.mp3; sourceTree = "<group>"; };
+		996CF752245929F500382B11 /* artio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = artio.mp3; path = Audio/A/artio.mp3; sourceTree = SOURCE_ROOT; };
+		996CF75424592A4700382B11 /* adreno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = adreno.mp3; path = Audio/A/adreno.mp3; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,7 +874,7 @@
 		5A189C2B216D8E8400929AB8 /* Medical Terminology */ = {
 			isa = PBXGroup;
 			children = (
-				993084DB243A7D3500A3D272 /* Audios */,
+				996CF492245917DD00382B11 /* Audio */,
 				5A03477F22D39CE400749EBC /* FMDB */,
 				5A6F31B821A1E3A200E6477E /* Singleton */,
 				5A15062822557B7500717AB8 /* Database */,
@@ -395,44 +1015,530 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		993084DB243A7D3500A3D272 /* Audios */ = {
+		996CF492245917DD00382B11 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				993A83382441462C00AC2290 /* A */,
+				996CF4F3245917DD00382B11 /* A */,
+				996CF5AD245917DE00382B11 /* B */,
+				996CF55A245917DE00382B11 /* C */,
+				996CF580245917DE00382B11 /* D */,
+				996CF59D245917DE00382B11 /* E */,
+				996CF51A245917DE00382B11 /* F */,
+				996CF4B9245917DD00382B11 /* G */,
+				996CF536245917DE00382B11 /* H */,
+				996CF4A1245917DD00382B11 /* I */,
+				996CF558245917DE00382B11 /* J */,
+				996CF5BC245917DE00382B11 /* K */,
+				996CF5C0245917DE00382B11 /* L */,
+				996CF544245917DE00382B11 /* M */,
+				996CF4B1245917DD00382B11 /* N */,
+				996CF51E245917DE00382B11 /* O */,
+				996CF5D1245917DE00382B11 /* P */,
+				996CF597245917DE00382B11 /* Q */,
+				996CF493245917DD00382B11 /* R */,
+				996CF4DB245917DD00382B11 /* S */,
+				996CF4C6245917DD00382B11 /* T */,
+				996CF49E245917DD00382B11 /* U */,
+				996CF58F245917DE00382B11 /* V */,
+				996CF599245917DE00382B11 /* X */,
 			);
-			path = Audios;
+			path = Audio;
 			sourceTree = "<group>";
 		};
-		993A83382441462C00AC2290 /* A */ = {
+		996CF493245917DD00382B11 /* R */ = {
 			isa = PBXGroup;
 			children = (
-				993A833D244232E400AC2290 /* aan.mp3 */,
-				993A833C244232E400AC2290 /* ab.mp3 */,
-				993A8342244232E500AC2290 /* ac.mp3 */,
-				993A833F244232E400AC2290 /* acanth.mp3 */,
-				993A8350244232E600AC2290 /* acusis.mp3 */,
-				993A8347244232E500AC2290 /* ad.mp3 */,
-				993A834E244232E500AC2290 /* adeno.mp3 */,
-				993A8340244232E400AC2290 /* adipo.mp3 */,
-				993A8348244232E500AC2290 /* adreno.mp3 */,
-				993A8349244232E500AC2290 /* adsuffix.mp3 */,
-				993A834A244232E500AC2290 /* aero.mp3 */,
-				993A8352244232E600AC2290 /* al.mp3 */,
-				993A8353244232E600AC2290 /* alb.mp3 */,
-				993A833E244232E400AC2290 /* algia.mp3 */,
-				993A834C244232E500AC2290 /* allo.mp3 */,
-				993A834F244232E600AC2290 /* ambi.mp3 */,
-				993A8341244232E500AC2290 /* amnio.mp3 */,
-				993A8344244232E500AC2290 /* andro.mp3 */,
-				993A8354244232E600AC2290 /* angio.mp3 */,
-				993A834B244232E500AC2290 /* ankylo.mp3 */,
-				993A8343244232E500AC2290 /* ansio.mp3 */,
-				993A8345244232E500AC2290 /* ante.mp3 */,
-				993A834D244232E500AC2290 /* anti.mp3 */,
-				993A8351244232E600AC2290 /* apo.mp3 */,
-				993A8346244232E500AC2290 /* arche.mp3 */,
+				996CF494245917DD00382B11 /* rrhea.mp3 */,
+				996CF495245917DD00382B11 /* radi.mp3 */,
+				996CF496245917DD00382B11 /* re.mp3 */,
+				996CF497245917DD00382B11 /* rrhage.mp3 */,
+				996CF498245917DD00382B11 /* rect.mp3 */,
+				996CF499245917DD00382B11 /* rabdo.mp3 */,
+				996CF49A245917DD00382B11 /* rrhagia.mp3 */,
+				996CF49B245917DD00382B11 /* retro.mp3 */,
+				996CF49C245917DD00382B11 /* ren.mp3 */,
+				996CF49D245917DD00382B11 /* rhino.mp3 */,
+			);
+			path = R;
+			sourceTree = "<group>";
+		};
+		996CF49E245917DD00382B11 /* U */ = {
+			isa = PBXGroup;
+			children = (
+				996CF49F245917DD00382B11 /* ultra.mp3 */,
+				996CF4A0245917DD00382B11 /* uni.mp3 */,
+			);
+			path = U;
+			sourceTree = "<group>";
+		};
+		996CF4A1245917DD00382B11 /* I */ = {
+			isa = PBXGroup;
+			children = (
+				996CF4A2245917DD00382B11 /* iso.mp3 */,
+				996CF4A3245917DD00382B11 /* ism.mp3 */,
+				996CF4A4245917DD00382B11 /* iatry.mp3 */,
+				996CF4A5245917DD00382B11 /* ium.mp3 */,
+				996CF4A6245917DD00382B11 /* intra.mp3 */,
+				996CF4A7245917DD00382B11 /* iasis.mp3 */,
+				996CF4A8245917DD00382B11 /* ics.mp3 */,
+				996CF4A9245917DD00382B11 /* isch.mp3 */,
+				996CF4AA245917DD00382B11 /* ipsi.mp3 */,
+				996CF4AB245917DD00382B11 /* inter.mp3 */,
+				996CF4AC245917DD00382B11 /* itis.mp3 */,
+				996CF4AD245917DD00382B11 /* infra.mp3 */,
+				996CF4AE245917DD00382B11 /* icle.mp3 */,
+				996CF4AF245917DD00382B11 /* idio.mp3 */,
+				996CF4B0245917DD00382B11 /* ist.mp3 */,
+			);
+			path = I;
+			sourceTree = "<group>";
+		};
+		996CF4B1245917DD00382B11 /* N */ = {
+			isa = PBXGroup;
+			children = (
+				996CF4B2245917DD00382B11 /* necro.mp3 */,
+				996CF4B3245917DD00382B11 /* narco.mp3 */,
+				996CF4B4245917DD00382B11 /* nephro.mp3 */,
+				996CF4B5245917DD00382B11 /* neo.mp3 */,
+				996CF4B6245917DD00382B11 /* naso.mp3 */,
+				996CF4B7245917DD00382B11 /* neuro.mp3 */,
+				996CF4B8245917DD00382B11 /* normo.mp3 */,
+			);
+			path = N;
+			sourceTree = "<group>";
+		};
+		996CF4B9245917DD00382B11 /* G */ = {
+			isa = PBXGroup;
+			children = (
+				996CF4BA245917DD00382B11 /* galacto.mp3 */,
+				996CF4BB245917DD00382B11 /* gen.mp3 */,
+				996CF4BC245917DD00382B11 /* graph.mp3 */,
+				996CF4BD245917DD00382B11 /* gnosos.mp3 */,
+				996CF4BE245917DD00382B11 /* glosso.mp3 */,
+				996CF4BF245917DD00382B11 /* gnatho.mp3 */,
+				996CF4C0245917DD00382B11 /* gastro.mp3 */,
+				996CF4C1245917DD00382B11 /* gingiv.mp3 */,
+				996CF4C2245917DD00382B11 /* graphy.mp3 */,
+				996CF4C3245917DD00382B11 /* gluco.mp3 */,
+				996CF4C4245917DD00382B11 /* gram.mp3 */,
+				996CF4C5245917DD00382B11 /* gyneco.mp3 */,
+			);
+			path = G;
+			sourceTree = "<group>";
+		};
+		996CF4C6245917DD00382B11 /* T */ = {
+			isa = PBXGroup;
+			children = (
+				996CF4C7245917DD00382B11 /* thec.mp3 */,
+				996CF4C8245917DD00382B11 /* tomy.mp3 */,
+				996CF4C9245917DD00382B11 /* tachy.mp3 */,
+				996CF4CA245917DD00382B11 /* toxi.mp3 */,
+				996CF4CB245917DD00382B11 /* tri.mp3 */,
+				996CF4CC245917DD00382B11 /* tricho.mp3 */,
+				996CF4CD245917DD00382B11 /* tympano.mp3 */,
+				996CF4CE245917DD00382B11 /* tripsy.mp3 */,
+				996CF4CF245917DD00382B11 /* torti.mp3 */,
+				996CF4D0245917DD00382B11 /* thyro.mp3 */,
+				996CF4D1245917DD00382B11 /* trans.mp3 */,
+				996CF4D2245917DD00382B11 /* thermo.mp3 */,
+				996CF4D3245917DD00382B11 /* thymia.mp3 */,
+				996CF4D4245917DD00382B11 /* thermia.mp3 */,
+				996CF4D5245917DD00382B11 /* thrombo.mp3 */,
+				996CF4D6245917DD00382B11 /* tome.mp3 */,
+				996CF4D7245917DD00382B11 /* tension.mp3 */,
+				996CF4D8245917DD00382B11 /* toco.mp3 */,
+				996CF4D9245917DD00382B11 /* trophy.mp3 */,
+				996CF4DA245917DD00382B11 /* thel.mp3 */,
+			);
+			path = T;
+			sourceTree = "<group>";
+		};
+		996CF4DB245917DD00382B11 /* S */ = {
+			isa = PBXGroup;
+			children = (
+				996CF4DC245917DD00382B11 /* syl.mp3 */,
+				996CF4DD245917DD00382B11 /* staxis.mp3 */,
+				996CF4DE245917DD00382B11 /* sarco.mp3 */,
+				996CF4DF245917DD00382B11 /* spondyl.mp3 */,
+				996CF4E0245917DD00382B11 /* scolio.mp3 */,
+				996CF4E1245917DD00382B11 /* somno.mp3 */,
+				996CF4E2245917DD00382B11 /* stomato.mp3 */,
+				996CF4E3245917DD00382B11 /* semi.mp3 */,
+				996CF4E4245917DD00382B11 /* steno.mp3 */,
+				996CF4E5245917DD00382B11 /* scopy.mp3 */,
+				996CF4E6245917DD00382B11 /* salping.mp3 */,
+				996CF4E7245917DD00382B11 /* stomy.mp3 */,
+				996CF4E8245917DD00382B11 /* stasis.mp3 */,
+				996CF4E9245917DD00382B11 /* super.mp3 */,
+				996CF4EA245917DD00382B11 /* scope.mp3 */,
+				996CF4EB245917DD00382B11 /* sclerosis.mp3 */,
+				996CF4EC245917DD00382B11 /* schizo.mp3 */,
+				996CF4ED245917DD00382B11 /* schisto.mp3 */,
+				996CF4EE245917DD00382B11 /* sangui.mp3 */,
+				996CF4EF245917DD00382B11 /* sclero.mp3 */,
+				996CF4F0245917DD00382B11 /* splen.mp3 */,
+				996CF4F1245917DD00382B11 /* stalsis.mp3 */,
+				996CF4F2245917DD00382B11 /* sub.mp3 */,
+			);
+			path = S;
+			sourceTree = "<group>";
+		};
+		996CF4F3245917DD00382B11 /* A */ = {
+			isa = PBXGroup;
+			children = (
+				996CF75424592A4700382B11 /* adreno.mp3 */,
+				996CF752245929F500382B11 /* artio.mp3 */,
+				996CF50C245917DE00382B11 /* aan.mp3 */,
+				996CF515245917DE00382B11 /* ab.mp3 */,
+				996CF514245917DE00382B11 /* ac.mp3 */,
+				996CF516245917DE00382B11 /* acanth.mp3 */,
+				996CF50B245917DE00382B11 /* acusis.mp3 */,
+				996CF510245917DE00382B11 /* ad.mp3 */,
+				996CF4FB245917DD00382B11 /* adipo.mp3 */,
+				996CF4FF245917DD00382B11 /* adsuffix.mp3 */,
+				996CF4F4245917DD00382B11 /* aero.mp3 */,
+				996CF4F6245917DD00382B11 /* al.mp3 */,
+				996CF503245917DD00382B11 /* alb.mp3 */,
+				996CF501245917DD00382B11 /* algia.mp3 */,
+				996CF513245917DE00382B11 /* allo.mp3 */,
+				996CF500245917DD00382B11 /* ambi.mp3 */,
+				996CF50F245917DE00382B11 /* amnio.mp3 */,
+				996CF4F8245917DD00382B11 /* andro.mp3 */,
+				996CF506245917DD00382B11 /* angio.mp3 */,
+				996CF508245917DD00382B11 /* aniso.mp3 */,
+				996CF507245917DD00382B11 /* ankylo.mp3 */,
+				996CF4F7245917DD00382B11 /* ante.mp3 */,
+				996CF518245917DE00382B11 /* anti.mp3 */,
+				996CF4FE245917DD00382B11 /* apo.mp3 */,
+				996CF4FD245917DD00382B11 /* arche.mp3 */,
+				996CF50A245917DE00382B11 /* arterio.mp3 */,
+				996CF519245917DE00382B11 /* arthro.mp3 */,
+				996CF4F9245917DD00382B11 /* articulo.mp3 */,
+				996CF517245917DE00382B11 /* ary.mp3 */,
+				996CF4FA245917DD00382B11 /* ase.mp3 */,
+				996CF505245917DD00382B11 /* asthenia.mp3 */,
+				996CF509245917DE00382B11 /* athero.mp3 */,
+				996CF4F5245917DD00382B11 /* ation.mp3 */,
+				996CF50D245917DE00382B11 /* auri.mp3 */,
+				996CF511245917DE00382B11 /* auto.mp3 */,
+				996CF504245917DD00382B11 /* azo.mp3 */,
 			);
 			path = A;
+			sourceTree = "<group>";
+		};
+		996CF51A245917DE00382B11 /* F */ = {
+			isa = PBXGroup;
+			children = (
+				996CF51B245917DE00382B11 /* form.mp3 */,
+				996CF51C245917DE00382B11 /* fibro.mp3 */,
+				996CF51D245917DE00382B11 /* fore.mp3 */,
+			);
+			path = F;
+			sourceTree = "<group>";
+		};
+		996CF51E245917DE00382B11 /* O */ = {
+			isa = PBXGroup;
+			children = (
+				996CF51F245917DE00382B11 /* oligo.mp3 */,
+				996CF520245917DE00382B11 /* oro.mp3 */,
+				996CF521245917DE00382B11 /* oste.mp3 */,
+				996CF522245917DE00382B11 /* oid.mp3 */,
+				996CF523245917DE00382B11 /* onco.mp3 */,
+				996CF524245917DE00382B11 /* oto.mp3 */,
+				996CF525245917DE00382B11 /* omphalo.mp3 */,
+				996CF526245917DE00382B11 /* opthalmo.mp3 */,
+				996CF527245917DE00382B11 /* orchi.mp3 */,
+				996CF528245917DE00382B11 /* oxy.mp3 */,
+				996CF529245917DE00382B11 /* osse.mp3 */,
+				996CF52A245917DE00382B11 /* ovo.mp3 */,
+				996CF52B245917DE00382B11 /* ortho.mp3 */,
+				996CF52C245917DE00382B11 /* oculo.mp3 */,
+				996CF52D245917DE00382B11 /* ole.mp3 */,
+				996CF52E245917DE00382B11 /* oma.mp3 */,
+				996CF52F245917DE00382B11 /* odonto.mp3 */,
+				996CF530245917DE00382B11 /* oo.mp3 */,
+				996CF531245917DE00382B11 /* onycho.mp3 */,
+				996CF532245917DE00382B11 /* ologist.mp3 */,
+				996CF533245917DE00382B11 /* opsy.mp3 */,
+				996CF534245917DE00382B11 /* ovario.mp3 */,
+				996CF535245917DE00382B11 /* opistho.mp3 */,
+			);
+			path = O;
+			sourceTree = "<group>";
+		};
+		996CF536245917DE00382B11 /* H */ = {
+			isa = PBXGroup;
+			children = (
+				996CF537245917DE00382B11 /* hyper.mp3 */,
+				996CF538245917DE00382B11 /* hypo.mp3 */,
+				996CF539245917DE00382B11 /* histo.mp3 */,
+				996CF53A245917DE00382B11 /* homo.mp3 */,
+				996CF53B245917DE00382B11 /* hyster.mp3 */,
+				996CF53C245917DE00382B11 /* hallucino.mp3 */,
+				996CF53D245917DE00382B11 /* hetero.mp3 */,
+				996CF53E245917DE00382B11 /* hepato.mp3 */,
+				996CF53F245917DE00382B11 /* hemi.mp3 */,
+				996CF540245917DE00382B11 /* hydro.mp3 */,
+				996CF541245917DE00382B11 /* hemo.mp3 */,
+				996CF542245917DE00382B11 /* hemangio.mp3 */,
+				996CF543245917DE00382B11 /* hidro.mp3 */,
+			);
+			path = H;
+			sourceTree = "<group>";
+		};
+		996CF544245917DE00382B11 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				996CF545245917DE00382B11 /* malacia.mp3 */,
+				996CF546245917DE00382B11 /* morph.mp3 */,
+				996CF547245917DE00382B11 /* macro.mp3 */,
+				996CF548245917DE00382B11 /* mal.mp3 */,
+				996CF549245917DE00382B11 /* micro.mp3 */,
+				996CF54A245917DE00382B11 /* mono.mp3 */,
+				996CF54B245917DE00382B11 /* mamo.mp3 */,
+				996CF54C245917DE00382B11 /* myo.mp3 */,
+				996CF54D245917DE00382B11 /* myring.mp3 */,
+				996CF54E245917DE00382B11 /* meter.mp3 */,
+				996CF54F245917DE00382B11 /* metry.mp3 */,
+				996CF550245917DE00382B11 /* meta.mp3 */,
+				996CF551245917DE00382B11 /* meno.mp3 */,
+				996CF552245917DE00382B11 /* musculo.mp3 */,
+				996CF553245917DE00382B11 /* melano.mp3 */,
+				996CF554245917DE00382B11 /* megaly.mp3 */,
+				996CF555245917DE00382B11 /* multi.mp3 */,
+				996CF556245917DE00382B11 /* mega.mp3 */,
+				996CF557245917DE00382B11 /* myco.mp3 */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		996CF558245917DE00382B11 /* J */ = {
+			isa = PBXGroup;
+			children = (
+				996CF559245917DE00382B11 /* juxta.mp3 */,
+			);
+			path = J;
+			sourceTree = "<group>";
+		};
+		996CF55A245917DE00382B11 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				996CF55B245917DE00382B11 /* chole.mp3 */,
+				996CF55C245917DE00382B11 /* cyano.mp3 */,
+				996CF55D245917DE00382B11 /* cholecyst.mp3 */,
+				996CF55E245917DE00382B11 /* chrom.mp3 */,
+				996CF55F245917DE00382B11 /* cyto.mp3 */,
+				996CF560245917DE00382B11 /* centesis.mp3 */,
+				996CF561245917DE00382B11 /* cervic.mp3 */,
+				996CF562245917DE00382B11 /* chemo.mp3 */,
+				996CF563245917DE00382B11 /* capit.mp3 */,
+				996CF564245917DE00382B11 /* costo.mp3 */,
+				996CF565245917DE00382B11 /* chondr.mp3 */,
+				996CF566245917DE00382B11 /* con.mp3 */,
+				996CF567245917DE00382B11 /* circum.mp3 */,
+				996CF568245917DE00382B11 /* cysto.mp3 */,
+				996CF569245917DE00382B11 /* col.mp3 */,
+				996CF56A245917DE00382B11 /* cortico.mp3 */,
+				996CF56B245917DE00382B11 /* chiro.mp3 */,
+				996CF56C245917DE00382B11 /* cardio.mp3 */,
+				996CF56D245917DE00382B11 /* cele.mp3 */,
+				996CF56E245917DE00382B11 /* cili.mp3 */,
+				996CF56F245917DE00382B11 /* chlor.mp3 */,
+				996CF570245917DE00382B11 /* cata.mp3 */,
+				996CF571245917DE00382B11 /* cheil.mp3 */,
+				996CF572245917DE00382B11 /* cryo.mp3 */,
+				996CF573245917DE00382B11 /* cephalo.mp3 */,
+				996CF574245917DE00382B11 /* carcino.mp3 */,
+				996CF575245917DE00382B11 /* carp.mp3 */,
+				996CF576245917DE00382B11 /* coron.mp3 */,
+				996CF577245917DE00382B11 /* cyte.mp3 */,
+				996CF578245917DE00382B11 /* contra.mp3 */,
+				996CF579245917DE00382B11 /* co.mp3 */,
+				996CF57A245917DE00382B11 /* crine.mp3 */,
+				996CF57B245917DE00382B11 /* clast.mp3 */,
+				996CF57C245917DE00382B11 /* crani.mp3 */,
+				996CF57D245917DE00382B11 /* colpo.mp3 */,
+				996CF57E245917DE00382B11 /* cidal.mp3 */,
+				996CF57F245917DE00382B11 /* coccus.mp3 */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		996CF580245917DE00382B11 /* D */ = {
+			isa = PBXGroup;
+			children = (
+				996CF581245917DE00382B11 /* dacryo.mp3 */,
+				996CF582245917DE00382B11 /* dactly.mp3 */,
+				996CF583245917DE00382B11 /* dys.mp3 */,
+				996CF584245917DE00382B11 /* dextro.mp3 */,
+				996CF585245917DE00382B11 /* digit.mp3 */,
+				996CF586245917DE00382B11 /* de.mp3 */,
+				996CF587245917DE00382B11 /* di.mp3 */,
+				996CF588245917DE00382B11 /* dynia.mp3 */,
+				996CF589245917DE00382B11 /* dia.mp3 */,
+				996CF58A245917DE00382B11 /* dent.mp3 */,
+				996CF58B245917DE00382B11 /* dermo.mp3 */,
+				996CF58C245917DE00382B11 /* diplo.mp3 */,
+				996CF58D245917DE00382B11 /* dorso.mp3 */,
+				996CF58E245917DE00382B11 /* dipsia.mp3 */,
+			);
+			path = D;
+			sourceTree = "<group>";
+		};
+		996CF58F245917DE00382B11 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				996CF590245917DE00382B11 /* vagin.mp3 */,
+				996CF591245917DE00382B11 /* ventro.mp3 */,
+				996CF592245917DE00382B11 /* version.mp3 */,
+				996CF593245917DE00382B11 /* varico.mp3 */,
+				996CF594245917DE00382B11 /* vescio.mp3 */,
+				996CF595245917DE00382B11 /* vaso.mp3 */,
+				996CF596245917DE00382B11 /* ven.mp3 */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		996CF597245917DE00382B11 /* Q */ = {
+			isa = PBXGroup;
+			children = (
+				996CF598245917DE00382B11 /* quadri.mp3 */,
+			);
+			path = Q;
+			sourceTree = "<group>";
+		};
+		996CF599245917DE00382B11 /* X */ = {
+			isa = PBXGroup;
+			children = (
+				996CF59A245917DE00382B11 /* xeno.mp3 */,
+				996CF59B245917DE00382B11 /* xiph.mp3 */,
+				996CF59C245917DE00382B11 /* xero.mp3 */,
+			);
+			path = X;
+			sourceTree = "<group>";
+		};
+		996CF59D245917DE00382B11 /* E */ = {
+			isa = PBXGroup;
+			children = (
+				996CF59E245917DE00382B11 /* ecto.mp3 */,
+				996CF59F245917DE00382B11 /* endo.mp3 */,
+				996CF5A0245917DE00382B11 /* epi.mp3 */,
+				996CF5A1245917DE00382B11 /* eosino.mp3 */,
+				996CF5A2245917DE00382B11 /* ectasis.mp3 */,
+				996CF5A3245917DE00382B11 /* encephalo.mp3 */,
+				996CF5A4245917DE00382B11 /* episio.mp3 */,
+				996CF5A5245917DE00382B11 /* eal.mp3 */,
+				996CF5A6245917DE00382B11 /* ex.mp3 */,
+				996CF5A7245917DE00382B11 /* extra.mp3 */,
+				996CF5A8245917DE00382B11 /* emia.mp3 */,
+				996CF5A9245917DE00382B11 /* entero.mp3 */,
+				996CF5AA245917DE00382B11 /* emesis.mp3 */,
+				996CF5AB245917DE00382B11 /* erythro.mp3 */,
+				996CF5AC245917DE00382B11 /* ectomy.mp3 */,
+			);
+			path = E;
+			sourceTree = "<group>";
+		};
+		996CF5AD245917DE00382B11 /* B */ = {
+			isa = PBXGroup;
+			children = (
+				996CF5AE245917DE00382B11 /* bas.mp3 */,
+				996CF5AF245917DE00382B11 /* blephar.mp3 */,
+				996CF5B0245917DE00382B11 /* bacillus.mp3 */,
+				996CF5B1245917DE00382B11 /* bucc.mp3 */,
+				996CF5B2245917DE00382B11 /* balan.mp3 */,
+				996CF5B3245917DE00382B11 /* blastprefix.mp3 */,
+				996CF5B4245917DE00382B11 /* brachi.mp3 */,
+				996CF5B5245917DE00382B11 /* brady.mp3 */,
+				996CF5B6245917DE00382B11 /* brachy.mp3 */,
+				996CF5B7245917DE00382B11 /* bi.mp3 */,
+				996CF74C2459283400382B11 /* blastsuffix.mp3 */,
+				996CF5B8245917DE00382B11 /* bronchi.mp3 */,
+				996CF5B9245917DE00382B11 /* bacterio.mp3 */,
+				996CF5BA245917DE00382B11 /* burs.mp3 */,
+			);
+			path = B;
+			sourceTree = "<group>";
+		};
+		996CF5BC245917DE00382B11 /* K */ = {
+			isa = PBXGroup;
+			children = (
+				996CF5BD245917DE00382B11 /* kal.mp3 */,
+				996CF5BE245917DE00382B11 /* kypho.mp3 */,
+				996CF5BF245917DE00382B11 /* kine.mp3 */,
+			);
+			path = K;
+			sourceTree = "<group>";
+		};
+		996CF5C0245917DE00382B11 /* L */ = {
+			isa = PBXGroup;
+			children = (
+				996CF5C1245917DE00382B11 /* lingua.mp3 */,
+				996CF5C2245917DE00382B11 /* lymph.mp3 */,
+				996CF5C3245917DE00382B11 /* lacri.mp3 */,
+				996CF5C4245917DE00382B11 /* logy.mp3 */,
+				996CF5C5245917DE00382B11 /* leio.mp3 */,
+				996CF5C6245917DE00382B11 /* litho.mp3 */,
+				996CF5C7245917DE00382B11 /* lacti.mp3 */,
+				996CF5C8245917DE00382B11 /* lepsis.mp3 */,
+				996CF5C9245917DE00382B11 /* latero.mp3 */,
+				996CF5CA245917DE00382B11 /* labio.mp3 */,
+				996CF5CB245917DE00382B11 /* lipo.mp3 */,
+				996CF5CC245917DE00382B11 /* lumba.mp3 */,
+				996CF5CD245917DE00382B11 /* leuko.mp3 */,
+				996CF5CE245917DE00382B11 /* lytic.mp3 */,
+				996CF5CF245917DE00382B11 /* laparo.mp3 */,
+				996CF5D0245917DE00382B11 /* lepto.mp3 */,
+			);
+			path = L;
+			sourceTree = "<group>";
+		};
+		996CF5D1245917DE00382B11 /* P */ = {
+			isa = PBXGroup;
+			children = (
+				996CF5D2245917DE00382B11 /* plegia.mp3 */,
+				996CF5D3245917DE00382B11 /* ptosis.mp3 */,
+				996CF5D4245917DE00382B11 /* psor.mp3 */,
+				996CF5D5245917DE00382B11 /* pelvis.mp3 */,
+				996CF5D6245917DE00382B11 /* pathy.mp3 */,
+				996CF5D7245917DE00382B11 /* pseudo.mp3 */,
+				996CF5D8245917DE00382B11 /* pauci.mp3 */,
+				996CF5D9245917DE00382B11 /* poiesis.mp3 */,
+				996CF5DA245917DE00382B11 /* patho.mp3 */,
+				996CF5DB245917DE00382B11 /* para.mp3 */,
+				996CF5DC245917DE00382B11 /* pro.mp3 */,
+				996CF5DD245917DE00382B11 /* pepsia.mp3 */,
+				996CF5DE245917DE00382B11 /* ped.mp3 */,
+				996CF5DF245917DE00382B11 /* phage.mp3 */,
+				996CF5E0245917DE00382B11 /* per.mp3 */,
+				996CF5E1245917DE00382B11 /* ptysis.mp3 */,
+				996CF5E2245917DE00382B11 /* philia.mp3 */,
+				996CF5E3245917DE00382B11 /* parvo.mp3 */,
+				996CF5E4245917DE00382B11 /* photo.mp3 */,
+				996CF5E5245917DE00382B11 /* pyo.mp3 */,
+				996CF5E6245917DE00382B11 /* pyelo.mp3 */,
+				996CF5E7245917DE00382B11 /* proct.mp3 */,
+				996CF5E8245917DE00382B11 /* poly.mp3 */,
+				996CF5E9245917DE00382B11 /* paresis.mp3 */,
+				996CF5EA245917DE00382B11 /* palpebr.mp3 */,
+				996CF5EB245917DE00382B11 /* pod.mp3 */,
+				996CF5EC245917DE00382B11 /* phleb.mp3 */,
+				996CF5ED245917DE00382B11 /* pan.mp3 */,
+				996CF5EE245917DE00382B11 /* prime.mp3 */,
+				996CF5EF245917DE00382B11 /* pyr.mp3 */,
+				996CF5F0245917DE00382B11 /* pneumo.mp3 */,
+				996CF5F1245917DE00382B11 /* psych.mp3 */,
+				996CF5F2245917DE00382B11 /* plasty.mp3 */,
+				996CF5F3245917DE00382B11 /* peri.mp3 */,
+				996CF5F4245917DE00382B11 /* pylor.mp3 */,
+				996CF5F5245917DE00382B11 /* post.mp3 */,
+				996CF5F6245917DE00382B11 /* phago.mp3 */,
+				996CF5F7245917DE00382B11 /* penia.mp3 */,
+				996CF5F8245917DE00382B11 /* plexy.mp3 */,
+				996CF5F9245917DE00382B11 /* phobia.mp3 */,
+				996CF5FA245917DE00382B11 /* pre.mp3 */,
+			);
+			path = P;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,35 +1601,345 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				993A8355244232E600AC2290 /* ab.mp3 in Resources */,
-				993A835D244232E600AC2290 /* andro.mp3 in Resources */,
+				996CF69F245917DE00382B11 /* hemangio.mp3 in Resources */,
+				996CF712245917DE00382B11 /* kine.mp3 in Resources */,
+				996CF677245917DE00382B11 /* ary.mp3 in Resources */,
+				996CF699245917DE00382B11 /* hallucino.mp3 in Resources */,
+				996CF6A4245917DE00382B11 /* mal.mp3 in Resources */,
+				996CF61C245917DE00382B11 /* normo.mp3 in Resources */,
+				996CF654245917DE00382B11 /* aero.mp3 in Resources */,
+				996CF703245917DE00382B11 /* blephar.mp3 in Resources */,
+				996CF73D245917DE00382B11 /* phleb.mp3 in Resources */,
+				996CF641245917DE00382B11 /* scolio.mp3 in Resources */,
+				996CF6F9245917DE00382B11 /* episio.mp3 in Resources */,
+				996CF6B1245917DE00382B11 /* multi.mp3 in Resources */,
+				996CF740245917DE00382B11 /* pyr.mp3 in Resources */,
+				996CF71F245917DE00382B11 /* leuko.mp3 in Resources */,
+				996CF60D245917DE00382B11 /* ics.mp3 in Resources */,
+				996CF709245917DE00382B11 /* brady.mp3 in Resources */,
+				996CF60F245917DE00382B11 /* ipsi.mp3 in Resources */,
+				996CF601245917DE00382B11 /* rrhagia.mp3 in Resources */,
+				996CF74B245917DE00382B11 /* pre.mp3 in Resources */,
+				996CF708245917DE00382B11 /* brachi.mp3 in Resources */,
+				996CF739245917DE00382B11 /* poly.mp3 in Resources */,
+				996CF6CC245917DE00382B11 /* cryo.mp3 in Resources */,
+				996CF661245917DE00382B11 /* algia.mp3 in Resources */,
+				996CF617245917DE00382B11 /* narco.mp3 in Resources */,
+				996CF6E8245917DE00382B11 /* vagin.mp3 in Resources */,
+				996CF6D5245917DE00382B11 /* clast.mp3 in Resources */,
+				996CF727245917DE00382B11 /* pathy.mp3 in Resources */,
+				996CF73A245917DE00382B11 /* paresis.mp3 in Resources */,
+				996CF64C245917DE00382B11 /* sclerosis.mp3 in Resources */,
+				996CF725245917DE00382B11 /* psor.mp3 in Resources */,
+				996CF638245917DE00382B11 /* tome.mp3 in Resources */,
+				996CF6E5245917DE00382B11 /* diplo.mp3 in Resources */,
+				996CF6BD245917DE00382B11 /* capit.mp3 in Resources */,
+				996CF695245917DE00382B11 /* hypo.mp3 in Resources */,
+				996CF65F245917DE00382B11 /* adsuffix.mp3 in Resources */,
+				996CF743245917DE00382B11 /* plasty.mp3 in Resources */,
+				996CF606245917DE00382B11 /* uni.mp3 in Resources */,
+				996CF6D1245917DE00382B11 /* cyte.mp3 in Resources */,
+				996CF6F1245917DE00382B11 /* xiph.mp3 in Resources */,
+				996CF647245917DE00382B11 /* salping.mp3 in Resources */,
+				996CF6C4245917DE00382B11 /* cortico.mp3 in Resources */,
+				996CF625245917DE00382B11 /* graphy.mp3 in Resources */,
+				996CF6B3245917DE00382B11 /* myco.mp3 in Resources */,
+				996CF6CE245917DE00382B11 /* carcino.mp3 in Resources */,
+				996CF72D245917DE00382B11 /* pro.mp3 in Resources */,
 				5A189C37216D8E8400929AB8 /* LaunchScreen.storyboard in Resources */,
-				993A836A244232E600AC2290 /* apo.mp3 in Resources */,
-				993A8359244232E600AC2290 /* adipo.mp3 in Resources */,
-				993A835F244232E600AC2290 /* arche.mp3 in Resources */,
-				993A8365244232E600AC2290 /* allo.mp3 in Resources */,
+				996CF64F245917DE00382B11 /* sangui.mp3 in Resources */,
+				996CF66F245917DE00382B11 /* amnio.mp3 in Resources */,
+				996CF61E245917DE00382B11 /* gen.mp3 in Resources */,
+				996CF607245917DE00382B11 /* iso.mp3 in Resources */,
+				996CF655245917DE00382B11 /* ation.mp3 in Resources */,
+				996CF693245917DE00382B11 /* opistho.mp3 in Resources */,
+				996CF67E245917DE00382B11 /* oro.mp3 in Resources */,
+				996CF6B4245917DE00382B11 /* juxta.mp3 in Resources */,
+				996CF656245917DE00382B11 /* al.mp3 in Resources */,
+				996CF6F4245917DE00382B11 /* endo.mp3 in Resources */,
+				996CF6A0245917DE00382B11 /* hidro.mp3 in Resources */,
+				996CF673245917DE00382B11 /* allo.mp3 in Resources */,
+				996CF6B6245917DE00382B11 /* cyano.mp3 in Resources */,
+				996CF60E245917DE00382B11 /* isch.mp3 in Resources */,
+				996CF713245917DE00382B11 /* lingua.mp3 in Resources */,
+				996CF71D245917DE00382B11 /* lipo.mp3 in Resources */,
+				996CF700245917DE00382B11 /* erythro.mp3 in Resources */,
+				996CF666245917DE00382B11 /* angio.mp3 in Resources */,
+				996CF6B7245917DE00382B11 /* cholecyst.mp3 in Resources */,
+				996CF643245917DE00382B11 /* stomato.mp3 in Resources */,
+				996CF702245917DE00382B11 /* bas.mp3 in Resources */,
+				996CF644245917DE00382B11 /* semi.mp3 in Resources */,
+				996CF6DA245917DE00382B11 /* dacryo.mp3 in Resources */,
+				996CF714245917DE00382B11 /* lymph.mp3 in Resources */,
+				996CF619245917DE00382B11 /* neo.mp3 in Resources */,
+				996CF6AA245917DE00382B11 /* meter.mp3 in Resources */,
+				996CF66B245917DE00382B11 /* acusis.mp3 in Resources */,
+				996CF6FA245917DE00382B11 /* eal.mp3 in Resources */,
+				996CF65A245917DE00382B11 /* ase.mp3 in Resources */,
+				996CF716245917DE00382B11 /* logy.mp3 in Resources */,
+				996CF69C245917DE00382B11 /* hemi.mp3 in Resources */,
+				996CF648245917DE00382B11 /* stomy.mp3 in Resources */,
+				996CF701245917DE00382B11 /* ectomy.mp3 in Resources */,
+				996CF649245917DE00382B11 /* stasis.mp3 in Resources */,
+				996CF747245917DE00382B11 /* phago.mp3 in Resources */,
+				996CF6E4245917DE00382B11 /* dermo.mp3 in Resources */,
+				996CF633245917DE00382B11 /* trans.mp3 in Resources */,
+				996CF734245917DE00382B11 /* parvo.mp3 in Resources */,
+				996CF634245917DE00382B11 /* thermo.mp3 in Resources */,
+				996CF6DD245917DE00382B11 /* dextro.mp3 in Resources */,
+				996CF618245917DE00382B11 /* nephro.mp3 in Resources */,
+				996CF640245917DE00382B11 /* spondyl.mp3 in Resources */,
+				996CF748245917DE00382B11 /* penia.mp3 in Resources */,
+				996CF742245917DE00382B11 /* psych.mp3 in Resources */,
+				996CF65E245917DE00382B11 /* apo.mp3 in Resources */,
+				996CF61B245917DE00382B11 /* neuro.mp3 in Resources */,
+				996CF6A6245917DE00382B11 /* mono.mp3 in Resources */,
+				996CF74D2459283400382B11 /* blastsuffix.mp3 in Resources */,
+				996CF620245917DE00382B11 /* gnosos.mp3 in Resources */,
+				996CF698245917DE00382B11 /* hyster.mp3 in Resources */,
+				996CF6C6245917DE00382B11 /* cardio.mp3 in Resources */,
+				996CF653245917DE00382B11 /* sub.mp3 in Resources */,
+				996CF6A9245917DE00382B11 /* myring.mp3 in Resources */,
+				996CF6BF245917DE00382B11 /* chondr.mp3 in Resources */,
+				996CF628245917DE00382B11 /* gyneco.mp3 in Resources */,
+				996CF6EF245917DE00382B11 /* quadri.mp3 in Resources */,
+				996CF6FC245917DE00382B11 /* extra.mp3 in Resources */,
+				996CF669245917DE00382B11 /* athero.mp3 in Resources */,
+				996CF6C5245917DE00382B11 /* chiro.mp3 in Resources */,
+				996CF624245917DE00382B11 /* gingiv.mp3 in Resources */,
+				996CF737245917DE00382B11 /* pyelo.mp3 in Resources */,
+				996CF600245917DE00382B11 /* rabdo.mp3 in Resources */,
+				996CF63C245917DE00382B11 /* thel.mp3 in Resources */,
+				996CF64E245917DE00382B11 /* schisto.mp3 in Resources */,
+				996CF6AD245917DE00382B11 /* meno.mp3 in Resources */,
+				996CF68D245917DE00382B11 /* odonto.mp3 in Resources */,
+				996CF660245917DE00382B11 /* ambi.mp3 in Resources */,
+				996CF731245917DE00382B11 /* per.mp3 in Resources */,
+				996CF652245917DE00382B11 /* stalsis.mp3 in Resources */,
+				996CF6BA245917DE00382B11 /* centesis.mp3 in Resources */,
+				996CF6C7245917DE00382B11 /* cele.mp3 in Resources */,
+				996CF6D3245917DE00382B11 /* co.mp3 in Resources */,
+				996CF650245917DE00382B11 /* sclero.mp3 in Resources */,
+				996CF63F245917DE00382B11 /* sarco.mp3 in Resources */,
+				996CF705245917DE00382B11 /* bucc.mp3 in Resources */,
+				996CF61A245917DE00382B11 /* naso.mp3 in Resources */,
+				996CF68F245917DE00382B11 /* onycho.mp3 in Resources */,
+				996CF6B5245917DE00382B11 /* chole.mp3 in Resources */,
+				996CF6D4245917DE00382B11 /* crine.mp3 in Resources */,
+				996CF657245917DE00382B11 /* ante.mp3 in Resources */,
+				996CF62A245917DE00382B11 /* tomy.mp3 in Resources */,
+				996CF70E245917DE00382B11 /* burs.mp3 in Resources */,
+				996CF66C245917DE00382B11 /* aan.mp3 in Resources */,
+				996CF69B245917DE00382B11 /* hepato.mp3 in Resources */,
+				996CF62C245917DE00382B11 /* toxi.mp3 in Resources */,
+				996CF6E1245917DE00382B11 /* dynia.mp3 in Resources */,
+				996CF72B245917DE00382B11 /* patho.mp3 in Resources */,
+				996CF676245917DE00382B11 /* acanth.mp3 in Resources */,
+				996CF5FE245917DE00382B11 /* rrhage.mp3 in Resources */,
+				996CF6C1245917DE00382B11 /* circum.mp3 in Resources */,
+				996CF674245917DE00382B11 /* ac.mp3 in Resources */,
+				996CF704245917DE00382B11 /* bacillus.mp3 in Resources */,
+				996CF6FF245917DE00382B11 /* emesis.mp3 in Resources */,
+				996CF62F245917DE00382B11 /* tympano.mp3 in Resources */,
+				996CF61F245917DE00382B11 /* graph.mp3 in Resources */,
+				996CF6F7245917DE00382B11 /* ectasis.mp3 in Resources */,
+				996CF706245917DE00382B11 /* balan.mp3 in Resources */,
+				996CF6A7245917DE00382B11 /* mamo.mp3 in Resources */,
+				996CF608245917DE00382B11 /* ism.mp3 in Resources */,
+				996CF680245917DE00382B11 /* oid.mp3 in Resources */,
+				996CF5FF245917DE00382B11 /* rect.mp3 in Resources */,
+				996CF733245917DE00382B11 /* philia.mp3 in Resources */,
+				996CF745245917DE00382B11 /* pylor.mp3 in Resources */,
+				996CF707245917DE00382B11 /* blastprefix.mp3 in Resources */,
+				996CF681245917DE00382B11 /* onco.mp3 in Resources */,
+				996CF6DE245917DE00382B11 /* digit.mp3 in Resources */,
+				996CF63D245917DE00382B11 /* syl.mp3 in Resources */,
+				996CF6C2245917DE00382B11 /* cysto.mp3 in Resources */,
+				996CF719245917DE00382B11 /* lacti.mp3 in Resources */,
+				996CF6B2245917DE00382B11 /* mega.mp3 in Resources */,
+				996CF67F245917DE00382B11 /* oste.mp3 in Resources */,
+				996CF64D245917DE00382B11 /* schizo.mp3 in Resources */,
+				996CF697245917DE00382B11 /* homo.mp3 in Resources */,
+				996CF62E245917DE00382B11 /* tricho.mp3 in Resources */,
+				996CF75524592A4700382B11 /* adreno.mp3 in Resources */,
+				996CF6C9245917DE00382B11 /* chlor.mp3 in Resources */,
+				996CF678245917DE00382B11 /* anti.mp3 in Resources */,
+				996CF646245917DE00382B11 /* scopy.mp3 in Resources */,
+				996CF69A245917DE00382B11 /* hetero.mp3 in Resources */,
+				996CF6CA245917DE00382B11 /* cata.mp3 in Resources */,
+				996CF6A3245917DE00382B11 /* macro.mp3 in Resources */,
+				996CF718245917DE00382B11 /* litho.mp3 in Resources */,
+				996CF6BC245917DE00382B11 /* chemo.mp3 in Resources */,
+				996CF614245917DE00382B11 /* idio.mp3 in Resources */,
+				996CF63B245917DE00382B11 /* trophy.mp3 in Resources */,
+				996CF691245917DE00382B11 /* opsy.mp3 in Resources */,
+				996CF612245917DE00382B11 /* infra.mp3 in Resources */,
+				996CF71C245917DE00382B11 /* labio.mp3 in Resources */,
+				996CF722245917DE00382B11 /* lepto.mp3 in Resources */,
+				996CF6EC245917DE00382B11 /* vescio.mp3 in Resources */,
+				996CF6E7245917DE00382B11 /* dipsia.mp3 in Resources */,
+				996CF632245917DE00382B11 /* thyro.mp3 in Resources */,
+				996CF685245917DE00382B11 /* orchi.mp3 in Resources */,
+				996CF6D2245917DE00382B11 /* contra.mp3 in Resources */,
+				996CF623245917DE00382B11 /* gastro.mp3 in Resources */,
+				996CF71E245917DE00382B11 /* lumba.mp3 in Resources */,
+				996CF629245917DE00382B11 /* thec.mp3 in Resources */,
+				996CF64B245917DE00382B11 /* scope.mp3 in Resources */,
+				996CF70A245917DE00382B11 /* brachy.mp3 in Resources */,
+				996CF71B245917DE00382B11 /* latero.mp3 in Resources */,
+				996CF66A245917DE00382B11 /* arterio.mp3 in Resources */,
+				996CF72F245917DE00382B11 /* ped.mp3 in Resources */,
+				996CF6A1245917DE00382B11 /* malacia.mp3 in Resources */,
+				996CF6DC245917DE00382B11 /* dys.mp3 in Resources */,
+				996CF692245917DE00382B11 /* ovario.mp3 in Resources */,
+				996CF688245917DE00382B11 /* ovo.mp3 in Resources */,
+				996CF746245917DE00382B11 /* post.mp3 in Resources */,
+				996CF665245917DE00382B11 /* asthenia.mp3 in Resources */,
+				996CF69E245917DE00382B11 /* hemo.mp3 in Resources */,
+				996CF6CF245917DE00382B11 /* carp.mp3 in Resources */,
+				996CF72A245917DE00382B11 /* poiesis.mp3 in Resources */,
+				996CF683245917DE00382B11 /* omphalo.mp3 in Resources */,
+				996CF63A245917DE00382B11 /* toco.mp3 in Resources */,
+				996CF651245917DE00382B11 /* splen.mp3 in Resources */,
+				996CF639245917DE00382B11 /* tension.mp3 in Resources */,
+				996CF60A245917DE00382B11 /* ium.mp3 in Resources */,
+				996CF668245917DE00382B11 /* aniso.mp3 in Resources */,
+				996CF6E0245917DE00382B11 /* di.mp3 in Resources */,
 				5A88633F217226180013FC8B /* Medical Terminology.db in Resources */,
-				993A8364244232E600AC2290 /* ankylo.mp3 in Resources */,
-				993A8361244232E600AC2290 /* adreno.mp3 in Resources */,
-				993A835B244232E600AC2290 /* ac.mp3 in Resources */,
-				993A835C244232E600AC2290 /* ansio.mp3 in Resources */,
-				993A8356244232E600AC2290 /* aan.mp3 in Resources */,
-				993A8360244232E600AC2290 /* ad.mp3 in Resources */,
-				993A835A244232E600AC2290 /* amnio.mp3 in Resources */,
-				993A8362244232E600AC2290 /* adsuffix.mp3 in Resources */,
+				996CF70C245917DE00382B11 /* bronchi.mp3 in Resources */,
+				996CF6AE245917DE00382B11 /* musculo.mp3 in Resources */,
+				996CF721245917DE00382B11 /* laparo.mp3 in Resources */,
+				996CF6D0245917DE00382B11 /* coron.mp3 in Resources */,
+				996CF66D245917DE00382B11 /* auri.mp3 in Resources */,
+				996CF5FC245917DE00382B11 /* radi.mp3 in Resources */,
+				996CF690245917DE00382B11 /* ologist.mp3 in Resources */,
+				996CF728245917DE00382B11 /* pseudo.mp3 in Resources */,
+				996CF60B245917DE00382B11 /* intra.mp3 in Resources */,
+				996CF73F245917DE00382B11 /* prime.mp3 in Resources */,
+				996CF717245917DE00382B11 /* leio.mp3 in Resources */,
+				996CF670245917DE00382B11 /* ad.mp3 in Resources */,
+				996CF6FE245917DE00382B11 /* entero.mp3 in Resources */,
+				996CF613245917DE00382B11 /* icle.mp3 in Resources */,
+				996CF6D6245917DE00382B11 /* crani.mp3 in Resources */,
+				996CF72E245917DE00382B11 /* pepsia.mp3 in Resources */,
+				996CF720245917DE00382B11 /* lytic.mp3 in Resources */,
+				996CF664245917DE00382B11 /* azo.mp3 in Resources */,
+				996CF62B245917DE00382B11 /* tachy.mp3 in Resources */,
+				996CF6A5245917DE00382B11 /* micro.mp3 in Resources */,
+				996CF741245917DE00382B11 /* pneumo.mp3 in Resources */,
+				996CF6D8245917DE00382B11 /* cidal.mp3 in Resources */,
+				996CF603245917DE00382B11 /* ren.mp3 in Resources */,
+				996CF6D7245917DE00382B11 /* colpo.mp3 in Resources */,
+				996CF6A8245917DE00382B11 /* myo.mp3 in Resources */,
+				996CF631245917DE00382B11 /* torti.mp3 in Resources */,
+				996CF70B245917DE00382B11 /* bi.mp3 in Resources */,
+				996CF635245917DE00382B11 /* thymia.mp3 in Resources */,
+				996CF627245917DE00382B11 /* gram.mp3 in Resources */,
+				996CF602245917DE00382B11 /* retro.mp3 in Resources */,
+				996CF6CD245917DE00382B11 /* cephalo.mp3 in Resources */,
+				996CF6EA245917DE00382B11 /* version.mp3 in Resources */,
+				996CF605245917DE00382B11 /* ultra.mp3 in Resources */,
+				996CF65D245917DE00382B11 /* arche.mp3 in Resources */,
+				996CF671245917DE00382B11 /* auto.mp3 in Resources */,
+				996CF723245917DE00382B11 /* plegia.mp3 in Resources */,
+				996CF68E245917DE00382B11 /* oo.mp3 in Resources */,
+				996CF6DB245917DE00382B11 /* dactly.mp3 in Resources */,
+				996CF6BE245917DE00382B11 /* costo.mp3 in Resources */,
+				996CF726245917DE00382B11 /* pelvis.mp3 in Resources */,
+				996CF626245917DE00382B11 /* gluco.mp3 in Resources */,
+				996CF637245917DE00382B11 /* thrombo.mp3 in Resources */,
+				996CF6AF245917DE00382B11 /* melano.mp3 in Resources */,
+				996CF663245917DE00382B11 /* alb.mp3 in Resources */,
+				996CF73B245917DE00382B11 /* palpebr.mp3 in Resources */,
+				996CF609245917DE00382B11 /* iatry.mp3 in Resources */,
+				996CF6FD245917DE00382B11 /* emia.mp3 in Resources */,
+				996CF689245917DE00382B11 /* ortho.mp3 in Resources */,
+				996CF684245917DE00382B11 /* opthalmo.mp3 in Resources */,
+				996CF604245917DE00382B11 /* rhino.mp3 in Resources */,
+				996CF6ED245917DE00382B11 /* vaso.mp3 in Resources */,
+				996CF611245917DE00382B11 /* itis.mp3 in Resources */,
+				996CF744245917DE00382B11 /* peri.mp3 in Resources */,
+				996CF72C245917DE00382B11 /* para.mp3 in Resources */,
+				996CF711245917DE00382B11 /* kypho.mp3 in Resources */,
+				996CF68B245917DE00382B11 /* ole.mp3 in Resources */,
+				996CF6F3245917DE00382B11 /* ecto.mp3 in Resources */,
+				996CF6BB245917DE00382B11 /* cervic.mp3 in Resources */,
+				996CF6AB245917DE00382B11 /* metry.mp3 in Resources */,
+				996CF622245917DE00382B11 /* gnatho.mp3 in Resources */,
+				996CF710245917DE00382B11 /* kal.mp3 in Resources */,
+				996CF6F5245917DE00382B11 /* epi.mp3 in Resources */,
+				996CF636245917DE00382B11 /* thermia.mp3 in Resources */,
+				996CF6E6245917DE00382B11 /* dorso.mp3 in Resources */,
+				996CF73C245917DE00382B11 /* pod.mp3 in Resources */,
+				996CF68A245917DE00382B11 /* oculo.mp3 in Resources */,
+				996CF724245917DE00382B11 /* ptosis.mp3 in Resources */,
+				996CF738245917DE00382B11 /* proct.mp3 in Resources */,
+				996CF6B8245917DE00382B11 /* chrom.mp3 in Resources */,
+				996CF6A2245917DE00382B11 /* morph.mp3 in Resources */,
+				996CF74A245917DE00382B11 /* phobia.mp3 in Resources */,
+				996CF667245917DE00382B11 /* ankylo.mp3 in Resources */,
+				996CF62D245917DE00382B11 /* tri.mp3 in Resources */,
+				996CF686245917DE00382B11 /* oxy.mp3 in Resources */,
+				996CF642245917DE00382B11 /* somno.mp3 in Resources */,
+				996CF6F8245917DE00382B11 /* encephalo.mp3 in Resources */,
+				996CF659245917DE00382B11 /* articulo.mp3 in Resources */,
+				996CF6E9245917DE00382B11 /* ventro.mp3 in Resources */,
+				996CF6E3245917DE00382B11 /* dent.mp3 in Resources */,
 				5A34042424269DBF00C744E3 /* Assets.xcassets in Resources */,
-				993A835E244232E600AC2290 /* ante.mp3 in Resources */,
+				996CF6F6245917DE00382B11 /* eosino.mp3 in Resources */,
+				996CF735245917DE00382B11 /* photo.mp3 in Resources */,
+				996CF60C245917DE00382B11 /* iasis.mp3 in Resources */,
+				996CF6E2245917DE00382B11 /* dia.mp3 in Resources */,
+				996CF658245917DE00382B11 /* andro.mp3 in Resources */,
+				996CF71A245917DE00382B11 /* lepsis.mp3 in Resources */,
+				996CF67D245917DE00382B11 /* oligo.mp3 in Resources */,
+				996CF6FB245917DE00382B11 /* ex.mp3 in Resources */,
+				996CF67B245917DE00382B11 /* fibro.mp3 in Resources */,
+				996CF715245917DE00382B11 /* lacri.mp3 in Resources */,
+				996CF5FB245917DE00382B11 /* rrhea.mp3 in Resources */,
+				996CF610245917DE00382B11 /* inter.mp3 in Resources */,
+				996CF6AC245917DE00382B11 /* meta.mp3 in Resources */,
+				996CF5FD245917DE00382B11 /* re.mp3 in Resources */,
+				996CF68C245917DE00382B11 /* oma.mp3 in Resources */,
+				996CF6B0245917DE00382B11 /* megaly.mp3 in Resources */,
 				5A189C32216D8E8400929AB8 /* Main.storyboard in Resources */,
-				993A8357244232E600AC2290 /* algia.mp3 in Resources */,
-				993A836B244232E600AC2290 /* al.mp3 in Resources */,
-				993A8363244232E600AC2290 /* aero.mp3 in Resources */,
-				993A836D244232E600AC2290 /* angio.mp3 in Resources */,
-				993A8366244232E600AC2290 /* anti.mp3 in Resources */,
-				993A8369244232E600AC2290 /* acusis.mp3 in Resources */,
-				993A836C244232E600AC2290 /* alb.mp3 in Resources */,
-				993A8358244232E600AC2290 /* acanth.mp3 in Resources */,
-				993A8367244232E600AC2290 /* adeno.mp3 in Resources */,
-				993A8368244232E600AC2290 /* ambi.mp3 in Resources */,
+				996CF696245917DE00382B11 /* histo.mp3 in Resources */,
+				996CF736245917DE00382B11 /* pyo.mp3 in Resources */,
+				996CF67C245917DE00382B11 /* fore.mp3 in Resources */,
+				996CF6C3245917DE00382B11 /* col.mp3 in Resources */,
+				996CF6D9245917DE00382B11 /* coccus.mp3 in Resources */,
+				996CF6C8245917DE00382B11 /* cili.mp3 in Resources */,
+				996CF6DF245917DE00382B11 /* de.mp3 in Resources */,
+				996CF70D245917DE00382B11 /* bacterio.mp3 in Resources */,
+				996CF73E245917DE00382B11 /* pan.mp3 in Resources */,
+				996CF621245917DE00382B11 /* glosso.mp3 in Resources */,
+				996CF616245917DE00382B11 /* necro.mp3 in Resources */,
+				996CF67A245917DE00382B11 /* form.mp3 in Resources */,
+				996CF6EB245917DE00382B11 /* varico.mp3 in Resources */,
+				996CF675245917DE00382B11 /* ab.mp3 in Resources */,
+				996CF6CB245917DE00382B11 /* cheil.mp3 in Resources */,
+				996CF730245917DE00382B11 /* phage.mp3 in Resources */,
+				996CF63E245917DE00382B11 /* staxis.mp3 in Resources */,
+				996CF6F2245917DE00382B11 /* xero.mp3 in Resources */,
+				996CF749245917DE00382B11 /* plexy.mp3 in Resources */,
+				996CF69D245917DE00382B11 /* hydro.mp3 in Resources */,
+				996CF687245917DE00382B11 /* osse.mp3 in Resources */,
+				996CF732245917DE00382B11 /* ptysis.mp3 in Resources */,
+				996CF61D245917DE00382B11 /* galacto.mp3 in Resources */,
+				996CF615245917DE00382B11 /* ist.mp3 in Resources */,
+				996CF630245917DE00382B11 /* tripsy.mp3 in Resources */,
+				996CF65B245917DE00382B11 /* adipo.mp3 in Resources */,
+				996CF6C0245917DE00382B11 /* con.mp3 in Resources */,
+				996CF694245917DE00382B11 /* hyper.mp3 in Resources */,
+				996CF64A245917DE00382B11 /* super.mp3 in Resources */,
+				996CF753245929F500382B11 /* artio.mp3 in Resources */,
+				996CF6B9245917DE00382B11 /* cyto.mp3 in Resources */,
+				996CF645245917DE00382B11 /* steno.mp3 in Resources */,
+				996CF6F0245917DE00382B11 /* xeno.mp3 in Resources */,
+				996CF679245917DE00382B11 /* arthro.mp3 in Resources */,
+				996CF6EE245917DE00382B11 /* ven.mp3 in Resources */,
+				996CF729245917DE00382B11 /* pauci.mp3 in Resources */,
+				996CF682245917DE00382B11 /* oto.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

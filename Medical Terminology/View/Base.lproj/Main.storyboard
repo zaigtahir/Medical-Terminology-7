@@ -598,7 +598,7 @@
                                                                 <constraint firstAttribute="height" constant="24" id="vRN-cB-pnJ"/>
                                                             </constraints>
                                                             <color key="tintColor" name="color inactive icon"/>
-                                                            <state key="normal" image="speaker28x24"/>
+                                                            <state key="normal" image="speaker_not_playing"/>
                                                             <connections>
                                                                 <action selector="playAudioAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="le6-6R-AqU"/>
                                                             </connections>
@@ -1166,7 +1166,7 @@
                                             <constraint firstAttribute="width" constant="28" id="xH3-u7-sfe"/>
                                         </constraints>
                                         <color key="tintColor" name="color label"/>
-                                        <state key="normal" image="speaker28x24"/>
+                                        <state key="normal" image="speaker_playing"/>
                                         <connections>
                                             <action selector="playAudioAction:" destination="awX-yg-8xS" eventType="touchUpInside" id="kuX-n6-bW7"/>
                                         </connections>
@@ -2134,7 +2134,8 @@
         <image name="quiz3" width="25" height="25"/>
         <image name="redo" width="22" height="19.333333969116211"/>
         <image name="settings zt" width="24" height="24"/>
-        <image name="speaker28x24" width="28" height="24"/>
+        <image name="speaker_not_playing" width="28" height="24"/>
+        <image name="speaker_playing" width="28" height="24"/>
         <namedColor name="color background">
             <color red="0.99199998378753662" green="0.99199998378753662" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -2175,7 +2176,7 @@
             <color red="1" green="0.78823529411764703" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color main 2">
-            <color red="0.26666666666666666" green="0.53725490196078429" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.28235294117647058" green="0.45098039215686275" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color pb background">
             <color red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -62,10 +62,11 @@ class MyTheme{
     
     
     //images
-    // let image_isFavoriteImage = UIImage (named: "heart redish")
-    // let image_isNotFavoriteImage = UIImage (named: "heart gray")
     let image_correct = UIImage(named: "check circle filled")
     let image_incorrect = UIImage(named: "cross circle filled")
+    
+    let image_speaker_playing = UIImage(named: "speaker_playing")
+    let image_speaker_not_playing = UIImage(named: "speaker_not_playing")
     
     let font_unanswered = UIFont(name:"HelveticaNeue", size: 15.0)
     let font_selectedAndCorrect = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
