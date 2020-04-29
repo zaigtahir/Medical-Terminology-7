@@ -9,6 +9,7 @@
 import UIKit
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -17,8 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // database object is made as a static class 
+        
         //check and see if there is a resource present for each audiofile name listed in the database
         
+        let aFC = AudioFileController()
+        let fileNames = aFC.getAudioFileNamesFromDB()
+        print ("found \(fileNames.count) audioFiles names")
         
         return true
     }
