@@ -61,11 +61,14 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
         //set speaker button to not playing
         playAudioButton.setImage(myTheme.image_speaker, for: .normal)
         
+        //check if the audioFile is present in the bundle
+        let aFC = AudioFileController()
+        
         //set audio button enable or disable
-        if dItem.audioFile == "" {
-            playAudioButton.isEnabled = false
-        } else {
+        if dItem.audioFile != "" && aFC.isResourcePresent(fileName: dItem.audioFile) {
             playAudioButton.isEnabled = true
+        } else {
+            playAudioButton.isEnabled = false
         }
         
         flashCardCounter.text = counter

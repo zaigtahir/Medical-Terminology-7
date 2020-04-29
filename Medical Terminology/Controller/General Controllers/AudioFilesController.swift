@@ -39,7 +39,7 @@ class AudioFileController {
         
     }
     
-    private func isResourcePresent (fileName: String) -> Bool {
+    func isResourcePresent (fileName: String) -> Bool {
         
         //get url to db file in the bundle
         guard Bundle.main.url(forResource: fileName, withExtension: nil) != nil else {
