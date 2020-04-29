@@ -56,14 +56,16 @@ class FlashCardCVCell: UICollectionViewCell {
         
         utilities.setFavoriteState(button: favoriteButton, isFavorite: dItem.isFavorite)
         
+        
+        //set audio button image
+        playAudioButton.setImage(myTheme.image_speaker_not_playing, for: .normal)
+        
         //set audio button enable or disable
         if dItem.audioFile == "" {
             playAudioButton.isEnabled = false
         } else {
             playAudioButton.isEnabled = true
         }
-        
-        
         
         flashCardCounter.text = counter
         
