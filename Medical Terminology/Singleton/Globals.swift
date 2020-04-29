@@ -15,9 +15,8 @@ import Foundation
 let myTheme = MyTheme ()
 let myConstants = MyConstants ()
 let myFMDB = MyFMDB()
-let myAudioPlayer = MyAudioPlayer()
 
-
+//let myAudioPlayer = MyAudioPlayer()
 //var myConstants = Theme()
 
 enum FlashCardViewMode {

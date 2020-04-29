@@ -182,7 +182,7 @@ class DItemController {
         
     }
     
-    func getDItems ( favoriteState: Int, learnedState: Int, orderBy: Int = -1, limit: Int = -1 ) -> [DItem] {
+    func getDItemsWTF ( favoriteState: Int, learnedState: Int, orderBy: Int = -1, limit: Int = -1 ) -> [DItem] {
         
         let wQuery = wherePortion(favoriteState: favoriteState, learnedState: learnedState, orderBy: orderBy, limit: limit)
         

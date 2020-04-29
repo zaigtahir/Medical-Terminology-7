@@ -11,9 +11,7 @@ import UIKit
 
 
 class MyTheme{
-    
-    //for light theme, use color gray back for card, tab bar, disabled button color
-    
+        
     //colors
     let colorFavorite = UIColor(named: "color favorite")
     let colorNotFavorite = UIColor(named: "color inactive icon")
@@ -26,7 +24,7 @@ class MyTheme{
     
     //MARK: Flashcards
     let color_fch_button = UIColor(named: "color main")
-        
+    
     //MARK: Learning home
     let colorLhPbForeground = UIColor(named: "color main")
     let colorLhPbBackground = UIColor(named: "color pb background")
@@ -36,7 +34,7 @@ class MyTheme{
     
     //MARK: Quiz home
     let colorQuizButton = UIColor(named: "color main 2")
-
+    
     let color_correct = UIColor(named: "color correct")
     let color_incorrect = UIColor(named: "color incorrect")
     let color_learned = UIColor(named: "color correct")
@@ -44,7 +42,7 @@ class MyTheme{
     
     let colorCardBorder = UIColor(named: "color card border")
     
-
+    
     //colors of quiz set home
     let color_pb_quiz_foreground = UIColor(named: "color main 2")
     let color_pb_quiz_background = UIColor(named: "color pb background")
@@ -64,9 +62,10 @@ class MyTheme{
     //images
     let image_correct = UIImage(named: "check circle filled")
     let image_incorrect = UIImage(named: "cross circle filled")
-    
-    let image_speaker_playing = UIImage(named: "speaker_playing")
-    let image_speaker_not_playing = UIImage(named: "speaker_not_playing")
+        
+    //use next three speaker images to make animation
+    let image_speaker = UIImage(named: "speakerC")
+    let image_speaker_playing = UIImage(named: "speakerC_playing")
     
     let font_unanswered = UIFont(name:"HelveticaNeue", size: 15.0)
     let font_selectedAndCorrect = UIFont(name:"HelveticaNeue-Bold", size: 15.0)

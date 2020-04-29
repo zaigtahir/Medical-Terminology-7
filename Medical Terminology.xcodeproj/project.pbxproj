@@ -63,6 +63,8 @@
 		5AF85732228F22C8008929D5 /* FlashCardHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85731228F22C8008929D5 /* FlashCardHome.swift */; };
 		5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85733228F26A1008929D5 /* FlashCardController.swift */; };
 		5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */; };
+		994175DC245A36B100E281DB /* adeno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 994175DB245A36B000E281DB /* adeno.mp3 */; };
+		994175DE245A38A900E281DB /* AudioFilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175DD245A38A900E281DB /* AudioFilesController.swift */; };
 		996CF5FB245917DE00382B11 /* rrhea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF494245917DD00382B11 /* rrhea.mp3 */; };
 		996CF5FC245917DE00382B11 /* radi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF495245917DD00382B11 /* radi.mp3 */; };
 		996CF5FD245917DE00382B11 /* re.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF496245917DD00382B11 /* re.mp3 */; };
@@ -466,6 +468,8 @@
 		5AF85731228F22C8008929D5 /* FlashCardHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardHome.swift; sourceTree = "<group>"; };
 		5AF85733228F26A1008929D5 /* FlashCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardController.swift; sourceTree = "<group>"; };
 		5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCVCell.swift; sourceTree = "<group>"; };
+		994175DB245A36B000E281DB /* adeno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = adeno.mp3; path = Audio/A/adeno.mp3; sourceTree = SOURCE_ROOT; };
+		994175DD245A38A900E281DB /* AudioFilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFilesController.swift; sourceTree = "<group>"; };
 		996CF494245917DD00382B11 /* rrhea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rrhea.mp3; sourceTree = "<group>"; };
 		996CF495245917DD00382B11 /* radi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = radi.mp3; sourceTree = "<group>"; };
 		996CF496245917DD00382B11 /* re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = re.mp3; sourceTree = "<group>"; };
@@ -843,6 +847,7 @@
 				5AC448B422BC072C004B47C1 /* QuestionController.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
+				994175DD245A38A900E281DB /* AudioFilesController.swift */,
 			);
 			path = "General Controllers";
 			sourceTree = "<group>";
@@ -1194,6 +1199,7 @@
 				996CF516245917DE00382B11 /* acanth.mp3 */,
 				996CF50B245917DE00382B11 /* acusis.mp3 */,
 				996CF510245917DE00382B11 /* ad.mp3 */,
+				994175DB245A36B000E281DB /* adeno.mp3 */,
 				996CF4FB245917DD00382B11 /* adipo.mp3 */,
 				996CF4FF245917DD00382B11 /* adsuffix.mp3 */,
 				996CF4F4245917DD00382B11 /* aero.mp3 */,
@@ -1891,6 +1897,7 @@
 				996CF60C245917DE00382B11 /* iasis.mp3 in Resources */,
 				996CF6E2245917DE00382B11 /* dia.mp3 in Resources */,
 				996CF658245917DE00382B11 /* andro.mp3 in Resources */,
+				994175DC245A36B100E281DB /* adeno.mp3 in Resources */,
 				996CF71A245917DE00382B11 /* lepsis.mp3 in Resources */,
 				996CF67D245917DE00382B11 /* oligo.mp3 in Resources */,
 				996CF6FB245917DE00382B11 /* ex.mp3 in Resources */,
@@ -1984,6 +1991,7 @@
 				5A03478C22D39D0900749EBC /* FMDatabaseQueue.m in Sources */,
 				5A4BB81D229A48690089A474 /* FlashCardOptionsVC.swift in Sources */,
 				5A37F87A22E74B18008A5FA5 /* CVScrollController.swift in Sources */,
+				994175DE245A38A900E281DB /* AudioFilesController.swift in Sources */,
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
 				5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */,
 				5A886374218E82330013FC8B /* DItemController.swift in Sources */,

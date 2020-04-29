@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol FCFavoritePressedDelegate: AnyObject {
     func userPressedFavoriteButton(itemID: Int)
 }
 
-class FlashCardCVCell: UICollectionViewCell {
+class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
     
     @IBOutlet weak var termLabel: UILabel!
     @IBOutlet weak var showHiddenTermButton: UIButton!
@@ -27,8 +28,9 @@ class FlashCardCVCell: UICollectionViewCell {
     let dIC = DItemController()
     private var itemID: Int!
     private var dItem : DItem! //initialize in configure and use to play audio, and to keep track of favorite state locally
-    
     private var utilities = Utilities()
+    
+    private var audioPlayer: AVAudioPlayer?
     
     weak var delegate: FCFavoritePressedDelegate?
     
@@ -56,9 +58,8 @@ class FlashCardCVCell: UICollectionViewCell {
         
         utilities.setFavoriteState(button: favoriteButton, isFavorite: dItem.isFavorite)
         
-        
-        //set audio button image
-        playAudioButton.setImage(myTheme.image_speaker_not_playing, for: .normal)
+        //set speaker button to not playing
+        playAudioButton.setImage(myTheme.image_speaker, for: .normal)
         
         //set audio button enable or disable
         if dItem.audioFile == "" {
@@ -100,7 +101,7 @@ class FlashCardCVCell: UICollectionViewCell {
         
         super.awakeFromNib()
         // Initialization code
-
+        
         cellView.layer.cornerRadius = myConstants.layout_cornerRadius
         cellView.layer.borderWidth = 1
         cellView.clipsToBounds = true
@@ -114,8 +115,35 @@ class FlashCardCVCell: UICollectionViewCell {
         cellView.layer.borderColor = myTheme.colorCardBorder?.cgColor
     }
     
+    func playAudio (audioFileWithExtension: String) {
+        
+        do {
+            if let fileURL = Bundle.main.url(forResource: audioFileWithExtension, withExtension: nil) {
+                
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileURL.path))
+                audioPlayer?.delegate = self
+                audioPlayer?.prepareToPlay()
+                audioPlayer?.play()
+                
+            } else {
+                print("No file with with the name: \(audioFileWithExtension)")
+                return
+            }
+        } catch let error {
+            print("Can't play the audio file failed with an error \(error.localizedDescription)")
+            return
+        }
+        
+    }
+    
+    //MARK: Delegate methods
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        //change the speaker image to no playing
+        playAudioButton.setImage(myTheme.image_speaker, for: .normal)
+    }
+    
     @IBAction func favoriteButtonAction(_ sender: Any) {
-       
+        
         //toggle LOCAL dItem to keep track of the favorite state for just the favorite display button
         dItem.isFavorite = !dItem.isFavorite
         utilities.setFavoriteState(button: favoriteButton, isFavorite: dItem.isFavorite)
@@ -133,8 +161,19 @@ class FlashCardCVCell: UICollectionViewCell {
     }
     
     @IBAction func playAudioAction(_ sender: Any) {
-        //play the audio associated with the item displayed
-        myAudioPlayer.playAudio(audioFileWithExtension: dItem.audioFile)
-    }
-    
+        
+        if let player = audioPlayer {
+            if player.isPlaying {
+                player.stop()
+                playAudioButton.setImage(myTheme.image_speaker, for: .normal)
+                return
+                }
+            }
+            
+            //play the audio associated with the item displayed
+            playAudio(audioFileWithExtension: dItem.audioFile)
+            playAudioButton.setImage(myTheme.image_speaker_playing, for: .normal)
+            
+        }
+        
 }

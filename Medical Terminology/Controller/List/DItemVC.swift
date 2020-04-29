@@ -8,7 +8,8 @@
 
 import UIKit
 import AVFoundation
-class DItemVC: UIViewController {
+
+class DItemVC: UIViewController, AVAudioPlayerDelegate  {
     
     @IBOutlet weak var termLabel: UILabel!
     @IBOutlet weak var definitionLabel: UILabel!
@@ -19,6 +20,8 @@ class DItemVC: UIViewController {
     
     let dIC = DItemController()
     let utilities = Utilities()
+    
+    private var audioPlayer: AVAudioPlayer?
     
     var itemID : Int!    //set this from previous controller
     var dItem : DItem!   //set this in viewDidLoad
@@ -56,6 +59,33 @@ class DItemVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func playAudio (audioFileWithExtension: String) {
+        
+        do {
+            if let fileURL = Bundle.main.url(forResource: audioFileWithExtension, withExtension: nil) {
+                
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileURL.path))
+                audioPlayer?.delegate = self
+                audioPlayer?.prepareToPlay()
+                audioPlayer?.play()
+                
+            } else {
+                print("No file with with the name: \(audioFileWithExtension)")
+                return
+            }
+        } catch let error {
+            print("Can't play the audio file failed with an error \(error.localizedDescription)")
+            return
+        }
+        
+    }
+    
+    //MARK: Delegate methods
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        //change the speaker image to no playing
+        playAudioButton.setImage(myTheme.image_speaker, for: .normal)
+    }
+    
     @IBAction func favoriteButtonAction(_ sender: Any) {
         
         dItem.isFavorite = !dItem.isFavorite    //local toggle
@@ -66,10 +96,22 @@ class DItemVC: UIViewController {
     @IBAction func playAudioAction(_ sender: Any) {
         //play the audio associated with the item displayed
         
-        let dItem = dIC.getDItem(itemID: itemID)
-        myAudioPlayer.playAudio(audioFileWithExtension: dItem.audioFile)
+        if let player = audioPlayer {
+            if player.isPlaying {
+                player.stop()
+                playAudioButton.setImage(myTheme.image_speaker, for: .normal)
+                return
+            }
+        }
+        
+        //play the audio associated with the item displayed
+        playAudio(audioFileWithExtension: dItem.audioFile)
+        playAudioButton.setImage(myTheme.image_speaker_playing, for: .normal)
+        
         
     }
+    
+    
     
     
     

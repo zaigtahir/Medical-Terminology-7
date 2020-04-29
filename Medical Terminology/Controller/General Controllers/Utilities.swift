@@ -140,4 +140,6 @@ class Utilities {
         dIC.saveLearnedDefinition(itemID: 14, learnedState: false)
     }
     
+   
+    
 }
