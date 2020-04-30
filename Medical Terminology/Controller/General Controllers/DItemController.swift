@@ -258,8 +258,6 @@ class DItemController {
             favoriteState = 1
         }
         
-        print("dIC.saveFavorite: state is \(favoriteState)")
-        
         myFMDB.fmdb.executeUpdate("UPDATE dictionary SET isFavorite = ? where itemID = ?", withArgumentsIn: [favoriteState, itemID])
         
     }
@@ -293,9 +291,10 @@ class DItemController {
     
     //MARK: QUIZ QUESTION related functions
     
-    func clearAllAnsweredItems () {
+    func clearAllAnsweredItems_BACK () {
+        //MARK:- changed this to execute update dont know why execute Query was working. maybe im not using this function?
         
-        myFMDB.fmdb.executeQuery("UPDATE dictionary SET answeredTerm = ?, answeredDefinition = ? WHERE itemID >= 0", withArgumentsIn: [0,0])
+        myFMDB.fmdb.executeUpdate("UPDATE dictionary SET answeredTerm = ?, answeredDefinition = ? WHERE itemID >= 0", withArgumentsIn: [0,0])
         
     }
     
@@ -324,7 +323,7 @@ class DItemController {
                 query = "UPDATE dictionary SET answeredDefinition = 0 WHERE itemID >= 0"
             }
         }
-        print("dIC.clearAnsweredItems, query: \(query)")
+ 
         myFMDB.fmdb.executeUpdate(query, withArgumentsIn: []  )
     }
 

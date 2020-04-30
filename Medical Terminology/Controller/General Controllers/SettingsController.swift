@@ -19,23 +19,26 @@ class SettingsController {
         let query = "Select * from settings WHERE settingID = 0"
         
         if let resultSet = myFMDB.fmdb.executeQuery(query, withParameterDictionary: nil) {
-            
-            let column = resultSet.columnCount
-            for i in 0...column - 1 {
-                let name = resultSet.columnName(for: i)
-                print (name)
-            }
+    
             //there will only be a single result
             resultSet.next()
             
             settings.showIntro = Int(resultSet.int(forColumn: "showIntro"))
+            
             return settings
             
         } else {
-            print("problem getting the settings object from the database, returning a new initialized Settings objecdt")
+            print("problem getting the settings object from the database, returning a new initialized Settings object")
             
             return settings
         }
+        
+    }
+    
+    func saveShowIntro (showIntro: Int) {
+        //save the value in the database (remember only to save 0 or 1)
+        
+        myFMDB.fmdb.executeUpdate("UPDATE settings SET showIntro = ? where settingID = 0", withArgumentsIn: [showIntro])
         
     }
    
