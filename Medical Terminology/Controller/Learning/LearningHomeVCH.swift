@@ -18,9 +18,6 @@ class LearningHomeVCH {
     var startNewSet = true          //will be used for segue
    
     init () {
-        print("making sample DB entries from LearningHomeVCH")
-           let utilities = Utilities()
-           utilities.makeSampleDBEntries() //make sample entries
        }
     
     /**

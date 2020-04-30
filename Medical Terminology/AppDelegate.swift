@@ -23,6 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         aFC.checkAudioFiles()
         print("Audio file check done! if there were any missing they would be listed before this ending line.")
         
+        
+       
+        
+        //get settings
+        let sC = SettingsController()
+        
+        print("showIntro settings from db: \(sC.getSettings().showIntro)")
+        
         return true
     }
 

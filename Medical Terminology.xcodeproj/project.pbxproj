@@ -65,6 +65,8 @@
 		5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */; };
 		994175DC245A36B100E281DB /* adeno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 994175DB245A36B000E281DB /* adeno.mp3 */; };
 		994175DE245A38A900E281DB /* AudioFilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175DD245A38A900E281DB /* AudioFilesController.swift */; };
+		994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E1245B5BAE00E281DB /* SettingsController.swift */; };
+		994175E6245B5C0200E281DB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E5245B5C0200E281DB /* Settings.swift */; };
 		996CF5FB245917DE00382B11 /* rrhea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF494245917DD00382B11 /* rrhea.mp3 */; };
 		996CF5FC245917DE00382B11 /* radi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF495245917DD00382B11 /* radi.mp3 */; };
 		996CF5FD245917DE00382B11 /* re.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF496245917DD00382B11 /* re.mp3 */; };
@@ -470,6 +472,8 @@
 		5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCVCell.swift; sourceTree = "<group>"; };
 		994175DB245A36B000E281DB /* adeno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = adeno.mp3; path = Audio/A/adeno.mp3; sourceTree = SOURCE_ROOT; };
 		994175DD245A38A900E281DB /* AudioFilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFilesController.swift; sourceTree = "<group>"; };
+		994175E1245B5BAE00E281DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		994175E5245B5C0200E281DB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		996CF494245917DD00382B11 /* rrhea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rrhea.mp3; sourceTree = "<group>"; };
 		996CF495245917DD00382B11 /* radi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = radi.mp3; sourceTree = "<group>"; };
 		996CF496245917DD00382B11 /* re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = re.mp3; sourceTree = "<group>"; };
@@ -848,6 +852,7 @@
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
 				994175DD245A38A900E281DB /* AudioFilesController.swift */,
+				994175E1245B5BAE00E281DB /* SettingsController.swift */,
 			);
 			path = "General Controllers";
 			sourceTree = "<group>";
@@ -1008,6 +1013,7 @@
 				5A1506242255796C00717AB8 /* Question.swift */,
 				5A15062922557E7C00717AB8 /* Answer.swift */,
 				5AD08054227860D000962AB6 /* AlphaList.swift */,
+				994175E5245B5C0200E281DB /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1957,6 +1963,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */,
 				5A2A58F022FCA3AE00434910 /* QuizBase.swift in Sources */,
 				5A367D2E22EA683F003A7E4B /* LearningHomeOptionsVC.swift in Sources */,
 				5AC448B522BC072C004B47C1 /* QuestionController.swift in Sources */,
@@ -1965,6 +1972,7 @@
 				5A03478E22D39D0900749EBC /* FMDatabase.m in Sources */,
 				5AF85732228F22C8008929D5 /* FlashCardHome.swift in Sources */,
 				5AD08055227860D000962AB6 /* AlphaList.swift in Sources */,
+				994175E6245B5C0200E281DB /* Settings.swift in Sources */,
 				5A2A58DD22F8C35200434910 /* QuizSetVC.swift in Sources */,
 				5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */,
 				5A03479022D39D0900749EBC /* FMDatabaseAdditions.m in Sources */,

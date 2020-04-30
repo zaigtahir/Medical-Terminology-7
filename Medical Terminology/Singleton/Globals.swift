@@ -10,8 +10,6 @@ import Foundation
 
 //global variables
 
-//testing line
-
 let myTheme = MyTheme ()
 let myConstants = MyConstants ()
 let myFMDB = MyFMDB()

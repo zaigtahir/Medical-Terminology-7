@@ -20,8 +20,6 @@ class QuizHomeVCH {
     var startNewQuiz: Bool = true    //will be used for segue
     
     init () {
-        //let utilities = Utilities()
-        //utilities.makeSampleDBEntries() //make sample entries
     }
     
     /**
