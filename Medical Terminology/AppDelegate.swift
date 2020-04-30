@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // database object is made as a static class 
-        
         //check and see if there is a resource present for each audiofile name listed in the database
         print("In AppDelegate checking if each audiofile name in the database has a matching audiofile in the resource bundle")
         let aFC = AudioFileController()
