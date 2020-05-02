@@ -15,7 +15,6 @@ class MyTheme{
     //colors
     let colorFavorite = UIColor(named: "color favorite")
     let colorNotFavorite = UIColor(named: "color inactive icon")
-    let colorMain = UIColor(named: "color blue 4")  //to remove later
     
     //MARK: Common colors
     let colorButtonEnabledTint = UIColor(named: "color text button")
@@ -33,7 +32,7 @@ class MyTheme{
     let colorLhButton = UIColor(named: "color main")
     
     //MARK: Quiz home
-    let colorQuizButton = UIColor(named: "color main 2")
+    let colorQuizButton = UIColor(named: "color main")
     
     let color_correct = UIColor(named: "color correct")
     let color_incorrect = UIColor(named: "color incorrect")
@@ -44,7 +43,7 @@ class MyTheme{
     
     
     //colors of quiz set home
-    let color_pb_quiz_foreground = UIColor(named: "color main 2")
+    let color_pb_quiz_foreground = UIColor(named: "color main")
     let color_pb_quiz_background = UIColor(named: "color pb background")
     let color_pb_quiz_fillcolor = UIColor(named: "color background")
     
