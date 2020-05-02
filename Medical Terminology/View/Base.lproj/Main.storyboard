@@ -242,7 +242,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" name="color card accent"/>
+                                                            <color key="backgroundColor" name="color card border"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="IKq-4S-cy6" secondAttribute="trailing" constant="10" id="DUH-UU-Gnu"/>
                                                                 <constraint firstItem="IKq-4S-cy6" firstAttribute="leading" secondItem="1JH-jD-1iT" secondAttribute="leading" constant="10" id="EZM-nr-Sqw"/>
@@ -375,7 +375,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Are Done!" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtJ-gC-BHA">
                                                             <rect key="frame" x="60.333333333333329" y="45" width="254.33333333333337" height="46.666666666666657"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                                            <color key="textColor" name="color heading"/>
+                                                            <color key="textColor" name="color main"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You learned all the terms" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFl-Gd-8Ak">
@@ -713,7 +713,7 @@
                                         <color key="tintColor" name="color text button"/>
                                         <state key="normal" image="arrow_shuffle2"/>
                                         <state key="disabled">
-                                            <color key="titleColor" name="color inactive icons"/>
+                                            <color key="titleColor" name="color inactive icon"/>
                                         </state>
                                         <connections>
                                             <action selector="randomButtonAction:" destination="1VE-GN-9V0" eventType="touchUpInside" id="6lw-Tg-mOk"/>
@@ -725,7 +725,7 @@
                                         <color key="tintColor" name="color text button"/>
                                         <state key="normal" image="arrow_down"/>
                                         <state key="disabled">
-                                            <color key="titleColor" name="color inactive icons"/>
+                                            <color key="titleColor" name="color inactive icon"/>
                                         </state>
                                         <connections>
                                             <action selector="nextButtonAction:" destination="1VE-GN-9V0" eventType="touchUpInside" id="JIh-SK-TnN"/>
@@ -982,7 +982,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tGH-PG-Amh" propertyAccessControl="none">
                                 <rect key="frame" x="0.0" y="122" width="414" height="521"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" name="color label"/>
+                                <color key="tintColor" name="color text"/>
                                 <color key="separatorColor" name="color card border"/>
                                 <color key="sectionIndexColor" name="color text"/>
                                 <prototypes>
@@ -1284,7 +1284,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3% DONE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sbG-yH-ayZ">
                                                         <rect key="frame" x="0.0" y="0.0" width="133" height="33.666666666666664"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
-                                                        <color key="textColor" name="color main 2"/>
+                                                        <color key="textColor" name="color main"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DS4-Mm-2lg">
@@ -1328,7 +1328,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEN-a8-bBc">
                                                 <rect key="frame" x="0.0" y="107" width="250" height="50"/>
-                                                <color key="backgroundColor" name="color main 2"/>
+                                                <color key="backgroundColor" name="color main"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="2xA-6E-xEm"/>
                                                 </constraints>
@@ -1343,7 +1343,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QM7-RP-PRb">
                                                 <rect key="frame" x="0.0" y="182" width="250" height="50"/>
-                                                <color key="backgroundColor" name="color main 2"/>
+                                                <color key="backgroundColor" name="color main"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Vk1-mV-1Fs"/>
                                                 </constraints>
@@ -1592,7 +1592,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Final Grade: A+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrO-GG-ccQ">
                                                                     <rect key="frame" x="36.333333333333343" y="40" width="278.33333333333326" height="46.666666666666657"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                                                    <color key="textColor" name="color heading"/>
+                                                                    <color key="textColor" name="color main"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You got 2 of 8 (or 58%) correct" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaM-4q-Vfi">
@@ -2099,9 +2099,6 @@
         <namedColor name="color background">
             <color red="0.99199998378753662" green="0.99199998378753662" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="color card accent">
-            <color white="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </namedColor>
         <namedColor name="color card background">
             <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -2117,20 +2114,10 @@
         <namedColor name="color heading">
             <color red="0.17647058823529413" green="0.17647058823529413" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        
         <namedColor name="color inactive icon">
             <color red="0.61599999666213989" green="0.61599999666213989" blue="0.61599999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="color inactive icons">
-            <color red="0.61568627450980395" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="color label">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.60600000619888306" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="color main">
-            <color red="0.28235294117647058" green="0.45098039215686275" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="color main 2">
             <color red="0.28235294117647058" green="0.45098039215686275" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color pb background">
