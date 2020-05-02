@@ -1853,7 +1853,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
-                                <rect key="frame" x="20" y="93.999999999999972" width="374" height="445.33333333333326"/>
+                                <rect key="frame" x="20" y="94" width="374" height="581.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ANV-ZS-Eo2">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="100.33333333333333"/>
@@ -1927,8 +1927,8 @@
                                             <constraint firstAttribute="trailing" secondItem="bxQ-ML-d5m" secondAttribute="trailing" id="99w-Tg-thk"/>
                                         </constraints>
                                     </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIcon3_64" translatesAutoresizingMaskIntoConstraints="NO" id="Gov-Oz-bIH">
-                                        <rect key="frame" x="0.0" y="381.33333333333331" width="374" height="64"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIcon3_200" translatesAutoresizingMaskIntoConstraints="NO" id="Gov-Oz-bIH">
+                                        <rect key="frame" x="0.0" y="381.33333333333331" width="374" height="199.99999999999994"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -2081,7 +2081,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="appIcon3_64" width="64" height="64"/>
+        <image name="appIcon3_200" width="200" height="200"/>
         <image name="arrow_down" width="12" height="12"/>
         <image name="arrow_shuffle2" width="30" height="18"/>
         <image name="arrow_up" width="12" height="12"/>
