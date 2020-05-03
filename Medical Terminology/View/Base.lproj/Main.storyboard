@@ -1866,7 +1866,7 @@
                                                 <color key="onTintColor" name="color main"/>
                                                 <color key="thumbTintColor" name="color thumb tint"/>
                                                 <connections>
-                                                    <action selector="showScreenSwitch:" destination="frx-7u-7So" eventType="valueChanged" id="Vps-ao-DjP"/>
+                                                    <action selector="showWelcomeScreenSwitchAction:" destination="frx-7u-7So" eventType="valueChanged" id="feF-rx-RY0"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -1878,7 +1878,7 @@
                                             <constraint firstAttribute="height" constant="50" id="bHz-32-1YF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="Visit The Website">
+                                        <state key="normal" title="Visit The App Website">
                                             <color key="titleColor" name="color text button"/>
                                         </state>
                                         <connections>
@@ -1892,7 +1892,7 @@
                                             <constraint firstAttribute="height" constant="50" id="MQD-VN-1KS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title=" Start The App">
+                                        <state key="normal" title=" Start Using The App">
                                             <color key="titleColor" name="color text button"/>
                                         </state>
                                         <connections>
@@ -2015,6 +2015,7 @@
                                                 <color key="thumbTintColor" name="color thumb tint"/>
                                                 <connections>
                                                     <action selector="showScreenSwitch:" destination="frx-7u-7So" eventType="valueChanged" id="l7f-48-Zm1"/>
+                                                    <action selector="showWelcomeScreenSwitchAction:" destination="hmf-BQ-AFc" eventType="valueChanged" id="Tac-UE-Bgo"/>
                                                 </connections>
                                             </switch>
                                         </subviews>

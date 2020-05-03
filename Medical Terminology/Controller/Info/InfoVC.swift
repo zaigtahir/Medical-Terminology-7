@@ -38,6 +38,17 @@ class InfoVC: UIViewController, MFMailComposeViewControllerDelegate {
         controller.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func showWelcomeScreenSwitchAction(_ sender: UISwitch) {
+        
+        var showScreen = 0
+              if sender.isOn {
+                  showScreen = 1
+              }
+              
+              let sC = SettingsController()
+              sC.saveShowWelcomeScreen(showIntro: showScreen)
+    }
+    
     @IBAction func seeWebsiteButtonAction(_ sender: Any) {
         
         if let url = URL(string: "https://theappgalaxy.com") {

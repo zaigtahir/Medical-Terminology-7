@@ -34,7 +34,7 @@ class WelcomeScreenVC: UIViewController {
     }
     */
 
-    @IBAction func showScreenSwitch(_ sender: UISwitch) {
+    @IBAction func showWelcomeScreenSwitchAction(_ sender: UISwitch) {
         
         var showScreen = 0
         if sender.isOn {
