@@ -29,7 +29,6 @@
 		5A2A58F022FCA3AE00434910 /* QuizBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58EF22FCA3AE00434910 /* QuizBase.swift */; };
 		5A2A58F322FCA5F200434910 /* QuizSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58F222FCA5F200434910 /* QuizSet.swift */; };
 		5A2A58F522FCA64900434910 /* LearningSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58F422FCA64900434910 /* LearningSet.swift */; };
-		5A340420242444FD00C744E3 /* TestVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A34041F242444FD00C744E3 /* TestVCViewController.swift */; };
 		5A34042424269DBF00C744E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A34042324269DBF00C744E3 /* Assets.xcassets */; };
 		5A367D2E22EA683F003A7E4B /* LearningHomeOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D2D22EA683F003A7E4B /* LearningHomeOptionsVC.swift */; };
 		5A367D3022EF3F99003A7E4B /* QuizHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D2F22EF3F99003A7E4B /* QuizHome.swift */; };
@@ -436,7 +435,6 @@
 		5A2A58EF22FCA3AE00434910 /* QuizBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBase.swift; sourceTree = "<group>"; };
 		5A2A58F222FCA5F200434910 /* QuizSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSet.swift; sourceTree = "<group>"; };
 		5A2A58F422FCA64900434910 /* LearningSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningSet.swift; sourceTree = "<group>"; };
-		5A34041F242444FD00C744E3 /* TestVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestVCViewController.swift; path = Test/TestVCViewController.swift; sourceTree = "<group>"; };
 		5A34042324269DBF00C744E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A367D2D22EA683F003A7E4B /* LearningHomeOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeOptionsVC.swift; sourceTree = "<group>"; };
 		5A367D2F22EF3F99003A7E4B /* QuizHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizHome.swift; path = "Medical Terminology/Controller/Quiz/QuizHome.swift"; sourceTree = SOURCE_ROOT; };
@@ -999,7 +997,6 @@
 				5A2A58E122F8DD7000434910 /* Quiz */,
 				5A2A58E222F8DDB800434910 /* Learning */,
 				5A15062722557B4600717AB8 /* General Controllers */,
-				5A34041F242444FD00C744E3 /* TestVCViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2011,7 +2008,6 @@
 				5A367D3022EF3F99003A7E4B /* QuizHome.swift in Sources */,
 				5A4471612283DFB9008E3107 /* SearchLists.swift in Sources */,
 				5A4471652284EE85008E3107 /* ListCC.swift in Sources */,
-				5A340420242444FD00C744E3 /* TestVCViewController.swift in Sources */,
 				5A15062A22557E7C00717AB8 /* Answer.swift in Sources */,
 				5A03479422D3CCF700749EBC /* MyFMDB.swift in Sources */,
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
