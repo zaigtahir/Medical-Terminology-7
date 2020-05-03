@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("saving 0")
         
-        sC.saveShowIntro(showIntro: 0)
+        sC.saveShowWelcomeScreen(showIntro: 0)
         
               print("showIntro settings from db: \(sC.getSettings().showIntro)")
         return true

@@ -66,6 +66,7 @@
 		994175DE245A38A900E281DB /* AudioFilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175DD245A38A900E281DB /* AudioFilesController.swift */; };
 		994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E1245B5BAE00E281DB /* SettingsController.swift */; };
 		994175E6245B5C0200E281DB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E5245B5C0200E281DB /* Settings.swift */; };
+		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
 		996CF5FB245917DE00382B11 /* rrhea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF494245917DD00382B11 /* rrhea.mp3 */; };
 		996CF5FC245917DE00382B11 /* radi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF495245917DD00382B11 /* radi.mp3 */; };
 		996CF5FD245917DE00382B11 /* re.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF496245917DD00382B11 /* re.mp3 */; };
@@ -472,6 +473,7 @@
 		994175DD245A38A900E281DB /* AudioFilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFilesController.swift; sourceTree = "<group>"; };
 		994175E1245B5BAE00E281DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		994175E5245B5C0200E281DB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
 		996CF494245917DD00382B11 /* rrhea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rrhea.mp3; sourceTree = "<group>"; };
 		996CF495245917DD00382B11 /* radi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = radi.mp3; sourceTree = "<group>"; };
 		996CF496245917DD00382B11 /* re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = re.mp3; sourceTree = "<group>"; };
@@ -997,6 +999,7 @@
 				5A2A58E122F8DD7000434910 /* Quiz */,
 				5A2A58E222F8DDB800434910 /* Learning */,
 				5A15062722557B4600717AB8 /* General Controllers */,
+				9950D3DD245E72C10052574A /* WelcomeScreen */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1021,6 +1024,14 @@
 				5A189C30216D8E8400929AB8 /* Main.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		9950D3DD245E72C10052574A /* WelcomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */,
+			);
+			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
 		996CF492245917DD00382B11 /* Audio */ = {
@@ -2007,6 +2018,7 @@
 				5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */,
 				5A367D3022EF3F99003A7E4B /* QuizHome.swift in Sources */,
 				5A4471612283DFB9008E3107 /* SearchLists.swift in Sources */,
+				9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */,
 				5A4471652284EE85008E3107 /* ListCC.swift in Sources */,
 				5A15062A22557E7C00717AB8 /* Answer.swift in Sources */,
 				5A03479422D3CCF700749EBC /* MyFMDB.swift in Sources */,

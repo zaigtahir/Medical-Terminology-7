@@ -35,7 +35,7 @@ class SettingsController {
         
     }
     
-    func saveShowIntro (showIntro: Int) {
+    func saveShowWelcomeScreen (showIntro: Int) {
         //save the value in the database (remember only to save 0 or 1)
         
         myFMDB.fmdb.executeUpdate("UPDATE settings SET showIntro = ? where settingID = 0", withArgumentsIn: [showIntro])

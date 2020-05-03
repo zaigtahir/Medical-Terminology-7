@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class MyConstants {
+    
+    //website names
+    let appWebsite = "https://theappgalaxy.com"
+    
     //do not change these numbers. They are used as indexes of arrays too
     let listType_Full = 0
     let listType_Favorite = 1
