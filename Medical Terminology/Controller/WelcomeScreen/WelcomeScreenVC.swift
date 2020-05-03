@@ -12,6 +12,7 @@ class WelcomeScreenVC: UIViewController {
 
     @IBOutlet weak var seeWebsiteButton: UIButton!
     @IBOutlet weak var startAppButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -21,21 +22,8 @@ class WelcomeScreenVC: UIViewController {
         
         //the show screen button should always be ON otherwise you wouldn't see this screen
         
-        //see whether to skip this screen and seque to the app tab controller
-        
-        performSegue(withIdentifier: "sequeAppTabController", sender: nil)
-        
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func showWelcomeScreenSwitchAction(_ sender: UISwitch) {
         
@@ -48,6 +36,7 @@ class WelcomeScreenVC: UIViewController {
         sC.saveShowWelcomeScreen(showIntro: showScreen)
         
     }
+    
     @IBAction func seeWebsiteButtonAction(_ sender: Any) {
         if let url = URL(string: myConstants.appWebsite) {
             UIApplication.shared.open(url)
