@@ -14,7 +14,7 @@ class SettingsController {
     func getSettings () -> Settings {
         
         let settings = Settings()
-        settings.showIntro = 444
+        settings.showWelcomeScreen = 444
         
         let query = "Select * from settings WHERE settingID = 0"
         
@@ -23,7 +23,7 @@ class SettingsController {
             //there will only be a single result
             resultSet.next()
             
-            settings.showIntro = Int(resultSet.int(forColumn: "showIntro"))
+            settings.showWelcomeScreen = Int(resultSet.int(forColumn: "showWelcome"))
             
             return settings
             
@@ -38,7 +38,7 @@ class SettingsController {
     func saveShowWelcomeScreen (showIntro: Int) {
         //save the value in the database (remember only to save 0 or 1)
         
-        myFMDB.fmdb.executeUpdate("UPDATE settings SET showIntro = ? where settingID = 0", withArgumentsIn: [showIntro])
+        myFMDB.fmdb.executeUpdate("UPDATE settings SET showWelcome = ? where settingID = 0", withArgumentsIn: [showIntro])
         
     }
    

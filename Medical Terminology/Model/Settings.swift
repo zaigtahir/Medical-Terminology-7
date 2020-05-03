@@ -9,5 +9,5 @@
 import Foundation
 
 class Settings {
-    var showIntro = 0
+    var showWelcomeScreen = 0
 }

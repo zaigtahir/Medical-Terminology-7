@@ -28,13 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //get settings
         let sC = SettingsController()
-        print("showIntro settings from db: \(sC.getSettings().showIntro)")
+        print("showIntro settings from db: \(sC.getSettings().showWelcomeScreen)")
         
         print("saving 0")
         
         sC.saveShowWelcomeScreen(showIntro: 0)
         
-              print("showIntro settings from db: \(sC.getSettings().showIntro)")
+              print("showIntro settings from db: \(sC.getSettings().showWelcomeScreen)")
         return true
     }
 

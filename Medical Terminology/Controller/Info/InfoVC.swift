@@ -11,14 +11,26 @@ import MessageUI
 
 
 class InfoVC: UIViewController, MFMailComposeViewControllerDelegate {
-
-    @IBOutlet weak var feedbackLabel: UILabel!
-    @IBOutlet weak var feebackButton: UIButton!
-
+    
+    @IBOutlet weak var showScreenSwitch: UISwitch!
+    @IBOutlet weak var seeWebsiteButton: UIButton!
+    @IBOutlet weak var emailButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        emailButton.layer.cornerRadius = myConstants.button_cornerRadius
+        
+        seeWebsiteButton.layer.cornerRadius = myConstants.button_cornerRadius
+        
+        //set the showScreenSwitch position
+        let sC = SettingsController()
+        let showScreenState = sC.getSettings().showWelcomeScreen
+        if showScreenState == 1 {
+            showScreenSwitch.isOn = true
+        } else {
+            showScreenSwitch.isOn = false
+        }
     }
     
     //MARK:- delegate functions
@@ -26,7 +38,8 @@ class InfoVC: UIViewController, MFMailComposeViewControllerDelegate {
         controller.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func feedbackButtonAction(_ sender: Any) {
+    @IBAction func seeWebsiteButtonAction(_ sender: Any) {
+        
         if let url = URL(string: "https://theappgalaxy.com") {
             UIApplication.shared.open(url)
         }
@@ -34,7 +47,7 @@ class InfoVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func emailSupportButtonAction(_ sender: Any) {
-    
+        
         guard MFMailComposeViewController.canSendMail() else {
             //can't sent email with this device
             let alert = UIAlertController(title: "Email Issue", message: "It looks like you can not send an email on this device using this link. You can try sending an email directly to support@theappgalaxy.com using your email program", preferredStyle: .alert)
@@ -51,6 +64,6 @@ class InfoVC: UIViewController, MFMailComposeViewControllerDelegate {
         composer.setMessageBody("Hey, I got some feedback for you...", isHTML: false)
         
         present(composer, animated: true)
-    
+        
     }
 }
