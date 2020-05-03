@@ -992,13 +992,13 @@
 		5A88634C21853DC90013FC8B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5A78911123428AC600F7EC48 /* Info */,
-				5A37F85122E29819008A5FA5 /* Shared */,
 				5A2A58E322F8DEA500434910 /* Flashcards */,
+				5A15062722557B4600717AB8 /* General Controllers */,
+				5A78911123428AC600F7EC48 /* Info */,
+				5A2A58E222F8DDB800434910 /* Learning */,
 				5A2A58E422F8DEC900434910 /* List */,
 				5A2A58E122F8DD7000434910 /* Quiz */,
-				5A2A58E222F8DDB800434910 /* Learning */,
-				5A15062722557B4600717AB8 /* General Controllers */,
+				5A37F85122E29819008A5FA5 /* Shared */,
 				9950D3DD245E72C10052574A /* WelcomeScreen */,
 			);
 			path = Controller;

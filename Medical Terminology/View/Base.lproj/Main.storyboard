@@ -1897,7 +1897,7 @@
                                         </state>
                                         <connections>
                                             <action selector="seeCurrentSetButtonAction:" destination="asc-Xo-Hni" eventType="touchUpInside" id="0jW-ZB-ayu"/>
-                                            <segue destination="9CB-n8-Tpz" kind="presentation" modalPresentationStyle="fullScreen" id="Gat-gO-atU">
+                                            <segue destination="9CB-n8-Tpz" kind="presentation" identifier="sequeAppTabController" modalPresentationStyle="fullScreen" id="Gat-gO-atU">
                                                 <segue key="commit" inheritsFrom="parent" id="CQx-mh-ar2"/>
                                                 <segue key="preview" inheritsFrom="commit" id="6Y7-zB-aNd"/>
                                             </segue>

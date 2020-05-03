@@ -21,9 +21,12 @@ class WelcomeScreenVC: UIViewController {
         
         //the show screen button should always be ON otherwise you wouldn't see this screen
         
+        //see whether to skip this screen and seque to the app tab controller
+        
+        performSegue(withIdentifier: "sequeAppTabController", sender: nil)
+        
     }
     
-
     /*
     // MARK: - Navigation
 
