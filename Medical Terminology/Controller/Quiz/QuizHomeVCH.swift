@@ -78,7 +78,7 @@ class QuizHomeVCH {
         let counts = getCounts()
         
         if isFavoriteMode && dIC.getCount(favoriteState: 1) == 0 {
-            return "You don't have any favorites selected to show here. You can select some on the Flascards or the List tabs to see them here."
+            return myConstants.noFavoritesAvailableText
         }
         
         var favoriteText = ""

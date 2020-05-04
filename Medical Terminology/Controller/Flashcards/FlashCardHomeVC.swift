@@ -20,10 +20,10 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var randomButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var favoriteListEmptyLabel: UILabel!
+    @IBOutlet weak var noFavoritesLabel: UILabel!
     
     var utilities = Utilities()
-
+    
     let scrollDelegate = CVScrollController()
     let flashCardVCH = FlashCardVCH()
     let dIC  = DItemController()
@@ -33,7 +33,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     let enabledButtonTint = myTheme.colorButtonEnabledTint
     let disabledButtonColor = myTheme.colorButtonDisabled
     let disabledButtonTint = myTheme.colorButtonDisabledTint
-        
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -54,7 +54,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         previousButton.isEnabled = false
         randomButton.isEnabled = true
         nextButton.isEnabled = true
-                
+        
         favoritesSwitch.layer.cornerRadius = 16
         favoritesSwitch.isOn = flashCardVCH.getFavoriteMode()
         favoritesSwitch.onTintColor = myTheme.colorFavorite
@@ -63,6 +63,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         nextButton.layer.cornerRadius = myConstants.button_cornerRadius
         randomButton.layer.cornerRadius = myConstants.button_cornerRadius
         
+        noFavoritesLabel.text = myConstants.noFavoritesAvailableText
         updateDisplay()
     }
     
@@ -127,7 +128,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         favoritesLabel.text = "\(favoriteCount)"
         
         updateButtons()
-            
+        
     }
     
     func updateButtons () {
@@ -139,7 +140,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         for b in [previousButton, randomButton, nextButton] {
             utilities.formatButtonColor(button: b!, enabledBackground: enabledButtonColor!, enabledTint: enabledButtonTint!, disabledBackground: disabledButtonColor!, disabledTint: disabledButtonTint!)
         }
-    
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

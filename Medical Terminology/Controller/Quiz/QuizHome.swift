@@ -65,6 +65,7 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
             
             //isFavorite = true, but the user has not selected any favorites
             circleBarView.isHidden = true
+            percentLabel.isHidden = true
             heartImage.isHidden = false
             redoButton.isHidden = true
             messageLabel.text = quizHomeVCH.getMessageText()
@@ -75,6 +76,7 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
         
         let counts = quizHomeVCH.getCounts()
         circleBarView.isHidden = false
+        percentLabel.isHidden = false
         heartImage.isHidden = true
         redoButton.isHidden = false
         

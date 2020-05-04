@@ -17,12 +17,12 @@ class ListVC: UIViewController, ListTCDelagate {
     @IBOutlet weak var favoritesLabel: UILabel!
     @IBOutlet weak var favoritesSwitch: UISwitch!
     @IBOutlet weak var heartImage: UIImageView!
-    @IBOutlet weak var listIsEmptyLabel: UILabel!
+    @IBOutlet weak var noFavoritesLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     
     var itemID = 0 //will hold the itemID based on the row the user clicks, will be used for performing the detail seque
     var listTC: ListVCH! //need to keep a reference here
-  
+    
     let dIC = DItemController()
     
     override func viewDidLoad() {
@@ -39,20 +39,14 @@ class ListVC: UIViewController, ListTCDelagate {
         favoritesSwitch.clipsToBounds = true
         favoritesSwitch.onTintColor = myTheme.colorFavorite
         favoritesSwitch.isOn = listTC.isFavoritesOnly()
-    
+        
         //setting the same instance of ListTC and set its delegate to SELF to it can message back to me here
         listTC.delegate = self
         listTC.tableViewReference = tableView
         
+        noFavoritesLabel.text = myConstants.noFavoritesAvailableText
+        
         searchBar.delegate = listTC
-      //  searchBar.searchTextField.textColor = myTheme.color_searchText
-        
-        /*
-        //color of search bar
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-        textFieldInsideSearchBar?.backgroundColor = myTheme.colorSearchBar
- */
-        
         updateDisplay()
     }
     
@@ -67,7 +61,7 @@ class ListVC: UIViewController, ListTCDelagate {
         //remember to use listTC.makeList function to refresh the data before using tableView.reload
         updateCounter()
         let favCount = dIC.getCount(favoriteState: 1, learnedState: -1)
-    
+        
         if listTC.isFavoritesOnly() {
             favoritesSwitch.isOn = true
         } else {
@@ -80,7 +74,7 @@ class ListVC: UIViewController, ListTCDelagate {
         if listTC.isSearching() {
             //in search mode
             tableView.isHidden = false
-            listIsEmptyLabel.isHidden = true
+            noFavoritesLabel.isHidden = true
             heartImage.isHidden = true
             
             
@@ -90,13 +84,13 @@ class ListVC: UIViewController, ListTCDelagate {
             if favCount == 0 && listTC.isFavoritesOnly() {
                 //favorite list is empty. do not show the table Need to show the list is empty message
                 tableView.isHidden = true
-                listIsEmptyLabel.isHidden = false
+                noFavoritesLabel.isHidden = false
                 heartImage.isHidden = false
                 
             } else {
                 //need to show table data
                 tableView.isHidden = false
-                listIsEmptyLabel.isHidden = true
+                noFavoritesLabel.isHidden = true
                 heartImage.isHidden = true
             }
         }
