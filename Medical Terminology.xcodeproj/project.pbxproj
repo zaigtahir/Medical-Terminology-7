@@ -59,7 +59,7 @@
 		5AC448B522BC072C004B47C1 /* QuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC448B422BC072C004B47C1 /* QuestionController.swift */; };
 		5AD08055227860D000962AB6 /* AlphaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD08054227860D000962AB6 /* AlphaList.swift */; };
 		5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD725E5225E4E2F007CED84 /* MyTheme.swift */; };
-		5AF85732228F22C8008929D5 /* FlashCardHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85731228F22C8008929D5 /* FlashCardHome.swift */; };
+		5AF85732228F22C8008929D5 /* FlashCardHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85731228F22C8008929D5 /* FlashCardHomeVC.swift */; };
 		5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85733228F26A1008929D5 /* FlashCardController.swift */; };
 		5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */; };
 		994175DC245A36B100E281DB /* adeno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 994175DB245A36B000E281DB /* adeno.mp3 */; };
@@ -466,7 +466,7 @@
 		5AC448B422BC072C004B47C1 /* QuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionController.swift; sourceTree = "<group>"; };
 		5AD08054227860D000962AB6 /* AlphaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaList.swift; sourceTree = "<group>"; };
 		5AD725E5225E4E2F007CED84 /* MyTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTheme.swift; sourceTree = "<group>"; };
-		5AF85731228F22C8008929D5 /* FlashCardHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardHome.swift; sourceTree = "<group>"; };
+		5AF85731228F22C8008929D5 /* FlashCardHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardHomeVC.swift; sourceTree = "<group>"; };
 		5AF85733228F26A1008929D5 /* FlashCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardController.swift; sourceTree = "<group>"; };
 		5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCVCell.swift; sourceTree = "<group>"; };
 		994175DB245A36B000E281DB /* adeno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = adeno.mp3; path = Audio/A/adeno.mp3; sourceTree = SOURCE_ROOT; };
@@ -934,7 +934,7 @@
 				5A4BB81C229A48690089A474 /* FlashCardOptionsVC.swift */,
 				5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */,
 				5A99D5D8233BE53B00CA518A /* FlashCardVCH.swift */,
-				5AF85731228F22C8008929D5 /* FlashCardHome.swift */,
+				5AF85731228F22C8008929D5 /* FlashCardHomeVC.swift */,
 			);
 			path = Flashcards;
 			sourceTree = "<group>";
@@ -993,10 +993,10 @@
 			isa = PBXGroup;
 			children = (
 				5A2A58E322F8DEA500434910 /* Flashcards */,
+				5A2A58E422F8DEC900434910 /* List */,
 				5A15062722557B4600717AB8 /* General Controllers */,
 				5A78911123428AC600F7EC48 /* Info */,
 				5A2A58E222F8DDB800434910 /* Learning */,
-				5A2A58E422F8DEC900434910 /* List */,
 				5A2A58E122F8DD7000434910 /* Quiz */,
 				5A37F85122E29819008A5FA5 /* Shared */,
 				9950D3DD245E72C10052574A /* WelcomeScreen */,
@@ -1978,7 +1978,7 @@
 				5A189C3F217123B900929AB8 /* DItem.swift in Sources */,
 				5A367D3422EF513F003A7E4B /* CircularBar.swift in Sources */,
 				5A03478E22D39D0900749EBC /* FMDatabase.m in Sources */,
-				5AF85732228F22C8008929D5 /* FlashCardHome.swift in Sources */,
+				5AF85732228F22C8008929D5 /* FlashCardHomeVC.swift in Sources */,
 				5AD08055227860D000962AB6 /* AlphaList.swift in Sources */,
 				994175E6245B5C0200E281DB /* Settings.swift in Sources */,
 				5A2A58DD22F8C35200434910 /* QuizSetVC.swift in Sources */,

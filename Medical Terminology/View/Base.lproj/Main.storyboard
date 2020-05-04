@@ -485,7 +485,7 @@
         <!--Flashcards-->
         <scene sceneID="WbC-ZN-3GM">
             <objects>
-                <viewController storyboardIdentifier="flashcardController" id="1VE-GN-9V0" customClass="FlashCardHome" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="flashcardController" id="1VE-GN-9V0" customClass="FlashCardHomeVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2001,7 +2001,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jFN-CW-o5M">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="31"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show welcome screen on startup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxy-8e-TP3">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show welcome screen on startup" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xxy-8e-TP3">
                                                 <rect key="frame" x="0.0" y="0.0" width="285" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="color text level 2"/>

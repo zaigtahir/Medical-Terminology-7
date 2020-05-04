@@ -25,29 +25,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //get settings
         let sC = SettingsController()
-        print("showIntro settings from db: \(sC.getSettings().showWelcomeScreen)")
         
-        print("saving 0")
-        
-        sC.saveShowWelcomeScreen(showIntro: 0)
-        
-        print("showIntro settings from db: \(sC.getSettings().showWelcomeScreen)")
-        
-        // selecting if to start at the welcome screen or flashcardhomeVC
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "flashcardController") as! FlashCardHome
-        let navigationController = UINavigationController.init(rootViewController: viewController)
-        self.window?.rootViewController = navigationController
-
-        self.window?.makeKeyAndVisible()
+        if sC.getSettings().showWelcomeScreen == 0 {
+            // selecting if to start at the welcome screen or flashcardhomeVC
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "flashcardController") as! FlashCardHomeVC
+            let navigationController = UINavigationController.init(rootViewController: viewController)
+            self.window?.rootViewController = navigationController
+            
+            self.window?.makeKeyAndVisible()
+        }
         return true
         
         
-        
-        
-        return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -72,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
         //close the singleton database
-        print("application will terminate app delegate")
+        myFMDB.fmdb.close()
     }
     
     

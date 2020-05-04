@@ -11,7 +11,7 @@
 
 import UIKit
 
-class FlashCardHome: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FCFavoritePressedDelegate, FCVModeChangedDelegate {
+class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FCFavoritePressedDelegate, FCVModeChangedDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var favoritesLabel: UILabel!

@@ -16,12 +16,8 @@ class MyFMDB {
     init() {
         
         let utilities = Utilities ()
-        
-        let fileURL = utilities.copyFileToDocumentsDirectory(fileName: "Medical Terminology", fileExtension: "db")
-    
-        
+        let fileURL = utilities.copyFileIfNeeded(fileName: "Medical Terminology", fileExtension: "db")
         fmdb = FMDatabase(path: fileURL?.absoluteString)
-        
         fmdb.open()
         
     }
