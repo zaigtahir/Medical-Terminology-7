@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "flashcardController") as! FlashCardHomeVC
+            let viewController = storyboard.instantiateViewController(withIdentifier: "appTabController") as! UITabBarController
             let navigationController = UINavigationController.init(rootViewController: viewController)
             self.window?.rootViewController = navigationController
             

@@ -485,7 +485,7 @@
         <!--Flashcards-->
         <scene sceneID="WbC-ZN-3GM">
             <objects>
-                <viewController storyboardIdentifier="flashcardController" id="1VE-GN-9V0" customClass="FlashCardHomeVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1VE-GN-9V0" customClass="FlashCardHomeVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1927,7 +1927,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="KvA-dn-KGr">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="9CB-n8-Tpz" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="appTabController" automaticallyAdjustsScrollViewInsets="NO" id="9CB-n8-Tpz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="u0E-CD-P8q"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="XEg-C1-IMD">
