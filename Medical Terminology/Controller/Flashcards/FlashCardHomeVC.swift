@@ -148,7 +148,6 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         vc.delegate = self
     }
     
-    
     func CVCellChanged(cellIndex: Int) {
         updateDisplay()
     }
@@ -162,7 +161,6 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         updateDisplay()
     }
     
-    
     func flashCardViewModeChanged(fcvMode: FlashCardViewMode) {
         flashCardVCH.viewMode = fcvMode
         
@@ -171,7 +169,6 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         collectionView.reloadItems(at: [IndexPath(row: cellIndex, section: 0)])
     }
     
-
     //update options
     
     @IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
