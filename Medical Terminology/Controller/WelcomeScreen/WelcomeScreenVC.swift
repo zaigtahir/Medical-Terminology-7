@@ -23,7 +23,6 @@ class WelcomeScreenVC: UIViewController {
         //the show screen button should always be ON otherwise you wouldn't see this screen
         
     }
-    
 
     @IBAction func showWelcomeScreenSwitchAction(_ sender: UISwitch) {
         

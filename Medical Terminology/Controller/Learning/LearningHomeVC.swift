@@ -64,22 +64,25 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
         favoritesSwitch.isOn = learningHomeVCH.isFavoriteMode
         
         favoritesLabel.text = "\(favoritesCount)"
+                    messageLabel.text = learningHomeVCH.getMessageText()
         
         if learningHomeVCH.isFavoriteMode && favoritesCount == 0 {
             
             //isFavorite = true, but the user has not selected any favorites
             circleBarView.isHidden = true
+            percentLabel.isHidden = true
             heartImage.isHidden = false
             redoButton.isHidden = true
-            messageLabel.text = learningHomeVCH.getMessageText()
             newSetButton.isEnabled = false
             return
         }
         
         let counts = learningHomeVCH.getCounts()
         circleBarView.isHidden = false
+        percentLabel.isHidden = false
         heartImage.isHidden = true
         redoButton.isHidden = false
+        messageLabel.isHidden = false
         
         let foregroundColor = myTheme.colorLhPbForeground?.cgColor
         let backgroundColor = myTheme.colorLhPbBackground?.cgColor
