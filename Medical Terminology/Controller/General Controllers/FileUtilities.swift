@@ -42,4 +42,90 @@ class FileUtilities {
             }
         }
     }
+    
+    //MARK:- Older functions
+    
+    func deleteFileInDocumentDirectory (fileName: String, fileExtension: String) {
+           
+           
+           let fileManager = FileManager()
+           
+           //make a path in the documents directory
+           let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+           
+           let documentDirectoryURL = paths[0]
+           
+           let newURL = documentDirectoryURL.appendingPathComponent("\(fileName).\(fileExtension)")
+           
+           if fileManager.fileExists(atPath: newURL.path) {
+               
+               print("yes file exists!")
+               
+           } else {
+               
+               print("no file does NOT exist")
+           }
+           
+       }
+       
+       func fileExistsInDocumentDirectory (fileName: String, fileExtension: String) -> Bool {
+           
+           let fileManager = FileManager()
+           
+           //make a path in the documents directory
+           let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+           let documentDirectoryURL = paths[0]
+           let newURL = documentDirectoryURL.appendingPathComponent("\(fileName).\(fileExtension)")
+           
+           if fileManager.fileExists(atPath: newURL.path) {
+               return true
+           } else {
+               return false
+           }
+       }
+       
+       func copyFileToDocumentsDirectory (fileName: String, fileExtension: String) -> URL? {
+           // will copy a file from the resource bundle to the document directory and return a URL to it
+           
+           let fileManager = FileManager()
+           
+           //get url to db file in the bundle
+           guard let bundleFileURL = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else {
+               print ("bundleFileURL not found in Utilities")
+               return nil
+           }
+           
+           //make a path in the documents directory
+           let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+           let documentDirectoryURL = paths[0]
+           
+           let newURL = documentDirectoryURL.appendingPathComponent("\(fileName).\(fileExtension)")
+           
+           
+           if fileManager.fileExists(atPath: newURL.path) {
+               print("in copy function: YES file exists, will need to delete it first before copying")
+               do {
+                   try fileManager.removeItem(at: newURL)
+                   print("deleted the file")
+               } catch let error as NSError {
+                   print("There was an error deleting the file: \(error.description)")
+               }
+           } else {
+               print("in copy function: no file does NOT exist")
+           }
+           
+           
+           do {
+               try fileManager.copyItem(at: bundleFileURL, to: newURL)
+               print("copied the database to documents folder")
+               return newURL
+           } catch let error as NSError {
+               print("Could not copy the database to documents folder. Error: \(error.description)")
+           }
+           
+           return newURL
+           
+       }
+       
+
 }
