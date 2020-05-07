@@ -15,6 +15,7 @@ class InfoVC: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var showScreenSwitch: UISwitch!
     @IBOutlet weak var seeWebsiteButton: UIButton!
     @IBOutlet weak var emailButton: UIButton!
+    @IBOutlet weak var copyrightLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class InfoVC: UIViewController, MFMailComposeViewControllerDelegate {
         } else {
             showScreenSwitch.isOn = false
         }
+        
     }
     
     //MARK:- delegate functions
@@ -51,12 +53,17 @@ class InfoVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBAction func seeWebsiteButtonAction(_ sender: Any) {
         
-        if let url = URL(string: "https://theappgalaxy.com") {
+        if let url = URL(string: myConstants.appWebsite) {
             UIApplication.shared.open(url)
         }
         
     }
     
+    @IBAction func showCompanyWebsiteButtonAction(_ sender: Any) {
+        if let url = URL(string: myConstants.companyWebsite) {
+                   UIApplication.shared.open(url)
+               }
+    }
     @IBAction func emailSupportButtonAction(_ sender: Any) {
         
         guard MFMailComposeViewController.canSendMail() else {

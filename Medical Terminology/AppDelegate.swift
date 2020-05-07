@@ -24,22 +24,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Audio file check done! if there were any missing they would be listed before this ending line.")
         
         //get settings
+  
         let sC = SettingsController()
         
         if sC.getSettings().showWelcomeScreen == 0 {
+            
             // selecting if to start at the welcome screen or flashcardhomeVC
+            
             self.window = UIWindow(frame: UIScreen.main.bounds)
             
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "appTabController") as! UITabBarController
+            
+            
+            let tabController = storyboard.instantiateViewController(withIdentifier: "appTabController") as! UITabBarController
+            
+            self.window?.rootViewController = tabController
+            
+            /*
+            
+            
+            
             let navigationController = UINavigationController.init(rootViewController: viewController)
             self.window?.rootViewController = navigationController
             
             self.window?.makeKeyAndVisible()
+ */
         }
+        
         return true
-        
-        
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

@@ -13,7 +13,8 @@ class MyConstants {
     
     //website names
     let appWebsite = "https://theappgalaxy.com"
-    
+    let companyWebsite = "https://theappgalaxy.com"
+    let copyrightNotice = "© 2020 by Dr. Tahir"
     let noFavoritesAvailableText = "There are no favorites available to show"
     //do not change these numbers. They are used as indexes of arrays too
     let listType_Full = 0
