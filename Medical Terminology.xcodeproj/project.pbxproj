@@ -68,6 +68,7 @@
 		994175E6245B5C0200E281DB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E5245B5C0200E281DB /* Settings.swift */; };
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
 		9960C035245FC9A10034486B /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960C034245FC9A10034486B /* FileUtilities.swift */; };
+		9960C09324648B960034486B /* atrio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9960C09224648B960034486B /* atrio.mp3 */; };
 		996CF5FB245917DE00382B11 /* rrhea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF494245917DD00382B11 /* rrhea.mp3 */; };
 		996CF5FC245917DE00382B11 /* radi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF495245917DD00382B11 /* radi.mp3 */; };
 		996CF5FD245917DE00382B11 /* re.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF496245917DD00382B11 /* re.mp3 */; };
@@ -401,7 +402,6 @@
 		996CF74A245917DE00382B11 /* phobia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5F9245917DE00382B11 /* phobia.mp3 */; };
 		996CF74B245917DE00382B11 /* pre.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5FA245917DE00382B11 /* pre.mp3 */; };
 		996CF74D2459283400382B11 /* blastsuffix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF74C2459283400382B11 /* blastsuffix.mp3 */; };
-		996CF753245929F500382B11 /* artio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF752245929F500382B11 /* artio.mp3 */; };
 		996CF75524592A4700382B11 /* adreno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF75424592A4700382B11 /* adreno.mp3 */; };
 /* End PBXBuildFile section */
 
@@ -476,6 +476,7 @@
 		994175E5245B5C0200E281DB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
 		9960C034245FC9A10034486B /* FileUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
+		9960C09224648B960034486B /* atrio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = atrio.mp3; path = Audio/A/atrio.mp3; sourceTree = SOURCE_ROOT; };
 		996CF494245917DD00382B11 /* rrhea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rrhea.mp3; sourceTree = "<group>"; };
 		996CF495245917DD00382B11 /* radi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = radi.mp3; sourceTree = "<group>"; };
 		996CF496245917DD00382B11 /* re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = re.mp3; sourceTree = "<group>"; };
@@ -809,7 +810,6 @@
 		996CF5F9245917DE00382B11 /* phobia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = phobia.mp3; sourceTree = "<group>"; };
 		996CF5FA245917DE00382B11 /* pre.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pre.mp3; sourceTree = "<group>"; };
 		996CF74C2459283400382B11 /* blastsuffix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blastsuffix.mp3; sourceTree = "<group>"; };
-		996CF752245929F500382B11 /* artio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = artio.mp3; path = Audio/A/artio.mp3; sourceTree = SOURCE_ROOT; };
 		996CF75424592A4700382B11 /* adreno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = adreno.mp3; path = Audio/A/adreno.mp3; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -1209,7 +1209,6 @@
 			isa = PBXGroup;
 			children = (
 				996CF75424592A4700382B11 /* adreno.mp3 */,
-				996CF752245929F500382B11 /* artio.mp3 */,
 				996CF50C245917DE00382B11 /* aan.mp3 */,
 				996CF515245917DE00382B11 /* ab.mp3 */,
 				996CF514245917DE00382B11 /* ac.mp3 */,
@@ -1242,6 +1241,7 @@
 				996CF505245917DD00382B11 /* asthenia.mp3 */,
 				996CF509245917DE00382B11 /* athero.mp3 */,
 				996CF4F5245917DD00382B11 /* ation.mp3 */,
+				9960C09224648B960034486B /* atrio.mp3 */,
 				996CF50D245917DE00382B11 /* auri.mp3 */,
 				996CF511245917DE00382B11 /* auto.mp3 */,
 				996CF504245917DD00382B11 /* azo.mp3 */,
@@ -1658,6 +1658,7 @@
 				996CF6E5245917DE00382B11 /* diplo.mp3 in Resources */,
 				996CF6BD245917DE00382B11 /* capit.mp3 in Resources */,
 				996CF695245917DE00382B11 /* hypo.mp3 in Resources */,
+				9960C09324648B960034486B /* atrio.mp3 in Resources */,
 				996CF65F245917DE00382B11 /* adsuffix.mp3 in Resources */,
 				996CF743245917DE00382B11 /* plasty.mp3 in Resources */,
 				996CF606245917DE00382B11 /* uni.mp3 in Resources */,
@@ -1956,7 +1957,6 @@
 				996CF6C0245917DE00382B11 /* con.mp3 in Resources */,
 				996CF694245917DE00382B11 /* hyper.mp3 in Resources */,
 				996CF64A245917DE00382B11 /* super.mp3 in Resources */,
-				996CF753245929F500382B11 /* artio.mp3 in Resources */,
 				996CF6B9245917DE00382B11 /* cyto.mp3 in Resources */,
 				996CF645245917DE00382B11 /* steno.mp3 in Resources */,
 				996CF6F0245917DE00382B11 /* xeno.mp3 in Resources */,
@@ -2105,7 +2105,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2158,7 +2158,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -2179,7 +2179,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zaigtahir.MT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.medicalterms;
 				PRODUCT_NAME = "Med Terms";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2200,7 +2200,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zaigtahir.MT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.medicalterms;
 				PRODUCT_NAME = "Med Terms";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

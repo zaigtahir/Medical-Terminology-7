@@ -46,6 +46,8 @@ class ListVC: UIViewController, ListTCDelagate {
         
         noFavoritesLabel.text = myConstants.noFavoritesAvailableText
         
+        //need this here so cancel button does not get hidden.... seems like a hack
+        searchBar.searchBarStyle = .prominent
         searchBar.delegate = listTC
         updateDisplay()
     }

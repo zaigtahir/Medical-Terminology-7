@@ -34,10 +34,9 @@ class FileUtilities {
             //file DOES NOT exist in the document directory. copy it there from the resource bundle and return it's URL
             do {
                 try fileManager.copyItem(at: bundleFileURL, to: documentURL)
-                print("copied the database to documents folder")
                 return documentURL
             } catch let error as NSError {
-                print("Could not copy the database to documents folder. Error: \(error.description)")
+                print("Could not copy the file to documents folder. Error: \(error.description)")
                 return nil
             }
         }

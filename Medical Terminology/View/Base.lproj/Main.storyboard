@@ -14,7 +14,7 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-gM-IpN">
@@ -199,7 +199,7 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lS5-Wb-Opk">
@@ -496,7 +496,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashCardHomeVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="ybv-e2-hzc">
@@ -586,7 +586,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="388" height="335"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question: 1 of 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeS-GM-bM1">
-                                                            <rect key="frame" x="19.999999999999993" y="20" width="112.33333333333331" height="17"/>
+                                                            <rect key="frame" x="20" y="20" width="348" height="17"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
@@ -621,15 +621,11 @@
                                                             <color key="textColor" name="color heading"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqo-T0-MQp">
-                                                            <rect key="frame" x="20" y="53.333333333333343" width="104" height="32"/>
-                                                            <color key="backgroundColor" name="color inactive icon"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="bnF-TR-L5L"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                            <state key="normal" title="  Show Term  ">
-                                                                <color key="titleColor" name="color text button"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqo-T0-MQp">
+                                                            <rect key="frame" x="20" y="53" width="256" height="33"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                            <state key="normal" title="Show Term">
+                                                                <color key="titleColor" name="color main"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="showTermButtonAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="oFA-Kf-Vk9"/>
@@ -647,12 +643,11 @@
                                                             <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikh-n0-mc6">
-                                                            <rect key="frame" x="20" y="130.66666666666666" width="139" height="32"/>
-                                                            <color key="backgroundColor" name="color inactive icon"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                            <state key="normal" title="  Show Definition  ">
-                                                                <color key="titleColor" name="color text button"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikh-n0-mc6">
+                                                            <rect key="frame" x="20" y="130.33333333333334" width="348" height="33"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                            <state key="normal" title="Show Definition  ">
+                                                                <color key="titleColor" name="color main"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="showHiddenDefinitionButtonAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="xxx-GJ-VNv"/>
@@ -674,8 +669,11 @@
                                                         <constraint firstItem="ikh-n0-mc6" firstAttribute="centerY" secondItem="Zby-jd-SQv" secondAttribute="centerY" id="TJs-PG-Dsw"/>
                                                         <constraint firstItem="MeS-GM-bM1" firstAttribute="top" secondItem="neh-we-HIS" secondAttribute="top" constant="20" id="Ybm-V2-smx"/>
                                                         <constraint firstItem="I8W-7c-jGz" firstAttribute="leading" secondItem="Yem-cz-hUk" secondAttribute="leading" id="ai4-Zp-qbs"/>
+                                                        <constraint firstItem="hMy-Hv-Jif" firstAttribute="leading" secondItem="Jqo-T0-MQp" secondAttribute="trailing" constant="20" id="bS1-rn-N5w"/>
                                                         <constraint firstItem="Tqe-i7-fIi" firstAttribute="centerY" secondItem="Yem-cz-hUk" secondAttribute="centerY" id="cHS-Wa-jtA"/>
+                                                        <constraint firstAttribute="trailing" secondItem="MeS-GM-bM1" secondAttribute="trailing" constant="20" id="eCH-Jm-KkW"/>
                                                         <constraint firstItem="Jqo-T0-MQp" firstAttribute="centerY" secondItem="Yem-cz-hUk" secondAttribute="centerY" id="fuR-ml-76j"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ikh-n0-mc6" secondAttribute="trailing" constant="20" id="pge-Sy-8io"/>
                                                         <constraint firstItem="Zby-jd-SQv" firstAttribute="leading" secondItem="Yem-cz-hUk" secondAttribute="leading" id="sJJ-oF-tjV"/>
                                                         <constraint firstItem="hMy-Hv-Jif" firstAttribute="centerY" secondItem="Yem-cz-hUk" secondAttribute="centerY" id="ssy-Xs-a9g"/>
                                                         <constraint firstItem="MeS-GM-bM1" firstAttribute="leading" secondItem="neh-we-HIS" secondAttribute="leading" constant="20" id="uqn-oo-FCR"/>
@@ -796,7 +794,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashCardOptionsVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -869,7 +867,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -970,7 +968,7 @@
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="ListVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="lvj-Zi-9Ji" userLabel="favorites list empty">
@@ -1102,8 +1100,8 @@
                                     </switch>
                                 </subviews>
                             </stackView>
-                            <searchBar contentMode="redraw" placeholder="search" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fm-OV-cCY">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="search" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fm-OV-cCY">
+                                <rect key="frame" x="20" y="0.0" width="374" height="56"/>
                                 <color key="tintColor" name="color text"/>
                                 <color key="barTintColor" name="color background"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1119,13 +1117,13 @@
                         </subviews>
                         <color key="backgroundColor" name="color background"/>
                         <constraints>
-                            <constraint firstItem="9Fm-OV-cCY" firstAttribute="leading" secondItem="26A-yx-iFb" secondAttribute="leading" id="5LP-w5-pMF"/>
+                            <constraint firstItem="26A-yx-iFb" firstAttribute="trailing" secondItem="9Fm-OV-cCY" secondAttribute="trailing" constant="20" id="BjC-eG-NMk"/>
                             <constraint firstItem="26A-yx-iFb" firstAttribute="trailing" secondItem="hog-0q-VSC" secondAttribute="trailing" constant="20" id="EeX-Ld-afM"/>
-                            <constraint firstItem="9Fm-OV-cCY" firstAttribute="trailing" secondItem="26A-yx-iFb" secondAttribute="trailing" id="Mpk-uc-SBc"/>
                             <constraint firstItem="9Fm-OV-cCY" firstAttribute="top" secondItem="26A-yx-iFb" secondAttribute="top" id="Orz-5l-Yac"/>
                             <constraint firstItem="tGH-PG-Amh" firstAttribute="top" secondItem="hog-0q-VSC" secondAttribute="bottom" constant="15" id="S60-ar-WtH"/>
                             <constraint firstItem="lvj-Zi-9Ji" firstAttribute="centerX" secondItem="26A-yx-iFb" secondAttribute="centerX" id="UeT-sb-adm"/>
                             <constraint firstItem="tGH-PG-Amh" firstAttribute="leading" secondItem="26A-yx-iFb" secondAttribute="leading" id="VJk-Q8-FpV"/>
+                            <constraint firstItem="9Fm-OV-cCY" firstAttribute="leading" secondItem="26A-yx-iFb" secondAttribute="leading" constant="20" id="d0t-ph-IYW"/>
                             <constraint firstItem="hog-0q-VSC" firstAttribute="top" secondItem="9Fm-OV-cCY" secondAttribute="bottom" constant="20" id="hHB-lJ-OHr"/>
                             <constraint firstItem="26A-yx-iFb" firstAttribute="bottom" secondItem="tGH-PG-Amh" secondAttribute="bottom" id="sZd-32-ciM"/>
                             <constraint firstItem="lvj-Zi-9Ji" firstAttribute="centerY" secondItem="26A-yx-iFb" secondAttribute="centerY" id="ttl-3V-Ywv"/>
@@ -1146,14 +1144,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ro2-hw-EGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7082.3999999999996" y="-479.91004497751129"/>
+            <point key="canvasLocation" x="7081.1594202898559" y="-480.16304347826093"/>
         </scene>
         <!--ItemVC-->
         <scene sceneID="MUy-dP-jT9">
             <objects>
                 <viewController id="awX-yg-8xS" customClass="DItemVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4wH-cl-seN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L29-8G-zy9">
@@ -1248,7 +1246,7 @@
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-vJ-agb">
@@ -1437,7 +1435,7 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
@@ -1539,7 +1537,7 @@
                                                             </prototypes>
                                                         </tableView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question: 1 of 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxQ-wB-4J9">
-                                                            <rect key="frame" x="20" y="40" width="231" height="17"/>
+                                                            <rect key="frame" x="19.999999999999993" y="40" width="112.33333333333331" height="17"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
@@ -1551,10 +1549,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O28-6X-1q8">
-                                                            <rect key="frame" x="271" y="34" width="100" height="29"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="s7v-76-ahH"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="152.33333333333337" y="34" width="218.66666666666663" height="29"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="tintColor" name="color text"/>
                                                             <state key="normal" title="Show Answer"/>
@@ -1737,7 +1732,7 @@
             <objects>
                 <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -1856,7 +1851,7 @@
             <objects>
                 <viewController id="frx-7u-7So" customClass="WelcomeScreenVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S7T-mW-wfL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TeH-32-Yxj">
@@ -1985,7 +1980,7 @@
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Med_Terms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
