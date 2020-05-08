@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5A189C28216D8E8400929AB8"
-               BuildableName = "Med Terms.app"
+               BuildableName = "Prefixes &amp; Suffixes.app"
                BlueprintName = "Medical Terminology"
                ReferencedContainer = "container:Medical Terminology.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5A189C28216D8E8400929AB8"
-            BuildableName = "Med Terms.app"
+            BuildableName = "Prefixes &amp; Suffixes.app"
             BlueprintName = "Medical Terminology"
             ReferencedContainer = "container:Medical Terminology.xcodeproj">
          </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5A189C28216D8E8400929AB8"
-            BuildableName = "Med Terms.app"
+            BuildableName = "Prefixes &amp; Suffixes.app"
             BlueprintName = "Medical Terminology"
             ReferencedContainer = "container:Medical Terminology.xcodeproj">
          </BuildableReference>
@@ -71,7 +71,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5A189C28216D8E8400929AB8"
-            BuildableName = "Med Terms.app"
+            BuildableName = "Prefixes &amp; Suffixes.app"
             BlueprintName = "Medical Terminology"
             ReferencedContainer = "container:Medical Terminology.xcodeproj">
          </BuildableReference>
