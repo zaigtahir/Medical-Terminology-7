@@ -424,8 +424,6 @@
 		5A15062922557E7C00717AB8 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		5A189C29216D8E8400929AB8 /* Prefixes & Suffixes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Prefixes & Suffixes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A189C2C216D8E8400929AB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5A189C31216D8E8400929AB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5A189C36216D8E8400929AB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A189C38216D8E8400929AB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A189C3E217123B900929AB8 /* DItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItem.swift; sourceTree = "<group>"; };
 		5A18DF70241E8AD10006825B /* MyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConstants.swift; sourceTree = "<group>"; };
@@ -477,6 +475,8 @@
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
 		9960C034245FC9A10034486B /* FileUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		9960C09224648B960034486B /* atrio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = atrio.mp3; path = Audio/A/atrio.mp3; sourceTree = SOURCE_ROOT; };
+		9960C0942465C5F50034486B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9960C0952465C5F50034486B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		996CF494245917DD00382B11 /* rrhea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rrhea.mp3; sourceTree = "<group>"; };
 		996CF495245917DD00382B11 /* radi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = radi.mp3; sourceTree = "<group>"; };
 		996CF496245917DD00382B11 /* re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = re.mp3; sourceTree = "<group>"; };
@@ -1607,7 +1607,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = 5A189C20216D8E8400929AB8;
 			productRefGroup = 5A189C2A216D8E8400929AB8 /* Products */;
@@ -2039,7 +2038,7 @@
 		5A189C30216D8E8400929AB8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5A189C31216D8E8400929AB8 /* Base */,
+				9960C0952465C5F50034486B /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2047,7 +2046,7 @@
 		5A189C35216D8E8400929AB8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5A189C36216D8E8400929AB8 /* Base */,
+				9960C0942465C5F50034486B /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
