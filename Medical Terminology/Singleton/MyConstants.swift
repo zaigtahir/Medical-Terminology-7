@@ -12,7 +12,7 @@ import UIKit
 class MyConstants {
     
     //website names
-    let appWebsite = "https://theappgalaxy.com"
+    let appWebsite = "https://www.theappgalaxy.com/prefixesandsuffixes.html"
     let companyWebsite = "https://theappgalaxy.com"
     let copyrightNotice = "© 2020 by Dr. Tahir"
     let noFavoritesAvailableText = "There are no favorites available to show"
