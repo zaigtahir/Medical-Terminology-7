@@ -273,6 +273,18 @@
                                                                 <action selector="showAnswerButtonAction:" destination="gjw-m0-0qB" eventType="touchUpInside" id="z1K-vr-j7w"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="aDZ-nL-rDs">
+                                                            <rect key="frame" x="20" y="35" width="351" height="24"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="24" id="t5y-ir-SmB"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="tintColor" name="color text"/>
+                                                            <state key="normal" title="Show Again"/>
+                                                            <connections>
+                                                                <action selector="showAnswerButtonAction:" destination="gjw-m0-0qB" eventType="touchUpInside" id="yaY-Eb-LQa"/>
+                                                            </connections>
+                                                        </button>
                                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K6B-yV-1gw">
                                                             <rect key="frame" x="20" y="119" width="351" height="236"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -339,7 +351,9 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="quaternarySystemFillColor" red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
+                                                        <constraint firstItem="aDZ-nL-rDs" firstAttribute="top" secondItem="2H0-Xf-2Yd" secondAttribute="top" id="1GF-BT-CjJ"/>
                                                         <constraint firstItem="1JH-jD-1iT" firstAttribute="top" secondItem="RIa-g2-paO" secondAttribute="top" id="5qj-nl-axJ"/>
+                                                        <constraint firstItem="aDZ-nL-rDs" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="65M-cP-Bv1"/>
                                                         <constraint firstAttribute="trailing" secondItem="2H0-Xf-2Yd" secondAttribute="trailing" constant="20" id="MqC-aI-yf1"/>
                                                         <constraint firstAttribute="trailing" secondItem="GRt-tQ-K76" secondAttribute="trailing" constant="20" id="Pfa-ON-SHb"/>
                                                         <constraint firstItem="1JH-jD-1iT" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" id="SVv-Fg-okw"/>
@@ -349,6 +363,7 @@
                                                         <constraint firstItem="2H0-Xf-2Yd" firstAttribute="top" secondItem="1JH-jD-1iT" secondAttribute="bottom" constant="5" id="eY7-rR-eSL"/>
                                                         <constraint firstItem="GRt-tQ-K76" firstAttribute="top" secondItem="2H0-Xf-2Yd" secondAttribute="bottom" constant="20" id="jBA-yh-ksO"/>
                                                         <constraint firstItem="K6B-yV-1gw" firstAttribute="top" secondItem="GRt-tQ-K76" secondAttribute="bottom" constant="10" id="luC-Yy-9aj"/>
+                                                        <constraint firstAttribute="trailing" secondItem="aDZ-nL-rDs" secondAttribute="trailing" constant="20" id="ngB-rc-sLP"/>
                                                         <constraint firstItem="2H0-Xf-2Yd" firstAttribute="top" secondItem="1JH-jD-1iT" secondAttribute="bottom" constant="5" id="qwB-My-Oo7"/>
                                                         <constraint firstItem="2H0-Xf-2Yd" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="wwg-Ut-XZ4"/>
                                                         <constraint firstItem="GRt-tQ-K76" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="y0h-WS-Us1"/>
@@ -490,7 +505,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaX-ar-rYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7509" y="518"/>
+            <point key="canvasLocation" x="7508.6956521739139" y="517.66304347826087"/>
         </scene>
         <!--Flashcards-->
         <scene sceneID="WbC-ZN-3GM">
