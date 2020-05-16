@@ -18,7 +18,7 @@ class QuizSetVCH {
         
         let result = quizSet.getGrade()
         
-        return "Final Grade: \(result.grade)"
+        return "\(result.grade)"
     }
     
     func getResultsLabeText () -> String {
@@ -29,7 +29,7 @@ class QuizSetVCH {
         
         let total = quizSet.getTotalQuestionCount()
         
-        return "You got \(correct) of \(total) or (\(result.percent)%) correct."
+        return "You got \(correct) of \(total) or (\(result.percent)%) correct"
         
         
     }
