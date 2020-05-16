@@ -10,6 +10,9 @@ import UIKit
 
 protocol LearnCVCellDelegate: AnyObject {
     func selectedAnswer(questionIndex: Int, answerIndex: Int)
+    
+    //trigger when the user wants to show the card again
+    func showAgain(questionIndex: Int)
 }
 
 class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
@@ -23,8 +26,12 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultRemarksLabel: UILabel!
     @IBOutlet weak var showAnswerButton: UIButton!
+    @IBOutlet weak var showAgainButton: UIButton!
     
-    private var questionIndex: Int! //this the index of the question in the quiz, used to identify the question in the quiz for the delegate function
+    
+    
+    //this the index of the question in the quiz, used to identify the question in the quiz for the delegate function. It is set by the LearnSetVCH when forming this cell with the configure function
+    private var questionIndex: Int!
     
     private var question: Question! //the question to show
     private var showAnswer = false
@@ -55,18 +62,24 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         self.questionIndex = questionIndex
         self.question = question
         questionLabel.text = "\(question.questionText)"
+        
         showAnswerButton.isEnabled = true
+        showAgainButton.isEnabled = true
         
         if question.isAnswered() {
-           
+            
+            showAgainButton.setTitle("Show Again", for: .normal)
+            
             if question.isCorrect() {
                 showAnswerButton.isHidden = true
+                showAgainButton.isHidden = false
                 resultView.backgroundColor = myTheme.color_correct
                 resultRemarksLabel.text = question.getLearningRemarks()
                 
             } else {
                 
                 showAnswerButton.isHidden = false
+                showAgainButton.isHidden = true
                 resultView.backgroundColor = myTheme.color_incorrect
                 resultRemarksLabel.text = question.getLearningRemarks()
             }
@@ -79,6 +92,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             question.learnedTermForItem = item.learnedTerm
 
             showAnswerButton.isHidden = true
+            showAgainButton.isHidden = true
             resultView.backgroundColor = UIColor(named: "color card border")
             resultRemarksLabel.text = ""
         }
@@ -146,4 +160,12 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         showAnswerButton.isEnabled = false
         tableView.reloadData()
     }
+    
+    @IBAction func showAgainButtonAction(_ sender: Any) {
+        showAgainButton.isEnabled = false
+        showAgainButton.setTitle("Will Show Again", for: .normal)
+        delegate?.showAgain(questionIndex: questionIndex)
+    }
 }
+
+

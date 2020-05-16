@@ -79,34 +79,6 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         
     }
     
-    //delegate function from LearnCVCell delegate, this is when the user selects an answer
-    func selectedAnswer(questionIndex: Int, answerIndex: Int) {
-        //if this is answered already, don't do anything
-        let question  = learnSetVCH.learningSet.getQuestion(index: questionIndex)
-        if question.isAnswered() {
-            //don't do anything
-            return
-        }
-        
-        learnSetVCH.learningSet.selectAnswerToQuestion(questionIndex: questionIndex, answerIndex: answerIndex)
-        
-        // will add more questions to the datasource
-        collectionView.reloadData()
-        
-        // need to do this as it makes layout changes for the additional questions.
-        // I use the layout for calculating what I need in the scroll delegate so they layout needs to be done right away
-        
-        collectionView.layoutIfNeeded()
-        
-        updateDisplay()
-        //if the set is complete, show a completion dialog
-        
-    }
-    
-    func retartButtonPressed() {
-        restartLearningSet()
-    }
-    
     func updateDisplay() {
         collectionView.reloadData()
         progressLabel.text = learnSetVCH.getProgressLabelText()
@@ -140,25 +112,60 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         }
     }
     
+    func showOptionsMenu () {
+           let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+           let restartSet = UIAlertAction(title: "Restart this set", style: .default, handler: {action in self.restartLearningSet()})
+           let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+           alertController.addAction(restartSet)
+           alertController.addAction(cancel)
+           self.present(alertController, animated: true, completion: nil)
+       }
+       
+       func restartLearningSet() {
+           learnSetVCH.learningSet.resetLearningSet()
+           scrollDelegate.scrollToTop(collectionView: collectionView)
+           collectionView.reloadData()
+           updateDisplay()
+           
+       }
+    
+    //MARK:- delegate function from LearnCVCell delegate, this is when the user selects an answer
+       func selectedAnswer(questionIndex: Int, answerIndex: Int) {
+           //if this is answered already, don't do anything
+           let question  = learnSetVCH.learningSet.getQuestion(index: questionIndex)
+           if question.isAnswered() {
+               //don't do anything
+               return
+           }
+           
+           learnSetVCH.learningSet.selectAnswerToQuestion(questionIndex: questionIndex, answerIndex: answerIndex)
+           
+           // will add more questions to the datasource
+           collectionView.reloadData()
+           
+           // need to do this as it makes layout changes for the additional questions.
+           // I use the layout for calculating what I need in the scroll delegate so they layout needs to be done right away
+           
+           collectionView.layoutIfNeeded()
+           
+           updateDisplay()
+           //if the set is complete, show a completion dialog
+           
+       }
+       
+       func showAgain(questionIndex: Int) {
+           print("user pressed the show again button")
+       }
+       
+       //end of delegate functions from LearnCVCell
+       
+       func retartButtonPressed() {
+           restartLearningSet()
+       }
+    
+    
     @IBAction func optionsButtonAction(_ sender: UIBarButtonItem) {
         showOptionsMenu()
-    }
-    
-    func showOptionsMenu () {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let restartSet = UIAlertAction(title: "Restart this set", style: .default, handler: {action in self.restartLearningSet()})
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(restartSet)
-        alertController.addAction(cancel)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func restartLearningSet() {
-        learnSetVCH.learningSet.resetLearningSet()
-        scrollDelegate.scrollToTop(collectionView: collectionView)
-        collectionView.reloadData()
-        updateDisplay()
-        
     }
     
     @IBAction func movePreviousButtonAction(_ sender: Any) {
