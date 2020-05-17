@@ -155,6 +155,14 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         print("user pressed the show again button")
         
         learnSetVCH.learningSet.requeueQuestion(questionIndex: questionIndex)
+        
+        collectionView.reloadData()
+        
+        // need to do this as it makes layout changes for the additional questions.
+        // I use the layout for calculating what I need in the scroll delegate so they layout needs to be done right away
+        
+        collectionView.layoutIfNeeded()
+        
        }
        
        //end of delegate functions from LearnCVCell

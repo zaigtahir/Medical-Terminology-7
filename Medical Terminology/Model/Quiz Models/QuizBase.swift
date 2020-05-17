@@ -93,9 +93,7 @@ class QuizBase {
             
             masterList.insert(questionCopy, at: insertIndex)
         }
-        
-        
-        
+    
         printListCounts()
         
     }
