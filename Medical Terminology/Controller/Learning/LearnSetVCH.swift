@@ -43,12 +43,6 @@ class LearningSetVCH {
     func isAtSummary (indexPath: IndexPath) -> Bool {
                 
         let row = indexPath.row
-        print("\n---- LearnSetVCH : isAtSummary: \nrow \(row)")
-        print("activeQuestions.count = \(learningSet.activeQuestions.count)")
-        
-        for q in learningSet.activeQuestions {
-            q.printQuestion()
-        }
         
         if (row == learningSet.activeQuestions.count - 1) && (learningSet.masterList.count == 0) {
             print("returning true")

@@ -93,7 +93,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
 
             showAnswerButton.isHidden = true
             showAgainButton.isHidden = true
-            resultView.backgroundColor = UIColor(named: "color card border")
+            resultView.backgroundColor = myTheme.color_notlearned
             resultRemarksLabel.text = ""
         }
         

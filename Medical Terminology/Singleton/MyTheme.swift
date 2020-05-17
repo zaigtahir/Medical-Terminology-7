@@ -11,7 +11,7 @@ import UIKit
 
 
 class MyTheme{
-        
+    
     //colors
     let colorFavorite = UIColor(named: "color favorite")
     let colorNotFavorite = UIColor(named: "color inactive icon")
@@ -20,6 +20,7 @@ class MyTheme{
     let colorButtonEnabledTint = UIColor(named: "color text button")
     let colorButtonDisabled = UIColor(named: "color button disabled")
     let colorButtonDisabledTint = UIColor(named: "color inactive icon")
+    let colorCardBorder = UIColor(named: "color card border")
     
     //MARK: Flashcards
     let color_fch_button = UIColor(named: "color main")
@@ -31,16 +32,16 @@ class MyTheme{
     
     let colorLhButton = UIColor(named: "color main")
     
-    //MARK: Quiz home
-    let colorQuizButton = UIColor(named: "color main")
+    //MARK: Learning set
     
-    let color_correct = UIColor(named: "color correct")
     let color_incorrect = UIColor(named: "color incorrect")
     let color_learned = UIColor(named: "color correct")
+    
     let color_notlearned = UIColor(named: "color card border")
     
-    let colorCardBorder = UIColor(named: "color card border")
-    
+    //MARK: Quiz home
+    let colorQuizButton = UIColor(named: "color main")
+    let color_correct = UIColor(named: "color correct")
     
     //colors of quiz set home
     let color_pb_quiz_foreground = UIColor(named: "color main")
@@ -57,21 +58,20 @@ class MyTheme{
     let color_wrongAnswer = UIColor(red: 244/255, green: 95/255, blue: 66/255, alpha: 1)
     let color_quizStatusDone = UIColor (red: 144/255, green: 169/255, blue: 86/255, alpha: 1)
     
-    
-    //images
+    //MARK: images
     let image_correct = UIImage(named: "check circle filled")
     let image_incorrect = UIImage(named: "cross circle filled")
-        
+    
     //use next three speaker images to make animation
     let image_speaker = UIImage(named: "speakerC")
     let image_speaker_playing = UIImage(named: "speakerC_playing")
-    
+    /*
     let font_unanswered = UIFont(name:"HelveticaNeue", size: 15.0)
     let font_selectedAndCorrect = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
     let font_selectedAndNotCorrect = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
     let font_notSelectedAndCorrect = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
     let font_notSelectedAndNotCorrect = UIFont(name:"HelveticaNeue", size: 15.0)
-    
+    */
     //progress bar width
     let progressBarWidth = CGFloat(integerLiteral: 15)
     
