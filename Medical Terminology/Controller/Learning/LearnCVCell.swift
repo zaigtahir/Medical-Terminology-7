@@ -28,8 +28,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     @IBOutlet weak var showAnswerButton: UIButton!
     @IBOutlet weak var showAgainButton: UIButton!
     
-    
-    
     //this the index of the question in the quiz, used to identify the question in the quiz for the delegate function. It is set by the LearnSetVCH when forming this cell with the configure function
     private var questionIndex: Int!
     
@@ -48,7 +46,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         cellView.clipsToBounds = true
         
         showAnswerButton.layer.cornerRadius = myConstants.button_cornerRadius
-                
+        
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -58,7 +56,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         cellView.layer.borderColor = UIColor(named: "color card border")?.cgColor
     }
     
-    func configure (question: Question, questionIndex: Int) {
+    func configure (question: Question, questionIndex: Int, quizStatus: QuizStatus) {
         self.questionIndex = questionIndex
         self.question = question
         questionLabel.text = "\(question.questionText)"
@@ -72,7 +70,10 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             
             if question.isCorrect() {
                 showAnswerButton.isHidden = true
-                showAgainButton.isHidden = false
+                
+                if quizStatus == .inProgress {
+                    showAgainButton.isHidden = false
+                }
                 resultView.backgroundColor = myTheme.color_correct
                 resultRemarksLabel.text = question.getLearningRemarks()
                 
@@ -90,7 +91,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             let item = dIC.getDItem(itemID: question.itemID)
             question.learnedDefinitionForItem = item.learnedDefinition
             question.learnedTermForItem = item.learnedTerm
-
+            
             showAnswerButton.isHidden = true
             showAgainButton.isHidden = true
             resultView.backgroundColor = myTheme.color_notlearned

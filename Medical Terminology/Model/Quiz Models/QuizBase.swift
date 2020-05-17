@@ -48,11 +48,8 @@ class QuizBase {
         //will remove the index 0 of masterList and append it to questions
         
         if masterList.count > 0 {
-            
             let question = masterList.remove(at: 0)
-            
             activeQuestions.append(question)
-            
         }
         
     }
@@ -173,7 +170,6 @@ class QuizBase {
         
         return (grade, percent)
     }
-    
     
     func getQuizStatus () -> QuizStatus {
         

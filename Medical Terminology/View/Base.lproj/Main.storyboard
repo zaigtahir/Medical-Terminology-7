@@ -1752,7 +1752,7 @@
                         <viewLayoutGuide key="safeArea" id="fcu-FH-Wgg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Quiz" id="tEx-Lj-kuX">
-                        <barButtonItem key="rightBarButtonItem" id="J3b-ah-3P4">
+                        <barButtonItem key="rightBarButtonItem" image="redo" id="J3b-ah-3P4">
                             <connections>
                                 <action selector="optionsButtonAction:" destination="YaF-0P-3vu" id="wpk-3e-Nmc"/>
                             </connections>
@@ -1767,7 +1767,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WY-tp-sia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7082.6086956521749" y="1572.554347826087"/>
+            <point key="canvasLocation" x="7117" y="1627"/>
         </scene>
         <!--New Quiz Options-->
         <scene sceneID="2Qg-kS-haR">

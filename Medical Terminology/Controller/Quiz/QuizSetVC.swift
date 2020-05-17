@@ -87,13 +87,6 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         
         collectionView.layoutIfNeeded()
         
-        //if the set is complete, show a completion dialog
-        
-        if quizSetVCH.quizSet.getQuizStatus() == 2 {
-            print("you are done!!!")
-            //add a fake question
-        }
-        
         updateDisplay()
     }
     
@@ -103,7 +96,7 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
     
     func updateDisplay () {
         //configure options button
-        if quizSetVCH.quizSet.getQuizStatus() == 0 {
+        if quizSetVCH.quizSet.getQuizStatus() == .notStarted {
             optionsButton.isEnabled = false
         } else {
             optionsButton.isEnabled = true

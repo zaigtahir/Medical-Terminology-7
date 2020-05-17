@@ -14,20 +14,24 @@ class LearningSetVCH {
     
     func getProgressLabelText () -> String {
         
-        let learningStatus = learningSet.getQuizStatus()
         
-        switch learningStatus {
-            
-        case 0, 1:
-            // case 0: not started
-            // case 1: started but not done
-            
-            return "You have answered Correct Number of Total Number questions correctly!"
-            
-        default:
-            return "You're done! You got all Total Number questions correct!."
-            
-        }
+        return "need to program this"
+        /*
+         let learningStatus = learningSet.getQuizStatus()
+         
+         switch learningStatus {
+         
+         case 0, 1:
+         // case 0: not started
+         // case 1: started but not done
+         
+         return "You have answered Correct Number of Total Number questions correctly!"
+         
+         default:
+         return "You're done! You got all Total Number questions correct!."
+         
+         }
+         */
         
     }
     
@@ -41,7 +45,7 @@ class LearningSetVCH {
      Will return true if the collection view is displaying the last card (summary)
      */
     func isAtSummary (indexPath: IndexPath) -> Bool {
-                
+        
         let row = indexPath.row
         
         if (row == learningSet.activeQuestions.count - 1) && (learningSet.masterList.count == 0) {
@@ -55,7 +59,7 @@ class LearningSetVCH {
             
         }
     }
-
+    
 }
 
 
