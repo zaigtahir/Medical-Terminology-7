@@ -129,9 +129,7 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
                 vc.learnSetVCH.learningSet = learningHomeVCH.getNewLearningSet()
                 
             } else {
-                vc.learnSetVCH.learningSet = learningHomeVCH.getLearningSet()
-                vc.startAtCellIndex = 2
-                
+                vc.learnSetVCH.learningSet = learningHomeVCH.getLearningSet()                
             }
         }
         

@@ -13,15 +13,14 @@ class LearningHomeVCH {
     private var learningSet: LearningSet!
     let dIC = DItemController()
     
+    //default variables until the user changes them with the options settings
     var isFavoriteMode  = false
-    var numberOfTerms = 10
-    var startNewSet = true          //will be used for segue
+    var numberOfTerms = 2   // need to fix learning set stuff and options
+    var startNewSet = true  // used to determine if to create a new set or keep current set when going from learning home to learning set
    
-    init () {
-       }
-    
+   
     /**
-     Will return counts based on favorite mode and questions typea
+     Will return counts based on favorite mode and questions type
      */
     func getCounts () -> (learnedTerms: Int, availableToLearn: Int, totalTerms: Int) {
         

@@ -86,12 +86,7 @@ class Question {
         print("learnedDefinitionForItem: \(learnedDefinitionForItem)")
         
     }
-    
-    func resetQuestion () {
-        //make it in unanswered state
-        selectedAnswerIndex = -1
-    }
-    
+        
     func getAnswerStatus (answerIndex: Int) -> Int {
         
         // 0 = question is not answered
@@ -122,6 +117,7 @@ class Question {
         
     }
     
+    //TODO move this and the other remarks out of here!!!!!
     func getLearningRemarks () -> String {
         
         //will return a random phrase of correct or incorrect answers
@@ -183,7 +179,7 @@ class Question {
      Will set to unanswered state
      Will clearn learning fields locally in the question (not in DB)s
      */
-    func resetAnswer () {
+    func resetQuestion () {
         
         selectedAnswerIndex = -1
         learnedTermForItem = false

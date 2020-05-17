@@ -21,8 +21,6 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
     let utilities = Utilities()
     let learnSetVCH = LearningSetVCH()
     
-    var startAtCellIndex = 0
-    
     //button colors
     let enabledButtonColor = myTheme.colorLhButton
     let enabledButtonTint = myTheme.colorButtonEnabledTint
@@ -154,7 +152,9 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
        }
        
        func showAgain(questionIndex: Int) {
-           print("user pressed the show again button")
+        print("user pressed the show again button")
+        
+        learnSetVCH.learningSet.requeueQuestion(questionIndex: questionIndex)
        }
        
        //end of delegate functions from LearnCVCell

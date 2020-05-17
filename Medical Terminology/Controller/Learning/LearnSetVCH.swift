@@ -10,8 +10,6 @@ import UIKit
 
 class LearningSetVCH {
     
-    //for now just create a learning set
-    
     var learningSet: LearningSet!   //configure with configure function in when setting up segue
     
     func getProgressLabelText () -> String {
@@ -20,17 +18,11 @@ class LearningSetVCH {
         
         switch learningStatus {
             
-        //TODO: -- need to return # of questions to learn
-            
         case 0, 1:
-            //not started
-          //  return "You will be learning \(learningSet.getTotalQuestionCount()/2) terms. Let's Go!"
+            // case 0: not started
+            // case 1: started but not done
             
             return "You have answered \n\(learningSet.getAnsweredQuestionsCount()) of \(learningSet.getTotalQuestionCount()) questions correctly!"
-            
-     //   case 1:
-            //in progress
-      //      return "You've learned \(learnedTerms ) of \(learningSet.getTotalQuestionCount()/2) terms."
             
         default:
             return "You're done! You got all \(learningSet.getTotalQuestionCount()) questions correct!."
@@ -49,7 +41,6 @@ class LearningSetVCH {
         
         if startNew {
             //create a new learningset
-            
             learningSet = LearningSet(numberOfTerms: numberOfTerms, isFavorite: isFavorite)
         }
         
@@ -69,6 +60,6 @@ class LearningSetVCH {
             return false
         }
     }
-        
+    
 }
 

@@ -291,13 +291,6 @@ class DItemController {
     
     //MARK: QUIZ QUESTION related functions
     
-    func clearAllAnsweredItems_BACK () {
-        //MARK:- changed this to execute update dont know why execute Query was working. maybe im not using this function?
-        
-        myFMDB.fmdb.executeUpdate("UPDATE dictionary SET answeredTerm = ?, answeredDefinition = ? WHERE itemID >= 0", withArgumentsIn: [0,0])
-        
-    }
-    
     func clearAnsweredItems (isFavorite: Bool, questionsType: QuestionsType) {
         var query: String
         

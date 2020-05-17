@@ -57,6 +57,33 @@ class QuizBase {
         
     }
     
+    /*
+     Create a copy of the question and
+     clear the answer and learning status data in this local object (does not affect the db)
+     Then move the question in interval into the master list. if the interval is too long then move
+     it to the end of the list
+     */
+    func requeueQuestion (questionIndex: Int) {
+        
+        let questionCopy = activeQuestions[questionIndex].getCopy()
+        questionCopy.resetQuestion()    //resets the answer and learn status
+        
+        //get the max index this can be inserted into
+        let interval = myConstants.requeueInterval
+        
+        //ex: master list index 0 1 2 3 count = 4
+        
+        var insertIndex = min(interval, masterList.count - 1)
+        
+        if insertIndex < 0 {
+            //in case the masterList has only one items
+            insertIndex = 0
+        }
+        
+        masterList.insert(questionCopy, at: insertIndex)
+        
+    }
+
     func getQuestion (index: Int) -> Question {
         
         return activeQuestions[index]

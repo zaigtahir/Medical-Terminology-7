@@ -18,18 +18,63 @@ class LearningSet: QuizBase {
     
     private let questionController = QuestionController()
     
-    private func requeueQuestion (questionIndex: Int, interval: Int) {
+    init (numberOfTerms: Int, isFavorite: Bool) {
         
-        // will create a copy of the question and clear it and insert it as a new
-        // question in the masterList "interval" distance away or one less than the last summary place holder question if there aren't enough
-        // requeueing will always be into the master list as only the last question in the active list can be viewed in the unanswered state
+        // will create a learning set with the numberOfTerms if available
+        // It will select terms that are not learned yet (BOTH learnedTerm AND learnedDescription DO NOT EQUAL 1)
         
+        var favoriteState = 0
+        if isFavorite {
+            favoriteState = 1
+        }
         
-        //TODO: requeueing function not right yet
+        itemIDs = dIC.getItemIDs(favoriteState: favoriteState, learnedState: 0, orderBy: 2, limit: numberOfTerms)
+        
+        //need to clear all learnedTerm and learnedQuestion from the items in the db
+        dIC.clearLearnedItems(itemIDs: itemIDs)
+        
+        var questions = [Question]()
+        
+        for itemID in itemIDs {
+            questions.append(questionController.makeTermQuestion(itemID: itemID, randomizeAnswers: true))
+            questions.append(questionController.makeDefinitionQuestion(itemID: itemID, randomizeAnswers: true))
+        }
+        
+        questions.shuffle()
+        
+        super.init(originalQuestions: questions)
+    }
+    
+    /**
+     Will create a copy of the question and clear the learnedTerm and learnedDefinition and insert it as a new question in the masterList "interval" distance away
+     or at the end of the list if there aren't enough
+     
+     Requeueing will always be into the master list as only the last question in the active list can be viewed in the unanswered state! THINK about this yet
+     
+     reset the value of learnedDefinition or the learnedTerm in the db to false depending on type of this question
+     */
+    func requeueQuestion (questionIndex: Int) {
+        
+        let originalQuestion = activeQuestions[questionIndex]
+        
+        if originalQuestion.questionType == .term {
+            if originalQuestion.learnedTermForItem == true {
+                //set to false in db
+                print("learningSet resetting learned term = 0")
+                dIC.saveLearnedTerm(itemID: originalQuestion.itemID, learnedState: false)
+            }
+        } else {
+            //it is definition type question
+            if originalQuestion.learnedDefinitionForItem == true {
+                //set to false in db
+                dIC.saveLearnedDefinition(itemID: originalQuestion.itemID, learnedState: false)
+                print("learningSet resetting learned definition = 0")
+            }
+        }
         
         let questionCopy = activeQuestions[questionIndex].getCopy()
         
-        questionCopy.resetAnswer()
+        questionCopy.resetQuestion()
         
         let interval = myConstants.requeueInterval
         
@@ -47,28 +92,9 @@ class LearningSet: QuizBase {
         
     }
     
-    init (numberOfTerms: Int, isFavorite: Bool) {
-        
-        // will create a learning set with the numberOfTerms if available
-        // It will select terms that are not learned yet (BOTH learnedTerm AND learnedDescription DO NOT EQUAL 1)
-        
-        var favoriteState = 0
-        if isFavorite {
-            favoriteState = 1
-        }
-        
-        itemIDs = dIC.getItemIDs(favoriteState: favoriteState, learnedState: 0, orderBy: 2, limit: numberOfTerms)
-        
-        var questions = [Question]()
-        
-        for itemID in itemIDs {
-            questions.append(questionController.makeTermQuestion(itemID: itemID, randomizeAnswers: true))
-            questions.append(questionController.makeDefinitionQuestion(itemID: itemID, randomizeAnswers: true))
-        }
-        questions.shuffle()
-        
-        super.init(originalQuestions: questions)
-    }
+    //use this function to requeue a correctly answered question
+    //add the question to the stack at the back
+    //clear the database of learned status
     
     func selectAnswerToQuestion (questionIndex: Int, answerIndex: Int) {
         
@@ -81,7 +107,7 @@ class LearningSet: QuizBase {
         
         //requeue the question if the answer is wrong
         if !question.isCorrect() {
-            requeueQuestion(questionIndex: questionIndex, interval: myConstants.requeueInterval)
+            requeueQuestion(questionIndex: questionIndex)
         }
         
         //append question from masterlist to the active list
@@ -124,7 +150,7 @@ class LearningSet: QuizBase {
         return learned
         
     }
-        
+    
     /*
      will return the number questions learned in the active questions array
      learned count is items that ther person correctly got the term OR the definition
