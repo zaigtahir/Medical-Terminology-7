@@ -403,6 +403,7 @@
 		996CF74B245917DE00382B11 /* pre.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF5FA245917DE00382B11 /* pre.mp3 */; };
 		996CF74D2459283400382B11 /* blastsuffix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF74C2459283400382B11 /* blastsuffix.mp3 */; };
 		996CF75524592A4700382B11 /* adreno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF75424592A4700382B11 /* adreno.mp3 */; };
+		99DF26512470EF1E0021AFC1 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DF26502470EF1E0021AFC1 /* Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -475,8 +476,6 @@
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
 		9960C034245FC9A10034486B /* FileUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		9960C09224648B960034486B /* atrio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = atrio.mp3; path = Audio/A/atrio.mp3; sourceTree = SOURCE_ROOT; };
-		9960C0942465C5F50034486B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9960C0952465C5F50034486B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		996CF494245917DD00382B11 /* rrhea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rrhea.mp3; sourceTree = "<group>"; };
 		996CF495245917DD00382B11 /* radi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = radi.mp3; sourceTree = "<group>"; };
 		996CF496245917DD00382B11 /* re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = re.mp3; sourceTree = "<group>"; };
@@ -811,6 +810,9 @@
 		996CF5FA245917DE00382B11 /* pre.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pre.mp3; sourceTree = "<group>"; };
 		996CF74C2459283400382B11 /* blastsuffix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blastsuffix.mp3; sourceTree = "<group>"; };
 		996CF75424592A4700382B11 /* adreno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = adreno.mp3; path = Audio/A/adreno.mp3; sourceTree = SOURCE_ROOT; };
+		99DF26502470EF1E0021AFC1 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -856,6 +858,7 @@
 				994175DD245A38A900E281DB /* AudioFilesController.swift */,
 				994175E1245B5BAE00E281DB /* SettingsController.swift */,
 				9960C034245FC9A10034486B /* FileUtilities.swift */,
+				99DF26502470EF1E0021AFC1 /* Tests.swift */,
 			);
 			path = "General Controllers";
 			sourceTree = "<group>";
@@ -1014,9 +1017,9 @@
 				5A189C3E217123B900929AB8 /* DItem.swift */,
 				5A6F31C921A7032E00E6477E /* DList.swift */,
 				5A1506242255796C00717AB8 /* Question.swift */,
+				994175E5245B5C0200E281DB /* Settings.swift */,
 				5A15062922557E7C00717AB8 /* Answer.swift */,
 				5AD08054227860D000962AB6 /* AlphaList.swift */,
-				994175E5245B5C0200E281DB /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1607,6 +1610,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 5A189C20216D8E8400929AB8;
 			productRefGroup = 5A189C2A216D8E8400929AB8 /* Products */;
@@ -1974,6 +1978,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */,
+				99DF26512470EF1E0021AFC1 /* Tests.swift in Sources */,
 				5A2A58F022FCA3AE00434910 /* QuizBase.swift in Sources */,
 				5A367D2E22EA683F003A7E4B /* LearningHomeOptionsVC.swift in Sources */,
 				5AC448B522BC072C004B47C1 /* QuestionController.swift in Sources */,
@@ -2038,7 +2043,7 @@
 		5A189C30216D8E8400929AB8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9960C0952465C5F50034486B /* en */,
+				99DF26522470F3790021AFC1 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2046,7 +2051,7 @@
 		5A189C35216D8E8400929AB8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9960C0942465C5F50034486B /* en */,
+				99DF26532470F3790021AFC1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

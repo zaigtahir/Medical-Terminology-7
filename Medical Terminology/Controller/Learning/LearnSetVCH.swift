@@ -22,10 +22,10 @@ class LearningSetVCH {
             // case 0: not started
             // case 1: started but not done
             
-            return "You have answered \n\(learningSet.getAnsweredQuestionsCount()) of \(learningSet.getTotalQuestionCount()) questions correctly!"
+            return "You have answered Correct Number of Total Number questions correctly!"
             
         default:
-            return "You're done! You got all \(learningSet.getTotalQuestionCount()) questions correct!."
+            return "You're done! You got all Total Number questions correct!."
             
         }
         
@@ -33,7 +33,8 @@ class LearningSetVCH {
     
     // us for progress bar
     func getProgress () -> (Float) {
-        return (Float(learningSet.getAnsweredQuestionsCount()) / Float(learningSet.getTotalQuestionCount()))
+        return 0.5
+        //return (Float(learningSet.getAnsweredQuestionsCount()) / Float(learningSet.getTotalQuestionCount()))
     }
     
     

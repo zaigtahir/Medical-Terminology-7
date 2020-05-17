@@ -46,49 +46,29 @@ class LearningSet: QuizBase {
     }
     
     /**
-     Will create a copy of the question and clear the learnedTerm and learnedDefinition and insert it as a new question in the masterList "interval" distance away
-     or at the end of the list if there aren't enough
-     
-     Requeueing will always be into the master list as only the last question in the active list can be viewed in the unanswered state! THINK about this yet
-     
-     reset the value of learnedDefinition or the learnedTerm in the db to false depending on type of this question
+     Put a fresh copy of the question into the queue see it again
+     will clear db for the itemID
      */
-    func requeueQuestion (questionIndex: Int) {
+    func seeAgain (questionIndex: Int) {
         
-        let originalQuestion = activeQuestions[questionIndex]
+        //clear database learned settings
+        let question = activeQuestions[questionIndex]
         
-        if originalQuestion.questionType == .term {
-            if originalQuestion.learnedTermForItem == true {
+        if question.questionType == .term {
+            if question.learnedTermForItem == true {
                 //set to false in db
-                print("learningSet resetting learned term = 0")
-                dIC.saveLearnedTerm(itemID: originalQuestion.itemID, learnedState: false)
+                dIC.saveLearnedTerm(itemID: question.itemID, learnedState: false)
             }
         } else {
             //it is definition type question
-            if originalQuestion.learnedDefinitionForItem == true {
+            if question.learnedDefinitionForItem == true {
                 //set to false in db
-                dIC.saveLearnedDefinition(itemID: originalQuestion.itemID, learnedState: false)
-                print("learningSet resetting learned definition = 0")
+                dIC.saveLearnedDefinition(itemID: question.itemID, learnedState: false)
             }
         }
         
-        let questionCopy = activeQuestions[questionIndex].getCopy()
-        
-        questionCopy.resetQuestion()
-        
-        let interval = myConstants.requeueInterval
-        
-        //get the max index this can be inserted into
-        
-        var insertIndex = min(interval, masterList.count - 1)
-        
-        if insertIndex < 0 {
-            //in case the masterList has only one items
-            insertIndex = 0
-        }
-        
-        masterList.insert(questionCopy, at: insertIndex)
-        
+        //now requeue the question using the QuizBase
+        self.requeueQuestion(questionIndex: questionIndex)
         
     }
     
@@ -115,61 +95,6 @@ class LearningSet: QuizBase {
         
     }
     
-    private func getUniqueActiveQuestionsItemIDs () -> [Int] {
-        //used for learning set
-        
-        var itemIDs = [Int]()
-        
-        for q in activeQuestions {
-            itemIDs.append(q.itemID)
-        }
-        
-        return Array(Set(itemIDs))  //will only return unique IDs
-        
-    }
-    
-    /*
-     will return the number questions learned in the active questions array
-     learned count is items that ther person correctly got the term AND the definition
-     */
-    func getLearnedTermsCount () -> Int {
-        
-        let itemIDs = getUniqueActiveQuestionsItemIDs()
-        
-        var learned = 0
-        
-        for itemID in itemIDs {
-            
-            let item = dIC.getDItem(itemID: itemID)
-            if item.learnedTerm && item.learnedDefinition {
-                learned += 1
-            }
-            
-        }
-        
-        return learned
-        
-    }
-    
-    /*
-     will return the number questions learned in the active questions array
-     learned count is items that ther person correctly got the term OR the definition
-     */
-    func getAnsweredQuestionsCount () -> Int {
-        let itemIDs = getUniqueActiveQuestionsItemIDs()
-        
-        var answered = 0
-        
-        for itemID in itemIDs {
-            
-            let item = dIC.getDItem(itemID: itemID)
-            if item.learnedTerm || item.learnedDefinition {
-                answered += 1
-            }
-        }
-        
-        return answered
-    }
     
     func resetLearningSet () {
         
