@@ -65,13 +65,7 @@ class MyTheme{
     //use next three speaker images to make animation
     let image_speaker = UIImage(named: "speakerC")
     let image_speaker_playing = UIImage(named: "speakerC_playing")
-    /*
-    let font_unanswered = UIFont(name:"HelveticaNeue", size: 15.0)
-    let font_selectedAndCorrect = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
-    let font_selectedAndNotCorrect = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
-    let font_notSelectedAndCorrect = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
-    let font_notSelectedAndNotCorrect = UIFont(name:"HelveticaNeue", size: 15.0)
-    */
+   
     //progress bar width
     let progressBarWidth = CGFloat(integerLiteral: 15)
     

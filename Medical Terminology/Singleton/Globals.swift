@@ -25,3 +25,9 @@ enum QuestionsType {
     case definition
     case random
 }
+
+enum QuizStatus {
+    case notStarted
+    case inProgress
+    case done
+}
