@@ -18,6 +18,8 @@ class Question {
     var itemID = 0
     var learnedTermForItem = false
     var learnedDefinitionForItem = false
+    var showAnswer = false
+    var showAgain = false
     
     //initial non selected state. Use to check if this is answered or unanswered
     private var selectedAnswerIndex: Int = -1
@@ -84,7 +86,8 @@ class Question {
         print("questionType: \(questionType)")
         print("learnedTermForItem: \(learnedTermForItem)")
         print("learnedDefinitionForItem: \(learnedDefinitionForItem)")
-        
+        print("showAnswer: \(showAnswer)")
+        print("showAgain: \(showAgain)")
     }
         
     func getAnswerStatus (answerIndex: Int) -> Int {
@@ -171,6 +174,8 @@ class Question {
         question.questionType = self.questionType
         question.learnedTermForItem = self.learnedTermForItem
         question.learnedDefinitionForItem = self.learnedDefinitionForItem
+        question.showAnswer = self.showAnswer
+        question.showAgain = self.showAgain
         
         return question
     }
