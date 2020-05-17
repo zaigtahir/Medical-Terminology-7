@@ -68,22 +68,43 @@ class QuizBase {
         let questionCopy = activeQuestions[questionIndex].getCopy()
         questionCopy.resetQuestion()    //resets the answer and learn status
         
-        //get the max index this can be inserted into
-        let interval = myConstants.requeueInterval
+        //if masterList.count == 0 that means the user was on the very last question and answered it correctly
+        //the program will  have added a blank card to the end of the activeQuestions which would
+        //be a place holder for the done view
         
-        //ex: master list index 0 1 2 3 count = 4
+        //so if the masterList.count == 0, I need to replace the last card in the activeQuestions which would then show up next
         
-        var insertIndex = min(interval, masterList.count - 1)
-        
-        if insertIndex < 0 {
-            //in case the masterList has only one items
-            insertIndex = 0
+        if masterList.count == 0 {
+            // I need to replace the last card in the activeQuestions which would then show up next
+            print("I need to replace the last card in the activeQuestions")
+            activeQuestions.remove(at: activeQuestions.count - 1)   // remove the last item
+            activeQuestions.append(questionCopy)    //append the question
+            
+        } else {
+            // get the max index this can be inserted into in the masterList
+            let interval = myConstants.requeueInterval
+                        
+            var insertIndex = min(interval, masterList.count - 1)
+            
+            if insertIndex < 0 {
+                //in case the masterList has only one items
+                insertIndex = 0
+            }
+            
+            masterList.insert(questionCopy, at: insertIndex)
         }
         
-        masterList.insert(questionCopy, at: insertIndex)
+        
+        
+        printListCounts()
         
     }
-
+    
+    func printListCounts() {
+        print("masterList.count = \(masterList.count)")
+        print("activeQuestions.count = \(activeQuestions.count)")
+    }
+    
     func getQuestion (index: Int) -> Question {
         
         return activeQuestions[index]

@@ -37,16 +37,6 @@ class LearningSetVCH {
         //return (Float(learningSet.getAnsweredQuestionsCount()) / Float(learningSet.getTotalQuestionCount()))
     }
     
-    
-    func configure (startNew: Bool, numberOfTerms: Int = 0, isFavorite: Bool = false) {
-        
-        if startNew {
-            //create a new learningset
-            learningSet = LearningSet(numberOfTerms: numberOfTerms, isFavorite: isFavorite)
-        }
-        
-    }
-    
     /**
      Will return true if the collection view is displaying the last card (summary)
      */
@@ -61,6 +51,7 @@ class LearningSetVCH {
             return false
         }
     }
-    
+
 }
+
 
