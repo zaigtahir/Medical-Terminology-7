@@ -15,7 +15,7 @@ class LearningHomeVCH {
     
     //default variables until the user changes them with the options settings
     var isFavoriteMode  = false
-    var numberOfTerms = 1   // need to fix learning set stuff and options
+    var numberOfTerms = 2   // need to fix learning set stuff and options
     var startNewSet = true  // used to determine if to create a new set or keep current set when going from learning home to learning set
    
    

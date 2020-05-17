@@ -110,9 +110,7 @@ class CVScrollController: NSObject, UICollectionViewDelegate, UICollectionViewDe
             print("scrollToCell error state: asking to scroll to cellIndex: \(cellIndex) which is outside range of cellCount: \(cellCount)")
             return
         }
-        
-        
-        
+    
         
         if getScrollDirection(collectionView: collectionView) == HORIZONTAL {
             
