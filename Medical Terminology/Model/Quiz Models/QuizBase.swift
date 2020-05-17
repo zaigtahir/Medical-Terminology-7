@@ -83,7 +83,7 @@ class QuizBase {
         } else {
             // get the max index this can be inserted into in the masterList
             let interval = myConstants.requeueInterval
-                        
+            
             var insertIndex = min(interval, masterList.count - 1)
             
             if insertIndex < 0 {
@@ -93,7 +93,7 @@ class QuizBase {
             
             masterList.insert(questionCopy, at: insertIndex)
         }
-    
+        
         
     }
     
@@ -174,39 +174,23 @@ class QuizBase {
         return (grade, percent)
     }
     
-    /**
-     return value
-     Int: 0 = not started, 1 = in progress, 2 = finished
-     */
-    func getQuizStatus () -> Int {
-        
-        
-        // if first question not answered, return 0
-        
-        // if first question is answered, and last question is NOT answered, return 1
-        
-        // if last question is answered, return 2
+    
+    func getQuizStatus () -> QuizStatus {
         
         if !activeQuestions[0].isAnswered() {
-            
             //first question is not answered, so quiz ia not started
-            
-            return 0
-            
+            return .notStarted
         }
         
-        //here at least the first question is answered so the quiz is either in progress or complete
+        // is last question answered? Last question is activeList.count - 2 as the very last one is a blank place holder
+        let isLastQuestionAnswered = activeQuestions[activeQuestions.count - 2].isAnswered()
         
-        let lastQuestion = activeQuestions[activeQuestions.count - 1]
-        
-        if lastQuestion.isAnswered() {
-            
-            return 2 //is complete
-            
+        if masterList.count == 0 && isLastQuestionAnswered {
+            return .done
         } else {
-            
-            return 1 // is in progress
+            return .inProgress
         }
+        
     }
     
     func reset () {
