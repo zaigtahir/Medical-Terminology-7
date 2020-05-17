@@ -261,33 +261,24 @@
                                                                 <constraint firstItem="IKq-4S-cy6" firstAttribute="centerY" secondItem="1JH-jD-1iT" secondAttribute="centerY" id="tjb-R0-AhC"/>
                                                             </constraints>
                                                         </view>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omV-Qo-ycr">
+                                                            <rect key="frame" x="322" y="40" width="51" height="31"/>
+                                                        </switch>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2H0-Xf-2Yd">
-                                                            <rect key="frame" x="20" y="35" width="351" height="24"/>
+                                                            <rect key="frame" x="287" y="43.666666666666664" width="84" height="23.999999999999993"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="ZG6-MX-99p"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="tintColor" name="color text"/>
-                                                            <state key="normal" title=" Show Answer "/>
+                                                            <state key="normal" title=" Show Again"/>
                                                             <connections>
+                                                                <action selector="showAgainButtonAction:" destination="gjw-m0-0qB" eventType="touchUpInside" id="C8I-Bt-4g4"/>
                                                                 <action selector="showAnswerButtonAction:" destination="gjw-m0-0qB" eventType="touchUpInside" id="z1K-vr-j7w"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="aDZ-nL-rDs">
-                                                            <rect key="frame" x="20" y="35" width="351" height="24"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="24" id="t5y-ir-SmB"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                            <color key="tintColor" name="color text"/>
-                                                            <state key="normal" title="Show Again"/>
-                                                            <connections>
-                                                                <action selector="showAgainButtonAction:" destination="gjw-m0-0qB" eventType="touchUpInside" id="tU4-YA-qhg"/>
-                                                                <action selector="showAnswerButtonAction:" destination="gjw-m0-0qB" eventType="touchUpInside" id="yaY-Eb-LQa"/>
-                                                            </connections>
-                                                        </button>
                                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K6B-yV-1gw">
-                                                            <rect key="frame" x="20" y="119" width="351" height="236"/>
+                                                            <rect key="frame" x="20" y="121" width="351" height="234"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <prototypes>
                                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="answerCell" rowHeight="89" id="6hK-cj-pym" customClass="AnswerTCell" customModule="Prefixes___Suffixes" customModuleProvider="target">
@@ -344,29 +335,34 @@
                                                             </prototypes>
                                                         </tableView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRt-tQ-K76">
-                                                            <rect key="frame" x="20" y="79" width="351" height="30"/>
+                                                            <rect key="frame" x="20" y="81" width="351" height="30"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                                             <color key="textColor" name="color heading"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Answer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSO-7h-Pbc">
+                                                            <rect key="frame" x="220.33333333333334" y="47" width="91.666666666666657" height="17"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="quaternarySystemFillColor" red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="aDZ-nL-rDs" firstAttribute="top" secondItem="2H0-Xf-2Yd" secondAttribute="top" id="1GF-BT-CjJ"/>
                                                         <constraint firstItem="1JH-jD-1iT" firstAttribute="top" secondItem="RIa-g2-paO" secondAttribute="top" id="5qj-nl-axJ"/>
-                                                        <constraint firstItem="aDZ-nL-rDs" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="65M-cP-Bv1"/>
+                                                        <constraint firstItem="omV-Qo-ycr" firstAttribute="leading" secondItem="nSO-7h-Pbc" secondAttribute="trailing" constant="10" id="Gvp-5C-aNl"/>
                                                         <constraint firstAttribute="trailing" secondItem="2H0-Xf-2Yd" secondAttribute="trailing" constant="20" id="MqC-aI-yf1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="omV-Qo-ycr" secondAttribute="trailing" constant="20" id="NaP-d7-cUo"/>
+                                                        <constraint firstItem="2H0-Xf-2Yd" firstAttribute="centerY" secondItem="omV-Qo-ycr" secondAttribute="centerY" id="NdQ-7d-4h8"/>
                                                         <constraint firstAttribute="trailing" secondItem="GRt-tQ-K76" secondAttribute="trailing" constant="20" id="Pfa-ON-SHb"/>
                                                         <constraint firstItem="1JH-jD-1iT" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" id="SVv-Fg-okw"/>
                                                         <constraint firstItem="K6B-yV-1gw" firstAttribute="leading" secondItem="GRt-tQ-K76" secondAttribute="leading" id="Wwr-yU-eVG"/>
                                                         <constraint firstAttribute="trailing" secondItem="1JH-jD-1iT" secondAttribute="trailing" id="Zev-jF-gTJ"/>
                                                         <constraint firstItem="K6B-yV-1gw" firstAttribute="trailing" secondItem="GRt-tQ-K76" secondAttribute="trailing" id="b13-dN-XmS"/>
-                                                        <constraint firstItem="2H0-Xf-2Yd" firstAttribute="top" secondItem="1JH-jD-1iT" secondAttribute="bottom" constant="5" id="eY7-rR-eSL"/>
-                                                        <constraint firstItem="GRt-tQ-K76" firstAttribute="top" secondItem="2H0-Xf-2Yd" secondAttribute="bottom" constant="20" id="jBA-yh-ksO"/>
+                                                        <constraint firstItem="nSO-7h-Pbc" firstAttribute="centerY" secondItem="omV-Qo-ycr" secondAttribute="centerY" id="je1-GA-cBr"/>
                                                         <constraint firstItem="K6B-yV-1gw" firstAttribute="top" secondItem="GRt-tQ-K76" secondAttribute="bottom" constant="10" id="luC-Yy-9aj"/>
-                                                        <constraint firstAttribute="trailing" secondItem="aDZ-nL-rDs" secondAttribute="trailing" constant="20" id="ngB-rc-sLP"/>
-                                                        <constraint firstItem="2H0-Xf-2Yd" firstAttribute="top" secondItem="1JH-jD-1iT" secondAttribute="bottom" constant="5" id="qwB-My-Oo7"/>
-                                                        <constraint firstItem="2H0-Xf-2Yd" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="wwg-Ut-XZ4"/>
+                                                        <constraint firstItem="omV-Qo-ycr" firstAttribute="top" secondItem="1JH-jD-1iT" secondAttribute="bottom" constant="10" id="sCm-8K-4Nx"/>
+                                                        <constraint firstItem="GRt-tQ-K76" firstAttribute="top" secondItem="omV-Qo-ycr" secondAttribute="bottom" constant="10" id="x65-NO-vSr"/>
                                                         <constraint firstItem="GRt-tQ-K76" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="y0h-WS-Us1"/>
                                                         <constraint firstAttribute="bottom" secondItem="K6B-yV-1gw" secondAttribute="bottom" constant="10" id="zQa-ff-sfk"/>
                                                     </constraints>
@@ -384,8 +380,9 @@
                                             <outlet property="questionLabel" destination="GRt-tQ-K76" id="hqu-Eg-DGj"/>
                                             <outlet property="resultRemarksLabel" destination="IKq-4S-cy6" id="pjK-um-y7c"/>
                                             <outlet property="resultView" destination="1JH-jD-1iT" id="Ind-2F-UfT"/>
-                                            <outlet property="showAgainButton" destination="aDZ-nL-rDs" id="Lkf-Ep-qON"/>
-                                            <outlet property="showAnswerButton" destination="2H0-Xf-2Yd" id="xIl-EN-rTP"/>
+                                            <outlet property="showAgainButton" destination="2H0-Xf-2Yd" id="ydf-lj-Jl8"/>
+                                            <outlet property="showAnswerLabel" destination="nSO-7h-Pbc" id="8s8-oW-Gyc"/>
+                                            <outlet property="showAnswerSwitch" destination="omV-Qo-ycr" id="dbh-bK-S8a"/>
                                             <outlet property="tableView" destination="K6B-yV-1gw" id="mem-qk-Qak"/>
                                         </connections>
                                     </collectionViewCell>

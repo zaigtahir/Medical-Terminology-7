@@ -9,10 +9,14 @@
 import UIKit
 
 protocol LearnCVCellDelegate: AnyObject {
+    // user selected an answer
     func selectedAnswer(questionIndex: Int, answerIndex: Int)
     
-    //trigger when the user wants to show the card again
+    // trigger when the user wants to show the card again
     func showAgain(questionIndex: Int)
+    
+    // user pressed the showAnswer button
+    func showAnswer(questionIndex: Int)
 }
 
 class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
@@ -25,14 +29,17 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultRemarksLabel: UILabel!
-    @IBOutlet weak var showAnswerButton: UIButton!
+    
     @IBOutlet weak var showAgainButton: UIButton!
+    @IBOutlet weak var showAnswerLabel: UILabel!
+    @IBOutlet weak var showAnswerSwitch: UISwitch!
     
     //this the index of the question in the quiz, used to identify the question in the quiz for the delegate function. It is set by the LearnSetVCH when forming this cell with the configure function
-    private var questionIndex: Int!
-    
+    private var questionIndex: Int! //index of the question in the learningSet
     private var question: Question! //the question to show
-    private var showAnswer = false
+
+    private let showAgainEnabled = "Show Again"
+    private let showAgainDisabled = "Will Show Again"
     
     let dIC = DItemController()
     weak var delegate: LearnCVCellDelegate?
@@ -44,9 +51,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         cellView.layer.cornerRadius = myConstants.layout_cornerRadius
         cellView.layer.borderWidth = 1
         cellView.clipsToBounds = true
-        
-        showAnswerButton.layer.cornerRadius = myConstants.button_cornerRadius
-        
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -57,19 +61,60 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     }
     
     func configure (question: Question, questionIndex: Int, quizStatus: QuizStatus) {
-        self.questionIndex = questionIndex
-        self.question = question
-        questionLabel.text = "\(question.questionText)"
+        //new configure function
         
-        showAnswerButton.isEnabled = true
-        showAgainButton.isEnabled = true
+        //save class variables
+        self.question = question
+        self.questionIndex = questionIndex
+        
+        //hide the show controls
+        showAgainButton.isHidden = true
+        showAnswerSwitch.isHidden = true
+        showAnswerLabel.isHidden = true
         
         if question.isAnswered() {
+            //question is answered already
+            if question.isCorrect() {
+                //is correctly answred
+                
+            } else {
+                //is incorrectly answered
+            }
+        } else {
+            //question is not answered
             
-            showAgainButton.setTitle("Show Again", for: .normal)
+        }
+        
+        
+    }
+    
+    
+    
+    func configureback (question: Question, questionIndex: Int, quizStatus: QuizStatus) {
+        self.questionIndex = questionIndex
+        self.question = question
+        
+        //hide the show controls
+        showAgainButton.isHidden = true
+        showAnswerSwitch.isHidden = true
+        showAnswerLabel.isHidden = true
+    
+        questionLabel.text = "\(question.questionText)"
+            
+        if question.isAnswered() {
             
             if question.isCorrect() {
-                showAnswerButton.isHidden = true
+                showAgainButton.isHidden = false
+                
+                if question.showAgain {
+                    //all ready set to show again
+                    showAgainButton.setTitle(showAgainDisabled, for: .normal)
+                    showAgainButton.isEnabled = false
+                    
+                } else {
+                    //not set to show again yet
+                    showAgainButton.setTitle(showAgainEnabled, for: .normal)
+                }
                 
                 if quizStatus == .inProgress {
                     showAgainButton.isHidden = false
@@ -79,8 +124,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
                 
             } else {
                 
-                showAnswerButton.isHidden = false
-                showAgainButton.isHidden = true
                 resultView.backgroundColor = myTheme.color_incorrect
                 resultRemarksLabel.text = question.getLearningRemarks()
             }
@@ -88,12 +131,10 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         } else {
             
             //question is not answered
+            
             let item = dIC.getDItem(itemID: question.itemID)
             question.learnedDefinitionForItem = item.learnedDefinition
             question.learnedTermForItem = item.learnedTerm
-            
-            showAnswerButton.isHidden = true
-            showAgainButton.isHidden = true
             resultView.backgroundColor = myTheme.color_notlearned
             resultRemarksLabel.text = ""
         }
@@ -133,10 +174,10 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             
         case 3:
             
-            if showAnswer {
+            if question.showAnswer {
                 cell.answerImage.image = myTheme.image_correct
                 cell.answerImage.tintColor = myTheme.color_correct
-                showAnswer = false  //reset it
+        
             } else {
                 cell.answerImage.image = nil
             }
@@ -157,14 +198,10 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     }
     
     @IBAction func showAnswerButtonAction(_ sender: UIButton) {
-        showAnswer = true
-        showAnswerButton.isEnabled = false
         tableView.reloadData()
     }
     
     @IBAction func showAgainButtonAction(_ sender: Any) {
-        showAgainButton.isEnabled = false
-        showAgainButton.setTitle("Will Show Again", for: .normal)
         delegate?.showAgain(questionIndex: questionIndex)
     }
 }

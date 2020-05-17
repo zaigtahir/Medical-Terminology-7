@@ -160,6 +160,8 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
     func showAgain(questionIndex: Int) {
         print("user pressed the show again button")
         
+        learnSetVCH.learningSet.activeQuestions[questionIndex].showAgain = true
+        
         learnSetVCH.learningSet.requeueQuestion(questionIndex: questionIndex)
         
         collectionView.reloadData()
@@ -169,6 +171,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         
         collectionView.layoutIfNeeded()
         
+        updateDisplay()
     }
     
     //end of delegate functions from LearnCVCell

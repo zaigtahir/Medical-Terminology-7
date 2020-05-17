@@ -16,10 +16,12 @@ class Question {
     var answers = [Answer]()
     var questionType : QuestionsType = .term
     var itemID = 0
+    
     var learnedTermForItem = false
     var learnedDefinitionForItem = false
     var showAnswer = false
     var showAgain = false
+    var feedbackRemarks = ""    //use to store text to show on the learning cards or quiz cards
     
     //initial non selected state. Use to check if this is answered or unanswered
     private var selectedAnswerIndex: Int = -1
@@ -88,6 +90,7 @@ class Question {
         print("learnedDefinitionForItem: \(learnedDefinitionForItem)")
         print("showAnswer: \(showAnswer)")
         print("showAgain: \(showAgain)")
+        print("feebackRemarks: \(feedbackRemarks)")
     }
         
     func getAnswerStatus (answerIndex: Int) -> Int {
@@ -159,8 +162,7 @@ class Question {
         } else {
             return "Not answered"
         }
-        
-        
+
     }
     
     func getCopy () -> Question {
@@ -176,6 +178,7 @@ class Question {
         question.learnedDefinitionForItem = self.learnedDefinitionForItem
         question.showAnswer = self.showAnswer
         question.showAgain = self.showAgain
+        question.feedbackRemarks = self.feedbackRemarks
         
         return question
     }
@@ -189,6 +192,11 @@ class Question {
         selectedAnswerIndex = -1
         learnedTermForItem = false
         learnedDefinitionForItem = false
+        learnedTermForItem = false
+        learnedDefinitionForItem = false
+        showAnswer = false
+        showAgain = false
+        feedbackRemarks = ""
     }
 }
 
