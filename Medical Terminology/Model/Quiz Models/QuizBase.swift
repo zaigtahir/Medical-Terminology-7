@@ -68,17 +68,17 @@ class QuizBase {
         let questionCopy = activeQuestions[questionIndex].getCopy()
         questionCopy.resetQuestion()    //resets the answer and learn status
         
-        //if masterList.count == 0 that means the user was on the very last question and answered it correctly
-        //the program will  have added a blank card to the end of the activeQuestions which would
-        //be a place holder for the done view
-        
-        //so if the masterList.count == 0, I need to replace the last card in the activeQuestions which would then show up next
-        
         if masterList.count == 0 {
-            // I need to replace the last card in the activeQuestions which would then show up next
-            print("I need to replace the last card in the activeQuestions")
+            // the view is sitting showing the second to last card in active list
+            // BLANK card is preloaded as a place holder for the done cell
+            // nothing is in the master list
+            
+            // replace the BLANK card with the copy of the question
             activeQuestions.remove(at: activeQuestions.count - 1)   // remove the last item
             activeQuestions.append(questionCopy)    //append the question
+            
+            // now ADD a BLANK question to the master list
+            masterList.append(Question())
             
         } else {
             // get the max index this can be inserted into in the masterList
@@ -94,13 +94,7 @@ class QuizBase {
             masterList.insert(questionCopy, at: insertIndex)
         }
     
-        printListCounts()
         
-    }
-    
-    func printListCounts() {
-        print("masterList.count = \(masterList.count)")
-        print("activeQuestions.count = \(activeQuestions.count)")
     }
     
     func getQuestion (index: Int) -> Question {

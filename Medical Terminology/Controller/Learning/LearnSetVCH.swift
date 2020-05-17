@@ -41,24 +41,24 @@ class LearningSetVCH {
      Will return true if the collection view is displaying the last card (summary)
      */
     func isAtSummary (indexPath: IndexPath) -> Bool {
-        
-        return false
-        
+                
         let row = indexPath.row
-        print("isAtSummary: row \(row)")
-        print("isAtSummary: activeQuestions.count = \(learningSet.activeQuestions.count)")
+        print("\n---- LearnSetVCH : isAtSummary: \nrow \(row)")
+        print("activeQuestions.count = \(learningSet.activeQuestions.count)")
         
         for q in learningSet.activeQuestions {
             q.printQuestion()
         }
         
         if (row == learningSet.activeQuestions.count - 1) && (learningSet.masterList.count == 0) {
-            
+            print("returning true")
             return true
             
-        } else {
             
+        } else {
+            print("returning false")
             return false
+            
         }
     }
 

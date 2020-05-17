@@ -78,7 +78,8 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
     }
     
     func updateDisplay() {
-        collectionView.reloadData()
+        //collectionView.reloadData() removed from here, do in the functions that need it only so it does not repeat after those functions
+        
         progressLabel.text = learnSetVCH.getProgressLabelText()
         progressView.progress = learnSetVCH.getProgress()
         updateNavigationButtons()
