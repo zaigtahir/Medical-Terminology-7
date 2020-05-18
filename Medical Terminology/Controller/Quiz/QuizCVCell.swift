@@ -47,6 +47,7 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         cellView.clipsToBounds = true
         
         cellView.layer.borderColor = UIColor.green.cgColor
+        cellView.layer.backgroundColor = UIColor.yellow.cgColor
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -72,14 +73,10 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
             if question.isCorrect() {
                 showAnswerLabel.isHidden = true
                 showAnswerSwitch.isHidden = true
-                
-                cellView.layer.borderColor = myTheme.color_correct?.cgColor
                 resultView.backgroundColor = myTheme.color_correct
                 resultRemarksLabel.text = question.getQuizAnswerRemarks()
             } else {
                 resultView.backgroundColor = myTheme.color_incorrect
-                cellView.layer.borderColor = myTheme.color_incorrect?.cgColor
-                
                 resultRemarksLabel.text = question.getQuizAnswerRemarks()
                 showAnswerLabel.isHidden = false
                 showAnswerSwitch.isHidden = false
@@ -91,8 +88,6 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
             let item = dIC.getDItem(itemID: question.itemID)
             question.learnedDefinitionForItem = item.learnedDefinition
             question.learnedTermForItem = item.learnedTerm
-            
-            cellView.layer.borderColor = myTheme.colorCardBorder?.cgColor
             showAnswerLabel.isHidden = true
             showAnswerSwitch.isHidden = true
  
