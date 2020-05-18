@@ -43,8 +43,10 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         super.awakeFromNib()
         // Initialization code
         cellView.layer.cornerRadius = myConstants.layout_cornerRadius
-        cellView.layer.borderWidth = 1
+        cellView.layer.borderWidth = 5
         cellView.clipsToBounds = true
+        
+        cellView.layer.borderColor = UIColor.green.cgColor
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -71,10 +73,13 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
                 showAnswerLabel.isHidden = true
                 showAnswerSwitch.isHidden = true
                 
+                cellView.layer.borderColor = myTheme.color_correct?.cgColor
                 resultView.backgroundColor = myTheme.color_correct
                 resultRemarksLabel.text = question.getQuizAnswerRemarks()
             } else {
                 resultView.backgroundColor = myTheme.color_incorrect
+                cellView.layer.borderColor = myTheme.color_incorrect?.cgColor
+                
                 resultRemarksLabel.text = question.getQuizAnswerRemarks()
                 showAnswerLabel.isHidden = false
                 showAnswerSwitch.isHidden = false
@@ -86,7 +91,8 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
             let item = dIC.getDItem(itemID: question.itemID)
             question.learnedDefinitionForItem = item.learnedDefinition
             question.learnedTermForItem = item.learnedTerm
-
+            
+            cellView.layer.borderColor = myTheme.colorCardBorder?.cgColor
             showAnswerLabel.isHidden = true
             showAnswerSwitch.isHidden = true
  
