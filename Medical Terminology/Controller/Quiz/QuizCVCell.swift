@@ -43,22 +43,14 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         super.awakeFromNib()
         // Initialization code
         cellView.layer.cornerRadius = myConstants.layout_cornerRadius
-        cellView.layer.borderWidth = 5
+        cellView.layer.borderWidth = 1
         cellView.clipsToBounds = true
-        
-        cellView.layer.borderColor = UIColor.green.cgColor
-        cellView.layer.backgroundColor = UIColor.yellow.cgColor
-        
+    
         tableView.dataSource = self
         tableView.delegate = self
         
     }
-    
-    override func layoutSubviews() {
-        //set color here to it responds to dark mode
-        cellView.layer.borderColor = UIColor(named: "color card border")?.cgColor
-    }
-    
+
     func configure (question: Question, questionIndex: Int, totalQuestions: Int) {
         self.questionIndex = questionIndex
         self.question = question
@@ -74,9 +66,11 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
                 showAnswerLabel.isHidden = true
                 showAnswerSwitch.isHidden = true
                 resultView.backgroundColor = myTheme.color_correct
+                cellView.layer.borderColor = myTheme.color_correct?.cgColor
                 resultRemarksLabel.text = question.getQuizAnswerRemarks()
             } else {
                 resultView.backgroundColor = myTheme.color_incorrect
+                cellView.layer.borderColor = myTheme.color_incorrect?.cgColor
                 resultRemarksLabel.text = question.getQuizAnswerRemarks()
                 showAnswerLabel.isHidden = false
                 showAnswerSwitch.isHidden = false
@@ -88,13 +82,18 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
             let item = dIC.getDItem(itemID: question.itemID)
             question.learnedDefinitionForItem = item.learnedDefinition
             question.learnedTermForItem = item.learnedTerm
+            
+            cellView.layer.borderColor = myTheme.color_notlearned?.cgColor
             showAnswerLabel.isHidden = true
             showAnswerSwitch.isHidden = true
- 
         }
         
         tableView.reloadData()  //must refesh the data here so the table holds updated information
         
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        //called changing from dark to light views
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

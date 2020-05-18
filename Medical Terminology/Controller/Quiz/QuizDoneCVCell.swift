@@ -37,6 +37,7 @@ class QuizDoneCVCell: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
+        //TODO: probably need to remove this and add into trait collection
         //set color here to it responds to dark mode
         cellView.layer.borderColor = UIColor(named: "color card border")?.cgColor
     }
