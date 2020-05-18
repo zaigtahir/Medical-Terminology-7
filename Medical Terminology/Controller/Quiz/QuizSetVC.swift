@@ -10,7 +10,6 @@ import UIKit
 
 class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegate, CVCellChangedDelegate, QuizDoneCVCellDelegate {
     
-    
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -68,7 +67,7 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         }
     }
     
-    // delegate functions
+    //MARK: delegate functions
     func selectedAnswer(questionIndex: Int, answerIndex: Int) {
         //if this is answered already, don't do anything
         let question  = quizSetVCH.quizSet.getQuestion(index: questionIndex)
@@ -89,6 +88,12 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         
         updateDisplay()
     }
+    
+    func showAnswer(questionIndex: Int, showAnswer: Bool) {
+        quizSetVCH.quizSet.activeQuestions[questionIndex].showAnswer = showAnswer
+    }
+    
+    //end delegate functions
     
     func retartButtonPressed() {
         restartQuiz()

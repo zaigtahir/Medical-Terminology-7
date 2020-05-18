@@ -14,6 +14,7 @@ import UIKit
 protocol QuizCVCellDelegate: AnyObject {
     
     func selectedAnswer(questionIndex: Int, answerIndex: Int)
+    func showAnswer(questionIndex: Int, showAnswer: Bool)
 }
 
 class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
@@ -23,7 +24,9 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultRemarksLabel: UILabel!
-    @IBOutlet weak var showAnswerButton: UIButton!
+    @IBOutlet weak var showAnswerLabel: UILabel!
+    @IBOutlet weak var showAnswerSwitch: UISwitch!
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var question: Question! //the question to show
@@ -57,20 +60,24 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         self.questionIndex = questionIndex
         self.question = question
         self.totalQuestions = totalQuestions
+       
         questionCounter.text = "Question: \(questionIndex + 1) of \(totalQuestions)"
-        showAnswerButton.isEnabled = true
         questionLabel.text = "\(question.questionText)"
-        questionLabel.text = "\(question.questionText)"
+        resultRemarksLabel.text = question.feedbackRemarks
+        showAnswerSwitch.isOn = question.showAnswer
         
         if question.isAnswered() {
             if question.isCorrect() {
-                showAnswerButton.isHidden = true
+                showAnswerLabel.isHidden = true
+                showAnswerSwitch.isHidden = true
+                
                 resultView.backgroundColor = myTheme.color_correct
                 resultRemarksLabel.text = question.getQuizAnswerRemarks()
             } else {
                 resultView.backgroundColor = myTheme.color_incorrect
                 resultRemarksLabel.text = question.getQuizAnswerRemarks()
-                showAnswerButton.isHidden = false
+                showAnswerLabel.isHidden = false
+                showAnswerSwitch.isHidden = false
             }
             
         } else {
@@ -79,9 +86,10 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
             let item = dIC.getDItem(itemID: question.itemID)
             question.learnedDefinitionForItem = item.learnedDefinition
             question.learnedTermForItem = item.learnedTerm
-            showAnswerButton.isHidden = false
-            showAnswerButton.isHidden = true
-            resultRemarksLabel.text = ""
+
+            showAnswerLabel.isHidden = true
+            showAnswerSwitch.isHidden = true
+ 
         }
         
         tableView.reloadData()  //must refesh the data here so the table holds updated information
@@ -118,10 +126,9 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
             cell.answerImage.tintColor = myTheme.color_incorrect
         case 3:
             
-            if showAnswer {
+            if showAnswerSwitch.isOn {
                 cell.answerImage.image = myTheme.image_correct
                 cell.answerImage.tintColor = myTheme.color_correct
-                showAnswer = false  //reset it
             } else {
                 cell.answerImage.image = nil
             }
@@ -142,9 +149,13 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         
     }
     
-    @IBAction func showAnswerButtonAction(_ sender: UIButton) {
-        showAnswer = true
-        showAnswerButton.isEnabled = false
+    @IBAction func showAnswerSwitchAction(_ sender: UISwitch) {
+        // trigger delegate function so that you can update the show answer setting
+        // in the calling VC
+        delegate?.showAnswer(questionIndex: questionIndex, showAnswer: showAnswerSwitch.isOn)
+        
+        //just update the table to the answer is shown
         tableView.reloadData()
     }
+
 }
