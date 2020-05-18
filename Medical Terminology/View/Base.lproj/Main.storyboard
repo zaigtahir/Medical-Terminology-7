@@ -265,6 +265,9 @@
                                                             <rect key="frame" x="322" y="40" width="51" height="31"/>
                                                             <color key="onTintColor" name="color correct"/>
                                                             <color key="thumbTintColor" name="color thumb tint"/>
+                                                            <connections>
+                                                                <action selector="showAnswerSwitchAction:" destination="gjw-m0-0qB" eventType="valueChanged" id="hQE-QF-t94"/>
+                                                            </connections>
                                                         </switch>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2H0-Xf-2Yd">
                                                             <rect key="frame" x="287" y="43.666666666666664" width="84" height="23.999999999999993"/>

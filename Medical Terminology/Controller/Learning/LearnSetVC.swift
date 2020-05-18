@@ -9,12 +9,7 @@
 import UIKit
 
 class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDelegate, LearnCVCellDelegate, LearnDoneCVCellDelegate {
-    func showAnswer(questionIndex: Int) {
-        //MARK: add code
-        print("add code to LearnSetVC showAnswer delegate function")
-    }
-    
-    
+   
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     @IBOutlet weak var previousButton: UIButton!
@@ -178,6 +173,16 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         
         updateDisplay()
     }
+    
+    func showAnswer(questionIndex: Int, showAnswer: Bool) {
+        // just update the question information here to be used
+        // when the user changes the cards
+        // in the cell, the action will just toggle the
+        // view locally
+        
+        learnSetVCH.learningSet.activeQuestions[questionIndex].showAnswer = showAnswer
+       }
+       
     
     //end of delegate functions from LearnCVCell
     

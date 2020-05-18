@@ -16,7 +16,7 @@ protocol LearnCVCellDelegate: AnyObject {
     func showAgain(questionIndex: Int)
     
     // user pressed the showAnswer button
-    func showAnswer(questionIndex: Int)
+    func showAnswer(questionIndex: Int, showAnswer: Bool)
 }
 
 class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
@@ -184,7 +184,11 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             
         case 3:
             
-            if question.showAnswer {
+            //this test will allow the table to be updated to
+            //show the result based on local change to the
+            //switch or from the question.showAnswer field when the user scrolls to this card
+        
+            if question.showAnswer || showAnswerSwitch.isOn {
                 cell.answerImage.image = myTheme.image_correct
                 cell.answerImage.tintColor = myTheme.color_correct
                 
@@ -207,7 +211,14 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         delegate?.selectedAnswer(questionIndex: questionIndex, answerIndex: indexPath.row)
     }
     
-    @IBAction func showAnswerButtonAction(_ sender: UIButton) {
+
+    @IBAction func showAnswerSwitchAction(_ sender: UISwitch) {
+        // shoot off delegate function so that the question is
+        // updated in the learningSet
+        // just update the table locally to show or hide the result while the card is in view
+        
+        delegate?.showAnswer(questionIndex: questionIndex, showAnswer: sender.isOn)
+        
         tableView.reloadData()
     }
     
