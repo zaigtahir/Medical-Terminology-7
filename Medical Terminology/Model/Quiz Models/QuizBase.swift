@@ -171,6 +171,22 @@ class QuizBase {
         return (grade, percent)
     }
     
+    func addFeedbackRemarks (question: Question) {
+        //will add feedback to question based on answered/right/wrong status
+        
+        if question.isAnswered() {
+            if question.isCorrect() {
+                //is correct
+                question.feedbackRemarks = myConstants.feedbackAnsweredCorrect.randomElement()!
+            } else {
+                //is wrong
+                question.feedbackRemarks = myConstants.feedbackAnsweredWrong.randomElement()!
+            }
+        } else {
+            question.feedbackRemarks = myConstants.feedbackNotAnswered
+        }
+    }
+        
     func getQuizStatus () -> QuizStatus {
         
         if !activeQuestions[0].isAnswered() {

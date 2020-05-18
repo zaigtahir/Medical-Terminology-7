@@ -73,6 +73,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         self.question = question
         self.questionIndex = questionIndex
         
+        resultRemarksLabel.text = question.feedbackRemarks
         questionLabel.text = "\(question.questionText)"
         
         if question.isAnswered() {
@@ -80,7 +81,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             if question.isCorrect() {
                 //is correctly answered
                 resultView.backgroundColor = myTheme.color_correct
-                resultRemarksLabel.text = "This is correct-temp"
                 
                 // configure showAgainButton
                 // no ideas why but when I change the text on the button it flashes twice before staying on
@@ -89,12 +89,10 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
                     //the user previously chose to add this question to the stack again. So do not enable this now
                     showAgainButton.isHidden = true
                     willShowAgainButton.isHidden = false
-                    
                 } else {
                     showAgainButton.isHidden = false
                     willShowAgainButton.isHidden = true
                 }
-                
                 
             } else {
                 //is not answered correctly
@@ -104,12 +102,10 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
                 showAnswerLabel.isHidden = false
                 
                 resultView.backgroundColor = myTheme.color_incorrect
-                resultRemarksLabel.text = "Not correct - temp"
             }
         } else {
             //question is not answered
             resultView.backgroundColor = myTheme.color_notlearned
-            resultRemarksLabel.text = "Select an answer"
         }
         
         tableView.reloadData()  //must refesh the data here so the table holds updated information

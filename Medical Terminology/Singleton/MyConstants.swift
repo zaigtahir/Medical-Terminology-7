@@ -16,6 +16,12 @@ class MyConstants {
     let companyWebsite = "https://theappgalaxy.com"
     let copyrightNotice = "© 2020 by Dr. Tahir"
     let noFavoritesAvailableText = "There are no favorites available to show"
+    
+    //question feedback remarks
+    let feedbackNotAnswered = "Select An Answer"
+    let feedbackAnsweredCorrect = ["Yes! You got it!", "Correct! Great job!", "You are right!", "Awesome! You're right!"]
+    let feedbackAnsweredWrong = ["Incorrect"]
+    
     //do not change these numbers. They are used as indexes of arrays too
     let listType_Full = 0
     let listType_Favorite = 1

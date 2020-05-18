@@ -85,6 +85,9 @@ class LearningSet: QuizBase {
         //save learned state
         questionController.saveLearnedStatus(question: question)
         
+        //add feedback remarks
+        addFeedbackRemarks(question: question)
+        
         //requeue the question if the answer is wrong
         if !question.isCorrect() {
             requeueQuestion(questionIndex: questionIndex)

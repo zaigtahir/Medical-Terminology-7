@@ -21,7 +21,7 @@ class Question {
     var learnedDefinitionForItem = false
     var showAnswer = false
     var showAgain = false
-    var feedbackRemarks = ""    //use to store text to show on the learning cards or quiz cards
+    var feedbackRemarks = myConstants.feedbackNotAnswered    //use to store text to show on the learning cards or quiz cards
     
     //initial non selected state. Use to check if this is answered or unanswered
     private var selectedAnswerIndex: Int = -1
@@ -139,7 +139,7 @@ class Question {
                 return wrongFeedback.randomElement()!
             }
         } else {
-            return "Not answered"
+            return "Select An Answer"
         }
         
         
