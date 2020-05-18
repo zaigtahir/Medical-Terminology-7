@@ -38,9 +38,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     private var questionIndex: Int! //index of the question in the learningSet
     private var question: Question! //the question to show
 
-    private let showAgainEnabled = "Show Again"
-    private let showAgainDisabled = "Will Show Again"
-    
     let dIC = DItemController()
     weak var delegate: LearnCVCellDelegate?
     
@@ -72,24 +69,36 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         showAnswerSwitch.isHidden = true
         showAnswerLabel.isHidden = true
         
+        questionLabel.text = "\(question.questionText)"
+        
         if question.isAnswered() {
             //question is answered already
             if question.isCorrect() {
-                //is correctly answred
+                //is correctly answered
+                resultView.backgroundColor = myTheme.color_correct
+                resultRemarksLabel.text = "This is correct-temp"
+                showAgainButton.isHidden = false
                 
             } else {
-                //is incorrectly answered
+                //is not answered correctly
+                //set the switch to the position it should be
+                showAnswerSwitch.isOn = question.showAnswer
+                showAnswerSwitch.isHidden = false
+                showAnswerLabel.isHidden = false
+                
+                resultView.backgroundColor = myTheme.color_incorrect
+                resultRemarksLabel.text = "Not correct - temp"
             }
         } else {
             //question is not answered
-            
+            resultView.backgroundColor = myTheme.color_notlearned
+            resultRemarksLabel.text = "Select an answer"
         }
         
-        
+        tableView.reloadData()  //must refesh the data here so the table holds updated information
     }
     
-    
-    
+    /*
     func configureback (question: Question, questionIndex: Int, quizStatus: QuizStatus) {
         self.questionIndex = questionIndex
         self.question = question
@@ -98,9 +107,9 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         showAgainButton.isHidden = true
         showAnswerSwitch.isHidden = true
         showAnswerLabel.isHidden = true
-    
+        
         questionLabel.text = "\(question.questionText)"
-            
+        
         if question.isAnswered() {
             
             if question.isCorrect() {
@@ -142,6 +151,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         tableView.reloadData()  //must refesh the data here so the table holds updated information
         
     }
+    */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
@@ -177,7 +187,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             if question.showAnswer {
                 cell.answerImage.image = myTheme.image_correct
                 cell.answerImage.tintColor = myTheme.color_correct
-        
+                
             } else {
                 cell.answerImage.image = nil
             }

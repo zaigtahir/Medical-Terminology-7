@@ -9,6 +9,11 @@
 import UIKit
 
 class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDelegate, LearnCVCellDelegate, LearnDoneCVCellDelegate {
+    func showAnswer(questionIndex: Int) {
+        //MARK: add code
+        print("add code to LearnSetVC showAnswer delegate function")
+    }
+    
     
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var optionsButton: UIBarButtonItem!

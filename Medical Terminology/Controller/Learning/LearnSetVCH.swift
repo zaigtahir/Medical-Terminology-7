@@ -49,14 +49,9 @@ class LearningSetVCH {
         let row = indexPath.row
         
         if (row == learningSet.activeQuestions.count - 1) && (learningSet.masterList.count == 0) {
-            print("returning true")
             return true
-            
-            
         } else {
-            print("returning false")
             return false
-            
         }
     }
     
