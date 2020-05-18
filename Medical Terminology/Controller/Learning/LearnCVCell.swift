@@ -82,6 +82,8 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
                 //is correctly answered
                 resultView.backgroundColor = myTheme.color_correct
                 
+                cellView.layer.borderColor = myTheme.color_correct?.cgColor
+                
                 // configure showAgainButton
                 // no ideas why but when I change the text on the button it flashes twice before staying on
                 // will hack it an create two buttons: Show Again, Will Show Again (this one is always disabled)
@@ -102,10 +104,13 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
                 showAnswerLabel.isHidden = false
                 
                 resultView.backgroundColor = myTheme.color_incorrect
+                
+                cellView.layer.borderColor = myTheme.color_incorrect?.cgColor
             }
         } else {
             //question is not answered
             resultView.backgroundColor = myTheme.color_notlearned
+            cellView.layer.borderColor = myTheme.color_notlearned?.cgColor
         }
         
         tableView.reloadData()  //must refesh the data here so the table holds updated information

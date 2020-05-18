@@ -45,17 +45,17 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         cellView.layer.cornerRadius = myConstants.layout_cornerRadius
         cellView.layer.borderWidth = 1
         cellView.clipsToBounds = true
-    
+        
         tableView.dataSource = self
         tableView.delegate = self
         
     }
-
+    
     func configure (question: Question, questionIndex: Int, totalQuestions: Int) {
         self.questionIndex = questionIndex
         self.question = question
         self.totalQuestions = totalQuestions
-       
+        
         questionCounter.text = "Question: \(questionIndex + 1) of \(totalQuestions)"
         questionLabel.text = "\(question.questionText)"
         resultRemarksLabel.text = question.feedbackRemarks
@@ -67,11 +67,11 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
                 showAnswerSwitch.isHidden = true
                 resultView.backgroundColor = myTheme.color_correct
                 cellView.layer.borderColor = myTheme.color_correct?.cgColor
-                resultRemarksLabel.text = question.getQuizAnswerRemarks()
+                
             } else {
                 resultView.backgroundColor = myTheme.color_incorrect
                 cellView.layer.borderColor = myTheme.color_incorrect?.cgColor
-                resultRemarksLabel.text = question.getQuizAnswerRemarks()
+                
                 showAnswerLabel.isHidden = false
                 showAnswerSwitch.isHidden = false
             }
@@ -157,5 +157,5 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         //just update the table to the answer is shown
         tableView.reloadData()
     }
-
+    
 }

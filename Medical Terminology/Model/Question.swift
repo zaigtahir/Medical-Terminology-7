@@ -145,26 +145,6 @@ class Question {
         
     }
     
-    func getQuizAnswerRemarks () -> String {
-        
-        //will return feedback based on the status of the answer
-        
-        let correctFeedback = ["Yes! You got it!", "Correct! Great job!", "You are right!", "Awesome! You're right!"]
-        
-        let wrongFeedback = ["Incorrect"]
-        
-        if isAnswered() {
-            if isCorrect() {
-                return correctFeedback.randomElement()!
-            } else {
-                return wrongFeedback.randomElement()!
-            }
-        } else {
-            return "Not answered"
-        }
-
-    }
-    
     func getCopy () -> Question {
         
         let question = Question ()
