@@ -9,7 +9,7 @@
 import UIKit
 
 class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDelegate, LearnCVCellDelegate, LearnDoneCVCellDelegate {
-   
+    
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     @IBOutlet weak var previousButton: UIButton!
@@ -113,9 +113,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
             utilities.formatButtonColor(button: b!, enabledBackground: enabledButtonColor!, enabledTint: enabledButtonTint!, disabledBackground: disabledButtonColor!, disabledTint: disabledButtonTint!)
         }
     }
-    
-    //TODO: am i using this?
-    
+        
     func showOptionsMenu () {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let restartSet = UIAlertAction(title: "Restart this set", style: .default, handler: {action in self.restartLearningSet()})
@@ -153,8 +151,6 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         collectionView.layoutIfNeeded()
         
         updateDisplay()
-        //if the set is complete, show a completion dialog
-        
     }
     
     func showAgain(questionIndex: Int) {
@@ -181,8 +177,8 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         // view locally
         
         learnSetVCH.learningSet.activeQuestions[questionIndex].showAnswer = showAnswer
-       }
-       
+    }
+    
     
     //end of delegate functions from LearnCVCell
     

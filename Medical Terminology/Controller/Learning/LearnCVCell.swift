@@ -31,6 +31,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     @IBOutlet weak var resultRemarksLabel: UILabel!
     
     @IBOutlet weak var showAgainButton: UIButton!
+    @IBOutlet weak var willShowAgainButton: UIButton! //used always in default state as a hack.. see in the configure function for my description
     @IBOutlet weak var showAnswerLabel: UILabel!
     @IBOutlet weak var showAnswerSwitch: UISwitch!
     
@@ -50,7 +51,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         cellView.clipsToBounds = true
         tableView.dataSource = self
         tableView.delegate = self
-
+        
     }
     
     override func layoutSubviews() {
@@ -62,8 +63,9 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         //new configure function
         
         //hide the show controls
-        print("hiding all controls")
+        
         showAgainButton.isHidden = true
+        willShowAgainButton.isHidden = true
         showAnswerSwitch.isHidden = true
         showAnswerLabel.isHidden = true
         
@@ -80,20 +82,19 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
                 resultView.backgroundColor = myTheme.color_correct
                 resultRemarksLabel.text = "This is correct-temp"
                 
-                //configure showAgainButton
+                // configure showAgainButton
+                // no ideas why but when I change the text on the button it flashes twice before staying on
+                // will hack it an create two buttons: Show Again, Will Show Again (this one is always disabled)
                 if question.showAgain == true {
                     //the user previously chose to add this question to the stack again. So do not enable this now
-                    showAgainButton.setTitle("Will Show Again", for: .normal)
-                    showAgainButton.isEnabled = false
-
+                    showAgainButton.isHidden = true
+                    willShowAgainButton.isHidden = false
+                    
                 } else {
-                    //the user has not choosen to show this again yet
-                    showAgainButton.setTitle("Show Again", for: .normal)
-                    showAgainButton.isEnabled = true
-
+                    showAgainButton.isHidden = false
+                    willShowAgainButton.isHidden = true
                 }
-                print("show show-again button")
-                showAgainButton.isHidden = false
+                
                 
             } else {
                 //is not answered correctly
