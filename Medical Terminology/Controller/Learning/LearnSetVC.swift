@@ -63,10 +63,11 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "learnCell", for: indexPath) as! LearnCVCell
             cell.delegate = self
+            
             let question = learnSetVCH.learningSet.getQuestion(index: indexPath.row)
             let quizStatus = learnSetVCH.learningSet.getQuizStatus()
             
-            cell.configure(question: question, questionIndex: indexPath.row, quizStatus: quizStatus)
+            cell.configure(question: question, questionIndex: indexPath.row, totalQuestions: learnSetVCH.learningSet.getTotalQuestionCount(), quizStatus: quizStatus)
             
             return cell
         }

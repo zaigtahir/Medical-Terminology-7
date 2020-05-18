@@ -29,15 +29,18 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultRemarksLabel: UILabel!
-    
+    @IBOutlet weak var questionCounterLabel: UILabel!
     @IBOutlet weak var showAgainButton: UIButton!
     @IBOutlet weak var willShowAgainButton: UIButton! //used always in default state as a hack.. see in the configure function for my description
     @IBOutlet weak var showAnswerLabel: UILabel!
     @IBOutlet weak var showAnswerSwitch: UISwitch!
     
     //this the index of the question in the quiz, used to identify the question in the quiz for the delegate function. It is set by the LearnSetVCH when forming this cell with the configure function
-    private var questionIndex: Int! //index of the question in the learningSet
-    private var question: Question! //the question to show
+    
+    private var questionIndex = 0     //index of the question in the learningSet
+    private var question: Question!     //the question to show
+    //initally set to totalQuestions, then
+    private var totalQuestions = 0
     
     let dIC = DItemController()
     weak var delegate: LearnCVCellDelegate?
@@ -54,7 +57,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         
     }
     
-    func configure (question: Question, questionIndex: Int, quizStatus: QuizStatus) {
+    func configure (question: Question, questionIndex: Int, totalQuestions: Int, quizStatus: QuizStatus) {
         //new configure function
         
         //hide the show controls
@@ -69,7 +72,9 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         self.questionIndex = questionIndex
         
         resultRemarksLabel.text = question.feedbackRemarks
-       
+        
+        questionCounterLabel.text = "Question: \(questionIndex + 1) of \(totalQuestions)"
+        
         questionLabel.text = "\(question.questionText)"
         
         if question.isAnswered() {
@@ -180,6 +185,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     }
     
     @IBAction func showAgainButtonAction(_ sender: Any) {
+        //locally increment total questions
         delegate?.showAgain(questionIndex: questionIndex)
     }
 }

@@ -269,6 +269,15 @@
                                                                 <action selector="showAnswerSwitchAction:" destination="gjw-m0-0qB" eventType="valueChanged" id="hQE-QF-t94"/>
                                                             </connections>
                                                         </switch>
+                                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2Ju-7I-cBP">
+                                                            <rect key="frame" x="20" y="41" width="351" height="29"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="tintColor" name="color text level 2"/>
+                                                            <state key="normal" title="Will Show Again"/>
+                                                            <connections>
+                                                                <action selector="showAgainButtonAction:" destination="gjw-m0-0qB" eventType="touchUpInside" id="ZRY-Eb-H0y"/>
+                                                            </connections>
+                                                        </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2H0-Xf-2Yd">
                                                             <rect key="frame" x="20" y="41" width="351" height="29"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
@@ -279,6 +288,24 @@
                                                                 <action selector="showAgainButtonAction:" destination="gjw-m0-0qB" eventType="touchUpInside" id="C8I-Bt-4g4"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Answer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSO-7h-Pbc">
+                                                            <rect key="frame" x="20" y="47" width="292" height="17"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" name="color text level 2"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question: 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFp-Jk-QWl">
+                                                            <rect key="frame" x="20" y="47" width="292" height="17"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" name="color text level 2"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRt-tQ-K76">
+                                                            <rect key="frame" x="20" y="81" width="351" height="30"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                                            <color key="textColor" name="color heading"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K6B-yV-1gw">
                                                             <rect key="frame" x="20" y="121" width="351" height="234"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -336,33 +363,14 @@
                                                                 </tableViewCell>
                                                             </prototypes>
                                                         </tableView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRt-tQ-K76">
-                                                            <rect key="frame" x="20" y="81" width="351" height="30"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                                            <color key="textColor" name="color heading"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Answer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSO-7h-Pbc">
-                                                            <rect key="frame" x="20" y="47" width="292" height="17"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                            <color key="textColor" name="color text level 2"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2Ju-7I-cBP">
-                                                            <rect key="frame" x="20" y="41" width="351" height="29"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                            <color key="tintColor" name="color text level 2"/>
-                                                            <state key="normal" title="Will Show Again"/>
-                                                            <connections>
-                                                                <action selector="showAgainButtonAction:" destination="gjw-m0-0qB" eventType="touchUpInside" id="ZRY-Eb-H0y"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="quaternarySystemFillColor" red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="2Ju-7I-cBP" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="1ME-i3-Xkl"/>
                                                         <constraint firstItem="1JH-jD-1iT" firstAttribute="top" secondItem="RIa-g2-paO" secondAttribute="top" id="5qj-nl-axJ"/>
+                                                        <constraint firstItem="uFp-Jk-QWl" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="ELc-mw-UcS"/>
                                                         <constraint firstItem="omV-Qo-ycr" firstAttribute="leading" secondItem="nSO-7h-Pbc" secondAttribute="trailing" constant="10" id="Gvp-5C-aNl"/>
+                                                        <constraint firstItem="uFp-Jk-QWl" firstAttribute="centerY" secondItem="omV-Qo-ycr" secondAttribute="centerY" id="Hsd-zJ-em5"/>
                                                         <constraint firstAttribute="trailing" secondItem="omV-Qo-ycr" secondAttribute="trailing" constant="20" id="NaP-d7-cUo"/>
                                                         <constraint firstItem="GRt-tQ-K76" firstAttribute="top" secondItem="omV-Qo-ycr" secondAttribute="bottom" constant="10" id="O9m-wJ-2wm"/>
                                                         <constraint firstAttribute="trailing" secondItem="GRt-tQ-K76" secondAttribute="trailing" constant="20" id="Pfa-ON-SHb"/>
@@ -374,6 +382,7 @@
                                                         <constraint firstItem="2Ju-7I-cBP" firstAttribute="centerY" secondItem="omV-Qo-ycr" secondAttribute="centerY" id="Xqv-lv-gRR"/>
                                                         <constraint firstAttribute="trailing" secondItem="1JH-jD-1iT" secondAttribute="trailing" id="Zev-jF-gTJ"/>
                                                         <constraint firstItem="K6B-yV-1gw" firstAttribute="trailing" secondItem="GRt-tQ-K76" secondAttribute="trailing" id="b13-dN-XmS"/>
+                                                        <constraint firstItem="omV-Qo-ycr" firstAttribute="leading" secondItem="uFp-Jk-QWl" secondAttribute="trailing" constant="10" id="ehe-ik-9Qd"/>
                                                         <constraint firstItem="2H0-Xf-2Yd" firstAttribute="centerY" secondItem="omV-Qo-ycr" secondAttribute="centerY" id="fsd-0G-QJZ"/>
                                                         <constraint firstItem="nSO-7h-Pbc" firstAttribute="centerY" secondItem="omV-Qo-ycr" secondAttribute="centerY" id="je1-GA-cBr"/>
                                                         <constraint firstItem="K6B-yV-1gw" firstAttribute="top" secondItem="GRt-tQ-K76" secondAttribute="bottom" constant="10" id="luC-Yy-9aj"/>
@@ -393,6 +402,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="cellView" destination="RIa-g2-paO" id="7YD-EF-3kU"/>
+                                            <outlet property="questionCounterLabel" destination="uFp-Jk-QWl" id="f1n-bD-fJy"/>
                                             <outlet property="questionLabel" destination="GRt-tQ-K76" id="hqu-Eg-DGj"/>
                                             <outlet property="resultRemarksLabel" destination="IKq-4S-cy6" id="pjK-um-y7c"/>
                                             <outlet property="resultView" destination="1JH-jD-1iT" id="Ind-2F-UfT"/>
