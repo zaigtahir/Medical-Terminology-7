@@ -37,7 +37,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     //this the index of the question in the quiz, used to identify the question in the quiz for the delegate function. It is set by the LearnSetVCH when forming this cell with the configure function
     private var questionIndex: Int! //index of the question in the learningSet
     private var question: Question! //the question to show
-
+    
     let dIC = DItemController()
     weak var delegate: LearnCVCellDelegate?
     
@@ -50,6 +50,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         cellView.clipsToBounds = true
         tableView.dataSource = self
         tableView.delegate = self
+
     }
     
     override func layoutSubviews() {
@@ -60,14 +61,15 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     func configure (question: Question, questionIndex: Int, quizStatus: QuizStatus) {
         //new configure function
         
-        //save class variables
-        self.question = question
-        self.questionIndex = questionIndex
-        
         //hide the show controls
+        print("hiding all controls")
         showAgainButton.isHidden = true
         showAnswerSwitch.isHidden = true
         showAnswerLabel.isHidden = true
+        
+        //save class variables
+        self.question = question
+        self.questionIndex = questionIndex
         
         questionLabel.text = "\(question.questionText)"
         
@@ -77,6 +79,20 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
                 //is correctly answered
                 resultView.backgroundColor = myTheme.color_correct
                 resultRemarksLabel.text = "This is correct-temp"
+                
+                //configure showAgainButton
+                if question.showAgain == true {
+                    //the user previously chose to add this question to the stack again. So do not enable this now
+                    showAgainButton.setTitle("Will Show Again", for: .normal)
+                    showAgainButton.isEnabled = false
+
+                } else {
+                    //the user has not choosen to show this again yet
+                    showAgainButton.setTitle("Show Again", for: .normal)
+                    showAgainButton.isEnabled = true
+
+                }
+                print("show show-again button")
                 showAgainButton.isHidden = false
                 
             } else {
@@ -97,61 +113,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         
         tableView.reloadData()  //must refesh the data here so the table holds updated information
     }
-    
-    /*
-    func configureback (question: Question, questionIndex: Int, quizStatus: QuizStatus) {
-        self.questionIndex = questionIndex
-        self.question = question
-        
-        //hide the show controls
-        showAgainButton.isHidden = true
-        showAnswerSwitch.isHidden = true
-        showAnswerLabel.isHidden = true
-        
-        questionLabel.text = "\(question.questionText)"
-        
-        if question.isAnswered() {
-            
-            if question.isCorrect() {
-                showAgainButton.isHidden = false
-                
-                if question.showAgain {
-                    //all ready set to show again
-                    showAgainButton.setTitle(showAgainDisabled, for: .normal)
-                    showAgainButton.isEnabled = false
-                    
-                } else {
-                    //not set to show again yet
-                    showAgainButton.setTitle(showAgainEnabled, for: .normal)
-                }
-                
-                if quizStatus == .inProgress {
-                    showAgainButton.isHidden = false
-                }
-                resultView.backgroundColor = myTheme.color_correct
-                resultRemarksLabel.text = question.getLearningRemarks()
-                
-            } else {
-                
-                resultView.backgroundColor = myTheme.color_incorrect
-                resultRemarksLabel.text = question.getLearningRemarks()
-            }
-            
-        } else {
-            
-            //question is not answered
-            
-            let item = dIC.getDItem(itemID: question.itemID)
-            question.learnedDefinitionForItem = item.learnedDefinition
-            question.learnedTermForItem = item.learnedTerm
-            resultView.backgroundColor = myTheme.color_notlearned
-            resultRemarksLabel.text = ""
-        }
-        
-        tableView.reloadData()  //must refesh the data here so the table holds updated information
-        
-    }
-    */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
@@ -187,7 +148,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             //this test will allow the table to be updated to
             //show the result based on local change to the
             //switch or from the question.showAnswer field when the user scrolls to this card
-        
+            
             if question.showAnswer || showAnswerSwitch.isOn {
                 cell.answerImage.image = myTheme.image_correct
                 cell.answerImage.tintColor = myTheme.color_correct
@@ -211,7 +172,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         delegate?.selectedAnswer(questionIndex: questionIndex, answerIndex: indexPath.row)
     }
     
-
     @IBAction func showAnswerSwitchAction(_ sender: UISwitch) {
         // shoot off delegate function so that the question is
         // updated in the learningSet

@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-gM-IpN">
@@ -200,7 +200,7 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lS5-Wb-Opk">
@@ -270,7 +270,7 @@
                                                             </connections>
                                                         </switch>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2H0-Xf-2Yd">
-                                                            <rect key="frame" x="287" y="43.666666666666664" width="84" height="23.999999999999993"/>
+                                                            <rect key="frame" x="20" y="43.666666666666664" width="351" height="23.999999999999993"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="ZG6-MX-99p"/>
                                                             </constraints>
@@ -346,7 +346,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Answer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSO-7h-Pbc">
-                                                            <rect key="frame" x="220.33333333333334" y="47" width="91.666666666666657" height="17"/>
+                                                            <rect key="frame" x="20" y="47" width="292" height="17"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
@@ -361,12 +361,14 @@
                                                         <constraint firstItem="2H0-Xf-2Yd" firstAttribute="centerY" secondItem="omV-Qo-ycr" secondAttribute="centerY" id="NdQ-7d-4h8"/>
                                                         <constraint firstAttribute="trailing" secondItem="GRt-tQ-K76" secondAttribute="trailing" constant="20" id="Pfa-ON-SHb"/>
                                                         <constraint firstItem="1JH-jD-1iT" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" id="SVv-Fg-okw"/>
+                                                        <constraint firstItem="nSO-7h-Pbc" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="Shz-Xc-nYN"/>
                                                         <constraint firstItem="K6B-yV-1gw" firstAttribute="leading" secondItem="GRt-tQ-K76" secondAttribute="leading" id="Wwr-yU-eVG"/>
                                                         <constraint firstAttribute="trailing" secondItem="1JH-jD-1iT" secondAttribute="trailing" id="Zev-jF-gTJ"/>
                                                         <constraint firstItem="K6B-yV-1gw" firstAttribute="trailing" secondItem="GRt-tQ-K76" secondAttribute="trailing" id="b13-dN-XmS"/>
                                                         <constraint firstItem="nSO-7h-Pbc" firstAttribute="centerY" secondItem="omV-Qo-ycr" secondAttribute="centerY" id="je1-GA-cBr"/>
                                                         <constraint firstItem="K6B-yV-1gw" firstAttribute="top" secondItem="GRt-tQ-K76" secondAttribute="bottom" constant="10" id="luC-Yy-9aj"/>
                                                         <constraint firstItem="omV-Qo-ycr" firstAttribute="top" secondItem="1JH-jD-1iT" secondAttribute="bottom" constant="10" id="sCm-8K-4Nx"/>
+                                                        <constraint firstItem="2H0-Xf-2Yd" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="tqh-Fu-04m"/>
                                                         <constraint firstItem="GRt-tQ-K76" firstAttribute="top" secondItem="omV-Qo-ycr" secondAttribute="bottom" constant="10" id="x65-NO-vSr"/>
                                                         <constraint firstItem="GRt-tQ-K76" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="y0h-WS-Us1"/>
                                                         <constraint firstAttribute="bottom" secondItem="K6B-yV-1gw" secondAttribute="bottom" constant="10" id="zQa-ff-sfk"/>
@@ -516,7 +518,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashCardHomeVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="ybv-e2-hzc">
@@ -814,7 +816,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashCardOptionsVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -887,7 +889,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -988,7 +990,7 @@
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="ListVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="lvj-Zi-9Ji" userLabel="favorites list empty">
@@ -1170,7 +1172,7 @@
             <objects>
                 <viewController id="awX-yg-8xS" customClass="DItemVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4wH-cl-seN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L29-8G-zy9">
@@ -1265,7 +1267,7 @@
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-vJ-agb">
@@ -1454,7 +1456,7 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
@@ -1776,7 +1778,7 @@
             <objects>
                 <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -1895,7 +1897,7 @@
             <objects>
                 <viewController id="frx-7u-7So" customClass="WelcomeScreenVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S7T-mW-wfL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TeH-32-Yxj">
@@ -2024,7 +2026,7 @@
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
