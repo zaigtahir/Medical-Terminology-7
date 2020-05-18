@@ -15,7 +15,7 @@ class LearningSetVCH {
     func getProgressLabelText () -> String {
         
         
-        return "need to program this"
+        return "total questions = \(learningSet.getTotalQuestionCount())"
         /*
          let learningStatus = learningSet.getQuizStatus()
          

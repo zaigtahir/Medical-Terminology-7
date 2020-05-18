@@ -106,6 +106,9 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         } else {
             optionsButton.isEnabled = true
         }
+        
+        //update counter
+        
         updateNavigationButtons()
     }
     

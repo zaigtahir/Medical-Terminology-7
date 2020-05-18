@@ -21,6 +21,7 @@ class MyTheme{
     let colorButtonDisabled = UIColor(named: "color button disabled")
     let colorButtonDisabledTint = UIColor(named: "color inactive icon")
     let colorCardBorder = UIColor(named: "color card border")
+    let color_notAnswered = UIColor(named: "color card border")
     
     //MARK: Flashcards
     let color_fch_button = UIColor(named: "color main")
@@ -36,8 +37,6 @@ class MyTheme{
     
     let color_incorrect = UIColor(named: "color incorrect")
     let color_learned = UIColor(named: "color correct")
-    
-    let color_notlearned = UIColor(named: "color card border")
     
     //MARK: Quiz home
     let colorQuizButton = UIColor(named: "color main")
@@ -65,7 +64,7 @@ class MyTheme{
     //use next three speaker images to make animation
     let image_speaker = UIImage(named: "speakerC")
     let image_speaker_playing = UIImage(named: "speakerC_playing")
-   
+    
     //progress bar width
     let progressBarWidth = CGFloat(integerLiteral: 15)
     

@@ -54,11 +54,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         
     }
     
-    override func layoutSubviews() {
-        //set color here to it responds to dark mode
-        cellView.layer.borderColor = UIColor(named: "color card border")?.cgColor
-    }
-    
     func configure (question: Question, questionIndex: Int, quizStatus: QuizStatus) {
         //new configure function
         
@@ -74,6 +69,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         self.questionIndex = questionIndex
         
         resultRemarksLabel.text = question.feedbackRemarks
+       
         questionLabel.text = "\(question.questionText)"
         
         if question.isAnswered() {
@@ -104,13 +100,12 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
                 showAnswerLabel.isHidden = false
                 
                 resultView.backgroundColor = myTheme.color_incorrect
-                
                 cellView.layer.borderColor = myTheme.color_incorrect?.cgColor
             }
         } else {
             //question is not answered
-            resultView.backgroundColor = myTheme.color_notlearned
-            cellView.layer.borderColor = myTheme.color_notlearned?.cgColor
+            resultView.backgroundColor = myTheme.color_notAnswered
+            cellView.layer.borderColor = myTheme.color_notAnswered?.cgColor
         }
         
         tableView.reloadData()  //must refesh the data here so the table holds updated information

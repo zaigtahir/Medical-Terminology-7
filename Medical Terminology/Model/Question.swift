@@ -26,7 +26,6 @@ class Question {
     //initial non selected state. Use to check if this is answered or unanswered
     private var selectedAnswerIndex: Int = -1
     
-    
     init () {
         for _ in 0...3 {
             answers.append(Answer(answerText: "default", isCorrect: false))
@@ -123,28 +122,6 @@ class Question {
         
     }
     
-    //TODO move this and the other remarks out of here!!!!!
-    func getLearningRemarks () -> String {
-        
-        //will return a random phrase of correct or incorrect answers
-        
-        let correctFeedback = ["Yes! You got it!", "Correct! Great job!", "You are right!", "Awesome! You're right!"]
-        
-        let wrongFeedback = ["Incorrect! You'll see this again", "Incorrect! Keep going!", "Incorrect! Don't give up!"]
-        
-        if isAnswered() {
-            if isCorrect() {
-                return correctFeedback.randomElement()!
-            } else {
-                return wrongFeedback.randomElement()!
-            }
-        } else {
-            return "Select An Answer"
-        }
-        
-        
-    }
-    
     func getCopy () -> Question {
         
         let question = Question ()
@@ -162,7 +139,6 @@ class Question {
         
         return question
     }
-    
     /**
      Will set to unanswered state
      Will clearn learning fields locally in the question (not in DB)s
@@ -176,7 +152,7 @@ class Question {
         learnedDefinitionForItem = false
         showAnswer = false
         showAgain = false
-        feedbackRemarks = ""
+        feedbackRemarks = myConstants.feedbackNotAnswered 
     }
 }
 

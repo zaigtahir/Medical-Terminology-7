@@ -83,7 +83,7 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
             question.learnedDefinitionForItem = item.learnedDefinition
             question.learnedTermForItem = item.learnedTerm
             
-            cellView.layer.borderColor = myTheme.color_notlearned?.cgColor
+            cellView.layer.borderColor = myTheme.color_notAnswered?.cgColor
             showAnswerLabel.isHidden = true
             showAnswerSwitch.isHidden = true
         }

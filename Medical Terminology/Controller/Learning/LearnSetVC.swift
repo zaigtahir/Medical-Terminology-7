@@ -82,7 +82,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
     
     func updateDisplay() {
         //collectionView.reloadData() removed from here, do in the functions that need it only so it does not repeat after those functions
-        
+    
         progressLabel.text = learnSetVCH.getProgressLabelText()
         progressView.progress = learnSetVCH.getProgress()
         updateNavigationButtons()
@@ -179,13 +179,11 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         learnSetVCH.learningSet.activeQuestions[questionIndex].showAnswer = showAnswer
     }
     
-    
     //end of delegate functions from LearnCVCell
     
     func retartButtonPressed() {
         restartLearningSet()
     }
-    
     
     @IBAction func optionsButtonAction(_ sender: UIBarButtonItem) {
         showOptionsMenu()

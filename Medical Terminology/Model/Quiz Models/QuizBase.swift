@@ -99,8 +99,12 @@ class QuizBase {
         return activeQuestions[index]
     }
     
+    /*
+     return total questions in the active and master list - 1 (-1 for done card)
+     */
     func getTotalQuestionCount () -> Int {
-        return originalQuestions.count - 1 //minus one to remove the summary placeholder last question
+        
+        return activeQuestions.count + masterList.count - 1 //minus one to remove the summary placeholder last question
     }
     
     func getActiveQuestionsCount () -> Int {
@@ -186,7 +190,7 @@ class QuizBase {
             question.feedbackRemarks = myConstants.feedbackNotAnswered
         }
     }
-        
+    
     func getQuizStatus () -> QuizStatus {
         
         if !activeQuestions[0].isAnswered() {
@@ -208,13 +212,9 @@ class QuizBase {
     func reset () {
         
         //remember to clear learned or answered terms in the appropriate subclass
-        
         masterList = getCopyOfQuestions(questions: originalQuestions)
-        
         activeQuestions = [Question]()
-        
         moveQuestion()
-        
     }
     
 }
