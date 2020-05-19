@@ -46,7 +46,9 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
         
         newQuizButton.layer.cornerRadius = myConstants.button_cornerRadius
         currentQuizButton.layer.cornerRadius = myConstants.button_cornerRadius
-
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,6 +122,7 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
         
         if segue.identifier == "segueToQuiz" {
             let vc = segue.destination as! QuizSetVC
+                        
             if quizHomeVCH.startNewQuiz {
                 vc.quizSetVCH.quizSet = quizHomeVCH.getNewQuizSet()
             } else {

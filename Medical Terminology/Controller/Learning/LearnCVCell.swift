@@ -100,6 +100,9 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             } else {
                 //is not answered correctly
                 //set the switch to the position it should be
+                
+                resultRemarksLabel.text = "Incorrect - You'll See This Again"
+                
                 showAnswerSwitch.isOn = question.showAnswer
                 showAnswerSwitch.isHidden = false
                 showAnswerLabel.isHidden = false

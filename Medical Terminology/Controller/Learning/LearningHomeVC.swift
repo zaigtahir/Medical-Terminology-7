@@ -28,10 +28,10 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
     var progressBar: CircularBar!
     
     //button colors
-       let enabledButtonColor = myTheme.colorLhButton
-       let enabledButtonTint = myTheme.colorButtonEnabledTint
-       let disabledButtonColor = myTheme.colorButtonDisabled
-       let disabledButtonTint = myTheme.colorButtonDisabledTint
+    let enabledButtonColor = myTheme.colorLhButton
+    let enabledButtonTint = myTheme.colorButtonEnabledTint
+    let disabledButtonColor = myTheme.colorButtonDisabled
+    let disabledButtonTint = myTheme.colorButtonDisabledTint
     
     private var optionsMenu: UIAlertController!
     
@@ -43,6 +43,7 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
         newSetButton.layer.cornerRadius = myConstants.button_cornerRadius
         seeCurrentSetButton.layer.cornerRadius = myConstants.button_cornerRadius
         
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
         updateDisplay()
         
     }
@@ -64,7 +65,7 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
         favoritesSwitch.isOn = learningHomeVCH.isFavoriteMode
         
         favoritesLabel.text = "\(favoritesCount)"
-                    messageLabel.text = learningHomeVCH.getMessageText()
+        messageLabel.text = learningHomeVCH.getMessageText()
         
         if learningHomeVCH.isFavoriteMode && favoritesCount == 0 {
             
@@ -87,10 +88,10 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
         let foregroundColor = myTheme.colorLhPbForeground?.cgColor
         let backgroundColor = myTheme.colorLhPbBackground?.cgColor
         let fillColor =  myTheme.colorLhPbFill?.cgColor
-    
+        
         progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!
             , lineWidth: myTheme.progressBarWidth)
-    
+        
         progressBar.setStrokeEnd(partialCount: counts.learnedTerms, totalCount: counts.totalTerms)
         
         heartImage.isHidden = true

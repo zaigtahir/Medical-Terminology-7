@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-gM-IpN">
@@ -200,30 +200,11 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lS5-Wb-Opk">
-                                <rect key="frame" x="30" y="20" width="354" height="35"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LR0-kS-hMo">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="17"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                        <color key="textColor" name="color text"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KAu-t8-1DZ">
-                                        <rect key="frame" x="0.0" y="32" width="354" height="3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="3" id="7Wu-kJ-kK1"/>
-                                        </constraints>
-                                        <color key="progressTintColor" name="color main"/>
-                                        <color key="trackTintColor" name="color pb background"/>
-                                    </progressView>
-                                </subviews>
-                            </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
-                                <rect key="frame" x="0.0" y="75" width="414" height="478"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="533"/>
                                 <color key="backgroundColor" name="color background"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SJO-0c-at0">
                                     <size key="itemSize" width="391" height="365"/>
@@ -364,7 +345,7 @@
                                                             </prototypes>
                                                         </tableView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="quaternarySystemFillColor" red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" name="color card background"/>
                                                     <constraints>
                                                         <constraint firstItem="2Ju-7I-cBP" firstAttribute="leading" secondItem="RIa-g2-paO" secondAttribute="leading" constant="20" id="1ME-i3-Xkl"/>
                                                         <constraint firstItem="1JH-jD-1iT" firstAttribute="top" secondItem="RIa-g2-paO" secondAttribute="top" id="5qj-nl-axJ"/>
@@ -503,13 +484,10 @@
                             <constraint firstItem="GcD-d0-DR4" firstAttribute="bottom" secondItem="ceq-Fd-5Rd" secondAttribute="bottom" constant="20" id="2Mb-CM-tF4"/>
                             <constraint firstItem="GcD-d0-DR4" firstAttribute="trailing" secondItem="ceq-Fd-5Rd" secondAttribute="trailing" constant="20" id="3rq-v5-rAE"/>
                             <constraint firstItem="mtE-tE-11V" firstAttribute="top" secondItem="2Oe-fD-D2Q" secondAttribute="bottom" constant="20" id="84C-MX-VBX"/>
-                            <constraint firstItem="2Oe-fD-D2Q" firstAttribute="top" secondItem="lS5-Wb-Opk" secondAttribute="bottom" constant="20" id="F09-SV-tXM"/>
-                            <constraint firstItem="GcD-d0-DR4" firstAttribute="trailing" secondItem="lS5-Wb-Opk" secondAttribute="trailing" constant="30" id="M6T-to-fac"/>
                             <constraint firstItem="GcD-d0-DR4" firstAttribute="trailing" secondItem="2Oe-fD-D2Q" secondAttribute="trailing" id="a48-4h-sYU"/>
-                            <constraint firstItem="lS5-Wb-Opk" firstAttribute="top" secondItem="GcD-d0-DR4" secondAttribute="top" constant="20" id="es5-oQ-cJB"/>
+                            <constraint firstItem="2Oe-fD-D2Q" firstAttribute="top" secondItem="GcD-d0-DR4" secondAttribute="top" constant="20" id="jfd-St-DVX"/>
                             <constraint firstItem="ceq-Fd-5Rd" firstAttribute="leading" secondItem="GcD-d0-DR4" secondAttribute="leading" constant="20" id="jkW-l3-Yr9"/>
                             <constraint firstItem="2Oe-fD-D2Q" firstAttribute="leading" secondItem="GcD-d0-DR4" secondAttribute="leading" id="q05-WC-vwY"/>
-                            <constraint firstItem="lS5-Wb-Opk" firstAttribute="leading" secondItem="GcD-d0-DR4" secondAttribute="leading" constant="30" id="yHB-aQ-lDv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GcD-d0-DR4"/>
                     </view>
@@ -525,8 +503,6 @@
                         <outlet property="nextButton" destination="mtE-tE-11V" id="XYR-Iv-OFW"/>
                         <outlet property="optionsButton" destination="86J-Qp-rEy" id="wo1-WQ-6l7"/>
                         <outlet property="previousButton" destination="FmB-yr-9cb" id="r4K-sr-EaB"/>
-                        <outlet property="progressLabel" destination="LR0-kS-hMo" id="qgC-45-doC"/>
-                        <outlet property="progressView" destination="KAu-t8-1DZ" id="NdW-PA-82D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaX-ar-rYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -538,7 +514,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashCardHomeVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="ybv-e2-hzc">
@@ -836,7 +812,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashCardOptionsVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -909,7 +885,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -1010,7 +986,7 @@
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="ListVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="lvj-Zi-9Ji" userLabel="favorites list empty">
@@ -1192,7 +1168,7 @@
             <objects>
                 <viewController id="awX-yg-8xS" customClass="DItemVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4wH-cl-seN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L29-8G-zy9">
@@ -1287,7 +1263,7 @@
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-vJ-agb">
@@ -1476,7 +1452,7 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
@@ -1609,7 +1585,7 @@
                                                             </connections>
                                                         </switch>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="quaternarySystemFillColor" red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" name="color card background"/>
                                                     <constraints>
                                                         <constraint firstItem="Vz3-ED-Pfj" firstAttribute="centerY" secondItem="MBi-HA-SBi" secondAttribute="centerY" id="2fH-rX-vN7"/>
                                                         <constraint firstItem="MBi-HA-SBi" firstAttribute="top" secondItem="NvD-ZG-35f" secondAttribute="bottom" constant="10" id="3SQ-8i-6TU"/>
@@ -1714,7 +1690,7 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="quaternarySystemFillColor" red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" name="color card background"/>
                                                     <constraints>
                                                         <constraint firstItem="cPq-11-7fQ" firstAttribute="top" secondItem="06b-mX-1EB" secondAttribute="bottom" constant="5" id="2eU-7c-zWR"/>
                                                         <constraint firstItem="CrO-GG-ccQ" firstAttribute="centerX" secondItem="06b-mX-1EB" secondAttribute="centerX" id="7Ij-Pj-zd3"/>
@@ -1809,7 +1785,7 @@
             <objects>
                 <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -1928,7 +1904,7 @@
             <objects>
                 <viewController id="frx-7u-7So" customClass="WelcomeScreenVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S7T-mW-wfL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TeH-32-Yxj">
@@ -2057,7 +2033,7 @@
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
@@ -2353,9 +2329,6 @@
         </namedColor>
         <namedColor name="color main">
             <color red="0.28235294117647058" green="0.45098039215686275" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="color pb background">
-            <color red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color text">
             <color red="0.25882352941176473" green="0.25882352941176473" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
