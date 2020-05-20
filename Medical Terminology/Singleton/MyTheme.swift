@@ -21,7 +21,9 @@ class MyTheme{
     let colorButtonDisabled = UIColor(named: "color button disabled")
     let colorButtonDisabledTint = UIColor(named: "color inactive icon")
     let colorCardBorder = UIColor(named: "color card border")
-    let color_notAnswered = UIColor(named: "color card border")
+    
+    let colorCorrect = UIColor(named: "color correct")
+    let colorIncorrect = UIColor(named: "color incorrect")
     
     //MARK: Flashcards
     let color_fch_button = UIColor(named: "color main")
@@ -34,28 +36,23 @@ class MyTheme{
     let colorLhButton = UIColor(named: "color main")
     
     //MARK: Learning set
-    
-    let color_incorrect = UIColor(named: "color incorrect")
-    let color_learned = UIColor(named: "color correct")
+    let colorLsNotAnswered = UIColor(named: "color main 2")
     
     //MARK: Quiz home
     let colorQuizButton = UIColor(named: "color main")
-    let color_correct = UIColor(named: "color correct")
     
     //colors of quiz set home
     let color_pb_quiz_foreground = UIColor(named: "color main")
     let color_pb_quiz_background = UIColor(named: "color pb background")
     let color_pb_quiz_fillcolor = UIColor(named: "color background")
     
+    //MARK: Quiz set colors
+    let colorQsNotAnswered = UIColor(named: "color card border")
     
     //MARK: List controller
     let color_searchText = UIColor(named: "color text")
     let color_section_header = UIColor(named: "color main")
     let color_section_text = UIColor(named: "color text")
-    
-    let color_correctAnswer = UIColor (red: 144/255, green: 169/255, blue: 86/255, alpha: 1)
-    let color_wrongAnswer = UIColor(red: 244/255, green: 95/255, blue: 66/255, alpha: 1)
-    let color_quizStatusDone = UIColor (red: 144/255, green: 169/255, blue: 86/255, alpha: 1)
     
     //MARK: images
     let image_correct = UIImage(named: "check circle filled")

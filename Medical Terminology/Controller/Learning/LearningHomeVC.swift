@@ -28,10 +28,10 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
     var progressBar: CircularBar!
     
     //button colors
-    let enabledButtonColor = myTheme.colorLhButton
-    let enabledButtonTint = myTheme.colorButtonEnabledTint
-    let disabledButtonColor = myTheme.colorButtonDisabled
-    let disabledButtonTint = myTheme.colorButtonDisabledTint
+       let enabledButtonColor = myTheme.colorLhButton
+       let enabledButtonTint = myTheme.colorButtonEnabledTint
+       let disabledButtonColor = myTheme.colorButtonDisabled
+       let disabledButtonTint = myTheme.colorButtonDisabledTint
     
     private var optionsMenu: UIAlertController!
     
@@ -43,7 +43,7 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
         newSetButton.layer.cornerRadius = myConstants.button_cornerRadius
         seeCurrentSetButton.layer.cornerRadius = myConstants.button_cornerRadius
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
+                navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
         updateDisplay()
         
     }
@@ -65,7 +65,7 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
         favoritesSwitch.isOn = learningHomeVCH.isFavoriteMode
         
         favoritesLabel.text = "\(favoritesCount)"
-        messageLabel.text = learningHomeVCH.getMessageText()
+                    messageLabel.text = learningHomeVCH.getMessageText()
         
         if learningHomeVCH.isFavoriteMode && favoritesCount == 0 {
             
@@ -82,29 +82,27 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
         circleBarView.isHidden = false
         percentLabel.isHidden = false
         heartImage.isHidden = true
-        redoButton.isHidden = false
         messageLabel.isHidden = false
+        heartImage.isHidden = true
         
         let foregroundColor = myTheme.colorLhPbForeground?.cgColor
         let backgroundColor = myTheme.colorLhPbBackground?.cgColor
         let fillColor =  myTheme.colorLhPbFill?.cgColor
-        
+    
         progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!
             , lineWidth: myTheme.progressBarWidth)
-        
+    
         progressBar.setStrokeEnd(partialCount: counts.learnedTerms, totalCount: counts.totalTerms)
-        
-        heartImage.isHidden = true
         
         let percentText = utilities.getPercentage(number: counts.learnedTerms, numberTotal: counts.totalTerms)
         
         percentLabel.text = "\(percentText)% DONE"
         messageLabel.text = learningHomeVCH.getMessageText()
         
-        if counts.learnedTerms > 0 {
-            redoButton.isEnabled = true
+        if counts.learnedTerms == 0 {
+            redoButton.isHidden = true
         } else {
-            redoButton.isEnabled = false
+            redoButton.isHidden = false
         }
         
         if counts.availableToLearn > 0 {

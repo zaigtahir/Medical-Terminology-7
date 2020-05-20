@@ -81,9 +81,8 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             //question is answered already
             if question.isCorrect() {
                 //is correctly answered
-                resultView.backgroundColor = myTheme.color_correct
-                
-                cellView.layer.borderColor = myTheme.color_correct?.cgColor
+                resultView.backgroundColor = myTheme.colorCorrect
+                cellView.layer.borderColor = myTheme.colorCorrect?.cgColor
                 
                 // configure showAgainButton
                 // no ideas why but when I change the text on the button it flashes twice before staying on
@@ -107,13 +106,13 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
                 showAnswerSwitch.isHidden = false
                 showAnswerLabel.isHidden = false
                 
-                resultView.backgroundColor = myTheme.color_incorrect
-                cellView.layer.borderColor = myTheme.color_incorrect?.cgColor
+                resultView.backgroundColor = myTheme.colorIncorrect
+                cellView.layer.borderColor = myTheme.colorIncorrect?.cgColor
             }
         } else {
             //question is not answered
-            resultView.backgroundColor = myTheme.color_notAnswered
-            cellView.layer.borderColor = myTheme.color_notAnswered?.cgColor
+            resultView.backgroundColor = myTheme.colorLsNotAnswered
+            cellView.layer.borderColor = myTheme.colorLsNotAnswered?.cgColor
         }
         
         tableView.reloadData()  //must refesh the data here so the table holds updated information
@@ -142,11 +141,11 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             
         case 1:
             cell.answerImage.image = myTheme.image_correct
-            cell.answerImage.tintColor = myTheme.color_correct
+            cell.answerImage.tintColor = myTheme.colorCorrect
             
         case 2:
             cell.answerImage.image = myTheme.image_incorrect
-            cell.answerImage.tintColor = myTheme.color_incorrect
+            cell.answerImage.tintColor = myTheme.colorIncorrect
             
         case 3:
             
@@ -156,7 +155,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             
             if question.showAnswer || showAnswerSwitch.isOn {
                 cell.answerImage.image = myTheme.image_correct
-                cell.answerImage.tintColor = myTheme.color_correct
+                cell.answerImage.tintColor = myTheme.colorCorrect
                 
             } else {
                 cell.answerImage.image = nil

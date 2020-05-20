@@ -65,12 +65,12 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
             if question.isCorrect() {
                 showAnswerLabel.isHidden = true
                 showAnswerSwitch.isHidden = true
-                resultView.backgroundColor = myTheme.color_correct
-                cellView.layer.borderColor = myTheme.color_correct?.cgColor
+                resultView.backgroundColor = myTheme.colorCorrect
+                cellView.layer.borderColor = myTheme.colorCorrect?.cgColor
                 
             } else {
-                resultView.backgroundColor = myTheme.color_incorrect
-                cellView.layer.borderColor = myTheme.color_incorrect?.cgColor
+                resultView.backgroundColor = myTheme.colorIncorrect
+                cellView.layer.borderColor = myTheme.colorIncorrect?.cgColor
                 
                 showAnswerLabel.isHidden = false
                 showAnswerSwitch.isHidden = false
@@ -82,8 +82,8 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
             let item = dIC.getDItem(itemID: question.itemID)
             question.learnedDefinitionForItem = item.learnedDefinition
             question.learnedTermForItem = item.learnedTerm
-            
-            cellView.layer.borderColor = myTheme.color_notAnswered?.cgColor
+            resultView.backgroundColor = myTheme.colorQsNotAnswered
+            cellView.layer.borderColor = myTheme.colorQsNotAnswered?.cgColor
             showAnswerLabel.isHidden = true
             showAnswerSwitch.isHidden = true
         }
@@ -119,16 +119,16 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
             
         case 1:
             cell.answerImage.image = myTheme.image_correct
-            cell.answerImage.tintColor = myTheme.color_correct
+            cell.answerImage.tintColor = myTheme.colorCorrect
             
         case 2:
             cell.answerImage.image = myTheme.image_incorrect
-            cell.answerImage.tintColor = myTheme.color_incorrect
+            cell.answerImage.tintColor = myTheme.colorIncorrect
         case 3:
             
             if showAnswerSwitch.isOn {
                 cell.answerImage.image = myTheme.image_correct
-                cell.answerImage.tintColor = myTheme.color_correct
+                cell.answerImage.tintColor = myTheme.colorCorrect
             } else {
                 cell.answerImage.image = nil
             }
