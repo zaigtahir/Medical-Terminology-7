@@ -42,12 +42,12 @@ class MyTheme{
     let colorQuizButton = UIColor(named: "color main")
     
     //colors of quiz set home
-    let color_pb_quiz_foreground = UIColor(named: "color main")
-    let color_pb_quiz_background = UIColor(named: "color pb background")
-    let color_pb_quiz_fillcolor = UIColor(named: "color background")
+    let colorPbQuizForeground = UIColor(named: "color main")
+    let colorPbQuizBackground = UIColor(named: "color pb background")
+    let colorPbQuizFillcolor = UIColor(named: "color main")
     
     //MARK: Quiz set colors
-    let colorQsNotAnswered = UIColor(named: "color card border")
+    let colorQsNotAnswered = UIColor(named: "color main")
     
     //MARK: List controller
     let color_searchText = UIColor(named: "color text")

@@ -82,9 +82,9 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
         heartImage.isHidden = true
         redoButton.isHidden = false
         
-      let foregroundColor = myTheme.color_pb_quiz_foreground?.cgColor
-      let backgroundColor = myTheme.color_pb_quiz_background?.cgColor
-      let fillColor =  myTheme.color_pb_quiz_fillcolor?.cgColor
+      let foregroundColor = myTheme.colorPbQuizForeground?.cgColor
+      let backgroundColor = myTheme.colorPbQuizBackground?.cgColor
+      let fillColor =  myTheme.colorPbQuizFillcolor?.cgColor
               
       progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!
         , lineWidth: myTheme.progressBarWidth)

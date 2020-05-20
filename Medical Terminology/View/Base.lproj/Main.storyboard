@@ -72,14 +72,14 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100% DONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="x56-Yu-36A">
                                                         <rect key="frame" x="0.0" y="0.0" width="146.66666666666666" height="30"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                                        <color key="textColor" name="color text"/>
+                                                        <color key="textColor" name="color text button"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99e-kk-4SA">
                                                         <rect key="frame" x="0.0" y="39.999999999999972" width="146.66666666666666" height="30"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                         <state key="normal" title="Start Over">
-                                                            <color key="titleColor" name="color text"/>
+                                                            <color key="titleColor" name="color text button"/>
                                                         </state>
                                                         <state key="disabled">
                                                             <color key="titleColor" name="color inactive icon"/>
@@ -1319,14 +1319,14 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100% DONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="R0A-Je-5Kr">
                                                                 <rect key="frame" x="0.0" y="0.0" width="146.66666666666666" height="30"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                                                <color key="textColor" name="color text"/>
+                                                                <color key="textColor" name="color text button"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8M-hf-YW4">
                                                                 <rect key="frame" x="0.0" y="39.999999999999972" width="146.66666666666666" height="30"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                                 <state key="normal" title="Start Over">
-                                                                    <color key="titleColor" name="color text"/>
+                                                                    <color key="titleColor" name="color text button"/>
                                                                 </state>
                                                                 <state key="disabled">
                                                                     <color key="titleColor" name="color inactive icon"/>
