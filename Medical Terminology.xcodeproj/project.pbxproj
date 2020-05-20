@@ -29,7 +29,6 @@
 		5A2A58F022FCA3AE00434910 /* QuizBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58EF22FCA3AE00434910 /* QuizBase.swift */; };
 		5A2A58F322FCA5F200434910 /* QuizSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58F222FCA5F200434910 /* QuizSet.swift */; };
 		5A2A58F522FCA64900434910 /* LearningSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58F422FCA64900434910 /* LearningSet.swift */; };
-		5A34042424269DBF00C744E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A34042324269DBF00C744E3 /* Assets.xcassets */; };
 		5A367D2E22EA683F003A7E4B /* LearningHomeOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D2D22EA683F003A7E4B /* LearningHomeOptionsVC.swift */; };
 		5A367D3022EF3F99003A7E4B /* QuizHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D2F22EF3F99003A7E4B /* QuizHome.swift */; };
 		5A367D3422EF513F003A7E4B /* CircularBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D3322EF513F003A7E4B /* CircularBar.swift */; };
@@ -69,6 +68,7 @@
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
 		9960C035245FC9A10034486B /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960C034245FC9A10034486B /* FileUtilities.swift */; };
 		9960C09324648B960034486B /* atrio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9960C09224648B960034486B /* atrio.mp3 */; };
+		9963C24C2474BB150096E348 /* Assets.xcassets 20-09-48-347.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24B2474BB130096E348 /* Assets.xcassets 20-09-48-347.xcassets */; };
 		996CF5FB245917DE00382B11 /* rrhea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF494245917DD00382B11 /* rrhea.mp3 */; };
 		996CF5FC245917DE00382B11 /* radi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF495245917DD00382B11 /* radi.mp3 */; };
 		996CF5FD245917DE00382B11 /* re.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF496245917DD00382B11 /* re.mp3 */; };
@@ -436,7 +436,6 @@
 		5A2A58EF22FCA3AE00434910 /* QuizBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBase.swift; sourceTree = "<group>"; };
 		5A2A58F222FCA5F200434910 /* QuizSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSet.swift; sourceTree = "<group>"; };
 		5A2A58F422FCA64900434910 /* LearningSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningSet.swift; sourceTree = "<group>"; };
-		5A34042324269DBF00C744E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A367D2D22EA683F003A7E4B /* LearningHomeOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeOptionsVC.swift; sourceTree = "<group>"; };
 		5A367D2F22EF3F99003A7E4B /* QuizHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizHome.swift; path = "Medical Terminology/Controller/Quiz/QuizHome.swift"; sourceTree = SOURCE_ROOT; };
 		5A367D3322EF513F003A7E4B /* CircularBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBar.swift; sourceTree = "<group>"; };
@@ -476,6 +475,7 @@
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
 		9960C034245FC9A10034486B /* FileUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		9960C09224648B960034486B /* atrio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = atrio.mp3; path = Audio/A/atrio.mp3; sourceTree = SOURCE_ROOT; };
+		9963C24B2474BB130096E348 /* Assets.xcassets 20-09-48-347.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets 20-09-48-347.xcassets"; sourceTree = "<group>"; };
 		996CF494245917DD00382B11 /* rrhea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rrhea.mp3; sourceTree = "<group>"; };
 		996CF495245917DD00382B11 /* radi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = radi.mp3; sourceTree = "<group>"; };
 		996CF496245917DD00382B11 /* re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = re.mp3; sourceTree = "<group>"; };
@@ -875,6 +875,7 @@
 			isa = PBXGroup;
 			children = (
 				5A189C2B216D8E8400929AB8 /* Medical Terminology */,
+				9963C24B2474BB130096E348 /* Assets.xcassets 20-09-48-347.xcassets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -901,7 +902,6 @@
 				5A189C2C216D8E8400929AB8 /* AppDelegate.swift */,
 				5A189C35216D8E8400929AB8 /* LaunchScreen.storyboard */,
 				5A189C38216D8E8400929AB8 /* Info.plist */,
-				5A34042324269DBF00C744E3 /* Assets.xcassets */,
 			);
 			path = "Medical Terminology";
 			sourceTree = "<group>";
@@ -1847,6 +1847,7 @@
 				996CF670245917DE00382B11 /* ad.mp3 in Resources */,
 				996CF6FE245917DE00382B11 /* entero.mp3 in Resources */,
 				996CF613245917DE00382B11 /* icle.mp3 in Resources */,
+				9963C24C2474BB150096E348 /* Assets.xcassets 20-09-48-347.xcassets in Resources */,
 				996CF6D6245917DE00382B11 /* crani.mp3 in Resources */,
 				996CF72E245917DE00382B11 /* pepsia.mp3 in Resources */,
 				996CF720245917DE00382B11 /* lytic.mp3 in Resources */,
@@ -1912,7 +1913,6 @@
 				996CF659245917DE00382B11 /* articulo.mp3 in Resources */,
 				996CF6E9245917DE00382B11 /* ventro.mp3 in Resources */,
 				996CF6E3245917DE00382B11 /* dent.mp3 in Resources */,
-				5A34042424269DBF00C744E3 /* Assets.xcassets in Resources */,
 				996CF6F6245917DE00382B11 /* eosino.mp3 in Resources */,
 				996CF735245917DE00382B11 /* photo.mp3 in Resources */,
 				996CF60C245917DE00382B11 /* iasis.mp3 in Resources */,

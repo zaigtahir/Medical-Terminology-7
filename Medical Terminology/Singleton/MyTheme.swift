@@ -27,9 +27,9 @@ class MyTheme{
     let color_fch_button = UIColor(named: "color main")
     
     //MARK: Learning home
-    let colorLhPbForeground = UIColor(named: "color main")
+    let colorLhPbForeground = UIColor(named: "color main 2")
     let colorLhPbBackground = UIColor(named: "color pb background")
-    let colorLhPbFill = UIColor(named: "color background")
+    let colorLhPbFill = UIColor(named: "color main 2")
     
     let colorLhButton = UIColor(named: "color main")
     
