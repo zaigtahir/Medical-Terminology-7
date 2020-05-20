@@ -68,7 +68,7 @@
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
 		9960C035245FC9A10034486B /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960C034245FC9A10034486B /* FileUtilities.swift */; };
 		9960C09324648B960034486B /* atrio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9960C09224648B960034486B /* atrio.mp3 */; };
-		9963C24C2474BB150096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24B2474BB130096E348 /* Assets.xcassets */; };
+		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
 		996CF5FB245917DE00382B11 /* rrhea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF494245917DD00382B11 /* rrhea.mp3 */; };
 		996CF5FC245917DE00382B11 /* radi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF495245917DD00382B11 /* radi.mp3 */; };
 		996CF5FD245917DE00382B11 /* re.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 996CF496245917DD00382B11 /* re.mp3 */; };
@@ -475,7 +475,7 @@
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
 		9960C034245FC9A10034486B /* FileUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		9960C09224648B960034486B /* atrio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = atrio.mp3; path = Audio/A/atrio.mp3; sourceTree = SOURCE_ROOT; };
-		9963C24B2474BB130096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		996CF494245917DD00382B11 /* rrhea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rrhea.mp3; sourceTree = "<group>"; };
 		996CF495245917DD00382B11 /* radi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = radi.mp3; sourceTree = "<group>"; };
 		996CF496245917DD00382B11 /* re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = re.mp3; sourceTree = "<group>"; };
@@ -875,7 +875,6 @@
 			isa = PBXGroup;
 			children = (
 				5A189C2B216D8E8400929AB8 /* Medical Terminology */,
-				9963C24B2474BB130096E348 /* Assets.xcassets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -902,6 +901,7 @@
 				5A189C2C216D8E8400929AB8 /* AppDelegate.swift */,
 				5A189C35216D8E8400929AB8 /* LaunchScreen.storyboard */,
 				5A189C38216D8E8400929AB8 /* Info.plist */,
+				9963C24D2475828B0096E348 /* Assets.xcassets */,
 			);
 			path = "Medical Terminology";
 			sourceTree = "<group>";
@@ -1745,6 +1745,7 @@
 				996CF652245917DE00382B11 /* stalsis.mp3 in Resources */,
 				996CF6BA245917DE00382B11 /* centesis.mp3 in Resources */,
 				996CF6C7245917DE00382B11 /* cele.mp3 in Resources */,
+				9963C24E2475828D0096E348 /* Assets.xcassets in Resources */,
 				996CF6D3245917DE00382B11 /* co.mp3 in Resources */,
 				996CF650245917DE00382B11 /* sclero.mp3 in Resources */,
 				996CF63F245917DE00382B11 /* sarco.mp3 in Resources */,
@@ -1847,7 +1848,6 @@
 				996CF670245917DE00382B11 /* ad.mp3 in Resources */,
 				996CF6FE245917DE00382B11 /* entero.mp3 in Resources */,
 				996CF613245917DE00382B11 /* icle.mp3 in Resources */,
-				9963C24C2474BB150096E348 /* Assets.xcassets in Resources */,
 				996CF6D6245917DE00382B11 /* crani.mp3 in Resources */,
 				996CF72E245917DE00382B11 /* pepsia.mp3 in Resources */,
 				996CF720245917DE00382B11 /* lytic.mp3 in Resources */,
