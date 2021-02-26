@@ -567,7 +567,6 @@
 		99E37D1724C8980C00DAE8B7 /* rhino.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E37B2324C8980C00DAE8B7 /* rhino.mp3 */; };
 		99E37D1824C8980C00DAE8B7 /* ctscan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E37B2424C8980C00DAE8B7 /* ctscan.mp3 */; };
 		99E37D1924C8980C00DAE8B7 /* arthro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E37B2524C8980C00DAE8B7 /* arthro.mp3 */; };
-		99E37D1B24C89C6000DAE8B7 /* testfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E37D1A24C89C6000DAE8B7 /* testfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1140,7 +1139,6 @@
 		99E37B2324C8980C00DAE8B7 /* rhino.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rhino.mp3; sourceTree = "<group>"; };
 		99E37B2424C8980C00DAE8B7 /* ctscan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ctscan.mp3; sourceTree = "<group>"; };
 		99E37B2524C8980C00DAE8B7 /* arthro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arthro.mp3; sourceTree = "<group>"; };
-		99E37D1A24C89C6000DAE8B7 /* testfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1311,7 +1309,6 @@
 				5A03479322D3CCF700749EBC /* MyFMDB.swift */,
 				5A5FF784241207D50036480D /* MyAudioPlayer.swift */,
 				5A18DF70241E8AD10006825B /* MyConstants.swift */,
-				99E37D1A24C89C6000DAE8B7 /* testfile.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -2485,7 +2482,6 @@
 				5A03478C22D39D0900749EBC /* FMDatabaseQueue.m in Sources */,
 				5A4BB81D229A48690089A474 /* FlashCardOptionsVC.swift in Sources */,
 				5A37F87A22E74B18008A5FA5 /* CVScrollController.swift in Sources */,
-				99E37D1B24C89C6000DAE8B7 /* testfile.swift in Sources */,
 				994175DE245A38A900E281DB /* AudioFilesController.swift in Sources */,
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
 				5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */,

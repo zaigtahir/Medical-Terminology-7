@@ -14,6 +14,8 @@ let myTheme = MyTheme ()
 let myConstants = MyConstants ()
 let myFMDB = MyFMDB()
 
+let testVariable: String = "test"
+
 enum FlashCardViewMode {
     case both
     case term
