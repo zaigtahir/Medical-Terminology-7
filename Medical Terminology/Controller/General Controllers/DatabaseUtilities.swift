@@ -40,7 +40,7 @@ class DatabaseUtilities  {
     private func setupNewDatabase () -> Bool {
     //will copy the db from the bundle to the directory and open the database
     
-    guard let dbURL = copyFile(fileName: dbFilename, fileExtension: dbFileExtension) else {
+    guard let dbURL = copyFileFromTo(fileName: dbFilename, fileExtension: dbFileExtension, destFileName: dbFilename, destFileExtension: dbFileExtension) else {
         //error copying the db
         print("there was an error copying the db to directory")
         return false
@@ -54,6 +54,11 @@ class DatabaseUtilities  {
     
     private func migrateDatabase () {
         //MARK: add code for migration of the database
+       
+        // Idea is to transfer the learned and answered settings from the current DB to the new DB
+        // then delete the current DB and use the new DB as the default
+        
+        // my DItemController works on the global database so first lets create a list of id's and associated 
     }
     
     private func useCurrentDatabase () {
@@ -80,6 +85,28 @@ class DatabaseUtilities  {
         }
         
         return destinationURL
+    }
+    
+    private func copyFileFromTo(fileName: String, fileExtension: String, destFileName: String, destFileExtension: String) -> URL? {
+        
+        let sourceURL = getBundleFileURL(fileName: fileName, fileExtension: fileExtension)
+        let destinationURL = getDirectoryFileURL(fileName: fileName, fileExtension: fileExtension)
+        
+        _ = deleteDirectoryFileAtURL(fileURL: destinationURL)
+        
+        if let sURL = sourceURL {
+            do {
+                try fileManager.copyItem(at: sURL, to: destinationURL)
+                
+            } catch let error as NSError {
+                print("Could not copy the file. Error: \(error.description)")
+                return nil
+            }
+        }
+        
+        return destinationURL
+        
+        
     }
     
     private func deleteDirectoryFileAtURL (fileURL: URL) -> Bool {
@@ -110,4 +137,6 @@ class DatabaseUtilities  {
         let url = documentDirectoryURL.appendingPathComponent("\(fileName).\(fileExtension)")
         return url
     }
+    
+    
 }
