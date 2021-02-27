@@ -12,7 +12,32 @@ let fileManager = FileManager()
 
 class DatabaseUtilities  {
     
-    func setupNewDatabase () -> Bool {
+    func setupDatabase () {
+        //will look at the versions and copy, migrate or use the existing database
+        
+        let settingsC = SettingsController()
+        
+        if settingsC.getUserDefaultsVersion() == "0.0" {
+            // new install
+            _ = setupNewDatabase()
+            settingsC.updateVersionNumber()
+        }
+        
+        if settingsC.getBundleVersion() == settingsC.getUserDefaultsVersion() {
+            // use current database
+            useCurrentDatabase()
+            
+        } else {
+            // migrate database, for now just copy it as new
+            // new install
+            _ = setupNewDatabase()
+            settingsC.updateVersionNumber()
+            print ("need to migrate the db, but for now just copying")
+        }
+        
+    }
+    
+    private func setupNewDatabase () -> Bool {
     //will copy the db from the bundle to the directory and open the database
     
     guard let dbURL = copyFile(fileName: dbFilename, fileExtension: dbFileExtension) else {
@@ -27,8 +52,14 @@ class DatabaseUtilities  {
     return true
 }
     
-    func migrateDatabase () {
-        
+    private func migrateDatabase () {
+        //MARK: add code for migration of the database
+    }
+    
+    private func useCurrentDatabase () {
+        let dbURL = getDirectoryFileURL(fileName: dbFilename, fileExtension: dbFileExtension)
+        myDB = FMDatabase(path: dbURL.absoluteString)
+        myDB.open()        
     }
     
     private func copyFile (fileName: String, fileExtension: String) -> URL?{

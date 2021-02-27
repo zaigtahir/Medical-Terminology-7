@@ -18,61 +18,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let dbUtilities = DatabaseUtilities()
-        let sC = SettingsController()
+        let sController = SettingsController()
         
+        print("Versions before database evaluation")
+        print(sController.getBundleVersion())
+        print(sController.getUserDefaultsVersion())
         
-        print(sC.getBundleVersion())
-        print(sC.getUserDefaultsVersion())
-        
-        
-        if sC.getUserDefaultsVersion() == "0.0" {
-            // brand new install
-            if dbUtilities.setupNewDatabase() {
-                print("copied database")
-                sC.updateVersionNumber()
-                sC.setShowWelcomeScreen(showWelcomeScreen: true)
-            } else {
-                print("there was a problem copying the database")
-            }
+        // setup start screen
+        if sController.getUserDefaultsVersion() == "0.0" {
+            sController.setShowWelcomeScreen(showWelcomeScreen: true)
         }
         
-        if sC.getBundleVersion() != sC.getUserDefaultsVersion() {
-            print ("the bundle and the install versions are not the same!")
-            
-            // the versions are not the same
-            // migrate the database
-            //temporarily just copy the db
-            _ = dbUtilities.setupNewDatabase()
-            
-            sC.updateVersionNumber()
-            sC.setShowWelcomeScreen(showWelcomeScreen: true)
-
+        if sController.getBundleVersion() != sController.getUserDefaultsVersion() {
+            sController.setShowWelcomeScreen(showWelcomeScreen: true)
         }
         
+        dbUtilities.setupDatabase()
         
-        print(sC.getBundleVersion())
-        print(sC.getUserDefaultsVersion())
+        print("Versions after database is setup")
+        print(sController.getBundleVersion())
+        print(sController.getUserDefaultsVersion())
     
-        //check and see if there is a resource present for each audiofile name listed in the database
+        // check and see if there is a resource present for each audiofile name listed in the database
         print("In AppDelegate checking if each audiofile name in the database has a matching audiofile in the resource bundle")
         let aFC = AudioFileController()
         aFC.checkAudioFiles()
         print("Audio file check done! if there were any missing they would be listed before this ending line.")
         
-        // here we will see if the installed version is the same as bundle version
-        
-        // if the bundle version is not same as the installed version, then do initial setup things
-        
-    
-        
-        // install and updates
-        // if the userDefaults version is = 0.0, this is a new install. Will need to just copy all the database file to the documents folder
-        
-        
-        
-        
-        
-        if sC.getShowWelcomeScreen() == false {
+        // Determine and set the start screen
+        if sController.getShowWelcomeScreen() == false {
             
             // selecting if to start at the welcome screen or flashcardhomeVC
             
@@ -85,9 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = tabController
             
             /*
-             
-             
-             
              let navigationController = UINavigationController.init(rootViewController: viewController)
              self.window?.rootViewController = navigationController
              

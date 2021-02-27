@@ -27,10 +27,10 @@ class SettingsController {
         
         //testing out the infolist
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        let build = Bundle.main.infoDictionary?["CFBuildVersion"] as? String
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
         
-        let v = version ?? "0"
-        let b = build ?? "0"
+        let v = version ?? "-1"
+        let b = build ?? "-1"
         
         return ("\(v).\(b)")
     }
@@ -41,8 +41,8 @@ class SettingsController {
         let uVersion  = uDefaults.string(forKey: myKeys.appVersion)
         let uBuild = uDefaults.string(forKey: myKeys.appBuild)
         
-        let v = uVersion ?? "0"
-        let b = uBuild ?? "0"
+        let v = uVersion ?? "-1"
+        let b = uBuild ?? "-1"
         
         return ("\(v).\(b)")
     }
@@ -52,10 +52,10 @@ class SettingsController {
         //testing out the infolist
         
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        let build = Bundle.main.infoDictionary?["CFBuildVersion"] as? String
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
         
-        let v = version ?? "0"
-        let b = build ?? "0"
+        let v = version ?? "-1"
+        let b = build ?? "-1"
         
         setVersionNumber(version: v, build: b)
         
