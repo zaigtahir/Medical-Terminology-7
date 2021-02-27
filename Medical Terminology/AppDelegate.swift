@@ -117,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //MARK: To fix this, will need to fix the close for the database variable
         
-        myFMDB.fmdb.close()
+        myDB.close()
     }
     
     

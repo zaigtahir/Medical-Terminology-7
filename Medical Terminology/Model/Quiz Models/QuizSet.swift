@@ -70,7 +70,7 @@ class QuizSet: QuizBase {
             
         }
         
-        if let resultSet = myFMDB.fmdb.executeQuery(fullQuery, withParameterDictionary: nil) {
+        if let resultSet = myDB.executeQuery(fullQuery, withParameterDictionary: nil) {
             while resultSet.next() {
                 let itemID = Int(resultSet.int(forColumn: "itemID"))
                 let type = Int(resultSet.int(forColumn: "type"))

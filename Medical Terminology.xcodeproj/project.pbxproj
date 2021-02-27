@@ -12,7 +12,6 @@
 		5A03478E22D39D0900749EBC /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03478822D39D0900749EBC /* FMDatabase.m */; };
 		5A03478F22D39D0900749EBC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03478A22D39D0900749EBC /* FMDatabasePool.m */; };
 		5A03479022D39D0900749EBC /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03478B22D39D0900749EBC /* FMDatabaseAdditions.m */; };
-		5A03479422D3CCF700749EBC /* MyFMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A03479322D3CCF700749EBC /* MyFMDB.swift */; };
 		5A03479622D3EE7500749EBC /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A03479522D3EE7500749EBC /* Globals.swift */; };
 		5A1506252255796C00717AB8 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1506242255796C00717AB8 /* Question.swift */; };
 		5A15062A22557E7C00717AB8 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A15062922557E7C00717AB8 /* Answer.swift */; };
@@ -582,7 +581,6 @@
 		5A03478922D39D0900749EBC /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		5A03478A22D39D0900749EBC /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
 		5A03478B22D39D0900749EBC /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		5A03479322D3CCF700749EBC /* MyFMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFMDB.swift; sourceTree = "<group>"; };
 		5A03479522D3EE7500749EBC /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		5A1506242255796C00717AB8 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		5A15062922557E7C00717AB8 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
@@ -1306,7 +1304,6 @@
 			children = (
 				5A03479522D3EE7500749EBC /* Globals.swift */,
 				5AD725E5225E4E2F007CED84 /* MyTheme.swift */,
-				5A03479322D3CCF700749EBC /* MyFMDB.swift */,
 				5A5FF784241207D50036480D /* MyAudioPlayer.swift */,
 				5A18DF70241E8AD10006825B /* MyConstants.swift */,
 				99A99CCA25E9C97700308140 /* MyKeys.swift */,
@@ -2497,7 +2494,6 @@
 				9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */,
 				5A4471652284EE85008E3107 /* ListCC.swift in Sources */,
 				5A15062A22557E7C00717AB8 /* Answer.swift in Sources */,
-				5A03479422D3CCF700749EBC /* MyFMDB.swift in Sources */,
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
 				5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */,
 				5A6F31B7219C776000E6477E /* DItemVC.swift in Sources */,

@@ -12,11 +12,7 @@ import Foundation
 
 let myTheme = MyTheme ()
 let myConstants = MyConstants ()
-let myFMDB = MyFMDB()
-
 let myKeys = MyKeys()
-
-let testVariable: String = "test"
 
 enum FlashCardViewMode {
     case both

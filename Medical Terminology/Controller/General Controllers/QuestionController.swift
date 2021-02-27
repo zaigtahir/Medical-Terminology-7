@@ -114,7 +114,7 @@ class QuestionController {
         
         let query = "SELECT DISTINCT term, termDisplay FROM dictionary  WHERE term != ? AND termDisplay != ? ORDER BY RANDOM() LIMIT 3"
         
-        if let resultSet = myFMDB.fmdb.executeQuery(query, withArgumentsIn: [notIncluding, notIncluding])
+        if let resultSet = myDB.executeQuery(query, withArgumentsIn: [notIncluding, notIncluding])
         {
             
             while resultSet.next() {
@@ -141,7 +141,7 @@ class QuestionController {
         
         let query: String = "SELECT DISTINCT Definition FROM dictionary  WHERE definition != ? ORDER BY RANDOM() LIMIT 3"
         
-        if let resultSet = myFMDB.fmdb.executeQuery(query, withArgumentsIn: [notIncluding]) {
+        if let resultSet = myDB.executeQuery(query, withArgumentsIn: [notIncluding]) {
             
             while resultSet.next() {
                 

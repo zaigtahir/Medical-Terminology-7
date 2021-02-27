@@ -24,7 +24,7 @@ class AudioFileController {
         
         var fileNames = [String]()
         
-        if let resultSet = myFMDB.fmdb.executeQuery(query, withParameterDictionary: nil) {
+        if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
             
             while resultSet.next() {
                 

@@ -35,7 +35,7 @@ class DItemController {
      */
     func getCount (query: String) -> Int {
         
-        if let resultSet = myFMDB.fmdb.executeQuery(query, withParameterDictionary: nil) {
+        if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
             
             resultSet.next()
             
@@ -63,7 +63,7 @@ class DItemController {
         
         var dItems = [DItem]()
         
-        if let resultSet = myFMDB.fmdb.executeQuery(query, withParameterDictionary: nil) {
+        if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
             
             while resultSet.next() {
                 
@@ -210,7 +210,7 @@ class DItemController {
         
         let fullQuery = "SELECT itemID FROM dictionary \(wQuery)"
         
-        if let resultSet = myFMDB.fmdb.executeQuery(fullQuery, withParameterDictionary: nil) {
+        if let resultSet = myDB.executeQuery(fullQuery, withParameterDictionary: nil) {
             
             while resultSet.next() {
                 
@@ -228,14 +228,14 @@ class DItemController {
             
         case 0:
             //clear not favorites only
-            myFMDB.fmdb.executeUpdate("UPDATE dictionary SET learnedTerm = ?, learnedDefinition = ? WHERE isFavorite = 0", withArgumentsIn: [0,0])
+            myDB.executeUpdate("UPDATE dictionary SET learnedTerm = ?, learnedDefinition = ? WHERE isFavorite = 0", withArgumentsIn: [0,0])
         case 1:
             //clear favorites only
-            myFMDB.fmdb.executeUpdate("UPDATE dictionary SET learnedTerm = ?, learnedDefinition = ? WHERE isFavorite = 1", withArgumentsIn: [0,0])
+            myDB.executeUpdate("UPDATE dictionary SET learnedTerm = ?, learnedDefinition = ? WHERE isFavorite = 1", withArgumentsIn: [0,0])
         
         default:
             //clear both
-            myFMDB.fmdb.executeUpdate("UPDATE dictionary SET learnedTerm = ?, learnedDefinition = ? WHERE itemID >= 0", withArgumentsIn: [0,0])
+            myDB.executeUpdate("UPDATE dictionary SET learnedTerm = ?, learnedDefinition = ? WHERE itemID >= 0", withArgumentsIn: [0,0])
         }
 
     }
@@ -246,7 +246,7 @@ class DItemController {
         {
             let query = "UPDATE dictionary SET learnedTerm = ?, learnedDefinition = ? WHERE itemID = ?"
             
-            myFMDB.fmdb.executeUpdate(query, withArgumentsIn: [0, 0, itemID])
+            myDB.executeUpdate(query, withArgumentsIn: [0, 0, itemID])
         }
         
     }
@@ -258,7 +258,7 @@ class DItemController {
             favoriteState = 1
         }
         
-        myFMDB.fmdb.executeUpdate("UPDATE dictionary SET isFavorite = ? where itemID = ?", withArgumentsIn: [favoriteState, itemID])
+        myDB.executeUpdate("UPDATE dictionary SET isFavorite = ? where itemID = ?", withArgumentsIn: [favoriteState, itemID])
         
     }
     
@@ -275,7 +275,7 @@ class DItemController {
             state  = 1
         }
         
-        myFMDB.fmdb.executeUpdate("UPDATE dictionary SET learnedTerm = ? where itemID  = ?", withArgumentsIn: [state, itemID])
+        myDB.executeUpdate("UPDATE dictionary SET learnedTerm = ? where itemID  = ?", withArgumentsIn: [state, itemID])
     }
     
     func saveLearnedDefinition (itemID: Int, learnedState: Bool) {
@@ -286,7 +286,7 @@ class DItemController {
             state  = 1
         }
         
-        myFMDB.fmdb.executeUpdate("UPDATE dictionary SET learnedDefinition = ? where itemID  = ?", withArgumentsIn: [state, itemID])
+        myDB.executeUpdate("UPDATE dictionary SET learnedDefinition = ? where itemID  = ?", withArgumentsIn: [state, itemID])
     }
     
     //MARK: QUIZ QUESTION related functions
@@ -317,7 +317,7 @@ class DItemController {
             }
         }
  
-        myFMDB.fmdb.executeUpdate(query, withArgumentsIn: []  )
+        myDB.executeUpdate(query, withArgumentsIn: []  )
     }
 
     func clearAnsweredItems (itemIDs: [Int]) {
@@ -326,19 +326,19 @@ class DItemController {
             
             let query = "UPDATE dictionary SET answeredTerm = ?, answeredDefinition = ? WHERE itemID = ?"
             
-            myFMDB.fmdb.executeUpdate(query, withArgumentsIn: [0, 0, itemID])
+            myDB.executeUpdate(query, withArgumentsIn: [0, 0, itemID])
         }
         
     }
     
     func saveAnsweredTerm (itemID: Int, answerState: Int) {
         
-        myFMDB.fmdb.executeUpdate("UPDATE dictionary SET answeredTerm = ? where itemID = ?", withArgumentsIn: [answerState, itemID])
+        myDB.executeUpdate("UPDATE dictionary SET answeredTerm = ? where itemID = ?", withArgumentsIn: [answerState, itemID])
     }
     
     func saveAnsweredDefinition (itemID: Int, answerState: Int) {
         
-        myFMDB.fmdb.executeUpdate("UPDATE dictionary SET answeredDefinition = ? where itemID = ?", withArgumentsIn: [answerState, itemID])
+        myDB.executeUpdate("UPDATE dictionary SET answeredDefinition = ? where itemID = ?", withArgumentsIn: [answerState, itemID])
     }
     
     func getTermsAnsweredCorrectlyCount (favoriteState: Int) -> Int {
