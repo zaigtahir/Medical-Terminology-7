@@ -23,12 +23,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         aFC.checkAudioFiles()
         print("Audio file check done! if there were any missing they would be listed before this ending line.")
         
-        //get settings
-  
+        // here we will see if the installed version is the same as bundle version
+        
+        // if the bundle version is not same as the installed version, then do initial setup things
+        
         let sC = SettingsController()
         
-        if sC.getSettings().showWelcomeScreen == 0 {
+        print(sC.getBundleVersion())
+        print(sC.getUserDefaultsVersion())
+        
+        if sC.getBundleVersion() != sC.getUserDefaultsVersion() {
             
+            //the versions are not the same
+            
+            print ("the bundle and the install versions are not the same!")
+            
+            //set to show the welcome screen as this is a new install or reinstall
+            sC.setShowWelcomeScreen(showWelcomeScreen: true)
+            
+        }
+        
+        if sC.getShowWelcomeScreen() == false {
+        
             // selecting if to start at the welcome screen or flashcardhomeVC
             
             self.window = UIWindow(frame: UIScreen.main.bounds)

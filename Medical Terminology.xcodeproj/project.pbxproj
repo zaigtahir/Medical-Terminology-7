@@ -63,10 +63,10 @@
 		5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */; };
 		994175DE245A38A900E281DB /* AudioFilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175DD245A38A900E281DB /* AudioFilesController.swift */; };
 		994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E1245B5BAE00E281DB /* SettingsController.swift */; };
-		994175E6245B5C0200E281DB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E5245B5C0200E281DB /* Settings.swift */; };
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
 		9960C035245FC9A10034486B /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960C034245FC9A10034486B /* FileUtilities.swift */; };
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
+		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
 		99DF26512470EF1E0021AFC1 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DF26502470EF1E0021AFC1 /* Tests.swift */; };
 		99E37B2624C8980C00DAE8B7 /* plegia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E3793124C8980A00DAE8B7 /* plegia.mp3 */; };
 		99E37B2724C8980C00DAE8B7 /* concussion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E3793224C8980A00DAE8B7 /* concussion.mp3 */; };
@@ -633,10 +633,10 @@
 		5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCVCell.swift; sourceTree = "<group>"; };
 		994175DD245A38A900E281DB /* AudioFilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFilesController.swift; sourceTree = "<group>"; };
 		994175E1245B5BAE00E281DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		994175E5245B5C0200E281DB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
 		9960C034245FC9A10034486B /* FileUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
 		99DF26502470EF1E0021AFC1 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1309,6 +1309,7 @@
 				5A03479322D3CCF700749EBC /* MyFMDB.swift */,
 				5A5FF784241207D50036480D /* MyAudioPlayer.swift */,
 				5A18DF70241E8AD10006825B /* MyConstants.swift */,
+				99A99CCA25E9C97700308140 /* MyKeys.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -1343,7 +1344,6 @@
 				5A189C3E217123B900929AB8 /* DItem.swift */,
 				5A6F31C921A7032E00E6477E /* DList.swift */,
 				5A1506242255796C00717AB8 /* Question.swift */,
-				994175E5245B5C0200E281DB /* Settings.swift */,
 				5A15062922557E7C00717AB8 /* Answer.swift */,
 				5AD08054227860D000962AB6 /* AlphaList.swift */,
 			);
@@ -1899,7 +1899,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Zaigham Tahir";
 				TargetAttributes = {
 					5A189C28216D8E8400929AB8 = {
@@ -2455,7 +2455,6 @@
 				5A03478E22D39D0900749EBC /* FMDatabase.m in Sources */,
 				5AF85732228F22C8008929D5 /* FlashCardHomeVC.swift in Sources */,
 				5AD08055227860D000962AB6 /* AlphaList.swift in Sources */,
-				994175E6245B5C0200E281DB /* Settings.swift in Sources */,
 				5A2A58DD22F8C35200434910 /* QuizSetVC.swift in Sources */,
 				5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */,
 				5A03479022D39D0900749EBC /* FMDatabaseAdditions.m in Sources */,
@@ -2472,6 +2471,7 @@
 				5A88634E218560030013FC8B /* ListVC.swift in Sources */,
 				5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */,
 				5A1506252255796C00717AB8 /* Question.swift in Sources */,
+				99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */,
 				5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */,
 				5A6F31CA21A7032E00E6477E /* DList.swift in Sources */,
 				5A99D5D9233BE53B00CA518A /* FlashCardVCH.swift in Sources */,
@@ -2552,6 +2552,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2577,7 +2578,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2611,6 +2612,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2630,7 +2632,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

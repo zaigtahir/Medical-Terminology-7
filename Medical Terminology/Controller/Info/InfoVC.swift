@@ -22,24 +22,19 @@ class InfoVC: UIViewController {
         
         //set the showScreenSwitch position
         let sC = SettingsController()
-        let showScreenState = sC.getSettings().showWelcomeScreen
-        if showScreenState == 1 {
-            showScreenSwitch.isOn = true
-        } else {
-            showScreenSwitch.isOn = false
-        }
+        showScreenSwitch.isOn = sC.getShowWelcomeScreen()
         
     }
-        
+    
     @IBAction func showWelcomeScreenSwitchAction(_ sender: UISwitch) {
         
-        var showScreen = 0
-              if sender.isOn {
-                  showScreen = 1
-              }
-              
-              let sC = SettingsController()
-              sC.saveShowWelcomeScreen(showIntro: showScreen)
+        var showScreen = false
+        if sender.isOn {
+            showScreen = true
+        }
+        
+        let sC = SettingsController()
+        sC.setShowWelcomeScreen(showWelcomeScreen: showScreen)
     }
     
     @IBAction func seeWebsiteButtonAction(_ sender: Any) {

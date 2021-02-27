@@ -11,36 +11,39 @@ import SQLite3
 
 class SettingsController {
     
-    func getSettings () -> Settings {
-        
-        let settings = Settings()
-        settings.showWelcomeScreen = 444
-        
-        let query = "Select * from settings WHERE settingID = 0"
-        
-        if let resultSet = myFMDB.fmdb.executeQuery(query, withParameterDictionary: nil) {
-    
-            //there will only be a single result
-            resultSet.next()
-            
-            settings.showWelcomeScreen = Int(resultSet.int(forColumn: "showWelcome"))
-            
-            return settings
-            
-        } else {
-            print("problem getting the settings object from the database, returning a new initialized Settings object")
-            
-            return settings
-        }
-        
+  
+    func setShowWelcomeScreen (showWelcomeScreen: Bool) {
+        let userDefaults = UserDefaults()
+        userDefaults.set(showWelcomeScreen, forKey: myKeys.showWelcomeScreen)
     }
     
-    func saveShowWelcomeScreen (showIntro: Int) {
-        //save the value in the database (remember only to save 0 or 1)
-        
-        myFMDB.fmdb.executeUpdate("UPDATE settings SET showWelcome = ? where settingID = 0", withArgumentsIn: [showIntro])
-        
+    func getShowWelcomeScreen () -> Bool {
+        let userDefaults = UserDefaults()
+        return userDefaults.bool(forKey: myKeys.showWelcomeScreen)
     }
-   
     
+    func getBundleVersion () -> String {
+        //will return bundle version number. If this does not match the installed version in user default settings, will need to update or upload the database
+        
+        //testing out the infolist
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let build = Bundle.main.infoDictionary?["CFBuildVersion"] as? String
+        
+        let v = version ?? "0"
+        let b = build ?? "0"
+        
+        return ("\(v).\(b)")
+    }
+    
+    func getUserDefaultsVersion () -> String {
+        
+        let uDefaults = UserDefaults()
+        let uVersion  = uDefaults.string(forKey: myKeys.appVersion)
+        let uBuild = uDefaults.string(forKey: myKeys.appVersion)
+        
+        let v = uVersion ?? "0"
+        let b = uBuild ?? "0"
+        
+        return ("\(v).\(b)")
+    }
 }

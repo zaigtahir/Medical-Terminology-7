@@ -26,13 +26,13 @@ class WelcomeScreenVC: UIViewController {
 
     @IBAction func showWelcomeScreenSwitchAction(_ sender: UISwitch) {
         
-        var showScreen = 0
+        var showScreen = false
         if sender.isOn {
-            showScreen = 1
+            showScreen = true
         }
         
         let sC = SettingsController()
-        sC.saveShowWelcomeScreen(showIntro: showScreen)
+        sC.setShowWelcomeScreen(showWelcomeScreen: showScreen)
         
     }
     
