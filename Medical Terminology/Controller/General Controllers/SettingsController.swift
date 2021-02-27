@@ -39,11 +39,32 @@ class SettingsController {
         
         let uDefaults = UserDefaults()
         let uVersion  = uDefaults.string(forKey: myKeys.appVersion)
-        let uBuild = uDefaults.string(forKey: myKeys.appVersion)
+        let uBuild = uDefaults.string(forKey: myKeys.appBuild)
         
         let v = uVersion ?? "0"
         let b = uBuild ?? "0"
         
         return ("\(v).\(b)")
     }
+    
+    func updateVersionNumber () {
+        //will update the user defaults with the verion from the bundle
+        //testing out the infolist
+        
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let build = Bundle.main.infoDictionary?["CFBuildVersion"] as? String
+        
+        let v = version ?? "0"
+        let b = build ?? "0"
+        
+        setVersionNumber(version: v, build: b)
+        
+    }
+    private func setVersionNumber(version: String, build: String) {
+        let uDefaluts = UserDefaults()
+        uDefaluts.setValue(version, forKey: myKeys.appVersion)
+        uDefaluts.setValue(build, forKey: myKeys.appBuild)
+    }
+    
+    
 }

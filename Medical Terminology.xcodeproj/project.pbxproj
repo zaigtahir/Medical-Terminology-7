@@ -60,13 +60,13 @@
 		5AF85732228F22C8008929D5 /* FlashCardHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85731228F22C8008929D5 /* FlashCardHomeVC.swift */; };
 		5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85733228F26A1008929D5 /* FlashCardController.swift */; };
 		5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */; };
-		994175DE245A38A900E281DB /* AudioFilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175DD245A38A900E281DB /* AudioFilesController.swift */; };
+		994175DE245A38A900E281DB /* AudioFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175DD245A38A900E281DB /* AudioFileController.swift */; };
 		994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E1245B5BAE00E281DB /* SettingsController.swift */; };
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
 		9960C035245FC9A10034486B /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960C034245FC9A10034486B /* FileUtilities.swift */; };
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
 		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
-		99DF26512470EF1E0021AFC1 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DF26502470EF1E0021AFC1 /* Tests.swift */; };
+		99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */; };
 		99E37B2624C8980C00DAE8B7 /* plegia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E3793124C8980A00DAE8B7 /* plegia.mp3 */; };
 		99E37B2724C8980C00DAE8B7 /* concussion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E3793224C8980A00DAE8B7 /* concussion.mp3 */; };
 		99E37B2824C8980C00DAE8B7 /* allergicConjunctivitis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E3793324C8980A00DAE8B7 /* allergicConjunctivitis.mp3 */; };
@@ -629,13 +629,13 @@
 		5AF85731228F22C8008929D5 /* FlashCardHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardHomeVC.swift; sourceTree = "<group>"; };
 		5AF85733228F26A1008929D5 /* FlashCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardController.swift; sourceTree = "<group>"; };
 		5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCVCell.swift; sourceTree = "<group>"; };
-		994175DD245A38A900E281DB /* AudioFilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFilesController.swift; sourceTree = "<group>"; };
+		994175DD245A38A900E281DB /* AudioFileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileController.swift; sourceTree = "<group>"; };
 		994175E1245B5BAE00E281DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
 		9960C034245FC9A10034486B /* FileUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
-		99DF26502470EF1E0021AFC1 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtilities.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99E3793124C8980A00DAE8B7 /* plegia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = plegia.mp3; sourceTree = "<group>"; };
@@ -1179,10 +1179,10 @@
 				5AC448B422BC072C004B47C1 /* QuestionController.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
-				994175DD245A38A900E281DB /* AudioFilesController.swift */,
+				994175DD245A38A900E281DB /* AudioFileController.swift */,
 				994175E1245B5BAE00E281DB /* SettingsController.swift */,
 				9960C034245FC9A10034486B /* FileUtilities.swift */,
-				99DF26502470EF1E0021AFC1 /* Tests.swift */,
+				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
 			);
 			path = "General Controllers";
 			sourceTree = "<group>";
@@ -2443,7 +2443,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */,
-				99DF26512470EF1E0021AFC1 /* Tests.swift in Sources */,
 				5A2A58F022FCA3AE00434910 /* QuizBase.swift in Sources */,
 				5A367D2E22EA683F003A7E4B /* LearningHomeOptionsVC.swift in Sources */,
 				5AC448B522BC072C004B47C1 /* QuestionController.swift in Sources */,
@@ -2462,6 +2461,7 @@
 				5A03478F22D39D0900749EBC /* FMDatabasePool.m in Sources */,
 				5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */,
 				5A67C14B231071D900BAA2A0 /* QuizDoneCVCell.swift in Sources */,
+				99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */,
 				5A18DF71241E8AD10006825B /* MyConstants.swift in Sources */,
 				5A4F854A22B16C2E0016621C /* LearnSetVCH.swift in Sources */,
 				5A4471552281C655008E3107 /* ListVCH.swift in Sources */,
@@ -2479,7 +2479,7 @@
 				5A03478C22D39D0900749EBC /* FMDatabaseQueue.m in Sources */,
 				5A4BB81D229A48690089A474 /* FlashCardOptionsVC.swift in Sources */,
 				5A37F87A22E74B18008A5FA5 /* CVScrollController.swift in Sources */,
-				994175DE245A38A900E281DB /* AudioFilesController.swift in Sources */,
+				994175DE245A38A900E281DB /* AudioFileController.swift in Sources */,
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
 				5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */,
 				5A886374218E82330013FC8B /* DItemController.swift in Sources */,
