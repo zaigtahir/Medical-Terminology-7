@@ -8,6 +8,8 @@
 
 import UIKit
 
+var myDB : FMDatabase!  //serve as the globan database object
+
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+            let fU = FileUtilities ()
+            let fileURL = fU.copyFileIfNeeded(fileName: "Medical Terminology", fileExtension: "db")
+            myDB = FMDatabase(path: fileURL?.absoluteString)
+            myDB.open()
+        print ("in App delegate opened myDB")
         
         //check and see if there is a resource present for each audiofile name listed in the database
         print("In AppDelegate checking if each audiofile name in the database has a matching audiofile in the resource bundle")
@@ -32,9 +40,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(sC.getBundleVersion())
         print(sC.getUserDefaultsVersion())
         
-        if sC.getBundleVersion() != sC.getUserDefaultsVersion() {
+        // install and updates
+        // if the userDefaults version is = 0.0, this is a new install. Will need to just copy all the database file to the documents folder
+        
+        if sC.getUserDefaultsVersion() == "0.0" {
+            // brand new install
+            // copy the database
+            // update userDefaults version to match new version
+            // set to show the welcome screen
             
-            //the versions are not the same
+        }
+        
+        if sC.getBundleVersion() != sC.getUserDefaultsVersion() {
+            // the versions are not the same
+            // migrate the database
+            // update userDefaults version to match new version
+            // set to show the welcome screen
             
             print ("the bundle and the install versions are not the same!")
             
@@ -42,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             sC.setShowWelcomeScreen(showWelcomeScreen: true)
             
         }
+        
         
         if sC.getShowWelcomeScreen() == false {
         
@@ -92,6 +114,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
         //close the singleton database
+        
+        //MARK: To fix this, will need to fix the close for the database variable
+        
         myFMDB.fmdb.close()
     }
     
