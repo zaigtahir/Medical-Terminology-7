@@ -110,19 +110,31 @@ class DItemController {
         
         return dItems
     }
+  
+    func getDItem (itemID: Int) -> DItem {
+        
+        let query = " WHERE itemID = \(itemID) "
+        
+        let dItems = getDItems(whereQuery: query)
+        
+        if dItems.count == 0 {
+            
+            print("DItemController: getDItem: ERROR!!! could not find dItem with itemID: \(itemID). Returning a default dItem")
+            
+            return DItem()
+            
+        } else {
+            
+            return dItems[0]
+        }
+    }
+    
+    //MARK: Migration related functions
     
     func getDItemsMigrate ()  -> [DItem] {
         
         //return an array of DItems with just the itemID, favorite, learned, answred
         //if nothing found return an empty array
-        
-        
-        // why am i converting learnd term and defn to booleans and not answered term/defn?
-        
-        
-        //null strings in database will become an empty string in the string variables here
-        
-        //displayTerm will be selected instead of term for the item term if there is something in the displayTerm
         
         let query = "SELECT itemID, isFavorite, learnedTerm, learnedDefinition, answeredTerm, answeredDefinition FROM dictionary WHERE itemID >= 0"
         
@@ -155,7 +167,7 @@ class DItemController {
                 if d != 0 {
                     learnedDefinition = true
                 }
-                                
+                
                 let item = DItem(itemID: itemID, term: "", definition: "", example: "", category: 0, audioFile: "", isFavorite: isFavorite, learnedTerm: learnedTerm, learnedDefinition: learnedDefinition, answeredTerm: answeredTerm, answeredDefinition: answeredDefintion)
                 
                 dItems.append(item)
@@ -166,22 +178,42 @@ class DItemController {
         return dItems
     }
     
-    func getDItem (itemID: Int) -> DItem {
+    func saveDItemsMigrate (dItems: [DItem]) {
+        //will save the favorite, answred and learned settings into the database
         
-        let query = " WHERE itemID = \(itemID) "
-        
-        let dItems = getDItems(whereQuery: query)
-        
-        if dItems.count == 0 {
+        for dItem in dItems {
+            /*
+             var isFavorite: Bool = false
+             var learnedTerm: Bool = false
+             var learnedDefinition: Bool = false
+             var answeredTerm: Int = 0  // 0 = unanswered, 1 = correctly answered, 2 = answered wrong
+             var answeredDefinition: Int = 0
+             */
             
-            print("DItemController: getDItem: ERROR!!! could not find dItem with itemID: \(itemID). Returning a default dItem")
+            var isFavorite = 0
+            var learnedTerm = 0
+            var learnedDefinition = 0
             
-            return DItem()
+            if dItem.isFavorite {
+                isFavorite = 1
+            }
             
-        } else {
+            if dItem.learnedTerm {
+                learnedTerm = 1
+            }
             
-            return dItems[0]
+            if dItem.learnedDefinition {
+                learnedDefinition = 1
+            }
+            
+            print("updating migration: id: \(dItem.itemID) isFavorite: \(isFavorite)")
+            
+            myDB.executeUpdate("UPDATE dictionary SET isFavorite = ?, learnedTerm = ?, learnedDefinition = ?, answeredTerm = ?, answeredDefinition = ? where itemID  = ? ", withArgumentsIn: [isFavorite, learnedTerm, learnedDefinition, dItem.answeredTerm, dItem.answeredDefinition, dItem.itemID])
+            
         }
+        
+        
+        
     }
     
     //MARK: learning related functions
@@ -205,7 +237,7 @@ class DItemController {
         }
         
         switch learnedState {
-            
+        
         case 0:
             query.append(" AND (learnedTerm = 0  OR learnedDefinition = 0) ")
             
@@ -217,7 +249,7 @@ class DItemController {
         }
         
         switch orderBy {
-            
+        
         case 1:
             query.append(" ORDER BY term ")
             
@@ -276,23 +308,23 @@ class DItemController {
         
         return itemIDs
     }
-
+    
     func clearLearnedItems (favoriteState: Int) {
         
         switch favoriteState {
-            
+        
         case 0:
             //clear not favorites only
             myDB.executeUpdate("UPDATE dictionary SET learnedTerm = ?, learnedDefinition = ? WHERE isFavorite = 0", withArgumentsIn: [0,0])
         case 1:
             //clear favorites only
             myDB.executeUpdate("UPDATE dictionary SET learnedTerm = ?, learnedDefinition = ? WHERE isFavorite = 1", withArgumentsIn: [0,0])
-        
+            
         default:
             //clear both
             myDB.executeUpdate("UPDATE dictionary SET learnedTerm = ?, learnedDefinition = ? WHERE itemID >= 0", withArgumentsIn: [0,0])
         }
-
+        
     }
     
     func clearLearnedItems (itemIDs: [Int]) {
@@ -371,10 +403,10 @@ class DItemController {
                 query = "UPDATE dictionary SET answeredDefinition = 0 WHERE itemID >= 0"
             }
         }
- 
+        
         myDB.executeUpdate(query, withArgumentsIn: []  )
     }
-
+    
     func clearAnsweredItems (itemIDs: [Int]) {
         
         for itemID in itemIDs {
@@ -399,7 +431,7 @@ class DItemController {
     func getTermsAnsweredCorrectlyCount (favoriteState: Int) -> Int {
         
         var query: String
-    
+        
         if favoriteState == -1 {
             
             query =  "SELECT COUNT (*) FROM dictionary WHERE answeredTerm = 2"
@@ -467,6 +499,6 @@ class DItemController {
         return getCount(query: query)
         
     }
-
+    
 }
 

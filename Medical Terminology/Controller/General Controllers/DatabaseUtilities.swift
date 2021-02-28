@@ -28,11 +28,9 @@ class DatabaseUtilities  {
             useCurrentDatabase()
             
         } else {
-            // migrate database, for now just copy it as new
-            // new install
-            _ = setupNewDatabase()
+            // migrate database
             settingsC.updateVersionNumber()
-            print ("need to migrate the db, but for now just copying")
+            migrateDatabase()
         }
         
     }
@@ -40,7 +38,7 @@ class DatabaseUtilities  {
     private func setupNewDatabase () -> Bool {
     //will copy the db from the bundle to the directory and open the database
     
-    guard let dbURL = copyFileFromTo(fileName: dbFilename, fileExtension: dbFileExtension, destFileName: dbFilename, destFileExtension: dbFileExtension) else {
+    guard let dbURL = copyFile(fileName: dbFilename, fileExtension: dbFileExtension) else {
         //error copying the db
         print("there was an error copying the db to directory")
         return false
@@ -58,7 +56,26 @@ class DatabaseUtilities  {
         // Idea is to transfer the learned and answered settings from the current DB to the new DB
         // then delete the current DB and use the new DB as the default
         
-        // my DItemController works on the global database so first lets create a list of id's and associated 
+        // my DItemController works on the global database so first lets create a list of id's and associated
+        
+        let dIC = DItemController()
+        let dItemsToMigrate = dIC.getDItemsMigrate()
+        
+        // close the current database and delete the file
+        myDB.close()
+        
+        // delete the current database file
+        let dbFileURL = getDirectoryFileURL(fileName: dbFilename, fileExtension: dbFileExtension)
+        _ = deleteDirectoryFileAtURL(fileURL: dbFileURL)
+        
+        // copy the db file from bundle to make new db
+        setupNewDatabase()
+        
+        //migrate the data
+        dIC.saveDItemsMigrate(dItems: dItemsToMigrate)
+        
+        print ("new database is implemented and the data is migrated!!!!")
+        
     }
     
     private func useCurrentDatabase () {
@@ -85,28 +102,6 @@ class DatabaseUtilities  {
         }
         
         return destinationURL
-    }
-    
-    private func copyFileFromTo(fileName: String, fileExtension: String, destFileName: String, destFileExtension: String) -> URL? {
-        
-        let sourceURL = getBundleFileURL(fileName: fileName, fileExtension: fileExtension)
-        let destinationURL = getDirectoryFileURL(fileName: fileName, fileExtension: fileExtension)
-        
-        _ = deleteDirectoryFileAtURL(fileURL: destinationURL)
-        
-        if let sURL = sourceURL {
-            do {
-                try fileManager.copyItem(at: sURL, to: destinationURL)
-                
-            } catch let error as NSError {
-                print("Could not copy the file. Error: \(error.description)")
-                return nil
-            }
-        }
-        
-        return destinationURL
-        
-        
     }
     
     private func deleteDirectoryFileAtURL (fileURL: URL) -> Bool {
