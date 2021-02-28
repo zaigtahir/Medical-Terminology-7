@@ -13,14 +13,7 @@ import UIKit
 class QuizSetVCH {
     
     var quizSet: QuizSet!      //set this in seque
-    
-    func getGrade() -> String {
-        let result = quizSet.getGrade()
-        return "\(result.grade)"
-    }
-    
-
-
+   
     /**
      Will return true if the collection view is displaying the last card (summary)
      */

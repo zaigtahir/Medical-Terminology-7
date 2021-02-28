@@ -69,7 +69,7 @@ class DatabaseUtilities  {
         _ = deleteDirectoryFileAtURL(fileURL: dbFileURL)
         
         // copy the db file from bundle to make new db
-        setupNewDatabase()
+        _ = setupNewDatabase()
         
         //migrate the data
         dIC.saveDItemsMigrate(dItems: dItemsToMigrate)

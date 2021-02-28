@@ -40,7 +40,7 @@ class QuizSet: QuizBase {
         var questions = [Question]()
         
         switch favoriteState {
-            
+        
         case 0:
             favoriteStateQueryPortion = " isFavorite = 0 "
         case 1:
@@ -50,7 +50,7 @@ class QuizSet: QuizBase {
         }
         
         switch questionTypes {
-            
+        
         case .random:
             fullQuery = """
             SELECT * FROM
@@ -64,7 +64,7 @@ class QuizSet: QuizBase {
             
         case .term:
             fullQuery = " SELECT itemID, 1 as type from dictionary  WHERE answeredTerm !=2 AND \(favoriteStateQueryPortion) ORDER BY RANDOM() LIMIT \(numberOfQuestions) "
-        
+            
         default:
             fullQuery = " SELECT itemID, 2 as type from dictionary  WHERE answeredDefinition !=2 AND \(favoriteStateQueryPortion) ORDER BY RANDOM() LIMIT \(numberOfQuestions) "
             
@@ -101,9 +101,52 @@ class QuizSet: QuizBase {
         
     }
     
-    func selectAnswerToQuestion (questionIndex: Int, answerIndex: Int) {
+    //MARK: Grade related functions
+    
+    func getLetterGrade() -> String {
         
-        //TODO: customize to question right now this is from saving learning function
+        let correct = getNumberCorrect()
+        let total = getTotalQuestionCount()
+        
+        let score = Float(correct)/Float(total) * 100
+        
+        var grade: String
+        
+        if score >= 90 {
+            grade = "A"
+            
+        } else if score >= 80 {
+            grade = "B"
+            
+        } else if score > 70 {
+            grade = "C"
+            
+        } else if score > 60 {
+            grade = "D"
+            
+        } else {
+            grade = "F"
+        }
+        
+        return grade
+    }
+    
+    func getResultsSummary() -> String {
+        
+        return "You got \(getNumberCorrect()) of \(getTotalQuestionCount()) (\(getPercentCorrect())%) correct"
+    }
+    
+    func getPercentCorrect() -> String {
+        let correct = getNumberCorrect()
+        let total = getTotalQuestionCount()
+        let score = Float(correct)/Float(total) * 100
+        
+        let percentCorrect =
+            String(format: "%.0f", score) //formats to zero decimal place
+        return percentCorrect
+    }
+    
+    func selectAnswerToQuestion (questionIndex: Int, answerIndex: Int) {
         
         let question = activeQuestions[questionIndex]
         
@@ -124,5 +167,6 @@ class QuizSet: QuizBase {
         reset()
         
     }
+    
     
 }

@@ -53,10 +53,8 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
             //need to show the summary cell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quizDoneCell", for: indexPath) as! QuizDoneCVCell
             
-            let gradeLabel = quizSetVCH.getGrade()
-            
-            cell.gradeLabel.text = gradeLabel
-            cell.resultsLabel.text = "testing to see :)"
+            cell.gradeLabel.text = quizSetVCH.quizSet.getLetterGrade()
+            cell.resultsLabel.text = quizSetVCH.quizSet.getResultsSummary()
             cell.delegate = self
             return cell
             

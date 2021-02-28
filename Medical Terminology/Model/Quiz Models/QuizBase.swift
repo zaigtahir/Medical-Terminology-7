@@ -148,51 +148,6 @@ class QuizBase {
         return correct
     }
     
-    func getResults () -> String {
-        
-        let correct = getNumberCorrect()
-        let total = getTotalQuestionCount()
-        
-        let score = Float(correct)/Float(total) * 100
-        
-        let percent =
-            String(format: "%.0f", score) //formats to zero decimal place
-        
-        return "You got \(correct) of \(total) (or \(percent)% correct"
-        
-    }
-    
-    func getGrade () -> (grade: String, percent: String) {
-        
-        let correct = getNumberCorrect()
-        let total = getTotalQuestionCount()
-        
-        let score = Float(correct)/Float(total) * 100
-        
-        let percent =
-            String(format: "%.0f", score) //formats to zero decimal place
-        
-        var grade: String
-        
-        if score >= 90 {
-            grade = "A"
-            
-        } else if score >= 80 {
-            grade = "B"
-            
-        } else if score > 70 {
-            grade = "C"
-            
-        } else if score > 60 {
-            grade = "D"
-            
-        } else {
-            grade = "F"
-        }
-        
-        return (grade, percent)
-    }
-    
     func addFeedbackRemarks (question: Question) {
         //will add feedback to question based on answered/right/wrong status
         
