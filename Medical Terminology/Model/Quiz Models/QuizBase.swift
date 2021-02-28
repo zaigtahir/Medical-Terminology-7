@@ -144,12 +144,30 @@ class QuizBase {
                 correct += 1
             }
         }
+        
         return correct
+    }
+    
+    func getResults () -> String {
+        
+        let correct = getNumberCorrect()
+        let total = getTotalQuestionCount()
+        
+        let score = Float(correct)/Float(total) * 100
+        
+        let percent =
+            String(format: "%.0f", score) //formats to zero decimal place
+        
+        return "You got \(correct) of \(total) (or \(percent)% correct"
+        
     }
     
     func getGrade () -> (grade: String, percent: String) {
         
-        let score = Float(getNumberCorrect())/Float(getTotalQuestionCount()) * 100
+        let correct = getNumberCorrect()
+        let total = getTotalQuestionCount()
+        
+        let score = Float(correct)/Float(total) * 100
         
         let percent =
             String(format: "%.0f", score) //formats to zero decimal place

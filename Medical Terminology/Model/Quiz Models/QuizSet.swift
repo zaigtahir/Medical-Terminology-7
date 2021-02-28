@@ -109,7 +109,7 @@ class QuizSet: QuizBase {
         
         questionController.selectAnswer(question: question, answerIndex: answerIndex)
         
-        //save learned state
+        //save answered state
         questionController.saveAnsweredStatus(question: question)
         
         //append question from masterlist to the active list
