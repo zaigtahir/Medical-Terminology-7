@@ -12,6 +12,10 @@ import MessageUI
 
 class InfoVC: UIViewController {
     
+    @IBOutlet weak var appTitle: UILabel!
+    @IBOutlet weak var appVersion: UILabel!
+    @IBOutlet weak var appCopyright: UILabel!
+    
     @IBOutlet weak var showScreenSwitch: UISwitch!
     @IBOutlet weak var seeWebsiteButton: UIButton!
     

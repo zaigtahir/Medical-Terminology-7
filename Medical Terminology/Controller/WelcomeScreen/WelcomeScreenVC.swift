@@ -10,6 +10,10 @@ import UIKit
 
 class WelcomeScreenVC: UIViewController {
 
+    @IBOutlet weak var appTitle: UILabel!
+    
+    @IBOutlet weak var appVersion: UILabel!
+    
     @IBOutlet weak var seeWebsiteButton: UIButton!
     @IBOutlet weak var startAppButton: UIButton!
     
@@ -20,7 +24,13 @@ class WelcomeScreenVC: UIViewController {
         seeWebsiteButton.layer.cornerRadius = myConstants.button_cornerRadius
         startAppButton.layer.cornerRadius = myConstants.button_cornerRadius
         
+        appTitle.text = myConstants.appTitle
+        
         //the show screen button should always be ON otherwise you wouldn't see this screen
+        
+        let sC = SettingsController()
+        let version = sC.getUserDefaultsVersion()
+        appVersion.text = "version: \(version)"
         
     }
 

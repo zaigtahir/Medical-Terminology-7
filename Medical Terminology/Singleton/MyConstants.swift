@@ -11,10 +11,13 @@ import UIKit
 
 class MyConstants {
     
-    //website names
+    // app and website information
     let appWebsite = "https://www.theappgalaxy.com/prefixesandsuffixes.html"
     let companyWebsite = "https://theappgalaxy.com"
-    let copyrightNotice = "© 2020 by Dr. Tahir"
+    let copyrightNotice = "Copyright: 2021 by Dr. Tahir"
+    let email = "support@theappgalaxy.com"
+    let appTitle = "Practical Medical Terminology"
+    
     let noFavoritesAvailableText = "There are no favorites available to show"
     
     //question feedback remarks
