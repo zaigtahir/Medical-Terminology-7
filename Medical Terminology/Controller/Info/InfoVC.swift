@@ -15,7 +15,7 @@ class InfoVC: UIViewController {
     @IBOutlet weak var appTitle: UILabel!
     @IBOutlet weak var appVersion: UILabel!
     @IBOutlet weak var appCopyright: UILabel!
-    
+    @IBOutlet weak var appEmail: UILabel!
     @IBOutlet weak var showScreenSwitch: UISwitch!
     @IBOutlet weak var seeWebsiteButton: UIButton!
     
@@ -28,6 +28,10 @@ class InfoVC: UIViewController {
         let sC = SettingsController()
         showScreenSwitch.isOn = sC.getShowWelcomeScreen()
         
+        appTitle.text = myConstants.appTitle
+        appVersion.text = "Version: \(sC.getUserDefaultsVersion())"
+        appCopyright.text = myConstants.copyrightNotice
+        appEmail.text = myConstants.appEmail
     }
     
     @IBAction func showWelcomeScreenSwitchAction(_ sender: UISwitch) {

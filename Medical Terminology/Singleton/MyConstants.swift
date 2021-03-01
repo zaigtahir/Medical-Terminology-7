@@ -15,7 +15,7 @@ class MyConstants {
     let appWebsite = "https://www.theappgalaxy.com/prefixesandsuffixes.html"
     let companyWebsite = "https://theappgalaxy.com"
     let copyrightNotice = "Copyright: 2021 by Dr. Tahir"
-    let email = "support@theappgalaxy.com"
+    let appEmail = "support@theappgalaxy.com"
     let appTitle = "Practical Medical Terminology"
     
     let noFavoritesAvailableText = "There are no favorites available to show"
