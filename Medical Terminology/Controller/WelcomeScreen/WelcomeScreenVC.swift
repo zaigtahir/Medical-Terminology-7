@@ -30,7 +30,7 @@ class WelcomeScreenVC: UIViewController {
         
         let sC = SettingsController()
         let version = sC.getUserDefaultsVersion()
-        appVersion.text = "version: \(version)"
+        appVersion.text = "Version: \(version)"
         
     }
 
