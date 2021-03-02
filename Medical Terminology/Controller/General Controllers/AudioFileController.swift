@@ -17,7 +17,7 @@ class AudioFileController {
         //if nothing found return an empty array
         
         //null strings in database will become an empty string in the string variables here
-  
+        
         let query = "SELECT audioFile FROM dictionary WHERE itemID >= 0"
         
         var fileNames = [String]()
@@ -38,39 +38,58 @@ class AudioFileController {
     }
     
     func checkAudioFiles () {
-        //will check to see if each audiofile listed in the database has a matching file in the resources
         
-        let fileNames = getAudioFileNamesFromDB()
-        for nameAudioFile in fileNames {
-            _ = isResourcePresent(fileName: ("\(nameAudioFile).mp3"))
+        var audioFilesNamesInDB = getAudioFileNamesFromDB()
+        
+        print("Checking audio files present in DB but missing in Bundle")
+        
+        //see if each audio file in db has matching file.mp3 in the bundle
+        for file in audioFilesNamesInDB {
+            
+            if Bundle.main.url(forResource: "\(audioFolder)/\(file)", withExtension: "mp3") == nil {
+               print("\(audioFolder)/\(file).mp3 is in DB, missing in Bundle")
+            }
         }
         
+        //see if each mp3 file in the bundle has a matching file in the db
+        
+        print("Checking audio files present in Bundle but missing in DB")
+        
+        let fm = FileManager.default
+        let path = Bundle.main.resourcePath!
+
+        do {
+            let items = try fm.contentsOfDirectory(atPath: "\(path)/Audio")
+
+            for item in items {
+                // see if each item has a match in audioFilesNamesInDB
+                // dropping the extension .mp3 so i can compare the the db values
+                // have to typecast it to a String as otherwise the fileName will have type string.subseq
+                
+                let fileName = String(item.dropLast(4))
+                if audioFilesNamesInDB.contains(fileName) == false {
+                    //the db does not contain this!
+                    print("\(fileName).mp3 is present in Bundle, missing in DB")
+                }
+
+            }
+        } catch {
+            // failed to read directory – bad permissions, perhaps?
+        }
     }
     
-    func isResourcePresent (fileName: String) -> Bool {
-        //get url to db file in the bundle
-        guard Bundle.main.url(forResource: fileName, withExtension: nil) != nil else {
-            print("\(fileName) is in db file but NOT IN RESOURCE")
+  
+    
+
+    func isAudioFilePresentInBundle (filename: String, extension: String) ->Bool {
+        
+        if Bundle.main.url(forResource: "\(audioFolder)/\(filename)", withExtension: "extension") != nil {
+           return true
+        } else {
             return false
         }
-        return true
+        
     }
-    
-    
-    
-    //MARK: Add code to check if an audio resource is present but is not in the database
-    //this would be an extra audio file
-    
-    //testing to see if i can locate the TestFolder bundle file
-    func testFolder () {
-        //get url to db file in the bundle
-        guard Bundle.main.url(forResource: "TestFolder/test", withExtension: "mp3") != nil else {
-            print("did not find test.mp3")
-            return
-        }
-        print ("found TestFolder/test.mp3")
-    }
-    
     
     
 }

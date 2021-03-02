@@ -65,7 +65,7 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
         let aFC = AudioFileController()
         
         //set audio button enable or disable
-        if dItem.audioFile != "" && aFC.isResourcePresent(fileName: dItem.audioFile) {
+        if dItem.audioFile != "" && aFC.isAudioFilePresentInBundle(filename: dItem.audioFile, extension: "mp3"){
             playAudioButton.isEnabled = true
         } else {
             playAudioButton.isEnabled = false

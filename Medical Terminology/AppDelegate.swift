@@ -58,9 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let aFC = AudioFileController()
             aFC.checkAudioFiles()
             print("Audio file check done! if there were any missing they would be listed before this ending line.")
-            
-            print ("-----------")
-            aFC.testFolder()
+
         }
         
         // Determine and set the start screen
