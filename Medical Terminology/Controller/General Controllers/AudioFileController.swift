@@ -56,8 +56,21 @@ class AudioFileController {
         return true
     }
     
+    
+    
     //MARK: Add code to check if an audio resource is present but is not in the database
     //this would be an extra audio file
+    
+    //testing to see if i can locate the TestFolder bundle file
+    func testFolder () {
+        //get url to db file in the bundle
+        guard Bundle.main.url(forResource: "TestFolder/test", withExtension: "mp3") != nil else {
+            print("did not find test.mp3")
+            return
+        }
+        print ("found TestFolder/test.mp3")
+    }
+    
     
     
 }
