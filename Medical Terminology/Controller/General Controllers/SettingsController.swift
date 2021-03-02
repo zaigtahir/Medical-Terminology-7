@@ -60,6 +60,7 @@ class SettingsController {
         setVersionNumber(version: v, build: b)
         
     }
+    
     private func setVersionNumber(version: String, build: String) {
         let uDefaluts = UserDefaults()
         uDefaluts.setValue(version, forKey: myKeys.appVersion)

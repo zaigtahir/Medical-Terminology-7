@@ -68,12 +68,12 @@ class DItemController {
             while resultSet.next() {
                 
                 let itemID = Int(resultSet.int(forColumn: "itemID"))
-                var term = resultSet.string(forColumn: "term") ?? "none found"
+                var term = resultSet.string(forColumn: "term") ?? ""
                 let termDisplay = resultSet.string(forColumn: "termDisplay") ?? ""
                 let definition = resultSet.string(forColumn: "definition")  ?? ""
                 let example = resultSet.string(forColumn: "example")  ?? ""
                 let category = Int(resultSet.int(forColumn: "category"))
-                let audioFile = resultSet.string(forColumn: "audioFile")  ?? "none found"
+                let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
                 let f = Int(resultSet.int(forColumn: "isFavorite"))
                 let t = Int(resultSet.int(forColumn: "learnedTerm"))
                 let d = Int(resultSet.int(forColumn: "learnedDefinition"))
@@ -206,10 +206,7 @@ class DItemController {
                 learnedDefinition = 1
             }
             
-            print("updating migration: id: \(dItem.itemID) isFavorite: \(isFavorite)")
-            
             myDB.executeUpdate("UPDATE dictionary SET isFavorite = ?, learnedTerm = ?, learnedDefinition = ?, answeredTerm = ?, answeredDefinition = ? where itemID  = ? ", withArgumentsIn: [isFavorite, learnedTerm, learnedDefinition, dItem.answeredTerm, dItem.answeredDefinition, dItem.itemID])
-            
         }
         
         

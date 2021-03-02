@@ -20,13 +20,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dbUtilities = DatabaseUtilities()
         let sController = SettingsController()
         
-        print("Versions before database evaluation")
-        print(sController.getBundleVersion())
-        print(sController.getUserDefaultsVersion())
+        //set global variable isProductionMode
+        let pm = Bundle.main.infoDictionary?["isDevelopmentMode"] as? Bool
+        if pm == nil || pm == false {
+            isDevelopmentMode = false
+        } else {
+            isDevelopmentMode = true
+        }
         
-        // setup start screen
-        if sController.getUserDefaultsVersion() == "0.0" {
-            sController.setShowWelcomeScreen(showWelcomeScreen: true)
+        if isDevelopmentMode {
+            print("in development mode")
+        } else {
+            print("not in development mode")
+        }
+        
+        if isDevelopmentMode {
+            print("Versions before database evaluation")
+            print(sController.getBundleVersion())
+            print(sController.getUserDefaultsVersion())
         }
         
         if sController.getBundleVersion() != sController.getUserDefaultsVersion() {
@@ -35,15 +46,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         dbUtilities.setupDatabase()
         
-        print("Versions after database is setup")
-        print(sController.getBundleVersion())
-        print(sController.getUserDefaultsVersion())
-    
-        // check and see if there is a resource present for each audiofile name listed in the database
-        print("In AppDelegate checking if each audiofile name in the database has a matching audiofile in the resource bundle")
-        let aFC = AudioFileController()
-        aFC.checkAudioFiles()
-        print("Audio file check done! if there were any missing they would be listed before this ending line.")
+        if isDevelopmentMode {
+            print("Versions after database is setup")
+            print(sController.getBundleVersion())
+            print(sController.getUserDefaultsVersion())
+        }
+        
+        if isDevelopmentMode {
+            // check and see if there is a resource present for each audiofile name listed in the database
+            print("In AppDelegate checking if each audiofile name in the database has a matching audiofile in the resource bundle")
+            let aFC = AudioFileController()
+            aFC.checkAudioFiles()
+            print("Audio file check done! if there were any missing they would be listed before this ending line.")
+        }
         
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {

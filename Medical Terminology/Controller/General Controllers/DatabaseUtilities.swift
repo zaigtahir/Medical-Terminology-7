@@ -9,59 +9,76 @@
 import Foundation
 
 let fileManager = FileManager()
+let settingsC = SettingsController()
 
 class DatabaseUtilities  {
     
     func setupDatabase () {
         //will look at the versions and copy, migrate or use the existing database
         
-        let settingsC = SettingsController()
-        
-        if settingsC.getUserDefaultsVersion() == "0.0" {
+        if settingsC.getUserDefaultsVersion() == "-1.-1" {
             // new install
-            _ = setupNewDatabase()
-            settingsC.updateVersionNumber()
+            if isDevelopmentMode {
+                print("new install: copy over the database into the directory")
+            }
+            if setupNewDatabase() {
+                //update version settings only if no problems
+                if isDevelopmentMode {
+                    print("new database is successfully setup, now will update the version in directory")
+                }
+                settingsC.updateVersionNumber()
+            }
+            //return here as now both the versions numbers will be equal, and if I fall through to the next if function it execute
+            return
         }
         
         if settingsC.getBundleVersion() == settingsC.getUserDefaultsVersion() {
             // use current database
+            if isDevelopmentMode {
+                print("normal run: no changes to database")
+            }
             useCurrentDatabase()
             
         } else {
             // migrate database
-            settingsC.updateVersionNumber()
+            if isDevelopmentMode {
+                print("update: need to migrate the database")
+            }
+            
             migrateDatabase()
+            
+            //MARK: check no error migrating the db before updating the version
         }
         
     }
     
     private func setupNewDatabase () -> Bool {
-    //will copy the db from the bundle to the directory and open the database
-    
-    guard let dbURL = copyFile(fileName: dbFilename, fileExtension: dbFileExtension) else {
-        //error copying the db
-        print("there was an error copying the db to directory")
-        return false
+        //will copy the db from the bundle to the directory and open the database
+        
+        guard let dbURL = copyFile(fileName: dbFilename, fileExtension: dbFileExtension) else {
+            //error copying the db
+            print("FATAL error was an error copying the db to directory")
+            
+            //MARK: to do setup a graceful exit/notice to user
+            return false
+        }
+        
+        myDB = FMDatabase(path: dbURL.absoluteString)
+        myDB.open()
+        return true
     }
     
-    myDB = FMDatabase(path: dbURL.absoluteString)
-    myDB.open()
-    print("copied the db to directory")
-    return true
-}
-    
     private func migrateDatabase () {
-        //MARK: add code for migration of the database
-       
         // Idea is to transfer the learned and answered settings from the current DB to the new DB
         // then delete the current DB and use the new DB as the default
         
         // my DItemController works on the global database so first lets create a list of id's and associated
+        // need to open the current database to use so I can copy the presistent information from it
+        useCurrentDatabase()
         
         let dIC = DItemController()
         let dItemsToMigrate = dIC.getDItemsMigrate()
         
-        // close the current database and delete the file
         myDB.close()
         
         // delete the current database file
@@ -69,13 +86,12 @@ class DatabaseUtilities  {
         _ = deleteDirectoryFileAtURL(fileURL: dbFileURL)
         
         // copy the db file from bundle to make new db
-        _ = setupNewDatabase()
-        
-        //migrate the data
-        dIC.saveDItemsMigrate(dItems: dItemsToMigrate)
-        
-        print ("new database is implemented and the data is migrated!!!!")
-        
+        if setupNewDatabase() {
+            
+            //migrate the data
+            dIC.saveDItemsMigrate(dItems: dItemsToMigrate)
+            settingsC.updateVersionNumber()
+        }
     }
     
     private func useCurrentDatabase () {
@@ -107,7 +123,7 @@ class DatabaseUtilities  {
     private func deleteDirectoryFileAtURL (fileURL: URL) -> Bool {
         // if the file exists, will delete it
         // Return true if deleted or does not exist, return false if there was an error
-    
+        
         if fileManager.fileExists(atPath: fileURL.path) {
             //file exists and will delete it
             do {

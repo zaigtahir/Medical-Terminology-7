@@ -17,9 +17,7 @@ class AudioFileController {
         //if nothing found return an empty array
         
         //null strings in database will become an empty string in the string variables here
-        
-        //displayTerm will be selected instead of term for the item term if there is something in the displayTerm
-        
+  
         let query = "SELECT audioFile FROM dictionary WHERE itemID >= 0"
         
         var fileNames = [String]()
@@ -28,7 +26,7 @@ class AudioFileController {
             
             while resultSet.next() {
                 
-                let audioFile = resultSet.string(forColumn: "audioFile")  ?? "none found"
+                let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
                 fileNames.append(audioFile)
                 
             }
@@ -39,24 +37,27 @@ class AudioFileController {
         
     }
     
-    func isResourcePresent (fileName: String) -> Bool {
-        
-        //get url to db file in the bundle
-        guard Bundle.main.url(forResource: fileName, withExtension: nil) != nil else {
-            print("\(fileName) not found in bundle")
-            return false
-        }
-        return true
-    }
-    
     func checkAudioFiles () {
         //will check to see if each audiofile listed in the database has a matching file in the resources
         
         let fileNames = getAudioFileNamesFromDB()
         for nameAudioFile in fileNames {
-            _ = isResourcePresent(fileName: nameAudioFile)
+            _ = isResourcePresent(fileName: ("\(nameAudioFile).mp3"))
         }
         
     }
+    
+    func isResourcePresent (fileName: String) -> Bool {
+        //get url to db file in the bundle
+        guard Bundle.main.url(forResource: fileName, withExtension: nil) != nil else {
+            print("\(fileName) is in db but NOT IN RESOURCE")
+            return false
+        }
+        return true
+    }
+    
+    //MARK: Add code to check if an audio resource is present but is not in the database
+    //this would be an extra audio file
+    
     
 }
