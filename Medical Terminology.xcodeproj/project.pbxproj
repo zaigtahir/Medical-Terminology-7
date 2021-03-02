@@ -2204,6 +2204,7 @@
 		5A189C2B216D8E8400929AB8 /* Medical Terminology */ = {
 			isa = PBXGroup;
 			children = (
+				9959B72A25EE815600262CC3 /* TestFolder */,
 				99E3793024C8980A00DAE8B7 /* Audio */,
 				5A03477F22D39CE400749EBC /* FMDB */,
 				5A6F31B821A1E3A200E6477E /* Singleton */,
@@ -2351,6 +2352,13 @@
 				9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */,
 			);
 			path = WelcomeScreen;
+			sourceTree = "<group>";
+		};
+		9959B72A25EE815600262CC3 /* TestFolder */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TestFolder;
 			sourceTree = "<group>";
 		};
 		99E3793024C8980A00DAE8B7 /* Audio */ = {
