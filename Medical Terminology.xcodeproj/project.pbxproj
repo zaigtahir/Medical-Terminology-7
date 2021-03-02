@@ -63,7 +63,7 @@
 		994175DE245A38A900E281DB /* AudioFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175DD245A38A900E281DB /* AudioFileController.swift */; };
 		994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E1245B5BAE00E281DB /* SettingsController.swift */; };
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
-		9959B73525EE85A700262CC3 /* TestFolder in Resources */ = {isa = PBXBuildFile; fileRef = 9959B73425EE85A700262CC3 /* TestFolder */; };
+		9959B73525EE85A700262CC3 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = 9959B73425EE85A700262CC3 /* Audio */; };
 		9960C035245FC9A10034486B /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960C034245FC9A10034486B /* FileUtilities.swift */; };
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
 		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
@@ -134,7 +134,7 @@
 		994175DD245A38A900E281DB /* AudioFileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileController.swift; sourceTree = "<group>"; };
 		994175E1245B5BAE00E281DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
-		9959B73425EE85A700262CC3 /* TestFolder */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestFolder; sourceTree = "<group>"; };
+		9959B73425EE85A700262CC3 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Audio; sourceTree = "<group>"; };
 		9960C034245FC9A10034486B /* FileUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 		5A189C2B216D8E8400929AB8 /* Medical Terminology */ = {
 			isa = PBXGroup;
 			children = (
-				9959B73425EE85A700262CC3 /* TestFolder */,
+				9959B73425EE85A700262CC3 /* Audio */,
 				5A03477F22D39CE400749EBC /* FMDB */,
 				5A6F31B821A1E3A200E6477E /* Singleton */,
 				5A15062822557B7500717AB8 /* Database */,
@@ -430,7 +430,7 @@
 				5A189C37216D8E8400929AB8 /* LaunchScreen.storyboard in Resources */,
 				9963C24E2475828D0096E348 /* Assets.xcassets in Resources */,
 				5A88633F217226180013FC8B /* Medical Terminology.db in Resources */,
-				9959B73525EE85A700262CC3 /* TestFolder in Resources */,
+				9959B73525EE85A700262CC3 /* Audio in Resources */,
 				5A189C32216D8E8400929AB8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
