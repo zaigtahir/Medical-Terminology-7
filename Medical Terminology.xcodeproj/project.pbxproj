@@ -66,6 +66,7 @@
 		9959B73525EE85A700262CC3 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = 9959B73425EE85A700262CC3 /* Audio */; };
 		9960C035245FC9A10034486B /* FileUtilities2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960C034245FC9A10034486B /* FileUtilities2.swift */; };
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
+		9983980F25F05B6B00CC0354 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9983980E25F05B6B00CC0354 /* StoreKit.framework */; };
 		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
 		99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */; };
 /* End PBXBuildFile section */
@@ -137,6 +138,7 @@
 		9959B73425EE85A700262CC3 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Audio; sourceTree = "<group>"; };
 		9960C034245FC9A10034486B /* FileUtilities2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities2.swift; sourceTree = "<group>"; };
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9983980E25F05B6B00CC0354 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
 		99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtilities.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9983980F25F05B6B00CC0354 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				5A189C2B216D8E8400929AB8 /* Medical Terminology */,
+				9983980D25F05B6B00CC0354 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -227,7 +231,6 @@
 				5A8863702186AC840013FC8B /* View */,
 				5A189C2A216D8E8400929AB8 /* Products */,
 				5A189C2C216D8E8400929AB8 /* AppDelegate.swift */,
-				5A189C35216D8E8400929AB8 /* LaunchScreen.storyboard */,
 				5A189C38216D8E8400929AB8 /* Info.plist */,
 				9963C24D2475828B0096E348 /* Assets.xcassets */,
 			);
@@ -355,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				5A189C30216D8E8400929AB8 /* Main.storyboard */,
+				5A189C35216D8E8400929AB8 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -365,6 +369,14 @@
 				9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */,
 			);
 			path = WelcomeScreen;
+			sourceTree = "<group>";
+		};
+		9983980D25F05B6B00CC0354 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9983980E25F05B6B00CC0354 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -643,13 +655,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = K33TSXFU97;
 				INFOPLIST_FILE = "Medical Terminology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.medicalprefixessuffixes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
 				PRODUCT_NAME = "Prefixes & Suffixes";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -664,13 +677,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = K33TSXFU97;
 				INFOPLIST_FILE = "Medical Terminology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.medicalprefixessuffixes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
 				PRODUCT_NAME = "Prefixes & Suffixes";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

@@ -39,7 +39,7 @@ class AudioFileController {
     
     func checkAudioFiles () {
         
-        var audioFilesNamesInDB = getAudioFileNamesFromDB()
+        let audioFilesNamesInDB = getAudioFileNamesFromDB()
         
         print("Checking audio files present in DB but missing in Bundle")
         
@@ -78,9 +78,6 @@ class AudioFileController {
         }
     }
     
-  
-    
-
     func isAudioFilePresentInBundle (filename: String, extension: String) ->Bool {
         
         if Bundle.main.url(forResource: "\(audioFolder)/\(filename)", withExtension: "extension") != nil {
@@ -88,8 +85,6 @@ class AudioFileController {
         } else {
             return false
         }
-        
     }
-    
-    
+
 }

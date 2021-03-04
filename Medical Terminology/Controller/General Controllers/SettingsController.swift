@@ -11,14 +11,15 @@ import SQLite3
 
 class SettingsController {
     
-  
+    let userDefaults = UserDefaults.standard
+    
     func setShowWelcomeScreen (showWelcomeScreen: Bool) {
         let userDefaults = UserDefaults()
         userDefaults.set(showWelcomeScreen, forKey: myKeys.showWelcomeScreen)
     }
     
     func getShowWelcomeScreen () -> Bool {
-        let userDefaults = UserDefaults()
+        
         return userDefaults.bool(forKey: myKeys.showWelcomeScreen)
     }
     
@@ -35,11 +36,21 @@ class SettingsController {
         return ("\(v).\(b)")
     }
     
+    func setAppPurchaseStatus (appPurchaseStatus: AppPurchaseStatus) {
+        //set the status in UserDefaults
+        userDefaults.setValue(appPurchaseStatus.rawValue, forKey: myKeys.appPurchaseStatus)
+    }
+    
+    func getAppPerchaseStatus () -> AppPurchaseStatus {
+        let status  = userDefaults.object(forKey: myKeys.appPurchaseStatus) as? String
+        
+        return AppPurchaseStatus(rawValue: status!)!
+    }
+    
     func getUserDefaultsVersion () -> String {
         
-        let uDefaults = UserDefaults()
-        let uVersion  = uDefaults.string(forKey: myKeys.appVersion)
-        let uBuild = uDefaults.string(forKey: myKeys.appBuild)
+        let uVersion  = userDefaults.string(forKey: myKeys.appVersion)
+        let uBuild = userDefaults.string(forKey: myKeys.appBuild)
         
         let v = uVersion ?? "-1"
         let b = uBuild ?? "-1"
@@ -62,9 +73,9 @@ class SettingsController {
     }
     
     private func setVersionNumber(version: String, build: String) {
-        let uDefaluts = UserDefaults()
-        uDefaluts.setValue(version, forKey: myKeys.appVersion)
-        uDefaluts.setValue(build, forKey: myKeys.appBuild)
+        
+        userDefaults.set(version, forKey: myKeys.appVersion)
+        userDefaults.set(build, forKey: myKeys.appBuild)
     }
     
     

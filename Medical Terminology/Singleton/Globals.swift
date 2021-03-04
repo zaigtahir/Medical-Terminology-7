@@ -38,3 +38,13 @@ enum QuizStatus {
     case inProgress
     case done
 }
+
+//this AppPurchaseStatus has string type as I will be saving this value in the UserDefaults
+
+enum AppPurchaseStatus: String {
+    case newInstall = "newInstall"
+    case freeTrial = "freeTrialPeriod"
+    case expiredTrial = "expiredTrial"
+    case fullVersion = "fullVersion"
+
+}

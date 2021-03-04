@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dbUtilities = DatabaseUtilities()
         let sController = SettingsController()
         
+        //sController.setAppPurchaseStatus(appPurchaseStatus: .expiredTrial)
+        print(sController.getAppPerchaseStatus().rawValue)
+        
         //set global variable isProductionMode
         let pm = Bundle.main.infoDictionary?["isDevelopmentMode"] as? Bool
         if pm == nil || pm == false {
@@ -43,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if sController.getBundleVersion() != sController.getUserDefaultsVersion() {
             sController.setShowWelcomeScreen(showWelcomeScreen: true)
         }
+        
+        
         
         dbUtilities.setupDatabase()
         

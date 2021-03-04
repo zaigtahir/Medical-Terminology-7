@@ -15,6 +15,7 @@ class MyKeys {
     let appVersion = "appVersion"
     let appBuild =  "appBuild"
     let showWelcomeScreen = "showWelcomeScreen"
+    let appPurchaseStatus = "appPurchaseStatus"
     
 }
 
