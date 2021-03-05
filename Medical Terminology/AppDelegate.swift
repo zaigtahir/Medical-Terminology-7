@@ -45,13 +45,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
-        
         dbUtilities.setupDatabase()
         
         if isDevelopmentMode {
             print("Versions after database is setup")
             print(sController.getBundleVersion())
             print(sController.getUserDefaultsVersion())
+            
         }
         
         if isDevelopmentMode {

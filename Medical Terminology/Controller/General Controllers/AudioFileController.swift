@@ -51,7 +51,7 @@ class AudioFileController {
         for file in audioFilesNamesInDB {
             
             if Bundle.main.url(forResource: "\(audioFolder)/\(file)", withExtension: "mp3") == nil {
-               print("\(audioFolder)/\(file).mp3 is in DB, missing in Bundle")
+                print("\(audioFolder)/\(file).mp3 is in DB, missing in Bundle")
             }
         }
         
@@ -61,10 +61,10 @@ class AudioFileController {
         
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
-
+        
         do {
             let items = try fm.contentsOfDirectory(atPath: "\(path)/Audio")
-
+            
             for item in items {
                 // see if each item has a match in audioFilesNamesInDB
                 // dropping the extension .mp3 so i can compare the the db values
@@ -75,7 +75,7 @@ class AudioFileController {
                     //the db does not contain this!
                     print("\(fileName).mp3 is present in Bundle, missing in DB")
                 }
-
+                
             }
         } catch {
             // failed to read directory – bad permissions, perhaps?
@@ -85,25 +85,10 @@ class AudioFileController {
     func isAudioFilePresentInBundle (filename: String, extension: String) ->Bool {
         
         if Bundle.main.url(forResource: "\(audioFolder)/\(filename)", withExtension: "mp3") != nil {
-           return true
+            return true
         } else {
             return false
         }
     }
-    
-    func playAudioFile (filename: String, fileExtension: String) {
-        do {
-            if let fileURL = Bundle.main.url(forResource: filename, withExtension: fileExtension) {
-                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileURL.path))
-                audioPlayer?.prepareToPlay()
-                audioPlayer?.play()
-            } else {
-                print("No file with with the name: \(filename).\(fileExtension)")
-                return
-            }
-        } catch let error {
-            print("Can't play the audio file failed with an error \(error.localizedDescription)")
-            return
-        }
-    }
+
 }

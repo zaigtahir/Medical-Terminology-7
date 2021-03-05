@@ -68,7 +68,7 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
             playAudioButton.isEnabled = true
         } else {
             playAudioButton.isEnabled = false
-          
+            
         }
         
         flashCardCounter.text = counter
@@ -118,30 +118,39 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
         cellView.layer.borderColor = myTheme.colorCardBorder?.cgColor
     }
     
-    func playAudio (audioFileWithExtension: String) {
+    func playAudio () {
+ 
+        let fileName = "\(audioFolder)/\(dItem.audioFile).mp3"
         
-        do {
-            if let fileURL = Bundle.main.url(forResource: audioFileWithExtension, withExtension: nil) {
-                
-                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileURL.path))
-                audioPlayer?.delegate = self
-                audioPlayer?.prepareToPlay()
-                audioPlayer?.play()
-                
-            } else {
-                print("No file with with the name: \(audioFileWithExtension)")
-                return
+        let path = Bundle.main.path(forResource: fileName, ofType: nil)!
+        
+        let url = URL(fileURLWithPath: path)
+        
+        //if this player is already playing, stop the play
+        
+        if let player = audioPlayer {
+            if player.isPlaying{
+                player.stop()
             }
-        } catch let error {
-            print("Can't play the audio file failed with an error \(error.localizedDescription)")
-            return
         }
         
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.delegate = self
+            audioPlayer?.play()
+            
+        } catch {
+            print("couldn't load audio file")
+        }
+        
+        return
     }
     
     //MARK: Delegate methods
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         //change the speaker image to no playing
+      
         playAudioButton.setImage(myTheme.image_speaker, for: .normal)
     }
     
@@ -164,19 +173,8 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
     }
     
     @IBAction func playAudioAction(_ sender: Any) {
-        
-        if let player = audioPlayer {
-            if player.isPlaying {
-                player.stop()
-                playAudioButton.setImage(myTheme.image_speaker, for: .normal)
-                return
-            }
-        }
-        
-        //play the audio associated with the item displayed
-        playAudio(audioFileWithExtension: dItem.audioFile)
         playAudioButton.setImage(myTheme.image_speaker_playing, for: .normal)
-        
+        playAudio()
+      
     }
-    
 }
