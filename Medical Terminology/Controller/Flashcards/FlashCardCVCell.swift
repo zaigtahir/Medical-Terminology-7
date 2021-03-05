@@ -41,18 +41,16 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
         self.dItem = dItem
         
         termLabel.text = dItem.term
-        definitionLabel.text = dItem.definition
+        definitionLabel.text = "Definition: \(dItem.definition)"
         
         //look for a comma, if there is a comma, use Examples: for sample text
-        var exampleText = "Example:"
         
-        for c in dItem.example {
-            if c == "," {
-                exampleText = "Examples:"
-            }
+        if dItem.example == "" {
+            exampleLabel.text = ""
+            
+        } else {
+            exampleLabel.text = "Example: \(dItem.example)"
         }
-        
-        exampleLabel.text = "\(exampleText) \(dItem.example)"
         
         //set the favorite button
         
@@ -66,15 +64,17 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
         
         //set audio button enable or disable
         if dItem.audioFile != "" && aFC.isAudioFilePresentInBundle(filename: dItem.audioFile, extension: "mp3"){
+            
             playAudioButton.isEnabled = true
         } else {
             playAudioButton.isEnabled = false
+          
         }
         
         flashCardCounter.text = counter
         
         switch fcvMode {
-            
+        
         case .definition:
             //show definition, hide term
             termLabel.isHidden = true
@@ -170,13 +170,13 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
                 player.stop()
                 playAudioButton.setImage(myTheme.image_speaker, for: .normal)
                 return
-                }
             }
-            
-            //play the audio associated with the item displayed
-            playAudio(audioFileWithExtension: dItem.audioFile)
-            playAudioButton.setImage(myTheme.image_speaker_playing, for: .normal)
-            
         }
         
+        //play the audio associated with the item displayed
+        playAudio(audioFileWithExtension: dItem.audioFile)
+        playAudioButton.setImage(myTheme.image_speaker_playing, for: .normal)
+        
+    }
+    
 }

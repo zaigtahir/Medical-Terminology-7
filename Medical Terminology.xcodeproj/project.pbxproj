@@ -64,7 +64,6 @@
 		994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E1245B5BAE00E281DB /* SettingsController.swift */; };
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
 		9959B73525EE85A700262CC3 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = 9959B73425EE85A700262CC3 /* Audio */; };
-		9960C035245FC9A10034486B /* FileUtilities2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960C034245FC9A10034486B /* FileUtilities2.swift */; };
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
 		9983980F25F05B6B00CC0354 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9983980E25F05B6B00CC0354 /* StoreKit.framework */; };
 		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
@@ -136,7 +135,6 @@
 		994175E1245B5BAE00E281DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
 		9959B73425EE85A700262CC3 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Audio; sourceTree = "<group>"; };
-		9960C034245FC9A10034486B /* FileUtilities2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities2.swift; sourceTree = "<group>"; };
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9983980E25F05B6B00CC0354 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
 				994175DD245A38A900E281DB /* AudioFileController.swift */,
 				994175E1245B5BAE00E281DB /* SettingsController.swift */,
-				9960C034245FC9A10034486B /* FileUtilities2.swift */,
 				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
 			);
 			path = "General Controllers";
@@ -497,7 +494,6 @@
 				5A886374218E82330013FC8B /* DItemController.swift in Sources */,
 				5A67C14D231077FA00BAA2A0 /* LearnDoneCVCell.swift in Sources */,
 				5A2A58E822F8E60400434910 /* QuizCVCell.swift in Sources */,
-				9960C035245FC9A10034486B /* FileUtilities2.swift in Sources */,
 				5A6F31C421A458E100E6477E /* AlphaListController.swift in Sources */,
 				5A2A58EE22FBC24900434910 /* QuizOptionsVC.swift in Sources */,
 				5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */,

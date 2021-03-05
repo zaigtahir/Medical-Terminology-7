@@ -36,17 +36,6 @@ class SettingsController {
         return ("\(v).\(b)")
     }
     
-    func setAppPurchaseStatus (appPurchaseStatus: AppPurchaseStatus) {
-        //set the status in UserDefaults
-        userDefaults.setValue(appPurchaseStatus.rawValue, forKey: myKeys.appPurchaseStatus)
-    }
-    
-    func getAppPerchaseStatus () -> AppPurchaseStatus {
-        let status  = userDefaults.object(forKey: myKeys.appPurchaseStatus) as? String
-        
-        return AppPurchaseStatus(rawValue: status!)!
-    }
-    
     func getUserDefaultsVersion () -> String {
         
         let uVersion  = userDefaults.string(forKey: myKeys.appVersion)

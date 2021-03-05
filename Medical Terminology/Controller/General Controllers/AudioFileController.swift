@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import AVFoundation
+import UIKit
 
 class AudioFileController {
     
-    private func getAudioFileNamesFromDB () -> [String] {
+    var audioPlayer: AVAudioPlayer?
+    
+    func getAudioFileNamesFromDB () -> [String] {
         //will return an array of audio file names from the database
         
         //return an array of audio file names
@@ -80,11 +84,26 @@ class AudioFileController {
     
     func isAudioFilePresentInBundle (filename: String, extension: String) ->Bool {
         
-        if Bundle.main.url(forResource: "\(audioFolder)/\(filename)", withExtension: "extension") != nil {
+        if Bundle.main.url(forResource: "\(audioFolder)/\(filename)", withExtension: "mp3") != nil {
            return true
         } else {
             return false
         }
     }
-
+    
+    func playAudioFile (filename: String, fileExtension: String) {
+        do {
+            if let fileURL = Bundle.main.url(forResource: filename, withExtension: fileExtension) {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileURL.path))
+                audioPlayer?.prepareToPlay()
+                audioPlayer?.play()
+            } else {
+                print("No file with with the name: \(filename).\(fileExtension)")
+                return
+            }
+        } catch let error {
+            print("Can't play the audio file failed with an error \(error.localizedDescription)")
+            return
+        }
+    }
 }

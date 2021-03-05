@@ -33,18 +33,29 @@ class DItemVC: UIViewController, AVAudioPlayerDelegate  {
         dItem = dIC.getDItem(itemID: itemID)
         
         termLabel.text = dItem.term
-        definitionLabel.text = dItem.definition
-        exampleLabel.text = "Example: \(dItem.example)"
+       
+        termLabel.text = dItem.term
+        definitionLabel.text = "Definition: \(dItem.definition)"
         
+        //look for a comma, if there is a comma, use Examples: for sample text
+        
+        if dItem.example == "" {
+            exampleLabel.text = ""
+            
+        } else {
+            exampleLabel.text = "Example: \(dItem.example)"
+        }
         
         //check if the audioFile is present in the bundle
         let aFC = AudioFileController()
         
         //set audio button enable or disable
-        if dItem.audioFile != "" && aFC.isAudioFilePresentInBundle(filename: dItem.audioFile, extension: "mp3") {
+        if dItem.audioFile != "" && aFC.isAudioFilePresentInBundle(filename: dItem.audioFile, extension: "mp3"){
+            
             playAudioButton.isEnabled = true
         } else {
             playAudioButton.isEnabled = false
+          
         }
         
         utilities.setFavoriteState(button: favoriteButton, isFavorite: dItem.isFavorite)    //update button
