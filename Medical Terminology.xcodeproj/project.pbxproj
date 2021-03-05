@@ -87,7 +87,7 @@
 		5A03479522D3EE7500749EBC /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		5A1506242255796C00717AB8 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		5A15062922557E7C00717AB8 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
-		5A189C29216D8E8400929AB8 /* Prefixes & Suffixes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Prefixes & Suffixes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A189C29216D8E8400929AB8 /* Practical Medical Terminology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Practical Medical Terminology.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A189C2C216D8E8400929AB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A189C38216D8E8400929AB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A189C3E217123B900929AB8 /* DItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItem.swift; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 		5A189C2A216D8E8400929AB8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5A189C29216D8E8400929AB8 /* Prefixes & Suffixes.app */,
+				5A189C29216D8E8400929AB8 /* Practical Medical Terminology.app */,
 			);
 			name = Products;
 			path = ..;
@@ -396,7 +396,7 @@
 			);
 			name = "Medical Terminology";
 			productName = "Medical Terminology";
-			productReference = 5A189C29216D8E8400929AB8 /* Prefixes & Suffixes.app */;
+			productReference = 5A189C29216D8E8400929AB8 /* Practical Medical Terminology.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -663,7 +663,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
-				PRODUCT_NAME = "Prefixes & Suffixes";
+				PRODUCT_NAME = "Practical Medical Terminology";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -685,7 +685,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
-				PRODUCT_NAME = "Prefixes & Suffixes";
+				PRODUCT_NAME = "Practical Medical Terminology";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

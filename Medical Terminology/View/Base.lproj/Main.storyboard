@@ -14,7 +14,7 @@
         <!--Learning Home-->
         <scene sceneID="X8b-Dw-cVx">
             <objects>
-                <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -199,7 +199,7 @@
         <!--Learning Set-->
         <scene sceneID="rTJ-aa-Ffm">
             <objects>
-                <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,7 +214,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="learnCell" id="gjw-m0-0qB" customClass="LearnCVCell" customModule="Prefixes___Suffixes" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="learnCell" id="gjw-m0-0qB" customClass="LearnCVCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="11.666666666666666" y="0.0" width="391" height="365"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -292,7 +292,7 @@
                                                             <rect key="frame" x="20" y="121" width="351" height="234"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <prototypes>
-                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="answerCell" rowHeight="89" id="6hK-cj-pym" customClass="AnswerTCell" customModule="Prefixes___Suffixes" customModuleProvider="target">
+                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="answerCell" rowHeight="89" id="6hK-cj-pym" customClass="AnswerTCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="28" width="351" height="89"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6hK-cj-pym" id="gav-b1-myN">
@@ -395,7 +395,7 @@
                                             <outlet property="willShowAgainButton" destination="2Ju-7I-cBP" id="6dN-17-Nta"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="learnDoneCell" id="w8C-AU-PtX" customClass="LearnDoneCVCell" customModule="Prefixes___Suffixes" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="learnDoneCell" id="w8C-AU-PtX" customClass="LearnDoneCVCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="11.666666666666666" y="375" width="391" height="365"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -513,7 +513,7 @@
         <!--Flashcards-->
         <scene sceneID="WbC-ZN-3GM">
             <objects>
-                <viewController id="1VE-GN-9V0" customClass="FlashCardHomeVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1VE-GN-9V0" customClass="FlashCardHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -594,7 +594,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="flashCardCell" id="mbN-TJ-Qhj" customClass="FlashCardCVCell" customModule="Prefixes___Suffixes" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="flashCardCell" id="mbN-TJ-Qhj" customClass="FlashCardCVCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="13" y="0.0" width="388" height="335"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -611,7 +611,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqe-i7-fIi">
-                                                            <rect key="frame" x="344" y="57.333333333333343" width="24" height="24"/>
+                                                            <rect key="frame" x="344" y="58" width="24" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="13k-Kl-qJB"/>
                                                                 <constraint firstAttribute="width" constant="24" id="KrT-D9-vCI"/>
@@ -623,7 +623,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-Hv-Jif">
-                                                            <rect key="frame" x="296" y="57.333333333333343" width="28" height="24"/>
+                                                            <rect key="frame" x="296" y="58" width="28" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="28" id="9aS-SK-TYU"/>
                                                                 <constraint firstAttribute="height" constant="24" id="vRN-cB-pnJ"/>
@@ -634,14 +634,14 @@
                                                                 <action selector="playAudioAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="le6-6R-AqU"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term Term Term" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Yem-cz-hUk">
-                                                            <rect key="frame" x="20" y="52" width="256" height="34.666666666666657"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term Term Term" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Yem-cz-hUk">
+                                                            <rect key="frame" x="20" y="52" width="256" height="36"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                             <color key="textColor" name="color heading"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqo-T0-MQp">
-                                                            <rect key="frame" x="20" y="53" width="256" height="33"/>
+                                                            <rect key="frame" x="20" y="53.666666666666657" width="256" height="33"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <state key="normal" title="Show Term">
                                                                 <color key="titleColor" name="color main"/>
@@ -651,19 +651,19 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definition Definition Definition" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zby-jd-SQv">
-                                                            <rect key="frame" x="20" y="136.66666666666666" width="348" height="20.333333333333343"/>
+                                                            <rect key="frame" x="20" y="138" width="348" height="20.333333333333343"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8W-7c-jGz">
-                                                            <rect key="frame" x="20" y="177" width="348" height="20.333333333333343"/>
+                                                            <rect key="frame" x="20" y="178.33333333333334" width="348" height="20.333333333333343"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikh-n0-mc6">
-                                                            <rect key="frame" x="20" y="130.33333333333334" width="348" height="33"/>
+                                                            <rect key="frame" x="20" y="131.66666666666666" width="348" height="33"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <state key="normal" title="Show Definition  ">
                                                                 <color key="titleColor" name="color main"/>
@@ -786,12 +786,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Flashcards" id="KGC-7N-SI7">
-                        <barButtonItem key="rightBarButtonItem" image="settings zt" id="Cbe-ev-ZKK">
-                            <color key="tintColor" name="color text"/>
-                            <connections>
-                                <segue destination="HXV-3U-7fg" kind="show" identifier="segueFCOptions" id="8Ep-vg-vfH"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="settings zt" id="Cbe-ev-ZKK">
+                                <color key="tintColor" name="color text"/>
+                                <connections>
+                                    <segue destination="HXV-3U-7fg" kind="show" identifier="segueFCOptions" id="8Ep-vg-vfH"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Upgrade" id="FIw-ts-CFs">
+                                <color key="tintColor" name="color text"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="3rO-b0-lzN" id="vrT-63-gqR"/>
@@ -811,7 +816,7 @@
         <!--Flash Card OptionsVC-->
         <scene sceneID="R8m-eZ-MUv">
             <objects>
-                <viewController id="HXV-3U-7fg" customClass="FlashCardOptionsVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HXV-3U-7fg" customClass="FlashCardOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -884,7 +889,7 @@
         <!--Learning Home OptionsVC-->
         <scene sceneID="gZN-OE-NnB">
             <objects>
-                <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -985,7 +990,7 @@
         <!--Review List-->
         <scene sceneID="EiC-iA-KMT">
             <objects>
-                <viewController id="wde-Jg-jwX" customClass="ListVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wde-Jg-jwX" customClass="ListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1019,7 +1024,7 @@
                                 <color key="separatorColor" name="color card border"/>
                                 <color key="sectionIndexColor" name="color text"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listCell" rowHeight="86" id="YEn-IV-khC" customClass="ListCC" customModule="Prefixes___Suffixes" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listCell" rowHeight="86" id="YEn-IV-khC" customClass="ListCC" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YEn-IV-khC" id="Zms-YZ-1LW">
@@ -1035,7 +1040,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="v9U-Fv-AXx">
                                                                     <rect key="frame" x="0.0" y="0.0" width="330" height="43.333333333333336"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRH-Sg-Cu8">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FRH-Sg-Cu8">
                                                                             <rect key="frame" x="0.0" y="0.0" width="330" height="20.333333333333332"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                             <color key="textColor" name="color heading"/>
@@ -1121,8 +1126,8 @@
                                     </switch>
                                 </subviews>
                             </stackView>
-                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="search" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fm-OV-cCY">
-                                <rect key="frame" x="20" y="0.0" width="374" height="56"/>
+                            <searchBar contentMode="redraw" placeholder="search" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fm-OV-cCY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <color key="tintColor" name="color text"/>
                                 <color key="barTintColor" name="color background"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1139,13 +1144,13 @@
                         <viewLayoutGuide key="safeArea" id="26A-yx-iFb"/>
                         <color key="backgroundColor" name="color background"/>
                         <constraints>
-                            <constraint firstItem="26A-yx-iFb" firstAttribute="trailing" secondItem="9Fm-OV-cCY" secondAttribute="trailing" constant="20" id="BjC-eG-NMk"/>
+                            <constraint firstItem="9Fm-OV-cCY" firstAttribute="trailing" secondItem="26A-yx-iFb" secondAttribute="trailing" id="3RA-Eh-4ui"/>
                             <constraint firstItem="26A-yx-iFb" firstAttribute="trailing" secondItem="hog-0q-VSC" secondAttribute="trailing" constant="20" id="EeX-Ld-afM"/>
                             <constraint firstItem="9Fm-OV-cCY" firstAttribute="top" secondItem="26A-yx-iFb" secondAttribute="top" id="Orz-5l-Yac"/>
                             <constraint firstItem="tGH-PG-Amh" firstAttribute="top" secondItem="hog-0q-VSC" secondAttribute="bottom" constant="15" id="S60-ar-WtH"/>
                             <constraint firstItem="lvj-Zi-9Ji" firstAttribute="centerX" secondItem="26A-yx-iFb" secondAttribute="centerX" id="UeT-sb-adm"/>
                             <constraint firstItem="tGH-PG-Amh" firstAttribute="leading" secondItem="26A-yx-iFb" secondAttribute="leading" id="VJk-Q8-FpV"/>
-                            <constraint firstItem="9Fm-OV-cCY" firstAttribute="leading" secondItem="26A-yx-iFb" secondAttribute="leading" constant="20" id="d0t-ph-IYW"/>
+                            <constraint firstItem="9Fm-OV-cCY" firstAttribute="leading" secondItem="26A-yx-iFb" secondAttribute="leading" id="Vgf-ds-9rO"/>
                             <constraint firstItem="hog-0q-VSC" firstAttribute="top" secondItem="9Fm-OV-cCY" secondAttribute="bottom" constant="20" id="hHB-lJ-OHr"/>
                             <constraint firstItem="26A-yx-iFb" firstAttribute="bottom" secondItem="tGH-PG-Amh" secondAttribute="bottom" id="sZd-32-ciM"/>
                             <constraint firstItem="lvj-Zi-9Ji" firstAttribute="centerY" secondItem="26A-yx-iFb" secondAttribute="centerY" id="ttl-3V-Ywv"/>
@@ -1170,16 +1175,16 @@
         <!--ItemVC-->
         <scene sceneID="MUy-dP-jT9">
             <objects>
-                <viewController id="awX-yg-8xS" customClass="DItemVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="awX-yg-8xS" customClass="DItemVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4wH-cl-seN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L29-8G-zy9">
-                                <rect key="frame" x="20" y="100" width="374" height="443"/>
+                                <rect key="frame" x="20" y="50" width="374" height="543"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="gHu-33-b5F">
-                                        <rect key="frame" x="20" y="131.66666666666669" width="334" height="74.333333333333314"/>
+                                        <rect key="frame" x="20" y="131.66666666666666" width="334" height="74.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definition" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8v-Tz-13M">
                                                 <rect key="frame" x="0.0" y="0.0" width="334" height="24"/>
@@ -1188,7 +1193,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBm-3s-w9a">
-                                                <rect key="frame" x="0.0" y="54.000000000000007" width="334" height="20.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="54.000000000000036" width="334" height="20.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="color text"/>
                                                 <nil key="highlightedColor"/>
@@ -1217,7 +1222,7 @@
                                             <action selector="favoriteButtonAction:" destination="awX-yg-8xS" eventType="touchUpInside" id="lXK-41-kgk"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="68" translatesAutoresizingMaskIntoConstraints="NO" id="eMR-Od-oa3">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" preferredMaxLayoutWidth="68" translatesAutoresizingMaskIntoConstraints="NO" id="eMR-Od-oa3">
                                         <rect key="frame" x="20" y="30.000000000000007" width="242" height="71.666666666666686"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" name="color heading"/>
@@ -1242,8 +1247,8 @@
                         <viewLayoutGuide key="safeArea" id="fI4-es-W71"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fI4-es-W71" firstAttribute="bottom" secondItem="L29-8G-zy9" secondAttribute="bottom" constant="100" id="2kA-Wp-jJI"/>
-                            <constraint firstItem="L29-8G-zy9" firstAttribute="top" secondItem="fI4-es-W71" secondAttribute="top" constant="100" id="lUT-YV-jRl"/>
+                            <constraint firstItem="fI4-es-W71" firstAttribute="bottom" secondItem="L29-8G-zy9" secondAttribute="bottom" constant="50" id="2kA-Wp-jJI"/>
+                            <constraint firstItem="L29-8G-zy9" firstAttribute="top" secondItem="fI4-es-W71" secondAttribute="top" constant="50" id="lUT-YV-jRl"/>
                             <constraint firstItem="fI4-es-W71" firstAttribute="trailing" secondItem="L29-8G-zy9" secondAttribute="trailing" constant="20" id="pTn-X3-5mC"/>
                             <constraint firstItem="L29-8G-zy9" firstAttribute="leading" secondItem="fI4-es-W71" secondAttribute="leading" constant="20" id="tdr-mX-Iqg"/>
                         </constraints>
@@ -1265,7 +1270,7 @@
         <!--Quiz Home-->
         <scene sceneID="6Pq-P2-vtR">
             <objects>
-                <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1455,7 +1460,7 @@
         <!--Quiz-->
         <scene sceneID="iu3-MF-vjF">
             <objects>
-                <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1470,7 +1475,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="quizCell" id="E7q-qs-jyG" customClass="QuizCVCell" customModule="Prefixes___Suffixes" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="quizCell" id="E7q-qs-jyG" customClass="QuizCVCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="11.666666666666666" y="0.0" width="391" height="365"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1504,7 +1509,7 @@
                                                             <rect key="frame" x="20" y="141" width="351" height="205"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <prototypes>
-                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="answerCell" rowHeight="89" id="0N5-MF-huK" customClass="AnswerTCell" customModule="Prefixes___Suffixes" customModuleProvider="target">
+                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="answerCell" rowHeight="89" id="0N5-MF-huK" customClass="AnswerTCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="28" width="351" height="89"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0N5-MF-huK" id="3d3-Uz-iIj">
@@ -1629,7 +1634,7 @@
                                             <outlet property="tableView" destination="oxb-hX-RZE" id="VSE-MW-7KR"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="quizDoneCell" id="BvV-LN-pm0" customClass="QuizDoneCVCell" customModule="Prefixes___Suffixes" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="quizDoneCell" id="BvV-LN-pm0" customClass="QuizDoneCVCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="11.666666666666666" y="375" width="391" height="365"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1788,7 +1793,7 @@
         <!--New Quiz Options-->
         <scene sceneID="2Qg-kS-haR">
             <objects>
-                <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1907,38 +1912,38 @@
         <!--Welcome ScreenVC-->
         <scene sceneID="k1l-4j-XZu">
             <objects>
-                <viewController id="frx-7u-7So" customClass="WelcomeScreenVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="frx-7u-7So" customClass="WelcomeScreenVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S7T-mW-wfL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TeH-32-Yxj">
-                                <rect key="frame" x="30" y="30" width="354" height="390.33333333333331"/>
+                                <rect key="frame" x="30" y="30" width="354" height="396.33333333333331"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIcon_100" translatesAutoresizingMaskIntoConstraints="NO" id="U6q-jo-FdG">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="100"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P2e-0y-pnJ">
-                                        <rect key="frame" x="0.0" y="120.00000000000001" width="354" height="40.666666666666671"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="P2e-0y-pnJ">
+                                        <rect key="frame" x="0.0" y="120" width="354" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" name="color heading"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7b-LW-NfE">
-                                        <rect key="frame" x="0.0" y="180.66666666666666" width="354" height="18"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhJ-k0-DXw">
+                                        <rect key="frame" x="0.0" y="164" width="354" height="81.333333333333314"/>
+                                        <string key="text">Congratulations on purchasing this learning aid to help you on your journey of learning practical medical terms which will help you succeed in your career!</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="color text level 2"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhJ-k0-DXw">
-                                        <rect key="frame" x="0.0" y="218.66666666666666" width="354" height="101.66666666666666"/>
-                                        <string key="text">This app will help you learn medical prefixes, roots and suffixes. Visit the App Website to watch turorial videos on how to use this app. You can also see the website link on the Info tab.</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visit the app website to watch tutorials and learn tips on how to get the most out of using this app." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35J-AT-asu">
+                                        <rect key="frame" x="0.0" y="265.33333333333331" width="354" height="61"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="color text level 2"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkE-7B-RDv">
-                                        <rect key="frame" x="0.0" y="340.33333333333331" width="354" height="50"/>
+                                        <rect key="frame" x="0.0" y="346.33333333333331" width="354" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="bHz-32-1YF"/>
                                         </constraints>
@@ -2006,7 +2011,6 @@
                     <navigationItem key="navigationItem" id="JYA-Ko-msn"/>
                     <connections>
                         <outlet property="appTitle" destination="P2e-0y-pnJ" id="ZsT-L2-wDQ"/>
-                        <outlet property="appVersion" destination="Q7b-LW-NfE" id="pAS-Hm-2CH"/>
                         <outlet property="seeWebsiteButton" destination="EkE-7B-RDv" id="T1c-mV-Xwz"/>
                         <outlet property="startAppButton" destination="6A1-ac-MnA" id="755-GN-dbG"/>
                     </connections>
@@ -2043,7 +2047,7 @@
         <!--Info-->
         <scene sceneID="SHg-wi-o3F">
             <objects>
-                <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Prefixes___Suffixes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

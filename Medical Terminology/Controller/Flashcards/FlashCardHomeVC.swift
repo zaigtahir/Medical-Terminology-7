@@ -68,15 +68,12 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        if isDevelopmentMode {
-            print ("flash card home view will appear")
-        }
-        
+    
         if flashCardVCH.getFavoriteMode() {
             //if favorite mode, update the display incase the favorites were changed in another tab
             updateDisplay()
         }
+        
     }
     
     //MARK: - DataSourceFunctions

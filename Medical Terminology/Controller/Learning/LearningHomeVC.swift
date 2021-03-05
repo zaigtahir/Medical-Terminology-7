@@ -26,7 +26,7 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
     private let dIC = DItemController()
     private let utilities = Utilities()
     var progressBar: CircularBar!
-    
+
     //button colors
        let enabledButtonColor = myTheme.colorLhButton
        let enabledButtonTint = myTheme.colorButtonEnabledTint
