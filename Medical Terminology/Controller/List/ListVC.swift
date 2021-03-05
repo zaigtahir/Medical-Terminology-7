@@ -129,7 +129,6 @@ class ListVC: UIViewController, ListTCDelagate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //can have only one seque so don't need to worry about testing for it
         let destVC = segue.destination as! DItemVC
-        print ("will prepare seque for itemID: \(self.itemID)")
         destVC.itemID = self.itemID
     }
     
