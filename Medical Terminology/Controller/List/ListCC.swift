@@ -21,11 +21,8 @@ class ListCC: UITableViewCell {
     @IBOutlet weak var playAudioButton: UIButton!
     
     var indexPath : IndexPath!
+    var dItem : DItem!
     let utilities = Utilities()
-    
-    //to keep info for favorites
-    var itemID : Int!
-    var isFavorite: Bool!
     
     weak var delegate: ListCellDelegate?
     
@@ -35,24 +32,23 @@ class ListCC: UITableViewCell {
     
     }
     
-    func configure (itemID: Int, term: String, definition: String, isFavorite: Bool, indexPath: IndexPath) {
-        self.itemID = itemID
-        self.isFavorite = isFavorite
-        
-        termLabel.text = term
-        definitionLabel.text = definition
+    func configure(dItem: DItem, indexPath: IndexPath) {
+        self.dItem = dItem
         self.indexPath = indexPath
+        self.termLabel.text = dItem.term
+        self.definitionLabel.text = dItem.definition
         
-        //set favorite button
-        utilities.setFavoriteState(button: favoriteButton, isFavorite: isFavorite)
+        utilities.setFavoriteState(button: favoriteButton, isFavorite: dItem.isFavorite)
     }
     
+ 
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
-        
+        // MARK: to fix
+        /*
         
         isFavorite = !isFavorite
         utilities.setFavoriteState(button: favoriteButton, isFavorite: isFavorite)
-        delegate?.pressedFavoriteButton(sender: sender, indexPath: indexPath, itemID: self.itemID)
+        delegate?.pressedFavoriteButton(sender: sender, indexPath: indexPath, itemID: self.itemID)*/
     }
     
     @IBAction func playAudioButtonAction(_ sender: UIButton) {

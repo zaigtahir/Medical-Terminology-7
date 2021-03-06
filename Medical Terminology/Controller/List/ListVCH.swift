@@ -69,12 +69,7 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
             dItem = searchList[indexPath.row]
         }
         
-        cell.configure(itemID: dItem.itemID, term: dItem.term, definition: dItem.definition, isFavorite: dItem.isFavorite, indexPath: indexPath)
-        
-        //make new configuration
-        cell.dItem = dItem
-        cell.indexPath = indexPath
-    
+        cell.configure(dItem: dItem, indexPath: indexPath)
         cell.delegate = self   //assigning self for deligate
         
         return cell
@@ -127,11 +122,13 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //save the dItem user selected based on section and row
         
+        // MARK: to fix
+        /*
         if let cell = tableView.cellForRow(at: indexPath) as? ListCC {
             delegate?.selectedItemID(itemID: cell.itemID)
         } else {
             print("problem getting cell in ListTC didSelectRow")
-        }
+        }*/
         
     }
     
