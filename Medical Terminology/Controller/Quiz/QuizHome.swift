@@ -10,9 +10,8 @@
 
 import UIKit
 
-class QuizHome: UIViewController, QuizOptionsUpdated {
+class QuizHome: UIViewController {
 
-    
     @IBOutlet weak var favoritesLabel: UILabel!
     @IBOutlet weak var favoritesSwitch: UISwitch!
     @IBOutlet weak var percentLabel: UILabel!
@@ -27,9 +26,7 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
     let dIC = DItemController()
     let utilities = Utilities()
     var progressBar: CircularBar!
-    
-    private var optionsMenu: UIAlertController!
-    
+        
     //button colors
     let enabledButtonColor = myTheme.colorQuizButton
     let enabledButtonTint = myTheme.colorButtonEnabledTint
@@ -48,10 +45,15 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
         currentQuizButton.layer.cornerRadius = myConstants.button_cornerRadius
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
-        
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        //redraw the progress bar
+        updateDisplay()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        favoritesSwitch.isOn = quizHomeVCH.isFavoriteMode
         updateDisplay()
     }
     
@@ -132,18 +134,13 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
         
         if segue.identifier == "segueQuizOptions" {
             let vc = segue.destination as! QuizOptionsVC
-            vc.delegate = self
+            vc.delegate = quizHomeVCH
             vc.questionsType = quizHomeVCH.questionsType
             vc.numberOfQuestions = quizHomeVCH.numberOfQuestions
             vc.isFavoriteMode = quizHomeVCH.isFavoriteMode
         }
     }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        //redraw the progress bar
-        updateDisplay()
-    }
-    
+        
     @IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
         quizHomeVCH.isFavoriteMode = sender.isOn
         updateDisplay()
@@ -186,14 +183,6 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
         quizHomeVCH.startNewQuiz  = false
         performSegue(withIdentifier: "segueToQuiz", sender: nil)
     }
-    //MARK: - Delegate functions
-    
-    func quizOptionsUpdate(numberOfQuestions: Int, questionsTypes: QuestionsType, isFavoriteMode: Bool) {
-        //update settings
-        quizHomeVCH.numberOfQuestions = numberOfQuestions
-        quizHomeVCH.questionsType = questionsTypes
-        quizHomeVCH.isFavoriteMode = isFavoriteMode
-        updateDisplay()
-    }
+
     
 }

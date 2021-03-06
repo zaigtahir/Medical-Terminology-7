@@ -32,9 +32,7 @@ class LearningHomeVC: UIViewController {
     let enabledButtonTint = myTheme.colorButtonEnabledTint
     let disabledButtonColor = myTheme.colorButtonDisabled
     let disabledButtonTint = myTheme.colorButtonDisabledTint
-    
-    private var optionsMenu: UIAlertController!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         favoritesSwitch.layer.cornerRadius = 16
@@ -44,8 +42,6 @@ class LearningHomeVC: UIViewController {
         seeCurrentSetButton.layer.cornerRadius = myConstants.button_cornerRadius
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
-        updateDisplay()
-        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

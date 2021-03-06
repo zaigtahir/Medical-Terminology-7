@@ -8,18 +8,16 @@
 
 import UIKit
 
-class FlashCardVCH: NSObject {
+class FlashCardVCH {
     
     private var favoriteMode = false
     var viewMode : FlashCardViewMode = .both
-    
-
     var listFull: [Int]
     var listFavorite: [Int]
     
     let dIC  = DItemController()
     
-    override init() {
+    init() {
         listFull  = dIC.getItemIDs(favoriteState: -1, learnedState: -1)
         listFavorite  = dIC.getItemIDs(favoriteState: 1, learnedState: -1)
     }

@@ -10,7 +10,6 @@ import UIKit
 
 class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDelegate, LearnCVCellDelegate, LearnDoneCVCellDelegate {
     
-
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!

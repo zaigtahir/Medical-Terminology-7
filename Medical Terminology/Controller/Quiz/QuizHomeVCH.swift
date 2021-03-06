@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class QuizHomeVCH {
+class QuizHomeVCH: QuizOptionsUpdated {
     
     private var quizSet: QuizSet!   //initialize for first time when user presses the "Start New Set"
     private let dIC = DItemController()
@@ -148,4 +148,12 @@ class QuizHomeVCH {
         
     }
 
+    //MARK: - Delegate functions
+    
+    func quizOptionsUpdate(numberOfQuestions: Int, questionsTypes: QuestionsType, isFavoriteMode: Bool) {
+        //update settings
+        self.numberOfQuestions = numberOfQuestions
+        self.questionsType = questionsTypes
+        self.isFavoriteMode = isFavoriteMode
+    }
 }
