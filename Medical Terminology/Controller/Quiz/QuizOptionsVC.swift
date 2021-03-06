@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol QuizOptionsUpdated {
+protocol QuizOptionsUpdated: class {
     func quizOptionsUpdate (numberOfQuestions: Int, questionsTypes: QuestionsType, isFavoriteMode: Bool)
 }
 
@@ -25,7 +25,7 @@ class QuizOptionsVC: UIViewController {
     var questionsType : QuestionsType = .random
     var isFavoriteMode = false
     
-    var delegate : QuizOptionsUpdated?
+    weak var delegate : QuizOptionsUpdated?
     
     override func viewDidLoad() {
         super.viewDidLoad()

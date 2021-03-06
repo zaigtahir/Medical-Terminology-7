@@ -13,12 +13,11 @@
  It will trigger the delegate method CVCellChanged when the user manually scolls the collection view or uses the scroll methods to move it. So, controller using this will need to implement the protocol
  */
 
-import Foundation
 import UIKit
 
 // delegate function. This will fire off when a new cell loads into the controller
 
-protocol CVCellChangedDelegate: AnyObject {
+protocol CVCellChangedDelegate: class {
     
     //when the scroll is fully at a stopped position of a new cell
     func CVCellChanged (cellIndex: Int)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LearningOptionsUpdated {
+protocol LearningOptionsUpdated: class {
     func learningOptionsUpdated (isFavoriteMode: Bool, numberOfTerms: Int)
 }
 
@@ -17,7 +17,7 @@ class LearningHomeOptionsVC: UIViewController {
     //load this via the segue call
     var isFavoriteMode  = false
     var numberOfTerms = 5 // choices will be 5, 10, 25, 50 terms
-    var delegate: LearningOptionsUpdated?
+    weak var delegate: LearningOptionsUpdated?
     
     @IBOutlet weak var maximumSelector: UISegmentedControl!
     @IBOutlet weak var favoriteControl: UISegmentedControl!

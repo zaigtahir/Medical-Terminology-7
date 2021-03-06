@@ -10,7 +10,7 @@ import UIKit
 
 //delegate function. Fire off when the user presses the reset quiz button
 
-protocol QuizDoneCVCellDelegate: AnyObject {
+protocol QuizDoneCVCellDelegate: class {
     
     func retartButtonPressed ()  //trigger when the user presses the restart button
     

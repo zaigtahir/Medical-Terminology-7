@@ -13,11 +13,12 @@ import UIKit
 //  will generate an array of [DItems] when searching: (one dimension array)
 //  will configure and show the data appropriately on the table with single array or the AlphaList
 
-protocol ListTCDelagate: AnyObject {
+protocol ListTCDelagate: class {
     func selectedItemID (itemID: Int)   //will return the dItem the user selects
     func favoriteItemChanged(newFavoriteState: Bool)  //when the user changes the state of a favorite item
 }
 
+//not sure why I have to conform to NSObject here!!!????
 
 class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDelegate, UISearchBarDelegate
 {
