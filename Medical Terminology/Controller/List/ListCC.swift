@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ListCellDelegate: AnyObject {
+protocol ListCellDelegate {
     func pressedFavoriteButton (sender: UIButton, indexPath: IndexPath, itemID: Int)
 }
 
@@ -26,7 +26,7 @@ class ListCC: UITableViewCell {
     var itemID : Int!
     var isFavorite: Bool!
     
-    weak var delegate: ListCellDelegate?
+    var delegate: ListCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -6,8 +6,6 @@
 //  Copyright © 2019 Zaigham Tahir. All rights reserved.
 //
 
-import Foundation
-
 import UIKit
 
 class QuizSetVCH {

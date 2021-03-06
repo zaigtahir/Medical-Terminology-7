@@ -7,8 +7,6 @@
 //
 
 import UIKit
-
-
 //  will serve as the table view source and delegate for the list table
 
 //  will generate an alphaList when not searching:  an AlphaList object
