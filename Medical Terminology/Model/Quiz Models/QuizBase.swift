@@ -91,7 +91,6 @@ class QuizBase {
             masterList.insert(questionCopy, at: insertIndex)
         }
         
-        
     }
     
     func getQuestion (index: Int) -> Question {

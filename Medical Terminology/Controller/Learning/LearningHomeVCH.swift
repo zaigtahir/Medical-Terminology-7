@@ -8,14 +8,14 @@
 
 import Foundation
 
-class LearningHomeVCH {
+class LearningHomeVCH: LearningOptionsUpdated  {
     
     private var learningSet: LearningSet!
     let dIC = DItemController()
     
     //default variables until the user changes them with the options settings
     var isFavoriteMode  = false
-    var numberOfTerms = 2   // need to fix learning set stuff and options
+    var numberOfTerms = 5   //that's the default in settings
     var startNewSet = true  // used to determine if to create a new set or keep current set when going from learning home to learning set
    
     /**
@@ -93,6 +93,13 @@ class LearningHomeVCH {
             dIC.clearLearnedItems(favoriteState: -1)
         }
         
+    }
+    
+    //MARK: - Delegate functions
+    
+    func learningOptionsUpdated(isFavoriteMode: Bool, numberOfTerms: Int) {
+        self.isFavoriteMode = isFavoriteMode
+        self.numberOfTerms = numberOfTerms
     }
     
 }

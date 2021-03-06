@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LearningHomeVC: UIViewController, LearningOptionsUpdated {
+class LearningHomeVC: UIViewController {
     
     // from quizHome
     @IBOutlet weak var favoritesLabel: UILabel!
@@ -136,7 +136,7 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
         
         if segue.identifier == "segueToLearningHomeOptions" {
             let vc = segue.destination as! LearningHomeOptionsVC
-            vc.delegate = self
+            vc.delegate = learningHomeVCH   //assigning the VCH to the options as it's delegate
             vc.isFavoriteMode = learningHomeVCH.isFavoriteMode
             vc.numberOfTerms = learningHomeVCH.numberOfTerms
         }
@@ -185,13 +185,6 @@ class LearningHomeVC: UIViewController, LearningOptionsUpdated {
         //will manually segue
         learningHomeVCH.startNewSet = false
         performSegue(withIdentifier: "segueToLearningSet", sender: nil)
-    }
-    
-    //MARK: - Delegate functions
-    
-    func learningOptionsUpdated(isFavoriteMode: Bool, numberOfTerms: Int) {
-        learningHomeVCH.isFavoriteMode = isFavoriteMode
-        learningHomeVCH.numberOfTerms = numberOfTerms
     }
     
 }
