@@ -90,6 +90,7 @@ class LearningSet: QuizBase {
         
         //requeue the question if the answer is wrong
         if !question.isCorrect() {
+    
             requeueQuestion(questionIndex: questionIndex)
         }
         

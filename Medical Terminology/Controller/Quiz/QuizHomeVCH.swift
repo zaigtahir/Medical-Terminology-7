@@ -21,7 +21,6 @@ class QuizHomeVCH {
     
     init () {
     }
-    
     /**
      Will return counts based on favorite mode and questions typea
      */

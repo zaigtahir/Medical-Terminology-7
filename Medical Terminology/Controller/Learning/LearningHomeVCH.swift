@@ -18,7 +18,6 @@ class LearningHomeVCH {
     var numberOfTerms = 2   // need to fix learning set stuff and options
     var startNewSet = true  // used to determine if to create a new set or keep current set when going from learning home to learning set
    
-   
     /**
      Will return counts based on favorite mode and questions type
      */

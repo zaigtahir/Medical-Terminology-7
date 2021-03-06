@@ -80,7 +80,7 @@ class QuizHome: UIViewController, QuizOptionsUpdated {
         circleBarView.isHidden = false
         percentLabel.isHidden = false
         heartImage.isHidden = true
-        redoButton.isHidden = false
+        redoButton.isEnabled = true
         
       let foregroundColor = myTheme.colorPbQuizForeground?.cgColor
       let backgroundColor = myTheme.colorPbQuizBackground?.cgColor
