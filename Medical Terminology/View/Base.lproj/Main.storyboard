@@ -1029,16 +1029,16 @@
                                                             <rect key="frame" x="20" y="10" width="374" height="56"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="v9U-Fv-AXx">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="330" height="43.333333333333336"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="282" height="43.333333333333336"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FRH-Sg-Cu8">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="330" height="20.333333333333332"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="282" height="20.333333333333332"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                             <color key="textColor" name="color heading"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBy-Ho-qWd">
-                                                                            <rect key="frame" x="0.0" y="25.333333333333336" width="330" height="18"/>
+                                                                            <rect key="frame" x="0.0" y="25.333333333333336" width="282" height="18"/>
                                                                             <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                             <color key="textColor" name="color text"/>
@@ -1046,22 +1046,39 @@
                                                                         </label>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-z6-45m">
-                                                                    <rect key="frame" x="350" y="0.0" width="24" height="24"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="24" id="muE-3o-URA"/>
-                                                                        <constraint firstAttribute="width" constant="24" id="utP-LP-0ls"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="5"/>
-                                                                    <color key="tintColor" name="color inactive icon"/>
-                                                                    <state key="normal" title="Button" image="heart3"/>
-                                                                    <connections>
-                                                                        <action selector="favoriteButtonAction:" destination="YEn-IV-khC" eventType="touchUpInside" id="FmL-WC-8BS"/>
-                                                                    </connections>
-                                                                </button>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Olq-jl-L68">
+                                                                    <rect key="frame" x="302" y="0.0" width="72" height="24"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qka-vl-NQZ">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="28" height="24"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="28" id="lec-lX-Ewe"/>
+                                                                            </constraints>
+                                                                            <color key="tintColor" name="color inactive icon"/>
+                                                                            <state key="normal" image="speakerC"/>
+                                                                            <connections>
+                                                                                <action selector="playAudioAction:" destination="awX-yg-8xS" eventType="touchUpInside" id="sfy-zF-Bov"/>
+                                                                                <action selector="playAudioButtonAction:" destination="YEn-IV-khC" eventType="touchUpInside" id="LOc-Re-tIe"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-z6-45m">
+                                                                            <rect key="frame" x="48" y="0.0" width="24" height="24"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="24" id="muE-3o-URA"/>
+                                                                                <constraint firstAttribute="width" constant="24" id="utP-LP-0ls"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="5"/>
+                                                                            <color key="tintColor" name="color inactive icon"/>
+                                                                            <state key="normal" title="Button" image="heart3"/>
+                                                                            <connections>
+                                                                                <action selector="favoriteButtonAction:" destination="YEn-IV-khC" eventType="touchUpInside" id="FmL-WC-8BS"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                    </subviews>
+                                                                </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="HAw-z6-45m" firstAttribute="leading" secondItem="v9U-Fv-AXx" secondAttribute="trailing" constant="20" id="BLQ-4q-1oU"/>
+                                                                <constraint firstItem="Olq-jl-L68" firstAttribute="leading" secondItem="v9U-Fv-AXx" secondAttribute="trailing" constant="20" id="Ika-VE-dIo"/>
                                                             </constraints>
                                                         </stackView>
                                                     </subviews>
@@ -1087,6 +1104,7 @@
                                             <outlet property="cellView" destination="mmN-iy-yIw" id="mVZ-K7-e0h"/>
                                             <outlet property="definitionLabel" destination="hBy-Ho-qWd" id="iot-U9-ZoM"/>
                                             <outlet property="favoriteButton" destination="HAw-z6-45m" id="FR6-e6-3cQ"/>
+                                            <outlet property="playAudioButton" destination="Qka-vl-NQZ" id="D6I-ad-wQK"/>
                                             <outlet property="termLabel" destination="FRH-Sg-Cu8" id="Ccb-wB-fs8"/>
                                         </connections>
                                     </tableViewCell>

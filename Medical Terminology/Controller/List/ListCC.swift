@@ -18,6 +18,7 @@ class ListCC: UITableViewCell {
     @IBOutlet weak var definitionLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var playAudioButton: UIButton!
     
     var indexPath : IndexPath!
     let utilities = Utilities()
@@ -47,9 +48,16 @@ class ListCC: UITableViewCell {
     }
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
+        
+        
         isFavorite = !isFavorite
         utilities.setFavoriteState(button: favoriteButton, isFavorite: isFavorite)
         delegate?.pressedFavoriteButton(sender: sender, indexPath: indexPath, itemID: self.itemID)
     }
+    
+    @IBAction func playAudioButtonAction(_ sender: UIButton) {
+        print ("audio play button pressed")
+    }
+    
     
 }

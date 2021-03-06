@@ -18,8 +18,7 @@ protocol ListTCDelagate: class {
     func favoriteItemChanged(newFavoriteState: Bool)  //when the user changes the state of a favorite item
 }
 
-//not sure why I have to conform to NSObject here!!!????
-
+//Have to incude NSObject to that ListVCH can implement the table view and search bar delegates
 class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDelegate, UISearchBarDelegate
 {
     private var searchText = ""
@@ -71,6 +70,10 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
         }
         
         cell.configure(itemID: dItem.itemID, term: dItem.term, definition: dItem.definition, isFavorite: dItem.isFavorite, indexPath: indexPath)
+        
+        //make new configuration
+        cell.dItem = dItem
+        cell.indexPath = indexPath
     
         cell.delegate = self   //assigning self for deligate
         

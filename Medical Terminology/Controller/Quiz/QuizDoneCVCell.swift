@@ -11,9 +11,7 @@ import UIKit
 //delegate function. Fire off when the user presses the reset quiz button
 
 protocol QuizDoneCVCellDelegate: class {
-    
     func retartButtonPressed ()  //trigger when the user presses the restart button
-    
 }
 
 class QuizDoneCVCell: UICollectionViewCell {
@@ -41,7 +39,6 @@ class QuizDoneCVCell: UICollectionViewCell {
         //set color here to it responds to dark mode
         cellView.layer.borderColor = UIColor(named: "color card border")?.cgColor
     }
-    
     
     @IBAction func retakeButtonAction(_ sender: Any) {
         delegate?.retartButtonPressed()
