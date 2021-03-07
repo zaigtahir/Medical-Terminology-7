@@ -41,7 +41,6 @@ class ListCC: UITableViewCell, AVAudioPlayerDelegate {
         self.termLabel.text = dItem.term
         self.definitionLabel.text = dItem.definition
         
-        
         if dItem.audioFile != "" && aFC.isAudioFilePresentInBundle(filename: dItem.audioFile, extension: "mp3")
         {
             playAudioButton.isEnabled = true

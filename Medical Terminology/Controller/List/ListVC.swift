@@ -8,8 +8,8 @@
 
 import UIKit
 import SQLite3
-class ListVC: UIViewController, ListTCDelagate {
-    
+class ListVC: UIViewController, ListTCDelagate, UITableViewDelegate {
+ 
     //will use ListTC as the table datasource
     //use this VC to use as the table delegate as lots of actions happen based on selection including segue
     
@@ -20,7 +20,7 @@ class ListVC: UIViewController, ListTCDelagate {
     @IBOutlet weak var noFavoritesLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var itemID = 0 //will hold the itemID based on the row the user clicks, will be used for performing the detail seque
+    var dItem: DItem! //to hold the dItem for the segue
     var listTC: ListVCH! //need to keep a reference here
     
     let dIC = DItemController()
@@ -32,7 +32,7 @@ class ListVC: UIViewController, ListTCDelagate {
         //setting my ListTC class as the tableview datasource and delegate
         listTC = ListVCH()
         tableView.dataSource = listTC
-        tableView.delegate = listTC
+        tableView.delegate = self
         
         //formatting
         favoritesSwitch.layer.cornerRadius = 16
@@ -42,7 +42,6 @@ class ListVC: UIViewController, ListTCDelagate {
         
         //setting the same instance of ListTC and set its delegate to SELF to it can message back to me here
         listTC.delegate = self
-        listTC.tableViewReference = tableView
         
         noFavoritesLabel.text = myConstants.noFavoritesAvailableText
         
@@ -53,8 +52,6 @@ class ListVC: UIViewController, ListTCDelagate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        listTC.refreshList()
         updateDisplay()
     }
     
@@ -62,6 +59,7 @@ class ListVC: UIViewController, ListTCDelagate {
         //call this function to update the display
         //remember to use listTC.makeList function to refresh the data before using tableView.reload
         updateCounter()
+        tableView.reloadData()
         let favCount = dIC.getCount(favoriteState: 1, learnedState: -1)
         
         if listTC.isFavoritesOnly() {
@@ -108,20 +106,29 @@ class ListVC: UIViewController, ListTCDelagate {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: delegate functions
-    func selectedItemID(itemID: Int) {
-        self.itemID = itemID    //save as a class varialbe to that prepare for segue can use this value
+    // table delegate functions
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //save the dItem user selected based on section and row
+                
+        if let cell = tableView.cellForRow(at: indexPath) as? ListCC {
+            dItem = cell.dItem
+        }
+        
         performSegue(withIdentifier: "showDItemSegue", sender: self)
     }
-    
+
     func favoriteItemChanged() {
         updateCounter()
+    }
+    
+    func tableDataChanged() {
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //can have only one seque so don't need to worry about testing for it
         let destVC = segue.destination as! DItemVC
-        destVC.itemID = self.itemID
+        destVC.dItem = self.dItem
     }
     
     @IBAction func favoritesOnlySwitchAction(_ sender: UISwitch) {

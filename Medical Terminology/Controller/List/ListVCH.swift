@@ -14,7 +14,6 @@ import UIKit
 //  will configure and show the data appropriately on the table with single array or the AlphaList
 
 protocol ListTCDelagate: class {
-    func selectedItemID (itemID: Int)   //will return the dItem the user selects
     func favoriteItemChanged()  //when the user changes the state of a favorite item
     func tableDataChanged()     //when the table data is changed and the ListVC needs to refresh the table
 }
@@ -30,8 +29,7 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
     private var searchList = [DItem]()
     private let searchLists = SearchLists()
     weak var delegate: ListTCDelagate?
-    var tableViewReference = UITableView()
-    
+  
     override init() {
         //Initialize the alphalist to show all
         super.init()
@@ -70,6 +68,8 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
         } else {
             dItem = searchList[indexPath.row]
         }
+        
+        print("in tableview cell for row at: \(dItem.itemID)")
         
         cell.configure(dItem: dItem, indexPath: indexPath)
         cell.delegate = self   //assigning self for deligate
@@ -120,20 +120,6 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
         
     }
     
-    // table delegate functions
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //save the dItem user selected based on section and row
-        
-        // MARK: to fix
-        /*
-        if let cell = tableView.cellForRow(at: indexPath) as? ListCC {
-            delegate?.selectedItemID(itemID: cell.itemID)
-        } else {
-            print("problem getting cell in ListTC didSelectRow")
-        }*/
-        
-    }
-    
     //ListCC delegate function
     func pressedFavoriteButton(dItem: DItem) {
         dItem.isFavorite = !dItem.isFavorite
@@ -141,14 +127,6 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
         
         //need to notify the ListVC that favorites count is changed
         delegate?.favoriteItemChanged()
-    }
-    
-    //TODO: probably try to remove this maybe?
-    func refreshList () {
-        //will just use the stored settings to remake the list
-        //use this primarily when the user deselects a favorite item on the favorite only lists
-        makeList(favoritesOnly: isFavoritesOnly(), searchText: searchText)
-        tableViewReference.reloadData()
     }
     
     // other functions for this class
@@ -159,12 +137,12 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
         
         if showAlphaList() {
             alphaList = searchLists.makeAlphaList(favoritesOnly: favoritesOnly)
-            
+        
         } else {
             searchList = searchLists.makeSearchList(favoritesOnly: favoritesOnly, searchText: searchText)
         }
         
-        tableViewReference.reloadData()
+        delegate?.tableDataChanged()
         
     }
     

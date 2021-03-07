@@ -23,15 +23,12 @@ class DItemVC: UIViewController, AVAudioPlayerDelegate  {
     
     private var audioPlayer: AVAudioPlayer?
     
-    var itemID : Int!    //set this from previous controller
     var dItem : DItem!   //set this in viewDidLoad
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        dItem = dIC.getDItem(itemID: itemID)
-        
+    
         termLabel.text = dItem.term
        
         termLabel.text = dItem.term
@@ -114,7 +111,7 @@ class DItemVC: UIViewController, AVAudioPlayerDelegate  {
         
         dItem.isFavorite = !dItem.isFavorite    //local toggle
         utilities.setFavoriteState(button: favoriteButton, isFavorite: dItem.isFavorite)    //update button
-        dIC.saveFavorite(itemID: itemID, isFavorite: dItem.isFavorite)   //updates the database
+        dIC.saveFavorite(itemID: dItem.itemID, isFavorite: dItem.isFavorite)   //updates the database
     }
     
     @IBAction func playAudioAction(_ sender: Any) {
