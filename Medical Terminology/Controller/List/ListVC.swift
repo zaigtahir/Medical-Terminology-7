@@ -114,16 +114,8 @@ class ListVC: UIViewController, ListTCDelagate {
         performSegue(withIdentifier: "showDItemSegue", sender: self)
     }
     
-    func favoriteItemChanged(newFavoriteState: Bool) {
-        
-        if listTC.isFavoritesOnly() {
-            if newFavoriteState == false {
-                updateDisplay()
-            }
-        } else {
-            //just update the counter
-            updateCounter()
-        }        
+    func favoriteItemChanged() {
+        updateCounter()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -15,7 +15,8 @@ import UIKit
 
 protocol ListTCDelagate: class {
     func selectedItemID (itemID: Int)   //will return the dItem the user selects
-    func favoriteItemChanged(newFavoriteState: Bool)  //when the user changes the state of a favorite item
+    func favoriteItemChanged()  //when the user changes the state of a favorite item
+    func tableDataChanged()     //when the table data is changed and the ListVC needs to refresh the table
 }
 
 //Have to incude NSObject to that ListVCH can implement the table view and search bar delegates
@@ -135,13 +136,11 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
     
     //ListCC delegate function
     func pressedFavoriteButton(dItem: DItem) {
-        
-        //if you are seeing the favorites list and you unfavorite an item, need to refresh the data list and delete the table row with animation
-        
         dItem.isFavorite = !dItem.isFavorite
-        
         dIC.saveFavorite(itemID: dItem.itemID, isFavorite: dItem.isFavorite)
         
+        //need to notify the ListVC that favorites count is changed
+        delegate?.favoriteItemChanged()
     }
     
     //TODO: probably try to remove this maybe?
@@ -207,7 +206,6 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
         searchBar.showsCancelButton = false
         // You could also change the position, frame etc of the searchBar
         searchBar.endEditing(true)
-        
         
         makeList(favoritesOnly: favoritesOnly, searchText: searchText)
     }

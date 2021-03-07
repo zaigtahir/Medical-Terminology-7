@@ -33,7 +33,6 @@ class ListCC: UITableViewCell, AVAudioPlayerDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
     }
     
     func configure(dItem: DItem, indexPath: IndexPath) {
