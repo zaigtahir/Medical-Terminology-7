@@ -21,6 +21,7 @@ protocol ListTCDelagate: class {
 //Have to incude NSObject to that ListVCH can implement the table view and search bar delegates
 class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDelegate, UISearchBarDelegate
 {
+   
     private var searchText = ""
     private var favoritesOnly = false
     private var alphaList = AlphaList()
@@ -133,18 +134,13 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
     }
     
     //ListCC delegate function
-    func pressedFavoriteButton(sender: UIButton, indexPath: IndexPath, itemID: Int) {
+    func pressedFavoriteButton(dItem: DItem) {
         
         //if you are seeing the favorites list and you unfavorite an item, need to refresh the data list and delete the table row with animation
         
-        let tempItem = dIC.getDItem(itemID: itemID)
+        dItem.isFavorite = !dItem.isFavorite
         
-        dIC.saveFavorite(itemID: itemID, isFavorite: !tempItem.isFavorite)
-        
-        refreshList()   //update the currently used list from the database
-        
-        delegate?.favoriteItemChanged(newFavoriteState: !tempItem.isFavorite) //return the new state of the favorite
-        
+        dIC.saveFavorite(itemID: dItem.itemID, isFavorite: dItem.isFavorite)
         
     }
     

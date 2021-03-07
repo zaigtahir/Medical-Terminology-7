@@ -10,11 +10,11 @@ import UIKit
 import AVFoundation
 
 protocol ListCellDelegate: class {
-    func pressedFavoriteButton (sender: UIButton, indexPath: IndexPath, itemID: Int)
+    func pressedFavoriteButton (dItem: DItem)
 }
 
 class ListCC: UITableViewCell, AVAudioPlayerDelegate {
-
+    
     @IBOutlet weak var termLabel: UILabel!
     @IBOutlet weak var definitionLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
@@ -33,7 +33,7 @@ class ListCC: UITableViewCell, AVAudioPlayerDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    
+        
     }
     
     func configure(dItem: DItem, indexPath: IndexPath) {
@@ -54,7 +54,7 @@ class ListCC: UITableViewCell, AVAudioPlayerDelegate {
     }
     
     func playAudio () {
- 
+        
         let fileName = "\(audioFolder)/\(dItem.audioFile).mp3"
         
         let path = Bundle.main.path(forResource: fileName, ofType: nil)!
@@ -85,23 +85,22 @@ class ListCC: UITableViewCell, AVAudioPlayerDelegate {
     //MARK: Delegate methods
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         //change the speaker image to no playing
-      
+        
         playAudioButton.setImage(myTheme.image_speaker, for: .normal)
     }
     
- 
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
-        // MARK: to fix
-        /*
         
-        isFavorite = !isFavorite
-        utilities.setFavoriteState(button: favoriteButton, isFavorite: isFavorite)
-        delegate?.pressedFavoriteButton(sender: sender, indexPath: indexPath, itemID: self.itemID)*/
+        //change the favorite button image locally
+        utilities.setFavoriteState(button: favoriteButton, isFavorite: !dItem.isFavorite)
+        
+        //now need to pass this info back to database
+        delegate?.pressedFavoriteButton(dItem: dItem)
     }
     
     @IBAction func playAudioButtonAction(_ sender: UIButton) {
         playAudioButton.setImage(myTheme.image_speaker_playing, for: .normal)
         playAudio()
     }
-
+    
 }
