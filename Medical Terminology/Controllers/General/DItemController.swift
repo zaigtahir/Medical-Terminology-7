@@ -37,6 +37,7 @@ class DItemController {
         
         if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
             
+            
             resultSet.next()
             
             return Int(resultSet.int(forColumnIndex: 0))

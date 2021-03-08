@@ -52,7 +52,4 @@ class DItem {
         self.answeredDefinition = answeredDefinition
         
     }
-    
-    
-    
 }

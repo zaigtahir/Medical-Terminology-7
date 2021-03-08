@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             isDevelopmentMode = true
         }
-        
+      
         if isDevelopmentMode {
             print("in development mode")
         } else {
@@ -53,7 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(sController.getUserDefaultsVersion())
             
         }
-        
+       
+        /*
         if isDevelopmentMode {
             // check and see if there is a resource present for each audiofile name listed in the database
             print("In AppDelegate checking if each audiofile name in the database has a matching audiofile in the resource bundle")
@@ -62,6 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Audio file check done! if there were any missing they would be listed before this ending line.")
 
         }
+ */
+        
+        // testing out categories controller
+        let categoryC = CategoryController()
+        let categories = categoryC.getCategories()
         
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {
