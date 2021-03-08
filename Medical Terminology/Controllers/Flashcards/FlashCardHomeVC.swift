@@ -68,7 +68,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     }
     
     override func viewWillAppear(_ animated: Bool) {
-    
+        
         if flashCardVCH.getFavoriteMode() {
             //if favorite mode, update the display incase the favorites were changed in another tab
             updateDisplay()
@@ -145,9 +145,19 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! FlashCardOptionsVC
-        vc.viewMode = flashCardVCH.viewMode
-        vc.delegate = self
+        
+        if segue.identifier == "" {
+            let vc = segue.destination as! FlashCardOptionsVC
+            vc.viewMode = flashCardVCH.viewMode
+            vc.delegate = self
+        } else if segue.identifier == "segueCategories" {
+            let vc = segue.destination as! CategoryHomeVC
+        } else {
+            if isDevelopmentMode {
+                print ("no matching segue found: error state in FlashCardHomeVC prepare")
+            }
+        }
+        
     }
     
     func CVCellChanged(cellIndex: Int) {

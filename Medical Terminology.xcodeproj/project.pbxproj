@@ -70,6 +70,7 @@
 		99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */; };
 		99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */; };
 		99D55E0525F6C7CA003ABE0B /* QuizHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0425F6C7CA003ABE0B /* QuizHome.swift */; };
+		99D55E0A25F6DAD8003ABE0B /* CategoryHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0925F6DAD8003ABE0B /* CategoryHomeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,6 +144,7 @@
 		99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtilities.swift; sourceTree = "<group>"; };
 		99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCVCell.swift; sourceTree = "<group>"; };
 		99D55E0425F6C7CA003ABE0B /* QuizHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizHome.swift; sourceTree = "<group>"; };
+		99D55E0925F6DAD8003ABE0B /* CategoryHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeVC.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -386,6 +388,7 @@
 		998398E025F6AAAF00CC0354 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				99D55E0925F6DAD8003ABE0B /* CategoryHomeVC.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				5A4471552281C655008E3107 /* ListVCH.swift in Sources */,
 				5A88634E218560030013FC8B /* ListVC.swift in Sources */,
 				5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */,
+				99D55E0A25F6DAD8003ABE0B /* CategoryHomeVC.swift in Sources */,
 				5A1506252255796C00717AB8 /* Question.swift in Sources */,
 				99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */,
 				5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */,

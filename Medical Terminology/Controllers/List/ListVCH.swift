@@ -68,9 +68,7 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
         } else {
             dItem = searchList[indexPath.row]
         }
-        
-        print("in tableview cell for row at: \(dItem.itemID)")
-        
+       
         cell.configure(dItem: dItem, indexPath: indexPath)
         cell.delegate = self   //assigning self for deligate
         
