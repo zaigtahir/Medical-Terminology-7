@@ -146,7 +146,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "" {
+        if segue.identifier == "segueFCOptions" {
             let vc = segue.destination as! FlashCardOptionsVC
             vc.viewMode = flashCardVCH.viewMode
             vc.delegate = self

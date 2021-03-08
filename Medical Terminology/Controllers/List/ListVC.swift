@@ -127,8 +127,20 @@ class ListVC: UIViewController, ListTCDelagate, UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //can have only one seque so don't need to worry about testing for it
-        let destVC = segue.destination as! DItemVC
-        destVC.dItem = self.dItem
+        
+        if segue.identifier == "showDItemSegue" {
+            let destVC = segue.destination as! DItemVC
+            destVC.dItem = self.dItem
+        } else if segue.identifier == "segueCategories" {
+            let vc = segue.destination as! CategoryHomeVC
+        } else {
+            if isDevelopmentMode {
+                print ("no matching segue found: error state in FlashCardHomeVC prepare")
+            }
+        }
+        
+        
+        
     }
     
     @IBAction func favoritesOnlySwitchAction(_ sender: UISwitch) {
