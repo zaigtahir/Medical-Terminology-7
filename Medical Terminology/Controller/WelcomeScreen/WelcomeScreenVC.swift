@@ -34,7 +34,6 @@ class WelcomeScreenVC: UIViewController {
         
         let sC = SettingsController()
         sC.setShowWelcomeScreen(showWelcomeScreen: showScreen)
-        
     }
     
     @IBAction func seeWebsiteButtonAction(_ sender: Any) {
