@@ -11,7 +11,7 @@
 
 import UIKit
 
-class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FCFavoritePressedDelegate, FCVModeChangedDelegate {
+class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FCFavoritePressedDelegate, FCVModeChangedDelegate, CategoryChangedDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var favoritesLabel: UILabel!
@@ -21,6 +21,8 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     @IBOutlet weak var randomButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var noFavoritesLabel: UILabel!
+    
+    @IBOutlet weak var categoryLabelButton: UIButton!   //button listing the category name
     
     var utilities = Utilities()
     
@@ -150,14 +152,21 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
             let vc = segue.destination as! FlashCardOptionsVC
             vc.viewMode = flashCardVCH.viewMode
             vc.delegate = self
-        } else if segue.identifier == "segueCategories" {
+        } else if segue.identifier == myConstants.segue_catetories {
             let vc = segue.destination as! CategoryHomeVC
+            vc.delegate = self
         } else {
             if isDevelopmentMode {
                 print ("no matching segue found: error state in FlashCardHomeVC prepare")
             }
         }
         
+    }
+    
+    // MARK: Delegate functions
+    func categoryChanged(categoryID: Int, categoryName: String) {
+        print("here")
+        categoryLabelButton.setTitle(categoryName, for: .normal)
     }
     
     func CVCellChanged(cellIndex: Int) {
@@ -216,5 +225,9 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         scrollDelegate.scrollNext(collectionView: collectionView)
     }
     
+    @IBAction func categoryLabelButtonAction(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: myConstants.segue_catetories , sender: self)
+    }
 }
 

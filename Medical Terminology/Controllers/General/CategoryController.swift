@@ -27,7 +27,7 @@ class CategoryController {
         
         var categories = [Category]()
         
-        let query = "SELECT categoryID, name, ifnull(description, '') As description, ifnull(displayOrder, 0) AS displayOrder FROM categories"
+        let query = "SELECT categoryID, name, ifnull(description, '') As description, ifnull(displayOrder, 0) AS displayOrder FROM categories where categoryID != 999"
         
         if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
             

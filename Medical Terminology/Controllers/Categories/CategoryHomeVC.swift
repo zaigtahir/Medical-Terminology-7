@@ -8,12 +8,46 @@
 
 import UIKit
 
-class CategoryHomeVC: UIViewController {
+protocol CategoryChangedDelegate: class {
+    func categoryChanged (categoryID: Int, categoryName: String)
+}
 
+class CategoryHomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    let catetoryC = CategoryController()
+    var categories = [Category]()
+    
+    weak var delegate: CategoryChangedDelegate?
+
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tableView.dataSource = self
+        tableView.delegate = self
+        categories = catetoryC.getCategories()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        categories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
+            cell.textLabel?.text = categories[indexPath.row].name
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let name = categories[indexPath.row].name
+        
+        delegate?.categoryChanged(categoryID: 3, categoryName: name)
     }
     
 
