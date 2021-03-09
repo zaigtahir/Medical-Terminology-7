@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CategoryHomeVCH: NSObject, UITableViewDataSource {
+class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	// manage the datatable source
 	// get the categories and display them in the table
@@ -18,6 +18,9 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource {
 	let categoryC = CategoryController()
 	var standardCategories = [Category]()
 	var customCategories = [Category]()
+	
+	let sectionStandard = 0
+	let sectionCustom = 1
 	
 	override init (){
 		//any init functions here
@@ -31,15 +34,15 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		if section == 0 {
+		if section == sectionStandard {
 			return "Standard Categories"
 		} else {
-				return  "Custom Categories"
+			return  "Custom Categories"
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if section == 0 {
+		if section == sectionStandard {
 			return standardCategories.count
 		} else {
 			return customCategories.count
@@ -51,7 +54,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource {
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
 			
 			//make cell here based on the section
-			if indexPath.section == 0 {
+			if indexPath.section == sectionStandard {
 				//these are default categories
 				let text = standardCategories[indexPath.row].name
 				cell.textLabel?.text = text
@@ -69,4 +72,57 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource {
 		
 	}
 	
+	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		
+		if indexPath.section == sectionCustom {
+			let actionDelete = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
+				self.deleteRow(indexPath: indexPath)
+			}
+			
+			let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
+				self.editCategory (indexPath: indexPath)
+				completionHandler(false)
+			}
+			
+			actionEdit.backgroundColor = .blue
+			
+			return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
+		} else {
+			//make info button for the standard categories
+			
+			let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, _) in
+				self.showInfo()
+			}
+			
+			actionInfo.backgroundColor = .blue
+			
+			return UISwipeActionsConfiguration(actions: [actionInfo])
+			
+		}
+		
+		
+	
+	}
+	
+	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		return true
+		
+		if indexPath.section == 0 {
+			return false 	//do not allow to edit the standard rows
+		} else {
+			return true
+		}
+	}
+	
+	func deleteRow (indexPath: IndexPath) {
+		//place holder
+	}
+	
+	func editCategory (indexPath: IndexPath) {
+		//place holder
+	}
+	
+	func showInfo () {
+		//place holder
+	}
 }

@@ -18,6 +18,7 @@ class CategoryHomeVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 		tableView.dataSource = categoryHomeVCH
+		tableView.delegate = categoryHomeVCH
 		tableView.tableFooterView = UIView()
     }
     
