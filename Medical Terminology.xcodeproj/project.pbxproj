@@ -71,6 +71,7 @@
 		99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */; };
 		99D55E0525F6C7CA003ABE0B /* QuizHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0425F6C7CA003ABE0B /* QuizHome.swift */; };
 		99D55E0A25F6DAD8003ABE0B /* CategoryHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0925F6DAD8003ABE0B /* CategoryHomeVC.swift */; };
+		99D55E1225F7EF92003ABE0B /* CategoryHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +146,7 @@
 		99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCVCell.swift; sourceTree = "<group>"; };
 		99D55E0425F6C7CA003ABE0B /* QuizHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizHome.swift; sourceTree = "<group>"; };
 		99D55E0925F6DAD8003ABE0B /* CategoryHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeVC.swift; sourceTree = "<group>"; };
+		99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeVCH.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -388,6 +390,7 @@
 		998398E025F6AAAF00CC0354 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */,
 				99D55E0925F6DAD8003ABE0B /* CategoryHomeVC.swift */,
 			);
 			path = Categories;
@@ -508,6 +511,7 @@
 				5A4BB81D229A48690089A474 /* FlashCardOptionsVC.swift in Sources */,
 				5A37F87A22E74B18008A5FA5 /* CVScrollController.swift in Sources */,
 				994175DE245A38A900E281DB /* AudioFileController.swift in Sources */,
+				99D55E1225F7EF92003ABE0B /* CategoryHomeVCH.swift in Sources */,
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
 				5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */,
 				5A886374218E82330013FC8B /* DItemController.swift in Sources */,

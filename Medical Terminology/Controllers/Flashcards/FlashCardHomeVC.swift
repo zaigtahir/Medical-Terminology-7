@@ -11,7 +11,7 @@
 
 import UIKit
 
-class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FCFavoritePressedDelegate, FCVModeChangedDelegate, CategoryChangedDelegate {
+class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FCFavoritePressedDelegate, FCVModeChangedDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var favoritesLabel: UILabel!
@@ -154,7 +154,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
             vc.delegate = self
         } else if segue.identifier == myConstants.segue_catetories {
             let vc = segue.destination as! CategoryHomeVC
-            vc.delegate = self
+            
         } else {
             if isDevelopmentMode {
                 print ("no matching segue found: error state in FlashCardHomeVC prepare")
@@ -164,10 +164,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     }
     
     // MARK: Delegate functions
-    func categoryChanged(categoryID: Int, categoryName: String) {
-        print("here")
-        categoryLabelButton.setTitle(categoryName, for: .normal)
-    }
+
     
     func CVCellChanged(cellIndex: Int) {
         updateDisplay()

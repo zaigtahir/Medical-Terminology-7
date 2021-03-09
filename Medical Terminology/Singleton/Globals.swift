@@ -27,12 +27,6 @@ enum FlashCardViewMode {
     case definition
 }
 
-//adding literals to help save/read the database
-enum CategoryType: Int {
-    case standard = 0
-    case custom = 1
-}
-
 enum QuestionsType {
     case term
     case definition

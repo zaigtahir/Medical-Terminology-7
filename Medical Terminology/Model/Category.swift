@@ -13,25 +13,17 @@ class Category {
     var categoryID: Int
     var name: String
     var description: String
+    var type: Int
     var displayOrder: Int
     
     // just reminder never use category with ID 999 as it's just a placeholder in the database
     // for ordering the standard categories, use 1 onward.
-    
-    var type: CategoryType {
-        get {
-            if categoryID < 999 {
-                return .standard
-            } else {
-                return .custom
-            }
-        }
-    }
-    
-    init(categoryID: Int, name: String, description: String, displayOrder: Int){
+
+    init(categoryID: Int, name: String, description: String, type: Int, displayOrder: Int){
         self.categoryID = categoryID
         self.name = name
         self.description = description
+        self.type = type
         self.displayOrder = displayOrder
     }
     

@@ -45,6 +45,16 @@ class Utilities {
         }
     }
     
+    func removeNewLines (string: String) -> String {
+        
+        var stringNew = string
+        
+        while let rangeToReplace = string.range(of: "\n") {
+            stringNew.replaceSubrange(rangeToReplace, with: " ")
+        }
+        return stringNew
+    }
+    
     func makeSampleDBEntries () {
         
         let dIC = DItemController()

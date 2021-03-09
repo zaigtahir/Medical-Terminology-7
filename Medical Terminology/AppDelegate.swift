@@ -65,9 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
  */
         
-        // testing out categories controller
-        let categoryC = CategoryController()
-        let categories = categoryC.getCategories()
         
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {

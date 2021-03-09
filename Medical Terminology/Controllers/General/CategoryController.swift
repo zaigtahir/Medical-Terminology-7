@@ -14,20 +14,18 @@ class CategoryController {
     
     var categories = [Category]()
     
-    func test () {
-        if let resultSet = myDB.executeQuery("Select * from categories", withParameterDictionary: nil) {
-        } else {
-            print("Fatal error getting resultset in test()")
-        }
-    }
     /*
-     Return a collection of categories from the database
-     */
-    func getCategories () -> [Category] {
+	Return a collection of categories from the database
+	categoryType = 0	standard, built in
+	categoryType = 1	custom
+	*/
+	func getCategories (categoryType: Int) -> [Category] {
         
         var categories = [Category]()
-        
-        let query = "SELECT categoryID, name, ifnull(description, '') As description, ifnull(displayOrder, 0) AS displayOrder FROM categories where categoryID != 999"
+       
+		//note a null value in datatable returned as int is 0
+		
+		let query = "SELECT * FROM categories WHERE type = \(categoryType)"
         
         if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
             
@@ -36,10 +34,15 @@ class CategoryController {
                 let categoryID = Int(resultSet.int(forColumn: "categoryID"))
                 let name = resultSet.string(forColumn: "name") ?? ""
                 let description = resultSet.string(forColumn: "description") ?? ""
+                let type = Int(resultSet.int(forColumn: "type"))
                 let displayOrder = Int(resultSet.int(forColumn: "displayOrder"))
                 
                 
-                let c = Category(categoryID: categoryID, name: name, description: description, displayOrder: displayOrder)
+                let c = Category(categoryID: categoryID,
+                                 name: name,
+                                 description: description,
+                                 type: type,
+                                 displayOrder: displayOrder)
                 
                 categories.append(c)
             }
@@ -54,6 +57,6 @@ class CategoryController {
         }
         
         return categories
-    
+        
     }
 }
