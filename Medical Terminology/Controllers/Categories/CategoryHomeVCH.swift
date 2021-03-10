@@ -124,5 +124,9 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	func showInfo () {
 		//place holder
+		let aC = UIAlertController(title: "Standard Category", message: "There are predefined catetores which you are not able to edit. However you may add and edit custom catetories", preferredStyle: .alert)
+		
+		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
+		aC.addAction(okay)
 	}
 }
