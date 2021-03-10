@@ -57,7 +57,7 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
         utilities.setFavoriteState(button: favoriteButton, isFavorite: dItem.isFavorite)
         
         //set speaker button to not playing
-        playAudioButton.setImage(myTheme.image_speaker, for: .normal)
+        playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
         
         //check if the audioFile is present in the bundle
         let aFC = AudioFileController()
@@ -151,7 +151,7 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         //change the speaker image to no playing
       
-        playAudioButton.setImage(myTheme.image_speaker, for: .normal)
+        playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
     }
     
     @IBAction func favoriteButtonAction(_ sender: Any) {
@@ -173,7 +173,7 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
     }
     
     @IBAction func playAudioAction(_ sender: Any) {
-        playAudioButton.setImage(myTheme.image_speaker_playing, for: .normal)
+        playAudioButton.setImage(myTheme.imageSpeakerPlaying, for: .normal)
         playAudio()
       
     }

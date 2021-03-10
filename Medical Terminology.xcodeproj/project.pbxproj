@@ -72,6 +72,7 @@
 		99D55E0525F6C7CA003ABE0B /* QuizHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0425F6C7CA003ABE0B /* QuizHome.swift */; };
 		99D55E0A25F6DAD8003ABE0B /* CategoryHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0925F6DAD8003ABE0B /* CategoryHomeVC.swift */; };
 		99D55E1225F7EF92003ABE0B /* CategoryHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */; };
+		99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1625F967AA003ABE0B /* CategoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +148,7 @@
 		99D55E0425F6C7CA003ABE0B /* QuizHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizHome.swift; sourceTree = "<group>"; };
 		99D55E0925F6DAD8003ABE0B /* CategoryHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeVC.swift; sourceTree = "<group>"; };
 		99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeVCH.swift; sourceTree = "<group>"; };
+		99D55E1625F967AA003ABE0B /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -390,6 +392,7 @@
 		998398E025F6AAAF00CC0354 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				99D55E1625F967AA003ABE0B /* CategoryCell.swift */,
 				99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */,
 				99D55E0925F6DAD8003ABE0B /* CategoryHomeVC.swift */,
 			);
@@ -530,6 +533,7 @@
 				5A6F31B7219C776000E6477E /* DItemVC.swift in Sources */,
 				5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */,
 				998398E325F6AB3C00CC0354 /* Category.swift in Sources */,
+				99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -660,7 +664,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

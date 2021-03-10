@@ -140,11 +140,11 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         switch question.getAnswerStatus(answerIndex: indexPath.row) {
             
         case 1:
-            cell.answerImage.image = myTheme.image_correct
+            cell.answerImage.image = myTheme.imageCorrect
             cell.answerImage.tintColor = myTheme.colorCorrect
             
         case 2:
-            cell.answerImage.image = myTheme.image_incorrect
+            cell.answerImage.image = myTheme.imageIncorrect
             cell.answerImage.tintColor = myTheme.colorIncorrect
             
         case 3:
@@ -154,7 +154,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
             //switch or from the question.showAnswer field when the user scrolls to this card
             
             if question.showAnswer || showAnswerSwitch.isOn {
-                cell.answerImage.image = myTheme.image_correct
+                cell.answerImage.image = myTheme.imageCorrect
                 cell.answerImage.tintColor = myTheme.colorCorrect
                 
             } else {

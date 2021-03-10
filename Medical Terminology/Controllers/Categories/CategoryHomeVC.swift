@@ -8,28 +8,42 @@
 
 import UIKit
 
-class CategoryHomeVC: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
-    
+class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
+	
+	@IBOutlet weak var tableView: UITableView!
+	
 	let categoryHomeVCH = CategoryHomeVCH()
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		// Do any additional setup after loading the view.
 		tableView.dataSource = categoryHomeVCH
 		tableView.delegate = categoryHomeVCH
 		tableView.tableFooterView = UIView()
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+		
+		categoryHomeVCH.delegate = self
+	}
+	
+	//MARK: Start Delegate functions for CategoryHomeVCHDelegate
+	func pressedInfoButtonOnStandardCategory() {
+		let aC = UIAlertController(title: "Standard Category", message: "This is a built in category and you cannot edit it. However, you can add your own custom categories and edit or delete them.", preferredStyle: .alert)
+		
+		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
+		aC.addAction(okay)
+		self.present(aC, animated: true, completion: nil)
+	}
+	
+	func pressedEditButtonOnCustomCategory() {
+		//place holder
+	}
+	
+	func pressedDeleteButtonOnCustomCatetory() {
+		//place holder
+	}
+	
+	func shouldRefreshTable() {
+		//place holder
+	}
+	//MARK: End Delegate functions for CategoryHomeVCHDelegate
+	
 }

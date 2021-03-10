@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 
+protocol CategoryHomeVCHDelegate: class {
+	//will shoot functions to the CategoryHomeVHC
+	
+	func pressedInfoButtonOnStandardCategory ()
+	func pressedEditButtonOnCustomCategory ()
+	func pressedDeleteButtonOnCustomCatetory ()
+	func shouldRefreshTable ()
+}
+
 class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	// manage the datatable source
@@ -21,6 +30,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	let sectionStandard = 0
 	let sectionCustom = 1
+	
+	weak var delegate : CategoryHomeVCHDelegate?
 	
 	override init (){
 		//any init functions here
@@ -51,18 +62,20 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
+		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
 			
 			//make cell here based on the section
 			if indexPath.section == sectionStandard {
 				//these are default categories
 				let text = standardCategories[indexPath.row].name
-				cell.textLabel?.text = text
+				cell.nameLabel.text = text
+				cell.selectButton.setImage(myTheme.imageSelectedRow, for: .normal)
+				
 			} else {
 				//this is the custom category
 				let text = customCategories[indexPath.row].name
-				cell.textLabel?.text = text
-				cell.textLabel?.textColor = UIColor.blue
+				cell.nameLabel.text = text
+				cell.backgroundColor = myTheme.colorCellGray
 			}
 			
 			return cell
@@ -84,24 +97,22 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 				completionHandler(false)
 			}
 			
-			actionEdit.backgroundColor = .blue
+			actionEdit.backgroundColor = myTheme.colorEditButton
 			
 			return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
 		} else {
 			//make info button for the standard categories
-			
+	
 			let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, _) in
-				self.showInfo()
+				self.delegate?.pressedInfoButtonOnStandardCategory()
 			}
 			
-			actionInfo.backgroundColor = .blue
-			
+			actionInfo.backgroundColor = myTheme.colorInfoButton
+					
 			return UISwipeActionsConfiguration(actions: [actionInfo])
 			
 		}
 		
-		
-	
 	}
 	
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -122,11 +133,4 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		//place holder
 	}
 	
-	func showInfo () {
-		//place holder
-		let aC = UIAlertController(title: "Standard Category", message: "There are predefined catetores which you are not able to edit. However you may add and edit custom catetories", preferredStyle: .alert)
-		
-		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
-		aC.addAction(okay)
-	}
 }

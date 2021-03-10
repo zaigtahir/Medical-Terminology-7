@@ -84,7 +84,7 @@ class ListCC: UITableViewCell, AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         //change the speaker image to no playing
         
-        playAudioButton.setImage(myTheme.image_speaker, for: .normal)
+        playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
     }
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
@@ -97,7 +97,7 @@ class ListCC: UITableViewCell, AVAudioPlayerDelegate {
     }
     
     @IBAction func playAudioButtonAction(_ sender: UIButton) {
-        playAudioButton.setImage(myTheme.image_speaker_playing, for: .normal)
+        playAudioButton.setImage(myTheme.imageSpeakerPlaying, for: .normal)
         playAudio()
     }
     

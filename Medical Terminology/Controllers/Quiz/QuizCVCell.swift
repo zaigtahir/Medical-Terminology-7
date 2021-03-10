@@ -118,16 +118,16 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         switch question.getAnswerStatus(answerIndex: indexPath.row) {
             
         case 1:
-            cell.answerImage.image = myTheme.image_correct
+            cell.answerImage.image = myTheme.imageCorrect
             cell.answerImage.tintColor = myTheme.colorCorrect
             
         case 2:
-            cell.answerImage.image = myTheme.image_incorrect
+            cell.answerImage.image = myTheme.imageIncorrect
             cell.answerImage.tintColor = myTheme.colorIncorrect
         case 3:
             
             if showAnswerSwitch.isOn {
-                cell.answerImage.image = myTheme.image_correct
+                cell.answerImage.image = myTheme.imageCorrect
                 cell.answerImage.tintColor = myTheme.colorCorrect
             } else {
                 cell.answerImage.image = nil

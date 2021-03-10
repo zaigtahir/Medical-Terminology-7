@@ -104,7 +104,7 @@ class DItemVC: UIViewController, AVAudioPlayerDelegate  {
     //MARK: Delegate methods
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         //change the speaker image to no playing
-        playAudioButton.setImage(myTheme.image_speaker, for: .normal)
+        playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
     }
     
     @IBAction func favoriteButtonAction(_ sender: Any) {
@@ -116,7 +116,7 @@ class DItemVC: UIViewController, AVAudioPlayerDelegate  {
     
     @IBAction func playAudioAction(_ sender: Any) {
         //play the audio associated with the item displayed
-        playAudioButton.setImage(myTheme.image_speaker_playing, for: .normal)
+        playAudioButton.setImage(myTheme.imageSpeakerPlaying, for: .normal)
         playAudio()
     }
     
