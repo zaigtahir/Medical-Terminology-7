@@ -144,10 +144,18 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		
 		var categoryID: Int
 		
+		if indexPath.section == 1 && indexPath.row == customCategories.count {
+			// selected the last "add category row
+			print ("add row")
+			return
+		}
+		
+		// if here, user did not press on the add category row
+		
+		
 		if indexPath.section == 0 {
 			categoryID = standardCategories[indexPath.row].categoryID
 		} else {
-			
 			categoryID = customCategories[indexPath.row].categoryID
 		}
 		
