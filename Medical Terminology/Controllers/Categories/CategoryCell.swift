@@ -29,7 +29,7 @@ class CategoryCell: UITableViewCell {
 		} else {
 			//not selected catetory
 			selectButton.setImage(myTheme.imageUnselectedRow, for: .normal)
-			selectButton.tintColor = UIColor.green
+			selectButton.tintColor = myTheme.colorText
 		}
 	}
 

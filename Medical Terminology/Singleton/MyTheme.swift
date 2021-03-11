@@ -9,14 +9,20 @@
 import Foundation
 import UIKit
 
-
 class MyTheme{
     
     //colors
 	
 	let colorMain = UIColor(named: "color main")
 	let colorMain2 = UIColor(named: "color main 2")
+	let colorText = UIColor(named: "color text")
 	
+	let colorBackground = UIColor.systemBackground
+	
+	//MARK: Table Colors
+	let colorCellGray = UIColor.secondarySystemBackground	//use for tables with cells that should be grayish
+	
+	//MARK: favorite color
     let colorFavorite = UIColor(named: "color favorite")
     let colorNotFavorite = UIColor(named: "color inactive icon")
     
@@ -53,11 +59,6 @@ class MyTheme{
     //MARK: Quiz set colors
     let colorQsNotAnswered = UIColor(named: "color main")
     
-    //MARK: Table Colors
-    let colorSectionHeader = UIColor(named: "color main")
-    let colorSectionText = UIColor(named: "color text")
-	let colorCellGray = UIColor.secondarySystemBackground	//use for tables with cells that should be grayish
-	
 	//MARK: Category controller colors
 	let colorInfoButton = UIColor(named: "color main")
 	let colorEditButton = UIColor(named: "color main")
