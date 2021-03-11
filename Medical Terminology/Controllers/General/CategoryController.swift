@@ -11,7 +11,6 @@ import SQLite3
 
 /*
 	used to manage categories
-
 	categoryType = 0	standard, built in
 	categoryType = 1	custom
 */
@@ -97,44 +96,24 @@ class CategoryController {
 	
 	func toggleCategorySelection (categoryID: Int) {
 		// toggle the categories based on the user toggling the selection for this category
+		// toggle rule: allow only one category selection
 		
 		guard let category = getCategory(categoryID: categoryID) else {
 			print("fatal error: problem getting the category in toggleCategorySelection()")
 			return
 		}
 		
-		// if the user selected categoryID = 1: show all standard categories
-		
-		if category.categoryID == 1 {
-			// user selected show all standard categories
-			// if it's already selected then do nothing
-			// if not selected, select only this one
-			if category.selected ==  true {
-				return
-			} else {
-				deselectAllCategories()
-				saveCategorySelected(categoryID: category.categoryID, selected: true)
-				return
-			}
+		// if the category is already selected, do nothing
+		if category.selected  {
+			return
 		}
 		
-		// if the user selected anything in the custom category, just select that one
-		if category.type == 1 {
-			//if it's alread selected do nothing
-			if category.selected == true {
-				return
-			} else {
-				deselectAllCategories()
-				saveCategorySelected(categoryID: category.categoryID, selected: true)
-				return
-			}
-		}
+		// use this to deselect all in preparation to set one as the selected one
+		myDB.executeUpdate("UPDATE categories SET selected = 0", withArgumentsIn: [])
 		
-		// if here, the user pressed on selected a standard category that is not 1
-		// if this category is already on AND the only one on, then dont do anything
-		// if this category is NOT alread on, turn it on, turn off any custom ones
-		//		now if all the standard categories are on, turn them all off and just keep 1 on
-		
+		// now just set the one selected
+		myDB.executeUpdate("UPDATE categories SET selected = 1 WHERE categoryID = \(categoryID)", withArgumentsIn: [])
+	
 	}
 	
 	private func makeCategoryFromResultset (resultSet: FMResultSet) -> Category {
@@ -161,17 +140,5 @@ class CategoryController {
 		
 		return c
 	}
-	
-	private func saveCategorySelected (categoryID: Int, selected: Bool) {
-		var s = 0
-		if selected {
-			s = 1
-		}
-		myDB.executeUpdate("UPDATE categories SET selected = ? WHERE categoryID = ?", withArgumentsIn: [s, categoryID])
-	}
-	
-	private func deselectAllCategories () {
-		//use this to deselect all in preparation to set one as the selected one
-		myDB.executeUpdate("UPDATE categories SET selected = 0", withArgumentsIn: [])
-	}
+
 }

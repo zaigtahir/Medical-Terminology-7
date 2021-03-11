@@ -74,6 +74,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			} else {
 				//custom categories
 				cell.formatCell(category: customCategories[indexPath.row], indexPath: indexPath)
+				cell.backgroundColor = myTheme.colorCellGray
 			}
 			
 			cell.delegate = self
