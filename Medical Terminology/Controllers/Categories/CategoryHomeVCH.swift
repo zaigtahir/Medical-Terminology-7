@@ -147,6 +147,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		if indexPath.section == 0 {
 			categoryID = standardCategories[indexPath.row].categoryID
 		} else {
+			
 			categoryID = customCategories[indexPath.row].categoryID
 		}
 		
