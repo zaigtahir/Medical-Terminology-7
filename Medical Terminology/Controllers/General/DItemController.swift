@@ -102,7 +102,17 @@ class DItemController {
                     term = termDisplay
                 }
                 
-                let item = DItem(itemID: itemID, term: term, definition: definition, example: example, category: category, audioFile: audioFile, isFavorite: isFavorite, learnedTerm: learnedTerm, learnedDefinition: learnedDefinition, answeredTerm: answeredTerm, answeredDefinition: answeredDefintion)
+                let item = DItem(itemID: itemID,
+								 term: term,
+								 definition: definition,
+								 example: example,
+								 category: category,
+								 audioFile: audioFile,
+								 isFavorite: isFavorite,
+								 learnedTerm: learnedTerm,
+								 learnedDefinition: learnedDefinition,
+								 answeredTerm: answeredTerm,
+								 answeredDefinition: answeredDefintion)
                 
                 dItems.append(item)
             }

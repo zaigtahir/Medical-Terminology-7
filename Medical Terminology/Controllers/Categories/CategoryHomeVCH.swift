@@ -18,7 +18,7 @@ protocol CategoryHomeVCHDelegate: class {
 	func shouldRefreshTable ()
 }
 
-class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
+class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate {
 	
 	// manage the datatable source
 	// get the categories and display them in the table
@@ -32,13 +32,16 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	let sectionCustom = 1
 	
 	weak var delegate : CategoryHomeVCHDelegate?
-	
+
 	override init (){
 		//any init functions here
-		standardCategories = categoryC.getCategories(categoryType: 0)
-		
-		customCategories = categoryC.getCategories(categoryType: 1)
 		super.init()
+		getCategories()
+	}
+	
+	func getCategories () {
+		standardCategories = categoryC.getCategories(categoryType: 0)
+		customCategories = categoryC.getCategories(categoryType: 1)
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,12 +70,13 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			
 			if indexPath.section == 0 {
 				//standard categories
-				cell.formatCell(category: standardCategories[indexPath.row])
+				cell.formatCell(category: standardCategories[indexPath.row], indexPath: indexPath)
 			} else {
 				//custom categories
-				cell.formatCell(category: customCategories[indexPath.row])
+				cell.formatCell(category: customCategories[indexPath.row], indexPath: indexPath)
 			}
 			
+			cell.delegate = self
 			return cell
 			
 		} else {
@@ -121,6 +125,11 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		}
 	}
 	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		
+	}
+	
 	func deleteRow (indexPath: IndexPath) {
 		//place holder
 	}
@@ -128,5 +137,28 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	func editCategory (indexPath: IndexPath) {
 		//place holder
 	}
+	
+	// MARK: CategoryCellDelegate Methods
+	
+	func selectedCategory(categoryID: Int, indexPath: IndexPath) {
+		
+		//selected a row, get the category ID and call the method toggleing the selection
+		var categoryID : Int
+		
+		if indexPath.section == 0 {
+			categoryID = standardCategories[indexPath.row].categoryID
+		} else {
+			categoryID = customCategories[indexPath.row].categoryID
+		}
+		
+		categoryC.toggleCategorySelection(selectedCategoryID: categoryID)
+		
+		//need to refresh local copy of the categories
+		getCategories()
+		
+		delegate?.shouldRefreshTable()
+	}
+	
+	// MARK: end CategoryCellDelegate Methods
 	
 }

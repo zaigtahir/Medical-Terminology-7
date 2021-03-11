@@ -42,7 +42,8 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	}
 	
 	func shouldRefreshTable() {
-		//place holder
+		print("reloading in shouldRefreshTable")
+		tableView.reloadData()
 	}
 	//MARK: End Delegate functions for CategoryHomeVCHDelegate
 	
