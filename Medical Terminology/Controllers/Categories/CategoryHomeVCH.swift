@@ -60,29 +60,44 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		if section == sectionStandard {
 			return standardCategories.count
 		} else {
-			return customCategories.count
+			return customCategories.count + 1 //added one to make cell to add custom category
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
-			
-			if indexPath.section == 0 {
-				//standard categories
+		// will have different cell for section 1, last row to function as an add row button
+		
+		if indexPath.section == 0 {
+			//default section
+			if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
 				cell.formatCell(category: standardCategories[indexPath.row], indexPath: indexPath)
+				return cell
 			} else {
-				//custom categories
-				cell.formatCell(category: customCategories[indexPath.row], indexPath: indexPath)
-				cell.backgroundColor = myTheme.colorCellGray
+				return UITableViewCell()
 			}
-			
-			return cell
-			
+		}
+		
+		// if here, section == 1
+		
+		if indexPath.row < customCategories.count {
+			// not at last row
+			//default section
+			if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
+				cell.formatCell(category: customCategories[indexPath.row], indexPath: indexPath)
+				return cell
+			} else {
+				return UITableViewCell()
+			}
+		}
+		
+		// fall through, is at last row in custom category, so need to return the cell for adding row
+		if let cellAdd = tableView.dequeueReusableCell(withIdentifier: "cellAdd") as? CategoryCell {
+			return cellAdd
 		} else {
 			return UITableViewCell()
 		}
-		
+	
 	}
 	
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

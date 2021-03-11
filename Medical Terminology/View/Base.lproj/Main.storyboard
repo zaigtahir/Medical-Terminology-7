@@ -2482,6 +2482,43 @@
                                             <outlet property="showDetailButton" destination="Fzs-LV-fey" id="3Tk-2e-91O"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellAdd" rowHeight="61" id="gJ1-Xs-HKE" customClass="CategoryCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="89" width="414" height="61"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gJ1-Xs-HKE" id="Agp-aO-pgU">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a custom category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KhF-x5-Fff">
+                                                    <rect key="frame" x="49" y="14" width="345" height="33"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" name="color text"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WEi-Q5-Odb">
+                                                    <rect key="frame" x="20" y="1" width="24" height="59.666666666666671"/>
+                                                    <color key="tintColor" name="color correct"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="24" id="KCM-Zj-YoN"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="KhF-x5-Fff" secondAttribute="trailing" id="252-4O-pDf"/>
+                                                <constraint firstItem="WEi-Q5-Odb" firstAttribute="leading" secondItem="Agp-aO-pgU" secondAttribute="leading" constant="20" id="7h6-Cm-jHJ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="KhF-x5-Fff" secondAttribute="bottom" constant="3" id="JQU-rf-iMo"/>
+                                                <constraint firstItem="KhF-x5-Fff" firstAttribute="centerY" secondItem="Agp-aO-pgU" secondAttribute="centerY" id="WdN-7a-d1F"/>
+                                                <constraint firstItem="WEi-Q5-Odb" firstAttribute="top" secondItem="Agp-aO-pgU" secondAttribute="top" id="bXb-01-LQY"/>
+                                                <constraint firstAttribute="bottom" secondItem="WEi-Q5-Odb" secondAttribute="bottom" id="bzt-0W-fiJ"/>
+                                                <constraint firstItem="KhF-x5-Fff" firstAttribute="top" secondItem="Agp-aO-pgU" secondAttribute="topMargin" constant="3" id="iMi-pf-KM0"/>
+                                                <constraint firstItem="KhF-x5-Fff" firstAttribute="leading" secondItem="WEi-Q5-Odb" secondAttribute="trailing" constant="5" id="qv0-Jo-F30"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="KhF-x5-Fff" id="jfv-rq-XbP"/>
+                                            <outlet property="selectImage" destination="WEi-Q5-Odb" id="n4e-pR-CFU"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -2522,6 +2559,7 @@
         <image name="info" width="30" height="30"/>
         <image name="learn_book" width="25" height="25"/>
         <image name="list2" width="25" height="25"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="quiz3" width="25" height="25"/>
         <image name="redo" width="22" height="19.333333969116211"/>
         <image name="settings zt" width="24" height="24"/>
