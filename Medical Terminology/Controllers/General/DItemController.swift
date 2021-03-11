@@ -36,15 +36,11 @@ class DItemController {
     func getCount (query: String) -> Int {
         
         if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
-            
-            
             resultSet.next()
-            
             return Int(resultSet.int(forColumnIndex: 0))
             
         } else {
             print("Some problem getting favoite count in ditem controller getFavoritesCount")
-            
             return 0
         }
     }

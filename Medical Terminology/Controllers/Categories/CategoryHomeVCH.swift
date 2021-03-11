@@ -142,16 +142,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	func selectedCategory(categoryID: Int, indexPath: IndexPath) {
 		
-		//selected a row, get the category ID and call the method toggleing the selection
-		var categoryID : Int
-		
-		if indexPath.section == 0 {
-			categoryID = standardCategories[indexPath.row].categoryID
-		} else {
-			categoryID = customCategories[indexPath.row].categoryID
-		}
-		
-		categoryC.toggleCategorySelection(selectedCategoryID: categoryID)
+		categoryC.toggleCategorySelection(categoryID: categoryID)
 		
 		//need to refresh local copy of the categories
 		getCategories()

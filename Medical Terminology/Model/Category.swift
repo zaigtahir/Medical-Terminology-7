@@ -7,21 +7,23 @@
 //
 
 import Foundation
+import UIKit
+
 
 class Category {
     
-    var categoryID: Int
-    var name: String
-    var description: String
-    var type: Int
-    var displayOrder: Int
-	var selected: Bool
+    var categoryID = 0
+    var name = "none"
+    var description = "none"
+    var type: Int = 0
+    var displayOrder = 0
+	var selected = false
     
     // just reminder never use category with ID 999 as it's just a placeholder in the database
     // for ordering the standard categories, use 1 onward.
-
+	
 	init(categoryID: Int, name: String, description: String, type: Int, displayOrder: Int, selected: Bool){
-        self.categoryID = categoryID
+		self.categoryID = categoryID
         self.name = name
         self.description = description
         self.type = type
