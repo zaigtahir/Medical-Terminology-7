@@ -47,7 +47,7 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDD-Bd-4z9" userLabel="view holding pb and heart">
                                 <rect key="frame" x="20" y="56" width="374" height="442"/>
-                                <color key="backgroundColor" name="color background"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OGS-Dp-0Jb">
                                 <rect key="frame" x="94.666666666666686" y="109.33333333333334" width="225" height="335.66666666666663"/>
@@ -173,7 +173,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="91G-zc-LjC"/>
-                        <color key="backgroundColor" name="color background"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="OGS-Dp-0Jb" firstAttribute="centerX" secondItem="QDD-Bd-4z9" secondAttribute="centerX" id="6Ev-G6-DbV"/>
                             <constraint firstItem="cAZ-fF-Nec" firstAttribute="leading" secondItem="91G-zc-LjC" secondAttribute="leading" constant="30" id="CIq-VV-8yu"/>
@@ -227,7 +227,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
                                 <rect key="frame" x="0.0" y="20" width="414" height="533"/>
-                                <color key="backgroundColor" name="color background"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SJO-0c-at0">
                                     <size key="itemSize" width="391" height="365"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -502,7 +502,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GcD-d0-DR4"/>
-                        <color key="backgroundColor" name="color background"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="GcD-d0-DR4" firstAttribute="bottom" secondItem="ceq-Fd-5Rd" secondAttribute="bottom" constant="20" id="2Mb-CM-tF4"/>
                             <constraint firstItem="GcD-d0-DR4" firstAttribute="trailing" secondItem="ceq-Fd-5Rd" secondAttribute="trailing" constant="20" id="3rq-v5-rAE"/>
@@ -575,7 +575,7 @@
                             <collectionView clipsSubviews="YES" contentMode="TopLeft" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rO-b0-lzN">
                                 <rect key="frame" x="0.0" y="115" width="414" height="438"/>
                                 <viewLayoutGuide key="safeArea" id="hA9-Ss-1OF"/>
-                                <color key="backgroundColor" name="color background"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="lSv-f9-3kR">
                                     <size key="itemSize" width="388" height="335"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -809,7 +809,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eIr-cV-KmX"/>
-                        <color key="backgroundColor" name="color background"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Gpl-Rk-z7l" firstAttribute="top" secondItem="eIr-cV-KmX" secondAttribute="top" constant="65" id="0yW-de-IRG"/>
                             <constraint firstItem="eIr-cV-KmX" firstAttribute="trailing" secondItem="3rO-b0-lzN" secondAttribute="trailing" id="7q7-9i-66I"/>
@@ -912,7 +912,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LTC-Sb-7y5"/>
-                        <color key="backgroundColor" name="color background"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zIm-wL-ygF" secondAttribute="trailing" constant="20" id="72g-zP-va1"/>
                             <constraint firstItem="zIm-wL-ygF" firstAttribute="leading" secondItem="LTC-Sb-7y5" secondAttribute="leading" constant="20" id="nix-0I-INZ"/>
@@ -1013,7 +1013,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="whQ-fX-aVe"/>
-                        <color key="backgroundColor" name="color background"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Col-Y2-oTL" firstAttribute="leading" secondItem="whQ-fX-aVe" secondAttribute="leading" constant="20" id="8EJ-pw-aF2"/>
                             <constraint firstItem="Col-Y2-oTL" firstAttribute="top" secondItem="whQ-fX-aVe" secondAttribute="top" constant="50" id="DNZ-hd-MVo"/>
@@ -1134,7 +1134,7 @@
                                                             </constraints>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="color background"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="jas-t2-2ea" secondAttribute="bottom" constant="20" id="IfH-6R-Ugr"/>
                                                         <constraint firstAttribute="trailing" secondItem="jas-t2-2ea" secondAttribute="trailing" constant="20" id="adS-Pi-58t"/>
@@ -1190,7 +1190,7 @@
                             <searchBar contentMode="redraw" placeholder="search" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fm-OV-cCY">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <color key="tintColor" name="color text"/>
-                                <color key="barTintColor" name="color background"/>
+                                <color key="barTintColor" systemColor="systemBackgroundColor"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -1229,7 +1229,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="26A-yx-iFb"/>
-                        <color key="backgroundColor" name="color background"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9Fm-OV-cCY" firstAttribute="trailing" secondItem="26A-yx-iFb" secondAttribute="trailing" id="3RA-Eh-4ui"/>
                             <constraint firstItem="26A-yx-iFb" firstAttribute="trailing" secondItem="hog-0q-VSC" secondAttribute="trailing" constant="20" id="EeX-Ld-afM"/>
@@ -1463,7 +1463,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" name="color background"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="53V-XY-1oa" firstAttribute="centerY" secondItem="7Qe-tr-swX" secondAttribute="centerY" id="7qT-DN-76v"/>
                                     <constraint firstItem="53V-XY-1oa" firstAttribute="centerX" secondItem="7Qe-tr-swX" secondAttribute="centerX" id="Y4o-dB-j1X"/>
@@ -1529,7 +1529,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yfZ-TN-RCE"/>
-                        <color key="backgroundColor" name="color background"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Yr9-vJ-agb" firstAttribute="top" secondItem="yfZ-TN-RCE" secondAttribute="top" constant="20" id="3iQ-3z-h5B"/>
                             <constraint firstItem="MC6-se-Ixt" firstAttribute="top" secondItem="yfZ-TN-RCE" secondAttribute="top" constant="20" id="Cg8-Bv-UxW"/>
@@ -1874,7 +1874,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fcu-FH-Wgg"/>
-                        <color key="backgroundColor" name="color background"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fcu-FH-Wgg" firstAttribute="trailing" secondItem="pyO-3L-i6i" secondAttribute="trailing" constant="20" id="09C-mA-VZQ"/>
                             <constraint firstItem="pyO-3L-i6i" firstAttribute="top" secondItem="HPm-GH-r3h" secondAttribute="bottom" constant="20" id="3Jl-zf-CMy"/>
@@ -2002,7 +2002,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EeA-qv-WU5"/>
-                        <color key="backgroundColor" name="color background"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="q1h-rj-lYE" firstAttribute="leading" secondItem="EeA-qv-WU5" secondAttribute="leading" constant="20" id="PMd-nr-Awc"/>
                             <constraint firstItem="q1h-rj-lYE" firstAttribute="top" secondItem="EeA-qv-WU5" secondAttribute="top" constant="50" id="fP9-8q-ikF"/>
@@ -2111,7 +2111,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0cT-Mg-YtP"/>
-                        <color key="backgroundColor" name="color background"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6LZ-KD-mQT" firstAttribute="leading" secondItem="0cT-Mg-YtP" secondAttribute="leading" constant="30" id="0kP-CW-s37"/>
                             <constraint firstItem="TeH-32-Yxj" firstAttribute="top" secondItem="0cT-Mg-YtP" secondAttribute="top" constant="30" id="5tg-Im-SdT"/>
@@ -2142,7 +2142,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" name="color background"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
                         <color key="selectedImageTintColor" name="color text"/>
                     </tabBar>
                     <connections>
@@ -2282,7 +2282,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="color text"/>
-                        <color key="barTintColor" name="color background"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                             <color key="textColor" name="color text"/>
@@ -2307,7 +2307,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="color text"/>
-                        <color key="barTintColor" name="color background"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                             <color key="textColor" name="color text"/>
@@ -2332,7 +2332,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="color text"/>
-                        <color key="barTintColor" name="color background"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                             <color key="textColor" name="color text"/>
@@ -2360,7 +2360,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="color text"/>
-                        <color key="barTintColor" name="color background"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                             <color key="textColor" name="color text"/>
@@ -2385,7 +2385,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="color text"/>
-                        <color key="barTintColor" name="color background"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="color text"/>
                         </textAttributes>
@@ -2407,7 +2407,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="wKx-fS-3Wv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="color background"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2490,7 +2490,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="53X-B0-HYC"/>
+        <segue reference="QC9-rx-4CQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
@@ -2511,9 +2511,6 @@
         <image name="settings zt" width="24" height="24"/>
         <image name="speakerC" width="28" height="24"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="124"/>
-        <namedColor name="color background">
-            <color red="0.99199998378753662" green="0.99199998378753662" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="color card background">
             <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
