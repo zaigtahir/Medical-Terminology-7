@@ -13,15 +13,24 @@ class CategoryCell: UITableViewCell {
 	@IBOutlet weak var selectButton: UIButton!
 	@IBOutlet weak var nameLabel: UILabel!
 	
+	var category : Category!
+	
 	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+	
+	func formatCell (category: Category) {
+		nameLabel.text = category.name
+		if category.selected {
+			//selected category
+			selectButton.setImage(myTheme.imageSelectedRow, for: .normal)
+			selectButton.tintColor = myTheme.colorMain
+		} else {
+			//not selected catetory
+			selectButton.setImage(myTheme.imageUnselectedRow, for: .normal)
+			selectButton.tintColor = UIColor.green
+		}
+	}
 
 }

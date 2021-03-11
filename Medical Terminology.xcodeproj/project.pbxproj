@@ -187,17 +187,17 @@
 		5A15062722557B4600717AB8 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				5A886373218E82330013FC8B /* DItemController.swift */,
-				5A4471602283DFB9008E3107 /* SearchLists.swift */,
 				5A6F31C321A458E100E6477E /* AlphaListController.swift */,
+				994175DD245A38A900E281DB /* AudioFileController.swift */,
+				998398E725F6BD4700CC0354 /* CategoryController.swift */,
+				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
+				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
+				5A886373218E82330013FC8B /* DItemController.swift */,
 				5AF85733228F26A1008929D5 /* FlashCardController.swift */,
 				5AC448B422BC072C004B47C1 /* QuestionController.swift */,
-				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
-				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
-				998398E725F6BD4700CC0354 /* CategoryController.swift */,
-				994175DD245A38A900E281DB /* AudioFileController.swift */,
+				5A4471602283DFB9008E3107 /* SearchLists.swift */,
 				994175E1245B5BAE00E281DB /* SettingsController.swift */,
-				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
+				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";

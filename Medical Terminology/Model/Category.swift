@@ -15,16 +15,19 @@ class Category {
     var description: String
     var type: Int
     var displayOrder: Int
+	var selected: Bool
     
     // just reminder never use category with ID 999 as it's just a placeholder in the database
     // for ordering the standard categories, use 1 onward.
 
-    init(categoryID: Int, name: String, description: String, type: Int, displayOrder: Int){
+	init(categoryID: Int, name: String, description: String, type: Int, displayOrder: Int, selected: Bool){
         self.categoryID = categoryID
         self.name = name
         self.description = description
         self.type = type
         self.displayOrder = displayOrder
+		self.selected = selected
+		
     }
     
 }

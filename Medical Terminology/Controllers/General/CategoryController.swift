@@ -36,14 +36,21 @@ class CategoryController {
                 let description = resultSet.string(forColumn: "description") ?? ""
                 let type = Int(resultSet.int(forColumn: "type"))
                 let displayOrder = Int(resultSet.int(forColumn: "displayOrder"))
+				let selected = Int(resultSet.int(forColumn: "selected"))
                 
-                
+				var s = false
+				if selected == 1 {
+					s = true
+				}
+				
                 let c = Category(categoryID: categoryID,
                                  name: name,
                                  description: description,
                                  type: type,
-                                 displayOrder: displayOrder)
-                
+                                 displayOrder: displayOrder,
+								 selected: s
+				)
+
                 categories.append(c)
             }
             

@@ -36,6 +36,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	override init (){
 		//any init functions here
 		standardCategories = categoryC.getCategories(categoryType: 0)
+		
 		customCategories = categoryC.getCategories(categoryType: 1)
 		super.init()
 	}
@@ -64,21 +65,16 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
 			
-			//make cell here based on the section
-			if indexPath.section == sectionStandard {
-				//these are default categories
-				let text = standardCategories[indexPath.row].name
-				cell.nameLabel.text = text
-				cell.selectButton.setImage(myTheme.imageSelectedRow, for: .normal)
-				
+			if indexPath.section == 0 {
+				//standard categories
+				cell.formatCell(category: standardCategories[indexPath.row])
 			} else {
-				//this is the custom category
-				let text = customCategories[indexPath.row].name
-				cell.nameLabel.text = text
-				cell.backgroundColor = myTheme.colorCellGray
+				//custom categories
+				cell.formatCell(category: customCategories[indexPath.row])
 			}
 			
 			return cell
+			
 		} else {
 			return UITableViewCell()
 		}
@@ -102,13 +98,13 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
 		} else {
 			//make info button for the standard categories
-	
+			
 			let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, _) in
 				self.delegate?.pressedInfoButtonOnStandardCategory()
 			}
 			
 			actionInfo.backgroundColor = myTheme.colorInfoButton
-					
+			
 			return UISwipeActionsConfiguration(actions: [actionInfo])
 			
 		}

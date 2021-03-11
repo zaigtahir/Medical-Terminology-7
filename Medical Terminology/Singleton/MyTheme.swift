@@ -13,6 +13,10 @@ import UIKit
 class MyTheme{
     
     //colors
+	
+	let colorMain = UIColor(named: "color main")
+	let colorMain2 = UIColor(named: "color main 2")
+	
     let colorFavorite = UIColor(named: "color favorite")
     let colorNotFavorite = UIColor(named: "color inactive icon")
     
