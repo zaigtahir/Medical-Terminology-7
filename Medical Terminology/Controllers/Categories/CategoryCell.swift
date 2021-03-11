@@ -15,10 +15,14 @@ protocol CategoryCellDelegate: class {
 
 class CategoryCell: UITableViewCell {
 
-	@IBOutlet weak var selectButton: UIButton!
 	@IBOutlet weak var nameLabel: UILabel!
 	
-	private var categoryID: Int! // used so I can pass it in the delegate method
+	@IBOutlet weak var selectImage: UIImageView!
+	
+	@IBOutlet weak var showDetailButton: UIButton!
+	
+	private var categoryID = 0 // used so I can pass it in the delegate method
+	
 	private var indexPath: IndexPath!	// used so I can pass it back in the delgate method
 	weak var delegate : CategoryCellDelegate?
 	
@@ -35,17 +39,21 @@ class CategoryCell: UITableViewCell {
 		nameLabel.text = category.name
 		if category.selected {
 			//selected category
-			selectButton.setImage(myTheme.imageSelectedRow, for: .normal)
-			selectButton.tintColor = myTheme.colorMain
+			selectImage.image = myTheme.imageSelectedRow
+			selectImage.tintColor = myTheme.colorMain
 		} else {
 			//not selected catetory
-			selectButton.setImage(myTheme.imageUnselectedRow, for: .normal)
-			selectButton.tintColor = myTheme.colorText
+			selectImage.image = myTheme.imageUnselectedRow
+			selectImage.tintColor = myTheme.colorText
 		}
 	}
 	
-	@IBAction func selectButtonAction(_ sender: UIButton) {
-		delegate?.selectedCategory(categoryID: self.categoryID, indexPath: self.indexPath)
+	func getCateoryID () -> Int {
+		return categoryID
+	}
+	
+	@IBAction func showDetailButtonAction(_ sender: UIButton) {
+		print("show detail button pressed")
 	}
 	
 }

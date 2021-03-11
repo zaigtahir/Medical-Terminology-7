@@ -18,7 +18,7 @@ protocol CategoryHomeVCHDelegate: class {
 	func shouldRefreshTable ()
 }
 
-class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate {
+class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	
 	// manage the datatable source
 	// get the categories and display them in the table
@@ -77,7 +77,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 				cell.backgroundColor = myTheme.colorCellGray
 			}
 			
-			cell.delegate = self
 			return cell
 			
 		} else {
@@ -128,6 +127,20 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
+		var categoryID: Int
+		
+		if indexPath.section == 0 {
+			categoryID = standardCategories[indexPath.row].categoryID
+		} else {
+			categoryID = customCategories[indexPath.row].categoryID
+		}
+		
+		categoryC.toggleCategorySelection(categoryID: categoryID)
+		
+		//need to refresh local copy of the categories
+		getCategories()
+		
+		delegate?.shouldRefreshTable()
 		
 	}
 	
@@ -139,18 +152,5 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		//place holder
 	}
 	
-	// MARK: CategoryCellDelegate Methods
-	
-	func selectedCategory(categoryID: Int, indexPath: IndexPath) {
-		
-		categoryC.toggleCategorySelection(categoryID: categoryID)
-		
-		//need to refresh local copy of the categories
-		getCategories()
-		
-		delegate?.shouldRefreshTable()
-	}
-	
-	// MARK: end CategoryCellDelegate Methods
 	
 }
