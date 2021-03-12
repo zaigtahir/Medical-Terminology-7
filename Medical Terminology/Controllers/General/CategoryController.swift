@@ -10,9 +10,9 @@ import Foundation
 import SQLite3
 
 /*
-	used to manage categories
-	categoryType = 0	standard, built in
-	categoryType = 1	custom
+used to manage categories
+categoryType = 0	standard, built in
+categoryType = 1	custom
 */
 
 
@@ -21,7 +21,7 @@ class CategoryController {
 	func getCategory (categoryID: Int) -> Category? {
 		
 		//if no category is found with this ID, return nil
-	
+		
 		let query = "SELECT * from categories WHERE categoryID = \(categoryID)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: [categoryID]) {
@@ -30,7 +30,7 @@ class CategoryController {
 			} else {
 				return nil
 			}
-		
+			
 		} else {
 			print("Fatal error getting the result set in getCategories function")
 			return nil
@@ -113,7 +113,13 @@ class CategoryController {
 		
 		// now just set the one selected
 		myDB.executeUpdate("UPDATE categories SET selected = 1 WHERE categoryID = \(categoryID)", withArgumentsIn: [])
+		
+	}
 	
+	func addCustomCategoryName (name: String) {
+		//add a custom category
+	
+		myDB.executeStatements("INSERT INTO categories (name, description, type, displayOrder, selected) VALUES ('\(name)', 'new category', 1, 15, 0)")
 	}
 	
 	private func makeCategoryFromResultset (resultSet: FMResultSet) -> Category {
@@ -140,5 +146,5 @@ class CategoryController {
 		
 		return c
 	}
-
+	
 }

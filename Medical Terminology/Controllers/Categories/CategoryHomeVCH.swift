@@ -15,6 +15,7 @@ protocol CategoryHomeVCHDelegate: class {
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory ()
 	func pressedDeleteButtonOnCustomCatetory ()
+	func pressedAddCategoryButton()
 	func shouldRefreshTable ()
 }
 
@@ -146,7 +147,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		
 		if indexPath.section == 1 && indexPath.row == customCategories.count {
 			// selected the last "add category row
-			print ("add row")
+			delegate?.pressedAddCategoryButton()
 			return
 		}
 		
@@ -168,6 +169,15 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		
 	}
 	
+	func addCustomCategoryName(name: String){
+		//call the add Category function from the categoryController
+		
+		categoryC.addCustomCategoryName(name: "my new one")
+		
+		getCategories()
+		delegate?.shouldRefreshTable()
+	}
+	
 	func deleteRow (indexPath: IndexPath) {
 		//place holder
 	}
@@ -175,6 +185,5 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	func editCategory (indexPath: IndexPath) {
 		//place holder
 	}
-	
-	
+
 }

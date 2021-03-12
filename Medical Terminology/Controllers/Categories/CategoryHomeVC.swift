@@ -10,6 +10,7 @@ import UIKit
 
 class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
+	
 	@IBOutlet weak var tableView: UITableView!
 	
 	let categoryHomeVCH = CategoryHomeVCH()
@@ -39,6 +40,35 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
 	func pressedDeleteButtonOnCustomCatetory() {
 		//place holder
+	}
+	
+	func pressedAddCategoryButton() {
+		
+		categoryHomeVCH.addCustomCategoryName(name: "my test")
+		
+		return
+		
+		let aC = UIAlertController(title: "New Category", message: "Add a new category", preferredStyle: .alert)
+		
+		aC.addTextField(configurationHandler: nil)
+		
+		let okay = UIAlertAction(title: "OK", style: .default) { (_) in
+			let text = aC.textFields![0].text
+			
+				
+			
+			
+			print("add this category: \(text)")
+			self.tableView.reloadData()
+		}
+		
+		let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
+			//just cancel
+		}
+		
+		aC.addAction(okay)
+		aC.addAction(cancel)
+		present(aC, animated: true, completion: nil)
 	}
 	
 	func shouldRefreshTable() {
