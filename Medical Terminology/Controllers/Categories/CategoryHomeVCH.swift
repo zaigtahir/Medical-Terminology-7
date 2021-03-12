@@ -14,9 +14,8 @@ protocol CategoryHomeVCHDelegate: class {
 	
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory ()
-	func pressedDeleteButtonOnCustomCatetory ()
-	func pressedAddCategoryButton()
-	func shouldRefreshTable ()
+	func requestDeleteCategory (categoryID: Int, name: String)
+	func shouldReloadTable ()
 }
 
 class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
@@ -61,51 +60,36 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		if section == sectionStandard {
 			return standardCategories.count
 		} else {
-			return customCategories.count + 1 //added one to make cell to add custom category
+			return customCategories.count
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		// will have different cell for section 1, last row to function as an add row button
-		
-		if indexPath.section == 0 {
-			//default section
-			if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
+		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
+			
+			if indexPath.section == sectionStandard {
 				cell.formatCell(category: standardCategories[indexPath.row], indexPath: indexPath)
-				return cell
 			} else {
-				return UITableViewCell()
-			}
-		}
-		
-		// if here, section == 1
-		
-		if indexPath.row < customCategories.count {
-			// not at last row
-			//default section
-			if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
 				cell.formatCell(category: customCategories[indexPath.row], indexPath: indexPath)
-				return cell
-			} else {
-				return UITableViewCell()
 			}
-		}
-		
-		// fall through, is at last row in custom category, so need to return the cell for adding row
-		if let cellAdd = tableView.dequeueReusableCell(withIdentifier: "cellAdd") as? CategoryCell {
-			return cellAdd
+			
+			return cell
+			
 		} else {
 			return UITableViewCell()
 		}
-	
+		
 	}
 	
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		
 		if indexPath.section == sectionCustom {
 			let actionDelete = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
-				self.deleteRow(indexPath: indexPath)
+				let name = self.customCategories[indexPath.row].name
+				let categoryID = self.customCategories[indexPath.row].categoryID
+				
+				self.delegate?.requestDeleteCategory(categoryID: categoryID, name: name)
 			}
 			
 			let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
@@ -144,16 +128,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		var categoryID: Int
-		
-		if indexPath.section == 1 && indexPath.row == customCategories.count {
-			// selected the last "add category row
-			delegate?.pressedAddCategoryButton()
-			return
-		}
-		
-		// if here, user did not press on the add category row
-		
-		
+				
 		if indexPath.section == 0 {
 			categoryID = standardCategories[indexPath.row].categoryID
 		} else {
@@ -165,21 +140,21 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		//need to refresh local copy of the categories
 		getCategories()
 		
-		delegate?.shouldRefreshTable()
+		delegate?.shouldReloadTable()
 		
 	}
 	
 	func addCustomCategoryName(name: String){
 		//call the add Category function from the categoryController
-		
-		categoryC.addCustomCategoryName(name: "my new one")
-		
+		categoryC.addCustomCategory(name: name)
 		getCategories()
-		delegate?.shouldRefreshTable()
+		delegate?.shouldReloadTable()
 	}
 	
-	func deleteRow (indexPath: IndexPath) {
-		//place holder
+	func deleteCategory (categoryID: Int) {
+		categoryC.deleteCustomCategory(categoryID: categoryID)
+		getCategories()
+		delegate?.shouldReloadTable()
 	}
 	
 	func editCategory (indexPath: IndexPath) {

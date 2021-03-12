@@ -10,8 +10,9 @@ import UIKit
 
 class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
-	
 	@IBOutlet weak var tableView: UITableView!
+	
+	@IBOutlet weak var addCustomCategoryButton: UIButton!
 	
 	let categoryHomeVCH = CategoryHomeVCH()
 	
@@ -23,6 +24,9 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		tableView.tableFooterView = UIView()
 		
 		categoryHomeVCH.delegate = self
+		
+		addCustomCategoryButton.layer.cornerRadius = myConstants.button_cornerRadius
+		
 	}
 	
 	//MARK: Start Delegate functions for CategoryHomeVCHDelegate
@@ -38,43 +42,35 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		//place holder
 	}
 	
-	func pressedDeleteButtonOnCustomCatetory() {
-		//place holder
-	}
-	
-	func pressedAddCategoryButton() {
+	func requestDeleteCategory(categoryID: Int, name: String) {
 		
-		categoryHomeVCH.addCustomCategoryName(name: "my test")
+		let title = "Delete \"\(name)?\""
 		
-		return
-		
-		let aC = UIAlertController(title: "New Category", message: "Add a new category", preferredStyle: .alert)
-		
-		aC.addTextField(configurationHandler: nil)
-		
-		let okay = UIAlertAction(title: "OK", style: .default) { (_) in
-			let text = aC.textFields![0].text
-			
-				
-			
-			
-			print("add this category: \(text)")
-			self.tableView.reloadData()
+		let aC = UIAlertController(title: title, message: "Do you want to delete this category?", preferredStyle: .alert)
+		let yes = UIAlertAction(title: "Yes", style: .destructive) { (_) in
+			self.categoryHomeVCH.deleteCategory(categoryID: categoryID)
+		}
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+			// nothing
 		}
 		
-		let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
-			//just cancel
-		}
-		
-		aC.addAction(okay)
 		aC.addAction(cancel)
-		present(aC, animated: true, completion: nil)
+		aC.addAction(yes)
+		
+		self.present(aC, animated: true, completion: nil)
 	}
 	
-	func shouldRefreshTable() {
+	func shouldReloadTable() {
 		print("reloading in shouldRefreshTable")
 		tableView.reloadData()
 	}
+	
 	//MARK: End Delegate functions for CategoryHomeVCHDelegate
+	
+	@IBAction func addCustomCategoryButtonAction(_ sender: UIButton) {
+		
+		categoryHomeVCH.addCustomCategoryName(name: "Hard Questions")
+
+	}
 	
 }

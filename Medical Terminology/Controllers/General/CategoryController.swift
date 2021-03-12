@@ -15,7 +15,6 @@ categoryType = 0	standard, built in
 categoryType = 1	custom
 */
 
-
 class CategoryController {
 	
 	func getCategory (categoryID: Int) -> Category? {
@@ -116,10 +115,19 @@ class CategoryController {
 		
 	}
 	
-	func addCustomCategoryName (name: String) {
+	func addCustomCategory (name: String) {
 		//add a custom category
 	
-		myDB.executeStatements("INSERT INTO categories (name, description, type, displayOrder, selected) VALUES ('\(name)', 'new category', 1, 15, 0)")
+		// MARK: need to format string, check for duplicate names, assign view order
+			
+		myDB.executeStatements("INSERT INTO categories (name, description, type, displayOrder, selected) VALUES ('\(name)', 'new', 1, 15, 0)")
+	}
+	
+	func deleteCustomCategory (categoryID: Int) {
+		
+		myDB.executeStatements("DELETE from categories WHERE categoryID = \(categoryID)")
+	//	myDB.executeQuery("DELETE from categories WHERE categoryID = ?", withArgumentsIn: [categoryID])
+		
 	}
 	
 	private func makeCategoryFromResultset (resultSet: FMResultSet) -> Category {

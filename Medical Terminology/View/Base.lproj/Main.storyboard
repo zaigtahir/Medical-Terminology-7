@@ -16,7 +16,7 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-gM-IpN">
@@ -222,7 +222,7 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
@@ -536,7 +536,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashCardHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpl-Rk-z7l">
@@ -861,7 +861,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashCardOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -934,7 +934,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -1035,7 +1035,7 @@
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="ListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="lvj-Zi-9Ji" userLabel="favorites list empty">
@@ -1267,7 +1267,7 @@
             <objects>
                 <viewController id="awX-yg-8xS" customClass="DItemVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4wH-cl-seN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L29-8G-zy9">
@@ -1365,7 +1365,7 @@
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-vJ-agb">
@@ -1575,7 +1575,7 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
@@ -1908,7 +1908,7 @@
             <objects>
                 <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -2162,7 +2162,7 @@
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
@@ -2423,11 +2423,11 @@
             <objects>
                 <viewController id="KTC-23-wdb" customClass="CategoryHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V6Z-tH-Ath">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W5i-R0-UWj">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="563"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="61" id="51Y-Dh-WQa" customClass="CategoryCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
@@ -2438,7 +2438,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tKT-hT-nzj">
-                                                    <rect key="frame" x="49" y="14" width="295" height="33"/>
+                                                    <rect key="frame" x="48" y="14" width="296" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="color text"/>
                                                     <nil key="highlightedColor"/>
@@ -2455,10 +2455,10 @@
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H6y-PU-drn">
-                                                    <rect key="frame" x="20" y="1" width="24" height="59.666666666666671"/>
+                                                    <rect key="frame" x="20" y="1" width="18" height="59.666666666666671"/>
                                                     <color key="tintColor" name="color text"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="24" id="yBE-lS-zkl"/>
+                                                        <constraint firstAttribute="width" constant="18" id="yBE-lS-zkl"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -2470,7 +2470,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="Fzs-LV-fey" secondAttribute="trailing" id="d3C-Go-kwk"/>
                                                 <constraint firstItem="Fzs-LV-fey" firstAttribute="leading" secondItem="tKT-hT-nzj" secondAttribute="trailing" constant="20" id="dHm-UV-DTo"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="tKT-hT-nzj" secondAttribute="bottom" constant="3" id="fZb-ep-ZJp"/>
-                                                <constraint firstItem="tKT-hT-nzj" firstAttribute="leading" secondItem="H6y-PU-drn" secondAttribute="trailing" constant="5" id="fb1-Oa-ZXT"/>
+                                                <constraint firstItem="tKT-hT-nzj" firstAttribute="leading" secondItem="H6y-PU-drn" secondAttribute="trailing" constant="10" id="fb1-Oa-ZXT"/>
                                                 <constraint firstItem="tKT-hT-nzj" firstAttribute="top" secondItem="GQC-xv-BYC" secondAttribute="topMargin" constant="3" id="qlk-Wk-Yf2"/>
                                                 <constraint firstAttribute="bottom" secondItem="Fzs-LV-fey" secondAttribute="bottom" id="w23-8k-svu"/>
                                                 <constraint firstItem="H6y-PU-drn" firstAttribute="leading" secondItem="GQC-xv-BYC" secondAttribute="leading" constant="20" id="xnA-kc-cjq"/>
@@ -2482,59 +2482,53 @@
                                             <outlet property="showDetailButton" destination="Fzs-LV-fey" id="3Tk-2e-91O"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellAdd" rowHeight="61" id="gJ1-Xs-HKE" customClass="CategoryCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="89" width="414" height="61"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gJ1-Xs-HKE" id="Agp-aO-pgU">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a custom category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KhF-x5-Fff">
-                                                    <rect key="frame" x="49" y="14" width="345" height="33"/>
-                                                    <color key="tintColor" name="color main"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <color key="textColor" name="color correct"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WEi-Q5-Odb">
-                                                    <rect key="frame" x="20" y="1" width="24" height="59.666666666666671"/>
-                                                    <color key="tintColor" name="color correct"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="24" id="KCM-Zj-YoN"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="KhF-x5-Fff" secondAttribute="trailing" id="252-4O-pDf"/>
-                                                <constraint firstItem="WEi-Q5-Odb" firstAttribute="leading" secondItem="Agp-aO-pgU" secondAttribute="leading" constant="20" id="7h6-Cm-jHJ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="KhF-x5-Fff" secondAttribute="bottom" constant="3" id="JQU-rf-iMo"/>
-                                                <constraint firstItem="KhF-x5-Fff" firstAttribute="centerY" secondItem="Agp-aO-pgU" secondAttribute="centerY" id="WdN-7a-d1F"/>
-                                                <constraint firstItem="WEi-Q5-Odb" firstAttribute="top" secondItem="Agp-aO-pgU" secondAttribute="top" id="bXb-01-LQY"/>
-                                                <constraint firstAttribute="bottom" secondItem="WEi-Q5-Odb" secondAttribute="bottom" id="bzt-0W-fiJ"/>
-                                                <constraint firstItem="KhF-x5-Fff" firstAttribute="top" secondItem="Agp-aO-pgU" secondAttribute="topMargin" constant="3" id="iMi-pf-KM0"/>
-                                                <constraint firstItem="KhF-x5-Fff" firstAttribute="leading" secondItem="WEi-Q5-Odb" secondAttribute="trailing" constant="5" id="qv0-Jo-F30"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="nameLabel" destination="KhF-x5-Fff" id="jfv-rq-XbP"/>
-                                            <outlet property="selectImage" destination="WEi-Q5-Odb" id="n4e-pR-CFU"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avE-ac-nIj">
+                                <rect key="frame" x="0.0" y="563" width="414" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sI-HK-1mW">
+                                        <rect key="frame" x="30" y="15" width="354" height="50"/>
+                                        <color key="backgroundColor" name="color main"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="XZG-xL-ugB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="tintColor" name="color text button"/>
+                                        <state key="normal" title="  Add a custom category" image="plus.circle.fill" catalog="system">
+                                            <color key="titleColor" name="color text button"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addCustomCategoryButtonAction:" destination="KTC-23-wdb" eventType="touchUpInside" id="G0D-K2-msD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
+                                <constraints>
+                                    <constraint firstItem="1sI-HK-1mW" firstAttribute="centerX" secondItem="avE-ac-nIj" secondAttribute="centerX" id="PV1-zj-X3G"/>
+                                    <constraint firstAttribute="height" constant="80" id="hms-Vf-Xgm"/>
+                                    <constraint firstItem="1sI-HK-1mW" firstAttribute="leading" secondItem="avE-ac-nIj" secondAttribute="leading" constant="30" id="ivx-Wj-aH0"/>
+                                    <constraint firstAttribute="trailing" secondItem="1sI-HK-1mW" secondAttribute="trailing" constant="30" id="qbN-ce-0U1"/>
+                                    <constraint firstItem="1sI-HK-1mW" firstAttribute="centerY" secondItem="avE-ac-nIj" secondAttribute="centerY" id="ukE-GQ-gy4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AEv-m3-hCA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="W5i-R0-UWj" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" id="3K4-jL-vc4"/>
-                            <constraint firstItem="AEv-m3-hCA" firstAttribute="bottom" secondItem="W5i-R0-UWj" secondAttribute="bottom" id="D9d-UR-0ph"/>
+                            <constraint firstItem="AEv-m3-hCA" firstAttribute="trailing" secondItem="avE-ac-nIj" secondAttribute="trailing" id="N6k-2l-q7Y"/>
+                            <constraint firstItem="avE-ac-nIj" firstAttribute="top" secondItem="W5i-R0-UWj" secondAttribute="bottom" id="Suo-K3-LM0"/>
                             <constraint firstItem="AEv-m3-hCA" firstAttribute="trailing" secondItem="W5i-R0-UWj" secondAttribute="trailing" id="Uda-JH-a0P"/>
                             <constraint firstItem="W5i-R0-UWj" firstAttribute="top" secondItem="AEv-m3-hCA" secondAttribute="top" id="cIU-7r-R3Y"/>
+                            <constraint firstItem="AEv-m3-hCA" firstAttribute="bottom" secondItem="avE-ac-nIj" secondAttribute="bottom" id="cgO-Dc-pJc"/>
                             <constraint firstItem="W5i-R0-UWj" firstAttribute="top" secondItem="AEv-m3-hCA" secondAttribute="top" id="f2q-Fh-czW"/>
+                            <constraint firstItem="avE-ac-nIj" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" id="hje-Ti-NTW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="gbB-2e-HLI"/>
                     <connections>
+                        <outlet property="addCustomCategoryButton" destination="1sI-HK-1mW" id="LjD-gN-he2"/>
                         <outlet property="tableView" destination="W5i-R0-UWj" id="BSB-tn-FcP"/>
                     </connections>
                 </viewController>
