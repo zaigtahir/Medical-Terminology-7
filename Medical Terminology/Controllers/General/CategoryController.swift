@@ -80,7 +80,7 @@ class CategoryController {
 		
 	}
 	
-	func getCategoryCount (whereStatment: String) -> Int {
+	func getCountFromCategoriesTable (whereStatment: String) -> Int {
 		
 		let query = "SELECT COUNT (*) FROM categories \(whereStatment)"
 		
@@ -115,6 +115,10 @@ class CategoryController {
 		
 	}
 	
+	func changeCustomCategoryName (categoryID: Int, nameTo: String) {
+		myDB.executeUpdate("UPDATE categories SET name = ? WHERE categoryID = ?", withArgumentsIn: [nameTo, categoryID])
+	}
+	
 	func addCustomCategory (name: String) {
 		//add a custom category
 	
@@ -144,6 +148,17 @@ class CategoryController {
 		
 		myDB.executeStatements("DELETE from categories WHERE categoryID = \(categoryID)")
 	//	myDB.executeQuery("DELETE from categories WHERE categoryID = ?", withArgumentsIn: [categoryID])
+		
+	}
+	
+	func customCatetoryNameIsUnique (name: String) -> Bool {
+		// will check to see if ths name already exists as a custom category name
+		// disregard case of characters
+		if getCountFromCategoriesTable(whereStatment: "WHERE name LIKE \"\(name)\"") > 0 {
+			return true
+		} else {
+			return false
+		}
 		
 	}
 	

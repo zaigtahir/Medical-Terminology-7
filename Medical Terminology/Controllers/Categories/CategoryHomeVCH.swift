@@ -108,8 +108,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 			}
 			
 			let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
-				self.editCategory (indexPath: indexPath)
-				//completionHandler(false)
+				
 				self.delegate?.pressedEditButtonOnCustomCategory(categoryID: categoryID, name: name)
 				
 			}
@@ -179,8 +178,11 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		delegate?.shouldReloadTable()
 	}
 	
-	func editCategory (indexPath: IndexPath) {
+	func changeCategoryName (categoryID: Int, nameTo: String) {
 		//place holder
+		categoryC.changeCustomCategoryName(categoryID: categoryID, nameTo: nameTo)
+		getCategories()
+		delegate?.shouldReloadTable()
 	}
 	
 }

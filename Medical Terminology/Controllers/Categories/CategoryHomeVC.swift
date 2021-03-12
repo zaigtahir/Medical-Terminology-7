@@ -16,6 +16,10 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
 	let categoryHomeVCH = CategoryHomeVCH()
 	
+	let categoryC = CategoryController()	// here so i can use it to check for duplicate category name the user enters
+	
+	let utilities = Utilities() 			// here so I can clean up the user text entry
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
@@ -41,6 +45,7 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	func pressedEditButtonOnCustomCategory(categoryID: Int, name: String) {
 		
 		let alertC = UIAlertController(title: "Edit Category Name", message: "", preferredStyle: .alert)
+		
 		alertC.addTextField(configurationHandler: nil)
 		alertC.textFields![0].text = name
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
@@ -49,7 +54,36 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		}
 		
 		let okay = UIAlertAction(title: "OK", style: .default) { (_) in
-			//place holder for now
+			// enable update here
+			// if the name user entered in to the field is the same as original then just do nothing
+			
+			if let enteredText = alertC.textFields?[0].text {
+				
+				// check for blank entry
+				if self.utilities.isBlank(string: enteredText) {
+					// do nothing
+					self.tableView.reloadData() // to get rid of the swipe buttons
+					return
+				}
+				
+				// check for same entry as original
+				// clean the entry of any preceding or trailing spaces
+				let cleanedEntry = self.utilities.cleanString(string: enteredText)
+				
+				if name == cleanedEntry {
+					// do nothing as the user entered the same name as the original or did not change the original
+					self.tableView.reloadData() // to get rid of the swipe buttons
+					return
+				}
+				
+				// here can CHANGE the category name
+				//MARK: add code to change the category name
+				
+			}
+			
+			
+			
+			// if this entered name is the same name as the current name then don't do anything
 			self.tableView.reloadData() // to get rid of the swipe buttons
 			
 		}
@@ -83,7 +117,7 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
 	//MARK: End Delegate functions for CategoryHomeVCHDelegate
 	
-	private func addNewCategory () {
+	private func addNewCustomCategory () {
 		
 		let alertC = UIAlertController(title: "New Category", message: "Add a new category", preferredStyle: .alert)
 		
@@ -95,7 +129,15 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 			if let inputText = alertC.textFields![0].text {
 				let cleanText = utilities.cleanString(string: inputText)
 				if cleanText != "" {
-					self.categoryHomeVCH.addCustomCategoryName(name: cleanText)
+
+					//need to check if this name is a duplicate
+					
+					if categoryC.customCatetoryNameIsUnique(name: cleanText) { //just simulate duplicate text for now
+						self.showDuplicateCategoryAlert(name: cleanText)
+					} else {
+						//this is not a duplicate, may save this name
+						self.categoryHomeVCH.addCustomCategoryName(name: cleanText)
+					}
 				}
 			}
 		}
@@ -107,11 +149,17 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		alertC.addAction(okay)
 		alertC.addAction(cancel)
 		present(alertC, animated: true, completion: nil)
-		
+	}
+	
+	private func showDuplicateCategoryAlert (name: String) {
+		let alertDuplicate = UIAlertController(title: "Opps! Duplicate Category", message: "The category \"\(name)\" already exists.\nPlease use a different name", preferredStyle: .alert)
+		let okayDuplicate = UIAlertAction(title: "Ok", style: .default, handler: nil)
+		alertDuplicate.addAction(okayDuplicate)
+		self.present(alertDuplicate, animated: true, completion: nil)
 	}
 	
 	@IBAction func addCustomCategoryButtonAction(_ sender: UIButton) {
-		self.addNewCategory()
+		self.addNewCustomCategory()
 	}
 	
 }

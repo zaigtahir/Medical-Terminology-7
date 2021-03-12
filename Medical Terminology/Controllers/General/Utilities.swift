@@ -69,6 +69,11 @@ class Utilities {
 			return s
 		}
 	}
+	
+	func isBlank (string: String) -> Bool {
+		// return true if the string is just space characters
+		return string.allSatisfy({ $0.isWhitespace})
+	}
 	    
     func makeSampleDBEntries () {
         
