@@ -77,7 +77,7 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 				}
 				
 				// here can CHANGE the category name
-				//MARK: add code to change the category name
+				self.categoryHomeVCH.changeCategoryName(categoryID: categoryID, nameTo: cleanedEntry)
 				
 			}
 			
@@ -131,7 +131,6 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 				if cleanText != "" {
 
 					//need to check if this name is a duplicate
-					
 					if categoryC.customCatetoryNameIsUnique(name: cleanText) { //just simulate duplicate text for now
 						self.showDuplicateCategoryAlert(name: cleanText)
 					} else {

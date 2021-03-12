@@ -153,8 +153,9 @@ class CategoryController {
 	
 	func customCatetoryNameIsUnique (name: String) -> Bool {
 		// will check to see if ths name already exists as a custom category name
-		// disregard case of characters
-		if getCountFromCategoriesTable(whereStatment: "WHERE name LIKE \"\(name)\"") > 0 {
+		// CaSe sensitive
+		
+		if getCountFromCategoriesTable(whereStatment: "WHERE name == \"\(name)\"") > 0 {
 			return true
 		} else {
 			return false
