@@ -54,8 +54,8 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 			self.tableView.reloadData()	// doing this so that swipe action goes away
 		}
 		
-		aC.addAction(cancel)
 		aC.addAction(delete)
+		aC.addAction(cancel)
 		
 		self.present(aC, animated: true, completion: nil)
 	}
@@ -87,8 +87,8 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 			//just cancel
 		}
 		
-		aC.addAction(cancel)
 		aC.addAction(okay)
+		aC.addAction(cancel)
 		present(aC, animated: true, completion: nil)
 		
 	}
