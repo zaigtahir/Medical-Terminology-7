@@ -11,9 +11,8 @@ import UIKit
 
 protocol CategoryHomeVCHDelegate: class {
 	//will shoot functions to the CategoryHomeVHC
-	
 	func pressedInfoButtonOnStandardCategory ()
-	func pressedEditButtonOnCustomCategory ()
+	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
 	func requestDeleteCategory (categoryID: Int, name: String)
 	func shouldReloadTable ()
 }
@@ -45,6 +44,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
+		
 		
 		if customCategories.count == 0 {
 			// there are no custom categoreis present, so don't need to show the custom section
@@ -92,17 +92,19 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		
 		if indexPath.section == sectionCustom {
+			let name = self.customCategories[indexPath.row].name
+			let categoryID = self.customCategories[indexPath.row].categoryID
 			
 			let actionDelete = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
-				let name = self.customCategories[indexPath.row].name
-				let categoryID = self.customCategories[indexPath.row].categoryID
 				//completionHandler(false)
 				self.delegate?.requestDeleteCategory(categoryID: categoryID, name: name)
 			}
 			
 			let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
 				self.editCategory (indexPath: indexPath)
-				completionHandler(false)
+				//completionHandler(false)
+				self.delegate?.pressedEditButtonOnCustomCategory(categoryID: categoryID, name: name)
+				
 			}
 			
 			actionEdit.backgroundColor = myTheme.colorEditButton

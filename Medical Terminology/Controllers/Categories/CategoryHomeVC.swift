@@ -38,15 +38,32 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		self.present(aC, animated: true, completion: nil)
 	}
 	
-	func pressedEditButtonOnCustomCategory() {
-		//place holder
+	func pressedEditButtonOnCustomCategory(categoryID: Int, name: String) {
+		
+		let alertC = UIAlertController(title: "Edit Category Name", message: "", preferredStyle: .alert)
+		alertC.addTextField(configurationHandler: nil)
+		alertC.textFields![0].text = name
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+			//place holder for now
+			self.tableView.reloadData() //to get rid of swipe buttons
+		}
+		
+		let okay = UIAlertAction(title: "OK", style: .default) { (_) in
+			//place holder for now
+			self.tableView.reloadData() // to get rid of the swipe buttons
+			
+		}
+		
+		alertC.addAction(okay)
+		alertC.addAction(cancel)
+		self.present(alertC, animated: true, completion: nil)
 	}
 	
 	func requestDeleteCategory(categoryID: Int, name: String) {
 		
 		let title = "Delete \"\(name)?\""
 		
-		let aC = UIAlertController(title: title, message: "Are you sure you want to delete this category?", preferredStyle: .alert)
+		let alertC = UIAlertController(title: title, message: "Are you sure you want to delete this category?", preferredStyle: .alert)
 		let delete = UIAlertAction(title: "Delete", style: .destructive) { (_) in
 			self.categoryHomeVCH.deleteCategory(categoryID: categoryID)
 		}
@@ -54,10 +71,10 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 			self.tableView.reloadData()	// doing this so that swipe action goes away
 		}
 		
-		aC.addAction(delete)
-		aC.addAction(cancel)
+		alertC.addAction(delete)
+		alertC.addAction(cancel)
 		
-		self.present(aC, animated: true, completion: nil)
+		self.present(alertC, animated: true, completion: nil)
 	}
 	
 	func shouldReloadTable() {
@@ -68,14 +85,14 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
 	private func addNewCategory () {
 		
-		let aC = UIAlertController(title: "New Category", message: "Add a new category", preferredStyle: .alert)
+		let alertC = UIAlertController(title: "New Category", message: "Add a new category", preferredStyle: .alert)
 		
-		aC.addTextField(configurationHandler: nil)
+		alertC.addTextField(configurationHandler: nil)
 		
 		let utilities = Utilities()
 		
 		let okay = UIAlertAction(title: "OK", style: .default) { [self] (_) in
-			if let inputText = aC.textFields![0].text {
+			if let inputText = alertC.textFields![0].text {
 				let cleanText = utilities.cleanString(string: inputText)
 				if cleanText != "" {
 					self.categoryHomeVCH.addCustomCategoryName(name: cleanText)
@@ -87,14 +104,14 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 			//just cancel
 		}
 		
-		aC.addAction(okay)
-		aC.addAction(cancel)
-		present(aC, animated: true, completion: nil)
+		alertC.addAction(okay)
+		alertC.addAction(cancel)
+		present(alertC, animated: true, completion: nil)
 		
 	}
 	
 	@IBAction func addCustomCategoryButtonAction(_ sender: UIButton) {
 		self.addNewCategory()
 	}
-
+	
 }
