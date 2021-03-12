@@ -32,7 +32,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	let sectionCustom = 1
 	
 	weak var delegate : CategoryHomeVCHDelegate?
-
+	
 	override init (){
 		//any init functions here
 		super.init()
@@ -85,10 +85,11 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		
 		if indexPath.section == sectionCustom {
-			let actionDelete = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
+			
+			let actionDelete = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
 				let name = self.customCategories[indexPath.row].name
 				let categoryID = self.customCategories[indexPath.row].categoryID
-				
+				completionHandler(false)
 				self.delegate?.requestDeleteCategory(categoryID: categoryID, name: name)
 			}
 			
@@ -99,7 +100,14 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 			
 			actionEdit.backgroundColor = myTheme.colorEditButton
 			
-			return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
+			// check if the category is already selected. In that case, do not allow deletion of the category
+			
+			if customCategories[indexPath.row].selected {
+				return UISwipeActionsConfiguration(actions: [actionEdit])
+			} else {
+				return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
+			}
+			
 		} else {
 			//make info button for the standard categories
 			
@@ -128,7 +136,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		var categoryID: Int
-				
+		
 		if indexPath.section == 0 {
 			categoryID = standardCategories[indexPath.row].categoryID
 		} else {
@@ -160,5 +168,5 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	func editCategory (indexPath: IndexPath) {
 		//place holder
 	}
-
+	
 }

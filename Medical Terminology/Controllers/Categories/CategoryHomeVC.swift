@@ -46,16 +46,16 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		
 		let title = "Delete \"\(name)?\""
 		
-		let aC = UIAlertController(title: title, message: "Do you want to delete this category?", preferredStyle: .alert)
-		let yes = UIAlertAction(title: "Yes", style: .destructive) { (_) in
+		let aC = UIAlertController(title: title, message: "Are you sure you want to delete this category?", preferredStyle: .alert)
+		let delete = UIAlertAction(title: "Delete", style: .destructive) { (_) in
 			self.categoryHomeVCH.deleteCategory(categoryID: categoryID)
 		}
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
 			// nothing
 		}
 		
+		aC.addAction(delete)
 		aC.addAction(cancel)
-		aC.addAction(yes)
 		
 		self.present(aC, animated: true, completion: nil)
 	}
