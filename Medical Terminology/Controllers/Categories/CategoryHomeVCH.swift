@@ -17,6 +17,9 @@ protocol CategoryHomeVCHDelegate: class {
 	func shouldReloadTable ()
 }
 
+// START HERE
+// implement title header = nil if it should not be there , so can hide the header but keep 2 sections still
+
 class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	
 	// manage the datatable source
@@ -29,6 +32,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	
 	let sectionStandard = 0
 	let sectionCustom = 1
+	
+	var hideStandardCategories = false
 	
 	weak var delegate : CategoryHomeVCHDelegate?
 	
@@ -44,22 +49,24 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		
-		
-		if customCategories.count == 0 {
-			// there are no custom categoreis present, so don't need to show the custom section
-			return 1
-		} else {
-			
-			return 2
-		}
+		return 2
 	}
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		
 		if section == sectionStandard {
-			return "Standard Categories"
+			if hideStandardCategories {
+				return nil
+			} else {
+				return "Standard Categories"
+			}
+
 		} else {
-			return  "Custom Categories"
+			if customCategories.count == 0 {
+				return nil
+			} else {
+				return  "Custom Categories"
+			}
 		}
 	}
 	
@@ -127,9 +134,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 			actionInfo.backgroundColor = myTheme.colorInfoButton
 			
 			return UISwipeActionsConfiguration(actions: [actionInfo])
-			
 		}
-		
 	}
 	
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
