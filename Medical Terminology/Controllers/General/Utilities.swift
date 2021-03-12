@@ -54,7 +54,22 @@ class Utilities {
         }
         return stringNew
     }
-    
+	
+	func cleanString (string: String) -> String {
+		// remove surrounding spaces
+		// return empty string if the input is only blank spaces
+		
+		let s = string.trimmingCharacters(in: .whitespaces)
+		
+		let isBlank = s.allSatisfy({ $0.isWhitespace})
+		
+		if isBlank {
+			return ""
+		} else {
+			return s
+		}
+	}
+	    
     func makeSampleDBEntries () {
         
         let dIC = DItemController()

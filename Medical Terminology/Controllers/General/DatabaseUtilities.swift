@@ -96,6 +96,11 @@ class DatabaseUtilities  {
     
     private func useCurrentDatabase () {
         let dbURL = getDirectoryFileURL(fileName: dbFilename, fileExtension: dbFileExtension)
+	
+		if isDevelopmentMode {
+			print("current db path: \(dbURL.absoluteString)")
+		}
+		
         myDB = FMDatabase(path: dbURL.absoluteString)
         myDB.open()        
     }

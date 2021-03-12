@@ -45,7 +45,14 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return 2
+		
+		if customCategories.count == 0 {
+			// there are no custom categoreis present, so don't need to show the custom section
+			return 1
+		} else {
+			
+			return 2
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -89,7 +96,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 			let actionDelete = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
 				let name = self.customCategories[indexPath.row].name
 				let categoryID = self.customCategories[indexPath.row].categoryID
-				completionHandler(false)
+				//completionHandler(false)
 				self.delegate?.requestDeleteCategory(categoryID: categoryID, name: name)
 			}
 			

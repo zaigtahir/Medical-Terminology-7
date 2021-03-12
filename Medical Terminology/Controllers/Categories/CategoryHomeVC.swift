@@ -51,26 +51,50 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 			self.categoryHomeVCH.deleteCategory(categoryID: categoryID)
 		}
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
-			// nothing
+			self.tableView.reloadData()	// doing this so that swipe action goes away
 		}
 		
-		aC.addAction(delete)
 		aC.addAction(cancel)
+		aC.addAction(delete)
 		
 		self.present(aC, animated: true, completion: nil)
 	}
 	
 	func shouldReloadTable() {
-		print("reloading in shouldRefreshTable")
 		tableView.reloadData()
 	}
 	
 	//MARK: End Delegate functions for CategoryHomeVCHDelegate
 	
-	@IBAction func addCustomCategoryButtonAction(_ sender: UIButton) {
+	private func addNewCategory () {
 		
-		categoryHomeVCH.addCustomCategoryName(name: "Hard Questions")
-
+		let aC = UIAlertController(title: "New Category", message: "Add a new category", preferredStyle: .alert)
+		
+		aC.addTextField(configurationHandler: nil)
+		
+		let utilities = Utilities()
+		
+		let okay = UIAlertAction(title: "OK", style: .default) { [self] (_) in
+			if let inputText = aC.textFields![0].text {
+				let cleanText = utilities.cleanString(string: inputText)
+				if cleanText != "" {
+					self.categoryHomeVCH.addCustomCategoryName(name: cleanText)
+				}
+			}
+		}
+		
+		let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
+			//just cancel
+		}
+		
+		aC.addAction(cancel)
+		aC.addAction(okay)
+		present(aC, animated: true, completion: nil)
+		
 	}
 	
+	@IBAction func addCustomCategoryButtonAction(_ sender: UIButton) {
+		self.addNewCategory()
+	}
+
 }

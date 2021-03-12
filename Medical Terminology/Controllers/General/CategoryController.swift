@@ -119,8 +119,25 @@ class CategoryController {
 		//add a custom category
 	
 		// MARK: need to format string, check for duplicate names, assign view order
-			
-		myDB.executeStatements("INSERT INTO categories (name, description, type, displayOrder, selected) VALUES ('\(name)', 'new', 1, 15, 0)")
+		
+		//get the maximum number for displayOrder of custom categories
+		
+		var maxOrder = 0
+		
+		if let resultSet = myDB.executeQuery("SELECT MAX(displayOrder) FROM categories WHERE type = 1", withArgumentsIn: []) {
+			resultSet.next()
+			maxOrder = Int(resultSet.int(forColumnIndex: 0))
+		} else {
+			print("problem creating the resultSet in addCustomCategory")
+		}
+		
+		let displayOrder = maxOrder + 1
+		
+		if isDevelopmentMode {
+			print ("Adding custom category: \(name) with displayOrder: \(displayOrder)")
+		}
+		
+		myDB.executeStatements("INSERT INTO categories (name, description, type, displayOrder, selected) VALUES ('\(name)', 'new', 1, \(displayOrder), 0)")
 	}
 	
 	func deleteCustomCategory (categoryID: Int) {
