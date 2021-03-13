@@ -8,7 +8,6 @@
 // update the counter only with the Page Number calculated with the collectionView as this may not be in
 // sync with the itemIndex in the collection view controller
 
-
 import UIKit
 
 class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FCFavoritePressedDelegate, FCVModeChangedDelegate {
@@ -165,7 +164,6 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     
     // MARK: Delegate functions
 
-    
     func CVCellChanged(cellIndex: Int) {
         updateDisplay()
     }

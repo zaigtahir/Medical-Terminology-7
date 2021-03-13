@@ -11,6 +11,8 @@ import UIKit
 class FlashCardVCH {
     
     private var favoriteMode = false
+	private var categoryToView = 0
+	
     var viewMode : FlashCardViewMode = .both
     var listFull: [Int]
     var listFavorite: [Int]

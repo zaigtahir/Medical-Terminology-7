@@ -16,15 +16,19 @@ class DItem {
     
     var itemID: Int = 0
     var term: String = "none loaded"
+	var termDisplay: String = ""
     var definition: String = "none loaded"
     var example: String = "none loaded"
-    var category: Int = 0
+    var categoryID: Int = 0
     var audioFile: String = "none loaded"
+	
     var isFavorite: Bool = false
+	
     var learnedTerm: Bool = false
     var learnedDefinition: Bool = false
+	
     var answeredTerm: Int = 0  // 0 = unanswered, 1 = correctly answered, 2 = answered wrong
-    var answeredDefinition: Int = 0
+    var answeredDefinition: Int = 0 // 0 = unanswered, 1 = correctly answered, 2 = answered wrong
 
     init () {
         // no other work to do here
@@ -35,7 +39,7 @@ class DItem {
      'answeredTerm'  0 = unanswered, 1 = correctly answered, 2 = answered wrong
      'answeredDefinition' 0 = unanswered, 1 = correctly answered, 2 = answered wrong
      */
-    convenience init (itemID: Int, term: String, definition: String, example: String, category: Int, audioFile: String, isFavorite: Bool, learnedTerm: Bool, learnedDefinition: Bool, answeredTerm: Int, answeredDefinition: Int  ) {
+    convenience init (itemID: Int, term: String, definition: String, example: String, categoryID: Int, audioFile: String, isFavorite: Bool, learnedTerm: Bool, learnedDefinition: Bool, answeredTerm: Int, answeredDefinition: Int  ) {
         
         self.init()
         
@@ -43,7 +47,7 @@ class DItem {
         self.term = term
         self.definition = definition
         self.example = example
-        self.category = category
+        self.categoryID = categoryID
         self.audioFile = audioFile
         self.isFavorite = isFavorite
         self.learnedTerm = learnedTerm

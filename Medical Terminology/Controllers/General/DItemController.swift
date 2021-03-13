@@ -54,10 +54,11 @@ class DItemController {
         
         //displayTerm will be selected instead of term for the item term if there is something in the displayTerm
         
-        let selectPortion = "SELECT itemID, term, termDisplay, definition, ifnull(example, '') AS example, category, ifnull(audioFile, '') AS audioFile, isFavorite, learnedTerm, learnedDefinition, answeredTerm, answeredDefinition FROM dictionary "
-        
-        let query = "\(selectPortion) \(whereQuery)"
-        
+       let selectPortion = "SELECT itemID, term, termDisplay, definition, ifnull(example, '') AS example, categoryID, ifnull(audioFile, '') AS audioFile, isFavorite, learnedTerm, learnedDefinition, answeredTerm, answeredDefinition FROM dictionary "
+		
+		// MARK: Modified
+		let query = "SELECT * from dictionary \(whereQuery)"
+		
         var dItems = [DItem]()
         
         if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
@@ -69,7 +70,7 @@ class DItemController {
                 let termDisplay = resultSet.string(forColumn: "termDisplay") ?? ""
                 let definition = resultSet.string(forColumn: "definition")  ?? ""
                 let example = resultSet.string(forColumn: "example")  ?? ""
-                let category = Int(resultSet.int(forColumn: "category"))
+                let categoryID = Int(resultSet.int(forColumn: "categoryID"))
                 let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
                 let f = Int(resultSet.int(forColumn: "isFavorite"))
                 let t = Int(resultSet.int(forColumn: "learnedTerm"))
@@ -102,7 +103,7 @@ class DItemController {
 								 term: term,
 								 definition: definition,
 								 example: example,
-								 category: category,
+								 categoryID: categoryID,
 								 audioFile: audioFile,
 								 isFavorite: isFavorite,
 								 learnedTerm: learnedTerm,
@@ -112,9 +113,7 @@ class DItemController {
                 
                 dItems.append(item)
             }
-            
         }
-        
         return dItems
     }
   
@@ -175,7 +174,7 @@ class DItemController {
                     learnedDefinition = true
                 }
                 
-                let item = DItem(itemID: itemID, term: "", definition: "", example: "", category: 0, audioFile: "", isFavorite: isFavorite, learnedTerm: learnedTerm, learnedDefinition: learnedDefinition, answeredTerm: answeredTerm, answeredDefinition: answeredDefintion)
+                let item = DItem(itemID: itemID, term: "", definition: "", example: "", categoryID: 0, audioFile: "", isFavorite: isFavorite, learnedTerm: learnedTerm, learnedDefinition: learnedDefinition, answeredTerm: answeredTerm, answeredDefinition: answeredDefintion)
                 
                 dItems.append(item)
             }
