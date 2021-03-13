@@ -16,7 +16,6 @@ class DItem {
     
     var itemID: Int = 0
     var term: String = "none loaded"
-	var termDisplay: String = ""
     var definition: String = "none loaded"
     var example: String = "none loaded"
     var categoryID: Int = 0

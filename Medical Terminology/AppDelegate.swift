@@ -53,6 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(sController.getUserDefaultsVersion())
             
         }
+		
+		let tests = Tests()
+		tests.makeWhereString()
        
         /*
         if isDevelopmentMode {

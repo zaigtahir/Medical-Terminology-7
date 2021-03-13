@@ -73,7 +73,8 @@
 		99D55E0A25F6DAD8003ABE0B /* CategoryHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0925F6DAD8003ABE0B /* CategoryHomeVC.swift */; };
 		99D55E1225F7EF92003ABE0B /* CategoryHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */; };
 		99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1625F967AA003ABE0B /* CategoryCell.swift */; };
-		99D55E2F25FC7921003ABE0B /* DItemController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E2E25FC7921003ABE0B /* DItemController2.swift */; };
+		99D55E2F25FC7921003ABE0B /* DitemCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E2E25FC7921003ABE0B /* DitemCounts.swift */; };
+		99D55E3325FD221F003ABE0B /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E3225FD221F003ABE0B /* Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,7 +151,8 @@
 		99D55E0925F6DAD8003ABE0B /* CategoryHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeVC.swift; sourceTree = "<group>"; };
 		99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeVCH.swift; sourceTree = "<group>"; };
 		99D55E1625F967AA003ABE0B /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		99D55E2E25FC7921003ABE0B /* DItemController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController2.swift; sourceTree = "<group>"; };
+		99D55E2E25FC7921003ABE0B /* DitemCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DitemCounts.swift; sourceTree = "<group>"; };
+		99D55E3225FD221F003ABE0B /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,7 +202,8 @@
 				5AC448B422BC072C004B47C1 /* QuestionController.swift */,
 				5A4471602283DFB9008E3107 /* SearchLists.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
-				99D55E2E25FC7921003ABE0B /* DItemController2.swift */,
+				99D55E2E25FC7921003ABE0B /* DitemCounts.swift */,
+				99D55E3225FD221F003ABE0B /* Tests.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				5A03479622D3EE7500749EBC /* Globals.swift in Sources */,
 				5AC0C57322D6C83C009965F1 /* LearningHomeVCH.swift in Sources */,
 				5A03478F22D39D0900749EBC /* FMDatabasePool.m in Sources */,
+				99D55E3325FD221F003ABE0B /* Tests.swift in Sources */,
 				5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */,
 				5A67C14B231071D900BAA2A0 /* QuizDoneCVCell.swift in Sources */,
 				99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */,
@@ -512,7 +516,7 @@
 				5A2A58F522FCA64900434910 /* LearningSet.swift in Sources */,
 				99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */,
 				5ABE7221226CB25F005B83C4 /* Utilities.swift in Sources */,
-				99D55E2F25FC7921003ABE0B /* DItemController2.swift in Sources */,
+				99D55E2F25FC7921003ABE0B /* DitemCounts.swift in Sources */,
 				5A4F855022B310F80016621C /* AnswerTCell.swift in Sources */,
 				5A03478C22D39D0900749EBC /* FMDatabaseQueue.m in Sources */,
 				5A4BB81D229A48690089A474 /* FlashCardOptionsVC.swift in Sources */,

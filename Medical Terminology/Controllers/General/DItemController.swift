@@ -47,16 +47,12 @@ class DItemController {
     
     func getDItems (whereQuery: String)  -> [DItem] {
         
-        //return an array of DItems based on the whereClause
-        //if nothing found return an empty array
+        // return an array of DItems based on the whereClause
+        // if nothing found return an empty array
         
-        //null strings in database will become an empty string in the string variables here
-        
-        //displayTerm will be selected instead of term for the item term if there is something in the displayTerm
-        
-       let selectPortion = "SELECT itemID, term, termDisplay, definition, ifnull(example, '') AS example, categoryID, ifnull(audioFile, '') AS audioFile, isFavorite, learnedTerm, learnedDefinition, answeredTerm, answeredDefinition FROM dictionary "
-		
-		// MARK: Modified
+        // displayTerm will be selected instead of term for the item.term if there is something in the displayTerm
+		// so when you retrieve the data or sort by names, user "term" field as it does not have the preceding "-"
+        		
 		let query = "SELECT * from dictionary \(whereQuery)"
 		
         var dItems = [DItem]()
@@ -118,10 +114,8 @@ class DItemController {
     }
   
     func getDItem (itemID: Int) -> DItem {
-        
-        let query = " WHERE itemID = \(itemID) "
-        
-        let dItems = getDItems(whereQuery: query)
+                
+        let dItems = getDItems(whereQuery: " WHERE itemID = \(itemID) ")
         
         if dItems.count == 0 {
             

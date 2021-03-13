@@ -38,3 +38,18 @@ enum QuizStatus {
     case inProgress
     case done
 }
+
+// raw type for this enum as i will use it for the database too
+
+enum CategoryType: Int {
+	case standard = 0
+	case custom = 1
+}
+
+// use to assign and check answeredTerm and answeredDefinition, and also for quiz answers and learning module
+
+enum AnsweredState: Int {
+	case unanswered = 0
+	case correct = 1
+	case incorrect = 2
+}
