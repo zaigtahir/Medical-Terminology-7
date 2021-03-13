@@ -11,9 +11,17 @@ import SQLite3
 
 //this class if for getting counts of DItems
 
-class DItemCounts {
-
-	func whereString (categoryID: Int?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learnedState: Bool?) -> String {
+class DItemController2 {
+	
+	// NOTE: order processed first then limit is processed
+	// need to be able use with both dictionary and assignedCategories table
+	// MARK maybe remove the limit and term order
+	
+	func whereString (catetoryType: CategoryType, categoryID: Int,
+					  isFavorite: Bool?,
+					  answeredTerm: AnsweredState?,
+					  answeredDefinition: AnsweredState?,
+					  learnedState: Bool?) -> String {
 		
 		// make favorite string
 		var favoriteString = ""
@@ -27,8 +35,11 @@ class DItemCounts {
 		
 		// make catetory string
 		var categoryString = ""
-		if let c = categoryID {
-			categoryString = "AND categoryID = \(c)"
+		
+		if catetoryType == .standard && categoryID == 1 {
+			categoryString = ""		// intrepred category = a ALL standard categories
+		} else {
+			categoryString = "AND categoryID = \(categoryID)"
 		}
 		
 		// make answeredTerm string
@@ -36,7 +47,7 @@ class DItemCounts {
 		if let a = answeredTerm {
 			answeredTermString = "AND answeredTerm = \(String(a.rawValue))"
 		}
-	
+		
 		// make answeredDefinition string
 		var answeredDefinitionString = ""
 		if let d = answeredDefinition {
@@ -60,8 +71,34 @@ class DItemCounts {
 		return result
 	}
 	
+	func getItemIDs (categoryType: CategoryType, whereQuery: String) -> [Int] {
+		
+		var itemIDs = [Int]()
+		
+		//make table name
+		var table: String
+
+		if categoryType == .standard {
+			table = "dictionary"
+		} else {
+			table = "assignedCategories"
+		}
+		
+		var query = "SELECT itemID FROM \(table) \(whereQuery)"
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				itemIDs.append(Int(resultSet.int(forColumn: "itemID")))
+			}
+			
+		} else {
+			print("fatal error getting resultSet in getItemIDs")
+		}
+		return itemIDs
+	}
+	
 	private func getCount (query: String) -> Int {
-				
+		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
 			return Int(resultSet.int(forColumnIndex: 0))
