@@ -514,7 +514,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Learning Set" id="5gj-tt-Ldl">
-                        <barButtonItem key="rightBarButtonItem" image="redo" id="86J-Qp-rEy">
+                        <barButtonItem key="rightBarButtonItem" image="arrow.counterclockwise" catalog="system" id="86J-Qp-rEy">
                             <connections>
                                 <action selector="optionsButtonAction:" destination="jnX-w5-48g" id="Eh9-X5-7P7"/>
                             </connections>
@@ -1899,7 +1899,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Quiz" id="tEx-Lj-kuX">
-                        <barButtonItem key="rightBarButtonItem" image="redo" id="J3b-ah-3P4">
+                        <barButtonItem key="rightBarButtonItem" image="arrow.counterclockwise" catalog="system" id="J3b-ah-3P4">
                             <connections>
                                 <action selector="optionsButtonAction:" destination="YaF-0P-3vu" id="wpk-3e-Nmc"/>
                             </connections>
@@ -2599,6 +2599,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
+        <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
         <image name="arrow_down" width="12" height="12"/>
         <image name="arrow_shuffle2" width="30" height="18"/>
         <image name="arrow_up" width="12" height="12"/>
@@ -2616,7 +2617,6 @@
         <image name="list2" width="25" height="25"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="quiz3" width="25" height="25"/>
-        <image name="redo" width="22" height="19.333333969116211"/>
         <image name="settings zt" width="24" height="24"/>
         <image name="speaker.fill" catalog="system" width="128" height="128"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="124"/>
