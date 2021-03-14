@@ -10,14 +10,25 @@ import Foundation
 import UIKit
 
 class MyTheme{
-    
-    //colors
+	
+	
+	/*
+	System gray 6	for card background set System Gray 6
+	System gray 5	for disabled button background color
+	System gray 2	for disabled button text tint
+	*/
+
 	
 	let colorMain = UIColor(named: "color main")
 	let colorMain2 = UIColor(named: "color main 2")
 	let colorText = UIColor(named: "color text")
 	
-	let colorBackground = UIColor.systemBackground
+	// Button Colors
+	let colorButtonDisabledBackground = (UIColor.systemGray5)
+	let colorButtonDisabledTint = (UIColor.systemGray2)
+	let colorButtonEnabledTint = UIColor(named: "color text button")
+
+	//let colorBackground = UIColor.systemBackground
 	
 	//MARK: Table Colors
 	let colorCellGray = UIColor.secondarySystemBackground	//use for tables with cells that should be grayish
@@ -26,19 +37,15 @@ class MyTheme{
     let colorFavorite = UIColor(named: "color favorite")
 	let colorNotFavorite = UIColor.secondaryLabel
     
-    //MARK: Common colors
-    let colorButtonEnabledTint = UIColor(named: "color text button")
-    let colorButtonDisabled = UIColor(named: "color button disabled")
-    let colorButtonDisabledTint = UIColor(named: "color inactive icon")
-	
-	
+    //MARK: Common colors: probably will need to remove
+ 	
     let colorCardBorder = UIColor(named: "color card border")
 	
     let colorCorrect = UIColor(named: "color correct")
     let colorIncorrect = UIColor(named: "color incorrect")
     
     //MARK: Flashcards
-    let color_fch_button = UIColor(named: "color main")
+    let colorFlashcardHomeButton = UIColor(named: "color main")
     
     //MARK: Learning home
     let colorLhPbForeground = UIColor(named: "color main 2")
@@ -82,4 +89,19 @@ class MyTheme{
     //progress bar width
     let progressBarWidth = CGFloat(integerLiteral: 15)
 
+	
+	func formatButtonColor (button: UIButton, enabledColor: UIColor) {
+		
+		if button.isEnabled {
+			button.backgroundColor = enabledColor
+			button.tintColor = colorButtonEnabledTint
+			button.setTitleColor(colorButtonEnabledTint, for: .normal)
+			
+		} else {
+			button.backgroundColor = colorButtonDisabledBackground
+			button.tintColor = colorButtonDisabledTint
+			button.setTitleColor(UIColor.systemBackground, for: .disabled)
+		}
+		
+	}
 }

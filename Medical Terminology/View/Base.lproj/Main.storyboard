@@ -17,7 +17,7 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-gM-IpN">
@@ -97,7 +97,7 @@
                                             <color key="titleColor" name="color main"/>
                                         </state>
                                         <state key="disabled">
-                                            <color key="titleColor" systemColor="systemGray4Color"/>
+                                            <color key="titleColor" systemColor="systemGray5Color"/>
                                         </state>
                                         <connections>
                                             <action selector="redoButtonAction:" destination="Kng-lT-ZvC" eventType="touchUpInside" id="hN6-Eu-6ts"/>
@@ -127,7 +127,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title=" Start A New Learning Set ">
-                                            <color key="titleColor" name="color text button"/>
+                                            <color key="titleColor" name="color button disabled"/>
                                         </state>
                                         <connections>
                                             <action selector="startNewSetButtonAction:" destination="asc-Xo-Hni" eventType="touchUpInside" id="wr9-1P-HUr"/>
@@ -223,7 +223,7 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
@@ -538,7 +538,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashCardHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpl-Rk-z7l">
@@ -680,7 +680,7 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="color card background"/>
+                                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="Zby-jd-SQv" secondAttribute="trailing" constant="20" id="894-bf-Xsb"/>
                                                         <constraint firstItem="I8W-7c-jGz" firstAttribute="top" secondItem="Zby-jd-SQv" secondAttribute="bottom" constant="20" id="9oe-Mf-sjs"/>
@@ -757,8 +757,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="119.33333333333333" height="50"/>
                                         <color key="backgroundColor" name="color main"/>
                                         <color key="tintColor" name="color text button"/>
-                                        <state key="normal" image="arrow_up">
-                                            <color key="titleColor" name="color text button"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="chevron.up" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                         </state>
                                         <connections>
                                             <action selector="previousButtonAction:" destination="1VE-GN-9V0" eventType="touchUpInside" id="kXr-Gi-lfo"/>
@@ -766,11 +767,10 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaW-rC-XtT">
                                         <rect key="frame" x="127.33333333333334" y="0.0" width="119.33333333333334" height="50"/>
-                                        <color key="backgroundColor" name="color main"/>
-                                        <color key="tintColor" name="color text button"/>
-                                        <state key="normal" image="arrow_shuffle2"/>
-                                        <state key="disabled">
-                                            <color key="titleColor" name="color inactive icon"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                        <state key="normal" image="shuffle" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="regular"/>
                                         </state>
                                         <connections>
                                             <action selector="randomButtonAction:" destination="1VE-GN-9V0" eventType="touchUpInside" id="6lw-Tg-mOk"/>
@@ -779,10 +779,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gz-re-QyZ">
                                         <rect key="frame" x="254.66666666666671" y="0.0" width="119.33333333333334" height="50"/>
                                         <color key="backgroundColor" name="color main"/>
-                                        <color key="tintColor" name="color text button"/>
-                                        <state key="normal" image="arrow_down"/>
-                                        <state key="disabled">
-                                            <color key="titleColor" name="color inactive icon"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="chevron.down" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                         </state>
                                         <connections>
                                             <action selector="nextButtonAction:" destination="1VE-GN-9V0" eventType="touchUpInside" id="JIh-SK-TnN"/>
@@ -875,7 +875,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashCardOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -948,7 +948,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -1049,7 +1049,7 @@
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="ListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="lvj-Zi-9Ji" userLabel="favorites list empty">
@@ -1285,7 +1285,7 @@
             <objects>
                 <viewController id="awX-yg-8xS" customClass="DItemVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4wH-cl-seN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L29-8G-zy9">
@@ -1387,7 +1387,7 @@
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-vJ-agb">
@@ -1465,7 +1465,7 @@
                                                     <color key="titleColor" name="color main"/>
                                                 </state>
                                                 <state key="disabled">
-                                                    <color key="titleColor" name="color inactive icon"/>
+                                                    <color key="titleColor" systemColor="systemGray5Color"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="redoButtonAction:" destination="Kng-lT-ZvC" eventType="touchUpInside" id="ST1-kg-nRb"/>
@@ -1597,7 +1597,7 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
@@ -1931,7 +1931,7 @@
             <objects>
                 <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -2185,7 +2185,7 @@
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
@@ -2490,7 +2490,7 @@
             <objects>
                 <viewController id="KTC-23-wdb" customClass="CategoryHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V6Z-tH-Ath">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W5i-R0-UWj">
@@ -2605,16 +2605,17 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="53X-B0-HYC"/>
+        <segue reference="QC9-rx-4CQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
         <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
         <image name="arrow_down" width="12" height="12"/>
-        <image name="arrow_shuffle2" width="30" height="18"/>
         <image name="arrow_up" width="12" height="12"/>
         <image name="check circle filled" width="24" height="24"/>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="chevron.up" catalog="system" width="128" height="72"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="flashcard3" width="25" height="25"/>
         <image name="gradeCircle" width="150" height="150"/>
@@ -2628,8 +2629,12 @@
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="quiz3" width="25" height="25"/>
         <image name="settings zt" width="24" height="24"/>
+        <image name="shuffle" catalog="system" width="128" height="93"/>
         <image name="speaker.fill" catalog="system" width="128" height="128"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="124"/>
+        <namedColor name="color button disabled">
+            <color red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="color card background">
             <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -2672,8 +2677,11 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>

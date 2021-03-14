@@ -18,13 +18,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
     var scrollDelegate = CVScrollController()
     let utilities = Utilities()
     let learnSetVCH = LearningSetVCH()
-    
-    //button colors
-    let enabledButtonColor = myTheme.colorLhButton
-    let enabledButtonTint = myTheme.colorButtonEnabledTint
-    let disabledButtonColor = myTheme.colorButtonDisabled
-    let disabledButtonTint = myTheme.colorButtonDisabledTint
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,7 +101,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, CVCellChangedDe
         nextButton.isEnabled =  scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
         
         for b in [previousButton, nextButton] {
-            utilities.formatButtonColor(button: b!, enabledBackground: enabledButtonColor!, enabledTint: enabledButtonTint!, disabledBackground: disabledButtonColor!, disabledTint: disabledButtonTint!)
+			myTheme.formatButtonColor(button: b!, enabledColor: myTheme.colorLhButton!)
         }
     }
         

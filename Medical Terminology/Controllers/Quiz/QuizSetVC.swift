@@ -21,9 +21,6 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
     
     //button colors
     let enabledButtonColor = myTheme.colorQuizButton
-    let enabledButtonTint = myTheme.colorButtonEnabledTint
-    let disabledButtonColor = myTheme.colorButtonDisabled
-    let disabledButtonTint = myTheme.colorButtonDisabledTint
     
     override func viewDidLoad() {
         
@@ -124,7 +121,7 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         nextButton.isEnabled =  scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
         
         for b in [previousButton, nextButton] {
-            utilities.formatButtonColor(button: b!, enabledBackground: enabledButtonColor!, enabledTint: enabledButtonTint!, disabledBackground: disabledButtonColor!, disabledTint: disabledButtonTint!)
+			myTheme.formatButtonColor(button: b!, enabledColor: enabledButtonColor!)
         }
     }
     

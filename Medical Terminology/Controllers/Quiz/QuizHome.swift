@@ -29,10 +29,7 @@ class QuizHome: UIViewController {
         
     //button colors
     let enabledButtonColor = myTheme.colorQuizButton
-    let enabledButtonTint = myTheme.colorButtonEnabledTint
-    let disabledButtonColor = myTheme.colorButtonDisabled
-    let disabledButtonTint = myTheme.colorButtonDisabledTint
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -115,7 +112,7 @@ class QuizHome: UIViewController {
         currentQuizButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
 
         for b in [newQuizButton, currentQuizButton] {
-            utilities.formatButtonColor(button: b!, enabledBackground: enabledButtonColor!, enabledTint: enabledButtonTint!, disabledBackground: disabledButtonColor!, disabledTint: disabledButtonTint!)
+			myTheme.formatButtonColor(button: b!, enabledColor: enabledButtonColor!)
         }
         
     }
