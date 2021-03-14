@@ -18,8 +18,6 @@ protocol CategoryHomeVCHDelegate: class {
 	func shouldReloadTable ()
 }
 
-// START HERE
-// implement title header = nil if it should not be there , so can hide the header but keep 2 sections still
 
 class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	
@@ -31,8 +29,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	var standardCategories = [Category]()
 	var customCategories = [Category]()
 	
-	let sectionStandard = 0
-	let sectionCustom = 1
+	let sectionCustom = 0
+	let sectionStandard = 1
 	
 	var hideStandardCategories = false
 	
@@ -63,16 +61,13 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 			}
 
 		} else {
-			if customCategories.count == 0 {
-				return nil
-			} else {
 				return  "Custom Categories"
-			}
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if section == sectionStandard {
+			
 			return standardCategories.count
 		} else {
 			return customCategories.count
@@ -86,7 +81,9 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 			if indexPath.section == sectionStandard {
 				cell.formatCell(category: standardCategories[indexPath.row], indexPath: indexPath)
 			} else {
+				
 				cell.formatCell(category: customCategories[indexPath.row], indexPath: indexPath)
+			
 			}
 			
 			return cell
@@ -138,30 +135,32 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-		
-		if indexPath.section == 0 {
-			return false 	//do not allow to edit the standard rows
-		} else {
-			return true
-		}
+		return true
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		var categoryID: Int
 		
-		if indexPath.section == 0 {
+		if indexPath.section == sectionStandard {
 			categoryID = standardCategories[indexPath.row].categoryID
 		} else {
 			categoryID = customCategories[indexPath.row].categoryID
 		}
 		
-		categoryC.toggleCategorySelection(categoryID: categoryID)
+		// if this category is selected already then don't do anything
 		
-		//need to refresh local copy of the categories
-		getCategories()
-		delegate?.newCategorySelected()
-		delegate?.shouldReloadTable()
+		let currentCategoryID = categoryC.getSelectedCategory().categoryID
+		
+		if categoryID != currentCategoryID {
+			
+			categoryC.toggleCategorySelection(categoryID: categoryID)
+			
+			//need to refresh local copy of the categories
+			getCategories()
+			delegate?.newCategorySelected()
+			delegate?.shouldReloadTable()
+		}
 		
 	}
 	

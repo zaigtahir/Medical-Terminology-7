@@ -19,8 +19,10 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var randomButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var noFavoritesLabel: UILabel!
-    
+	
+	@IBOutlet weak var emptyListLabel: UILabel!
+	@IBOutlet weak var emptyListImage: UIImageView!
+	
     @IBOutlet weak var categoryLabelButton: UIButton!   //button listing the category name
     
     var utilities = Utilities()
@@ -64,7 +66,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         nextButton.layer.cornerRadius = myConstants.button_cornerRadius
         randomButton.layer.cornerRadius = myConstants.button_cornerRadius
         
-        noFavoritesLabel.text = myConstants.noFavoritesAvailableText
+        emptyListLabel.text = myConstants.noFavoritesAvailableText
 
     }
     
@@ -173,6 +175,8 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
 	
 	func newCategorySelected() {
 		flashCardVCH.updateCategory()
+		collectionView.reloadData()
+		updateDisplay()
 	}
 
     //update options

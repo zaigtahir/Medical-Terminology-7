@@ -200,13 +200,4 @@ class CategoryController {
 		return c
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
