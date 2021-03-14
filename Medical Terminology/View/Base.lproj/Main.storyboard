@@ -17,7 +17,7 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-gM-IpN">
@@ -97,7 +97,7 @@
                                             <color key="titleColor" name="color main"/>
                                         </state>
                                         <state key="disabled">
-                                            <color key="titleColor" name="color inactive icon"/>
+                                            <color key="titleColor" systemColor="systemGray4Color"/>
                                         </state>
                                         <connections>
                                             <action selector="redoButtonAction:" destination="Kng-lT-ZvC" eventType="touchUpInside" id="hN6-Eu-6ts"/>
@@ -223,7 +223,7 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
@@ -538,7 +538,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashCardHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpl-Rk-z7l">
@@ -596,47 +596,19 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="388" height="335"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question: 1 of 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeS-GM-bM1">
-                                                            <rect key="frame" x="20" y="20" width="348" height="17"/>
+                                                            <rect key="frame" x="20" y="20" width="115" height="17"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                             <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqe-i7-fIi">
-                                                            <rect key="frame" x="344" y="58" width="24" height="24"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="24" id="13k-Kl-qJB"/>
-                                                                <constraint firstAttribute="width" constant="24" id="KrT-D9-vCI"/>
-                                                            </constraints>
-                                                            <color key="tintColor" name="color inactive icon"/>
-                                                            <state key="normal" image="heart.fill" catalog="system">
-                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="favoriteButtonAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="EGP-R1-iS5"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-Hv-Jif">
-                                                            <rect key="frame" x="296" y="58" width="28" height="24"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="28" id="9aS-SK-TYU"/>
-                                                                <constraint firstAttribute="height" constant="24" id="vRN-cB-pnJ"/>
-                                                            </constraints>
-                                                            <color key="tintColor" name="color inactive icon"/>
-                                                            <state key="normal" image="speaker.fill" catalog="system">
-                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="playAudioAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="le6-6R-AqU"/>
-                                                            </connections>
-                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term Term Term" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Yem-cz-hUk">
-                                                            <rect key="frame" x="20" y="52" width="256" height="36"/>
+                                                            <rect key="frame" x="19.999999999999986" y="67" width="221.66666666666663" height="36"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                             <color key="textColor" name="color heading"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqo-T0-MQp">
-                                                            <rect key="frame" x="20" y="53.666666666666657" width="256" height="33"/>
+                                                            <rect key="frame" x="20" y="68.666666666666671" width="91" height="33"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <state key="normal" title="Show Term">
                                                                 <color key="titleColor" name="color main"/>
@@ -646,19 +618,19 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definition Definition Definition" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zby-jd-SQv">
-                                                            <rect key="frame" x="20" y="138" width="348" height="20.333333333333343"/>
+                                                            <rect key="frame" x="20" y="153" width="348" height="20.333333333333343"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8W-7c-jGz">
-                                                            <rect key="frame" x="20" y="178.33333333333334" width="348" height="20.333333333333343"/>
+                                                            <rect key="frame" x="20" y="193.33333333333334" width="348" height="20.333333333333343"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikh-n0-mc6">
-                                                            <rect key="frame" x="20" y="131.66666666666666" width="348" height="33"/>
+                                                            <rect key="frame" x="20" y="146.66666666666666" width="348" height="33"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <state key="normal" title="Show Definition  ">
                                                                 <color key="titleColor" name="color main"/>
@@ -667,40 +639,66 @@
                                                                 <action selector="showHiddenDefinitionButtonAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="xxx-GJ-VNv"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omj-fm-xHy">
-                                                            <rect key="frame" x="343.66666666666669" y="291.33333333333331" width="24.333333333333314" height="23.666666666666686"/>
-                                                            <color key="tintColor" name="color inactive icon"/>
-                                                            <state key="normal">
-                                                                <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
-                                                            </state>
-                                                        </button>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="tty-EJ-bzH">
+                                                            <rect key="frame" x="231.66666666666663" y="20" width="136.33333333333337" height="24"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omj-fm-xHy">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="24.333333333333332" height="24"/>
+                                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                                                    <state key="normal">
+                                                                        <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
+                                                                    </state>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-Hv-Jif">
+                                                                    <rect key="frame" x="54.333333333333343" y="0.0" width="28" height="24"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="28" id="9aS-SK-TYU"/>
+                                                                        <constraint firstAttribute="height" constant="24" id="vRN-cB-pnJ"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                                                    <state key="normal" image="speaker.fill" catalog="system">
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                    </state>
+                                                                    <connections>
+                                                                        <action selector="playAudioAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="le6-6R-AqU"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqe-i7-fIi">
+                                                                    <rect key="frame" x="112.33333333333334" y="0.0" width="24" height="24"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="24" id="13k-Kl-qJB"/>
+                                                                        <constraint firstAttribute="width" constant="24" id="KrT-D9-vCI"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                                                    <state key="normal" image="heart.fill" catalog="system">
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                    </state>
+                                                                    <connections>
+                                                                        <action selector="favoriteButtonAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="EGP-R1-iS5"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" name="color card background"/>
                                                     <constraints>
-                                                        <constraint firstItem="hMy-Hv-Jif" firstAttribute="leading" secondItem="Yem-cz-hUk" secondAttribute="trailing" constant="20" id="0tR-0Q-rRx"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Tqe-i7-fIi" secondAttribute="trailing" constant="20" id="2ih-ea-ckD"/>
                                                         <constraint firstAttribute="trailing" secondItem="Zby-jd-SQv" secondAttribute="trailing" constant="20" id="894-bf-Xsb"/>
-                                                        <constraint firstItem="Tqe-i7-fIi" firstAttribute="leading" secondItem="hMy-Hv-Jif" secondAttribute="trailing" constant="20" id="8mC-fh-JHE"/>
                                                         <constraint firstItem="I8W-7c-jGz" firstAttribute="top" secondItem="Zby-jd-SQv" secondAttribute="bottom" constant="20" id="9oe-Mf-sjs"/>
                                                         <constraint firstItem="ikh-n0-mc6" firstAttribute="leading" secondItem="Zby-jd-SQv" secondAttribute="leading" id="CO5-dR-Bqs"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tty-EJ-bzH" secondAttribute="trailing" constant="20" id="HzF-To-zrK"/>
                                                         <constraint firstItem="Jqo-T0-MQp" firstAttribute="leading" secondItem="Yem-cz-hUk" secondAttribute="leading" id="Jw5-Fv-JKN"/>
                                                         <constraint firstAttribute="trailing" secondItem="I8W-7c-jGz" secondAttribute="trailing" constant="20" id="Ko3-4r-OTd"/>
-                                                        <constraint firstItem="Yem-cz-hUk" firstAttribute="top" secondItem="MeS-GM-bM1" secondAttribute="bottom" constant="15" id="Mph-Fc-U3f"/>
+                                                        <constraint firstItem="Yem-cz-hUk" firstAttribute="top" secondItem="MeS-GM-bM1" secondAttribute="bottom" constant="30" id="Mph-Fc-U3f"/>
                                                         <constraint firstItem="Yem-cz-hUk" firstAttribute="leading" secondItem="neh-we-HIS" secondAttribute="leading" constant="20" id="PDN-7j-aTY"/>
-                                                        <constraint firstAttribute="trailing" secondItem="omj-fm-xHy" secondAttribute="trailing" constant="20" id="SmL-YL-zp7"/>
                                                         <constraint firstItem="ikh-n0-mc6" firstAttribute="centerY" secondItem="Zby-jd-SQv" secondAttribute="centerY" id="TJs-PG-Dsw"/>
                                                         <constraint firstItem="MeS-GM-bM1" firstAttribute="top" secondItem="neh-we-HIS" secondAttribute="top" constant="20" id="Ybm-V2-smx"/>
                                                         <constraint firstItem="I8W-7c-jGz" firstAttribute="leading" secondItem="Yem-cz-hUk" secondAttribute="leading" id="ai4-Zp-qbs"/>
-                                                        <constraint firstItem="hMy-Hv-Jif" firstAttribute="leading" secondItem="Jqo-T0-MQp" secondAttribute="trailing" constant="20" id="bS1-rn-N5w"/>
-                                                        <constraint firstItem="Tqe-i7-fIi" firstAttribute="centerY" secondItem="Yem-cz-hUk" secondAttribute="centerY" id="cHS-Wa-jtA"/>
-                                                        <constraint firstAttribute="trailing" secondItem="MeS-GM-bM1" secondAttribute="trailing" constant="20" id="eCH-Jm-KkW"/>
                                                         <constraint firstItem="Jqo-T0-MQp" firstAttribute="centerY" secondItem="Yem-cz-hUk" secondAttribute="centerY" id="fuR-ml-76j"/>
-                                                        <constraint firstAttribute="bottom" secondItem="omj-fm-xHy" secondAttribute="bottom" constant="20" id="j6a-Wz-iSc"/>
                                                         <constraint firstAttribute="trailing" secondItem="ikh-n0-mc6" secondAttribute="trailing" constant="20" id="pge-Sy-8io"/>
                                                         <constraint firstItem="Zby-jd-SQv" firstAttribute="leading" secondItem="Yem-cz-hUk" secondAttribute="leading" id="sJJ-oF-tjV"/>
-                                                        <constraint firstItem="hMy-Hv-Jif" firstAttribute="centerY" secondItem="Yem-cz-hUk" secondAttribute="centerY" id="ssy-Xs-a9g"/>
                                                         <constraint firstItem="MeS-GM-bM1" firstAttribute="leading" secondItem="neh-we-HIS" secondAttribute="leading" constant="20" id="uqn-oo-FCR"/>
                                                         <constraint firstItem="Zby-jd-SQv" firstAttribute="top" secondItem="Yem-cz-hUk" secondAttribute="bottom" constant="50" id="wMC-3F-Xhf"/>
+                                                        <constraint firstItem="tty-EJ-bzH" firstAttribute="top" secondItem="neh-we-HIS" secondAttribute="top" constant="20" id="yWn-ym-hhb"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -877,7 +875,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashCardOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -950,7 +948,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -1051,7 +1049,7 @@
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="ListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="lvj-Zi-9Ji" userLabel="favorites list empty">
@@ -1122,7 +1120,7 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="28" id="lec-lX-Ewe"/>
                                                                             </constraints>
-                                                                            <color key="tintColor" name="color inactive icon"/>
+                                                                            <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                                             <state key="normal" image="speaker.fill" catalog="system">
                                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                             </state>
@@ -1138,7 +1136,7 @@
                                                                                 <constraint firstAttribute="width" constant="24" id="utP-LP-0ls"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="5"/>
-                                                                            <color key="tintColor" name="color inactive icon"/>
+                                                                            <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                                             <state key="normal" title="Button" image="heart.fill" catalog="system">
                                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                             </state>
@@ -1287,7 +1285,7 @@
             <objects>
                 <viewController id="awX-yg-8xS" customClass="DItemVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4wH-cl-seN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L29-8G-zy9">
@@ -1389,7 +1387,7 @@
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-vJ-agb">
@@ -1599,7 +1597,7 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
@@ -1933,7 +1931,7 @@
             <objects>
                 <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -2187,7 +2185,7 @@
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
@@ -2492,7 +2490,7 @@
             <objects>
                 <viewController id="KTC-23-wdb" customClass="CategoryHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V6Z-tH-Ath">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W5i-R0-UWj">
@@ -2607,7 +2605,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QC9-rx-4CQ"/>
+        <segue reference="53X-B0-HYC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
@@ -2648,7 +2646,7 @@
             <color red="0.17647058823529413" green="0.17647058823529413" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color inactive icon">
-            <color red="0.61599999666213989" green="0.61599999666213989" blue="0.61599999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.61599999666213989" green="0.094867825508117676" blue="0.61599999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color main">
             <color red="0.32899999618530273" green="0.48600000143051147" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2673,6 +2671,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>

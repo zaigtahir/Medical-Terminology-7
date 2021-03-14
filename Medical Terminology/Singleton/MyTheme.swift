@@ -24,12 +24,14 @@ class MyTheme{
 	
 	//MARK: favorite color
     let colorFavorite = UIColor(named: "color favorite")
-    let colorNotFavorite = UIColor(named: "color inactive icon")
+	let colorNotFavorite = UIColor.secondaryLabel
     
     //MARK: Common colors
     let colorButtonEnabledTint = UIColor(named: "color text button")
     let colorButtonDisabled = UIColor(named: "color button disabled")
     let colorButtonDisabledTint = UIColor(named: "color inactive icon")
+	
+	
     let colorCardBorder = UIColor(named: "color card border")
 	
     let colorCorrect = UIColor(named: "color correct")
