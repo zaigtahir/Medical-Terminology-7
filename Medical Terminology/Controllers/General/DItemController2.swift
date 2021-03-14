@@ -97,13 +97,23 @@ class DItemController2 {
 		return itemIDs
 	}
 	
-	private func getCount (query: String) -> Int {
+	func getCount (categoryType: CategoryType, whereQuery: String) -> Int {
+		
+		//make table name
+		var table: String
+
+		if categoryType == .standard {
+			table = "dictionary"
+		} else {
+			table = "assignedCategories"
+		}
+		
+		var query = "SELECT COUNT(*) FROM \(table) \(whereQuery)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
-			return Int(resultSet.int(forColumnIndex: 0))
+			return Int( resultSet.int(forColumnIndex: 0) )
 		} else {
-			print("problem creating the resultSet in getCount")
 			return 0
 		}
 	}

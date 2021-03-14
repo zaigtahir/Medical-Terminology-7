@@ -57,7 +57,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         nextButton.isEnabled = true
         
         favoritesSwitch.layer.cornerRadius = 16
-        favoritesSwitch.isOn = flashCardVCH.getFavoriteMode()
+		favoritesSwitch.isOn = flashCardVCH.showFavoritesOnly
         favoritesSwitch.onTintColor = myTheme.colorFavorite
         
         previousButton.layer.cornerRadius = myConstants.button_cornerRadius
@@ -70,7 +70,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     
     override func viewWillAppear(_ animated: Bool) {
         
-        if flashCardVCH.getFavoriteMode() {
+		if flashCardVCH.showFavoritesOnly {
             //if favorite mode, update the display incase the favorites were changed in another tab
             updateDisplay()
         }
@@ -81,23 +81,14 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if flashCardVCH.getFavoriteMode(){
-            return flashCardVCH.listFavorite.count
-        } else {
-            return flashCardVCH.listFull.count
-        }
+		flashCardVCH.itemIDs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashCardCell", for: indexPath) as! FlashCardCVCell
-        var flashCardList: [Int]
         
-        if flashCardVCH.getFavoriteMode() {
-            flashCardList = flashCardVCH.listFavorite
-        } else {
-            flashCardList = flashCardVCH.listFull
-        }
+		var flashCardList = flashCardVCH.itemIDs
         
         //the cell should configure itself
         let dItem  = dIC.getDItem(itemID: flashCardList[indexPath.row])
@@ -109,26 +100,23 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     
     func updateDisplay () {
         
-        let favoriteCount = dIC.getCount(favoriteState: 1) // get live count
+		let favoriteCount = flashCardVCH.getFavoriteCount()
         
-        if favoriteCount == 0 && flashCardVCH.getFavoriteMode() {
+		if favoriteCount == 0 && flashCardVCH.showFavoritesOnly {
             collectionView.isHidden = true
         } else {
             collectionView.isHidden = false
         }
+		
+		categoryLabelButton.setTitle(flashCardVCH.categoryName, for: .normal)
         
         //configure and position the slider
         sliderOutlet.minimumValue = 0
-        
-        if flashCardVCH.getFavoriteMode() {
-            sliderOutlet.maximumValue = Float(flashCardVCH.listFavorite.count - 1)
-        } else {
-            sliderOutlet.maximumValue  = Float(flashCardVCH.listFull.count - 1)
-        }
+		
+		sliderOutlet.maximumValue = Float(flashCardVCH.itemIDs.count - 1)
         
         sliderOutlet.value = Float (scrollDelegate.getCellIndex(collectionView: collectionView))
         favoritesLabel.text = "\(favoriteCount)"
-        
         updateButtons()
         
     }
@@ -188,7 +176,8 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     //update options
     
     @IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
-        flashCardVCH.setFavoriteMode(isFavoriteMode: sender.isOn)
+		flashCardVCH.showFavoritesOnly = sender.isOn
+		flashCardVCH.makeList()
         collectionView.reloadData()
         updateDisplay()
     }
