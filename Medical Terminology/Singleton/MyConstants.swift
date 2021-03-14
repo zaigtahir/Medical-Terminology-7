@@ -39,6 +39,4 @@ class MyConstants {
     let segue_catetories = "segue_categories"
     
     let requeueInterval = 7 //interval to requeue a question in a learning set if it is answered wrong
-    
-    
 }

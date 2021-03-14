@@ -10,50 +10,27 @@ import UIKit
 
 class FlashCardVCH {
 	
-	private var favoriteMode = false
-	private var categoryToView = 0
+	//holds state of the view
+	var showFavoritesOnly = false
+	var categoryType: CategoryType = .standard
+	var categoryID = 1
 	
 	var viewMode : FlashCardViewMode = .both
 	
-	var listFull = [Int]()	// full list of the given category
-	var listFavorite = [Int]()	// favorite list of the given category
+	var ItemIDs = [Int]()	// list to show
 	
 	let dIC  = DItemController()
 	let dIC2 = DItemController2()
 	
 	init() {
-		
-		//listFull  = dIC.getItemIDs(favoriteState: -1, learnedState: -1)
-		//listFavorite  = dIC.getItemIDs(favoriteState: 1, learnedState: -1)
-	
-		makeLists(categoryType: .standard, categoryID: 1)
+			makeList()
 	}
 	
-	func makeLists (categoryType: CategoryType, categoryID: Int) {
+	func makeList () {
+		//make the list based on the view state values
+		let whereString = dIC2.whereString(catetoryType: categoryType, categoryID: categoryID, isFavorite: showFavoritesOnly, answeredTerm: .none, answeredDefinition: .none, learnedState: .none)
 		
-		// make full list
-		let query = dIC2.whereString(catetoryType: categoryType, categoryID: categoryID, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learnedState: .none)
-		
-		print (query)
-		listFull = dIC2.getItemIDs(categoryType: categoryType, whereQuery: query)
-		
-		// make favorite list
-		let queryFavorite = dIC2.whereString(catetoryType: categoryType, categoryID: categoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learnedState: .none)
-		listFavorite = dIC2.getItemIDs(categoryType: categoryType, whereQuery: queryFavorite)
-		
-	}
-	
-	func setFavoriteMode (isFavoriteMode: Bool) {
-		if isFavoriteMode {
-			self.favoriteMode = true
-			listFavorite = dIC.getItemIDs(favoriteState: 1, learnedState: -1)
-		} else {
-			self.favoriteMode = false
-		}
-	}
-	
-	func getFavoriteMode () -> Bool {
-		return favoriteMode
+		let itemIDs  = dIC2.getItemIDs(categoryType: categoryType, whereQuery: whereString)
 	}
 	
 }

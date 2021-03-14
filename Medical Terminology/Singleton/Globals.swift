@@ -54,7 +54,3 @@ enum AnsweredState: Int {
 	case incorrect = 2
 }
 
-enum Order {
-	case alphabetical
-	case random
-}
