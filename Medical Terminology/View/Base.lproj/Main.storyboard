@@ -711,6 +711,32 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="j9s-jR-9ad">
+                                <rect key="frame" x="263.66666666666669" y="20" width="130.33333333333331" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWi-Yc-nZe">
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="color text"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTC-Yl-k2v">
+                                        <rect key="frame" x="67" y="0.0" width="9.3333333333333286" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="color text"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBg-dp-gzS">
+                                        <rect key="frame" x="81.333333333333314" y="0.0" width="51" height="31"/>
+                                        <color key="tintColor" name="color card background"/>
+                                        <color key="onTintColor" name="color favorite"/>
+                                        <color key="thumbTintColor" name="color thumb tint"/>
+                                        <connections>
+                                            <action selector="favoritesSwitchChanged:" destination="1VE-GN-9V0" eventType="valueChanged" id="1Cv-es-mvx"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RQI-u8-z2t">
                                 <rect key="frame" x="20" y="573" width="374" height="50"/>
                                 <subviews>
@@ -755,10 +781,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pDr-Vv-jUb">
-                                <rect key="frame" x="20.000000000000014" y="20" width="233.33333333333337" height="31"/>
+                                <rect key="frame" x="20" y="20" width="98" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cp7-5L-QHV">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="MUh-fC-J9S"/>
                                         </constraints>
@@ -772,39 +798,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9En-gK-Fw0">
-                                        <rect key="frame" x="35" y="0.0" width="63" height="31"/>
+                                        <rect key="frame" x="35" y="0.0" width="63" height="30"/>
                                         <color key="tintColor" name="color text"/>
                                         <state key="normal" title="Category"/>
                                         <connections>
                                             <action selector="categoryLabelButtonAction:" destination="1VE-GN-9V0" eventType="touchUpInside" id="Hi0-Yk-cE3"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="j9s-jR-9ad">
-                                        <rect key="frame" x="103.00000000000001" y="0.0" width="130.33333333333337" height="31"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWi-Yc-nZe">
-                                                <rect key="frame" x="0.0" y="0.0" width="62" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" name="color text"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTC-Yl-k2v">
-                                                <rect key="frame" x="67" y="0.0" width="9.3333333333333286" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" name="color text"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBg-dp-gzS">
-                                                <rect key="frame" x="81.333333333333343" y="0.0" width="51" height="31"/>
-                                                <color key="tintColor" name="color card background"/>
-                                                <color key="onTintColor" name="color favorite"/>
-                                                <color key="thumbTintColor" name="color thumb tint"/>
-                                                <connections>
-                                                    <action selector="favoritesSwitchChanged:" destination="1VE-GN-9V0" eventType="valueChanged" id="1Cv-es-mvx"/>
-                                                </connections>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -814,7 +814,9 @@
                             <constraint firstItem="Gpl-Rk-z7l" firstAttribute="top" secondItem="eIr-cV-KmX" secondAttribute="top" constant="65" id="0yW-de-IRG"/>
                             <constraint firstItem="eIr-cV-KmX" firstAttribute="trailing" secondItem="3rO-b0-lzN" secondAttribute="trailing" id="7q7-9i-66I"/>
                             <constraint firstItem="3rO-b0-lzN" firstAttribute="leading" secondItem="eIr-cV-KmX" secondAttribute="leading" id="AXi-60-fVS"/>
+                            <constraint firstItem="j9s-jR-9ad" firstAttribute="top" secondItem="eIr-cV-KmX" secondAttribute="top" constant="20" id="BOG-Wr-RkO"/>
                             <constraint firstItem="3rO-b0-lzN" firstAttribute="leading" secondItem="eIr-cV-KmX" secondAttribute="leading" id="DFX-Ud-bd1"/>
+                            <constraint firstItem="eIr-cV-KmX" firstAttribute="trailing" secondItem="j9s-jR-9ad" secondAttribute="trailing" constant="20" id="GpJ-4O-RUQ"/>
                             <constraint firstItem="RQI-u8-z2t" firstAttribute="leading" secondItem="eIr-cV-KmX" secondAttribute="leading" constant="20" id="MeC-K9-v4O"/>
                             <constraint firstItem="3rO-b0-lzN" firstAttribute="top" secondItem="Gpl-Rk-z7l" secondAttribute="bottom" constant="20" id="XM3-ji-bxl"/>
                             <constraint firstItem="MHc-qK-9An" firstAttribute="centerY" secondItem="eIr-cV-KmX" secondAttribute="centerY" id="YAX-Dd-IdJ"/>

@@ -8,8 +8,12 @@
 
 import UIKit
 
+protocol CategoryHomeVCDelegate: class {
+	func categorySelectionChanged (newCategoryID: Int)
+}
+
 class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
-	
+
 	@IBOutlet weak var tableView: UITableView!
 	
 	@IBOutlet weak var addCustomCategoryButton: UIButton!
@@ -19,6 +23,8 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	let categoryC = CategoryController()	// here so i can use it to check for duplicate category name the user enters
 	
 	let utilities = Utilities() 			// here so I can clean up the user text entry
+	
+	weak var delegate: CategoryHomeVCDelegate?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -113,6 +119,11 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
 	func shouldReloadTable() {
 		tableView.reloadData()
+	}
+	
+	func categoryChanged(newCategoryID: Int) {
+		//notifying the controller that called this category VC
+		delegate?.categorySelectionChanged(newCategoryID: newCategoryID)
 	}
 	
 	//MARK: End Delegate functions for CategoryHomeVCHDelegate

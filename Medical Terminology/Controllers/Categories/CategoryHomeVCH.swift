@@ -14,6 +14,7 @@ protocol CategoryHomeVCHDelegate: class {
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
 	func requestDeleteCategory (categoryID: Int, name: String)
+	func categoryChanged(newCategoryID: Int)
 	func shouldReloadTable ()
 }
 
@@ -137,7 +138,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-		return true
 		
 		if indexPath.section == 0 {
 			return false 	//do not allow to edit the standard rows
@@ -160,7 +160,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		
 		//need to refresh local copy of the categories
 		getCategories()
-		
+		delegate?.categoryChanged(newCategoryID: categoryID)
 		delegate?.shouldReloadTable()
 		
 	}

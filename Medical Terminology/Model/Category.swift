@@ -15,14 +15,21 @@ class Category {
     var categoryID = 0
     var name = "none"
     var description = "none"
-    var type: Int = 0
+	var type = CategoryType.standard
     var displayOrder = 0
 	var selected = false
     
     // just reminder never use category with ID 999 as it's just a placeholder in the database
     // for ordering the standard categories, use 1 onward.
 	
-	init(categoryID: Int, name: String, description: String, type: Int, displayOrder: Int, selected: Bool){
+	init() {
+
+	}
+	
+	convenience init(categoryID: Int, name: String, description: String, type: CategoryType, displayOrder: Int, selected: Bool){
+		
+		self.init()
+		
 		self.categoryID = categoryID
         self.name = name
         self.description = description

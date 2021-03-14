@@ -180,12 +180,23 @@ class CategoryController {
 		let c = Category(categoryID: categoryID,
 						 name: name,
 						 description: description,
-						 type: type,
+						 type: CategoryType(rawValue: type) ?? CategoryType.standard,
 						 displayOrder: displayOrder,
 						 selected: s
 		)
 		
 		return c
 	}
+
+	
+	//MARK: catetory functions with catetory types
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

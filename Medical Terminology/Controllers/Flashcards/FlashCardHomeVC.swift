@@ -10,8 +10,8 @@
 
 import UIKit
 
-class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FCFavoritePressedDelegate, FCVModeChangedDelegate {
-    
+class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FCFavoritePressedDelegate, FCVModeChangedDelegate, CategoryHomeVCDelegate {
+	
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var favoritesLabel: UILabel!
     @IBOutlet weak var favoritesSwitch: UISwitch!
@@ -108,7 +108,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
             collectionView.isHidden = false
         }
 		
-		categoryLabelButton.setTitle(flashCardVCH.categoryName, for: .normal)
+		categoryLabelButton.setTitle(flashCardVCH.category.name, for: .normal)
         
         //configure and position the slider
         sliderOutlet.minimumValue = 0
@@ -173,6 +173,12 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         collectionView.reloadItems(at: [IndexPath(row: cellIndex, section: 0)])
     }
     
+	// MARK: Delegate fuctions for CategoryHomeVCDelegate
+	
+	func categorySelectionChanged(newCategoryID: Int) {
+		flashCardVCH.updateCategory(categoryID: newCategoryID)
+	}
+
     //update options
     
     @IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
