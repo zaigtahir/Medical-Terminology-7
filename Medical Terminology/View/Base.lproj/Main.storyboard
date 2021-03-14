@@ -606,19 +606,23 @@
                                                                 <constraint firstAttribute="width" constant="24" id="KrT-D9-vCI"/>
                                                             </constraints>
                                                             <color key="tintColor" name="color inactive icon"/>
-                                                            <state key="normal" image="heart3"/>
+                                                            <state key="normal" image="heart.fill" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                            </state>
                                                             <connections>
                                                                 <action selector="favoriteButtonAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="EGP-R1-iS5"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-Hv-Jif">
+                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-Hv-Jif">
                                                             <rect key="frame" x="296" y="58" width="28" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="28" id="9aS-SK-TYU"/>
                                                                 <constraint firstAttribute="height" constant="24" id="vRN-cB-pnJ"/>
                                                             </constraints>
                                                             <color key="tintColor" name="color inactive icon"/>
-                                                            <state key="normal" image="speakerC"/>
+                                                            <state key="normal" image="speaker.fill" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                            </state>
                                                             <connections>
                                                                 <action selector="playAudioAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="le6-6R-AqU"/>
                                                             </connections>
@@ -1102,13 +1106,15 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Olq-jl-L68">
                                                                     <rect key="frame" x="302" y="0.0" width="72" height="24"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qka-vl-NQZ">
+                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qka-vl-NQZ">
                                                                             <rect key="frame" x="0.0" y="0.0" width="28" height="24"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="28" id="lec-lX-Ewe"/>
                                                                             </constraints>
                                                                             <color key="tintColor" name="color inactive icon"/>
-                                                                            <state key="normal" image="speakerC"/>
+                                                                            <state key="normal" image="speaker.fill" catalog="system">
+                                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                            </state>
                                                                             <connections>
                                                                                 <action selector="playAudioAction:" destination="awX-yg-8xS" eventType="touchUpInside" id="sfy-zF-Bov"/>
                                                                                 <action selector="playAudioButtonAction:" destination="YEn-IV-khC" eventType="touchUpInside" id="LOc-Re-tIe"/>
@@ -1122,7 +1128,9 @@
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="5"/>
                                                                             <color key="tintColor" name="color inactive icon"/>
-                                                                            <state key="normal" title="Button" image="heart3"/>
+                                                                            <state key="normal" title="Button" image="heart.fill" catalog="system">
+                                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                            </state>
                                                                             <connections>
                                                                                 <action selector="favoriteButtonAction:" destination="YEn-IV-khC" eventType="touchUpInside" id="FmL-WC-8BS"/>
                                                                             </connections>
@@ -1292,26 +1300,30 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="76t-kr-7Cf">
-                                        <rect key="frame" x="282" y="26" width="72" height="24"/>
+                                        <rect key="frame" x="282" y="27" width="72" height="22"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KmD-lq-34v">
-                                                <rect key="frame" x="0.0" y="0.0" width="28" height="24"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KmD-lq-34v">
+                                                <rect key="frame" x="0.0" y="0.0" width="28" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="28" id="xH3-u7-sfe"/>
                                                 </constraints>
                                                 <color key="tintColor" name="color inactive icon"/>
-                                                <state key="normal" image="speakerC"/>
+                                                <state key="normal" image="speaker.fill" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="playAudioAction:" destination="awX-yg-8xS" eventType="touchUpInside" id="kuX-n6-bW7"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReI-LS-UGd">
-                                                <rect key="frame" x="48" y="0.0" width="24" height="24"/>
+                                                <rect key="frame" x="48" y="0.0" width="24" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="Dye-An-6fJ"/>
                                                 </constraints>
                                                 <color key="tintColor" name="color inactive icon"/>
-                                                <state key="normal" image="heart3"/>
+                                                <state key="normal" image="heart.fill" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="favoriteButtonAction:" destination="awX-yg-8xS" eventType="touchUpInside" id="lXK-41-kgk"/>
                                                 </connections>
@@ -2583,7 +2595,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QC9-rx-4CQ"/>
+        <segue reference="53X-B0-HYC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
@@ -2597,7 +2609,7 @@
         <image name="gradeCircle" width="150" height="150"/>
         <image name="hear" width="128" height="128"/>
         <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="heart3" width="24" height="24"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="heart_gray_64" width="64" height="64"/>
         <image name="info" width="30" height="30"/>
         <image name="learn_book" width="25" height="25"/>
@@ -2606,7 +2618,7 @@
         <image name="quiz3" width="25" height="25"/>
         <image name="redo" width="22" height="19.333333969116211"/>
         <image name="settings zt" width="24" height="24"/>
-        <image name="speakerC" width="28" height="24"/>
+        <image name="speaker.fill" catalog="system" width="128" height="128"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="124"/>
         <namedColor name="color card background">
             <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
