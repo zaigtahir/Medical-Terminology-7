@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -515,6 +516,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Learning Set" id="5gj-tt-Ldl">
                         <barButtonItem key="rightBarButtonItem" image="arrow.counterclockwise" catalog="system" id="86J-Qp-rEy">
+                            <color key="tintColor" name="color text"/>
                             <connections>
                                 <action selector="optionsButtonAction:" destination="jnX-w5-48g" id="Eh9-X5-7P7"/>
                             </connections>
@@ -665,6 +667,13 @@
                                                                 <action selector="showHiddenDefinitionButtonAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="xxx-GJ-VNv"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omj-fm-xHy">
+                                                            <rect key="frame" x="343.66666666666669" y="291.33333333333331" width="24.333333333333314" height="23.666666666666686"/>
+                                                            <color key="tintColor" name="color inactive icon"/>
+                                                            <state key="normal">
+                                                                <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
+                                                            </state>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" name="color card background"/>
                                                     <constraints>
@@ -678,6 +687,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="I8W-7c-jGz" secondAttribute="trailing" constant="20" id="Ko3-4r-OTd"/>
                                                         <constraint firstItem="Yem-cz-hUk" firstAttribute="top" secondItem="MeS-GM-bM1" secondAttribute="bottom" constant="15" id="Mph-Fc-U3f"/>
                                                         <constraint firstItem="Yem-cz-hUk" firstAttribute="leading" secondItem="neh-we-HIS" secondAttribute="leading" constant="20" id="PDN-7j-aTY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="omj-fm-xHy" secondAttribute="trailing" constant="20" id="SmL-YL-zp7"/>
                                                         <constraint firstItem="ikh-n0-mc6" firstAttribute="centerY" secondItem="Zby-jd-SQv" secondAttribute="centerY" id="TJs-PG-Dsw"/>
                                                         <constraint firstItem="MeS-GM-bM1" firstAttribute="top" secondItem="neh-we-HIS" secondAttribute="top" constant="20" id="Ybm-V2-smx"/>
                                                         <constraint firstItem="I8W-7c-jGz" firstAttribute="leading" secondItem="Yem-cz-hUk" secondAttribute="leading" id="ai4-Zp-qbs"/>
@@ -685,6 +695,7 @@
                                                         <constraint firstItem="Tqe-i7-fIi" firstAttribute="centerY" secondItem="Yem-cz-hUk" secondAttribute="centerY" id="cHS-Wa-jtA"/>
                                                         <constraint firstAttribute="trailing" secondItem="MeS-GM-bM1" secondAttribute="trailing" constant="20" id="eCH-Jm-KkW"/>
                                                         <constraint firstItem="Jqo-T0-MQp" firstAttribute="centerY" secondItem="Yem-cz-hUk" secondAttribute="centerY" id="fuR-ml-76j"/>
+                                                        <constraint firstAttribute="bottom" secondItem="omj-fm-xHy" secondAttribute="bottom" constant="20" id="j6a-Wz-iSc"/>
                                                         <constraint firstAttribute="trailing" secondItem="ikh-n0-mc6" secondAttribute="trailing" constant="20" id="pge-Sy-8io"/>
                                                         <constraint firstItem="Zby-jd-SQv" firstAttribute="leading" secondItem="Yem-cz-hUk" secondAttribute="leading" id="sJJ-oF-tjV"/>
                                                         <constraint firstItem="hMy-Hv-Jif" firstAttribute="centerY" secondItem="Yem-cz-hUk" secondAttribute="centerY" id="ssy-Xs-a9g"/>
@@ -1900,6 +1911,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Quiz" id="tEx-Lj-kuX">
                         <barButtonItem key="rightBarButtonItem" image="arrow.counterclockwise" catalog="system" id="J3b-ah-3P4">
+                            <color key="tintColor" name="color text"/>
                             <connections>
                                 <action selector="optionsButtonAction:" destination="YaF-0P-3vu" id="wpk-3e-Nmc"/>
                             </connections>
@@ -2595,7 +2607,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="53X-B0-HYC"/>
+        <segue reference="QC9-rx-4CQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
