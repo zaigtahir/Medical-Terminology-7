@@ -60,6 +60,18 @@ class CategoryController {
 		
 	}
 	
+	func getSelectedCategory () -> Category {
+		let query = "SELECT * FROM categories WHERE selected = 1"
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			return makeCategoryFromResultset(resultSet: resultSet)
+		} else {
+			print ("fatal error getting resultset in getSelectedCategory")
+			return Category()
+		}
+	}
+	
 	func getCategoryIDs (whereStatment: String) -> [Int] {
 		
 		//will return the id's of the category
@@ -188,8 +200,6 @@ class CategoryController {
 		return c
 	}
 
-	
-	//MARK: catetory functions with catetory types
 	
 	
 	

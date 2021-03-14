@@ -16,18 +16,21 @@ class FlashCardVCH {
 	
 	var viewMode : FlashCardViewMode = .both
 	
+	let categoryC = CategoryController()
+	
 	var itemIDs = [Int]()	// list to show
 	
 	let dIC  = DItemController()
 	let dIC2 = DItemController2()
 	
 	init() {
-		updateCategory(categoryID: 1)
+		//set up categoryID = 1 as the initial category selection in DB and locally
+		updateCategory()
 	}
 	
-	func updateCategory (categoryID: Int) {
+	func updateCategory () {
 		let categoryC = CategoryController()
-		category = categoryC.getCategory(categoryID: 1)!
+		category = categoryC.getSelectedCategory()
 		makeList()
 	}
 	

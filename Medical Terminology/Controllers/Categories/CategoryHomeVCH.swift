@@ -14,7 +14,7 @@ protocol CategoryHomeVCHDelegate: class {
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
 	func requestDeleteCategory (categoryID: Int, name: String)
-	func categoryChanged(newCategoryID: Int)
+	func newCategorySelected ()
 	func shouldReloadTable ()
 }
 
@@ -160,7 +160,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		
 		//need to refresh local copy of the categories
 		getCategories()
-		delegate?.categoryChanged(newCategoryID: categoryID)
+		delegate?.newCategorySelected()
 		delegate?.shouldReloadTable()
 		
 	}

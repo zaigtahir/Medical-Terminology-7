@@ -65,16 +65,11 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
         randomButton.layer.cornerRadius = myConstants.button_cornerRadius
         
         noFavoritesLabel.text = myConstants.noFavoritesAvailableText
-        updateDisplay()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-		if flashCardVCH.showFavoritesOnly {
-            //if favorite mode, update the display incase the favorites were changed in another tab
             updateDisplay()
-        }
-        
     }
     
     //MARK: - DataSourceFunctions
@@ -141,6 +136,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
             vc.delegate = self
         } else if segue.identifier == myConstants.segue_catetories {
             let vc = segue.destination as! CategoryHomeVC
+			vc.delegate = self
             
         } else {
             if isDevelopmentMode {
@@ -175,8 +171,8 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
     
 	// MARK: Delegate fuctions for CategoryHomeVCDelegate
 	
-	func categorySelectionChanged(newCategoryID: Int) {
-		flashCardVCH.updateCategory(categoryID: newCategoryID)
+	func newCategorySelected() {
+		flashCardVCH.updateCategory()
 	}
 
     //update options

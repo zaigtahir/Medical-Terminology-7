@@ -9,11 +9,11 @@
 import UIKit
 
 protocol CategoryHomeVCDelegate: class {
-	func categorySelectionChanged (newCategoryID: Int)
+	func newCategorySelected()
 }
 
 class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
-
+	
 	@IBOutlet weak var tableView: UITableView!
 	
 	@IBOutlet weak var addCustomCategoryButton: UIButton!
@@ -121,9 +121,9 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		tableView.reloadData()
 	}
 	
-	func categoryChanged(newCategoryID: Int) {
+	func newCategorySelected()  {
 		//notifying the controller that called this category VC
-		delegate?.categorySelectionChanged(newCategoryID: newCategoryID)
+		delegate?.newCategorySelected()
 	}
 	
 	//MARK: End Delegate functions for CategoryHomeVCHDelegate
