@@ -15,8 +15,10 @@ protocol CategoryHomeVCDelegate: class {
 class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
 	@IBOutlet weak var tableView: UITableView!
-	
 	@IBOutlet weak var addCustomCategoryButton: UIButton!
+	@IBOutlet weak var messageLabel: UILabel!
+	@IBOutlet weak var emptyListImage: UIImageView!
+	@IBOutlet weak var emptyListLabel: UILabel!
 	
 	let categoryHomeVCH = CategoryHomeVCH()
 	
@@ -36,6 +38,8 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		categoryHomeVCH.delegate = self
 		
 		addCustomCategoryButton.layer.cornerRadius = myConstants.button_cornerRadius
+		
+		tableView.isHidden = true
 		
 	}
 	
