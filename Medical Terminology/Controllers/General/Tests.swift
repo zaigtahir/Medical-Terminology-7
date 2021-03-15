@@ -16,8 +16,9 @@ class Tests {
 	let dIC3 = DItemController3()
 	
 	func test () {
-		print (dIC3.getTermCount(categoryID: 0))
-		print (dIC3.getTermCount(categoryID: 3))
-		print (dIC3.getTermCount(categoryID: 1006))
+		dIC3.getTermCount(categoryID: 0, isFavorite: .none)
+		dIC3.getTermCount(categoryID: 10, isFavorite: true)
+		dIC3.getTermCount(categoryID: 0, isFavorite: false)
+		dIC3.getTermCount(categoryID: 0, isFavorite: true)
 	}
 }
