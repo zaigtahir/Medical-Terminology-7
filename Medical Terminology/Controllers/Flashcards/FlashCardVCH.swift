@@ -34,18 +34,14 @@ class FlashCardVCH {
 	
 	func makeList () {
 		//make the list based on the view state values
-		let whereString = dIC2.whereString(catetoryType: currentCategory.type, categoryID: currentCategory.categoryID, isFavorite: showFavoritesOnly, answeredTerm: .none, answeredDefinition: .none, learnedState: .none)
 		
-		itemIDs  = dIC2.getItemIDs(categoryType: currentCategory.type, whereQuery: whereString)
+		itemIDs  = [1,2,3,4,5,6]
 	}
 	
 	func getFavoriteCount () -> Int {
-		//return the count of favorites or this catetory
-		let whereString = dIC2.whereString(catetoryType: currentCategory.type, categoryID: currentCategory.categoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learnedState: .none)
-		
-		let favoritesCount = dIC2.getCount(categoryType: currentCategory.type, whereQuery: whereString)
-	
-		return favoritesCount
+		//return the count of favorites or this catetor
+
+		return 777
 	}
 	
 }

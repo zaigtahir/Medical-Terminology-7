@@ -15,7 +15,6 @@ class Category {
     var categoryID = 0
     var name = "none"
     var description = "none"
-	var type = CategoryType.standard
     var displayOrder = 0
 	var selected = false
     
@@ -26,14 +25,13 @@ class Category {
 
 	}
 	
-	convenience init(categoryID: Int, name: String, description: String, type: CategoryType, displayOrder: Int, selected: Bool){
+	convenience init(categoryID: Int, name: String, description: String, displayOrder: Int, selected: Bool){
 		
 		self.init()
 		
 		self.categoryID = categoryID
         self.name = name
         self.description = description
-        self.type = type
         self.displayOrder = displayOrder
 		self.selected = selected
 		

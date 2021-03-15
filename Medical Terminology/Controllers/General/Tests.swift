@@ -16,8 +16,8 @@ class Tests {
 	let dIC3 = DItemController3()
 	
 	func test () {
-		dIC3.getTermCount(categoryID: 0, isFavorite: true, learned: false)
-		dIC3.getTermCount(categoryID: 1002, isFavorite: .none, learned: .none)
-		dIC3.getTermCount(categoryID: 10, isFavorite: true, learned: true)
+		let a = dIC3.whereQuery(categoryID: 0, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: true, learnedTerm: .none, learnedDefinition: .none)
+		
+		print (a)
 	}
 }

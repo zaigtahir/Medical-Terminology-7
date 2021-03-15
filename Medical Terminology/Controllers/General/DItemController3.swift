@@ -23,20 +23,28 @@ class DItemController3 {
 	let tableMain = "dictionary"
 	let tableUser = "assignedCategories"
 	
-	/*
-	returns the number of favorite terms in this category
-	*/
-	
-	private func whereQuery (categoryID: Int, isFavorite: Bool?, learned: Bool?) {
+	func whereQuery (categoryID: Int,
+					 isFavorite: Bool?,
+					 answeredTerm: AnsweredState?,
+					 answeredDefinition: AnsweredState?,
+					 learned: Bool?,
+					 learnedTerm: Bool?,
+					 learnedDefinition: Bool?) -> String {
 		
 		let tableString = self.tableString(categoryID: categoryID)
 		let categoryString = self.categoryString(categoryID: categoryID)
 		let favoriteString = self.favorteString(isFavorite: isFavorite)
+		
 		let learnedString = self.learnedString(learned: learned)
+		let learnedTermString = self.learnedTermString(learnedTerm: learnedTerm)
+		let learnedDefinitionString = self.learnedDefinitionString(learnedDefinition: learnedDefinition)
 		
-		let query = "SELECT COUNT (*) FROM \(tableString) WHERE \(categoryString) \(favoriteString) \(learnedString)"
+		let answeredTermString = self.answeredTermString(state: answeredTerm)
+		let answeredDefinitionString = self.answeredDefinitionString(state: answeredDefinition)
 		
-		print (query)
+		let query = "SELECT COUNT (*) FROM \(tableString) WHERE \(categoryString) \(favoriteString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString)"
+		
+		return query
 	}
 	
 	// MARK: WHERE string components
@@ -95,13 +103,49 @@ class DItemController3 {
 			if s {
 				result = "AND (learnedTerm = 1 AND learnedDefinition = 1)"
 			}
-		} else {
-			result = "AND (learnedTerm = 0 OR learnedDefinition = 0)"
+			else {
+				result = "AND (learnedTerm = 0 OR learnedDefinition = 0)"
+			}
 		}
 		return result!
 	}
 	
-	private func answeredTerm (state: AnsweredState?) -> String {
+	private func learnedTermString (learnedTerm: Bool?) -> String {
+		
+		// make learnedString string
+		
+		var result: String? = ""
+		
+		if let s = learnedTerm {
+			if s {
+				result = "AND learnedTerm = 1"
+			}
+			else {
+				result = "AND learnedTerm = 0"
+			}
+		}
+		return result!
+	}
+	
+	private func learnedDefinitionString (learnedDefinition: Bool?) -> String {
+		
+		// make learnedString string
+		
+		var result: String? = ""
+		
+		if let s = learnedDefinition {
+			if s {
+				result = "AND learnedDefinition = 1"
+			}
+			else {
+				result = "AND learnedDefinition = 0"
+			}
+		}
+		
+		return result!
+	}
+	
+	private func answeredTermString (state: AnsweredState?) -> String {
 		
 		// make learnedString string
 		// consider the item learned with both the learnedTerm and learnedDefinition are marked 1
@@ -114,7 +158,7 @@ class DItemController3 {
 		return result!
 	}
 	
-	private func answeredDefinition (state: AnsweredState?) -> String {
+	private func answeredDefinitionString (state: AnsweredState?) -> String {
 		
 		// make learnedString string
 		// consider the item learned with both the learnedTerm and learnedDefinition are marked 1
@@ -127,20 +171,5 @@ class DItemController3 {
 		return result!
 	}
 	
-	private func learnedDefinition (learnedDefinition: Bool?) -> String {
-		
-		// make learnedString string
-		
-		var result: String? = ""
-		
-		if let s = learnedDefinition {
-			result = "AND learnedDefinition = 1"
-		} else {
-			result = "AND learnedDefinition = 0"
-		}
-		return result!
-	}
-	
-	
-	
 }
+
