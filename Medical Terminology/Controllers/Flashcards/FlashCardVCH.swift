@@ -19,6 +19,7 @@ class FlashCardVCH {
 	
 	var itemIDs = [Int]()	// list to show
 	
+
 	let dIC2 = DItemController2()
 	
 	init() {
