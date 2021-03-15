@@ -18,7 +18,6 @@ protocol CategoryHomeVCHDelegate: class {
 	func shouldReloadTable ()
 }
 
-
 class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	
 	// manage the datatable source
@@ -32,7 +31,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	let sectionCustom = 0
 	let sectionStandard = 1
 	
-	var hideStandardCategories = false
+	let displayMode = CategoryViewMode.selectCategory
 	
 	weak var delegate : CategoryHomeVCHDelegate?
 	
@@ -48,20 +47,21 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
+		
+
+		
 		return 2
 	}
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		
-		if section == sectionStandard {
-			if hideStandardCategories {
+		if section == sectionCustom {
+			if customCategories.count == 0 {
 				return nil
 			} else {
-				return "Standard Categories"
+				return "Custom Categories"
 			}
-
 		} else {
-				return  "Custom Categories"
+			return "Standard Categories"
 		}
 	}
 	

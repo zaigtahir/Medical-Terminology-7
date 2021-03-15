@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FCVModeChangedDelegate {
-    func flashCardViewModeChanged (fcvMode: FlashCardViewMode)
+    func flashCardViewModeChanged (fcvMode: FlashcardViewMode)
 }
 
 
@@ -18,7 +18,7 @@ class FlashCardOptionsVC: UIViewController {
     @IBOutlet weak var showSegmentedControl: UISegmentedControl!
     
     //class variables with default values
-    var viewMode: FlashCardViewMode = .both          //flash card view mode
+    var viewMode: FlashcardViewMode = .both          //flash card view mode
     
     var delegate: FCVModeChangedDelegate?
 

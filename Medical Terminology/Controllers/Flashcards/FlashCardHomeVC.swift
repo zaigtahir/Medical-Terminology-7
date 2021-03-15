@@ -23,7 +23,9 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
 	@IBOutlet weak var emptyListLabel: UILabel!
 	@IBOutlet weak var emptyListImage: UIImageView!
 	
-	@IBOutlet weak var categoryLabelButton: UIButton!   //button listing the category name
+	@IBOutlet weak var categoryButton: UIButton!
+	
+	//button listing the category name
 	
 	var utilities = Utilities()
 	
@@ -107,7 +109,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
 			collectionView.isHidden = false
 		}
 		
-		categoryLabelButton.setTitle(flashCardVCH.category.name, for: .normal)
+		categoryButton.setTitle(" \(flashCardVCH.category.name)", for: .normal)	//space added to pad off the button grapic a little
 		
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0
@@ -135,11 +137,11 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
-		if segue.identifier == "segueFCOptions" {
+		if segue.identifier == myConstants.segueFlashcardOptions {
 			let vc = segue.destination as! FlashCardOptionsVC
 			vc.viewMode = flashCardVCH.viewMode
 			vc.delegate = self
-		} else if segue.identifier == myConstants.segue_catetories {
+		} else if segue.identifier == myConstants.segueCatetories {
 			let vc = segue.destination as! CategoryHomeVC
 			vc.delegate = self
 			
@@ -166,7 +168,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
 		updateDisplay()
 	}
 	
-	func flashCardViewModeChanged(fcvMode: FlashCardViewMode) {
+	func flashCardViewModeChanged(fcvMode: FlashcardViewMode) {
 		flashCardVCH.viewMode = fcvMode
 		
 		//need to refresh cell
@@ -218,9 +220,5 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
 		scrollDelegate.scrollNext(collectionView: collectionView)
 	}
 	
-	@IBAction func categoryLabelButtonAction(_ sender: UIButton) {
-		
-		performSegue(withIdentifier: myConstants.segue_catetories , sender: self)
-	}
 }
 

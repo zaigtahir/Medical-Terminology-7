@@ -36,7 +36,8 @@ class MyConstants {
     let layout_sideMargin = CGFloat(integerLiteral: 20)
     let layout_topBottomMargin = CGFloat(integerLiteral: 10)
     
-    let segue_catetories = "segue_categories"
+	let segueFlashcardOptions = "segueFlashCardOptions"
+    let segueCatetories = "segueCategories"
     
     let requeueInterval = 7 //interval to requeue a question in a learning set if it is answered wrong
 }

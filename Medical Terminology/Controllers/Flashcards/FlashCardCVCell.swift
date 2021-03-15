@@ -34,7 +34,7 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
     
     weak var delegate: FCFavoritePressedDelegate?
     
-    func configure (dItem: DItem, fcvMode: FlashCardViewMode, counter: String) {
+    func configure (dItem: DItem, fcvMode: FlashcardViewMode, counter: String) {
         
         itemID = dItem.itemID
         

@@ -21,7 +21,7 @@ let myTheme = MyTheme ()
 let myConstants = MyConstants ()
 let myKeys = MyKeys()
 
-enum FlashCardViewMode {
+enum FlashcardViewMode {
     case both
     case term
     case definition
@@ -37,6 +37,11 @@ enum QuizStatus {
     case notStarted
     case inProgress
     case done
+}
+
+enum CategoryViewMode {
+	case selectCategory
+	case assignCategory
 }
 
 // raw type for this enum as i will use it for the database too

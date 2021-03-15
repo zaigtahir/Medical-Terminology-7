@@ -14,7 +14,7 @@ class FlashCardVCH {
 	var showFavoritesOnly = false
 	var category = Category()
 	
-	var viewMode : FlashCardViewMode = .both
+	var viewMode : FlashcardViewMode = .both
 	
 	let categoryC = CategoryController()
 	
