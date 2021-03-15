@@ -16,6 +16,10 @@ CategoryID's indicate if it's a standard or custom category
 1000 +		an ID belonging to a custom category
 */
 
+// getting rid of "category type in db"
+// category type can be a calculated value of the category object
+
+
 class CategoryController2 {
 	
 	func getCategory (categoryID: Int) -> Category? {
@@ -35,29 +39,6 @@ class CategoryController2 {
 			print("Fatal error getting the result set in getCategories function")
 			return nil
 		}
-		
-	}
-	
-	func getCategories (categoryType: Int) -> [Category] {
-		
-		var categories = [Category]()
-		
-		//note a null value in datatable returned as int is 0
-		
-		let query = "SELECT * FROM categories WHERE type = \(categoryType)"
-		
-		if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
-			
-			while resultSet.next() {
-				categories.append(makeCategoryFromResultset(resultSet: resultSet))
-			}
-			
-		} else {
-			
-			print("Fatal error getting the result set in getCategories function")
-		}
-		
-		return categories
 		
 	}
 	
@@ -128,20 +109,27 @@ class CategoryController2 {
 		
 	}
 	
-	func changeCustomCategoryName (categoryID: Int, nameTo: String) {
+	func changeCategoryName (categoryID: Int, nameTo: String) {
 		myDB.executeUpdate("UPDATE categories SET name = ? WHERE categoryID = ?", withArgumentsIn: [nameTo, categoryID])
 	}
 	
+	func deleteCategory (categoryID: Int) {
+		myDB.executeStatements("DELETE from categories WHERE categoryID = \(categoryID)")
+	}
+	
+	/*
+	Will add a catetory. You must have a place holder category with id = 999 so any additional ones will get id's assigned higher than that with the database row numering
+	*/
 	func addCustomCategory (name: String) {
 		//add a custom category
-	
+		
 		// MARK: need to format string, check for duplicate names, assign view order
 		
 		//get the maximum number for displayOrder of custom categories
 		
 		var maxOrder = 0
 		
-		if let resultSet = myDB.executeQuery("SELECT MAX(displayOrder) FROM categories WHERE type = 1", withArgumentsIn: []) {
+		if let resultSet = myDB.executeQuery("SELECT MAX(displayOrder) FROM categories WHERE categoryID >= 1000", withArgumentsIn: []) {
 			resultSet.next()
 			maxOrder = Int(resultSet.int(forColumnIndex: 0))
 		} else {
@@ -157,18 +145,13 @@ class CategoryController2 {
 		myDB.executeStatements("INSERT INTO categories (name, description, type, displayOrder, selected) VALUES ('\(name)', 'new', 1, \(displayOrder), 0)")
 	}
 	
-	func deleteCustomCategory (categoryID: Int) {
-		
-		myDB.executeStatements("DELETE from categories WHERE categoryID = \(categoryID)")
-	//	myDB.executeQuery("DELETE from categories WHERE categoryID = ?", withArgumentsIn: [categoryID])
-		
-	}
-	
 	func customCatetoryNameIsUnique (name: String) -> Bool {
 		// will check to see if ths name already exists as a custom category name
 		// CaSe sensitive
 		
-		if getCountFromCategoriesTable(whereStatment: "WHERE name == \"\(name)\"") > 0 {
+		let c = getCountFromCategoriesTable(whereStatment: "WHERE name == \"\(name)\" AND categoryID >= 1000")
+		
+		if c > 0 {
 			return true
 		} else {
 			return false
@@ -200,6 +183,6 @@ class CategoryController2 {
 		
 		return c
 	}
-
+	
 }
 
