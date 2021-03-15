@@ -120,7 +120,7 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
     
     func playAudio () {
  
-        let fileName = "\(audioFolder)/\(dItem.audioFile).mp3"
+        let fileName = "\(myConstants.audioFolder)/\(dItem.audioFile).mp3"
         
         let path = Bundle.main.path(forResource: fileName, ofType: nil)!
         

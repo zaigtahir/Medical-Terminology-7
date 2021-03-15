@@ -50,8 +50,8 @@ class AudioFileController {
         //see if each audio file in db has matching file.mp3 in the bundle
         for file in audioFilesNamesInDB {
             
-            if Bundle.main.url(forResource: "\(audioFolder)/\(file)", withExtension: "mp3") == nil {
-                print("\(audioFolder)/\(file).mp3 is in DB, missing in Bundle")
+            if Bundle.main.url(forResource: "\(myConstants.audioFolder)/\(file)", withExtension: "mp3") == nil {
+                print("\(myConstants.audioFolder)/\(file).mp3 is in DB, missing in Bundle")
             }
         }
         
@@ -84,7 +84,7 @@ class AudioFileController {
     
     func isAudioFilePresentInBundle (filename: String, extension: String) ->Bool {
         
-        if Bundle.main.url(forResource: "\(audioFolder)/\(filename)", withExtension: "mp3") != nil {
+        if Bundle.main.url(forResource: "\(myConstants.audioFolder)/\(filename)", withExtension: "mp3") != nil {
             return true
         } else {
             return false

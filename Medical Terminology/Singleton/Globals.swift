@@ -11,11 +11,8 @@ import Foundation
 //global variables
 
 var myDB : FMDatabase!          //serve as the global database object
-let dbFilename = "Medical Terminology"
-let dbFileExtension = "db"
-var isDevelopmentMode = false   //set in the app delegate based on the pList setting
 
-let audioFolder = "Audio"       //the subfolder in bundle that will hold the audio files
+var isDevelopmentMode = false   //set in the app delegate based on the pList setting
 
 let myTheme = MyTheme ()
 let myConstants = MyConstants ()

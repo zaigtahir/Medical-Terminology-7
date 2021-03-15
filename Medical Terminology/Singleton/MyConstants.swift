@@ -10,6 +10,17 @@ import Foundation
 import UIKit
 
 class MyConstants {
+	
+	// database related names
+	let dbFilename = "Medical Terminology"
+	let dbFileExtension = "db"
+	let dbTableMain = "dictionary"
+	let dbTableCatetories = "categories"
+
+	let audioFolder = "Audio"       //the subfolder in bundle that will hold the audio files
+	
+	
+	
     
     // app and website information
     let appWebsite = "https://www.theappgalaxy.com/prefixesandsuffixes.html"
@@ -20,12 +31,12 @@ class MyConstants {
     
     let noFavoritesAvailableText = "There are no favorites available to show"
     
-    //question feedback remarks
+    // question feedback remarks
     let feedbackNotAnswered = "Select An Answer"
     let feedbackAnsweredCorrect = ["Yes! You got it!", "Correct! Great job!", "You are right!", "Awesome! You're right!"]
     let feedbackAnsweredWrong = ["Incorrect"]
     
-    //do not change these numbers. They are used as indexes of arrays too
+    // do not change these numbers. They are used as indexes of arrays too
     let listType_Full = 0
     let listType_Favorite = 1
     let listType_Random = 2

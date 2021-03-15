@@ -55,7 +55,7 @@ class DatabaseUtilities  {
     private func setupNewDatabase () -> Bool {
         //will copy the db from the bundle to the directory and open the database
         
-        guard let dbURL = copyFile(fileName: dbFilename, fileExtension: dbFileExtension) else {
+		guard let dbURL = copyFile(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension) else {
             //error copying the db
             print("FATAL error was an error copying the db to directory")
             
@@ -82,7 +82,7 @@ class DatabaseUtilities  {
         myDB.close()
         
         // delete the current database file
-        let dbFileURL = getDirectoryFileURL(fileName: dbFilename, fileExtension: dbFileExtension)
+        let dbFileURL = getDirectoryFileURL(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension)
         _ = deleteDirectoryFileAtURL(fileURL: dbFileURL)
         
         // copy the db file from bundle to make new db
@@ -95,7 +95,7 @@ class DatabaseUtilities  {
     }
     
     private func useCurrentDatabase () {
-        let dbURL = getDirectoryFileURL(fileName: dbFilename, fileExtension: dbFileExtension)
+        let dbURL = getDirectoryFileURL(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension)
 	
 		if isDevelopmentMode {
 			print("current db path: \(dbURL.absoluteString)")

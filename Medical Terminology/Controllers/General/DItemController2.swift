@@ -32,9 +32,6 @@ class DItemController2 {
 		return 10
 	}
 	
-	
-	
-	
 	func whereString (catetoryType: CategoryType, categoryID: Int,
 					  isFavorite: Bool?,
 					  answeredTerm: AnsweredState?,
