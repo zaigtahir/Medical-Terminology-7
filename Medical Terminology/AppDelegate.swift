@@ -51,6 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(sController.getBundleVersion())
             print(sController.getUserDefaultsVersion())
         }
+		
+		print("running tests")
+		let tests = Tests()
+		tests.test()
 	
        
         /*

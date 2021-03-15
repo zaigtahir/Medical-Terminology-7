@@ -12,8 +12,9 @@ import SQLite3
 /*
 CategoryID's indicate if it's a standard or custom category
 1: 			interpret as any standard category
-2 - 998		an ID belonging to a standard category
-1000 +		an ID belonging to a custom category
+2 - 999:		an ID belonging to a standard category
+1000:		just a place holder id. don't use this
+1001+ :		an ID belonging to a custom category
 */
 
 // getting rid of "category type in db"
@@ -21,7 +22,7 @@ CategoryID's indicate if it's a standard or custom category
 
 class CategoryController2 {
 	
-	let categoriesTable = "categories"	//categories table
+	let categoriesTable = "categories2"	//categories table
 	
 	func getCategory (categoryID: Int) -> Category? {
 		
@@ -143,14 +144,14 @@ class CategoryController2 {
 			print ("Adding custom category: \(name) with displayOrder: \(displayOrder)")
 		}
 		
-		myDB.executeStatements("INSERT INTO \(categoriesTable) (name, description, type, displayOrder, selected) VALUES ('\(name)', 'new', 1, \(displayOrder), 0)")
+		myDB.executeStatements("INSERT INTO \(categoriesTable) (name, description, displayOrder, selected) VALUES ('\(name)', 'new', \(displayOrder), 0)")
 	}
 	
 	func customCatetoryNameIsUnique (name: String) -> Bool {
 		// will check to see if ths name already exists as a custom category name
 		// CaSe sensitive
 		
-		let c = getCountFromCategoriesTable(whereStatment: "WHERE name == \"\(name)\" AND categoryID >= 1000")
+		let c = getCountFromCategoriesTable(whereStatment: "WHERE name == \"\(name)\" AND categoryID >= 1001")
 		
 		if c > 0 {
 			return true
@@ -159,13 +160,12 @@ class CategoryController2 {
 		}
 		
 	}
-	
+
 	private func makeCategoryFromResultset (resultSet: FMResultSet) -> Category {
 		
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))
 		let name = resultSet.string(forColumn: "name") ?? ""
 		let description = resultSet.string(forColumn: "description") ?? ""
-		let type = Int(resultSet.int(forColumn: "type"))
 		let displayOrder = Int(resultSet.int(forColumn: "displayOrder"))
 		let selected = Int(resultSet.int(forColumn: "selected"))
 		
@@ -177,13 +177,11 @@ class CategoryController2 {
 		let c = Category(categoryID: categoryID,
 						 name: name,
 						 description: description,
-						 type: CategoryType(rawValue: type) ?? CategoryType.standard,
+						 type: .standard,	//place holder entry
 						 displayOrder: displayOrder,
 						 selected: s
 		)
 		
 		return c
 	}
-	
 }
-

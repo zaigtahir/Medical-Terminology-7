@@ -75,6 +75,7 @@
 		99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1625F967AA003ABE0B /* CategoryCell.swift */; };
 		99D55E2F25FC7921003ABE0B /* DItemController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E2E25FC7921003ABE0B /* DItemController2.swift */; };
 		99D55E4A25FF2F17003ABE0B /* CategoryController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4925FF2F17003ABE0B /* CategoryController2.swift */; };
+		99D55E4D25FF5A03003ABE0B /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4C25FF5A03003ABE0B /* Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +154,7 @@
 		99D55E1625F967AA003ABE0B /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		99D55E2E25FC7921003ABE0B /* DItemController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController2.swift; sourceTree = "<group>"; };
 		99D55E4925FF2F17003ABE0B /* CategoryController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController2.swift; sourceTree = "<group>"; };
+		99D55E4C25FF5A03003ABE0B /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,6 +206,7 @@
 				5AC448B422BC072C004B47C1 /* QuestionController.swift */,
 				5A4471602283DFB9008E3107 /* SearchLists.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
+				99D55E4C25FF5A03003ABE0B /* Tests.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				99D55E0A25F6DAD8003ABE0B /* CategoryHomeVC.swift in Sources */,
 				5A1506252255796C00717AB8 /* Question.swift in Sources */,
 				99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */,
+				99D55E4D25FF5A03003ABE0B /* Tests.swift in Sources */,
 				5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */,
 				5A6F31CA21A7032E00E6477E /* DList.swift in Sources */,
 				5A99D5D9233BE53B00CA518A /* FlashCardVCH.swift in Sources */,
@@ -687,7 +691,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K33TSXFU97;
 				INFOPLIST_FILE = "Medical Terminology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -709,7 +713,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K33TSXFU97;
 				INFOPLIST_FILE = "Medical Terminology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
