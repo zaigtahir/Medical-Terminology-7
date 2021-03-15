@@ -31,7 +31,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	let sectionCustom = 0
 	let sectionStandard = 1
 	
-	let displayMode = CategoryViewMode.assignCategory
+	let displayMode = CategoryViewMode.selectCategory
 	
 	weak var delegate : CategoryHomeVCHDelegate?
 	
@@ -42,8 +42,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func getCategories () {
-		standardCategories = categoryC.getCategories(categoryType: 0)
-		customCategories = categoryC.getCategories(categoryType: 1)
+		standardCategories = categoryC.getCategories(categoryType: .standard)
+		customCategories = categoryC.getCategories(categoryType: .custom)
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -174,14 +174,14 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func deleteCategory (categoryID: Int) {
-		categoryC.deleteCustomCategory(categoryID: categoryID)
+		categoryC.deleteCategory(categoryID: categoryID)
 		getCategories()
 		delegate?.shouldReloadTable()
 	}
 	
 	func changeCategoryName (categoryID: Int, nameTo: String) {
 		//place holder
-		categoryC.changeCustomCategoryName(categoryID: categoryID, nameTo: nameTo)
+		categoryC.changeCategoryName(categoryID: categoryID, nameTo: nameTo)
 		getCategories()
 		delegate?.shouldReloadTable()
 	}

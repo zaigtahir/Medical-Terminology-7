@@ -65,7 +65,7 @@
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
 		9983980F25F05B6B00CC0354 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9983980E25F05B6B00CC0354 /* StoreKit.framework */; };
 		998398E325F6AB3C00CC0354 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998398E225F6AB3C00CC0354 /* Category.swift */; };
-		998398E825F6BD4700CC0354 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998398E725F6BD4700CC0354 /* CategoryController.swift */; };
+		998398E825F6BD4700CC0354 /* CategoryController-mark to delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998398E725F6BD4700CC0354 /* CategoryController-mark to delete.swift */; };
 		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
 		99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */; };
 		99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */; };
@@ -74,8 +74,9 @@
 		99D55E1225F7EF92003ABE0B /* CategoryHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */; };
 		99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1625F967AA003ABE0B /* CategoryCell.swift */; };
 		99D55E2F25FC7921003ABE0B /* DItemController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E2E25FC7921003ABE0B /* DItemController2.swift */; };
-		99D55E4A25FF2F17003ABE0B /* CategoryController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4925FF2F17003ABE0B /* CategoryController2.swift */; };
+		99D55E4A25FF2F17003ABE0B /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4925FF2F17003ABE0B /* CategoryController.swift */; };
 		99D55E4D25FF5A03003ABE0B /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4C25FF5A03003ABE0B /* Tests.swift */; };
+		99D55E5825FF685C003ABE0B /* DItemController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E5725FF685C003ABE0B /* DItemController3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,7 +145,7 @@
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9983980E25F05B6B00CC0354 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		998398E225F6AB3C00CC0354 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		998398E725F6BD4700CC0354 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
+		998398E725F6BD4700CC0354 /* CategoryController-mark to delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryController-mark to delete.swift"; sourceTree = "<group>"; };
 		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
 		99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtilities.swift; sourceTree = "<group>"; };
 		99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCVCell.swift; sourceTree = "<group>"; };
@@ -153,8 +154,9 @@
 		99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeVCH.swift; sourceTree = "<group>"; };
 		99D55E1625F967AA003ABE0B /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		99D55E2E25FC7921003ABE0B /* DItemController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController2.swift; sourceTree = "<group>"; };
-		99D55E4925FF2F17003ABE0B /* CategoryController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController2.swift; sourceTree = "<group>"; };
+		99D55E4925FF2F17003ABE0B /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		99D55E4C25FF5A03003ABE0B /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		99D55E5725FF685C003ABE0B /* DItemController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController3.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,11 +197,11 @@
 			children = (
 				5A6F31C321A458E100E6477E /* AlphaListController.swift */,
 				994175DD245A38A900E281DB /* AudioFileController.swift */,
-				99D55E4925FF2F17003ABE0B /* CategoryController2.swift */,
-				998398E725F6BD4700CC0354 /* CategoryController.swift */,
+				99D55E4925FF2F17003ABE0B /* CategoryController.swift */,
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
 				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
 				99D55E2E25FC7921003ABE0B /* DItemController2.swift */,
+				99D55E5725FF685C003ABE0B /* DItemController3.swift */,
 				5A886373218E82330013FC8B /* DItemController.swift */,
 				5AF85733228F26A1008929D5 /* FlashCardController.swift */,
 				994175E1245B5BAE00E281DB /* SettingsController.swift */,
@@ -207,6 +209,7 @@
 				5A4471602283DFB9008E3107 /* SearchLists.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 				99D55E4C25FF5A03003ABE0B /* Tests.swift */,
+				998398E725F6BD4700CC0354 /* CategoryController-mark to delete.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */,
 				99D55E0A25F6DAD8003ABE0B /* CategoryHomeVC.swift in Sources */,
 				5A1506252255796C00717AB8 /* Question.swift in Sources */,
+				99D55E5825FF685C003ABE0B /* DItemController3.swift in Sources */,
 				99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */,
 				99D55E4D25FF5A03003ABE0B /* Tests.swift in Sources */,
 				5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */,
@@ -518,7 +522,7 @@
 				5A2A58F322FCA5F200434910 /* QuizSet.swift in Sources */,
 				5A2A58F522FCA64900434910 /* LearningSet.swift in Sources */,
 				99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */,
-				99D55E4A25FF2F17003ABE0B /* CategoryController2.swift in Sources */,
+				99D55E4A25FF2F17003ABE0B /* CategoryController.swift in Sources */,
 				5ABE7221226CB25F005B83C4 /* Utilities.swift in Sources */,
 				99D55E2F25FC7921003ABE0B /* DItemController2.swift in Sources */,
 				5A4F855022B310F80016621C /* AnswerTCell.swift in Sources */,
@@ -530,7 +534,7 @@
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
 				5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */,
 				5A886374218E82330013FC8B /* DItemController.swift in Sources */,
-				998398E825F6BD4700CC0354 /* CategoryController.swift in Sources */,
+				998398E825F6BD4700CC0354 /* CategoryController-mark to delete.swift in Sources */,
 				5A67C14D231077FA00BAA2A0 /* LearnDoneCVCell.swift in Sources */,
 				5A6F31C421A458E100E6477E /* AlphaListController.swift in Sources */,
 				5A2A58EE22FBC24900434910 /* QuizOptionsVC.swift in Sources */,

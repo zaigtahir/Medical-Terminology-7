@@ -12,21 +12,12 @@ class Tests {
 	
 	//test category2 Controller
 	
-	let cc2 = CategoryController2()
+	let cc2 = CategoryController()
+	let dIC3 = DItemController3()
 	
 	func test () {
-		var c = cc2.getCurrentCategory()
-		print ("current category name: \(c.name)")
-		
-		print("toggling to category ID 3")
-		cc2.toggleCategorySelection(categoryID: 8)
-		
-		c = cc2.getCurrentCategory()
-		print ("current category name: \(c.name)")
-		
-		print("adding a custom catetory")
-		
-		cc2.addCustomCategory(name: "Susan")
-		cc2.addCustomCategory(name: "Jackie")
+		print (dIC3.getTermCount(categoryID: 0))
+		print (dIC3.getTermCount(categoryID: 3))
+		print (dIC3.getTermCount(categoryID: 1006))
 	}
 }

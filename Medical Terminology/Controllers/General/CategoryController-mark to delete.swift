@@ -10,25 +10,18 @@ import Foundation
 import SQLite3
 
 /*
-CategoryID's indicate if it's a standard or custom category
-1: 			interpret as any standard category
-2 - 999:		an ID belonging to a standard category
-1000:		just a place holder id. don't use this
-1001+ :		an ID belonging to a custom category
+used to manage categories
+categoryType = 0	standard, built in
+categoryType = 1	custom
 */
 
-// getting rid of "category type in db"
-// category type can be a calculated value of the category object
-
-class CategoryController2 {
-	
-	let categoriesTable = "categories2"	//categories table
+class CategoryController_mark_delete {
 	
 	func getCategory (categoryID: Int) -> Category? {
 		
 		//if no category is found with this ID, return nil
 		
-		let query = "SELECT * from \(categoriesTable) WHERE categoryID = \(categoryID)"
+		let query = "SELECT * from categories WHERE categoryID = \(categoryID)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: [categoryID]) {
 			if resultSet.next() {
@@ -44,8 +37,31 @@ class CategoryController2 {
 		
 	}
 	
+	func getCategories (categoryType: Int) -> [Category] {
+		
+		var categories = [Category]()
+		
+		//note a null value in datatable returned as int is 0
+		
+		let query = "SELECT * FROM categories WHERE type = \(categoryType)"
+		
+		if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
+			
+			while resultSet.next() {
+				categories.append(makeCategoryFromResultset(resultSet: resultSet))
+			}
+			
+		} else {
+			
+			print("Fatal error getting the result set in getCategories function")
+		}
+		
+		return categories
+		
+	}
+	
 	func getCurrentCategory () -> Category {
-		let query = "SELECT * FROM \(categoriesTable) WHERE selected = 1"
+		let query = "SELECT * FROM categories WHERE selected = 1"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
@@ -62,7 +78,7 @@ class CategoryController2 {
 		
 		var categories = [Int]()
 		
-		let query = "SELECT categoryID FROM \(categoriesTable) \(whereStatment)"
+		let query = "SELECT categoryID FROM categories \(whereStatment)"
 		
 		if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
 			while resultSet.next() {
@@ -78,7 +94,7 @@ class CategoryController2 {
 	
 	func getCountFromCategoriesTable (whereStatment: String) -> Int {
 		
-		let query = "SELECT COUNT (*) FROM \(categoriesTable) \(whereStatment)"
+		let query = "SELECT COUNT (*) FROM categories \(whereStatment)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
@@ -104,34 +120,27 @@ class CategoryController2 {
 		}
 		
 		// use this to deselect all in preparation to set one as the selected one
-		myDB.executeUpdate("UPDATE \(categoriesTable) SET selected = 0", withArgumentsIn: [])
+		myDB.executeUpdate("UPDATE categories SET selected = 0", withArgumentsIn: [])
 		
 		// now just set the one selected
-		myDB.executeUpdate("UPDATE \(categoriesTable) SET selected = 1 WHERE categoryID = \(categoryID)", withArgumentsIn: [])
+		myDB.executeUpdate("UPDATE categories SET selected = 1 WHERE categoryID = \(categoryID)", withArgumentsIn: [])
 		
 	}
 	
-	func changeCategoryName (categoryID: Int, nameTo: String) {
-		myDB.executeUpdate("UPDATE \(categoriesTable) SET name = ? WHERE categoryID = ?", withArgumentsIn: [nameTo, categoryID])
+	func changeCustomCategoryName (categoryID: Int, nameTo: String) {
+		myDB.executeUpdate("UPDATE categories SET name = ? WHERE categoryID = ?", withArgumentsIn: [nameTo, categoryID])
 	}
 	
-	func deleteCategory (categoryID: Int) {
-		myDB.executeStatements("DELETE from \(categoriesTable) WHERE categoryID = \(categoryID)")
-	}
-	
-	/*
-	Will add a catetory. You must have a place holder category with id = 999 so any additional ones will get id's assigned higher than that with the database row numering
-	*/
 	func addCustomCategory (name: String) {
 		//add a custom category
-		
+	
 		// MARK: need to format string, check for duplicate names, assign view order
 		
 		//get the maximum number for displayOrder of custom categories
 		
 		var maxOrder = 0
 		
-		if let resultSet = myDB.executeQuery("SELECT MAX(displayOrder) FROM \(categoriesTable) WHERE categoryID >= 1000", withArgumentsIn: []) {
+		if let resultSet = myDB.executeQuery("SELECT MAX(displayOrder) FROM categories WHERE type = 1", withArgumentsIn: []) {
 			resultSet.next()
 			maxOrder = Int(resultSet.int(forColumnIndex: 0))
 		} else {
@@ -144,28 +153,34 @@ class CategoryController2 {
 			print ("Adding custom category: \(name) with displayOrder: \(displayOrder)")
 		}
 		
-		myDB.executeStatements("INSERT INTO \(categoriesTable) (name, description, displayOrder, selected) VALUES ('\(name)', 'new', \(displayOrder), 0)")
+		myDB.executeStatements("INSERT INTO categories (name, description, type, displayOrder, selected) VALUES ('\(name)', 'new', 1, \(displayOrder), 0)")
+	}
+	
+	func deleteCustomCategory (categoryID: Int) {
+		
+		myDB.executeStatements("DELETE from categories WHERE categoryID = \(categoryID)")
+	//	myDB.executeQuery("DELETE from categories WHERE categoryID = ?", withArgumentsIn: [categoryID])
+		
 	}
 	
 	func customCatetoryNameIsUnique (name: String) -> Bool {
 		// will check to see if ths name already exists as a custom category name
 		// CaSe sensitive
 		
-		let c = getCountFromCategoriesTable(whereStatment: "WHERE name == \"\(name)\" AND categoryID >= 1001")
-		
-		if c > 0 {
+		if getCountFromCategoriesTable(whereStatment: "WHERE name == \"\(name)\"") > 0 {
 			return true
 		} else {
 			return false
 		}
 		
 	}
-
+	
 	private func makeCategoryFromResultset (resultSet: FMResultSet) -> Category {
 		
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))
 		let name = resultSet.string(forColumn: "name") ?? ""
 		let description = resultSet.string(forColumn: "description") ?? ""
+		let type = Int(resultSet.int(forColumn: "type"))
 		let displayOrder = Int(resultSet.int(forColumn: "displayOrder"))
 		let selected = Int(resultSet.int(forColumn: "selected"))
 		
@@ -177,11 +192,12 @@ class CategoryController2 {
 		let c = Category(categoryID: categoryID,
 						 name: name,
 						 description: description,
-						 type: .standard,	//place holder entry
+						 type: CategoryType(rawValue: type) ?? CategoryType.standard,
 						 displayOrder: displayOrder,
 						 selected: s
 		)
 		
 		return c
 	}
+
 }
