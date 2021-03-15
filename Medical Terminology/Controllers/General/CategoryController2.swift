@@ -19,14 +19,15 @@ CategoryID's indicate if it's a standard or custom category
 // getting rid of "category type in db"
 // category type can be a calculated value of the category object
 
-
 class CategoryController2 {
+	
+	let categoriesTable = "categories"	//categories table
 	
 	func getCategory (categoryID: Int) -> Category? {
 		
 		//if no category is found with this ID, return nil
 		
-		let query = "SELECT * from categories WHERE categoryID = \(categoryID)"
+		let query = "SELECT * from \(categoriesTable) WHERE categoryID = \(categoryID)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: [categoryID]) {
 			if resultSet.next() {
@@ -43,7 +44,7 @@ class CategoryController2 {
 	}
 	
 	func getCurrentCategory () -> Category {
-		let query = "SELECT * FROM categories WHERE selected = 1"
+		let query = "SELECT * FROM \(categoriesTable) WHERE selected = 1"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
@@ -60,7 +61,7 @@ class CategoryController2 {
 		
 		var categories = [Int]()
 		
-		let query = "SELECT categoryID FROM categories \(whereStatment)"
+		let query = "SELECT categoryID FROM \(categoriesTable) \(whereStatment)"
 		
 		if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
 			while resultSet.next() {
@@ -76,7 +77,7 @@ class CategoryController2 {
 	
 	func getCountFromCategoriesTable (whereStatment: String) -> Int {
 		
-		let query = "SELECT COUNT (*) FROM categories \(whereStatment)"
+		let query = "SELECT COUNT (*) FROM \(categoriesTable) \(whereStatment)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
@@ -102,19 +103,19 @@ class CategoryController2 {
 		}
 		
 		// use this to deselect all in preparation to set one as the selected one
-		myDB.executeUpdate("UPDATE categories SET selected = 0", withArgumentsIn: [])
+		myDB.executeUpdate("UPDATE \(categoriesTable) SET selected = 0", withArgumentsIn: [])
 		
 		// now just set the one selected
-		myDB.executeUpdate("UPDATE categories SET selected = 1 WHERE categoryID = \(categoryID)", withArgumentsIn: [])
+		myDB.executeUpdate("UPDATE \(categoriesTable) SET selected = 1 WHERE categoryID = \(categoryID)", withArgumentsIn: [])
 		
 	}
 	
 	func changeCategoryName (categoryID: Int, nameTo: String) {
-		myDB.executeUpdate("UPDATE categories SET name = ? WHERE categoryID = ?", withArgumentsIn: [nameTo, categoryID])
+		myDB.executeUpdate("UPDATE \(categoriesTable) SET name = ? WHERE categoryID = ?", withArgumentsIn: [nameTo, categoryID])
 	}
 	
 	func deleteCategory (categoryID: Int) {
-		myDB.executeStatements("DELETE from categories WHERE categoryID = \(categoryID)")
+		myDB.executeStatements("DELETE from \(categoriesTable) WHERE categoryID = \(categoryID)")
 	}
 	
 	/*
@@ -129,7 +130,7 @@ class CategoryController2 {
 		
 		var maxOrder = 0
 		
-		if let resultSet = myDB.executeQuery("SELECT MAX(displayOrder) FROM categories WHERE categoryID >= 1000", withArgumentsIn: []) {
+		if let resultSet = myDB.executeQuery("SELECT MAX(displayOrder) FROM \(categoriesTable) WHERE categoryID >= 1000", withArgumentsIn: []) {
 			resultSet.next()
 			maxOrder = Int(resultSet.int(forColumnIndex: 0))
 		} else {
@@ -142,7 +143,7 @@ class CategoryController2 {
 			print ("Adding custom category: \(name) with displayOrder: \(displayOrder)")
 		}
 		
-		myDB.executeStatements("INSERT INTO categories (name, description, type, displayOrder, selected) VALUES ('\(name)', 'new', 1, \(displayOrder), 0)")
+		myDB.executeStatements("INSERT INTO \(categoriesTable) (name, description, type, displayOrder, selected) VALUES ('\(name)', 'new', 1, \(displayOrder), 0)")
 	}
 	
 	func customCatetoryNameIsUnique (name: String) -> Bool {
