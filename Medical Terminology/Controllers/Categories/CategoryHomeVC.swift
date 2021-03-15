@@ -51,7 +51,7 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		if categoryHomeVCH.displayMode == .selectCategory {
 			messageLabel.text = "Select A Category To View"
 		} else {
-			messageLabel.text = "Select The Categories To Add To"
+			messageLabel.text = "Select The Custom Categories To Add To"
 		}
 		
 		// show/hide the table and empty list indicators
@@ -59,7 +59,7 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		emptyListImage.isHidden = true
 		emptyListLabel.isHidden = true
 		
-		if categoryHomeVCH.displayMode == .addToCategory {
+		if categoryHomeVCH.displayMode == .assignCategory {
 			if categoryHomeVCH.customCategories.count == 0 {
 				tableView.isHidden = true
 				emptyListImage.isHidden = false

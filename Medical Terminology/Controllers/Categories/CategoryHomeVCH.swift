@@ -31,7 +31,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	let sectionCustom = 0
 	let sectionStandard = 1
 	
-	let displayMode = CategoryViewMode.selectCategory
+	let displayMode = CategoryViewMode.assignCategory
 	
 	weak var delegate : CategoryHomeVCHDelegate?
 	
@@ -48,13 +48,17 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		
-
-		
-		return 2
+		if displayMode == .assignCategory {
+			return 1	// just need 1 section if showing assignCategory mode for the custom category
+		} else {
+			return 2
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		
 		if section == sectionCustom {
+			
 			if customCategories.count == 0 {
 				return nil
 			} else {
@@ -64,10 +68,10 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 			return "Standard Categories"
 		}
 	}
-	
+
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		
 		if section == sectionStandard {
-			
 			return standardCategories.count
 		} else {
 			return customCategories.count
@@ -81,9 +85,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 			if indexPath.section == sectionStandard {
 				cell.formatCell(category: standardCategories[indexPath.row], indexPath: indexPath)
 			} else {
-				
 				cell.formatCell(category: customCategories[indexPath.row], indexPath: indexPath)
-			
 			}
 			
 			return cell
@@ -183,5 +185,4 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		getCategories()
 		delegate?.shouldReloadTable()
 	}
-	
 }

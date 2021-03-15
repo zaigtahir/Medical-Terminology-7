@@ -89,7 +89,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
 		
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashCardCell", for: indexPath) as! FlashCardCVCell
 		
-		var flashCardList = flashCardVCH.itemIDs
+		let flashCardList = flashCardVCH.itemIDs
 		
 		//the cell should configure itself
 		let dItem  = dIC.getDItem(itemID: flashCardList[indexPath.row])
@@ -109,16 +109,16 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
 			collectionView.isHidden = false
 		}
 		
-		categoryButton.setTitle(" \(flashCardVCH.category.name)", for: .normal)	//space added to pad off the button grapic a little
+		categoryButton.setTitle(" \(flashCardVCH.currentCategory.name)", for: .normal)	//space added to pad off the button grapic a little
 		
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0
 		
 		sliderOutlet.maximumValue = Float(flashCardVCH.itemIDs.count - 1)
-		
 		sliderOutlet.value = Float (scrollDelegate.getCellIndex(collectionView: collectionView))
-		favoritesLabel.text = "\(favoriteCount)"
 		
+		favoritesLabel.text = "\(favoriteCount)"
+
 		updateButtons()
 		
 	}
