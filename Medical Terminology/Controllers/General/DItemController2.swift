@@ -17,16 +17,19 @@ class DItemController2 {
 	returns the number of favorite terms in this category
 	*/
 	func getFavoriteCount (category: Category) -> Int {
-		let whereString = self.whereString(catetoryType: category.type, categoryID: category.categoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learnedState: .none)
 		
-		return self.getCount(categoryType: category.type, whereQuery: whereString)
+		print ("Implement getFavorite count.. this is in dIC2..so will need to get rid of this anyway")
+		
+		return 10
 	}
 	
 	/*
 	returns the total term count for this category
 	*/
 	func getAllCount (category: Category) -> Int {
-		return self.getCount(categoryType: category.type, whereQuery: "itemID >= 0")
+		print ("Implement getAll.. this is in dIC2..so will need to get rid of this anyway")
+		
+		return 10
 	}
 	
 	

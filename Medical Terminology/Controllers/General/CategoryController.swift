@@ -10,11 +10,10 @@ import Foundation
 import SQLite3
 
 /*
-CategoryID's indicate if it's a standard or custom category
-0: 			interpret as any standard category
-2 - 999:		an ID belonging to a standard category
-1000:		just a place holder id. don't use this
-1001+ :		an ID belonging to a custom category
+categoryID = 0: all standard categories, table = mainTerms
+categoryID = 1-998: just that catetory, table = mainTerms
+categoryID = 999: just a place holder
+categoryID = >= 1000: jus that category, table = userCategoryTerms
 */
 
 // getting rid of "category type in db"
@@ -83,6 +82,9 @@ class CategoryController {
 		//note a null value in datatable returned as int is 0
 		
 		var query: String
+		
+		query = "SELECT * "
+		
 		
 		if categoryType == .standard {
 			query = "SELECT * FROM \(categoriesTable) WHERE categoryID < 999"
@@ -206,7 +208,6 @@ class CategoryController {
 		let c = Category(categoryID: categoryID,
 						 name: name,
 						 description: description,
-						 type: .standard,	//place holder entry
 						 displayOrder: displayOrder,
 						 selected: s
 		)

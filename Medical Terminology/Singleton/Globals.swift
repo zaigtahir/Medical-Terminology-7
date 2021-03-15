@@ -44,6 +44,10 @@ enum CategoryViewMode {
 	case assignCategory
 }
 
+enum CategoryType {
+	case standard
+	case custom
+}
 
 // use to assign and check answeredTerm and answeredDefinition, and also for quiz answers and learning module
 
