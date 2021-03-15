@@ -74,6 +74,7 @@
 		99D55E1225F7EF92003ABE0B /* CategoryHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */; };
 		99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1625F967AA003ABE0B /* CategoryCell.swift */; };
 		99D55E2F25FC7921003ABE0B /* DItemController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E2E25FC7921003ABE0B /* DItemController2.swift */; };
+		99D55E4A25FF2F17003ABE0B /* CategoryController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4925FF2F17003ABE0B /* CategoryController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +152,7 @@
 		99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeVCH.swift; sourceTree = "<group>"; };
 		99D55E1625F967AA003ABE0B /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		99D55E2E25FC7921003ABE0B /* DItemController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController2.swift; sourceTree = "<group>"; };
+		99D55E4925FF2F17003ABE0B /* CategoryController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController2.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,14 +193,15 @@
 			children = (
 				5A6F31C321A458E100E6477E /* AlphaListController.swift */,
 				994175DD245A38A900E281DB /* AudioFileController.swift */,
+				99D55E4925FF2F17003ABE0B /* CategoryController2.swift */,
 				998398E725F6BD4700CC0354 /* CategoryController.swift */,
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
 				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
+				99D55E2E25FC7921003ABE0B /* DItemController2.swift */,
 				5A886373218E82330013FC8B /* DItemController.swift */,
 				5AF85733228F26A1008929D5 /* FlashCardController.swift */,
 				994175E1245B5BAE00E281DB /* SettingsController.swift */,
 				5AC448B422BC072C004B47C1 /* QuestionController.swift */,
-				99D55E2E25FC7921003ABE0B /* DItemController2.swift */,
 				5A4471602283DFB9008E3107 /* SearchLists.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 			);
@@ -511,6 +514,7 @@
 				5A2A58F322FCA5F200434910 /* QuizSet.swift in Sources */,
 				5A2A58F522FCA64900434910 /* LearningSet.swift in Sources */,
 				99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */,
+				99D55E4A25FF2F17003ABE0B /* CategoryController2.swift in Sources */,
 				5ABE7221226CB25F005B83C4 /* Utilities.swift in Sources */,
 				99D55E2F25FC7921003ABE0B /* DItemController2.swift in Sources */,
 				5A4F855022B310F80016621C /* AnswerTCell.swift in Sources */,

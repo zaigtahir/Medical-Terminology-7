@@ -10,12 +10,13 @@ import Foundation
 import SQLite3
 
 /*
-used to manage categories
-categoryType = 0	standard, built in
-categoryType = 1	custom
+CategoryID's indicate if it's a standard or custom category
+1: 			interpret as any standard category
+2 - 998		an ID belonging to a standard category
+1000 +		an ID belonging to a custom category
 */
 
-class CategoryController {
+class CategoryController2 {
 	
 	func getCategory (categoryID: Int) -> Category? {
 		
@@ -201,3 +202,4 @@ class CategoryController {
 	}
 
 }
+

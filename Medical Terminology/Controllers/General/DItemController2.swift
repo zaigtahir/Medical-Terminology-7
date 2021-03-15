@@ -12,10 +12,25 @@ import SQLite3
 //this class if for getting counts of DItems
 
 class DItemController2 {
+
+	/*
+	returns the number of favorite terms in this category
+	*/
+	func getFavoriteCount (category: Category) -> Int {
+		let whereString = self.whereString(catetoryType: category.type, categoryID: category.categoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learnedState: .none)
+		
+		return self.getCount(categoryType: category.type, whereQuery: whereString)
+	}
 	
-	// NOTE: order processed first then limit is processed
-	// need to be able use with both dictionary and assignedCategories table
-	// MARK maybe remove the limit and term order
+	/*
+	returns the total term count for this category
+	*/
+	func getAllCount (category: Category) -> Int {
+		return self.getCount(categoryType: category.type, whereQuery: "itemID >= 0")
+	}
+	
+	
+	
 	
 	func whereString (catetoryType: CategoryType, categoryID: Int,
 					  isFavorite: Bool?,
@@ -117,4 +132,7 @@ class DItemController2 {
 			return 0
 		}
 	}
+	
+	
+
 }

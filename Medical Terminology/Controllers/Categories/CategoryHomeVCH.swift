@@ -152,7 +152,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		
 		// if this category is selected already then don't do anything
 		
-		let currentCategoryID = categoryC.getSelectedCategory().categoryID
+		let currentCategoryID = categoryC.getCurrentCategory().categoryID
 		
 		if categoryID != currentCategoryID {
 			
