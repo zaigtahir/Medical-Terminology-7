@@ -15,13 +15,11 @@ class MyConstants {
 	let dbFilename = "Medical Terminology"
 	let dbFileExtension = "db"
 	let dbTableMain = "dictionary"
+	let dbTableUser = "userCategories"
 	let dbTableCatetories = "categories"
 
 	let audioFolder = "Audio"       //the subfolder in bundle that will hold the audio files
 	
-	
-	
-    
     // app and website information
     let appWebsite = "https://www.theappgalaxy.com/prefixesandsuffixes.html"
     let companyWebsite = "https://theappgalaxy.com"

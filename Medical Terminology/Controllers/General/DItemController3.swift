@@ -1,5 +1,5 @@
 //
-//  DItemController2.swift
+//  DItemController3.swift
 //  Medical Terminology
 //
 //  Created by Zaigham Tahir on 3/12/21.
@@ -20,19 +20,54 @@ categoryID = >= 1000: jus that category, table = userCategoryTerms
 
 class DItemController3 {
 	
-	let tableMain = "dictionary"
-	let tableUser = "assignedCategories"
+	let tableMain = myConstants.dbTableMain
+	let tableUser = myConstants.dbTableUser
 	
-	func whereQuery (categoryID: Int,
-					 isFavorite: Bool?,
-					 answeredTerm: AnsweredState?,
-					 answeredDefinition: AnsweredState?,
-					 learned: Bool?,
-					 learnedTerm: Bool?,
-					 learnedDefinition: Bool?) -> String {
+	func getCount (catetoryID: Int, isFavorite: Bool) -> Int{
 		
-		let tableString = self.tableString(categoryID: categoryID)
+		let whereQ = whereQuery(categoryID: catetoryID, showOnlyFavorites: .none, isFavorite: isFavorite , answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none)
+		
+		let query = "SELECT COUNT (*) FROM \(tableString(categoryID: catetoryID)) \(whereQ)"
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			let c = Int(resultSet.int(forColumnIndex: 0))
+			return c
+		} else {
+			print("Fatal error making resultset")
+			return 0
+		}
+		
+	}
+	
+	func getItemIDs (categoryID: Int, showOnlyFavorites: Bool) -> [Int] {
+		let whereQ = whereQuery(categoryID: categoryID, showOnlyFavorites: showOnlyFavorites, isFavorite: .none , answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none)
+		
+		var itemIDs = [Int]()
+		let query = "SELECT itemID FROM \(tableString(categoryID: categoryID)) \(whereQ)"
+		
+		print("getItemIDs query: \(query)")
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				itemIDs.append(Int(resultSet.int(forColumnIndex: 0)))
+			}
+			return itemIDs
+			
+		} else {
+			print("Fatal error making resultset")
+			return itemIDs
+		}
+		
+	}
+	
+	// MARK: Private functions
+	
+	private func whereQuery (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?) -> String {
+		
 		let categoryString = self.categoryString(categoryID: categoryID)
+		
+		let showOnlyFavoritesString = self.showOnlyFavoritesString(show: showOnlyFavorites)
 		let favoriteString = self.favorteString(isFavorite: isFavorite)
 		
 		let learnedString = self.learnedString(learned: learned)
@@ -42,7 +77,7 @@ class DItemController3 {
 		let answeredTermString = self.answeredTermString(state: answeredTerm)
 		let answeredDefinitionString = self.answeredDefinitionString(state: answeredDefinition)
 		
-		let query = "SELECT COUNT (*) FROM \(tableString) WHERE \(categoryString) \(favoriteString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString)"
+		let query = "WHERE \(categoryString) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString)"
 		
 		return query
 	}
@@ -171,5 +206,22 @@ class DItemController3 {
 		return result!
 	}
 	
+	private func showOnlyFavoritesString (show: Bool?) -> String {
+		var result: String? = ""
+		
+		if let s = show {
+			if s {
+				result = "AND isFavorite = 1"
+			} else {
+				result = ""
+			}
+		} else {
+			result = ""
+		}
+		
+		return result!
+	}
+	
+	// End WHERE string components
 }
 

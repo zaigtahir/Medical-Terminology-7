@@ -179,7 +179,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
 	// MARK: Delegate fuctions for CategoryHomeVCDelegate
 	
 	func newCategorySelected() {
-		flashCardVCH.updateCategory()
+		flashCardVCH.refreshCategory()
 		collectionView.reloadData()
 		updateDisplay()
 	}

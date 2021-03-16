@@ -52,11 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(sController.getUserDefaultsVersion())
         }
 		
-		print("running tests")
-		let tests = Tests()
-		tests.test()
-	
-       
         /*
         if isDevelopmentMode {
             // check and see if there is a resource present for each audiofile name listed in the database

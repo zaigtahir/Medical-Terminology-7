@@ -21,7 +21,7 @@ categoryID = >= 1000: jus that category, table = userCategoryTerms
 
 class CategoryController {
 	
-	let categoriesTable = "categories2"	//categories table
+	let categoriesTable = myConstants.dbTableCatetories	//categories table
 	
 	func getCategory (categoryID: Int) -> Category? {
 		

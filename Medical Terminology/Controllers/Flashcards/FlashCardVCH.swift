@@ -10,38 +10,37 @@ import UIKit
 
 class FlashCardVCH {
 	
-	//holds state of the view
-	var currentCategory = Category()
-	var showFavoritesOnly = false
+	// holds state of the view
+	var currentCategory : Category! 	// will need to initialze it with the current category
+	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
 	
-	let categoryC = CategoryController()
+	// controllers
+	let dIC = DItemController3()
+	let cC = CategoryController()
 	
 	var itemIDs = [Int]()	// list to show
 	
-
-	let dIC2 = DItemController2()
 	
 	init() {
-		updateCategory()
+		refreshCategory()
 	}
 	
-	func updateCategory () {
-		let categoryC = CategoryController()
-		currentCategory = categoryC.getCurrentCategory()
+	func refreshCategory () {
+		// get the current category from the db
+		// set as the local current category
+		currentCategory = cC.getCurrentCategory()
 		makeList()
 	}
 	
 	func makeList () {
 		//make the list based on the view state values
-		
-		itemIDs  = [1,2,3,4,5,6]
+		itemIDs  = dIC.getItemIDs(categoryID: currentCategory.categoryID, showOnlyFavorites: showFavoritesOnly)
 	}
 	
 	func getFavoriteCount () -> Int {
-		//return the count of favorites or this catetor
-
-		return 777
+		//return the count of favorites or this catetory
+		return dIC.getCount(catetoryID: currentCategory.categoryID, isFavorite: true)
 	}
 	
 }

@@ -10,14 +10,4 @@ import Foundation
 
 class Tests {
 	
-	//test category2 Controller
-	
-	let cc2 = CategoryController()
-	let dIC3 = DItemController3()
-	
-	func test () {
-		let a = dIC3.whereQuery(categoryID: 0, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: true, learnedTerm: .none, learnedDefinition: .none)
-		
-		print (a)
-	}
 }
