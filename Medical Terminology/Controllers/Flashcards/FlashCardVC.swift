@@ -10,7 +10,13 @@
 
 import UIKit
 
-class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FlashCardCVCellDelegate, FCVModeChangedDelegate, CategoryHomeVCDelegate {
+class FlashcardVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FlashCardCVCellDelegate, FCVModeChangedDelegate, CategoryHomeVCDelegate {
+	
+	
+	func userPressedAssignCategoryButton(itemID: Int) {
+		//MARK: implement
+	}
+	
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var favoritesLabel: UILabel!
@@ -32,14 +38,6 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
 	let scrollDelegate = CVScrollController()
 	let flashCardVCH = FlashCardVCH()
 	let dIC  = DItemController()
-	
-	//button colors
-	/*
-	let enabledButtonColor = myTheme.color_fch_button
-	let enabledButtonTint = myTheme.colorButtonEnabledTint
-	let disabledButtonColor = myTheme.colorButtonDisabled
-	let disabledButtonTint = myTheme.colorButtonDisabledTint
-	*/
 	
 	override func viewDidLoad() {
 		
