@@ -80,10 +80,15 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
+	
 		if indexPath.section == sectionStandard {
 			if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
-				cell.formatCell(category: standardCategories[indexPath.row], indexPath: indexPath)
+				
+				//update the category item count
+				let category = standardCategories[indexPath.row]
+				category.count = categoryC.getItemCountInCategory(categoryID: category.categoryID)
+				
+				cell.formatCell(category: category, indexPath: indexPath)
 				return cell
 			} else {
 				return UITableViewCell()

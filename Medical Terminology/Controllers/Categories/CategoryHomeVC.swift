@@ -100,17 +100,12 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 					self.tableView.reloadData() // to get rid of the swipe buttons
 					return
 				}
-				
 				// here can CHANGE the category name
 				self.categoryHomeVCH.changeCategoryName(categoryID: categoryID, nameTo: cleanedEntry)
 				
 			}
-			
-			
-			
 			// if this entered name is the same name as the current name then don't do anything
 			self.tableView.reloadData() // to get rid of the swipe buttons
-			
 		}
 		
 		alertC.addAction(okay)

@@ -49,7 +49,6 @@ class CategoryController {
 			print("Fatal error getting the result set in getCategories function")
 			return nil
 		}
-		
 	}
 	
 	func getCurrentCategory () -> Category {
@@ -116,11 +115,18 @@ class CategoryController {
 	func getItemCountInCategory(categoryID: Int) -> Int {
 		
 		var query: String
+
+		switch categoryID {
 		
-		if isCategoryStandard(categoryID: categoryID) {
+		case 0:
+			query = "SELECT COUNT (*) FROM \(myConstants.dbTableMain) WHERE categoryID != \(myConstants.dbCustomTermStartingID - 1)"
+			
+		case 1...(myConstants.dbCustomTermStartingID - 1):
 			query = "SELECT COUNT (*) FROM \(myConstants.dbTableMain) WHERE categoryID = \(categoryID)"
-		} else {
+		
+		default:
 			query = "SELECT COUNT (*) FROM \(myConstants.dbTableUser) WHERE categoryID = \(categoryID)"
+			
 		}
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []){
@@ -212,7 +218,7 @@ class CategoryController {
 			return false
 		}
 		
-
+		
 	}
 	
 	private func makeCategoryFromResultset (resultSet: FMResultSet) -> Category {

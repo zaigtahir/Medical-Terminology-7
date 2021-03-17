@@ -21,6 +21,8 @@ class CategoryCell: UITableViewCell {
 	
 	@IBOutlet weak var showDetailButton: UIButton!
 	
+	@IBOutlet weak var countLabel: UILabel!
+	
 	private var categoryID = 0 // used so I can pass it in the delegate method
 	
 	private var indexPath: IndexPath!	// used so I can pass it back in the delgate method
@@ -35,6 +37,7 @@ class CategoryCell: UITableViewCell {
 		
 		self.categoryID = category.categoryID
 		self.indexPath = indexPath
+		self.countLabel.text = String(category.count)
 		
 		nameLabel.text = category.name
 		if category.selected {

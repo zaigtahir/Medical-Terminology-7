@@ -38,6 +38,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// get the current category from the db
 		// set as the local current category
 		currentCategory = cC.getCurrentCategory()
+		
+		// update the counter
+		currentCategory.count = cC.getItemCountInCategory(categoryID: currentCategory.categoryID)
 		makeList()
 	}
 	

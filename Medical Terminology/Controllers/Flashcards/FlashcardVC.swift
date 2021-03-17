@@ -82,7 +82,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			collectionView.isHidden = false
 		}
 		
-		categoryButton.setTitle(" \(flashCardVCH.currentCategory.name)", for: .normal)	//space added to pad off the button grapic a little
+		categoryButton.setTitle("  \(flashCardVCH.currentCategory.name) (\(flashCardVCH.currentCategory.count))", for: .normal) //space added to pad off the button grapic a little
 		
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0
