@@ -11,10 +11,9 @@ import AVFoundation
 
 protocol FlashcardCellDelegate: AnyObject {
     func userPressedFavoriteButton(itemID: Int)
-	func userPressedAssignCategoryButton(itemID: Int)
 }
 
-class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
+class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
     
     @IBOutlet weak var termLabel: UILabel!
     @IBOutlet weak var showHiddenTermButton: UIButton!

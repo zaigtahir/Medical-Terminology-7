@@ -33,7 +33,7 @@
 		5A4471552281C655008E3107 /* ListVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471542281C655008E3107 /* ListVCH.swift */; };
 		5A4471612283DFB9008E3107 /* SearchLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471602283DFB9008E3107 /* SearchLists.swift */; };
 		5A4471652284EE85008E3107 /* ListCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471642284EE85008E3107 /* ListCC.swift */; };
-		5A4BB81D229A48690089A474 /* FlashCardOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4BB81C229A48690089A474 /* FlashCardOptionsVC.swift */; };
+		5A4BB81D229A48690089A474 /* FlashcardOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4BB81C229A48690089A474 /* FlashcardOptionsVC.swift */; };
 		5A4F854822B168870016621C /* LearnCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854722B168870016621C /* LearnCVCell.swift */; };
 		5A4F854A22B16C2E0016621C /* LearnSetVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854922B16C2E0016621C /* LearnSetVCH.swift */; };
 		5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854B22B173B40016621C /* LearnSetVC.swift */; };
@@ -48,16 +48,16 @@
 		5A88633F217226180013FC8B /* Medical Terminology.db in Resources */ = {isa = PBXBuildFile; fileRef = 5A88633D217226180013FC8B /* Medical Terminology.db */; };
 		5A88634E218560030013FC8B /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A88634D218560030013FC8B /* ListVC.swift */; };
 		5A886374218E82330013FC8B /* DItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A886373218E82330013FC8B /* DItemController.swift */; };
-		5A99D5D9233BE53B00CA518A /* FlashCardVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A99D5D8233BE53B00CA518A /* FlashCardVCH.swift */; };
+		5A99D5D9233BE53B00CA518A /* FlashcardVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A99D5D8233BE53B00CA518A /* FlashcardVCH.swift */; };
 		5ABE7221226CB25F005B83C4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE7220226CB25F005B83C4 /* Utilities.swift */; };
 		5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC0C56E22D6AB77009965F1 /* LearningHomeVC.swift */; };
 		5AC0C57322D6C83C009965F1 /* LearningHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC0C57222D6C83C009965F1 /* LearningHomeVCH.swift */; };
 		5AC448B522BC072C004B47C1 /* QuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC448B422BC072C004B47C1 /* QuestionController.swift */; };
 		5AD08055227860D000962AB6 /* AlphaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD08054227860D000962AB6 /* AlphaList.swift */; };
 		5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD725E5225E4E2F007CED84 /* MyTheme.swift */; };
-		5AF85732228F22C8008929D5 /* FlashCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85731228F22C8008929D5 /* FlashCardVC.swift */; };
+		5AF85732228F22C8008929D5 /* FlashcardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85731228F22C8008929D5 /* FlashcardVC.swift */; };
 		5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85733228F26A1008929D5 /* FlashCardController.swift */; };
-		5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */; };
+		5AF85739228F2C27008929D5 /* FlashcardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashcardCell.swift */; };
 		994175DE245A38A900E281DB /* AudioFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175DD245A38A900E281DB /* AudioFileController.swift */; };
 		994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E1245B5BAE00E281DB /* SettingsController.swift */; };
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
@@ -113,7 +113,7 @@
 		5A4471542281C655008E3107 /* ListVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVCH.swift; sourceTree = "<group>"; };
 		5A4471602283DFB9008E3107 /* SearchLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLists.swift; sourceTree = "<group>"; };
 		5A4471642284EE85008E3107 /* ListCC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCC.swift; sourceTree = "<group>"; };
-		5A4BB81C229A48690089A474 /* FlashCardOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardOptionsVC.swift; sourceTree = "<group>"; };
+		5A4BB81C229A48690089A474 /* FlashcardOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardOptionsVC.swift; sourceTree = "<group>"; };
 		5A4F854722B168870016621C /* LearnCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnCVCell.swift; sourceTree = "<group>"; };
 		5A4F854922B16C2E0016621C /* LearnSetVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSetVCH.swift; sourceTree = "<group>"; };
 		5A4F854B22B173B40016621C /* LearnSetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnSetVC.swift; sourceTree = "<group>"; };
@@ -128,16 +128,16 @@
 		5A88633D217226180013FC8B /* Medical Terminology.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Medical Terminology.db"; sourceTree = "<group>"; };
 		5A88634D218560030013FC8B /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		5A886373218E82330013FC8B /* DItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController.swift; sourceTree = "<group>"; };
-		5A99D5D8233BE53B00CA518A /* FlashCardVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardVCH.swift; sourceTree = "<group>"; };
+		5A99D5D8233BE53B00CA518A /* FlashcardVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardVCH.swift; sourceTree = "<group>"; };
 		5ABE7220226CB25F005B83C4 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		5AC0C56E22D6AB77009965F1 /* LearningHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeVC.swift; sourceTree = "<group>"; };
 		5AC0C57222D6C83C009965F1 /* LearningHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeVCH.swift; sourceTree = "<group>"; };
 		5AC448B422BC072C004B47C1 /* QuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionController.swift; sourceTree = "<group>"; };
 		5AD08054227860D000962AB6 /* AlphaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaList.swift; sourceTree = "<group>"; };
 		5AD725E5225E4E2F007CED84 /* MyTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTheme.swift; sourceTree = "<group>"; };
-		5AF85731228F22C8008929D5 /* FlashCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardVC.swift; sourceTree = "<group>"; };
+		5AF85731228F22C8008929D5 /* FlashcardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardVC.swift; sourceTree = "<group>"; };
 		5AF85733228F26A1008929D5 /* FlashCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardController.swift; sourceTree = "<group>"; };
-		5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCVCell.swift; sourceTree = "<group>"; };
+		5AF85738228F2C27008929D5 /* FlashcardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardCell.swift; sourceTree = "<group>"; };
 		994175DD245A38A900E281DB /* AudioFileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileController.swift; sourceTree = "<group>"; };
 		994175E1245B5BAE00E281DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
@@ -288,10 +288,10 @@
 		5A2A58E322F8DEA500434910 /* Flashcards */ = {
 			isa = PBXGroup;
 			children = (
-				5A4BB81C229A48690089A474 /* FlashCardOptionsVC.swift */,
-				5AF85738228F2C27008929D5 /* FlashCardCVCell.swift */,
-				5A99D5D8233BE53B00CA518A /* FlashCardVCH.swift */,
-				5AF85731228F22C8008929D5 /* FlashCardVC.swift */,
+				5A4BB81C229A48690089A474 /* FlashcardOptionsVC.swift */,
+				5AF85738228F2C27008929D5 /* FlashcardCell.swift */,
+				5A99D5D8233BE53B00CA518A /* FlashcardVCH.swift */,
+				5AF85731228F22C8008929D5 /* FlashcardVC.swift */,
 			);
 			path = Flashcards;
 			sourceTree = "<group>";
@@ -493,7 +493,7 @@
 				5A189C3F217123B900929AB8 /* DItem.swift in Sources */,
 				5A367D3422EF513F003A7E4B /* CircularBar.swift in Sources */,
 				5A03478E22D39D0900749EBC /* FMDatabase.m in Sources */,
-				5AF85732228F22C8008929D5 /* FlashCardVC.swift in Sources */,
+				5AF85732228F22C8008929D5 /* FlashcardVC.swift in Sources */,
 				5AD08055227860D000962AB6 /* AlphaList.swift in Sources */,
 				5A2A58DD22F8C35200434910 /* QuizSetVC.swift in Sources */,
 				5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */,
@@ -518,7 +518,7 @@
 				99D55E4D25FF5A03003ABE0B /* Tests.swift in Sources */,
 				5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */,
 				5A6F31CA21A7032E00E6477E /* DList.swift in Sources */,
-				5A99D5D9233BE53B00CA518A /* FlashCardVCH.swift in Sources */,
+				5A99D5D9233BE53B00CA518A /* FlashcardVCH.swift in Sources */,
 				5A2A58F322FCA5F200434910 /* QuizSet.swift in Sources */,
 				5A2A58F522FCA64900434910 /* LearningSet.swift in Sources */,
 				99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */,
@@ -527,7 +527,7 @@
 				99D55E2F25FC7921003ABE0B /* DItemController2.swift in Sources */,
 				5A4F855022B310F80016621C /* AnswerTCell.swift in Sources */,
 				5A03478C22D39D0900749EBC /* FMDatabaseQueue.m in Sources */,
-				5A4BB81D229A48690089A474 /* FlashCardOptionsVC.swift in Sources */,
+				5A4BB81D229A48690089A474 /* FlashcardOptionsVC.swift in Sources */,
 				5A37F87A22E74B18008A5FA5 /* ScrollController.swift in Sources */,
 				994175DE245A38A900E281DB /* AudioFileController.swift in Sources */,
 				99D55E1225F7EF92003ABE0B /* CategoryHomeVCH.swift in Sources */,
@@ -547,7 +547,7 @@
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
 				5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */,
 				5A6F31B7219C776000E6477E /* DItemVC.swift in Sources */,
-				5AF85739228F2C27008929D5 /* FlashCardCVCell.swift in Sources */,
+				5AF85739228F2C27008929D5 /* FlashcardCell.swift in Sources */,
 				998398E325F6AB3C00CC0354 /* Category.swift in Sources */,
 				99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */,
 			);

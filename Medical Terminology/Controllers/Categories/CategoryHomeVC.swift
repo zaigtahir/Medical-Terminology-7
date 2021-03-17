@@ -26,6 +26,8 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
 	let utilities = Utilities() 			// here so I can clean up the user text entry
 	
+	let dIC = DItemController3()
+	
 	weak var delegate: CategoryHomeDelegate?
 	
 	override func viewDidLoad() {
@@ -51,7 +53,9 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		if categoryHomeVCH.displayMode == .selectCategory {
 			messageLabel.text = "Select A Category To View"
 		} else {
-			messageLabel.text = "Select The Custom Categories To Add To"
+			let dItem = dIC.getDItem(itemID: categoryHomeVCH.itemID)
+			
+			messageLabel.text = "Select categories for the term: \(dItem.term)"
 		}
 		
 		// show/hide the table and empty list indicators
