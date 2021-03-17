@@ -17,8 +17,6 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var addCustomCategoryButton: UIButton!
 	@IBOutlet weak var messageLabel: UILabel!
-	@IBOutlet weak var emptyListImage: UIImageView!
-	@IBOutlet weak var emptyListLabel: UILabel!
 	
 	let categoryHomeVCH = CategoryHomeVCH()
 	
@@ -58,18 +56,6 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 			messageLabel.text = "Select categories for the term: \(dItem.term)"
 		}
 		
-		// show/hide the table and empty list indicators
-		tableView.isHidden = false
-		emptyListImage.isHidden = true
-		emptyListLabel.isHidden = true
-		
-		if categoryHomeVCH.displayMode == .assignCategory {
-			if categoryHomeVCH.customCategories.count == 0 {
-				tableView.isHidden = true
-				emptyListImage.isHidden = false
-				emptyListLabel.isHidden = false
-			}
-		}
 	}
 	
 	//MARK: Start Delegate functions for CategoryHomeVCHDelegate

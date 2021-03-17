@@ -59,42 +59,53 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		
 		if section == sectionCustom {
-			
-			if customCategories.count == 0 {
-				return nil
-			} else {
-				return "Custom Categories"
-			}
-		} else {
+			return "Custom Categories"
+		}
+		else {
 			return "Standard Categories"
 		}
 	}
-
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
 		if section == sectionStandard {
 			return standardCategories.count
 		} else {
-			return customCategories.count
+			if customCategories.count == 0 {
+				return 1	// to use as a place holder for the row showing no categories are available
+			} else {
+				return customCategories.count
+			}
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
-			
-			if indexPath.section == sectionStandard {
+		if indexPath.section == sectionStandard {
+			if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
 				cell.formatCell(category: standardCategories[indexPath.row], indexPath: indexPath)
+				return cell
 			} else {
-				cell.formatCell(category: customCategories[indexPath.row], indexPath: indexPath)
+				return UITableViewCell()
 			}
-			
-			return cell
-			
 		} else {
-			return UITableViewCell()
+			// section will be custom
+			if customCategories.count == 0 {
+				// no categories are available
+				if let cell = tableView.dequeueReusableCell(withIdentifier: "cellNoCategories") as? NoCategoriesCell {
+					return cell
+				} else {
+					return UITableViewCell()
+				}
+			} else {
+				if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
+					cell.formatCell(category: customCategories[indexPath.row], indexPath: indexPath)
+					return cell
+				} else {
+					return UITableViewCell()
+				}
+			}
 		}
-		
 	}
 	
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -138,7 +149,14 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-		return true
+		
+		//disallow swipe edit of no categories placeholder cell
+		if indexPath.section == sectionCustom && customCategories.count == 0 {
+			return false
+		} else {
+			return true
+		}
+		
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

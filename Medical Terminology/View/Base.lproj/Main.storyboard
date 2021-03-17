@@ -2504,29 +2504,6 @@
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="i4E-IX-N3k" userLabel="favorite is empty view">
-                                <rect key="frame" x="94.666666666666686" y="193" width="225" height="237.33333333333337"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exclamationmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HBT-Wm-Luj">
-                                        <rect key="frame" x="48.333333333333329" y="0.6666666666666714" width="127.99999999999999" height="127.33333333333334"/>
-                                        <color key="tintColor" systemColor="systemGray2Color"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="Owi-Mv-bNg"/>
-                                            <constraint firstAttribute="width" constant="128" id="SeJ-D3-PPC"/>
-                                        </constraints>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="bold"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have not added any custom categories yet. You may add one now by clicking the button below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6j7-HN-DpR">
-                                        <rect key="frame" x="0.0" y="158" width="225" height="79.333333333333314"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" name="color text"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="225" id="Ndd-nF-IXa"/>
-                                </constraints>
-                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W5i-R0-UWj">
                                 <rect key="frame" x="0.0" y="60.333333333333343" width="414" height="502.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2583,6 +2560,38 @@
                                             <outlet property="showDetailButton" destination="Fzs-LV-fey" id="3Tk-2e-91O"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellNoCategories" rowHeight="61" id="4Rx-eH-8VR" customClass="NoCategoriesCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="89" width="414" height="61"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Rx-eH-8VR" id="IVj-wf-YPV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qdC-Xw-xdw">
+                                                    <rect key="frame" x="48" y="14" width="112" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" name="color text"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.dashed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="acz-wh-Wca">
+                                                    <rect key="frame" x="20" y="1" width="18" height="59.666666666666671"/>
+                                                    <color key="tintColor" name="color text"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="18" id="mBk-6J-tdv"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qdC-Xw-xdw" firstAttribute="top" secondItem="IVj-wf-YPV" secondAttribute="topMargin" constant="3" id="3pj-5T-bZH"/>
+                                                <constraint firstItem="acz-wh-Wca" firstAttribute="top" secondItem="IVj-wf-YPV" secondAttribute="top" id="970-Vl-uPW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qdC-Xw-xdw" secondAttribute="bottom" constant="3" id="9xl-8x-lf2"/>
+                                                <constraint firstAttribute="bottom" secondItem="acz-wh-Wca" secondAttribute="bottom" id="AaF-TA-ENH"/>
+                                                <constraint firstItem="qdC-Xw-xdw" firstAttribute="centerY" secondItem="IVj-wf-YPV" secondAttribute="centerY" id="EOj-Z6-rp4"/>
+                                                <constraint firstItem="qdC-Xw-xdw" firstAttribute="leading" secondItem="acz-wh-Wca" secondAttribute="trailing" constant="10" id="Lhb-2h-fcM"/>
+                                                <constraint firstItem="acz-wh-Wca" firstAttribute="leading" secondItem="IVj-wf-YPV" secondAttribute="leading" constant="20" id="rAM-AL-QzE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avE-ac-nIj">
@@ -2622,19 +2631,15 @@
                             <constraint firstItem="fra-FM-UKu" firstAttribute="centerX" secondItem="AEv-m3-hCA" secondAttribute="centerX" id="5mf-Rt-rZC"/>
                             <constraint firstItem="AEv-m3-hCA" firstAttribute="trailing" secondItem="avE-ac-nIj" secondAttribute="trailing" id="N6k-2l-q7Y"/>
                             <constraint firstItem="avE-ac-nIj" firstAttribute="top" secondItem="W5i-R0-UWj" secondAttribute="bottom" id="Suo-K3-LM0"/>
-                            <constraint firstItem="i4E-IX-N3k" firstAttribute="centerX" secondItem="W5i-R0-UWj" secondAttribute="centerX" id="UFY-l8-o2D"/>
                             <constraint firstItem="AEv-m3-hCA" firstAttribute="trailing" secondItem="W5i-R0-UWj" secondAttribute="trailing" id="Uda-JH-a0P"/>
                             <constraint firstItem="AEv-m3-hCA" firstAttribute="bottom" secondItem="avE-ac-nIj" secondAttribute="bottom" id="cgO-Dc-pJc"/>
                             <constraint firstItem="fra-FM-UKu" firstAttribute="top" secondItem="AEv-m3-hCA" secondAttribute="top" constant="20" id="gXr-SZ-DL0"/>
-                            <constraint firstItem="i4E-IX-N3k" firstAttribute="centerY" secondItem="W5i-R0-UWj" secondAttribute="centerY" id="h4g-Xa-V2c"/>
                             <constraint firstItem="avE-ac-nIj" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" id="hje-Ti-NTW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="gbB-2e-HLI"/>
                     <connections>
                         <outlet property="addCustomCategoryButton" destination="1sI-HK-1mW" id="LjD-gN-he2"/>
-                        <outlet property="emptyListImage" destination="HBT-Wm-Luj" id="Y6a-Za-6cW"/>
-                        <outlet property="emptyListLabel" destination="6j7-HN-DpR" id="V83-hn-AGQ"/>
                         <outlet property="messageLabel" destination="fra-FM-UKu" id="z9H-eT-GBv"/>
                         <outlet property="tableView" destination="W5i-R0-UWj" id="BSB-tn-FcP"/>
                     </connections>
@@ -2655,6 +2660,7 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>
         <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="circle.dashed" catalog="system" width="128" height="121"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="flashcard3" width="25" height="25"/>
@@ -2715,9 +2721,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
