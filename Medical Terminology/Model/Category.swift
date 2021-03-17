@@ -17,6 +17,7 @@ class Category {
     var description = "none"
     var displayOrder = 0
 	var selected = false
+	var count = 0			//hold count of times in this category
     
     // just reminder never use category with ID 999 as it's just a placeholder in the database
     // for ordering the standard categories, use 1 onward.
@@ -25,7 +26,7 @@ class Category {
 
 	}
 	
-	convenience init(categoryID: Int, name: String, description: String, displayOrder: Int, selected: Bool){
+	convenience init(categoryID: Int, name: String, description: String, displayOrder: Int, selected: Bool, count: Int){
 		
 		self.init()
 		
@@ -34,6 +35,7 @@ class Category {
         self.description = description
         self.displayOrder = displayOrder
 		self.selected = selected
+		self.count = count
 		
     }
     

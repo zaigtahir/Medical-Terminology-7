@@ -116,17 +116,17 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			let vc = segue.destination as! FlashcardOptionsVC
 			vc.viewMode = flashCardVCH.viewMode
 			vc.delegate = flashCardVCH
-			
+		
 		case myConstants.segueSelectCatetory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .selectCategory
+			vc.delegate = flashCardVCH
 			
 		case myConstants.segueAssignCategory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .assignCategory
-			vc.categoryHomeVCH.itemID = 2	//just testing
-			//get current itemID
-			
+			vc.delegate = flashCardVCH
+			// get itemID
 			let cellIndex = scrollController.getCellIndex(collectionView: collectionView)
 			let itemID  = flashCardVCH.itemIDs[cellIndex]
 		

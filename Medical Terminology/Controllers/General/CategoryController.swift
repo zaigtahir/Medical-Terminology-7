@@ -21,13 +21,11 @@ categoryID = >= 1000: jus that category, table = userCategoryTerms
 
 class CategoryController {
 	
-	let customCategoryStartID = 1000	//start of custom category id
-	
 	let categoriesTable = myConstants.dbTableCatetories	//categories table
 	
 	func isCategoryStandard (categoryID: Int) -> Bool {
 		// will return true if this is a standard category id
-		if categoryID < 1000 {
+		if categoryID < myConstants.dbCustomCategoryStartingID {
 			return true
 		} else {
 			return false
@@ -94,12 +92,10 @@ class CategoryController {
 		
 		var query: String
 		
-		query = "SELECT * "
-		
 		if categoryType == .standard {
-			query = "SELECT * FROM \(categoriesTable) WHERE categoryID < 999"
+			query = "SELECT * FROM \(categoriesTable) WHERE categoryID < \(myConstants.dbCustomCategoryStartingID - 1)"	//don't include the place holder category number
 		} else {
-			query = "SELECT * FROM \(categoriesTable) WHERE categoryID > 1000"
+			query = "SELECT * FROM \(categoriesTable) WHERE categoryID >= \(myConstants.dbCustomCategoryStartingID)"
 		}
 		
 		if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
@@ -117,39 +113,28 @@ class CategoryController {
 		
 	}
 	
-	/*
-	make an entry in the custom category table
-	*/
-	func addToCustomCatetory (itemID: Int, categoryID: Int) {
-	
-		/*
-		if the id and categoryID already exist, then just don't make another entry
-		*/
-	}
-	
-	/*
-	remove this entry from the custom category table
-	*/
-	func removeFromCustomCategory (itemID: Int, catetoryID: Int ) {
+	func getItemCountInCategory(categoryID: Int) -> Int {
 		
-	}
-	
-	/*
-	Get count from the categories table
-	*/
-	func getCount (whereStatment: String) -> Int {
+		var query: String
 		
-		let query = "SELECT COUNT (*) FROM \(categoriesTable) \(whereStatment)"
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			resultSet.next()
-			return Int(resultSet.int(forColumnIndex: 0))
+		if isCategoryStandard(categoryID: categoryID) {
+			query = "SELECT COUNT (*) FROM \(myConstants.dbTableMain) WHERE categoryID = \(categoryID)"
 		} else {
-			print("problem creating the resultSet in getCategoryCount")
+			query = "SELECT COUNT (*) FROM \(myConstants.dbTableUser) WHERE categoryID = \(categoryID)"
+		}
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []){
+			resultSet.next()
+			let count = Int(resultSet.int(forColumnIndex: 0))
+			return count
+			
+		} else {
+			print ("fatal error getting resultset in getItemCountInCategory")
 			return 0
 		}
 	}
 	
+	//MARK: need to modify this toggling
 	func toggleCategorySelection (categoryID: Int) {
 		// toggle the categories based on the user toggling the selection for this category
 		// toggle rule: allow only one category selection
@@ -192,7 +177,7 @@ class CategoryController {
 		
 		var maxOrder = 0
 		
-		if let resultSet = myDB.executeQuery("SELECT MAX(displayOrder) FROM \(categoriesTable) WHERE categoryID >= 1000", withArgumentsIn: []) {
+		if let resultSet = myDB.executeQuery("SELECT MAX(displayOrder) FROM \(categoriesTable) WHERE categoryID >= \(myConstants.dbCustomCategoryStartingID)", withArgumentsIn: []) {
 			resultSet.next()
 			maxOrder = Int(resultSet.int(forColumnIndex: 0))
 		} else {
@@ -212,14 +197,22 @@ class CategoryController {
 		// will check to see if ths name already exists as a custom category name
 		// CaSe sensitive
 		
-		let c = getCount(whereStatment: "WHERE name == \"\(name)\" AND categoryID >= 1000")
+		let query = "SELECT COUNT (*) FROM \(myConstants.dbTableCatetories) WHERE name == \"\(name)\" AND categoryID >= \(myConstants.dbCustomCategoryStartingID)"
 		
-		if c > 0 {
-			return true
+		if let resultSet =  myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			let count = Int(resultSet.int(forColumnIndex: 0))
+			if count == 0{
+				return true
+			} else {
+				return false
+			}
 		} else {
+			print ("fatal error getting resultSet in customCatetoryNameIsUnique")
 			return false
 		}
 		
+
 	}
 	
 	private func makeCategoryFromResultset (resultSet: FMResultSet) -> Category {
@@ -235,11 +228,14 @@ class CategoryController {
 			s = true
 		}
 		
+		
+		
 		let c = Category(categoryID: categoryID,
 						 name: name,
 						 description: description,
 						 displayOrder: displayOrder,
-						 selected: s
+						 selected: s,
+						 count: 0		// will need to update this when the program needs
 		)
 		
 		return c
