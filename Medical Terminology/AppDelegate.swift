@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(sController.getBundleVersion())
             print(sController.getUserDefaultsVersion())
         }
-		
+			
         /*
         if isDevelopmentMode {
             // check and see if there is a resource present for each audiofile name listed in the database
@@ -62,7 +62,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         }
  */
-        
+		
+		//tests
+		let uCC = UserCategoryController()
+		uCC.addToCustomCategory(itemID: 2, categoryID: 3)
+		uCC.addToCustomCategory(itemID: 2, categoryID: 3)
+		
+		uCC.addToCustomCategory(itemID: 3, categoryID: 1004)
+		uCC.addToCustomCategory(itemID: 4, categoryID: 1004)
+		
+		uCC.removeFromCutomCategoy(itemID: 4, categoryID: 1004)
+	
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {
             

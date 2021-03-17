@@ -21,7 +21,18 @@ categoryID = >= 1000: jus that category, table = userCategoryTerms
 
 class CategoryController {
 	
+	let customCategoryStartID = 1000	//start of custom category id
+	
 	let categoriesTable = myConstants.dbTableCatetories	//categories table
+	
+	func isCategoryStandard (categoryID: Int) -> Bool {
+		// will return true if this is a standard category id
+		if categoryID < 1000 {
+			return true
+		} else {
+			return false
+		}
+	}
 	
 	func getCategory (categoryID: Int) -> Category? {
 		
@@ -85,13 +96,12 @@ class CategoryController {
 		
 		query = "SELECT * "
 		
-		
 		if categoryType == .standard {
 			query = "SELECT * FROM \(categoriesTable) WHERE categoryID < 999"
 		} else {
 			query = "SELECT * FROM \(categoriesTable) WHERE categoryID > 1000"
 		}
-			
+		
 		if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
 			
 			while resultSet.next() {
@@ -107,7 +117,27 @@ class CategoryController {
 		
 	}
 	
-	func getCountFromCategoriesTable (whereStatment: String) -> Int {
+	/*
+	make an entry in the custom category table
+	*/
+	func addToCustomCatetory (itemID: Int, categoryID: Int) {
+	
+		/*
+		if the id and categoryID already exist, then just don't make another entry
+		*/
+	}
+	
+	/*
+	remove this entry from the custom category table
+	*/
+	func removeFromCustomCategory (itemID: Int, catetoryID: Int ) {
+		
+	}
+	
+	/*
+	Get count from the categories table
+	*/
+	func getCount (whereStatment: String) -> Int {
 		
 		let query = "SELECT COUNT (*) FROM \(categoriesTable) \(whereStatment)"
 		
@@ -182,7 +212,7 @@ class CategoryController {
 		// will check to see if ths name already exists as a custom category name
 		// CaSe sensitive
 		
-		let c = getCountFromCategoriesTable(whereStatment: "WHERE name == \"\(name)\" AND categoryID >= 1000")
+		let c = getCount(whereStatment: "WHERE name == \"\(name)\" AND categoryID >= 1000")
 		
 		if c > 0 {
 			return true
@@ -191,7 +221,7 @@ class CategoryController {
 		}
 		
 	}
-
+	
 	private func makeCategoryFromResultset (resultSet: FMResultSet) -> Category {
 		
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))

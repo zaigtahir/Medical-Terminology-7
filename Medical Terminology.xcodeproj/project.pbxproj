@@ -76,6 +76,7 @@
 		99D55E4A25FF2F17003ABE0B /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4925FF2F17003ABE0B /* CategoryController.swift */; };
 		99D55E4D25FF5A03003ABE0B /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4C25FF5A03003ABE0B /* Tests.swift */; };
 		99D55E5825FF685C003ABE0B /* DItemController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E5725FF685C003ABE0B /* DItemController3.swift */; };
+		99D55E892601A01A003ABE0B /* UserCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E882601A01A003ABE0B /* UserCategoryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +156,7 @@
 		99D55E4925FF2F17003ABE0B /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		99D55E4C25FF5A03003ABE0B /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		99D55E5725FF685C003ABE0B /* DItemController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController3.swift; sourceTree = "<group>"; };
+		99D55E882601A01A003ABE0B /* UserCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCategoryController.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +198,7 @@
 				5A6F31C321A458E100E6477E /* AlphaListController.swift */,
 				994175DD245A38A900E281DB /* AudioFileController.swift */,
 				99D55E4925FF2F17003ABE0B /* CategoryController.swift */,
+				99D55E882601A01A003ABE0B /* UserCategoryController.swift */,
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
 				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
 				99D55E5725FF685C003ABE0B /* DItemController3.swift */,
@@ -539,6 +542,7 @@
 				9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */,
 				5A4471652284EE85008E3107 /* ListCC.swift in Sources */,
 				99D55E0525F6C7CA003ABE0B /* QuizHome.swift in Sources */,
+				99D55E892601A01A003ABE0B /* UserCategoryController.swift in Sources */,
 				5A15062A22557E7C00717AB8 /* Answer.swift in Sources */,
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
 				5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */,

@@ -23,7 +23,8 @@ class DItemController3 {
 	let tableMain = myConstants.dbTableMain
 	let tableUser = myConstants.dbTableUser
 	
-	func getCount (catetoryID: Int, isFavorite: Bool) -> Int{
+
+	func getCount (catetoryID: Int, isFavorite: Bool?) -> Int{
 		
 		let whereQ = whereQuery(categoryID: catetoryID, showOnlyFavorites: .none, isFavorite: isFavorite , answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none)
 		
@@ -37,7 +38,6 @@ class DItemController3 {
 			print("Fatal error making resultset")
 			return 0
 		}
-		
 	}
 	
 	func getItemIDs (categoryID: Int, showOnlyFavorites: Bool) -> [Int] {
