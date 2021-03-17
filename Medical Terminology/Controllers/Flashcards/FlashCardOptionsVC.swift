@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FCVModeChangedDelegate {
+protocol FlashcardOptionsDelegate {
     func flashCardViewModeChanged (fcvMode: FlashcardViewMode)
 }
 
@@ -20,7 +20,7 @@ class FlashCardOptionsVC: UIViewController {
     //class variables with default values
     var viewMode: FlashcardViewMode = .both          //flash card view mode
     
-    var delegate: FCVModeChangedDelegate?
+    var delegate: FlashcardOptionsDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()

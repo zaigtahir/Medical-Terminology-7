@@ -10,9 +10,10 @@ import UIKit
 
 protocol FlashCardVCHDelegate: class {
 	func updateHomeDisplay()
+	func refreshCollectionView()
 }
 
-class FlashCardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate {
+class FlashCardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, ScrollControllerDelegate, CategoryHomeDelegate {
 	
 	// holds state of the view
 	var currentCategory : Category! 	// will need to initialze it with the current category
@@ -58,7 +59,7 @@ class FlashCardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashCardCell", for: indexPath) as! FlashCardCVCell
-				
+		
 		//the cell should configure itself
 		let dItem  = dIC.getDItem(itemID: itemIDs[indexPath.row])
 		let countText = "Flashcard: \(indexPath.row + 1) of \(itemIDs.count)"
@@ -74,6 +75,24 @@ class FlashCardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate 
 	
 	func userPressedFavoriteButton(itemID: Int) {
 		dIC.toggleIsFavorite (itemID: itemID)
+		delegate?.updateHomeDisplay()
+	}
+	
+	// MARK: - Scroll delegate protocol
+	
+	func CVCellChanged(cellIndex: Int) {
+		delegate?.updateHomeDisplay()
+	}
+	
+	func CVCellDragging(cellIndex: Int) {
+		// here to meet the delegate requirement, but will not be using this function here
+	}
+	
+	// MARK: Delegate fuctions for CategoryHomeVCDelegate
+	
+	func newCategorySelected() {
+		self.refreshCategory()
+		delegate?.refreshCollectionView()
 		delegate?.updateHomeDisplay()
 	}
 }

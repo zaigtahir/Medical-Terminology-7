@@ -17,7 +17,7 @@ import UIKit
 
 // delegate function. This will fire off when a new cell loads into the controller
 
-protocol CVCellChangedDelegate: class {
+protocol ScrollControllerDelegate: class {
     
     //when the scroll is fully at a stopped position of a new cell
     func CVCellChanged (cellIndex: Int)
@@ -27,9 +27,9 @@ protocol CVCellChangedDelegate: class {
     func CVCellDragging (cellIndex: Int)
 }
 
-class CVScrollController: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ScrollController: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    weak var delegate: CVCellChangedDelegate?
+    weak var delegate: ScrollControllerDelegate?
     
     let HORIZONTAL = 0
     

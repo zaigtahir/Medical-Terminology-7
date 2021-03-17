@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CategoryHomeVCDelegate: class {
+protocol CategoryHomeDelegate: class {
 	func newCategorySelected()
 }
 
@@ -26,7 +26,7 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
 	let utilities = Utilities() 			// here so I can clean up the user text entry
 	
-	weak var delegate: CategoryHomeVCDelegate?
+	weak var delegate: CategoryHomeDelegate?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()

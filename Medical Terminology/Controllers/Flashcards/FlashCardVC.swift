@@ -10,12 +10,12 @@
 
 import UIKit
 
-class FlashcardVC: UIViewController, CVCellChangedDelegate, FCVModeChangedDelegate, CategoryHomeVCDelegate, FlashCardVCHDelegate {
+class FlashcardVC: UIViewController, FlashcardOptionsDelegate, FlashCardVCHDelegate {
 	
+
 	func userPressedAssignCategoryButton(itemID: Int) {
 		//MARK: implement
 	}
-	
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var favoritesLabel: UILabel!
@@ -34,7 +34,7 @@ class FlashcardVC: UIViewController, CVCellChangedDelegate, FCVModeChangedDelega
 	
 	var utilities = Utilities()
 	
-	let scrollDelegate = CVScrollController()
+	let scrollDelegate = ScrollController()
 	let flashCardVCH = FlashCardVCH()
 	let dIC  = DItemController()
 	
@@ -42,7 +42,7 @@ class FlashcardVC: UIViewController, CVCellChangedDelegate, FCVModeChangedDelega
 		
 		super.viewDidLoad()
 		
-		scrollDelegate.delegate = self
+		scrollDelegate.delegate = flashCardVCH
 		scrollDelegate.sideMargin = myConstants.layout_sideMargin
 		scrollDelegate.topBottomMargin = myConstants.layout_topBottomMargin
 		
@@ -121,7 +121,7 @@ class FlashcardVC: UIViewController, CVCellChangedDelegate, FCVModeChangedDelega
 			vc.delegate = self
 		} else if segue.identifier == myConstants.segueSelectCatetory {
 			let vc = segue.destination as! CategoryHomeVC
-			vc.delegate = self
+			vc.delegate = flashCardVCH
 			
 		} else {
 			if isDevelopmentMode {
@@ -130,17 +130,6 @@ class FlashcardVC: UIViewController, CVCellChangedDelegate, FCVModeChangedDelega
 		}
 		
 	}
-	
-	// MARK: Delegate functions
-	
-	func CVCellChanged(cellIndex: Int) {
-		updateDisplay()
-	}
-	
-	func CVCellDragging(cellIndex: Int) {
-		// here to meet the delegate requirement, but will not be using this function here
-	}
-	
 	
 	func flashCardViewModeChanged(fcvMode: FlashcardViewMode) {
 		flashCardVCH.viewMode = fcvMode
@@ -156,12 +145,8 @@ class FlashcardVC: UIViewController, CVCellChangedDelegate, FCVModeChangedDelega
 		self.updateDisplay()
 	}
 	
-	// MARK: Delegate fuctions for CategoryHomeVCDelegate
-	
-	func newCategorySelected() {
-		flashCardVCH.refreshCategory()
+	func refreshCollectionView() {
 		collectionView.reloadData()
-		updateDisplay()
 	}
 	
 	//update options

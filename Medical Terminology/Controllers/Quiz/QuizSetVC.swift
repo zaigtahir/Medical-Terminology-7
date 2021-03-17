@@ -8,14 +8,14 @@
 
 import UIKit
 
-class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegate, CVCellChangedDelegate, QuizDoneCVCellDelegate {
+class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegate, ScrollControllerDelegate, QuizDoneCVCellDelegate {
     
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     
-    var scrollDelegate = CVScrollController()
+    var scrollDelegate = ScrollController()
     let quizSetVCH = QuizSetVCH()
     let utilities = Utilities()
     
