@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-protocol FlashCardCVCellDelegate: AnyObject {
+protocol FlashcardCellDelegate: AnyObject {
     func userPressedFavoriteButton(itemID: Int)
 	func userPressedAssignCategoryButton(itemID: Int)
 }
@@ -33,7 +33,7 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
     
     private var audioPlayer: AVAudioPlayer?
     
-    weak var delegate: FlashCardCVCellDelegate?
+    weak var delegate: FlashcardCellDelegate?
     
     func configure (dItem: DItem, fcvMode: FlashcardViewMode, counter: String) {
         

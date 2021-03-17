@@ -8,12 +8,18 @@
 
 import UIKit
 
-class FlashCardVCH {
+protocol FlashCardVCHDelegate: class {
+	func updateHomeDisplay()
+}
+
+class FlashCardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate {
 	
 	// holds state of the view
 	var currentCategory : Category! 	// will need to initialze it with the current category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
+	
+	weak var delegate: FlashCardVCHDelegate?
 	
 	// controllers
 	let dIC = DItemController3()
@@ -21,8 +27,8 @@ class FlashCardVCH {
 	
 	var itemIDs = [Int]()	// list to show
 	
-	
-	init() {
+	override init() {
+		super.init()
 		refreshCategory()
 	}
 	
@@ -43,4 +49,31 @@ class FlashCardVCH {
 		return dIC.getCount(catetoryID: currentCategory.categoryID, isFavorite: true)
 	}
 	
+	// MARK: - CollectionViewDataSource Functions
+	
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		itemIDs.count
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashCardCell", for: indexPath) as! FlashCardCVCell
+				
+		//the cell should configure itself
+		let dItem  = dIC.getDItem(itemID: itemIDs[indexPath.row])
+		let countText = "Flashcard: \(indexPath.row + 1) of \(itemIDs.count)"
+		cell.configure(dItem: dItem, fcvMode: viewMode, counter: countText)
+		cell.delegate = self
+		return cell
+	}
+	
+	// MARK: - Cell delegate protocol
+	func userPressedAssignCategoryButton(itemID: Int) {
+		print("user pressed category assign button")
+	}
+	
+	func userPressedFavoriteButton(itemID: Int) {
+		dIC.toggleIsFavorite (itemID: itemID)
+		delegate?.updateHomeDisplay()
+	}
 }

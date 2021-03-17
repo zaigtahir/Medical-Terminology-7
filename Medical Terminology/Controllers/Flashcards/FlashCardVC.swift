@@ -10,8 +10,7 @@
 
 import UIKit
 
-class FlashcardVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FlashCardCVCellDelegate, FCVModeChangedDelegate, CategoryHomeVCDelegate {
-	
+class FlashcardVC: UIViewController, CVCellChangedDelegate, FCVModeChangedDelegate, CategoryHomeVCDelegate, FlashCardVCHDelegate {
 	
 	func userPressedAssignCategoryButton(itemID: Int) {
 		//MARK: implement
@@ -47,7 +46,9 @@ class FlashcardVC: UIViewController, UICollectionViewDataSource, CVCellChangedDe
 		scrollDelegate.sideMargin = myConstants.layout_sideMargin
 		scrollDelegate.topBottomMargin = myConstants.layout_topBottomMargin
 		
-		collectionView.dataSource = self
+		flashCardVCH.delegate = self
+		
+		collectionView.dataSource = flashCardVCH
 		collectionView.delegate = scrollDelegate
 		
 		// Do any additional setup after loading the view.
@@ -74,27 +75,6 @@ class FlashcardVC: UIViewController, UICollectionViewDataSource, CVCellChangedDe
 	
 	override func viewWillAppear(_ animated: Bool) {
 		updateDisplay()
-	}
-	
-	//MARK: - DataSourceFunctions
-	
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		
-		flashCardVCH.itemIDs.count
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashCardCell", for: indexPath) as! FlashCardCVCell
-		
-		let flashCardList = flashCardVCH.itemIDs
-		
-		//the cell should configure itself
-		let dItem  = dIC.getDItem(itemID: flashCardList[indexPath.row])
-		let countText = "Flashcard: \(indexPath.row + 1) of \(flashCardList.count)"
-		cell.configure(dItem: dItem, fcvMode: flashCardVCH.viewMode, counter: countText)
-		cell.delegate = self
-		return cell
 	}
 	
 	func updateDisplay () {
@@ -161,10 +141,6 @@ class FlashcardVC: UIViewController, UICollectionViewDataSource, CVCellChangedDe
 		// here to meet the delegate requirement, but will not be using this function here
 	}
 	
-	func userPressedFavoriteButton(itemID: Int) {
-		dIC.toggleFavorite (itemID: itemID)
-		updateDisplay()
-	}
 	
 	func flashCardViewModeChanged(fcvMode: FlashcardViewMode) {
 		flashCardVCH.viewMode = fcvMode
@@ -172,6 +148,12 @@ class FlashcardVC: UIViewController, UICollectionViewDataSource, CVCellChangedDe
 		//need to refresh cell
 		let cellIndex  = scrollDelegate.getCellIndex(collectionView: collectionView)
 		collectionView.reloadItems(at: [IndexPath(row: cellIndex, section: 0)])
+	}
+	
+	// MARK: Delegate functions for FlashcardVCHDelegate
+	
+	func updateHomeDisplay() {
+		self.updateDisplay()
 	}
 	
 	// MARK: Delegate fuctions for CategoryHomeVCDelegate
