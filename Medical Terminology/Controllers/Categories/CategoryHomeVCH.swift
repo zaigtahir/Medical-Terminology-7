@@ -24,14 +24,15 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	// get the categories and display them in the table
 	// at the bottom of section 2, display a cell that says "add a category"
 	
+	// view state variables, set the in the segue
+	var displayMode = CategoryViewMode.selectCategory
+	var itemID = 1	//just default
+	
 	let categoryC = CategoryController()
 	var standardCategories = [Category]()
 	var customCategories = [Category]()
-	
 	let sectionCustom = 0
 	let sectionStandard = 1
-	
-	let displayMode = CategoryViewMode.selectCategory
 	
 	weak var delegate : CategoryHomeVCHDelegate?
 	

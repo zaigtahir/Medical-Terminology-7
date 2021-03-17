@@ -653,6 +653,9 @@
                                                                     <state key="normal">
                                                                         <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <segue destination="KTC-23-wdb" kind="show" identifier="segueAssignCategory" id="BkZ-EU-oas"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-Hv-Jif">
                                                                     <rect key="frame" x="54.333333333333343" y="0.0" width="28" height="24"/>
@@ -807,7 +810,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
-                                    <segue destination="KTC-23-wdb" kind="show" identifier="segueCategories" id="WY2-nN-SgM"/>
+                                    <segue destination="KTC-23-wdb" kind="show" identifier="segueSelectCategory" id="WY2-nN-SgM"/>
                                 </connections>
                             </button>
                         </subviews>

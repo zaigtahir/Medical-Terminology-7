@@ -28,6 +28,12 @@ class MyConstants {
     let appTitle = "Practical Medical Terminology"
     
     let noFavoritesAvailableText = "There are no favorites available to show"
+	
+	// segues
+	let segueFlashcardOptions = "segueFlashCardOptions"
+	let segueSelectCatetory = "segueCategory"
+	let segueAssignCategory = "segueAssignCategory"
+	
     
     // question feedback remarks
     let feedbackNotAnswered = "Select An Answer"
@@ -44,9 +50,6 @@ class MyConstants {
     let layout_cornerRadius = CGFloat(integerLiteral: 10)
     let layout_sideMargin = CGFloat(integerLiteral: 20)
     let layout_topBottomMargin = CGFloat(integerLiteral: 10)
-    
-	let segueFlashcardOptions = "segueFlashCardOptions"
-    let segueCatetories = "segueCategories"
-    
+	
     let requeueInterval = 7 //interval to requeue a question in a learning set if it is answered wrong
 }

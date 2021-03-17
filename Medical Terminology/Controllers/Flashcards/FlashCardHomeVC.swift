@@ -10,7 +10,7 @@
 
 import UIKit
 
-class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FCFavoritePressedDelegate, FCVModeChangedDelegate, CategoryHomeVCDelegate {
+class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChangedDelegate, FlashCardCVCellDelegate, FCVModeChangedDelegate, CategoryHomeVCDelegate {
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var favoritesLabel: UILabel!
@@ -141,7 +141,7 @@ class FlashCardHomeVC: UIViewController, UICollectionViewDataSource, CVCellChang
 			let vc = segue.destination as! FlashCardOptionsVC
 			vc.viewMode = flashCardVCH.viewMode
 			vc.delegate = self
-		} else if segue.identifier == myConstants.segueCatetories {
+		} else if segue.identifier == myConstants.segueSelectCatetory {
 			let vc = segue.destination as! CategoryHomeVC
 			vc.delegate = self
 			

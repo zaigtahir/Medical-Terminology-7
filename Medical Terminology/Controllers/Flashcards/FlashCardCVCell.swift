@@ -9,8 +9,9 @@
 import UIKit
 import AVFoundation
 
-protocol FCFavoritePressedDelegate: AnyObject {
+protocol FlashCardCVCellDelegate: AnyObject {
     func userPressedFavoriteButton(itemID: Int)
+	func userPressedAssignCategoryButton(itemID: Int)
 }
 
 class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
@@ -32,7 +33,7 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
     
     private var audioPlayer: AVAudioPlayer?
     
-    weak var delegate: FCFavoritePressedDelegate?
+    weak var delegate: FlashCardCVCellDelegate?
     
     func configure (dItem: DItem, fcvMode: FlashcardViewMode, counter: String) {
         
@@ -146,8 +147,9 @@ class FlashCardCVCell: UICollectionViewCell, AVAudioPlayerDelegate {
         
         return
     }
+	
     
-    //MARK: Delegate methods
+    // MARK: Delegate methods
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         //change the speaker image to no playing
       
