@@ -46,8 +46,6 @@ class DItemController3 {
 		var itemIDs = [Int]()
 		let query = "SELECT itemID FROM \(tableString(categoryID: categoryID)) \(whereQ)"
 		
-		print("getItemIDs query: \(query)")
-		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			while resultSet.next() {
 				itemIDs.append(Int(resultSet.int(forColumnIndex: 0)))

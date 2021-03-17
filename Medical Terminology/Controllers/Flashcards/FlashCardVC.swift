@@ -10,12 +10,7 @@
 
 import UIKit
 
-class FlashcardVC: UIViewController, FlashcardOptionsDelegate, FlashCardVCHDelegate {
-	
-
-	func userPressedAssignCategoryButton(itemID: Int) {
-		//MARK: implement
-	}
+class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var favoritesLabel: UILabel!
@@ -118,7 +113,7 @@ class FlashcardVC: UIViewController, FlashcardOptionsDelegate, FlashCardVCHDeleg
 		if segue.identifier == myConstants.segueFlashcardOptions {
 			let vc = segue.destination as! FlashCardOptionsVC
 			vc.viewMode = flashCardVCH.viewMode
-			vc.delegate = self
+			vc.delegate = flashCardVCH
 		} else if segue.identifier == myConstants.segueSelectCatetory {
 			let vc = segue.destination as! CategoryHomeVC
 			vc.delegate = flashCardVCH
@@ -131,14 +126,6 @@ class FlashcardVC: UIViewController, FlashcardOptionsDelegate, FlashCardVCHDeleg
 		
 	}
 	
-	func flashCardViewModeChanged(fcvMode: FlashcardViewMode) {
-		flashCardVCH.viewMode = fcvMode
-		
-		//need to refresh cell
-		let cellIndex  = scrollDelegate.getCellIndex(collectionView: collectionView)
-		collectionView.reloadItems(at: [IndexPath(row: cellIndex, section: 0)])
-	}
-	
 	// MARK: Delegate functions for FlashcardVCHDelegate
 	
 	func updateHomeDisplay() {
@@ -149,7 +136,11 @@ class FlashcardVC: UIViewController, FlashcardOptionsDelegate, FlashCardVCHDeleg
 		collectionView.reloadData()
 	}
 	
-	//update options
+	func refreshCurrentCell() {
+		//need to refresh cell
+		let cellIndex  = scrollDelegate.getCellIndex(collectionView: collectionView)
+		collectionView.reloadItems(at: [IndexPath(row: cellIndex, section: 0)])
+	}
 	
 	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
 		flashCardVCH.showFavoritesOnly = sender.isOn

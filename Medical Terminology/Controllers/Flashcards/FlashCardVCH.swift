@@ -9,11 +9,12 @@
 import UIKit
 
 protocol FlashCardVCHDelegate: class {
-	func updateHomeDisplay()
-	func refreshCollectionView()
+	func updateHomeDisplay()		//update state of other controls on the flashcard home screen
+	func refreshCollectionView()	//reload all the data
+	func refreshCurrentCell()		//reload just the current cell data
 }
 
-class FlashCardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, ScrollControllerDelegate, CategoryHomeDelegate {
+class FlashCardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate, CategoryHomeDelegate {
 	
 	// holds state of the view
 	var currentCategory : Category! 	// will need to initialze it with the current category
@@ -94,5 +95,11 @@ class FlashCardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		self.refreshCategory()
 		delegate?.refreshCollectionView()
 		delegate?.updateHomeDisplay()
+	}
+	
+	// MARK: Flashcard options delegate
+	func flashCardViewModeChanged(fcvMode: FlashcardViewMode) {
+		self.viewMode = fcvMode
+		delegate?.refreshCurrentCell()
 	}
 }
