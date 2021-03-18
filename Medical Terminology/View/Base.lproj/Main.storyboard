@@ -2526,7 +2526,7 @@
                                                         <action selector="showDetailButtonAction:" destination="51Y-Dh-WQa" eventType="touchUpInside" id="mD4-Um-hXj"/>
                                                     </connections>
                                                 </button>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H6y-PU-drn">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="record.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H6y-PU-drn">
                                                     <rect key="frame" x="20" y="1" width="18" height="59.666666666666671"/>
                                                     <color key="tintColor" name="color text"/>
                                                     <constraints>
@@ -2670,7 +2670,6 @@
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>
-        <image name="circle" catalog="system" width="128" height="121"/>
         <image name="circle.dashed" catalog="system" width="128" height="121"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
@@ -2684,6 +2683,7 @@
         <image name="list2" width="25" height="25"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="quiz3" width="25" height="25"/>
+        <image name="record.circle" catalog="system" width="128" height="121"/>
         <image name="settings zt" width="24" height="24"/>
         <image name="shuffle" catalog="system" width="128" height="93"/>
         <image name="speaker.fill" catalog="system" width="128" height="128"/>

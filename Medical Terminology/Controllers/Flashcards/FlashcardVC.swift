@@ -154,7 +154,6 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		collectionView.reloadItems(at: [IndexPath(row: cellIndex, section: 0)])
 	}
 	
-	
 	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
 		flashCardVCH.showFavoritesOnly = sender.isOn
 		flashCardVCH.makeList()

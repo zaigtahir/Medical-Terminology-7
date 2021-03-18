@@ -77,6 +77,7 @@ class MyTheme{
 	
 	let imageSelectedRow = UIImage.init(systemName: "circle.fill")
 	let imageUnselectedRow = UIImage.init(systemName: "circle")
+	let imageDefaultCategory = UIImage.init(systemName: "record.circle")
 	
     //MARK: images
     let imageCorrect = UIImage(named: "check circle filled")

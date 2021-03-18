@@ -157,11 +157,12 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 				if cleanText != "" {
 
 					//need to check if this name is a duplicate
-					if categoryC.customCatetoryNameIsUnique(name: cleanText) { //just simulate duplicate text for now
-						self.showDuplicateCategoryAlert(name: cleanText)
-					} else {
+					if categoryC.customCatetoryNameIsUnique(name: cleanText) { 
 						//this is not a duplicate, may save this name
 						self.categoryHomeVCH.addCustomCategoryName(name: cleanText)
+						
+					} else {
+						self.showDuplicateCategoryAlert(name: cleanText)
 					}
 				}
 			}

@@ -26,6 +26,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	
 	// view state variables, set the in the segue
 	var displayMode = CategoryViewMode.selectCategory
+	
 	var itemID = 1	//just default
 	
 	let categoryC = CategoryController()
@@ -87,13 +88,16 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 				//update the category item count
 				let category = standardCategories[indexPath.row]
 				category.count = categoryC.getItemCountInCategory(categoryID: category.categoryID)
+			
 				
-				cell.formatCell(category: category, indexPath: indexPath)
+				cell.formatCellSelectCategory(category: category)
+				
 				return cell
 			} else {
 				return UITableViewCell()
 			}
 		} else {
+			
 			// section will be custom
 			if customCategories.count == 0 {
 				// no categories are available
@@ -104,7 +108,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 				}
 			} else {
 				if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
-					cell.formatCell(category: customCategories[indexPath.row], indexPath: indexPath)
+					cell.formatCellSelectCategory(category: customCategories[indexPath.row])
 					return cell
 				} else {
 					return UITableViewCell()

@@ -18,9 +18,12 @@ class DItem {
     var term: String = "none loaded"
     var definition: String = "none loaded"
     var example: String = "none loaded"
-    var categoryID: Int = 0
-    var audioFile: String = "none loaded"
 	
+    var categoryID: Int = 0
+	var defaultCategoryID: Int = 0		//saved in db, used to recover the default value when needed
+	var customCategoryIDs = [Int]()		// array of custom categoryID
+	
+	var audioFile: String = "none loaded"
     var isFavorite: Bool = false
 	
     var learnedTerm: Bool = false
@@ -38,7 +41,7 @@ class DItem {
      'answeredTerm'  0 = unanswered, 1 = correctly answered, 2 = answered wrong
      'answeredDefinition' 0 = unanswered, 1 = correctly answered, 2 = answered wrong
      */
-    convenience init (itemID: Int, term: String, definition: String, example: String, categoryID: Int, audioFile: String, isFavorite: Bool, learnedTerm: Bool, learnedDefinition: Bool, answeredTerm: Int, answeredDefinition: Int  ) {
+	convenience init (itemID: Int, term: String, definition: String, example: String, categoryID: Int, defaultCategoryID: Int, customCategoryIDs: [Int], audioFile: String, isFavorite: Bool, learnedTerm: Bool, learnedDefinition: Bool, answeredTerm: Int, answeredDefinition: Int  ) {
         
         self.init()
         
@@ -47,6 +50,8 @@ class DItem {
         self.definition = definition
         self.example = example
         self.categoryID = categoryID
+		self.defaultCategoryID = defaultCategoryID
+		self.customCategoryIDs = customCategoryIDs
         self.audioFile = audioFile
         self.isFavorite = isFavorite
         self.learnedTerm = learnedTerm

@@ -30,4 +30,23 @@ class UserCategoryController {
 		let query = "DELETE FROM \(userTable) WHERE (itemID = \(itemID) AND categoryID = \(categoryID))"
 		myDB.executeStatements(query)
 	}
+	
+	func getCustomCategoryIDs (itemID: Int) -> [Int] {
+		
+		let query = "SELECT categoryID FROM \(myConstants.dbTableUser) WHERE itemID = \(itemID)"
+		
+		var ids = [Int]()
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next(){
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+			}
+			return ids
+			
+		} else {
+			print("fatal error getting resultSet in getCustomCategoryIDs")
+			return ids
+		}
+	}
 }

@@ -23,6 +23,7 @@ class DItemController3 {
 	let tableMain = myConstants.dbTableMain
 	let tableUser = myConstants.dbTableUser
 	
+	let userCC = UserCategoryController()
 
 	func getCount (catetoryID: Int, isFavorite: Bool?) -> Int{
 		
@@ -81,6 +82,7 @@ class DItemController3 {
 				let definition = resultSet.string(forColumn: "definition")  ?? ""
 				let example = resultSet.string(forColumn: "example")  ?? ""
 				let categoryID = Int(resultSet.int(forColumn: "categoryID"))
+				let defaultCategoryID = Int(resultSet.int(forColumn: "defaultCategoryID"))
 				let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
 				let f = Int(resultSet.int(forColumn: "isFavorite"))
 				let t = Int(resultSet.int(forColumn: "learnedTerm"))
@@ -109,11 +111,16 @@ class DItemController3 {
 					term = termDisplay
 				}
 				
+				// make customCategoryIDs
+				let customCategoryIDs = userCC.getCustomCategoryIDs(itemID: itemID)
+				
 				let item = DItem(itemID: itemID,
 								 term: term,
 								 definition: definition,
 								 example: example,
 								 categoryID: categoryID,
+								 defaultCategoryID: defaultCategoryID,
+								 customCategoryIDs: customCategoryIDs,
 								 audioFile: audioFile,
 								 isFavorite: isFavorite,
 								 learnedTerm: learnedTerm,

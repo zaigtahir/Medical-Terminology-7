@@ -205,10 +205,12 @@ class CategoryController {
 		
 		let query = "SELECT COUNT (*) FROM \(myConstants.dbTableCatetories) WHERE name == \"\(name)\" AND categoryID >= \(myConstants.dbCustomCategoryStartingID)"
 		
+		print("custom unique function: \(query)")
+		
 		if let resultSet =  myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
 			let count = Int(resultSet.int(forColumnIndex: 0))
-			if count == 0{
+			if count == 0 {
 				return true
 			} else {
 				return false

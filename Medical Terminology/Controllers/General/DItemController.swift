@@ -90,16 +90,19 @@ class DItemController {
                     learnedDefinition = true
                 }
                 
-                //replace term with termDisplay if there is something in term display
+                // replace term with termDisplay if there is something in term display
                 if termDisplay.isEmpty == false {
                     term = termDisplay
                 }
                 
+				
                 let item = DItem(itemID: itemID,
 								 term: term,
 								 definition: definition,
 								 example: example,
 								 categoryID: categoryID,
+								 defaultCategoryID: 888,	//holder
+								 customCategoryIDs: [1,2,3,4],	//holder
 								 audioFile: audioFile,
 								 isFavorite: isFavorite,
 								 learnedTerm: learnedTerm,
@@ -136,15 +139,20 @@ class DItemController {
         //return an array of DItems with just the itemID, favorite, learned, answred
         //if nothing found return an empty array
         
-        let query = "SELECT itemID, isFavorite, learnedTerm, learnedDefinition, answeredTerm, answeredDefinition FROM dictionary WHERE itemID >= 0"
-        
+		let query = "SELECT * FROM \(myConstants.dbTableMain)"
+		
         var dItems = [DItem]()
         
         if let resultSet = myDB.executeQuery(query, withParameterDictionary: nil) {
             
+			// MARK: modify functions to account for difference between categoryID and defaultID
+			
+			
             while resultSet.next() {
                 
                 let itemID = Int(resultSet.int(forColumn: "itemID"))
+				let categoryID = Int(resultSet.int(forColumn: "categoryID"))
+				let defaultCategoryID = Int(resultSet.int(forColumn: "defaultCategoryID"))
                 let f = Int(resultSet.int(forColumn: "isFavorite"))
                 let t = Int(resultSet.int(forColumn: "learnedTerm"))
                 let d = Int(resultSet.int(forColumn: "learnedDefinition"))
@@ -168,7 +176,15 @@ class DItemController {
                     learnedDefinition = true
                 }
                 
-                let item = DItem(itemID: itemID, term: "", definition: "", example: "", categoryID: 0, audioFile: "", isFavorite: isFavorite, learnedTerm: learnedTerm, learnedDefinition: learnedDefinition, answeredTerm: answeredTerm, answeredDefinition: answeredDefintion)
+                let item = DItem()
+				item.itemID = itemID
+				item.categoryID = categoryID
+				item.defaultCategoryID = defaultCategoryID
+				item.isFavorite = isFavorite
+				item.answeredTerm = answeredTerm
+				item.answeredDefinition = answeredDefintion
+				item.learnedTerm = learnedTerm
+				item.learnedDefinition = learnedDefinition
                 
                 dItems.append(item)
             }
