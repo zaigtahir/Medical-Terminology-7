@@ -75,9 +75,11 @@ class MyTheme{
 	let colorSelectedRowIndicator = UIColor(named: "color main")
 	let colorUnselectedRowIndecator = UIColor(named: "color text")
 	
-	let imageSelectedRow = UIImage.init(systemName: "circle.fill")
-	let imageUnselectedRow = UIImage.init(systemName: "circle")
-	let imageDefaultCategory = UIImage.init(systemName: "asterisk.circle")
+	//MARK: row selector images
+	let imageRowSelected = UIImage.init(systemName: "circle.fill")
+	let imageRowNotSelected = UIImage.init(systemName: "circle")
+	let imageRowDefaultCategory = UIImage.init(systemName: "asterisk.circle")
+	let imageRowEmpty = UIImage.init(systemName: "circle.dashed")
 	
     //MARK: images
     let imageCorrect = UIImage(named: "check circle filled")

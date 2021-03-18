@@ -38,38 +38,41 @@ class CategoryCell: UITableViewCell {
 		
 		if category.selected {
 			//selected category
-			selectImage.image = myTheme.imageSelectedRow
+			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain
 		} else {
-			//not selected catetory
-			selectImage.image = myTheme.imageUnselectedRow
+			//not selected category
+			if category.count == 0 {
+				//nothing in this category
+				selectImage.image = myTheme.imageRowEmpty
+			} else {
+				selectImage.image = myTheme.imageRowNotSelected
+			}
 			selectImage.tintColor = myTheme.colorText
 		}
 	}
 	
 	func formatCellAssignCategory (category: Category, dItem: DItem) {
-		//nothing for now
-		
-		countLabel.text = String(category.count)
+		// nothing for now
+		//
+ 		countLabel.text = String(category.count)
 		
 		if category.categoryID == dItem.categoryID {
 			//this item belongs to this category
-			selectImage.image = myTheme.imageSelectedRow
+			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain
 		
 		} else {
-			
 				// this item does not belong to this category. BUT is this category the default for this item?
 			if category.categoryID == dItem.defaultCategoryID {
 				// this is the default category
-				selectImage.image = myTheme.imageDefaultCategory
+				selectImage.image = myTheme.imageRowDefaultCategory
 				selectImage.tintColor = myTheme.colorText
-				
 				
 			} else {
 				// this item is not in this category and this category is not its default category
 				//not selected catetory
-				selectImage.image = myTheme.imageUnselectedRow
+				selectImage.image = myTheme.imageRowNotSelected
 				selectImage.tintColor = myTheme.colorText
 			}
 		}

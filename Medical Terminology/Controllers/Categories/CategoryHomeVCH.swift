@@ -29,6 +29,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	var itemID = 10
 	
 	let categoryC = CategoryController()
+	
 	var standardCategories = [Category]()
 	
 	//this is same as the standard categories except that it won't contain category 0 which is "All Standard Categories)
@@ -76,7 +77,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		
 		if section == sectionStandard {
 			if displayMode == .selectCategory {
-			return standardCategories.count
+				return standardCategories.count
 			} else {
 				return standardCategoriesAssign.count
 				
@@ -200,31 +201,51 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
-		var categoryID: Int
+		//determine the category the user selected
+		let selectedCategory: Category
 		
 		if indexPath.section == sectionStandard {
-			
 			if displayMode == .selectCategory {
-				categoryID = standardCategories[indexPath.row].categoryID
+				selectedCategory = standardCategories[indexPath.row]
 			} else {
-				categoryID = standardCategoriesAssign [indexPath.row].categoryID
+				selectedCategory = standardCategoriesAssign[indexPath.row]
+			}
+		} else {
+			selectedCategory = customCategories[indexPath.row]
+		}
+		
+		// toggle the categories
+		
+		if displayMode == .selectCategory {
+			
+			//If the user clicked on the category that is already selected, then don't do anything because you can only have one selected category, and you can't unselect a selected on by clicking on it
+			
+			if selectedCategory.selected {
+				return
+			} else {
+				print ("category updated")
+				if categoryC.toggleSelectCategory(categoryID: selectedCategory.categoryID) {
+					// change to the category was made
+					//need to refresh local copy of the categories
+					getCategories()
+					delegate?.newCategorySelected()
+					delegate?.shouldReloadTable()
+				}
 			}
 			
 		} else {
-			categoryID = customCategories[indexPath.row].categoryID
+			// toggleAssignCategory
+			
+			// if the user clicked on a standard category that is already selected, don't do anything
+			
+			print("do assign toggle")
+			
 		}
-				
-		let currentCategoryID = categoryC.getCurrentCategory().categoryID
 		
-		if categoryID != currentCategoryID {
-			
-			categoryC.toggleSelectCategory(categoryID: categoryID)
-			
-			//need to refresh local copy of the categories
-			getCategories()
-			delegate?.newCategorySelected()
-			delegate?.shouldReloadTable()
-		}
+		// refresh local categories
+		// new category selected
+		// update the home display
+		
 	}
 	
 	func addCustomCategoryName(name: String){
