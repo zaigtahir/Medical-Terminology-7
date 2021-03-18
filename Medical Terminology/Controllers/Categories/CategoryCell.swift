@@ -50,12 +50,15 @@ class CategoryCell: UITableViewCell {
 	func formatCellAssignCategory (category: Category, dItem: DItem) {
 		//nothing for now
 		
+		countLabel.text = String(category.count)
+		
 		if category.categoryID == dItem.categoryID {
 			//this item belongs to this category
 			selectImage.image = myTheme.imageSelectedRow
 			selectImage.tintColor = myTheme.colorMain
-			
+		
 		} else {
+			
 				// this item does not belong to this category. BUT is this category the default for this item?
 			if category.categoryID == dItem.defaultCategoryID {
 				// this is the default category

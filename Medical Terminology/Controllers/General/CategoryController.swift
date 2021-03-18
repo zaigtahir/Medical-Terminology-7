@@ -141,7 +141,7 @@ class CategoryController {
 	}
 	
 	//MARK: need to modify this toggling
-	func toggleCategorySelection (categoryID: Int) {
+	func toggleSelectCategory (categoryID: Int) {
 		// toggle the categories based on the user toggling the selection for this category
 		// toggle rule: allow only one category selection
 		
@@ -160,6 +160,9 @@ class CategoryController {
 		
 		// now just set the one selected
 		myDB.executeUpdate("UPDATE \(categoriesTable) SET selected = 1 WHERE categoryID = \(categoryID)", withArgumentsIn: [])
+	}
+	
+	func toggleAddToCategory () {
 		
 	}
 	

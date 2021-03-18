@@ -24,16 +24,22 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	// get the categories and display them in the table
 	// at the bottom of section 2, display a cell that says "add a category"
 	
-	// view state variables, set the in the segue
+	// view state variables init to a default value, but need to set the in the segue
 	var displayMode = CategoryViewMode.selectCategory
-	
-	var itemID = 1	//just default
+	var itemID = 10
 	
 	let categoryC = CategoryController()
 	var standardCategories = [Category]()
+	
+	//this is same as the standard categories except that it won't contain category 0 which is "All Standard Categories)
+	var standardCategoriesAssign = [Category] ()
+	
 	var customCategories = [Category]()
+	
 	let sectionCustom = 0
 	let sectionStandard = 1
+	
+	let dIC = DItemController3()
 	
 	weak var delegate : CategoryHomeVCHDelegate?
 	
@@ -45,16 +51,15 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	
 	func getCategories () {
 		standardCategories = categoryC.getCategories(categoryType: .standard)
+		
+		standardCategoriesAssign = categoryC.getCategories(categoryType: .standard)
+		standardCategoriesAssign.remove(at: 0)	// removing the category 0 as it is at index 0
+		
 		customCategories = categoryC.getCategories(categoryType: .custom)
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		
-		if displayMode == .assignCategory {
-			return 1	// just need 1 section if showing assignCategory mode for the custom category
-		} else {
-			return 2
-		}
+		return 2
 	}
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -70,7 +75,13 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
 		if section == sectionStandard {
+			if displayMode == .selectCategory {
 			return standardCategories.count
+			} else {
+				return standardCategoriesAssign.count
+				
+			}
+			
 		} else {
 			if customCategories.count == 0 {
 				return 1	// to use as a place holder for the row showing no categories are available
@@ -81,40 +92,59 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-	
-		if indexPath.section == sectionStandard {
-			if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
-				
-				//update the category item count
-				let category = standardCategories[indexPath.row]
-				category.count = categoryC.getItemCountInCategory(categoryID: category.categoryID)
-			
-				
-				cell.formatCellSelectCategory(category: category)
-				
+		// return cell based on the display mode
+		
+		// first deal with case of custom catetory is empty, and just return the empty cell type
+		
+		if indexPath.section == sectionCustom && customCategories.count == 0 {
+			if let cell = tableView.dequeueReusableCell(withIdentifier: "cellNoCategories") as? NoCategoriesCell {
 				return cell
 			} else {
 				return UITableViewCell()
 			}
-		} else {
-			
-			// section will be custom
-			if customCategories.count == 0 {
-				// no categories are available
-				if let cell = tableView.dequeueReusableCell(withIdentifier: "cellNoCategories") as? NoCategoriesCell {
-					return cell
-				} else {
-					return UITableViewCell()
-				}
-			} else {
-				if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
-					cell.formatCellSelectCategory(category: customCategories[indexPath.row])
-					return cell
-				} else {
-					return UITableViewCell()
-				}
-			}
 		}
+		
+		// at this point, the custom categories are not empty, make a cell that I can fill
+		
+		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
+			
+			// get the category
+			var category: Category
+			
+			if indexPath.section == sectionStandard {
+				
+				if displayMode == .selectCategory {
+					
+					category = standardCategories[indexPath.row]
+					
+				} else {
+					
+					category = standardCategoriesAssign[indexPath.row]
+				}
+				
+				
+			} else {
+				category = customCategories[indexPath.row]
+			}
+			
+			// update the category count
+			category.count = categoryC.getItemCountInCategory(categoryID: category.categoryID)
+			
+			// now format the cell based on the display mode
+			if displayMode == .selectCategory {
+				cell.formatCellSelectCategory(category: category)
+			} else {
+				// get the dItem
+				let dItem = dIC.getDItem(itemID: itemID)
+				cell.formatCellAssignCategory(category: category, dItem: dItem)
+			}
+			
+			return cell
+			
+		} else {
+			return UITableViewCell()
+		}
+		
 	}
 	
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -173,25 +203,28 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		var categoryID: Int
 		
 		if indexPath.section == sectionStandard {
-			categoryID = standardCategories[indexPath.row].categoryID
+			
+			if displayMode == .selectCategory {
+				categoryID = standardCategories[indexPath.row].categoryID
+			} else {
+				categoryID = standardCategoriesAssign [indexPath.row].categoryID
+			}
+			
 		} else {
 			categoryID = customCategories[indexPath.row].categoryID
 		}
-		
-		// if this category is selected already then don't do anything
-		
+				
 		let currentCategoryID = categoryC.getCurrentCategory().categoryID
 		
 		if categoryID != currentCategoryID {
 			
-			categoryC.toggleCategorySelection(categoryID: categoryID)
+			categoryC.toggleSelectCategory(categoryID: categoryID)
 			
 			//need to refresh local copy of the categories
 			getCategories()
 			delegate?.newCategorySelected()
 			delegate?.shouldReloadTable()
 		}
-		
 	}
 	
 	func addCustomCategoryName(name: String){
