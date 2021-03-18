@@ -23,6 +23,8 @@ class CategoryController {
 	
 	let categoriesTable = myConstants.dbTableCatetories	//categories table
 	
+	let dIC = DItemController3()
+	
 	func isCategoryStandard (categoryID: Int) -> Bool {
 		// will return true if this is a standard category id
 		if categoryID < myConstants.dbCustomCategoryStartingID {
@@ -140,10 +142,11 @@ class CategoryController {
 		}
 	}
 	
+	
 	/*
 	return true if there was a change made to the category
 	*/
-	func toggleSelectCategory (categoryID: Int) -> Bool {
+	private func toggleSelectCategory (categoryID: Int) -> Bool {
 		// toggle the categories based on the user toggling the selection for this category
 		// toggle rule: allow only one category selection
 		
@@ -166,7 +169,27 @@ class CategoryController {
 		return true
 	}
 	
-	
+	func changeStandardCategory (categoryID: Int, itemID: Int) -> Bool {
+		
+		// Each item must have ONE standard category assigned. This function will
+				
+		if (categoryID == 0) {
+			// not allowed to add/subtract from this Alias category
+			return false
+		}
+		
+		guard let category = getCategory(categoryID: categoryID) else {
+			print("fatal error: problem getting the category changeStandardCategory")
+			return false
+		}
+		
+		let dItem = dIC.getDItem(itemID: itemID)
+		
+		if category.categoryID ==
+		
+		
+	}
+
 	func changeCategoryName (categoryID: Int, nameTo: String) {
 		myDB.executeUpdate("UPDATE \(categoriesTable) SET name = ? WHERE categoryID = ?", withArgumentsIn: [nameTo, categoryID])
 	}
