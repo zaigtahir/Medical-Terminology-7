@@ -82,7 +82,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			collectionView.isHidden = false
 		}
 		
-		categoryButton.setTitle("  \(flashCardVCH.currentCategory.name) (\(flashCardVCH.currentCategory.count))", for: .normal) //space added to pad off the button grapic a little
+		categoryButton.setTitle(" \(flashCardVCH.currentCategory.name)", for: .normal)	//space added to pad off the button grapic a little
 		
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0
@@ -106,7 +106,9 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			
 			myTheme.formatButtonColor(button: b!, enabledColor: myTheme.colorFlashcardHomeButton!)
 			
-		}}
+		}
+		
+	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
@@ -116,7 +118,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			let vc = segue.destination as! FlashcardOptionsVC
 			vc.viewMode = flashCardVCH.viewMode
 			vc.delegate = flashCardVCH
-		
+			
 		case myConstants.segueSelectCatetory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .selectCategory
@@ -125,8 +127,9 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		case myConstants.segueAssignCategory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .assignCategory
-			vc.delegate = flashCardVCH
-			// get itemID
+			vc.categoryHomeVCH.itemID = 2	//just testing
+			//get current itemID
+			
 			let cellIndex = scrollController.getCellIndex(collectionView: collectionView)
 			let itemID  = flashCardVCH.itemIDs[cellIndex]
 		
@@ -153,6 +156,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		let cellIndex  = scrollController.getCellIndex(collectionView: collectionView)
 		collectionView.reloadItems(at: [IndexPath(row: cellIndex, section: 0)])
 	}
+
 	
 	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
 		flashCardVCH.showFavoritesOnly = sender.isOn

@@ -14,13 +14,13 @@ import UIKit
 
 class DItem {
     
-    var itemID: Int = 0
+    var itemID: Int = -1
     var term: String = "none loaded"
     var definition: String = "none loaded"
     var example: String = "none loaded"
 	
-    var categoryID: Int = 0
-	var defaultCategoryID: Int = 0		//saved in db, used to recover the default value when needed
+    var categoryID: Int = -1
+	var defaultCategoryID: Int = -1		//saved in db, used to recover the default value when needed
 	var customCategoryIDs = [Int]()		// array of custom categoryID
 	
 	var audioFile: String = "none loaded"

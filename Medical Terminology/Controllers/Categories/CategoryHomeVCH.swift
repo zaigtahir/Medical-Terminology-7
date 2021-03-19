@@ -13,12 +13,17 @@ protocol CategoryHomeVCHDelegate: class {
 	//will shoot functions to the CategoryHomeVHC
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
+	
 	func requestDeleteCategory (categoryID: Int, name: String)
-	func newCategorySelected ()
+	
+	func categoryChanged ()		//trigger when the user selects a different category to view
+			
+	func itemCategoryChanged ()	// trigger when the user changes the category of an item
+	
 	func shouldReloadTable ()
 }
 
-class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
+class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	// manage the datatable source
 	// get the categories and display them in the table
@@ -96,7 +101,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		// return cell based on the display mode
 		
 		// first deal with case of custom catetory is empty, and just return the empty cell type
-		
 		if indexPath.section == sectionCustom && customCategories.count == 0 {
 			if let cell = tableView.dequeueReusableCell(withIdentifier: "cellNoCategories") as? NoCategoriesCell {
 				return cell
@@ -106,39 +110,11 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		}
 		
 		// at this point, the custom categories are not empty, make a cell that I can fill
-		
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
 			
-			// get the category
-			var category: Category
+			let category = self.getCatetory(indexPath: indexPath)
 			
-			if indexPath.section == sectionStandard {
-				
-				if displayMode == .selectCategory {
-					
-					category = standardCategories[indexPath.row]
-					
-				} else {
-					
-					category = standardCategoriesAssign[indexPath.row]
-				}
-				
-				
-			} else {
-				category = customCategories[indexPath.row]
-			}
-			
-			// update the category count
-			category.count = categoryC.getItemCountInCategory(categoryID: category.categoryID)
-			
-			// now format the cell based on the display mode
-			if displayMode == .selectCategory {
-				cell.formatCellSelectCategory(category: category)
-			} else {
-				// get the dItem
-				let dItem = dIC.getDItem(itemID: itemID)
-				cell.formatCellAssignCategory(category: category, dItem: dItem)
-			}
+			self.formatCell(cell: cell, category: category)
 			
 			return cell
 			
@@ -147,6 +123,59 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 		}
 		
 	}
+	
+	// MARK: support functions for table cell for row at
+	
+	/*
+	will return the category based on the index path and also will update the category.count
+	*/
+	private func getCatetory (indexPath: IndexPath) -> Category {
+		
+		var category: Category
+		
+		if indexPath.section == sectionStandard {
+			
+			if displayMode == .selectCategory {
+				
+				category = standardCategories[indexPath.row]
+				
+			} else {
+				
+				category = standardCategoriesAssign[indexPath.row]
+			}
+			
+			
+		} else {
+			category = customCategories[indexPath.row]
+		}
+		
+		// update the category count
+		category.count = categoryC.getItemCountInCategory(categoryID: category.categoryID)
+		return category
+	}
+	
+	/*
+	Will format and retun a cell based on the display mode
+	*/
+	private func formatCell (cell: CategoryCell, category: Category) {
+		
+		cell.countLabel.text = String (category.count)
+		cell.nameLabel.text = category.name
+		
+		switch displayMode {
+		
+		case .selectCategory:
+			cell.formatCellSelectCategory(category: category)
+			
+		case .assignCategory:
+			let dItem = dIC.getDItem(itemID: itemID)
+			cell.formatCellAssignCategory(category: category, dItem: dItem)
+		}
+		
+	}
+	
+	// End support functions for table cell for row at
+	
 	
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		
@@ -214,38 +243,47 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate{
 			selectedCategory = customCategories[indexPath.row]
 		}
 		
+		//-------------------------------------------------------
+		
+		
 		// toggle the categories
 		
-		if displayMode == .selectCategory {
-			
-			//If the user clicked on the category that is already selected, then don't do anything because you can only have one selected category, and you can't unselect a selected on by clicking on it
+		switch displayMode {
+		
+		case .selectCategory:
 			
 			if selectedCategory.selected {
+				//user clicked on a category that's already selected
 				return
-			} else {
-				print ("category updated")
-				if categoryC.toggleSelectCategory(categoryID: selectedCategory.categoryID) {
+			}
+			
+			if categoryC.toggleSelectCategory(categoryID: selectedCategory.categoryID) {
+				// change to the category was made
+				//need to refresh local copy of the categories
+				getCategories()
+				delegate?.itemCategoryChanged()
+				delegate?.shouldReloadTable()
+			}
+			
+		case .assignCategory:
+			
+			if categoryC.isCategoryStandard(categoryID: selectedCategory.categoryID) {
+				//assign standard category
+				let changed = categoryC.changeStandardCategory(categoryID: selectedCategory.categoryID, itemID: itemID)
+				
+				if changed {
 					// change to the category was made
-					//need to refresh local copy of the categories
+					// need to refresh local copy of the categories
 					getCategories()
-					delegate?.newCategorySelected()
-					delegate?.shouldReloadTable()
+					delegate?.itemCategoryChanged()
+					return
 				}
 			}
 			
-		} else {
-			// toggleAssignCategory
-			
-			// if the user clicked on a standard category that is already selected, don't do anything
-			
-			print("do assign toggle")
+			// of here, the selected category is a custom category
+			print("need to assign custom category")
 			
 		}
-		
-		// refresh local categories
-		// new category selected
-		// update the home display
-		
 	}
 	
 	func addCustomCategoryName(name: String){

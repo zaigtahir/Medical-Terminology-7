@@ -38,9 +38,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// get the current category from the db
 		// set as the local current category
 		currentCategory = cC.getCurrentCategory()
-		
-		// update the counter
-		currentCategory.count = cC.getItemCountInCategory(categoryID: currentCategory.categoryID)
 		makeList()
 	}
 	
@@ -91,8 +88,14 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// MARK: Delegate fuctions for CategoryHomeVCDelegate
 	
-	func newCategorySelected() {
+	func catetoryChanged() {
 		self.refreshCategory()
+		delegate?.refreshCollectionView()
+		delegate?.updateHomeDisplay()
+	}
+	
+	func itemCategoryChanged() {
+		self.makeList()
 		delegate?.refreshCollectionView()
 		delegate?.updateHomeDisplay()
 	}

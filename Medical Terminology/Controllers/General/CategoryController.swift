@@ -142,11 +142,10 @@ class CategoryController {
 		}
 	}
 	
-	
 	/*
 	return true if there was a change made to the category
 	*/
-	private func toggleSelectCategory (categoryID: Int) -> Bool {
+	func toggleSelectCategory (categoryID: Int) -> Bool {
 		// toggle the categories based on the user toggling the selection for this category
 		// toggle rule: allow only one category selection
 		
@@ -185,8 +184,17 @@ class CategoryController {
 		
 		let dItem = dIC.getDItem(itemID: itemID)
 		
-		if category.categoryID ==
+		if category.categoryID == dItem.categoryID {
+			//this is already selected so don't do anything
+			return false
+		}
 		
+		// if here, change the category in the database
+		let query = "UPDATE \(myConstants.dbTableMain) SET categoryID = \(categoryID) WHERE itemID = \(itemID)"
+		
+		myDB.executeStatements(query)
+		
+		return true
 		
 	}
 
@@ -262,8 +270,6 @@ class CategoryController {
 		if selected == 1 {
 			s = true
 		}
-		
-		
 		
 		let c = Category(categoryID: categoryID,
 						 name: name,
