@@ -162,7 +162,7 @@ class ScrollController: NSObject, UICollectionViewDelegate, UICollectionViewDele
         
         let cellCount = collectionView.numberOfItems(inSection: 0)
         
-        if cellCount != 0 {
+        if cellCount > 2 {
             
             return true
             

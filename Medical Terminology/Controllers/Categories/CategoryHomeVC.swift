@@ -146,8 +146,8 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	}
 	
 	func itemCategoryChanged() {
-		//notifying the controller that called it that a user changed an item's category
-		delegate?.itemCategoryChanged()
+		//reload the table view to update the item's new categories
+		tableView.reloadData()
 	}
 	
 	//MARK: End Delegate functions for CategoryHomeVCHDelegate

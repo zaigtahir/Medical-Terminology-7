@@ -32,10 +32,13 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	let scrollController = ScrollController()
 	let flashCardVCH = FlashcardVCH()
 	let dIC = DItemController3()
+	let cController = CategoryController()
 	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
+		
+		
 		
 		scrollController.delegate = flashCardVCH
 		scrollController.sideMargin = myConstants.layout_sideMargin
@@ -82,7 +85,9 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			collectionView.isHidden = false
 		}
 		
-		categoryButton.setTitle(" \(flashCardVCH.currentCategory.name)", for: .normal)	//space added to pad off the button grapic a little
+		let cbuttonTitle = " \(flashCardVCH.currentCategory.name) (\( cController.getItemCountInCategory(categoryID: flashCardVCH.currentCategory.categoryID)))"
+		
+		categoryButton.setTitle(cbuttonTitle, for: .normal)	//space added to pad off the button grapic a little
 		
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0
@@ -103,9 +108,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		nextButton.isEnabled = scrollController.isNextButtonEnabled(collectionView: collectionView)
 		
 		for b in [previousButton, randomButton, nextButton] {
-			
 			myTheme.formatButtonColor(button: b!, enabledColor: myTheme.colorFlashcardHomeButton!)
-			
 		}
 		
 	}

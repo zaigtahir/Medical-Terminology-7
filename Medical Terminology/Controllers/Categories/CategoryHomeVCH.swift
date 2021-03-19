@@ -97,6 +97,56 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		}
 	}
 	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		//determine the category the user selected
+	
+		let category = self.getCatetory(indexPath: indexPath)
+		
+		// toggle the categories
+		
+		switch displayMode {
+		
+		case .selectCategory:
+			
+			if category.selected {
+				//user clicked on a category that's already selected
+				return
+			}
+			
+			if categoryC.toggleSelectCategory(categoryID: category.categoryID) {
+				// change to the category was made
+				//need to refresh local copy of the categories
+				getCategories()
+				delegate?.categoryChanged()
+				delegate?.shouldReloadTable()
+			}
+			
+		case .assignCategory:
+			
+			print ("passing in case .assignCategory")
+			
+			if categoryC.isCategoryStandard(categoryID: category.categoryID) {
+				//assign standard category
+				let changed = categoryC.changeStandardCategory(categoryID: category.categoryID, itemID: itemID)
+				
+				if changed {
+					// change to the category was made
+					// need to refresh local copy of the categories
+					
+					//need to update this item not categories
+					delegate?.itemCategoryChanged()
+					return
+				}
+			}
+			
+			// of here, the selected category is a custom category
+			print("need to assign custom category")
+			
+		}
+	}
+	
+	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		// return cell based on the display mode
 		
@@ -113,6 +163,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
 			
 			let category = self.getCatetory(indexPath: indexPath)
+			category.count = categoryC.getItemCountInCategory(categoryID: category.categoryID)
 			
 			self.formatCell(cell: cell, category: category)
 			
@@ -124,7 +175,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 	}
 	
-	// MARK: support functions for table cell for row at
+	// MARK: support functions for table view
 	
 	/*
 	will return the category based on the index path and also will update the category.count
@@ -149,8 +200,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			category = customCategories[indexPath.row]
 		}
 		
-		// update the category count
-		category.count = categoryC.getItemCountInCategory(categoryID: category.categoryID)
+
 		return category
 	}
 	
@@ -226,64 +276,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			return true
 		}
 		
-	}
-	
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		
-		//determine the category the user selected
-		let selectedCategory: Category
-		
-		if indexPath.section == sectionStandard {
-			if displayMode == .selectCategory {
-				selectedCategory = standardCategories[indexPath.row]
-			} else {
-				selectedCategory = standardCategoriesAssign[indexPath.row]
-			}
-		} else {
-			selectedCategory = customCategories[indexPath.row]
-		}
-		
-		//-------------------------------------------------------
-		
-		
-		// toggle the categories
-		
-		switch displayMode {
-		
-		case .selectCategory:
-			
-			if selectedCategory.selected {
-				//user clicked on a category that's already selected
-				return
-			}
-			
-			if categoryC.toggleSelectCategory(categoryID: selectedCategory.categoryID) {
-				// change to the category was made
-				//need to refresh local copy of the categories
-				getCategories()
-				delegate?.itemCategoryChanged()
-				delegate?.shouldReloadTable()
-			}
-			
-		case .assignCategory:
-			
-			if categoryC.isCategoryStandard(categoryID: selectedCategory.categoryID) {
-				//assign standard category
-				let changed = categoryC.changeStandardCategory(categoryID: selectedCategory.categoryID, itemID: itemID)
-				
-				if changed {
-					// change to the category was made
-					// need to refresh local copy of the categories
-					getCategories()
-					delegate?.itemCategoryChanged()
-					return
-				}
-			}
-			
-			// of here, the selected category is a custom category
-			print("need to assign custom category")
-			
-		}
 	}
 	
 	func addCustomCategoryName(name: String){
