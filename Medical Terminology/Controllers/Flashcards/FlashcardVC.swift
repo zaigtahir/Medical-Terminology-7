@@ -31,6 +31,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	
 	let scrollController = ScrollController()
 	let flashCardVCH = FlashcardVCH()
+	
 	let dIC = DItemController3()
 	
 	override func viewDidLoad() {
@@ -82,7 +83,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			collectionView.isHidden = false
 		}
 		
-		categoryButton.setTitle(" \(flashCardVCH.currentCategory.name)", for: .normal)	//space added to pad off the button grapic a little
+		categoryButton.setTitle(" \(flashCardVCH.sectionCategory.name)", for: .normal)	//space added to pad off the button grapic a little
 		
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0

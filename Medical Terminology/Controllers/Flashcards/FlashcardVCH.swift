@@ -26,7 +26,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	
 	// holds state of the view
-	var currentCategory : Category! 	// will need to initialze it with the current category
+	var sectionCategory : Category! 	// will need to initialze it with the current category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
 	
@@ -46,18 +46,19 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	func refreshCategory () {
 		// get the current category from the db
 		// set as the local current category
-		currentCategory = cC.getCurrentCategory()
+		let id = cC.getSectionCategoryID(sectionName: .flashcards)
+		sectionCategory = cC.getCategory(categoryID: id)
 		makeList()
 	}
 	
 	func makeList () {
 		//make the list based on the view state values
-		itemIDs  = dIC.getItemIDs(categoryID: currentCategory.categoryID, showOnlyFavorites: showFavoritesOnly)
+		itemIDs  = dIC.getItemIDs(categoryID: sectionCategory.categoryID, showOnlyFavorites: showFavoritesOnly)
 	}
 	
 	func getFavoriteCount () -> Int {
 		//return the count of favorites or this catetory
-		return dIC.getCount(catetoryID: currentCategory.categoryID, isFavorite: true)
+		return dIC.getCount(catetoryID: sectionCategory.categoryID, isFavorite: true)
 	}
 	
 	// MARK: - CollectionViewDataSource Functions
