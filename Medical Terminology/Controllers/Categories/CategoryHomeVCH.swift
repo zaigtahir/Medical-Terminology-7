@@ -29,15 +29,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	var displayMode = CategoryViewMode.selectCategory
 	var sectionName = SectionName.flashcards
 	
-	private var sectionCategoryID = 0
-	
-
 	var itemID 		: Int!
-	
-
-	var categoryID  = 0 	//set this when using the assignCategory mode
-	
-
 	
 	let cC = CategoryController()
 	
@@ -59,8 +51,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		//any init functions here
 		super.init()
 		getCategories()
-		
-		sectionCategoryID = cC.getSectionCategoryID(sectionName: sectionName)
 	}
 	
 	func getCategories () {
@@ -107,58 +97,80 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	/*
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		
-		//determine the category the user selected
 	
-		let category = self.getCatetory(indexPath: indexPath)
-		
-		// toggle the categories
-		
-		switch displayMode {
-		
-		case .selectCategory:
-			
-			if category.selected {
-				//user clicked on a category that's already selected
-				return
-			}
-			
-			if cC.toggleSelectCategory(categoryID: category.categoryID) {
-				// change to the category was made
-				//need to refresh local copy of the categories
-				getCategories()
-				delegate?.categoryChanged(categoryID: category.categoryID)
-				delegate?.shouldReloadTable()
-			}
-			
-		case .assignCategory:
-			
-			print ("passing in case .assignCategory")
-			
-			if cC.isCategoryStandard(categoryID: category.categoryID) {
-				//assign standard category
-				let changed = cC.changeStandardCategory(categoryID: category.categoryID, itemID: itemID)
-				
-				if changed {
-					// change to the category was made
-					// need to refresh local copy of the categories
-					
-					//need to update this item not categories
-					delegate?.itemCategoryChanged()
-					return
-				}
-			}
-			
-			// of here, the selected category is a custom category
-			print("need to assign custom category")
-			
-		}
+	//determine the category the user selected
+	
+	let category = self.getCatetory(indexPath: indexPath)
+	
+	// toggle the categories
+	
+	switch displayMode {
+	
+	case .selectCategory:
+	
+	if category.selected {
+	//user clicked on a category that's already selected
+	return
+	}
+	
+	if cC.toggleSelectCategory(categoryID: category.categoryID) {
+	// change to the category was made
+	//need to refresh local copy of the categories
+	getCategories()
+	delegate?.categoryChanged(categoryID: category.categoryID)
+	delegate?.shouldReloadTable()
+	}
+	
+	case .assignCategory:
+	
+	print ("passing in case .assignCategory")
+	
+	if cC.isCategoryStandard(categoryID: category.categoryID) {
+	//assign standard category
+	let changed = cC.changeStandardCategory(categoryID: category.categoryID, itemID: itemID)
+	
+	if changed {
+	// change to the category was made
+	// need to refresh local copy of the categories
+	
+	//need to update this item not categories
+	delegate?.itemCategoryChanged()
+	return
+	}
+	}
+	
+	// of here, the selected category is a custom category
+	print("need to assign custom category")
+	
+	}
 	}
 	*/
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		print ("implement didSelecRowAt")
+		
+		//determine the category the user selected
+		let selectedCategory = self.getCatetory(indexPath: indexPath)
+		
+		switch displayMode {
+		
+		case .selectCategory:
+			print ("in selectCategoryMode, selected \(selectedCategory.name)")
+		//		sectionCategoryID = cC.getSectionCategoryID(sectionName: sectionName)
+		case .assignCategory:
+			print ("in assignCategoryMode, selected \(selectedCategory.name)")
+		}
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		// return cell based on the display mode
@@ -213,7 +225,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			category = customCategories[indexPath.row]
 		}
 		
-
+		
 		return category
 	}
 	
@@ -224,6 +236,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		cell.countLabel.text = String (category.count)
 		cell.nameLabel.text = category.name
+		
+		let sectionCategoryID = cC.getSectionCategoryID(sectionName: sectionName)
 		
 		switch displayMode {
 		
@@ -241,43 +255,43 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	/*
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		
-		if indexPath.section == sectionCustom {
-			let name = self.customCategories[indexPath.row].name
-			let categoryID = self.customCategories[indexPath.row].categoryID
-			
-			let actionDelete = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
-				//completionHandler(false)
-				self.delegate?.requestDeleteCategory(categoryID: categoryID, name: name)
-			}
-			
-			let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
-				
-				self.delegate?.pressedEditButtonOnCustomCategory(categoryID: categoryID, name: name)
-				
-			}
-			
-			actionEdit.backgroundColor = myTheme.colorEditButton
-			
-			// check if the category is already selected. In that case, do not allow deletion of the category
-			
-			if customCategories[indexPath.row].selected {
-				return UISwipeActionsConfiguration(actions: [actionEdit])
-			} else {
-				return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
-			}
-			
-		} else {
-			//make info button for the standard categories
-			
-			let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, _) in
-				self.delegate?.pressedInfoButtonOnStandardCategory()
-			}
-			
-			actionInfo.backgroundColor = myTheme.colorInfoButton
-			
-			return UISwipeActionsConfiguration(actions: [actionInfo])
-		}
+	
+	if indexPath.section == sectionCustom {
+	let name = self.customCategories[indexPath.row].name
+	let categoryID = self.customCategories[indexPath.row].categoryID
+	
+	let actionDelete = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
+	//completionHandler(false)
+	self.delegate?.requestDeleteCategory(categoryID: categoryID, name: name)
+	}
+	
+	let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
+	
+	self.delegate?.pressedEditButtonOnCustomCategory(categoryID: categoryID, name: name)
+	
+	}
+	
+	actionEdit.backgroundColor = myTheme.colorEditButton
+	
+	// check if the category is already selected. In that case, do not allow deletion of the category
+	
+	if customCategories[indexPath.row].selected {
+	return UISwipeActionsConfiguration(actions: [actionEdit])
+	} else {
+	return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
+	}
+	
+	} else {
+	//make info button for the standard categories
+	
+	let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, _) in
+	self.delegate?.pressedInfoButtonOnStandardCategory()
+	}
+	
+	actionInfo.backgroundColor = myTheme.colorInfoButton
+	
+	return UISwipeActionsConfiguration(actions: [actionInfo])
+	}
 	}
 	*/
 	
