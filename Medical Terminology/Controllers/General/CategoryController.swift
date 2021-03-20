@@ -164,6 +164,42 @@ class CategoryController {
 		myDB.executeUpdate("UPDATE \(categoriesTable) SET name = ? WHERE categoryID = ?", withArgumentsIn: [nameTo, categoryID])
 	}
 	
+	/*
+	will fill dItem with defaultCategoryID and also an array of custom categoryID's it is assigned if any
+	*/
+	
+	func getItemDefaultCategoryID (itemID: Int) -> Int {
+		
+		let query = "SELECT defaultCategoryID FROM \(myConstants.dbTableMain) WHERE itemID = \(itemID)"
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			
+			let categoryID = Int(resultSet.int(forColumnIndex: 0))
+			return categoryID
+			
+		} else {
+			print ("fatal error making resultset addCategoryIDs")
+			return 0
+		}
+	}
+	
+	func getItemCustomCategoryIDs (itemID: Int) -> [Int] {
+		
+		var ids = [Int]()
+		let query = "SELECT categoryID FROM \(myConstants.dbTableUser) WHERE itemID = \(itemID)"
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let i = Int (resultSet.int(forColumnIndex: 0))
+				ids.append(i)
+			}
+			return ids
+		} else {
+			print ("fatal error making resultset addCategoryIDs")
+			return ids
+		}
+	}
+	
 	func deleteCategory (categoryID: Int) {
 		myDB.executeStatements("DELETE from \(categoriesTable) WHERE categoryID = \(categoryID)")
 	}

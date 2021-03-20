@@ -10,12 +10,16 @@ import Foundation
 
 class Tests {
 	
-	func sectionCategoryTests () {
-		let cc = CategoryController()
+	func testGettingItemIDs (){
+		let dItem = DItem()
+		dItem.categoryID = 12
 		
-		print ("categoryID for flashcards: \(cc.getSectionCategoryID(sectionName: .flashcards))")
-		cc.setSectionCategoryID(sectionName: .flashcards, categoryID: 0)
-		print ("categoryID for flashcards: \(cc.getSectionCategoryID(sectionName: .flashcards))")
+		let catC = CategoryController()
+		let defaultCat = catC.getItemDefaultCategoryID(itemID: 12)
+		print ("\(defaultCat)")
+		
+		let ids = catC.getItemCustomCategoryIDs(itemID: 12)
+		
 	}
 	
 }

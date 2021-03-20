@@ -62,7 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         }
  */
-	
+
+
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {
             

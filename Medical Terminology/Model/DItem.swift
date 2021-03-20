@@ -20,8 +20,10 @@ class DItem {
     var example: String = "none loaded"
 	
     var categoryID: Int = -1
-	var defaultCategoryID: Int = -1		//saved in db, used to recover the default value when needed
-	var customCategoryIDs = [Int]()		// array of custom categoryID
+	
+	// load these values when needed
+	var defaultCategoryID: Int?			//saved in db, used to recover the default value when needed
+	var customCategoryIDs: [Int]?		// array of custom categoryID
 	
 	var audioFile: String = "none loaded"
     var isFavorite: Bool = false
@@ -50,8 +52,6 @@ class DItem {
         self.definition = definition
         self.example = example
         self.categoryID = categoryID
-		self.defaultCategoryID = defaultCategoryID
-		self.customCategoryIDs = customCategoryIDs
         self.audioFile = audioFile
         self.isFavorite = isFavorite
         self.learnedTerm = learnedTerm
