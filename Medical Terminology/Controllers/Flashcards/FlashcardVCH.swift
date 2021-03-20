@@ -16,10 +16,17 @@ protocol FlashCardVCHDelegate: class {
 
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate, CategoryHomeDelegate {
 	
-
-	// holds state of the view
-	var currentCategory : Category! 	// will need to initialze it with the current category from the DB
+	func catetoryChanged(categoryID: Int) {
+		print("to remove changed category function in fc vch")
+	}
 	
+	func itemCategoryChanged() {
+		print("to remove itme changed changed category function in fc vch")
+	}
+	
+	
+	// holds state of the view
+	var currentCategory : Category! 	// will need to initialze it with the current category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
 	
@@ -39,11 +46,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	func refreshCategory () {
 		// get the current category from the db
 		// set as the local current category
-		
-		let catagoryID = cC.getSectionCategoryID(sectionName: .flashcards)
-		
-		currentCategory = cC.getCategory(categoryID: catagoryID)
-		
+		currentCategory = cC.getCurrentCategory()
 		makeList()
 	}
 	
@@ -94,18 +97,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// MARK: Delegate fuctions for CategoryHomeVCDelegate
 	
-	func catetoryChanged(categoryID: Int) {
-		
-	}
-	
-	func catetoryChanged() {
+	func newCategorySelected() {
 		self.refreshCategory()
-		delegate?.refreshCollectionView()
-		delegate?.updateHomeDisplay()
-	}
-	
-	func itemCategoryChanged() {
-		self.makeList()
 		delegate?.refreshCollectionView()
 		delegate?.updateHomeDisplay()
 	}

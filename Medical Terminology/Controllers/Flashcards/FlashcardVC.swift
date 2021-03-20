@@ -32,7 +32,6 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	let scrollController = ScrollController()
 	let flashCardVCH = FlashcardVCH()
 	let dIC = DItemController3()
-	let cController = CategoryController()
 	
 	override func viewDidLoad() {
 		
@@ -70,8 +69,6 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-		
-		flashCardVCH.refreshCategory()
 		updateDisplay()
 	}
 	
@@ -85,9 +82,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			collectionView.isHidden = false
 		}
 		
-		let cbuttonTitle = " \(flashCardVCH.currentCategory.name) (\( cController.getItemCountInCategory(categoryID: flashCardVCH.currentCategory.categoryID)))"
-		
-		categoryButton.setTitle(cbuttonTitle, for: .normal)	//space added to pad off the button grapic a little
+		categoryButton.setTitle(" \(flashCardVCH.currentCategory.name)", for: .normal)	//space added to pad off the button grapic a little
 		
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0
@@ -108,10 +103,10 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		nextButton.isEnabled = scrollController.isNextButtonEnabled(collectionView: collectionView)
 		
 		for b in [previousButton, randomButton, nextButton] {
+			
 			myTheme.formatButtonColor(button: b!, enabledColor: myTheme.colorFlashcardHomeButton!)
-		}
-		
-	}
+			
+		}}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
@@ -125,17 +120,17 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		case myConstants.segueSelectCatetory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .selectCategory
-			vc.delegate = flashCardVCH
 			
 		case myConstants.segueAssignCategory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .assignCategory
+			vc.categoryHomeVCH.itemID = 2	//just testing
+			//get current itemID
 			
 			let cellIndex = scrollController.getCellIndex(collectionView: collectionView)
 			let itemID  = flashCardVCH.itemIDs[cellIndex]
-			
+		
 			vc.categoryHomeVCH.itemID = itemID
-			vc.categoryHomeVCH.categoryID = flashCardVCH.currentCategory.categoryID
 			
 		default:
 			print("fatal error no matching segue in flashcardCV prepare function")
@@ -158,7 +153,8 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		let cellIndex  = scrollController.getCellIndex(collectionView: collectionView)
 		collectionView.reloadItems(at: [IndexPath(row: cellIndex, section: 0)])
 	}
-
+	
+	
 	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
 		flashCardVCH.showFavoritesOnly = sender.isOn
 		flashCardVCH.makeList()
