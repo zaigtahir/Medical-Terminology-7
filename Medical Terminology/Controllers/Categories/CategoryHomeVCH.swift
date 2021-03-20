@@ -13,13 +13,9 @@ protocol CategoryHomeVCHDelegate: class {
 	//will shoot functions to the CategoryHomeVHC
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
-	
 	func requestDeleteCategory (categoryID: Int, name: String)
-	
 	func categoryChanged ()		//trigger when the user selects a different category to view
-			
 	func itemCategoryChanged ()	// trigger when the user changes the category of an item
-	
 	func shouldReloadTable ()
 }
 
@@ -31,7 +27,10 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	// view state variables init to a default value, but need to set the in the segue
 	var displayMode = CategoryViewMode.selectCategory
-	var itemID = 10
+	var itemID = 10			//set this when using the assignCategory mode
+	var categoryID  = 0 	//set this when using the assignCategory mode
+	
+
 	
 	let categoryC = CategoryController()
 	

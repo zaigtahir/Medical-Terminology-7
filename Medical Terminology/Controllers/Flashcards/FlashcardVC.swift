@@ -38,8 +38,6 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		
 		super.viewDidLoad()
 		
-		
-		
 		scrollController.delegate = flashCardVCH
 		scrollController.sideMargin = myConstants.layout_sideMargin
 		scrollController.topBottomMargin = myConstants.layout_topBottomMargin
@@ -130,13 +128,12 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		case myConstants.segueAssignCategory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .assignCategory
-			vc.categoryHomeVCH.itemID = 2	//just testing
-			//get current itemID
 			
 			let cellIndex = scrollController.getCellIndex(collectionView: collectionView)
 			let itemID  = flashCardVCH.itemIDs[cellIndex]
-		
+			
 			vc.categoryHomeVCH.itemID = itemID
+			vc.categoryHomeVCH.categoryID = flashCardVCH.currentCategory.categoryID
 			
 		default:
 			print("fatal error no matching segue in flashcardCV prepare function")

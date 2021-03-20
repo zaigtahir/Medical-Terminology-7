@@ -15,7 +15,8 @@ class MyConstants {
 	let dbFilename = "Medical Terminology"
 	let dbFileExtension = "db"
 	let dbTableMain = "dictionary"
-	let dbTableUser = "userCategories"
+	let dbTableUser = "assignCategories"
+	let dbTableSectionCategories = "sectionCategories"
 	let dbTableCatetories = "categories"
 	
 	let dbCustomTermStartingID = 100000

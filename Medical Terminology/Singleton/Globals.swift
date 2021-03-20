@@ -54,3 +54,11 @@ enum AnsweredState: Int {
 	case incorrect = 2
 }
 
+//use for assigning and getting section categories and for talking with the database table
+enum SectionName: String {
+	case flashcards = "flashcards"
+	case list = "list"
+	case quiz = "quiz"
+	case learning = "learning"
+}
+

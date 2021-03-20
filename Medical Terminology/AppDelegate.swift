@@ -64,14 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  */
 		
 		//tests
-		let uCC = UserCategoryController()
-		uCC.addToCustomCategory(itemID: 2, categoryID: 3)
-		uCC.addToCustomCategory(itemID: 2, categoryID: 3)
-		
-		uCC.addToCustomCategory(itemID: 3, categoryID: 1004)
-		uCC.addToCustomCategory(itemID: 4, categoryID: 1004)
-		
-		uCC.removeFromCutomCategoy(itemID: 4, categoryID: 1004)
+		let tests = Tests()
+		tests.sectionCategoryTests()
 	
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {

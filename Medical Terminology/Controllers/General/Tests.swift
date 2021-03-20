@@ -10,4 +10,12 @@ import Foundation
 
 class Tests {
 	
+	func sectionCategoryTests () {
+		let cc = CategoryController()
+		
+		print ("categoryID for flashcards: \(cc.getSectionCategoryID(sectionName: .flashcards))")
+		cc.setSectionCategoryID(sectionName: .flashcards, categoryID: 888)
+		print ("categoryID for flashcards: \(cc.getSectionCategoryID(sectionName: .flashcards))")
+	}
+	
 }

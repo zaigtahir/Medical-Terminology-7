@@ -254,9 +254,29 @@ class CategoryController {
 			print ("fatal error getting resultSet in customCatetoryNameIsUnique")
 			return false
 		}
+	}
+	
+	// MARK: section category functions
+	func getSectionCategoryID (sectionName: SectionName) -> Int{
+		let query = "SELECT categoryID FROM \(myConstants.dbTableSectionCategories) WHERE sectionName = '\(sectionName.rawValue)' "
 		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []){
+			resultSet.next()
+			let id = Int(resultSet.int(forColumnIndex: 0))
+			return id
+		} else {
+			print ("fatal error getting rs in getSectionCategoryID, returning 0")
+			return 0
+		}
+	}
+	
+	func setSectionCategoryID (sectionName: SectionName, categoryID: Int) {
+		
+		myDB.executeUpdate("UPDATE \(myConstants.dbTableSectionCategories) SET categoryID = ? WHERE sectionName = ?", withArgumentsIn: [categoryID, sectionName.rawValue])
 		
 	}
+	
+	// MARK: Private functions
 	
 	private func makeCategoryFromResultset (resultSet: FMResultSet) -> Category {
 		
