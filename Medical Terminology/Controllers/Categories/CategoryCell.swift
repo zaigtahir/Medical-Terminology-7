@@ -29,14 +29,14 @@ class CategoryCell: UITableViewCell {
 		// Initialization code
 	}
 	
-	func formatCellSelectCategory (category: Category) {
+	func formatCellSelectCategory (category: Category, sectionCategoryID: Int) {
 		
 		self.categoryID = category.categoryID
 		self.countLabel.text = String(category.count)
 		
 		nameLabel.text = category.name
 		
-		if category.selected {
+		if category.categoryID == sectionCategoryID {
 			//selected category
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain

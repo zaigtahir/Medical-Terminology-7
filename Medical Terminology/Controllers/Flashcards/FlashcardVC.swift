@@ -121,6 +121,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		case myConstants.segueSelectCatetory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .selectCategory
+			vc.categoryHomeVCH.sectionName = .flashcards
 			
 		case myConstants.segueAssignCategory:
 			let vc = segue.destination as! CategoryHomeVC

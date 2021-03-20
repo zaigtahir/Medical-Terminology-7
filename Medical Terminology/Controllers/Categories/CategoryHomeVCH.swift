@@ -26,13 +26,21 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	// at the bottom of section 2, display a cell that says "add a category"
 	
 	// view state variables init to a default value, but need to set the in the segue
+	
 	var displayMode = CategoryViewMode.selectCategory
-	var itemID = 10			//set this when using the assignCategory mode
+	var sectionName = SectionName.flashcards
+	
+	private var sectionCategoryID = 0
+	
+
+	var itemID 		: Int!
+	
+
 	var categoryID  = 0 	//set this when using the assignCategory mode
 	
 
 	
-	let categoryC = CategoryController()
+	let cC = CategoryController()
 	
 	var standardCategories = [Category]()
 	
@@ -52,15 +60,17 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		//any init functions here
 		super.init()
 		getCategories()
+		
+		sectionCategoryID = cC.getSectionCategoryID(sectionName: sectionName)
 	}
 	
 	func getCategories () {
-		standardCategories = categoryC.getCategories(categoryType: .standard)
+		standardCategories = cC.getCategories(categoryType: .standard)
 		
-		standardCategoriesAssign = categoryC.getCategories(categoryType: .standard)
+		standardCategoriesAssign = cC.getCategories(categoryType: .standard)
 		standardCategoriesAssign.remove(at: 0)	// removing the category 0 as it is at index 0
 		
-		customCategories = categoryC.getCategories(categoryType: .custom)
+		customCategories = cC.getCategories(categoryType: .custom)
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -96,6 +106,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		}
 	}
 	
+	/*
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		//determine the category the user selected
@@ -113,7 +124,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 				return
 			}
 			
-			if categoryC.toggleSelectCategory(categoryID: category.categoryID) {
+			if cC.toggleSelectCategory(categoryID: category.categoryID) {
 				// change to the category was made
 				//need to refresh local copy of the categories
 				getCategories()
@@ -125,9 +136,9 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			
 			print ("passing in case .assignCategory")
 			
-			if categoryC.isCategoryStandard(categoryID: category.categoryID) {
+			if cC.isCategoryStandard(categoryID: category.categoryID) {
 				//assign standard category
-				let changed = categoryC.changeStandardCategory(categoryID: category.categoryID, itemID: itemID)
+				let changed = cC.changeStandardCategory(categoryID: category.categoryID, itemID: itemID)
 				
 				if changed {
 					// change to the category was made
@@ -144,7 +155,11 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			
 		}
 	}
+	*/
 	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		print ("implement didSelecRowAt")
+	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		// return cell based on the display mode
@@ -162,7 +177,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
 			
 			let category = self.getCatetory(indexPath: indexPath)
-			category.count = categoryC.getItemCountInCategory(categoryID: category.categoryID)
+			category.count = cC.getItemCountInCategory(categoryID: category.categoryID)
 			
 			self.formatCell(cell: cell, category: category)
 			
@@ -214,7 +229,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		switch displayMode {
 		
 		case .selectCategory:
-			cell.formatCellSelectCategory(category: category)
+			cell.formatCellSelectCategory(category: category, sectionCategoryID: sectionCategoryID)
 			
 		case .assignCategory:
 			let dItem = dIC.getDItem(itemID: itemID)
@@ -225,7 +240,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	// End support functions for table cell for row at
 	
-	
+	/*
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		
 		if indexPath.section == sectionCustom {
@@ -265,6 +280,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			return UISwipeActionsConfiguration(actions: [actionInfo])
 		}
 	}
+	*/
+	
 	
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 		
@@ -279,20 +296,20 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	func addCustomCategoryName(name: String){
 		//call the add Category function from the categoryController
-		categoryC.addCustomCategory(name: name)
+		cC.addCustomCategory(name: name)
 		getCategories()
 		delegate?.shouldReloadTable()
 	}
 	
 	func deleteCategory (categoryID: Int) {
-		categoryC.deleteCategory(categoryID: categoryID)
+		cC.deleteCategory(categoryID: categoryID)
 		getCategories()
 		delegate?.shouldReloadTable()
 	}
 	
 	func changeCategoryName (categoryID: Int, nameTo: String) {
 		//place holder
-		categoryC.changeCategoryName(categoryID: categoryID, nameTo: nameTo)
+		cC.changeCategoryName(categoryID: categoryID, nameTo: nameTo)
 		getCategories()
 		delegate?.shouldReloadTable()
 	}
