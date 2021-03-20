@@ -178,15 +178,21 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		cell.nameLabel.text = category.name
 		
-		let sectionCategoryID = catC.getSectionCategoryID(sectionName: sectionName)
+		//this is the what category the current home view controller is in
+		let currentID = catC.getSectionCategoryID(sectionName: sectionName)
 		
 		switch displayMode {
 		
 		case .selectCategory:
-			cell.formatCellSelectCategory(category: category, sectionCategoryID: sectionCategoryID)
+			cell.formatCellSelectCategory(category: category, sectionCategoryID: currentID)
 			
 		case .assignCategory:
 			let dItem = dIC.getDItem(itemID: itemID)
+			
+			//fill the default and custom category id's for this item
+			dItem.defaultCategoryID = catC.getItemDefaultCategoryID(itemID: dItem.itemID)
+			dItem.customCategoryIDs = catC.getItemCustomCategoryIDs(itemID: dItem.itemID)
+			
 			cell.formatCellAssignCategory(category: category, dItem: dItem)
 		}
 		
