@@ -16,8 +16,10 @@ protocol FlashCardVCHDelegate: class {
 
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate, CategoryHomeDelegate {
 	
+
 	// holds state of the view
-	var currentCategory : Category! 	// will need to initialze it with the current category
+	var currentCategory : Category! 	// will need to initialze it with the current category from the DB
+	
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
 	
@@ -37,7 +39,11 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	func refreshCategory () {
 		// get the current category from the db
 		// set as the local current category
-		currentCategory = cC.getCurrentCategory()
+		
+		let catagoryID = cC.getSectionCategoryID(sectionName: .flashcards)
+		
+		currentCategory = cC.getCategory(categoryID: catagoryID)
+		
 		makeList()
 	}
 	
@@ -87,6 +93,10 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	// MARK: Delegate fuctions for CategoryHomeVCDelegate
+	
+	func catetoryChanged(categoryID: Int) {
+		
+	}
 	
 	func catetoryChanged() {
 		self.refreshCategory()

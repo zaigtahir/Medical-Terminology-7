@@ -14,7 +14,7 @@ class Tests {
 		let cc = CategoryController()
 		
 		print ("categoryID for flashcards: \(cc.getSectionCategoryID(sectionName: .flashcards))")
-		cc.setSectionCategoryID(sectionName: .flashcards, categoryID: 888)
+		cc.setSectionCategoryID(sectionName: .flashcards, categoryID: 0)
 		print ("categoryID for flashcards: \(cc.getSectionCategoryID(sectionName: .flashcards))")
 	}
 	

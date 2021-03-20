@@ -10,13 +10,11 @@ import UIKit
 
 protocol CategoryHomeDelegate: class {
 	//bascially bounce back functions from VCH
-	func catetoryChanged()	
+	func catetoryChanged(categoryID: Int)
 	func itemCategoryChanged()
 }
 
 class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
-	
-	
 	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var addCustomCategoryButton: UIButton!
@@ -140,11 +138,12 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		updateDisplay()
 	}
 	
-	func categoryChanged()  {
-		//notifying the controller that called this category VC
-		delegate?.catetoryChanged()
+	
+	func categoryChanged(categoryID: Int) {
+		delegate?.catetoryChanged(categoryID: categoryID)
 	}
 	
+
 	func itemCategoryChanged() {
 		//reload the table view to update the item's new categories
 		tableView.reloadData()

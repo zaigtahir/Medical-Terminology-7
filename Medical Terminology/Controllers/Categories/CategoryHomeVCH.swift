@@ -14,7 +14,7 @@ protocol CategoryHomeVCHDelegate: class {
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
 	func requestDeleteCategory (categoryID: Int, name: String)
-	func categoryChanged ()		//trigger when the user selects a different category to view
+	func categoryChanged (categoryID: Int)		//trigger when the user selects a different category to view
 	func itemCategoryChanged ()	// trigger when the user changes the category of an item
 	func shouldReloadTable ()
 }
@@ -117,7 +117,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 				// change to the category was made
 				//need to refresh local copy of the categories
 				getCategories()
-				delegate?.categoryChanged()
+				delegate?.categoryChanged(categoryID: category.categoryID)
 				delegate?.shouldReloadTable()
 			}
 			
