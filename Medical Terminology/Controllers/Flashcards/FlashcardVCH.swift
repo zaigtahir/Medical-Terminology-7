@@ -40,10 +40,10 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	override init() {
 		super.init()
-		refreshCategory()
+		refreshSectionCategory()
 	}
 	
-	func refreshCategory () {
+	func refreshSectionCategory () {
 		// get the current category from the db
 		// set as the local current category
 		let id = cC.getSectionCategoryID(sectionName: .flashcards)
@@ -99,7 +99,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// MARK: Delegate fuctions for CategoryHomeVCDelegate
 	
 	func newCategorySelected() {
-		self.refreshCategory()
+		self.refreshSectionCategory()
 		delegate?.refreshCollectionView()
 		delegate?.updateHomeDisplay()
 	}

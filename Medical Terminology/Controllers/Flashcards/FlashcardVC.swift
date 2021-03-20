@@ -34,6 +34,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	
 	let dIC = DItemController3()
 	
+	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
@@ -70,6 +71,15 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
+		/*
+		if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+			//Do something
+			navigationController.setViewControllers([self], animated: true)
+		}
+		
+*/
+		
+		flashCardVCH.refreshSectionCategory()
 		updateDisplay()
 	}
 	

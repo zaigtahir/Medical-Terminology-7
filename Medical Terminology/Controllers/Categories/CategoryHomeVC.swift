@@ -36,6 +36,9 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		updateDisplay()
+		tableView.reloadData()
+		//if any alerts are showing, need to dismiss them
+		
 	}
 	
 	func updateDisplay() {
@@ -44,6 +47,7 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		
 		if categoryHomeVCH.displayMode == .selectCategory {
 			messageLabel.text = "Select A Category To View"
+		
 		} else {
 			let dItem = dIC.getDItem(itemID: categoryHomeVCH.itemID)
 			
