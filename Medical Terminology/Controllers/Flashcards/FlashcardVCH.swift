@@ -14,7 +14,7 @@ protocol FlashCardVCHDelegate: class {
 	func refreshCurrentCell()
 }
 
-class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate, CategoryHomeDelegate {
+class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
 	
 	func catetoryChanged(categoryID: Int) {
 		print("to remove changed category function in fc vch")

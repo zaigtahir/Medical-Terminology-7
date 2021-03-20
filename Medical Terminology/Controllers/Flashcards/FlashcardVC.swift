@@ -131,13 +131,13 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			
 			let cellIndex = scrollController.getCellIndex(collectionView: collectionView)
 			let itemID  = flashCardVCH.itemIDs[cellIndex]
-		
+			
 			vc.categoryHomeVCH.itemID = itemID
 			
 		default:
 			print("fatal error no matching segue in flashcardCV prepare function")
 		}
-
+		
 	}
 	
 	// MARK: Delegate functions for FlashcardVCHDelegate

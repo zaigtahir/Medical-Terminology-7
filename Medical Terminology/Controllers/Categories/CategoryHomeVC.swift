@@ -8,12 +8,6 @@
 
 import UIKit
 
-protocol CategoryHomeDelegate: class {
-	//bascially bounce back functions from VCH
-	func catetoryChanged(categoryID: Int)
-	func itemCategoryChanged()
-}
-
 class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	
 	@IBOutlet weak var tableView: UITableView!
@@ -27,8 +21,6 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	let utilities = Utilities() 			// here so I can clean up the user text entry
 	
 	let dIC = DItemController3()
-	
-	weak var delegate: CategoryHomeDelegate?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -137,12 +129,6 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 		tableView.reloadData()
 		updateDisplay()
 	}
-	
-	
-	func categoryChanged(categoryID: Int) {
-		delegate?.catetoryChanged(categoryID: categoryID)
-	}
-	
 
 	func itemCategoryChanged() {
 		//reload the table view to update the item's new categories

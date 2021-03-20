@@ -14,8 +14,7 @@ protocol CategoryHomeVCHDelegate: class {
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
 	func requestDeleteCategory (categoryID: Int, name: String)
-	func categoryChanged (categoryID: Int)		//trigger when the user selects a different category to view
-	func itemCategoryChanged ()	// trigger when the user changes the category of an item
+	
 	func shouldReloadTable ()
 }
 
