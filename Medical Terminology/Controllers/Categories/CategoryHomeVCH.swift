@@ -155,7 +155,9 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		case .selectCategory:
 			print ("in selectCategoryMode, selected \(selectedCategory.name)")
-		//		sectionCategoryID = cC.getSectionCategoryID(sectionName: sectionName)
+			cC.setSectionCategoryID(sectionName: sectionName, categoryID: selectedCategory.categoryID)
+			tableView.reloadData()
+			
 		case .assignCategory:
 			print ("in assignCategoryMode, selected \(selectedCategory.name)")
 		}

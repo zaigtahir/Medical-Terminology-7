@@ -142,32 +142,6 @@ class CategoryController {
 		}
 	}
 	
-	/*
-	return true if there was a change made to the category
-	*/
-	func toggleSelectCategory (categoryID: Int) -> Bool {
-		// toggle the categories based on the user toggling the selection for this category
-		// toggle rule: allow only one category selection
-		
-		guard let category = getCategory(categoryID: categoryID) else {
-			print("fatal error: problem getting the category in toggleCategorySelection()")
-			return false
-		}
-		
-		// if the category is already selected, do nothing
-		if category.selected  {
-			return false
-		}
-		
-		// use this to deselect all in preparation to set one as the selected one
-		myDB.executeUpdate("UPDATE \(categoriesTable) SET selected = 0", withArgumentsIn: [])
-		
-		// now just set the one selected
-		myDB.executeUpdate("UPDATE \(categoriesTable) SET selected = 1 WHERE categoryID = \(categoryID)", withArgumentsIn: [])
-		
-		return true
-	}
-	
 	func changeStandardCategory (categoryID: Int, itemID: Int) -> Bool {
 		
 		// Each item must have ONE standard category assigned. This function will
