@@ -32,7 +32,10 @@ class CategoryCell: UITableViewCell {
 	func formatCellSelectCategory (category: Category, sectionCategoryID: Int) {
 		
 		self.categoryID = category.categoryID
-		self.countLabel.text = String(category.count)
+		if let count = category.count {
+			self.countLabel.text = String(count)
+		}
+		
 		
 		nameLabel.text = category.name
 		
@@ -55,15 +58,18 @@ class CategoryCell: UITableViewCell {
 	func formatCellAssignCategory (category: Category, dItem: DItem) {
 		// nothing for now
 		//
- 		countLabel.text = String(category.count)
+		
+		if let count = category.count {
+			countLabel.text = String (count)
+		}
 		
 		if category.categoryID == dItem.categoryID {
 			//this item belongs to this category
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain
-		
+			
 		} else {
-				// this item does not belong to this category. BUT is this category the default for this item?
+			// this item does not belong to this category. BUT is this category the default for this item?
 			if category.categoryID == dItem.defaultCategoryID {
 				// this is the default category
 				selectImage.image = myTheme.imageRowDefaultCategory
@@ -78,7 +84,7 @@ class CategoryCell: UITableViewCell {
 		}
 		
 		nameLabel.text = category.name
-
+		
 	}
 	
 	func getCateoryID () -> Int {

@@ -53,18 +53,6 @@ class CategoryController {
 		}
 	}
 	
-	func getCurrentCategory () -> Category {
-		let query = "SELECT * FROM \(categoriesTable) WHERE selected = 1"
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			resultSet.next()
-			return makeCategoryFromResultset(resultSet: resultSet)
-		} else {
-			print ("fatal error getting resultset in getSelectedCategory")
-			return Category()
-		}
-	}
-	
 	func getCategoryIDs (whereStatment: String) -> [Int] {
 		
 		//will return the id's of the category
@@ -258,18 +246,11 @@ class CategoryController {
 		let name = resultSet.string(forColumn: "name") ?? ""
 		let description = resultSet.string(forColumn: "description") ?? ""
 		let displayOrder = Int(resultSet.int(forColumn: "displayOrder"))
-		let selected = Int(resultSet.int(forColumn: "selected"))
-		
-		var s = false
-		if selected == 1 {
-			s = true
-		}
-		
+			
 		let c = Category(categoryID: categoryID,
 						 name: name,
 						 description: description,
 						 displayOrder: displayOrder,
-						 selected: s,
 						 count: 0		// will need to update this when the program needs
 		)
 		
