@@ -16,49 +16,39 @@ protocol FlashCardVCHDelegate: class {
 
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
 	
-	func catetoryChanged(categoryID: Int) {
-		print("to remove changed category function in fc vch")
-	}
-	
-	func itemCategoryChanged() {
-		print("to remove itme changed changed category function in fc vch")
-	}
-	
-	
 	// holds state of the view
-	var sectionCategory : Category! 	// will need to initialze it with the current category
+	var mainSectionName = MainSectionName.flashcards
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
 	
+	var currentCategory = Category()	// will initialize this value refreshCategory function based on the current value of id stored in the db for this mainSectionName
+	
 	weak var delegate: FlashCardVCHDelegate?
+
 	
 	// controllers
 	let dIC = DItemController3()
-	let cC = CategoryController()
+	let catC = CategoryController()
 	
 	var itemIDs = [Int]()	// list to show
 	
 	override init() {
 		super.init()
-		refreshSectionCategory()
+		refreshList()
 	}
 	
-	func refreshSectionCategory () {
+	func refreshList () {
 		// get the current category from the db
 		// set as the local current category
-		let id = cC.getSectionCategoryID(sectionName: .flashcards)
-		sectionCategory = cC.getCategory(categoryID: id)
-		makeList()
-	}
-	
-	func makeList () {
-		//make the list based on the view state values
-		itemIDs  = dIC.getItemIDs(categoryID: sectionCategory.categoryID, showOnlyFavorites: showFavoritesOnly)
+		
+		let id  = catC.getMainSectionCategoryID(mainSectionName: mainSectionName)
+		currentCategory = catC.getCategory(categoryID: id)!
+		itemIDs  = dIC.getItemIDs(categoryID: currentCategory.categoryID, showOnlyFavorites: showFavoritesOnly)
 	}
 	
 	func getFavoriteCount () -> Int {
 		//return the count of favorites or this catetory
-		return dIC.getCount(catetoryID: sectionCategory.categoryID, isFavorite: true)
+		return dIC.getCount(catetoryID: currentCategory.categoryID, isFavorite: true)
 	}
 	
 	// MARK: - CollectionViewDataSource Functions
@@ -99,7 +89,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// MARK: Delegate fuctions for CategoryHomeVCDelegate
 	
 	func newCategorySelected() {
-		self.refreshSectionCategory()
+		self.refreshList()
 		delegate?.refreshCollectionView()
 		delegate?.updateHomeDisplay()
 	}

@@ -255,22 +255,22 @@ class CategoryController {
 	}
 	
 	// MARK: section category functions
-	func getSectionCategoryID (sectionName: SectionName) -> Int{
-		let query = "SELECT categoryID FROM \(myConstants.dbTableSectionCategories) WHERE sectionName = '\(sectionName.rawValue)' "
+	func getMainSectionCategoryID (mainSectionName: MainSectionName) -> Int{
+		let query = "SELECT categoryID FROM \(myConstants.dbTableMainSectionCategories) WHERE sectionName = '\(mainSectionName.rawValue)' "
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []){
 			resultSet.next()
 			let id = Int(resultSet.int(forColumnIndex: 0))
 			return id
 		} else {
-			print ("fatal error getting rs in getSectionCategoryID, returning 0")
+			print ("fatal error getting rs in getMainSectionCategoryID, returning 0")
 			return 0
 		}
 	}
 	
-	func setSectionCategoryID (sectionName: SectionName, categoryID: Int) {
+	func setSectionCategoryID (sectionName: MainSectionName, categoryID: Int) {
 		
-		myDB.executeUpdate("UPDATE \(myConstants.dbTableSectionCategories) SET categoryID = ? WHERE sectionName = ?", withArgumentsIn: [categoryID, sectionName.rawValue])
+		myDB.executeUpdate("UPDATE \(myConstants.dbTableMainSectionCategories) SET categoryID = ? WHERE sectionName = ?", withArgumentsIn: [categoryID, sectionName.rawValue])
 		
 	}
 	

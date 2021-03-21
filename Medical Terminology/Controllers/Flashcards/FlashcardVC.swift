@@ -31,9 +31,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	
 	let scrollController = ScrollController()
 	let flashCardVCH = FlashcardVCH()
-	
 	let dIC = DItemController3()
-	
 	
 	override func viewDidLoad() {
 		
@@ -71,15 +69,8 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-		/*
-		if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-			//Do something
-			navigationController.setViewControllers([self], animated: true)
-		}
-		
-*/
-		
-		flashCardVCH.refreshSectionCategory()
+		flashCardVCH.refreshList()
+		collectionView.reloadData()
 		updateDisplay()
 	}
 	
@@ -93,7 +84,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			collectionView.isHidden = false
 		}
 		
-		categoryButton.setTitle(" \(flashCardVCH.sectionCategory.name)", for: .normal)	//space added to pad off the button grapic a little
+		categoryButton.setTitle(" \(flashCardVCH.currentCategory.name)", for: .normal)	//space added to pad off the button grapic a little
 		
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0
@@ -131,7 +122,6 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		case myConstants.segueSelectCatetory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .selectCategory
-			vc.categoryHomeVCH.sectionName = .flashcards
 			
 		case myConstants.segueAssignCategory:
 			let vc = segue.destination as! CategoryHomeVC
@@ -141,13 +131,13 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			
 			let cellIndex = scrollController.getCellIndex(collectionView: collectionView)
 			let itemID  = flashCardVCH.itemIDs[cellIndex]
-			
+		
 			vc.categoryHomeVCH.itemID = itemID
 			
 		default:
 			print("fatal error no matching segue in flashcardCV prepare function")
 		}
-		
+
 	}
 	
 	// MARK: Delegate functions for FlashcardVCHDelegate
@@ -169,7 +159,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	
 	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
 		flashCardVCH.showFavoritesOnly = sender.isOn
-		flashCardVCH.makeList()
+		flashCardVCH.refreshList()
 		collectionView.reloadData()
 		updateDisplay()
 	}

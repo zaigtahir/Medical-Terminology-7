@@ -55,7 +55,7 @@ enum AnsweredState: Int {
 }
 
 //use for assigning and getting section categories and for talking with the database table
-enum SectionName: String {
+enum MainSectionName: String {
 	case flashcards = "flashcards"
 	case list = "list"
 	case quiz = "quiz"

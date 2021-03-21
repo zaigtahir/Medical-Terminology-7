@@ -16,7 +16,7 @@ class MyConstants {
 	let dbFileExtension = "db"
 	let dbTableMain = "dictionary"
 	let dbTableUser = "assignCategories"
-	let dbTableSectionCategories = "sectionCategories"
+	let dbTableMainSectionCategories = "mainSectionCategories"
 	let dbTableCatetories = "categories"
 	
 	let dbCustomTermStartingID = 100000

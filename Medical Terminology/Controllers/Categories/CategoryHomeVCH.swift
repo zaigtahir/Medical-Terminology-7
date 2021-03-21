@@ -27,7 +27,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	// view state variables init to a default value, but need to set the in the segue
 	
 	var displayMode = CategoryViewMode.selectCategory
-	var sectionName = SectionName.flashcards
+	var sectionName = MainSectionName.flashcards
 	
 	var itemID 		: Int!
 	
@@ -179,7 +179,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		cell.nameLabel.text = category.name
 		
 		//this is the what category the current home view controller is in
-		let mainSectionCategoryID = catC.getSectionCategoryID(sectionName: sectionName)
+		let mainSectionCategoryID = catC.getMainSectionCategoryID(mainSectionName: sectionName)
 		
 		switch displayMode {
 		
@@ -229,7 +229,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			// in custom category range
 			
 			if displayMode == .selectCategory {
-				let sectionCategoryID = catC.getSectionCategoryID(sectionName: self.sectionName)
+				let sectionCategoryID = catC.getMainSectionCategoryID(mainSectionName: self.sectionName)
 				
 				if selectedCategory.categoryID == sectionCategoryID {
 					// do not allow deletion
