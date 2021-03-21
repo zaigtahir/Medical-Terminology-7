@@ -48,13 +48,27 @@ class CategoryCell: UITableViewCell {
 	}
 	
 	func formatCellAssignCategory (category: Category, dItem: DItem) {
-		// nothing for now
-		//
-		
+		// category is the category the cell is displaying
+		// item has all the categories it is assigned to
+
+		// get category count
 		if let count = category.count {
 			countLabel.text = String (count)
 		}
 		
+		nameLabel.text = category.name
+		
+		if let customIDs = dItem.customCategoryIDs {
+					
+			if ((category.categoryID == dItem.categoryID) || (customIDs.contains(category.categoryID))) {
+				//this item is assigned this category
+				selectImage.image = myTheme.imageRowSelected
+				selectImage.tintColor = myTheme.colorMain
+			}
+		}
+		
+		
+		/*
 		if category.categoryID == dItem.categoryID {
 			//this item belongs to this category
 			selectImage.image = myTheme.imageRowSelected
@@ -73,9 +87,11 @@ class CategoryCell: UITableViewCell {
 				selectImage.image = myTheme.imageRowNotSelected
 				selectImage.tintColor = myTheme.colorText
 			}
+
 		}
+		*/
 		
-		nameLabel.text = category.name
+	
 		
 	}
 		
