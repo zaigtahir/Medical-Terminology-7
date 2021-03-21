@@ -28,7 +28,6 @@ class CategoryCell: UITableViewCell {
 			self.countLabel.text = String(count)
 		}
 		
-		
 		nameLabel.text = category.name
 		
 		if category.categoryID == tabCategoryID {
@@ -61,37 +60,21 @@ class CategoryCell: UITableViewCell {
 		if let customIDs = dItem.customCategoryIDs {
 					
 			if ((category.categoryID == dItem.categoryID) || (customIDs.contains(category.categoryID))) {
-				//this item is assigned this category
+				// this item is assigned this category
 				selectImage.image = myTheme.imageRowSelected
 				selectImage.tintColor = myTheme.colorMain
-			}
-		}
-		
-		
-		/*
-		if category.categoryID == dItem.categoryID {
-			//this item belongs to this category
-			selectImage.image = myTheme.imageRowSelected
-			selectImage.tintColor = myTheme.colorMain
-			
-		} else {
-			// this item does not belong to this category. BUT is this category the default for this item?
-			if category.categoryID == dItem.defaultCategoryID {
-				// this is the default category
+				
+			} else if (category.categoryID == dItem.defaultCategoryID) {
+				// this is the default category and not selected
 				selectImage.image = myTheme.imageRowDefaultCategory
 				selectImage.tintColor = myTheme.colorText
 				
 			} else {
-				// this item is not in this category and this category is not its default category
-				//not selected catetory
+				// not selected, and not default
 				selectImage.image = myTheme.imageRowNotSelected
 				selectImage.tintColor = myTheme.colorText
 			}
-
 		}
-		*/
-		
-	
 		
 	}
 		

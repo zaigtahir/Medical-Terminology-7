@@ -2149,10 +2149,10 @@
             </objects>
             <point key="canvasLocation" x="2235" y="-1372"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--My Custom Tab Bar Controller-->
         <scene sceneID="KvA-dn-KGr">
             <objects>
-                <tabBarController storyboardIdentifier="appTabController" automaticallyAdjustsScrollViewInsets="NO" id="9CB-n8-Tpz" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="appTabController" automaticallyAdjustsScrollViewInsets="NO" id="9CB-n8-Tpz" customClass="MyCustomTabBarController" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="u0E-CD-P8q"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="XEg-C1-IMD">

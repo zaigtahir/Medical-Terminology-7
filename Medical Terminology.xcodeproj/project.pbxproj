@@ -64,6 +64,7 @@
 		9959B73525EE85A700262CC3 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = 9959B73425EE85A700262CC3 /* Audio */; };
 		9960A04826027EC4003F4994 /* NoCategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960A04726027EC4003F4994 /* NoCategoriesCell.swift */; };
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
+		997DD4F52606F807007FAA10 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DD4F42606F807007FAA10 /* MyTabBarController.swift */; };
 		9983980F25F05B6B00CC0354 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9983980E25F05B6B00CC0354 /* StoreKit.framework */; };
 		998398E325F6AB3C00CC0354 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998398E225F6AB3C00CC0354 /* Category.swift */; };
 		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
@@ -145,6 +146,7 @@
 		9959B73425EE85A700262CC3 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Audio; sourceTree = "<group>"; };
 		9960A04726027EC4003F4994 /* NoCategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCategoriesCell.swift; sourceTree = "<group>"; };
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		997DD4F42606F807007FAA10 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		9983980E25F05B6B00CC0354 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		998398E225F6AB3C00CC0354 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				5A2A58E122F8DD7000434910 /* Quiz */,
 				5A37F85122E29819008A5FA5 /* Shared */,
 				9950D3DD245E72C10052574A /* WelcomeScreen */,
+				997DD4F42606F807007FAA10 /* MyTabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				5A99D5D9233BE53B00CA518A /* FlashcardVCH.swift in Sources */,
 				5A2A58F322FCA5F200434910 /* QuizSet.swift in Sources */,
 				5A2A58F522FCA64900434910 /* LearningSet.swift in Sources */,
+				997DD4F52606F807007FAA10 /* MyTabBarController.swift in Sources */,
 				99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */,
 				99D55E4A25FF2F17003ABE0B /* CategoryController.swift in Sources */,
 				5ABE7221226CB25F005B83C4 /* Utilities.swift in Sources */,

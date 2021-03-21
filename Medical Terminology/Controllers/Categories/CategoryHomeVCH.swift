@@ -126,8 +126,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CategoryCell {
 			
 			let category = self.getSelectedCatetory(indexPath: indexPath)
-			category.count = catC.getItemCountInCategory(categoryID: category.categoryID)
-			
+						
 			self.formatCell(cell: cell, category: category)
 			
 			return cell
@@ -172,14 +171,13 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	*/
 	private func formatCell (cell: CategoryCell, category: Category) {
 		
-		if let count = category.count {
-			cell.countLabel.text = String (count)
-		}
-		
-		cell.nameLabel.text = category.name
+		//count and label probably should not be done here
 		
 		//this is the what category the current home view controller is in
+		
 		let mainSectionCategoryID = catC.getMainSectionCategoryID(mainSectionName: sectionName)
+		
+		category.count = catC.getItemCountInCategory(categoryID: category.categoryID)
 		
 		switch displayMode {
 		
