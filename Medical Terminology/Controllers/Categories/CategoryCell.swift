@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol CategoryCellDelegate: class {
-	//trigger when the user presses the category button
-	func selectedCategory (categoryID: Int)
-}
-
 class CategoryCell: UITableViewCell {
 	
 	@IBOutlet weak var nameLabel: UILabel!
@@ -20,18 +15,15 @@ class CategoryCell: UITableViewCell {
 	@IBOutlet weak var showDetailButton: UIButton!
 	@IBOutlet weak var countLabel: UILabel!
 	
-	private var categoryID = 0 // used so I can pass it in the delegate method
-	
-	weak var delegate : CategoryCellDelegate?
+//	private var categoryID = 0 // used so I can pass it in the delegate method
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		// Initialization code
 	}
 	
-	func formatCellSelectCategory (category: Category, sectionCategoryID: Int) {
-		
-		self.categoryID = category.categoryID
+	func formatCellSelectCategory (category: Category, tabCategoryID: Int) {
+
 		if let count = category.count {
 			self.countLabel.text = String(count)
 		}
@@ -39,7 +31,7 @@ class CategoryCell: UITableViewCell {
 		
 		nameLabel.text = category.name
 		
-		if category.categoryID == sectionCategoryID {
+		if category.categoryID == tabCategoryID {
 			//selected category
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain
@@ -86,11 +78,7 @@ class CategoryCell: UITableViewCell {
 		nameLabel.text = category.name
 		
 	}
-	
-	func getCateoryID () -> Int {
-		return categoryID
-	}
-	
+		
 	@IBAction func showDetailButtonAction(_ sender: UIButton) {
 		print("show detail button pressed")
 	}

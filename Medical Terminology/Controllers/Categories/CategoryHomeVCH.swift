@@ -179,12 +179,12 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		cell.nameLabel.text = category.name
 		
 		//this is the what category the current home view controller is in
-		let currentID = catC.getSectionCategoryID(sectionName: sectionName)
+		let mainSectionCategoryID = catC.getSectionCategoryID(sectionName: sectionName)
 		
 		switch displayMode {
 		
 		case .selectCategory:
-			cell.formatCellSelectCategory(category: category, sectionCategoryID: currentID)
+			cell.formatCellSelectCategory(category: category, tabCategoryID: mainSectionCategoryID)
 			
 		case .assignCategory:
 			let dItem = dIC.getDItem(itemID: itemID)
