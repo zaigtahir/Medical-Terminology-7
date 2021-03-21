@@ -62,6 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         }
  */
+		
+		let tests = Tests()
+		tests.testGetCategoryCounts(id: 1)
+		tests.testGetCategoryCounts(id: 1000)
+		
 
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {

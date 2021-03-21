@@ -9,17 +9,9 @@
 import Foundation
 
 class Tests {
-	
-	func testGettingItemIDs (){
-		let dItem = DItem()
-		dItem.categoryID = 12
-		
-		let catC = CategoryController()
-		let defaultCat = catC.getItemDefaultCategoryID(itemID: 12)
-		print ("\(defaultCat)")
-		
-		let ids = catC.getItemCustomCategoryIDs(itemID: 12)
-		
+	let catC = CategoryController()
+	func testGetCategoryCounts(id: Int) {
+		print ("\(catC.getItemCountInCategory(categoryID: id))")
 	}
 	
 }

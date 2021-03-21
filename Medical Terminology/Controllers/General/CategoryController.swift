@@ -105,18 +105,15 @@ class CategoryController {
 	func getItemCountInCategory(categoryID: Int) -> Int {
 		
 		var query: String
-
-		switch categoryID {
 		
-		case 0:
-			query = "SELECT COUNT (*) FROM \(myConstants.dbTableMain) WHERE categoryID != \(myConstants.dbCustomTermStartingID - 1)"
+		
+		if (categoryID == 0) {
 			
-		case 1...(myConstants.dbCustomTermStartingID - 1):
+			query = "SELECT COUNT (*) FROM \(myConstants.dbTableMain) WHERE categoryID != \(myConstants.dbCustomTermStartingID - 1)" }
+		else if (categoryID < myConstants.dbCustomCategoryStartingID - 1 ) {
 			query = "SELECT COUNT (*) FROM \(myConstants.dbTableMain) WHERE categoryID = \(categoryID)"
-		
-		default:
+		} else {
 			query = "SELECT COUNT (*) FROM \(myConstants.dbTableUser) WHERE categoryID = \(categoryID)"
-			
 		}
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []){
@@ -133,7 +130,7 @@ class CategoryController {
 	func changeStandardCategory (categoryID: Int, itemID: Int) -> Bool {
 		
 		// Each item must have ONE standard category assigned. This function will
-				
+		
 		if (categoryID == 0) {
 			// not allowed to add/subtract from this Alias category
 			return false
@@ -159,7 +156,7 @@ class CategoryController {
 		return true
 		
 	}
-
+	
 	func changeCategoryName (categoryID: Int, nameTo: String) {
 		myDB.executeUpdate("UPDATE \(categoriesTable) SET name = ? WHERE categoryID = ?", withArgumentsIn: [nameTo, categoryID])
 	}
@@ -282,7 +279,7 @@ class CategoryController {
 		let name = resultSet.string(forColumn: "name") ?? ""
 		let description = resultSet.string(forColumn: "description") ?? ""
 		let displayOrder = Int(resultSet.int(forColumn: "displayOrder"))
-			
+		
 		let c = Category(categoryID: categoryID,
 						 name: name,
 						 description: description,
