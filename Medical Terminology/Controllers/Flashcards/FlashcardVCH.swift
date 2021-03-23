@@ -17,32 +17,34 @@ protocol FlashCardVCHDelegate: class {
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
 	
 	// holds state of the view
-	var mainSectionName = MainSectionName.flashcards
+	var currentCategory : Category! 	// will need to initialze it with the current category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
-	
-	var currentCategory = Category()	// will initialize this value refreshCategory function based on the current value of id stored in the db for this mainSectionName
+	let mainSectionName = MainSectionName.flashcards
 	
 	weak var delegate: FlashCardVCHDelegate?
-
 	
 	// controllers
 	let dIC = DItemController3()
-	let catC = CategoryController()
+	let cC = CategoryController()
 	
 	var itemIDs = [Int]()	// list to show
 	
 	override init() {
 		super.init()
-		refreshList()
+		refreshCategory()
 	}
 	
-	func refreshList () {
+	func refreshCategory () {
 		// get the current category from the db
 		// set as the local current category
-		
-		let id  = catC.getMainSectionCategoryID(mainSectionName: mainSectionName)
-		currentCategory = catC.getCategory(categoryID: id)!
+		let id = cC.getMainSectionCategoryID(mainSectionName: mainSectionName)
+		currentCategory = cC.getCategory(categoryID: id)
+		makeList()
+	}
+	
+	func makeList () {
+		//make the list based on the view state values
 		itemIDs  = dIC.getItemIDs(categoryID: currentCategory.categoryID, showOnlyFavorites: showFavoritesOnly)
 	}
 	
@@ -89,7 +91,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// MARK: Delegate fuctions for CategoryHomeVCDelegate
 	
 	func newCategorySelected() {
-		self.refreshList()
+		self.refreshCategory()
 		delegate?.refreshCollectionView()
 		delegate?.updateHomeDisplay()
 	}

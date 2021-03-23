@@ -69,8 +69,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-		flashCardVCH.refreshList()
-		collectionView.reloadData()
+		flashCardVCH.refreshCategory()
 		updateDisplay()
 	}
 	
@@ -159,7 +158,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	
 	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
 		flashCardVCH.showFavoritesOnly = sender.isOn
-		flashCardVCH.refreshList()
+		flashCardVCH.makeList()
 		collectionView.reloadData()
 		updateDisplay()
 	}
