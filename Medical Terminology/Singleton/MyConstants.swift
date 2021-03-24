@@ -14,6 +14,13 @@ class MyConstants {
 	// database related names
 	let dbFilename = "Medical Terminology"
 	let dbFileExtension = "db"
+	
+	let dbTableTerms = "terms"
+	
+	
+	
+	
+	
 	let dbTableMain = "dictionary"
 	let dbTableUser = "assignCategories"
 	let dbTableMainSectionCategories = "mainSectionCategories"

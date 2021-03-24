@@ -13,6 +13,7 @@ class Term {
 	var name: String = "default"
 	var definition: String = "default"
 	var example: String = "default"
+	var secondCategoryID : Int = -1
 	var audioFile: String?
 	var isFavorite: Bool = false
 	var isMyTerm: Bool = false
@@ -21,13 +22,14 @@ class Term {
 	
 	}
 	
-	convenience init(termID: Int, name: String, definition: String, audioFile: String?, isFavorite: Bool, isMyTerm: Bool) {
+	convenience init(termID: Int, name: String, definition: String, example: String, secondCategoryID: Int, audioFile: String?, isFavorite: Bool, isMyTerm: Bool) {
 		
 		self.init()
 		self.termID = termID
 		self.name = name
 		self.definition = definition
 		self.example = example
+		self.secondCategoryID = secondCategoryID
 		self.audioFile = audioFile
 		self.isFavorite = isFavorite
 		self.isMyTerm = isMyTerm

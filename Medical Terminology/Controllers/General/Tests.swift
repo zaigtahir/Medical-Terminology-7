@@ -9,9 +9,9 @@
 import Foundation
 
 class Tests {
-	let catC = CategoryController()
-	func testGetCategoryCounts(id: Int) {
-		print ("\(catC.getItemCountInCategory(categoryID: id))")
-	}
+	
+	
+	
+	
 	
 }

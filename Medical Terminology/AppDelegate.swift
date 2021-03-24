@@ -63,11 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
  */
 		
-		let tests = Tests()
-		tests.testGetCategoryCounts(id: 1)
-		tests.testGetCategoryCounts(id: 1000)
+		// MARK: TESTS
+		let tc = TermController()
+		let term = tc.getTerm(termID: 5)
+		term.printTerm()
 		
-
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {
             
