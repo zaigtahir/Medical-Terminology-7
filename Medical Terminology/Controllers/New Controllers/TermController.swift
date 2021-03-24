@@ -38,7 +38,7 @@ class TermController {
 		}
 	}
 	
-	func getTermIDs (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) {
+	func getTermIDs (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) -> [Int]{
 		
 		let selectStatement = "SELECT \(terms).termID FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
@@ -53,7 +53,17 @@ class TermController {
 												 learnedFlashcard: learnedFlashcard)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
-		print(query)
+		
+		var ids = [Int]()
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			let id = Int(resultSet.int(forColumnIndex: 0))
+			ids.append(id)
+		}
+		
+		return ids
+		
 	}
 	
 	func getCount (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) {
@@ -71,7 +81,16 @@ class TermController {
 												 learnedFlashcard: learnedFlashcard)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
-		print(query)
+		
+		var count = 0
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			count = Int (resultSet.int(forColumnIndex: 0))
+		}
+		
+		return count
+		
 	}
 		
 	private func makeTerm (resultSet: FMResultSet) -> Term {
