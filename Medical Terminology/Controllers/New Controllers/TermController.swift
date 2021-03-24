@@ -9,7 +9,21 @@
 import Foundation
 import SQLite3
 
+
+/*
+Query example
+
+SELECT terms.termID
+FROM terms
+JOIN  assignCategories2 ON terms.termID = assignCategories2.termID
+WHERE assignCategories2.categoryID = 3
+*/
+
 class TermController {
+	
+	// MARK: shorter table names to make things easier
+	let terms = myConstants.dbTableTerms
+	let assignedCategories = myConstants.dbTableAssignedCategories
 	
 	func getTerm (termID: Int) -> Term {
 		
@@ -24,6 +38,42 @@ class TermController {
 		}
 	}
 	
+	func getTermIDs (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) {
+		
+		let selectStatement = "SELECT \(terms).termID FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
+		
+		let whereStatement = self.whereStatement(categoryID: categoryID,
+												 showOnlyFavorites: showOnlyFavorites,
+												 isFavorite: isFavorite,
+												 answeredTerm: answeredTerm,
+												 answeredDefinition: answeredDefinition,
+												 learned: learned,
+												 learnedTerm: learnedTerm,
+												 learnedDefinition: learnedDefinition,
+												 learnedFlashcard: learnedFlashcard)
+		
+		let query = ("\(selectStatement) \(whereStatement)")
+		print(query)
+	}
+	
+	func getCount (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) {
+		
+		let selectStatement = "SELECT COUNT (*) FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
+		
+		let whereStatement = self.whereStatement(categoryID: categoryID,
+												 showOnlyFavorites: .none,
+												 isFavorite: isFavorite,
+												 answeredTerm: answeredTerm,
+												 answeredDefinition: answeredDefinition,
+												 learned: learned,
+												 learnedTerm: learnedTerm,
+												 learnedDefinition: learnedDefinition,
+												 learnedFlashcard: learnedFlashcard)
+		
+		let query = ("\(selectStatement) \(whereStatement)")
+		print(query)
+	}
+		
 	private func makeTerm (resultSet: FMResultSet) -> Term {
 		
 		let termID = Int(resultSet.int(forColumn: "termID"))
@@ -40,19 +90,7 @@ class TermController {
 		return term
 	}
 	
-	// MARK: Private functions
-	
-	func fullQuery (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) -> String {
-		
-		/*
-		SELECT terms.termID, terms.isFavorite, assignCategories2.categoryID
-		FROM terms
-		JOIN  assignCategories2 ON terms.termID = assignCategories2.termID
-		WHERE assignCategories2.categoryID = 3
-		*/
-		
-		let terms = myConstants.dbTableTerms
-		let assignedCategories = myConstants.dbTableAssignedCategories
+	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) -> String {
 		
 		let showOnlyFavoritesString = self.showOnlyFavoritesString(show: showOnlyFavorites)
 		
@@ -67,11 +105,9 @@ class TermController {
 		
 		let learnedFlashcardString = self.learnedFlashcardString(learned: learnedFlashcard)
 		
-		let selectStatement = "SELECT \(terms).termID FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
-		
 		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString )"
 		
-		return ("\(selectStatement) \(whereStatement)")
+		return whereStatement
 	}
 	
 	// MARK: WHERE string components
@@ -80,11 +116,11 @@ class TermController {
 		
 		guard let f = isFavorite else { return "" }
 		return f ? "AND isfavorite = 1" : "AND isfavorite = 0"
-
+		
 	}
 	
 	private func learnedString (learned: Bool?) -> String {
-
+		
 		guard let l = learned else { return "" }
 		return l ? "AND (learnedTerm = 1 AND learnedDefinition = 1)" : "AND (learnedTerm = 0 OR learnedDefinition = 0)"
 	}
@@ -100,7 +136,7 @@ class TermController {
 		
 		guard let ld = learnedDefinition else { return ""}
 		return ld ? "AND learnedDefinition = 1" : "AND learnedDefinition = 0"
-
+		
 	}
 	
 	private func answeredTermString (state: AnsweredState?) -> String {
