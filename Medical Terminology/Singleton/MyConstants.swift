@@ -16,6 +16,7 @@ class MyConstants {
 	let dbFileExtension = "db"
 	
 	let dbTableTerms = "terms"
+	let dbTableAssignedCategories = "assignedCategories"
 	
 	
 	

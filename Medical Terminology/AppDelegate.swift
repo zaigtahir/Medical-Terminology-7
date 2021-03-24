@@ -64,9 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  */
 		
 		// MARK: TESTS
-		let tc = TermController()
-		let term = tc.getTerm(termID: 5)
-		term.printTerm()
+		let tests = Tests()
+		tests.testFullQuery()
 		
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {
