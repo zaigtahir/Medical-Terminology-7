@@ -17,7 +17,7 @@ protocol FlashCardVCHDelegate: class {
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
 	
 	// holds state of the view
-	var currentCategory : Category! 	// will need to initialze it with the current category
+	var currentCategory : Category2! 	// will need to initialze it with the current category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
 	let mainSectionName = MainSectionName.flashcards
@@ -32,8 +32,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	let cC = CategoryController()	//to remove
 	
-	
-	var itemIDs = [Int]()	// list to show
+	var termIDs = [Int]()	// list to show
 	
 	override init() {
 		super.init()
@@ -43,14 +42,21 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	func refreshCategory () {
 		// get the current category from the db
 		// set as the local current category
-		let id = cc.getCategoryID(mainSectionName: mainSectionName)
-		currentCategory = cC.getCategory(categoryID: id)
+		
+		//let id = cc.getCategoryID(mainSectionName: mainSectionName)
+		
+		let id = 1 //simulation
+		
+		currentCategory = cc.getCategory(categoryID: id)
 		makeList()
 	}
 	
 	func makeList () {
-		//make the list based on the view state values
-		itemIDs  = dIC.getItemIDs(categoryID: currentCategory.categoryID, showOnlyFavorites: showFavoritesOnly)
+		// make the list based on the view state values
+		// have not accounted for learned/unlearned flash cards
+		
+		termIDs = tc.getTermIDs(categoryID: currentCategory.categoryID, showOnlyFavorites: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		
 	}
 	
 	func getFavoriteCount () -> Int {
@@ -61,7 +67,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// MARK: - CollectionViewDataSource Functions
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		itemIDs.count
+		termIDs.count
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -69,15 +75,15 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashCardCell", for: indexPath) as! FlashcardCell
 		
 		//the cell should configure itself
-		let dItem  = dIC.getDItem(itemID: itemIDs[indexPath.row])
-		let countText = "Flashcard: \(indexPath.row + 1) of \(itemIDs.count)"
+		let dItem  = dIC.getDItem(itemID: termIDs[indexPath.row])
+		let countText = "Flashcard: \(indexPath.row + 1) of \(termIDs.count)"
 		cell.configure(dItem: dItem, fcvMode: viewMode, counter: countText)
 		cell.delegate = self
 		return cell
 	}
 	
 	// MARK: - Cell delegate protocol
-
+	
 	func userPressedFavoriteButton(itemID: Int) {
 		dIC.toggleIsFavorite (itemID: itemID)
 		delegate?.updateHomeDisplay()

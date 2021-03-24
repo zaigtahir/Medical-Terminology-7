@@ -53,12 +53,16 @@ class TermController {
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
+		print("query in getTermIDs: \(query)")
+		
 		var ids = [Int]()
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			resultSet.next()
-			let id = Int(resultSet.int(forColumnIndex: 0))
-			ids.append(id)
+			while resultSet.next() {
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+				
+			}
 		}
 		
 		return ids
@@ -189,8 +193,6 @@ class TermController {
 	}
 	
 	// End WHERE string components
-	
-	
 	
 }
 

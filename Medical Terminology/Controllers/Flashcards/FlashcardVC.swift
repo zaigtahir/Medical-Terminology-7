@@ -88,7 +88,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0
 		
-		sliderOutlet.maximumValue = Float(flashCardVCH.itemIDs.count - 1)
+		sliderOutlet.maximumValue = Float(flashCardVCH.termIDs.count - 1)
 		sliderOutlet.value = Float (scrollController.getCellIndex(collectionView: collectionView))
 		
 		favoritesLabel.text = "\(favoriteCount)"
@@ -129,7 +129,7 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			//get current itemID
 			
 			let cellIndex = scrollController.getCellIndex(collectionView: collectionView)
-			let itemID  = flashCardVCH.itemIDs[cellIndex]
+			let itemID  = flashCardVCH.termIDs[cellIndex]
 		
 			vc.categoryHomeVCH.itemID = itemID
 			
