@@ -9,7 +9,6 @@
 import Foundation
 import SQLite3
 
-
 /*
 Query example
 
@@ -92,7 +91,12 @@ class TermController {
 		return count
 		
 	}
-		
+	
+	func saveFavorite (termID: Int, isFavorite: Bool) {
+		let query = "UPDATE \(myConstants.dbTableTerms) SET isFavorite \( isFavorite ? 1 : 0 ) WHERE teamID = \(termID)"
+		_ = myDB.executeStatements(query)
+	}
+	
 	private func makeTerm (resultSet: FMResultSet) -> Term {
 		
 		let termID = Int(resultSet.int(forColumn: "termID"))
