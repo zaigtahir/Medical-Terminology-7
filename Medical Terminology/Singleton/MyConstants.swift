@@ -17,14 +17,13 @@ class MyConstants {
 	
 	let dbTableTerms = "terms"
 	let dbTableAssignedCategories = "assignedCategories"
-	
-	
-	
+	let dbTableCategories2 = "categories2"
+	let dbTableMainSectionCategories = "mainSectionCategories"
 	
 	
 	let dbTableMain = "dictionary"
 	let dbTableUser = "assignCategories"
-	let dbTableMainSectionCategories = "mainSectionCategories"
+
 	let dbTableCatetories = "categories"
 	
 	let dbCustomTermStartingID = 100000

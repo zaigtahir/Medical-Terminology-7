@@ -25,8 +25,13 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	weak var delegate: FlashCardVCHDelegate?
 	
 	// controllers
-	let dIC = DItemController3()
-	let cC = CategoryController()
+	let tc = TermController()
+	let cc = CategoryController2()
+	
+	let dIC = DItemController3()	//to remove
+	
+	let cC = CategoryController()	//to remove
+	
 	
 	var itemIDs = [Int]()	// list to show
 	
@@ -38,7 +43,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	func refreshCategory () {
 		// get the current category from the db
 		// set as the local current category
-		let id = cC.getMainSectionCategoryID(mainSectionName: mainSectionName)
+		let id = cc.getCategoryID(mainSectionName: mainSectionName)
 		currentCategory = cC.getCategory(categoryID: id)
 		makeList()
 	}

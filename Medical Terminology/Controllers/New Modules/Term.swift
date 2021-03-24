@@ -16,7 +16,7 @@ class Term {
 	var secondCategoryID : Int = -1
 	var audioFile: String?
 	var isFavorite: Bool = false
-	var isMyTerm: Bool = false
+	var isCustom: Bool = false
 	
 	init () {
 	
@@ -32,7 +32,7 @@ class Term {
 		self.secondCategoryID = secondCategoryID
 		self.audioFile = audioFile
 		self.isFavorite = isFavorite
-		self.isMyTerm = isMyTerm
+		self.isCustom = isMyTerm
 	}
 	
 	func printTerm() {
