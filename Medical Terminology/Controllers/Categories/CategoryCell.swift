@@ -25,24 +25,14 @@ class CategoryCell: UITableViewCell {
 	func formatCellSelectCategory (displayCategory: Category2, selectedCategoryID: Int ) {
 		nameLabel.text  = displayCategory.name
 		countLabel.text = String (displayCategory.count!)
-	}
-	
-	
-	func formatCellSelectCategory (category: Category, tabCategoryID: Int) {
-
-		if let count = category.count {
-			self.countLabel.text = String(count)
-		}
 		
-		nameLabel.text = category.name
-		
-		if category.categoryID == tabCategoryID {
+		if displayCategory.categoryID == selectedCategoryID {
 			//selected category
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain
 		} else {
 			//not selected category
-			if category.count == 0 {
+			if displayCategory.count == 0 {
 				//nothing in this category
 				selectImage.image = myTheme.imageRowEmpty
 			} else {
@@ -50,6 +40,7 @@ class CategoryCell: UITableViewCell {
 			}
 			selectImage.tintColor = myTheme.colorText
 		}
+		
 	}
 	
 	func formatCellAssignCategory (category: Category, dItem: DItem) {

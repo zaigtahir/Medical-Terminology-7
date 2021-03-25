@@ -50,6 +50,11 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		makeList()
 	}
 	
+	func setCurrentCategory (categoryID: Int) {
+		currentCategory = cc.getCategory(categoryID: categoryID)
+		makeList()
+	}
+	
 	func makeList () {
 		// make the list based on the view state values
 		// have not accounted for learned/unlearned flash cards

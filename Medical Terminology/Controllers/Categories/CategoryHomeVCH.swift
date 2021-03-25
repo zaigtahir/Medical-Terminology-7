@@ -37,7 +37,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	override init () {
 		super.init()
 		fillCategoryLists()
-		
 	}
 	
 	func fillCategoryLists () {
@@ -95,6 +94,20 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		cell?.formatCellSelectCategory(displayCategory: category, selectedCategoryID: currentSectionID )
 		return cell!
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		// determine category
+		var category: Category2
+		
+		if indexPath.section == sectionStandard {
+			category = standardCategories[indexPath.row]
+		} else {
+			category = customCategories[indexPath.row]
+		}
+		
+		
 	}
 	
 	

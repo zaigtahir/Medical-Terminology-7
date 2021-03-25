@@ -54,7 +54,7 @@ class MyConstants {
     // do not change these numbers. They are used as indexes of arrays too
 	
 	
-	// MARK: need to make this an literal enum 
+	// MARK: need to make this an literal enum
 	
     let listType_Full = 0
     let listType_Favorite = 1

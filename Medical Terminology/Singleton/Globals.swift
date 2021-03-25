@@ -10,9 +10,9 @@ import Foundation
 
 //global variables
 
-var myDB : FMDatabase!          //serve as the global database object
+var myDB : FMDatabase!          // serve as the global database object
 
-var isDevelopmentMode = false   //set in the app delegate based on the pList setting
+var isDevelopmentMode = false   // set in the app delegate based on te pList setting
 
 let myTheme = MyTheme ()
 let myConstants = MyConstants ()
@@ -40,7 +40,6 @@ enum CategoryViewMode {
 	case selectCategory
 	case assignCategory
 }
-
 
 // use to assign and check answeredTerm and answeredDefinition, and also for quiz answers and learning module
 
