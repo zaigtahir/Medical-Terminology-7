@@ -52,6 +52,10 @@ class MyConstants {
     let feedbackAnsweredWrong = ["Incorrect"]
     
     // do not change these numbers. They are used as indexes of arrays too
+	
+	
+	// MARK: need to make this an literal enum 
+	
     let listType_Full = 0
     let listType_Favorite = 1
     let listType_Random = 2

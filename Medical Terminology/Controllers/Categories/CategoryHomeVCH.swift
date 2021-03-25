@@ -19,6 +19,82 @@ protocol CategoryHomeVCHDelegate: class {
 }
 
 class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
+		
+	var displayMode = CategoryViewMode.selectCategory
+	var sectionName = MainSectionName.flashcards		//so it loads the current category id from the db
+	
+	// use to refer to the section of the table
+	let sectionCustom = 0
+	let sectionStandard = 1
+	
+	// controllers
+	let cc = CategoryController2()
+	
+	// categories
+	var standardCategories = [Category2]()
+	var customCategories = [Category2]()
+	
+	override init () {
+		super.init()
+		fillCategoryLists()
+		
+	}
+	
+	func fillCategoryLists () {
+		standardCategories = cc.getCategories(categoryType: .standard)
+		customCategories = cc.getCategories(categoryType: .custom)
+	}
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 2
+	}
+	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		
+		if section == sectionCustom {
+			return "Custom Categories"
+		}
+		else {
+			return "Standard Categories"
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if section == sectionCustom {
+			return customCategories.count + 1
+		} else {
+			return standardCategories.count
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+				
+		// address the case if this is the last (add) row in the custom section
+		if indexPath.section == sectionCustom && indexPath.row == customCategories.count {
+			
+			let cell = tableView.dequeueReusableCell(withIdentifier: "addCell", for: indexPath) as? AddCell
+			return cell!
+		}
+		
+		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CategoryCell
+		
+		// determine category
+		var category: Category2
+		
+		if indexPath.section == sectionStandard {
+			category = standardCategories[indexPath.row]
+		} else {
+			category = customCategories[indexPath.row]
+		}
+	
+		cell?.nameLabel.text = "\(category.name)"
+		return cell!
+	}
+	
+	
+	
+	
+	/*
 	
 	// manage the datatable source
 	// get the categories and display them in the table
@@ -277,4 +353,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		getCategories()
 		delegate?.shouldReloadTable()
 	}
+
+*/
 }

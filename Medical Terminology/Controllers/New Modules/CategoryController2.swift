@@ -17,6 +17,7 @@ class CategoryController2 {
 	func getCategoryID (mainSectionName: MainSectionName) -> Int {
 		
 		let query = "SELECT categoryID FROM \(mainSectionCategories) WHERE sectionName = '\(mainSectionName.rawValue)' "
+		print("\(query)")
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []){
 			resultSet.next()
@@ -50,6 +51,50 @@ class CategoryController2 {
 			return Category2()
 		}
 		
+	}
+	
+	/*
+	return all categories ordered by displayOrder
+	*/
+	func getCategories (categoryType: CategoryType) -> [Category2] {
+		
+		var query: String
+		var cs = [Category2]()
+		
+		if categoryType == .custom {
+			query = "SELECT * from \(categories) WHERE isCustom = \(categoryType.rawValue) ORDER BY displayOrder"
+		} else {
+			query = "SELECT * from \(categories) WHERE isCustom = \(categoryType.rawValue) ORDER BY displayOrder"
+		}
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let c = fillCategory(resultSet: resultSet)
+				cs.append(c)
+			}
+			return cs
+		} else {
+			print("fatal error making resultSet in getCategories")
+			return cs
+		}
+		
+		
+		/*
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let c = fillCategory(resultSet: resultSet)
+				categories.append(c)
+			} else {
+				print("fatal error did not find category with id = \(categoryID) in getCategory. Returning empty category")
+				return Category2()
+			}
+			
+		} else {
+			print("Fatal error getting the result set in getCategories function")
+			return Category2()
+		}
+		*/
 	}
 	
 	private func fillCategory (resultSet: FMResultSet) -> Category2 {

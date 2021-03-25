@@ -8,13 +8,35 @@
 
 import UIKit
 
-class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
+class CategoryHomeVC: UIViewController {
+	
 	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var addCustomCategoryButton: UIButton!
 	@IBOutlet weak var messageLabel: UILabel!
 	
 	let categoryHomeVCH = CategoryHomeVCH()
+	
+	override func viewDidLoad() {
+		
+		super.viewDidLoad()
+		// Do any additional setup after loading the view.
+		tableView.dataSource = categoryHomeVCH
+		tableView.delegate = categoryHomeVCH
+		tableView.tableFooterView = UIView()
+		
+		addCustomCategoryButton.layer.cornerRadius = myConstants.button_cornerRadius
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		//
+	}
+	
+	
+	/*
+	
+	
+	
 	
 	let categoryC = CategoryController()	// here so i can use it to check for duplicate category name the user enters
 	
@@ -185,5 +207,5 @@ class CategoryHomeVC: UIViewController, CategoryHomeVCHDelegate {
 	@IBAction func addCustomCategoryButtonAction(_ sender: UIButton) {
 		self.addNewCustomCategory()
 	}
-	
+	*/
 }

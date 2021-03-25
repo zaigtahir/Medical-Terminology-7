@@ -41,10 +41,6 @@ enum CategoryViewMode {
 	case assignCategory
 }
 
-enum CategoryType {
-	case standard
-	case custom
-}
 
 // use to assign and check answeredTerm and answeredDefinition, and also for quiz answers and learning module
 
@@ -62,3 +58,7 @@ enum MainSectionName: String {
 	case learning = "learning"
 }
 
+enum CategoryType : Int {
+	case standard = 0
+	case custom = 1
+}
