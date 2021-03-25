@@ -17,5 +17,7 @@ class MyKeys {
     let showWelcomeScreen = "showWelcomeScreen"
     let appPurchaseStatus = "appPurchaseStatus"
     
+	let categoryChanged = "com.theappgalaxy.categoryChangedKey"
+	
 }
 

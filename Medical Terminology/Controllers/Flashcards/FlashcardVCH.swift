@@ -14,7 +14,7 @@ protocol FlashcardHomeDelegate: class {
 	func refreshCurrentCell()
 }
 
-class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate, CategorySelectedDelegate {
+class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
 	
 	// holds state of the view
 	var currentCategoryID = 1 			// default starting off category
@@ -36,6 +36,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	override init() {
 		super.init()
 		makeList ()
+		
 	}
 	
 	func makeList () {

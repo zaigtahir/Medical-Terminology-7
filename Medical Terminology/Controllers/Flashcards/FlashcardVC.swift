@@ -128,9 +128,6 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			vc.categoryHomeVCH.displayMode = .selectCategory
 			vc.categoryHomeVCH.currentCategoryID = flashCardVCH.currentCategoryID
 			
-			//assign delegate
-			vc.categoryHomeVCH.categorySelectedDelegate = flashCardVCH
-			
 		case myConstants.segueAssignCategory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .assignCategory
