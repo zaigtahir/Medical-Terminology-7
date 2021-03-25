@@ -35,12 +35,12 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	override init() {
 		super.init()
-		makeList ()
 		
 		// add the category category changed observer
 		let name = Notification.Name(myKeys.categoryChanged)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryChanged(notification:)), name: name, object: nil)
 		
+		updateData(categoryID: currentCategoryID)
 	}
 	
 	deinit {
@@ -49,34 +49,28 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	@objc func categoryChanged (notification : Notification) {
-	
-		print ("\(notification.userInfo?.count)")
 		
 		if let data = notification.userInfo as? [String : Int] {
 			for d in data {
 				//there will be only one data here, the categoryID
-				updateCatetory(categoryID: d.value)
+				print("flashcardVCH got notification of category change")
+				updateData(categoryID: d.value)
 			}
 		}
-		
-		print ("yay the category changed, need to implement functionality")
-		
 	}
 	
-	func updateCatetory (categoryID : Int) {
-		currentCategoryID = categoryID
-		makeList()
+	func updateData (categoryID : Int?) {
+		
+		if let newID = categoryID {
+			currentCategoryID = newID
+		}
+		
+		termIDs = tc.getTermIDs(categoryID: currentCategoryID, showOnlyFavorites: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		
 		delegate?.updateHomeDisplay()
 		delegate?.refreshCollectionView()
 	}
-	
-	func makeList () {
-		// make the list based on the view state values
-		// have not accounted for learned/unlearned flash cards
 		
-		termIDs = tc.getTermIDs(categoryID: currentCategoryID, showOnlyFavorites: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
-	}
-	
 	func getFavoriteCount () -> Int {
 		//return the count of favorites or this catetory
 		return dIC.getCount(catetoryID: currentCategoryID, isFavorite: true)
@@ -117,27 +111,10 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// here to meet the delegate requirement, but will not be using this function here
 	}
 	
-	// MARK: Delegate fuctions for CategoryHomeVCDelegate
-	
-	func newCategorySelected(categoryID: Int) {
-		self.currentCategoryID = categoryID
-		self.makeList()
-		delegate?.refreshCollectionView()
-		delegate?.updateHomeDisplay()
-	}
-	
 	// MARK: Flashcard options delegate
 	func flashCardViewModeChanged(fcvMode: FlashcardViewMode) {
 		self.viewMode = fcvMode
 		delegate?.refreshCurrentCell()
-	}
-	
-	// MARK: category selected delegate functions
-	func categorySelected(categoryID: Int) {
-		print("FlashcardVCH got message to update the category!!!!!!")
-		currentCategoryID = categoryID
-		self.makeList()
-		delegate?.updateHomeDisplay()
 	}
 	
 }

@@ -15,7 +15,7 @@ class Category2 {
 	var description = "none"
 	var displayOrder = 0
 	var isCustom = false
-	var count : Int?			//hold count of times in this category, not stored in the db
+	var count = 0				//hold count of times in this category, not stored in the db, and I will need to calculate the latest value when needed
 	
 	init() {
 

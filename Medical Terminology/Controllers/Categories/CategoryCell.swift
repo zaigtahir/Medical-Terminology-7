@@ -24,7 +24,7 @@ class CategoryCell: UITableViewCell {
 	
 	func formatCellSelectCategory (displayCategory: Category2, currentCatetory: Int ) {
 		nameLabel.text  = displayCategory.name
-		countLabel.text = String (displayCategory.count!)
+		countLabel.text = String (displayCategory.count)
 		
 		if displayCategory.categoryID == currentCatetory {
 			//selected category

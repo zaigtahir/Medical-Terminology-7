@@ -33,7 +33,6 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	let flashCardVCH = FlashcardVCH()
 	let dIC = DItemController3()
 	
-	
 	let cc = CategoryController2()
 	
 	override func viewDidLoad() {
@@ -69,7 +68,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		
 		emptyListLabel.text = myConstants.noFavoritesAvailableText
 		
-		updateDisplay()
+		// initial update display happens through the VCH
 	}
 		
 	func updateDisplay () {
@@ -162,9 +161,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	
 	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
 		flashCardVCH.showFavoritesOnly = sender.isOn
-		flashCardVCH.makeList()
-		collectionView.reloadData()
-		updateDisplay()
+		flashCardVCH.updateData(categoryID: .none)
 	}
 	
 	@IBAction func sliderAction(_ sender: UISlider) {
