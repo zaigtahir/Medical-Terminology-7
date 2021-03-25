@@ -12,6 +12,7 @@ class CategoryController2 {
 	
 	// to make the table name shorter and convenient
 	let categories =  myConstants.dbTableCategories2
+	let assignedCategories = myConstants.dbTableAssignedCategories
 	let mainSectionCategories = myConstants.dbTableMainSectionCategories
 	
 	func getCategoryID (mainSectionName: MainSectionName) -> Int {
@@ -51,6 +52,17 @@ class CategoryController2 {
 			return Category2()
 		}
 		
+	}
+	
+	func getCountOfTerms (categoryID: Int) -> Int {
+		let query = "SELECT COUNT (*) FROM \(assignedCategories) WHERE categoryID = \(categoryID)"
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			return Int(resultSet.int(forColumnIndex: 0))
+		} else {
+			print ("fatal error making result set in getCountOfTerms, returning 0")
+			return 0
+		}
 	}
 	
 	/*

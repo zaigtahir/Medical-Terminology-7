@@ -22,6 +22,12 @@ class CategoryCell: UITableViewCell {
 		// Initialization code
 	}
 	
+	func formatCellSelectCategory (displayCategory: Category2, selectedCategoryID: Int ) {
+		nameLabel.text  = displayCategory.name
+		countLabel.text = String (displayCategory.count!)
+	}
+	
+	
 	func formatCellSelectCategory (category: Category, tabCategoryID: Int) {
 
 		if let count = category.count {

@@ -87,7 +87,13 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			category = customCategories[indexPath.row]
 		}
 	
-		cell?.nameLabel.text = "\(category.name)"
+		// determine item count
+		category.count = cc.getCountOfTerms(categoryID: category.categoryID)
+		
+		// get current section category ID
+		let currentSectionID = cc.getCategoryID(mainSectionName: sectionName)
+		
+		cell?.formatCellSelectCategory(displayCategory: category, selectedCategoryID: currentSectionID )
 		return cell!
 	}
 	
