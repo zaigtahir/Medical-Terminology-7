@@ -130,13 +130,13 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		case myConstants.segueAssignCategory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .assignCategory
-
+			vc.categoryHomeVCH.currentCategoryID = flashCardVCH.currentCategoryID
+			
 			//get current itemID
-			
 			let cellIndex = scrollController.getCellIndex(collectionView: collectionView)
-			let itemID  = flashCardVCH.termIDs[cellIndex]
+			let termID  = flashCardVCH.termIDs[cellIndex]
+			vc.categoryHomeVCH.termID = termID
 		
-			
 		default:
 			print("fatal error no matching segue in flashcardCV prepare function")
 		}

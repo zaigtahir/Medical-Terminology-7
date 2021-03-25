@@ -43,36 +43,24 @@ class CategoryCell: UITableViewCell {
 		
 	}
 	
-	func formatCellAssignCategory (category: Category, dItem: DItem) {
-		// category is the category the cell is displaying
-		// item has all the categories it is assigned to
-
-		// get category count
-		if let count = category.count {
-			countLabel.text = String (count)
+	func formatCellAssignCategory (displayCategory: Category2, defaultCategoryID: Int, assignedCategoryIDsForTerm ids: [Int]) {
+		nameLabel.text  = displayCategory.name
+		countLabel.text = String (displayCategory.count)
+		
+		if ids.contains(displayCategory.categoryID) {
+			// the term is assigned this category
+			selectImage.image = myTheme.imageRowSelected
+			selectImage.tintColor = myTheme.colorMain
+			
+		} else if ( displayCategory.categoryID == defaultCategoryID) {
+			// the term is not assigned to the this category, but this is the "default" category
+			selectImage.image = myTheme.imageRowDefaultCategory
+			selectImage.tintColor = myTheme.colorText
+		} else {
+			// not selected, and not default
+			selectImage.image = myTheme.imageRowNotSelected
+			selectImage.tintColor = myTheme.colorText
 		}
-		
-		nameLabel.text = category.name
-		
-		if let customIDs = dItem.customCategoryIDs {
-					
-			if ((category.categoryID == dItem.categoryID) || (customIDs.contains(category.categoryID))) {
-				// this item is assigned this category
-				selectImage.image = myTheme.imageRowSelected
-				selectImage.tintColor = myTheme.colorMain
-				
-			} else if (category.categoryID == dItem.defaultCategoryID) {
-				// this is the default category and not selected
-				selectImage.image = myTheme.imageRowDefaultCategory
-				selectImage.tintColor = myTheme.colorText
-				
-			} else {
-				// not selected, and not default
-				selectImage.image = myTheme.imageRowNotSelected
-				selectImage.tintColor = myTheme.colorText
-			}
-		}
-		
 	}
 		
 	@IBAction func showDetailButtonAction(_ sender: UIButton) {

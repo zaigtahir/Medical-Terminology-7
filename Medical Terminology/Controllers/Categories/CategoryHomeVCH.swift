@@ -23,7 +23,8 @@ protocol CategoryHomeDelegate: class {
 class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	var displayMode = CategoryViewMode.selectCategory
-	var currentCategoryID = 1	//just simulation, need to load in the segue
+	var currentCategoryID = 1	// just simulation, need to load in the segue
+	var termID = -1		// set when using the assign category term
 	
 	// use to refer to the section of the table
 	let sectionCustom = 0
@@ -31,6 +32,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	// controllers
 	let cc = CategoryController2()
+	let tc = TermController()
 	
 	// categories
 	var standardCategories = [Category2]()
@@ -93,8 +95,18 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		// determine item count
 		category.count = cc.getCountOfTerms(categoryID: category.categoryID)
 		
-		cell?.formatCellSelectCategory(displayCategory: category, currentCatetory: self.currentCategoryID)
-		return cell!
+		// format the cell based on the view mode
+		if displayMode == .selectCategory {
+			cell?.formatCellSelectCategory(displayCategory: category, currentCatetory: self.currentCategoryID)
+			return cell!
+			
+		} else {
+			let ids = tc.getTermCategoryIDs(termID: termID)
+			let term = tc.getTerm(termID: termID)
+		
+			cell?.formatCellAssignCategory(displayCategory: category, defaultCategoryID: term.secondCategoryID, assignedCategoryIDsForTerm: ids)
+			return cell!
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -114,7 +126,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			category = customCategories[indexPath.row]
 		}
 		
-		// --------------- probably separate here for select vs assign. for now just doing select so I can finish that part of the code
 		
 		// if the user selected the same category then don't do anything
 		if category.categoryID == currentCategoryID {
@@ -132,7 +143,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		categoryHomeDelegate?.reloadTable()
 		
 	}
-
+	
 	
 	/*
 	

@@ -113,6 +113,24 @@ class TermController {
 		}
 	}
 
+	func getTermCategoryIDs ( termID: Int) -> [Int] {
+		
+		var ids = [Int]()
+		
+		let query = "SELECT categoryID FROM \(myConstants.dbTableAssignedCategories) WHERE termID = \(termID)"
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+			}
+		} else {
+			print ("fatal error getting result set in getTermCategoryIDs")
+		}
+		
+		return ids
+		
+	}
+	
 	private func makeTerm (resultSet: FMResultSet) -> Term {
 		
 		let termID = Int(resultSet.int(forColumn: "termID"))
