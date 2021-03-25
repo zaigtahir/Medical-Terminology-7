@@ -85,7 +85,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		let c = cc.getCategory(categoryID: flashCardVCH.currentCategoryID)
 		c.count = cc.getCountOfTerms(categoryID: flashCardVCH.currentCategoryID)
 		
-		let title = "  (\(c.name) \(c.count))"
+		let title = "  \(c.name) (\(c.count))"
 		
 		categoryButton.setTitle(title, for: .normal)
 		
@@ -123,12 +123,18 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			vc.delegate = flashCardVCH
 			
 		case myConstants.segueSelectCatetory:
-			let vc = segue.destination as! CategoryHomeVC
+			
+			let nc = segue.destination as! UINavigationController
+			let vc = nc.topViewController as! CategoryHomeVC
+					
 			vc.categoryHomeVCH.displayMode = .selectCategory
 			vc.categoryHomeVCH.currentCategoryID = flashCardVCH.currentCategoryID
 			
 		case myConstants.segueAssignCategory:
-			let vc = segue.destination as! CategoryHomeVC
+			
+			let nc = segue.destination as! UINavigationController
+			let vc = nc.topViewController as! CategoryHomeVC
+			
 			vc.categoryHomeVCH.displayMode = .assignCategory
 			vc.categoryHomeVCH.currentCategoryID = flashCardVCH.currentCategoryID
 			

@@ -13,6 +13,7 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var addCustomCategoryButton: UIButton!
 	@IBOutlet weak var messageLabel: UILabel!
+	@IBOutlet weak var doneButton: UIBarButtonItem!
 	
 	let categoryHomeVCH = CategoryHomeVCH()
 
@@ -48,6 +49,9 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 	
 	func reloadTable() {
 		tableView.reloadData()
+	}
+	@IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
+		self.dismiss(animated: true, completion: nil)
 	}
 	
 	/*

@@ -654,7 +654,7 @@
                                                                         <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
                                                                     </state>
                                                                     <connections>
-                                                                        <segue destination="KTC-23-wdb" kind="modal" identifier="segueAssignCategory" modalPresentationStyle="fullScreen" id="BkZ-EU-oas"/>
+                                                                        <segue destination="Ruo-Ko-dgu" kind="modal" identifier="segueAssignCategory" modalPresentationStyle="fullScreen" id="BkZ-EU-oas"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-Hv-Jif">
@@ -810,7 +810,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
-                                    <segue destination="KTC-23-wdb" kind="modal" identifier="segueSelectCategory" modalPresentationStyle="fullScreen" id="WY2-nN-SgM"/>
+                                    <segue destination="Ruo-Ko-dgu" kind="modal" identifier="segueSelectCategory" modalPresentationStyle="fullScreen" id="WY2-nN-SgM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2496,13 +2496,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message for user" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fra-FM-UKu">
-                                <rect key="frame" x="137" y="20" width="140.33333333333337" height="20.333333333333329"/>
+                                <rect key="frame" x="137" y="64" width="140.33333333333337" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W5i-R0-UWj">
-                                <rect key="frame" x="0.0" y="60.333333333333314" width="414" height="595.66666666666674"/>
+                                <rect key="frame" x="0.0" y="104.33333333333331" width="414" height="551.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="50" id="51Y-Dh-WQa" customClass="CategoryCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
@@ -2643,20 +2643,45 @@
                             <constraint firstItem="avE-ac-nIj" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" id="hje-Ti-NTW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Categories" id="gbB-2e-HLI"/>
+                    <navigationItem key="navigationItem" title="Categories" id="gbB-2e-HLI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="GnI-tT-TmK">
+                            <connections>
+                                <action selector="doneButtonAction:" destination="KTC-23-wdb" id="1zs-mY-JsC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addCustomCategoryButton" destination="1sI-HK-1mW" id="LjD-gN-he2"/>
+                        <outlet property="doneButton" destination="GnI-tT-TmK" id="gVm-Mm-ttd"/>
                         <outlet property="messageLabel" destination="fra-FM-UKu" id="z9H-eT-GBv"/>
                         <outlet property="tableView" destination="W5i-R0-UWj" id="BSB-tn-FcP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0e-Et-7Ek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="10602.898550724638" y="-2564.6739130434785"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YqN-xb-VlR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ruo-Ko-dgu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eOW-OW-06x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KTC-23-wdb" kind="relationship" relationship="rootViewController" id="IPK-vz-FWE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Yr-18-52m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="9695.652173913044" y="-2564.6739130434785"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BkZ-EU-oas"/>
+        <segue reference="WY2-nN-SgM"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
