@@ -10,7 +10,7 @@
 
 import UIKit
 
-class FlashcardVC: UIViewController, FlashCardVCHDelegate {
+class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var favoritesLabel: UILabel!
@@ -32,6 +32,9 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 	let scrollController = ScrollController()
 	let flashCardVCH = FlashcardVCH()
 	let dIC = DItemController3()
+	
+	
+	let cc = CategoryController2()
 	
 	override func viewDidLoad() {
 		
@@ -66,13 +69,10 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		
 		emptyListLabel.text = myConstants.noFavoritesAvailableText
 		
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		flashCardVCH.refreshCategory()
 		updateDisplay()
+		
 	}
-	
+		
 	func updateDisplay () {
 		
 		let favoriteCount = flashCardVCH.getFavoriteCount()
@@ -83,7 +83,12 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 			collectionView.isHidden = false
 		}
 		
-		categoryButton.setTitle(" \(flashCardVCH.currentCategory.name)", for: .normal)	//space added to pad off the button grapic a little
+		let c = cc.getCategory(categoryID: flashCardVCH.currentCategoryID)
+		c.count = cc.getCountOfTerms(categoryID: flashCardVCH.currentCategoryID)
+		
+		let title = "\(c.name) (\(c.count)"
+		
+		categoryButton.setTitle(title, for: .normal)
 		
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0
@@ -121,6 +126,10 @@ class FlashcardVC: UIViewController, FlashCardVCHDelegate {
 		case myConstants.segueSelectCatetory:
 			let vc = segue.destination as! CategoryHomeVC
 			vc.categoryHomeVCH.displayMode = .selectCategory
+			vc.categoryHomeVCH.currentCategoryID = flashCardVCH.currentCategoryID
+			
+			//assign delegate
+			vc.categoryHomeVCH.categorySelectedDelegate = flashCardVCH
 			
 		case myConstants.segueAssignCategory:
 			let vc = segue.destination as! CategoryHomeVC

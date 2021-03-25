@@ -22,11 +22,11 @@ class CategoryCell: UITableViewCell {
 		// Initialization code
 	}
 	
-	func formatCellSelectCategory (displayCategory: Category2, selectedCategoryID: Int ) {
+	func formatCellSelectCategory (displayCategory: Category2, currentCatetory: Int ) {
 		nameLabel.text  = displayCategory.name
 		countLabel.text = String (displayCategory.count!)
 		
-		if displayCategory.categoryID == selectedCategoryID {
+		if displayCategory.categoryID == currentCatetory {
 			//selected category
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain

@@ -10,7 +10,6 @@ import UIKit
 
 class CategoryHomeVC: UIViewController {
 	
-	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var addCustomCategoryButton: UIButton!
 	@IBOutlet weak var messageLabel: UILabel!

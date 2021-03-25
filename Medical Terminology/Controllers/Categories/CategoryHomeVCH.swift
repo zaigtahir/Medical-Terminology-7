@@ -9,19 +9,29 @@
 import Foundation
 import UIKit
 
-protocol CategoryHomeVCHDelegate: class {
+
+/*
+Use this protocal to communicate to the FlashcardVCH (or other header controller)
+*/
+protocol CategorySelectedDelegate: class {
+	func categorySelected (categoryID: Int)
+}
+
+/*
+Use this protocol call to communicate back to the home controller
+*/
+protocol CategoryHomeDelegate: class {
 	//will shoot functions to the CategoryHomeVHC
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
 	func requestDeleteCategory (categoryID: Int, name: String)
-	
-	func shouldReloadTable ()
+	func reloadTable ()
 }
 
 class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 	var displayMode = CategoryViewMode.selectCategory
-	var sectionName = MainSectionName.flashcards		//so it loads the current category id from the db
+	var currentCategoryID = 1	//just simulation, need to load in the segue
 	
 	// use to refer to the section of the table
 	let sectionCustom = 0
@@ -33,6 +43,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	// categories
 	var standardCategories = [Category2]()
 	var customCategories = [Category2]()
+	
+	weak var categorySelectedDelegate: CategorySelectedDelegate?
 	
 	override init () {
 		super.init()
@@ -89,14 +101,17 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		// determine item count
 		category.count = cc.getCountOfTerms(categoryID: category.categoryID)
 		
-		// get current section category ID
-		let currentSectionID = cc.getCategoryID(mainSectionName: sectionName)
-		
-		cell?.formatCellSelectCategory(displayCategory: category, selectedCategoryID: currentSectionID )
+		cell?.formatCellSelectCategory(displayCategory: category, currentCatetory: self.currentCategoryID)
 		return cell!
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		// address the case if this is the last (add) row in the custom section
+		if indexPath.section == sectionCustom && indexPath.row == customCategories.count {
+			print("add code to add a catetory")
+			return
+		}
 		
 		// determine category
 		var category: Category2
@@ -107,6 +122,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			category = customCategories[indexPath.row]
 		}
 		
+		categorySelectedDelegate?.categorySelected(categoryID: category.categoryID)
 		
 	}
 	

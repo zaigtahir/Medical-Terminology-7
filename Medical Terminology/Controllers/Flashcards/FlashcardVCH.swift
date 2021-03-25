@@ -8,21 +8,20 @@
 
 import UIKit
 
-protocol FlashCardVCHDelegate: class {
+protocol FlashcardHomeDelegate: class {
 	func updateHomeDisplay()		// update state of other controls on the flashcard home screen
 	func refreshCollectionView()	// reload all the data
 	func refreshCurrentCell()
 }
 
-class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
+class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate, CategorySelectedDelegate {
 	
 	// holds state of the view
-	var currentCategory : Category2! 	// will need to initialze it with the current category
+	var currentCategoryID = 1 			// default starting off category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
-	let mainSectionName = MainSectionName.flashcards
 	
-	weak var delegate: FlashCardVCHDelegate?
+	weak var delegate: FlashcardHomeDelegate?
 	
 	// controllers
 	let tc = TermController()
@@ -36,36 +35,19 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	override init() {
 		super.init()
-		refreshCategory()
-	}
-	
-	func refreshCategory () {
-		// get the current category from the db
-		// set as the local current category
-		
-		// simulation
-		cc.setCategoryID(mainSectionName: mainSectionName, categoryID: 1)
-		let id = cc.getCategoryID(mainSectionName: mainSectionName)
-		currentCategory = cc.getCategory(categoryID: id)
-		makeList()
-	}
-	
-	func setCurrentCategory (categoryID: Int) {
-		currentCategory = cc.getCategory(categoryID: categoryID)
-		makeList()
+		makeList ()
 	}
 	
 	func makeList () {
 		// make the list based on the view state values
 		// have not accounted for learned/unlearned flash cards
 		
-		termIDs = tc.getTermIDs(categoryID: currentCategory.categoryID, showOnlyFavorites: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
-		
+		termIDs = tc.getTermIDs(categoryID: currentCategoryID, showOnlyFavorites: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 	}
 	
 	func getFavoriteCount () -> Int {
 		//return the count of favorites or this catetory
-		return dIC.getCount(catetoryID: currentCategory.categoryID, isFavorite: true)
+		return dIC.getCount(catetoryID: currentCategoryID, isFavorite: true)
 	}
 	
 	// MARK: - CollectionViewDataSource Functions
@@ -105,8 +87,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// MARK: Delegate fuctions for CategoryHomeVCDelegate
 	
-	func newCategorySelected() {
-		self.refreshCategory()
+	func newCategorySelected(categoryID: Int) {
+		self.currentCategoryID = categoryID
+		self.makeList()
 		delegate?.refreshCollectionView()
 		delegate?.updateHomeDisplay()
 	}
@@ -116,4 +99,13 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		self.viewMode = fcvMode
 		delegate?.refreshCurrentCell()
 	}
+	
+	// MARK: category selected delegate functions
+	func categorySelected(categoryID: Int) {
+		print("FlashcardVCH got message to update the category!!!!!!")
+		currentCategoryID = categoryID
+		self.makeList()
+		delegate?.updateHomeDisplay()
+	}
+	
 }
