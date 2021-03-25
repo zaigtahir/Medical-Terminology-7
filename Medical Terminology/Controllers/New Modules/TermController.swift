@@ -96,11 +96,23 @@ class TermController {
 		
 	}
 	
-	func saveFavorite (termID: Int, isFavorite: Bool) {
-		let query = "UPDATE \(myConstants.dbTableTerms) SET isFavorite \( isFavorite ? 1 : 0 ) WHERE teamID = \(termID)"
+	func setFavoriteStatus (categoryID: Int, termID: Int, isFavorite: Bool) {
+		let query = "UPDATE \(myConstants.dbTableAssignedCategories) SET isFavorite \( isFavorite ? 1 : 0 ) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		_ = myDB.executeStatements(query)
 	}
 	
+	func getFavoriteStatus ( categoryID: Int, termID: Int, isFavorite: Bool ) -> Bool {
+		let query = "SELECT isFavorite FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			let status = Int(resultSet.int(forColumnIndex: 0))
+			return status == 1 ?  true : false
+		} else {
+			print ("fatal error getting resultSet in getFavoriteStatus, returning false")
+			return false
+		}
+	}
+
 	private func makeTerm (resultSet: FMResultSet) -> Term {
 		
 		let termID = Int(resultSet.int(forColumn: "termID"))
@@ -109,10 +121,9 @@ class TermController {
 		let example = resultSet.string(forColumn: "example")  ?? ""
 		let secondCategoryID = Int(resultSet.int(forColumn: "secondCategoryID"))
 		let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
-		let f = Int(resultSet.int(forColumn: "isFavorite"))
 		let m = Int(resultSet.int(forColumn: "isMyTerm"))
 		
-		let term = Term(termID: termID, name: name, definition: definition, example: example, secondCategoryID: secondCategoryID, audioFile: audioFile, isFavorite: f == 1, isMyTerm: m == 1)
+		let term = Term(termID: termID, name: name, definition: definition, example: example, secondCategoryID: secondCategoryID, audioFile: audioFile, isMyTerm: m == 1)
 		
 		return term
 	}
