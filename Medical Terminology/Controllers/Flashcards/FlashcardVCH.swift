@@ -39,7 +39,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		// add the category category changed observer
 		let name = Notification.Name(myKeys.categoryChanged)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryChanged), name: name, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryChanged(notification:)), name: name, object: nil)
 		
 	}
 	
@@ -48,10 +48,26 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		NotificationCenter.default.removeObserver(self)
 	}
 	
-	@objc func categoryChanged (_ notification : Notification) {
+	@objc func categoryChanged (notification : Notification) {
 	
+		print ("\(notification.userInfo?.count)")
+		
+		if let data = notification.userInfo as? [String : Int] {
+			for d in data {
+				//there will be only one data here, the categoryID
+				updateCatetory(categoryID: d.value)
+			}
+		}
+		
 		print ("yay the category changed, need to implement functionality")
 		
+	}
+	
+	func updateCatetory (categoryID : Int) {
+		currentCategoryID = categoryID
+		makeList()
+		delegate?.updateHomeDisplay()
+		delegate?.refreshCollectionView()
 	}
 	
 	func makeList () {
