@@ -8,8 +8,8 @@
 
 import UIKit
 
-class CategoryHomeVC: UIViewController {
-	
+class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
+
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var addCustomCategoryButton: UIButton!
 	@IBOutlet weak var messageLabel: UILabel!
@@ -24,6 +24,8 @@ class CategoryHomeVC: UIViewController {
 		tableView.delegate = categoryHomeVCH
 		tableView.tableFooterView = UIView()
 		
+		categoryHomeVCH.categoryHomeDelegate = self
+		
 		addCustomCategoryButton.layer.cornerRadius = myConstants.button_cornerRadius
 	}
 	
@@ -31,6 +33,22 @@ class CategoryHomeVC: UIViewController {
 		//
 	}
 	
+	// MARK: delegate functions for CategoryHomeDelegate
+	func pressedInfoButtonOnStandardCategory() {
+		// add code
+	}
+	
+	func pressedEditButtonOnCustomCategory(categoryID: Int, name: String) {
+		// add code
+	}
+	
+	func requestDeleteCategory(categoryID: Int, name: String) {
+		// add code
+	}
+	
+	func reloadTable() {
+		tableView.reloadData()
+	}
 	
 	/*
 	

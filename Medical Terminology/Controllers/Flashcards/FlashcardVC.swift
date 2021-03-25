@@ -70,7 +70,6 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		emptyListLabel.text = myConstants.noFavoritesAvailableText
 		
 		updateDisplay()
-		
 	}
 		
 	func updateDisplay () {

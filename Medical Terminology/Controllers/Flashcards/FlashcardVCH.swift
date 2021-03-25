@@ -37,6 +37,21 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		super.init()
 		makeList ()
 		
+		// add the category category changed observer
+		let name = Notification.Name(myKeys.categoryChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryChanged), name: name, object: nil)
+		
+	}
+	
+	deinit {
+		// remove observer (s)
+		NotificationCenter.default.removeObserver(self)
+	}
+	
+	@objc func categoryChanged (_ notification : Notification) {
+	
+		print ("yay the category changed, need to implement functionality")
+		
 	}
 	
 	func makeList () {

@@ -114,9 +114,22 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			category = customCategories[indexPath.row]
 		}
 		
+		// --------------- probably separate here for select vs assign. for now just doing select so I can finish that part of the code
+		
+		// if the user selected the same category then don't do anything
+		if category.categoryID == currentCategoryID {
+			return
+		}
+		
+		// change current category here reload the selection table
+		
+		currentCategoryID = category.categoryID
+		
 		// MARK: Fire off a notification of the category change!!
 		let name = Notification.Name(myKeys.categoryChanged)
-		NotificationCenter.default.post(name: name, object: self, userInfo: nil)
+		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : currentCategoryID])
+		
+		categoryHomeDelegate?.reloadTable()
 		
 	}
 
