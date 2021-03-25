@@ -31,6 +31,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	
 	let scrollController = ScrollController()
 	let flashCardVCH = FlashcardVCH()
+	
 	let dIC = DItemController3()
 	
 	let cc = CategoryController2()
@@ -39,12 +40,12 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		
 		super.viewDidLoad()
 		
+		flashCardVCH.delegate = self
+		
 		scrollController.delegate = flashCardVCH
 		scrollController.sideMargin = myConstants.layout_sideMargin
 		scrollController.topBottomMargin = myConstants.layout_topBottomMargin
-		
-		flashCardVCH.delegate = self
-		
+	
 		collectionView.dataSource = flashCardVCH
 		collectionView.delegate = scrollController
 		
@@ -68,7 +69,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		
 		emptyListLabel.text = myConstants.noFavoritesAvailableText
 		
-		// initial update display happens through the VCH
+		updateDisplay()
 	}
 		
 	func updateDisplay () {
@@ -84,7 +85,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		let c = cc.getCategory(categoryID: flashCardVCH.currentCategoryID)
 		c.count = cc.getCountOfTerms(categoryID: flashCardVCH.currentCategoryID)
 		
-		let title = "\(c.name) (\(c.count)"
+		let title = "  (\(c.name) \(c.count))"
 		
 		categoryButton.setTitle(title, for: .normal)
 		
