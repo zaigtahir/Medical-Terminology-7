@@ -43,10 +43,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// get the current category from the db
 		// set as the local current category
 		
-		//let id = cc.getCategoryID(mainSectionName: mainSectionName)
-		
-		let id = 1 //simulation
-		
+		// simulation
+		cc.setCategoryID(mainSectionName: mainSectionName, categoryID: 1)
+		let id = cc.getCategoryID(mainSectionName: mainSectionName)
 		currentCategory = cc.getCategory(categoryID: id)
 		makeList()
 	}

@@ -29,6 +29,10 @@ class CategoryController2 {
 		
 	}
 	
+	func setCategoryID (mainSectionName: MainSectionName, categoryID: Int) {
+		myDB.executeUpdate("UPDATE \(mainSectionCategories) SET categoryID = ? WHERE sectionName = ?", withArgumentsIn: [categoryID, mainSectionName.rawValue ])
+	}
+	
 	func getCategory (categoryID: Int) -> Category2 {
 		
 		let query = "SELECT * from \(categories) WHERE categoryID = \(categoryID)"
