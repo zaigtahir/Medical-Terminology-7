@@ -18,7 +18,6 @@ class CategoryController2 {
 	func getCategoryID (mainSectionName: MainSectionName) -> Int {
 		
 		let query = "SELECT categoryID FROM \(mainSectionCategories) WHERE sectionName = '\(mainSectionName.rawValue)' "
-		print("\(query)")
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []){
 			resultSet.next()
