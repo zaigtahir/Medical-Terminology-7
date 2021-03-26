@@ -83,21 +83,21 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		// MARK: if this is the "add custom category row"
-		if indexPath.section == sectionCustom && indexPath.row == customCategories.count {
+		if indexPath.section == sectionCustom && indexPath.row == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "addCell", for: indexPath) as? AddCell
 			return cell!
 		}
 		
 		// derive the category from the row selection
-		var category: Category2
+		var rowCategory: Category2
 		
 		if indexPath.section == sectionStandard {
-			category = standardCategories[indexPath.row]
+			rowCategory = standardCategories[indexPath.row]
 		} else {
-			category = customCategories[indexPath.row]
+			rowCategory = customCategories[indexPath.row - 1] // -1 as for 1 is the add row
 		}
 		// attach count
-		category.count = cc.getCountOfTerms(categoryID: category.categoryID)
+		rowCategory.count = cc.getCountOfTerms(categoryID: rowCategory.categoryID)
 	
 		
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CategoryCell {
@@ -105,11 +105,11 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			switch displayMode {
 			
 			case .selectCategory:
-				cell.formatCellSelectCategory(displayCategory: category, currentCatetory: self.currentCategoryID)
+				cell.formatCellSelectCategory(rowCategory: rowCategory, currentCatetory: self.currentCategoryID)
 				return cell
 				
 			case .assignCategory:
-				formatAssignCell(cell: cell, displayCategory: category)
+				formatAssignCell(cell: cell, rowCategory: rowCategory)
 				return cell
 			}
 			
@@ -120,7 +120,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 	}
 	
-	private func formatAssignCell (cell: CategoryCell, displayCategory: Category2) {
+	private func formatAssignCell (cell: CategoryCell, rowCategory: Category2) {
 		
 		// need to figure out if the cell will be active or look disabled
 		// if this is a standard term && this is a standard category, disable the row
@@ -130,45 +130,44 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		var rowIsEnabled  = true
 		
-		if !term.isCustom && !displayCategory.isCustom {
+		if !term.isCustom && !rowCategory.isCustom {
 		rowIsEnabled = false
 		}
 		
-		if term.isCustom && displayCategory.categoryID <= 2 {
+		if term.isCustom && rowCategory.categoryID <= 2 {
 		rowIsEnabled = false
 		}
 		
-		cell.formatCellAssignCategory(displayCategory: displayCategory, assignedCategoryIDsForTerm: ids, isEnabled: rowIsEnabled)
-		
+		cell.formatCellAssignCategory(rowCategory: rowCategory, assignedCategoryIDsForTerm: ids, isEnabled: rowIsEnabled)
 		
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
-		// address the case if this is the last (add) row in the custom section
-		if indexPath.section == sectionCustom && indexPath.row == customCategories.count {
+		// address the case if the user pressed the add category row
+		if indexPath.section == sectionCustom && indexPath.row == 0 {
 			print("add code to add a catetory")
 			return
 		}
 		
 		// determine category
-		var category: Category2
+		var rowCategory: Category2
 		
 		if indexPath.section == sectionStandard {
-			category = standardCategories[indexPath.row]
+			rowCategory = standardCategories[indexPath.row]
 		} else {
-			category = customCategories[indexPath.row]
+			rowCategory = customCategories[indexPath.row - 1]
 		}
 		
 		if displayMode == .selectCategory {
-			selectedSelectedRow(didSelectRowAt: indexPath, categoryID: category.categoryID)
+			selectedSelectRow(didSelectRowAt: indexPath, categoryID: rowCategory.categoryID)
 		} else {
-			selectedAssignRow(didSelectRowAt: indexPath, category: category)
+			selectedAssignRow(didSelectRowAt: indexPath, category: rowCategory)
 		}
 		
 	}
 	
-	private func selectedSelectedRow (didSelectRowAt indexPath: IndexPath, categoryID: Int) {
+	private func selectedSelectRow (didSelectRowAt indexPath: IndexPath, categoryID: Int) {
 		
 		// if the user selected the same category then don't do anything
 		if categoryID == currentCategoryID {

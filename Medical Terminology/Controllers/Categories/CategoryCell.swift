@@ -22,18 +22,18 @@ class CategoryCell: UITableViewCell {
 		// Initialization code
 	}
 	
-	func formatCellSelectCategory (displayCategory: Category2, currentCatetory: Int ) {
-		nameLabel.text  = displayCategory.name
-		countLabel.text = String (displayCategory.count)
+	func formatCellSelectCategory (rowCategory: Category2, currentCatetory: Int ) {
+		nameLabel.text  = rowCategory.name
+		countLabel.text = String (rowCategory.count)
 		
-		if displayCategory.categoryID == currentCatetory {
+		if rowCategory.categoryID == currentCatetory {
 			//selected category
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain
 		
 		} else {
 			//not selected category
-			if displayCategory.count == 0 {
+			if rowCategory.count == 0 {
 				//nothing in this category
 				selectImage.image = myTheme.imageRowEmpty
 			} else {
@@ -44,13 +44,13 @@ class CategoryCell: UITableViewCell {
 		
 	}
 	
-	func formatCellAssignCategory (displayCategory: Category2, assignedCategoryIDsForTerm ids: [Int], isEnabled: Bool ) {
+	func formatCellAssignCategory (rowCategory: Category2, assignedCategoryIDsForTerm ids: [Int], isEnabled: Bool ) {
 		
-		nameLabel.text  = displayCategory.name
+		nameLabel.text  = rowCategory.name
 		nameLabel.textColor = myTheme.colorText
-		countLabel.text = String (displayCategory.count)
+		countLabel.text = String (rowCategory.count)
 		
-		if ids.contains(displayCategory.categoryID) {
+		if ids.contains(rowCategory.categoryID) {
 			// the term is assigned this category
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain
