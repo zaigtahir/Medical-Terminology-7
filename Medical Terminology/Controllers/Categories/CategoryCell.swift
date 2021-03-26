@@ -15,7 +15,7 @@ class CategoryCell: UITableViewCell {
 	@IBOutlet weak var showDetailButton: UIButton!
 	@IBOutlet weak var countLabel: UILabel!
 	
-//	private var categoryID = 0 // used so I can pass it in the delegate method
+	//	private var categoryID = 0 // used so I can pass it in the delegate method
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -25,14 +25,14 @@ class CategoryCell: UITableViewCell {
 	func formatCellSelectCategory (displayCategory: Category2, currentCatetory: Int ) {
 		nameLabel.text  = displayCategory.name
 		countLabel.text = String (displayCategory.count)
-	
+		
 		
 		if displayCategory.categoryID == currentCatetory {
 			//selected category
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain
-	
-	
+			
+			
 		} else {
 			//not selected category
 			if displayCategory.count == 0 {
@@ -44,10 +44,9 @@ class CategoryCell: UITableViewCell {
 			selectImage.tintColor = myTheme.colorText
 		}
 		
-		
 	}
 	
-	func formatCellAssignCategory (displayCategory: Category2, defaultCategoryID: Int, assignedCategoryIDsForTerm ids: [Int]) {
+	func formatCellAssignCategory (displayCategory: Category2, assignedCategoryIDsForTerm ids: [Int]) {
 		
 		nameLabel.text  = displayCategory.name
 		countLabel.text = String (displayCategory.count)
@@ -57,10 +56,6 @@ class CategoryCell: UITableViewCell {
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain
 			
-		} else if ( displayCategory.categoryID == defaultCategoryID) {
-			// the term is not assigned to the this category, but this is the "default" category
-			selectImage.image = myTheme.imageRowDefaultCategory
-			selectImage.tintColor = myTheme.colorText
 		} else {
 			// not selected, and not default
 			selectImage.image = myTheme.imageRowNotSelected
@@ -68,7 +63,7 @@ class CategoryCell: UITableViewCell {
 		}
 		
 	}
-		
+	
 	@IBAction func showDetailButtonAction(_ sender: UIButton) {
 		print("show detail button pressed")
 	}

@@ -25,6 +25,14 @@ protocol CategoryHomeDelegate: class {
 
 class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
+	/*
+	In the assign category mode:
+	If the term is a standard term, disable all the standard rows
+	if the term is a custom term, disable standard and my terms
+	
+	so, need to have a disabled, row view made
+	*/
+
 	var displayMode = CategoryViewMode.selectCategory
 	var currentCategoryID = 1	// just simulation, need to load in the segue
 	var termID = -1		// set when using the assign category term
@@ -107,7 +115,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			let ids = tc.getTermCategoryIDs(termID: termID)
 			let term = tc.getTerm(termID: termID)
 		
-			cell?.formatCellAssignCategory(displayCategory: category, defaultCategoryID: term.secondCategoryID, assignedCategoryIDsForTerm: ids)
+			cell?.formatCellAssignCategory(displayCategory: category, assignedCategoryIDsForTerm: ids)
 			return cell!
 		}
 	}
