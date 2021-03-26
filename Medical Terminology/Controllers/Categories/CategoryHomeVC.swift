@@ -9,9 +9,8 @@
 import UIKit
 
 class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
-
+	
 	@IBOutlet weak var tableView: UITableView!
-	@IBOutlet weak var addCustomCategoryButton: UIButton!
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
 	
@@ -27,7 +26,6 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 		
 		categoryHomeVCH.categoryHomeDelegate = self
 		
-		addCustomCategoryButton.layer.cornerRadius = myConstants.button_cornerRadius
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +33,24 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 	}
 	
 	// MARK: delegate functions for CategoryHomeDelegate
+	func selectedRowToAssignToAllTerms() {
+		// user selected to assign to all terms
+		let ac = UIAlertController(title: .none, message: "All terms are always part of this category. You can not change this category selection.", preferredStyle: .alert)
+		
+		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
+		ac.addAction(okay)
+		self.present(ac, animated: true, completion: nil)
+	}
+	
+	func selectedRowToAssignToMyTerms() {
+		// user selected to assign to my terms
+		let ac = UIAlertController(title: .none, message: "Custom terms will be placed in this category. You can not change this category selection.", preferredStyle: .alert)
+		
+		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
+		ac.addAction(okay)
+		self.present(ac, animated: true, completion: nil)
+	}
+	
 	func pressedInfoButtonOnStandardCategory() {
 		// add code
 	}

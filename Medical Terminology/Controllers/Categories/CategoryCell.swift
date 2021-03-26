@@ -25,11 +25,14 @@ class CategoryCell: UITableViewCell {
 	func formatCellSelectCategory (displayCategory: Category2, currentCatetory: Int ) {
 		nameLabel.text  = displayCategory.name
 		countLabel.text = String (displayCategory.count)
+	
 		
 		if displayCategory.categoryID == currentCatetory {
 			//selected category
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain
+	
+	
 		} else {
 			//not selected category
 			if displayCategory.count == 0 {
@@ -41,9 +44,11 @@ class CategoryCell: UITableViewCell {
 			selectImage.tintColor = myTheme.colorText
 		}
 		
+		
 	}
 	
 	func formatCellAssignCategory (displayCategory: Category2, defaultCategoryID: Int, assignedCategoryIDsForTerm ids: [Int]) {
+		
 		nameLabel.text  = displayCategory.name
 		countLabel.text = String (displayCategory.count)
 		
@@ -61,6 +66,7 @@ class CategoryCell: UITableViewCell {
 			selectImage.image = myTheme.imageRowNotSelected
 			selectImage.tintColor = myTheme.colorText
 		}
+		
 	}
 		
 	@IBAction func showDetailButtonAction(_ sender: UIButton) {

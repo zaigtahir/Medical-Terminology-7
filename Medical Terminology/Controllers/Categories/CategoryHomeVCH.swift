@@ -14,6 +14,9 @@ Use this protocol call to communicate back to the home controller
 */
 protocol CategoryHomeDelegate: class {
 	//will shoot functions to the CategoryHomeVHC
+	func selectedRowToAssignToAllTerms ()
+	func selectedRowToAssignToMyTerms ()
+
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
 	func requestDeleteCategory (categoryID: Int, name: String)
@@ -116,7 +119,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			print("add code to add a catetory")
 			return
 		}
-		
+			
 		// determine category
 		var category: Category2
 		
@@ -125,16 +128,25 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		} else {
 			category = customCategories[indexPath.row]
 		}
+
+		if displayMode == .selectCategory {
+			selectedSelectRow(didSelectRowAt: indexPath, categoryID: category.categoryID)
+		} else {
+			selectedAssignRow(didSelectRowAt: indexPath, categoryID: category.categoryID)
+		}
 		
+	}
+	
+	private func selectedSelectRow (didSelectRowAt indexPath: IndexPath, categoryID: Int) {
 		
 		// if the user selected the same category then don't do anything
-		if category.categoryID == currentCategoryID {
+		if categoryID == currentCategoryID {
 			return
 		}
 		
 		// change current category here reload the selection table
 		
-		currentCategoryID = category.categoryID
+		currentCategoryID = categoryID
 		
 		// MARK: Fire off a notification of the category change!!
 		let name = Notification.Name(myKeys.categoryChanged)
@@ -143,6 +155,26 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		categoryHomeDelegate?.reloadTable()
 		
 	}
+	
+	private func selectedAssignRow (didSelectRowAt indexPath: IndexPath, categoryID: Int) {
+		
+		if categoryID == 1 {
+			// user pressed the all terms row
+			categoryHomeDelegate?.selectedRowToAssignToAllTerms()
+			return
+		}
+		
+		if categoryID == 2 {
+			// user pressed the all terms row
+			categoryHomeDelegate?.selectedRowToAssignToMyTerms()
+			return
+		}
+		
+		// IMPORTANT, if the user removes or assigns a term to the current category, need to shoot off a notification so all the view controllers know
+		
+	}
+	
+	
 	
 	
 	/*
