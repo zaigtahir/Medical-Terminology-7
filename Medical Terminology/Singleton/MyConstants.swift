@@ -20,7 +20,6 @@ class MyConstants {
 	let dbTableCategories2 = "categories2"
 	let dbTableMainSectionCategories = "mainSectionCategories"
 	
-	
 	let dbTableMain = "dictionary"
 	let dbTableUser = "assignCategories"
 
