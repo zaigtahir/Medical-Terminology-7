@@ -47,9 +47,8 @@ class CategoryCell: UITableViewCell {
 	func formatCellAssignCategory (displayCategory: Category2, assignedCategoryIDsForTerm ids: [Int], isEnabled: Bool ) {
 		
 		nameLabel.text  = displayCategory.name
+		nameLabel.textColor = myTheme.colorText
 		countLabel.text = String (displayCategory.count)
-		
-		nameLabel.isEnabled = true
 		
 		if ids.contains(displayCategory.categoryID) {
 			// the term is assigned this category
@@ -63,8 +62,8 @@ class CategoryCell: UITableViewCell {
 		}
 		
 		if isEnabled == false {
-			nameLabel.isEnabled = false
-			selectImage.tintColor = myTheme.colorButtonDisabledTint
+			nameLabel.textColor = myTheme.colorUnavailableCatetory
+			selectImage.tintColor = myTheme.colorUnavailableCatetory
 		}
 		
 		

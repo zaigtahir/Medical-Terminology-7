@@ -75,6 +75,8 @@ class MyTheme{
 	let colorSelectedRowIndicator = UIColor(named: "color main")
 	let colorUnselectedRowIndecator = UIColor(named: "color text")
 	
+	let colorUnavailableCatetory = UIColor.systemGray4
+	
 	//MARK: row selector images
 	let imageRowSelected = UIImage.init(systemName: "circle.fill")
 	let imageRowNotSelected = UIImage.init(systemName: "circle")
