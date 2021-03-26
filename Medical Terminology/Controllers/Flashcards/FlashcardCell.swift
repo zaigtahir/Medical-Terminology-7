@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 protocol FlashcardCellDelegate: AnyObject {
-    func userPressedFavoriteButton(itemID: Int)
+    func userPressedFavoriteButton(termID: Int)
 }
 
 class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
@@ -24,15 +24,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var flashCardCounter: UILabel!
     @IBOutlet weak var playAudioButton: UIButton!
-    
-	//need to get rid of this
-   // let dIC = DItemController()
-	
-	//get rid of these soon
-	//private var itemID: Int!
-//	private var dItem : DItem!
-	
-	//V2
+
 	private var term: 	Term!
 	
 	private let tc = TermController()
@@ -218,13 +210,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
     }
     
     @IBAction func favoriteButtonAction(_ sender: Any) {
-        print ("address pressing of favorite button")
-	/*
-        //toggle LOCAL dItem to keep track of the favorite state for just the favorite display button
-        dItem.isFavorite = !dItem.isFavorite
-        utilities.setFavoriteState(button: favoriteButton, isFavorite: dItem.isFavorite)
-        delegate?.userPressedFavoriteButton(itemID: dItem.itemID)
-		*/
+		delegate?.userPressedFavoriteButton(termID: term.termID)
     }
     
     @IBAction func showTermButtonAction(_ sender: Any) {

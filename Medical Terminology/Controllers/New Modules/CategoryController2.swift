@@ -54,7 +54,12 @@ class CategoryController2 {
 	}
 	
 	func getCountOfTerms (categoryID: Int) -> Int {
+		
 		let query = "SELECT COUNT (*) FROM \(assignedCategories) WHERE categoryID = \(categoryID)"
+		
+		print ("query in cc.getCountOfTerms: \(query)")
+		
+		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
 			return Int(resultSet.int(forColumnIndex: 0))
@@ -73,9 +78,9 @@ class CategoryController2 {
 		var cs = [Category2]()
 		
 		if categoryType == .custom {
-			query = "SELECT * from \(categories) WHERE isCustom = \(categoryType.rawValue) ORDER BY displayOrder"
+			query = "SELECT * from \(categories) WHERE isStandard = \(categoryType.rawValue) ORDER BY displayOrder"
 		} else {
-			query = "SELECT * from \(categories) WHERE isCustom = \(categoryType.rawValue) ORDER BY displayOrder"
+			query = "SELECT * from \(categories) WHERE isStandard = \(categoryType.rawValue) ORDER BY displayOrder"
 		}
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -111,7 +116,7 @@ class CategoryController2 {
 		let name = resultSet.string(forColumn: "name") ?? ""
 		let description = resultSet.string(forColumn: "description") ?? ""
 		let displayOrder = Int(resultSet.int(forColumn: "displayOrder"))
-		let isStandard = Int(resultSet.int(forColumn: "isCustom"))
+		let isStandard = Int(resultSet.int(forColumn: "isStandard"))
 		
 		let c = Category2 (categoryID: categoryID,
 						  name: name,

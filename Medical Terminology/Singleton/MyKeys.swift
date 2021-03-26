@@ -18,6 +18,7 @@ class MyKeys {
     let appPurchaseStatus = "appPurchaseStatus"
     
 	let categoryChanged = "com.theappgalaxy.categoryChangedKey"
+	let termInformationChanged = "com.theappgalaxy.termInformationChanged"
 	
 }
 

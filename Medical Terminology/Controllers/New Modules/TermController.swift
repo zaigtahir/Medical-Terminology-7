@@ -85,6 +85,8 @@ class TermController {
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
+		print("query in get count: \(query)")
+		
 		var count = 0
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -97,8 +99,15 @@ class TermController {
 	}
 	
 	func setFavoriteStatus (categoryID: Int, termID: Int, isFavorite: Bool) {
-		let query = "UPDATE \(myConstants.dbTableAssignedCategories) SET isFavorite \( isFavorite ? 1 : 0 ) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		let query = "UPDATE \(myConstants.dbTableAssignedCategories) SET isFavorite = \( isFavorite ? 1 : 0 ) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		_ = myDB.executeStatements(query)
+		
+		// fire off notification that a terms information changed
+		
+		let data = ["categoryID" : categoryID, "termID" : termID]
+		
+		let name = Notification.Name(myKeys.termInformationChanged)
+		NotificationCenter.default.post(name: name, object: self, userInfo: data)
 	}
 	
 	func getFavoriteStatus ( categoryID: Int, termID: Int ) -> Bool {
@@ -139,7 +148,7 @@ class TermController {
 		let example = resultSet.string(forColumn: "example")  ?? ""
 		let secondCategoryID = Int(resultSet.int(forColumn: "secondCategoryID"))
 		let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
-		let s = Int(resultSet.int(forColumn: "isCustom"))
+		let s = Int(resultSet.int(forColumn: "isStandard"))
 		
 		let term = Term(termID: termID, name: name, definition: definition, example: example, secondCategoryID: secondCategoryID, audioFile: audioFile, isStandard: s == 1)
 		

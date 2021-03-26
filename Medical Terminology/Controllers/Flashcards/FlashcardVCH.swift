@@ -32,16 +32,31 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	override init() {
 		super.init()
 		
-		// add the category category changed observer
-		let name = Notification.Name(myKeys.categoryChanged)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryChanged(notification:)), name: name, object: nil)
+		// add observers
+		let name1 = Notification.Name(myKeys.categoryChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryChanged(notification:)), name: name1, object: nil)
 		
+		let name2 = Notification.Name(myKeys.termInformationChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChanged(notification:)), name: name2, object: nil)
+	
 		updateData(categoryID: currentCategoryID)
 	}
 	
 	deinit {
 		// remove observer (s)
 		NotificationCenter.default.removeObserver(self)
+	}
+	
+	@objc func termInformationChanged (notification: Notification) {
+		
+		if let data = notification.userInfo as? [String: Int] {
+			let affectedTermID = data["termID"] ?? 0
+			
+			if termIDs.contains(affectedTermID) {
+				delegate?.refreshCollectionView()
+				delegate?.updateHomeDisplay()	// to update favorite counts
+			}
+		}
 	}
 	
 	@objc func categoryChanged (notification : Notification) {
@@ -66,7 +81,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		delegate?.updateHomeDisplay()
 		delegate?.refreshCollectionView()
 	}
-		
+	
 	func getFavoriteCount () -> Int {
 		//return the count of favorites or this catetory
 		return tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
@@ -96,10 +111,14 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// MARK: - Cell delegate protocol
 	
-	func userPressedFavoriteButton(itemID: Int) {
-		/*
-		dIC.toggleIsFavorite (itemID: itemID)
-		delegate?.updateHomeDisplay()*/
+	func userPressedFavoriteButton(termID: Int) {
+		print("in vch userPressedFavoriteButton")
+		
+		let favoriteStatus = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: termID)
+		tc.setFavoriteStatus(categoryID: currentCategoryID, termID: termID, isFavorite: !favoriteStatus)
+		
+		//note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed. The VCH will listen for that and tell the home view to refresh it's current cell
+		
 	}
 	
 	// MARK: - Scroll delegate protocol

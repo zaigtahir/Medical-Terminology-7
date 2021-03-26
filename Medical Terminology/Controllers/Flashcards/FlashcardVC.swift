@@ -83,6 +83,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		}
 		
 		let c = cc.getCategory(categoryID: flashCardVCH.currentCategoryID)
+		
 		c.count = cc.getCountOfTerms(categoryID: flashCardVCH.currentCategoryID)
 		
 		let title = "  \(c.name) (\(c.count))"

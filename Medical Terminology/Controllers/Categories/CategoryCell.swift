@@ -58,7 +58,6 @@ class CategoryCell: UITableViewCell {
 		} else {
 			// not assigned to this category, but if this is the current category, use a different not selected icon
 			if rowCategory.categoryID == currentCategoryID {
-				
 				selectImage.image = myTheme.imageRowCurrentCategoryNotSelected
 				
 			} else {
