@@ -25,15 +25,76 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
     @IBOutlet weak var flashCardCounter: UILabel!
     @IBOutlet weak var playAudioButton: UIButton!
     
-    let dIC = DItemController()
-    private var itemID: Int!
-    private var dItem : DItem! //initialize in configure and use to play audio, and to keep track of favorite state locally
+	//need to get rid of this
+   // let dIC = DItemController()
+	
+	//get rid of these soon
+	//private var itemID: Int!
+//	private var dItem : DItem!
+	
+	//V2
+	private var term: 	Term!
+	
+	private let tc = TermController()
     private var utilities = Utilities()
-    
     private var audioPlayer: AVAudioPlayer?
-    
+	
     weak var delegate: FlashcardCellDelegate?
+	
+	func configure (term: Term, fcvMode: FlashcardViewMode, isFavorite: Bool, counter: String) {
+		
+		self.term = term
+		termLabel.text = term.name
+		definitionLabel.text = "Definition: \(term.definition)"
+		exampleLabel.text = "Example(s): \(term.example)"
+		flashCardCounter.text = counter
+		
+		// favorite button status
+		utilities.setFavoriteState(button: favoriteButton, isFavorite: isFavorite)
+		
+		// set speaker button to not playing
+		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
+		
+		//check if the audioFile is present in the bundle
+		let aFC = AudioFileController()
+
+		//set audio button enable or disable
+		if term.audioFile != "" && aFC.isAudioFilePresentInBundle(filename: term.audioFile ?? "", extension: "mp3"){
+			
+			playAudioButton.isEnabled = true
+		} else {
+			playAudioButton.isEnabled = false
+			
+		}
+		
+		switch fcvMode {
+		
+		case .definition:
+			//show definition, hide term
+			termLabel.isHidden = true
+			showHiddenTermButton.isHidden = false
+			showHiddenDefinitionButton.isHidden = true
+			definitionLabel.isHidden = false
+			exampleLabel.isHidden = false
+			
+		case .term:
+			//show term, hide definition
+			termLabel.isHidden = false
+			showHiddenTermButton.isHidden = true
+			showHiddenDefinitionButton.isHidden = false
+			definitionLabel.isHidden = true
+			exampleLabel.isHidden = true
+			
+		default:
+			termLabel.isHidden = false
+			showHiddenTermButton.isHidden = true
+			showHiddenDefinitionButton.isHidden = true
+			definitionLabel.isHidden = false
+			exampleLabel.isHidden = false
+		}
+	}
     
+	/*
     func configure (dItem: DItem, fcvMode: FlashcardViewMode, counter: String) {
         
         itemID = dItem.itemID
@@ -99,7 +160,8 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
             exampleLabel.isHidden = false
         }
     }
-    
+    */
+	
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -120,7 +182,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
     
     func playAudio () {
  
-        let fileName = "\(myConstants.audioFolder)/\(dItem.audioFile).mp3"
+		let fileName = "\(myConstants.audioFolder)/\(term.audioFile ?? "").mp3"
         
         let path = Bundle.main.path(forResource: fileName, ofType: nil)!
         
@@ -156,11 +218,13 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
     }
     
     @IBAction func favoriteButtonAction(_ sender: Any) {
-        
+        print ("address pressing of favorite button")
+	/*
         //toggle LOCAL dItem to keep track of the favorite state for just the favorite display button
         dItem.isFavorite = !dItem.isFavorite
         utilities.setFavoriteState(button: favoriteButton, isFavorite: dItem.isFavorite)
         delegate?.userPressedFavoriteButton(itemID: dItem.itemID)
+		*/
     }
     
     @IBAction func showTermButtonAction(_ sender: Any) {

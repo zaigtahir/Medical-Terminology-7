@@ -27,10 +27,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	let tc = TermController()
 	let cc = CategoryController2()
 	
-	let dIC = DItemController3()	//to remove
-	
-	let cC = CategoryController()	//to remove
-	
 	var termIDs = [Int]()	// list to show
 	
 	override init() {
@@ -73,7 +69,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 	func getFavoriteCount () -> Int {
 		//return the count of favorites or this catetory
-		return dIC.getCount(catetoryID: currentCategoryID, isFavorite: true)
+		return tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 	}
 	
 	// MARK: - CollectionViewDataSource Functions
@@ -86,19 +82,24 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashCardCell", for: indexPath) as! FlashcardCell
 		
-		//the cell should configure itself
-		let dItem  = dIC.getDItem(itemID: termIDs[indexPath.row])
+		// prepare the cell to configure
+		let term = tc.getTerm(termID: termIDs[indexPath.row])
 		let countText = "Flashcard: \(indexPath.row + 1) of \(termIDs.count)"
-		cell.configure(dItem: dItem, fcvMode: viewMode, counter: countText)
+		let isFavorite = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: term.termID)
+		
+		cell.configure(term: term, fcvMode: viewMode, isFavorite: isFavorite, counter: countText)
+		
 		cell.delegate = self
+		
 		return cell
 	}
 	
 	// MARK: - Cell delegate protocol
 	
 	func userPressedFavoriteButton(itemID: Int) {
+		/*
 		dIC.toggleIsFavorite (itemID: itemID)
-		delegate?.updateHomeDisplay()
+		delegate?.updateHomeDisplay()*/
 	}
 	
 	// MARK: - Scroll delegate protocol

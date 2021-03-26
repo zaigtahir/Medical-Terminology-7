@@ -101,7 +101,7 @@ class TermController {
 		_ = myDB.executeStatements(query)
 	}
 	
-	func getFavoriteStatus ( categoryID: Int, termID: Int, isFavorite: Bool ) -> Bool {
+	func getFavoriteStatus ( categoryID: Int, termID: Int ) -> Bool {
 		let query = "SELECT isFavorite FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
