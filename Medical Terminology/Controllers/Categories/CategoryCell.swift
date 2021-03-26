@@ -43,7 +43,7 @@ class CategoryCell: UITableViewCell {
 		
 	}
 	
-	func formatCellAssignCategory (rowCategory: Category2, assignedCategoryIDsForTerm ids: [Int], isSelectable: Bool ) {
+	func formatCellAssignCategory (rowCategory: Category2, currentCategoryID: Int, assignedCategoryIDsForTerm ids: [Int], isSelectable: Bool ) {
 		
 		nameLabel.text  = rowCategory.name
 		nameLabel.textColor = myTheme.colorText
@@ -56,8 +56,15 @@ class CategoryCell: UITableViewCell {
 			selectImage.tintColor = myTheme.colorMain
 			
 		} else {
-			// not selected, and not default
-			selectImage.image = myTheme.imageRowNotSelected
+			// not assigned to this category, but if this is the current category, use a different not selected icon
+			if rowCategory.categoryID == currentCategoryID {
+				
+				selectImage.image = myTheme.imageRowCurrentCategoryNotSelected
+				
+			} else {
+				selectImage.image = myTheme.imageRowNotSelected
+			}
+			
 			selectImage.tintColor = myTheme.colorText
 		}
 		

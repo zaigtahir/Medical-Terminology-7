@@ -131,7 +131,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		I can't use make the cell non-interactable completely
 		
 		if this is a standard term && this is a standard category, disable the row
-		if the category count = 0, also disable the row
 		*/
 		
 		let ids = tc.getTermCategoryIDs(termID: termID)
@@ -146,12 +145,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		if term.isCustom && rowCategory.categoryID <= 2 {
 		rowIsEnabled = false
 		}
-		
-		if rowCategory.count == 0 {
-			rowIsEnabled = false
-		}
 			
-		cell.formatCellAssignCategory(rowCategory: rowCategory, assignedCategoryIDsForTerm: ids, isSelectable: rowIsEnabled)
+		cell.formatCellAssignCategory(rowCategory: rowCategory, currentCategoryID: currentCategoryID, assignedCategoryIDsForTerm: ids, isSelectable: rowIsEnabled)
 		
 	}
 	

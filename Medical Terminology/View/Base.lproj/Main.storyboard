@@ -2523,7 +2523,7 @@
                                                         <action selector="showDetailButtonAction:" destination="51Y-Dh-WQa" eventType="touchUpInside" id="mD4-Um-hXj"/>
                                                     </connections>
                                                 </button>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="asterisk.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H6y-PU-drn">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H6y-PU-drn">
                                                     <rect key="frame" x="20" y="1" width="18" height="48.666666666666671"/>
                                                     <color key="tintColor" name="color text"/>
                                                     <constraints>
@@ -2654,11 +2654,11 @@
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
         <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
-        <image name="asterisk.circle" catalog="system" width="128" height="121"/>
         <image name="check circle filled" width="24" height="24"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>
+        <image name="circle.circle" catalog="system" width="128" height="121"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="flashcard3" width="25" height="25"/>

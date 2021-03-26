@@ -91,6 +91,22 @@ class CategoryController2 {
 		
 	}
 	
+	func unassignCategory (termID: Int, categoryID: Int){
+		/*
+		will unassign this termID from this categoryID IF it is allowed.
+		Can not unassign from category 1 (All terms)
+		Can not unassign a standard term from standard category
+		*/
+	}
+	
+	func assignCategory (termID: Int, catetoryID: Int) {
+		/*
+		will assign this termID to this categoryID IF it is allowed
+		*/
+	}
+	
+	
+	
 	private func fillCategory (resultSet: FMResultSet) -> Category2 {
 		
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))
@@ -100,11 +116,11 @@ class CategoryController2 {
 		let isCustom = Int(resultSet.int(forColumn: "isCustom"))
 		
 		let c = Category2(categoryID: categoryID,
-						 name: name,
-						 description: description,
-						 displayOrder: displayOrder,
-						 isCustom: isCustom == 1 ? true : false,
-						 count: 0		// will need to update this when the program needs
+						  name: name,
+						  description: description,
+						  displayOrder: displayOrder,
+						  isCustom: isCustom == 1 ? true : false,
+						  count: 0		// will need to update this when the program needs
 		)
 		
 		return c
