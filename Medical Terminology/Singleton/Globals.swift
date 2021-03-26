@@ -58,6 +58,6 @@ enum MainSectionName: String {
 }
 
 enum CategoryType : Int {
-	case standard = 0
-	case custom = 1
+	case standard = 1	// the raw value coorelates to the db value
+	case custom = 0		// the raw value coorelates to the db value
 }

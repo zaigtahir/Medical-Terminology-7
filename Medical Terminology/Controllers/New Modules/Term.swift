@@ -15,13 +15,13 @@ class Term {
 	var example: String = "default"
 	var secondCategoryID : Int = -1
 	var audioFile: String?
-	var isCustom: Bool = false
+	var isStandard: Bool = true
 	
 	init () {
 	
 	}
 	
-	convenience init(termID: Int, name: String, definition: String, example: String, secondCategoryID: Int, audioFile: String?, isMyTerm: Bool) {
+	convenience init(termID: Int, name: String, definition: String, example: String, secondCategoryID: Int, audioFile: String?, isStandard: Bool) {
 		
 		self.init()
 		self.termID = termID
@@ -30,7 +30,7 @@ class Term {
 		self.example = example
 		self.secondCategoryID = secondCategoryID
 		self.audioFile = audioFile
-		self.isCustom = isMyTerm
+		self.isStandard = isStandard
 	}
 	
 	func printTerm() {

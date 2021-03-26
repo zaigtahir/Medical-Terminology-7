@@ -129,8 +129,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		need to figure out if the cell will be active or look disabled
 		only the name and the selector will look dimmed, the accessory item and arrow will be normal
 		I can't use make the cell non-interactable completely
-		
-		if this is a standard term && this is a standard category, disable the row
 		*/
 		
 		let ids = tc.getTermCategoryIDs(termID: termID)
@@ -138,11 +136,13 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		var rowIsEnabled  = true
 		
-		if !term.isCustom && !rowCategory.isCustom {
+		// if this is a standard term && this is a standard category, disable the row
+		if term.isStandard && rowCategory.isStandard {
 		rowIsEnabled = false
 		}
 		
-		if term.isCustom && rowCategory.categoryID <= 2 {
+		// if this is a custom category, disable All Terms (1) and My Terms (2) category
+		if !term.isStandard && rowCategory.categoryID <= 2 {
 		rowIsEnabled = false
 		}
 			

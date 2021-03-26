@@ -105,21 +105,19 @@ class CategoryController2 {
 		*/
 	}
 	
-	
-	
 	private func fillCategory (resultSet: FMResultSet) -> Category2 {
 		
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))
 		let name = resultSet.string(forColumn: "name") ?? ""
 		let description = resultSet.string(forColumn: "description") ?? ""
 		let displayOrder = Int(resultSet.int(forColumn: "displayOrder"))
-		let isCustom = Int(resultSet.int(forColumn: "isCustom"))
+		let isStandard = Int(resultSet.int(forColumn: "isCustom"))
 		
-		let c = Category2(categoryID: categoryID,
+		let c = Category2 (categoryID: categoryID,
 						  name: name,
 						  description: description,
 						  displayOrder: displayOrder,
-						  isCustom: isCustom == 1 ? true : false,
+						  isStandard: isStandard == 1 ? true : false,
 						  count: 0		// will need to update this when the program needs
 		)
 		

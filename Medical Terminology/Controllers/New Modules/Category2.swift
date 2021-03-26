@@ -14,14 +14,14 @@ class Category2 {
 	var name = "none"
 	var description = "none"
 	var displayOrder = 0
-	var isCustom = false
+	var isStandard = true
 	var count = 0				//hold count of times in this category, not stored in the db, and I will need to calculate the latest value when needed
 	
 	init() {
 
 	}
 	
-	convenience init(categoryID: Int, name: String, description: String, displayOrder: Int, isCustom: Bool, count: Int){
+	convenience init(categoryID: Int, name: String, description: String, displayOrder: Int, isStandard: Bool, count: Int){
 		
 		self.init()
 		
@@ -29,7 +29,7 @@ class Category2 {
 		self.name = name
 		self.description = description
 		self.displayOrder = displayOrder
-		self.isCustom = isCustom
+		self.isStandard = isStandard
 		self.count = count
 		
 	}

@@ -139,9 +139,9 @@ class TermController {
 		let example = resultSet.string(forColumn: "example")  ?? ""
 		let secondCategoryID = Int(resultSet.int(forColumn: "secondCategoryID"))
 		let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
-		let m = Int(resultSet.int(forColumn: "isCustom"))
+		let s = Int(resultSet.int(forColumn: "isCustom"))
 		
-		let term = Term(termID: termID, name: name, definition: definition, example: example, secondCategoryID: secondCategoryID, audioFile: audioFile, isMyTerm: m == 1)
+		let term = Term(termID: termID, name: name, definition: definition, example: example, secondCategoryID: secondCategoryID, audioFile: audioFile, isStandard: s == 1)
 		
 		return term
 	}
