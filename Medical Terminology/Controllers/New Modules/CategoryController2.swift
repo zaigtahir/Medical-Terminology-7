@@ -89,23 +89,6 @@ class CategoryController2 {
 			return cs
 		}
 		
-		
-		/*
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			while resultSet.next() {
-				let c = fillCategory(resultSet: resultSet)
-				categories.append(c)
-			} else {
-				print("fatal error did not find category with id = \(categoryID) in getCategory. Returning empty category")
-				return Category2()
-			}
-			
-		} else {
-			print("Fatal error getting the result set in getCategories function")
-			return Category2()
-		}
-		*/
 	}
 	
 	private func fillCategory (resultSet: FMResultSet) -> Category2 {

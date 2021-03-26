@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 /*
-Use this protocol call to communicate back to the home controller
+Fires off a notification if a user changes the currentCategoryID
+All controllers that are affected by that can respond to it
 */
 protocol CategoryHomeDelegate: class {
 	
@@ -105,7 +106,9 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			switch displayMode {
 			
 			case .selectCategory:
-				cell.formatCellSelectCategory(rowCategory: rowCategory, currentCatetory: self.currentCategoryID)
+								
+				cell.formatCellSelectCategory(rowCategory: rowCategory, currentCatetory: self.currentCategoryID, isSelectable: true )
+				
 				return cell
 				
 			case .assignCategory:
@@ -122,9 +125,15 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	private func formatAssignCell (cell: CategoryCell, rowCategory: Category2) {
 		
-		// need to figure out if the cell will be active or look disabled
-		// if this is a standard term && this is a standard category, disable the row
-
+		/*
+		need to figure out if the cell will be active or look disabled
+		only the name and the selector will look dimmed, the accessory item and arrow will be normal
+		I can't use make the cell non-interactable completely
+		
+		if this is a standard term && this is a standard category, disable the row
+		if the category count = 0, also disable the row
+		*/
+		
 		let ids = tc.getTermCategoryIDs(termID: termID)
 		let term = tc.getTerm(termID: termID)
 		
@@ -138,7 +147,11 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		rowIsEnabled = false
 		}
 		
-		cell.formatCellAssignCategory(rowCategory: rowCategory, assignedCategoryIDsForTerm: ids, isEnabled: rowIsEnabled)
+		if rowCategory.count == 0 {
+			rowIsEnabled = false
+		}
+			
+		cell.formatCellAssignCategory(rowCategory: rowCategory, assignedCategoryIDsForTerm: ids, isSelectable: rowIsEnabled)
 		
 	}
 	
@@ -150,7 +163,15 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			return
 		}
 		
-		// determine category
+		if let selectedCell = tableView.cellForRow(at: indexPath) as? CategoryCell {
+			if selectedCell.isSelectable == false {
+				// don't do anything. This cell is not meant to be selected
+				return
+			}
+		}
+		
+	
+		// determine which category the row contains
 		var rowCategory: Category2
 		
 		if indexPath.section == sectionStandard {
@@ -160,9 +181,9 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		}
 		
 		if displayMode == .selectCategory {
-			selectedSelectRow(didSelectRowAt: indexPath, categoryID: rowCategory.categoryID)
+			self.selectedSelectRow(didSelectRowAt: indexPath, categoryID: rowCategory.categoryID)
 		} else {
-			selectedAssignRow(didSelectRowAt: indexPath, category: rowCategory)
+			self.selectedAssignRow(didSelectRowAt: indexPath, category: rowCategory)
 		}
 		
 	}
@@ -183,25 +204,10 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : currentCategoryID])
 		
 		categoryHomeDelegate?.reloadTable()
-		
 	}
 	
 	private func selectedAssignRow (didSelectRowAt indexPath: IndexPath, category: Category2) {
-		
-		// if this is a standard term and a standard category, don't do anything. These are meant to be non selectable rows and show as disabled
-		
-		let term = tc.getTerm(termID: termID)
-		
-		if  !term.isCustom && !category.isCustom {
-			return
-		}
-		
-		// do nothing if the term is custom and row is myterms or all terms
-		
-		if term.isCustom && (category.categoryID <= 2) {
-			return
-		}
-		
+		print("implement assign category")
 	}
 	
 }

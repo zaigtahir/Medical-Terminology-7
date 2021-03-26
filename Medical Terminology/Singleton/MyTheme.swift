@@ -80,8 +80,6 @@ class MyTheme{
 	//MARK: row selector images
 	let imageRowSelected = UIImage.init(systemName: "circle.fill")
 	let imageRowNotSelected = UIImage.init(systemName: "circle")
-	let imageRowDefaultCategory = UIImage.init(systemName: "asterisk.circle")
-	let imageRowEmpty = UIImage.init(systemName: "circle.dashed")
 	
     //MARK: images
     let imageCorrect = UIImage(named: "check circle filled")

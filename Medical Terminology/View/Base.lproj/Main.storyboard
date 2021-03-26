@@ -842,7 +842,7 @@
                         <barButtonItem key="rightBarButtonItem" image="settings zt" id="Cbe-ev-ZKK">
                             <color key="tintColor" name="color text"/>
                             <connections>
-                                <segue destination="HXV-3U-7fg" kind="show" identifier="segueFlashcardOptions" id="8Ep-vg-vfH"/>
+                                <segue destination="HXV-3U-7fg" kind="presentation" identifier="segueFlashcardOptions" id="8Ep-vg-vfH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

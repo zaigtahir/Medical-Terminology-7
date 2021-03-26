@@ -15,6 +15,9 @@ class CategoryCell: UITableViewCell {
 	@IBOutlet weak var showDetailButton: UIButton!
 	@IBOutlet weak var countLabel: UILabel!
 	
+	// hold the state of this cells isEnable so I can use it later in the didSelectRow method I just have a default value here, but when you format the cell, you will also end up setting this value
+	var isSelectable = true
+	
 	//	private var categoryID = 0 // used so I can pass it in the delegate method
 	
 	override func awakeFromNib() {
@@ -22,9 +25,10 @@ class CategoryCell: UITableViewCell {
 		// Initialization code
 	}
 	
-	func formatCellSelectCategory (rowCategory: Category2, currentCatetory: Int ) {
+	func formatCellSelectCategory (rowCategory: Category2, currentCatetory: Int, isSelectable: Bool ) {
 		nameLabel.text  = rowCategory.name
 		countLabel.text = String (rowCategory.count)
+		self.isSelectable = isSelectable
 		
 		if rowCategory.categoryID == currentCatetory {
 			//selected category
@@ -32,23 +36,19 @@ class CategoryCell: UITableViewCell {
 			selectImage.tintColor = myTheme.colorMain
 		
 		} else {
-			//not selected category
-			if rowCategory.count == 0 {
-				//nothing in this category
-				selectImage.image = myTheme.imageRowEmpty
-			} else {
-				selectImage.image = myTheme.imageRowNotSelected
-			}
+			//category is not selected
+			selectImage.image = myTheme.imageRowNotSelected
 			selectImage.tintColor = myTheme.colorText
 		}
 		
 	}
 	
-	func formatCellAssignCategory (rowCategory: Category2, assignedCategoryIDsForTerm ids: [Int], isEnabled: Bool ) {
+	func formatCellAssignCategory (rowCategory: Category2, assignedCategoryIDsForTerm ids: [Int], isSelectable: Bool ) {
 		
 		nameLabel.text  = rowCategory.name
 		nameLabel.textColor = myTheme.colorText
 		countLabel.text = String (rowCategory.count)
+		self.isSelectable = isSelectable
 		
 		if ids.contains(rowCategory.categoryID) {
 			// the term is assigned this category
@@ -61,7 +61,7 @@ class CategoryCell: UITableViewCell {
 			selectImage.tintColor = myTheme.colorText
 		}
 		
-		if isEnabled == false {
+		if isSelectable == false {
 			nameLabel.textColor = myTheme.colorUnavailableCatetory
 			selectImage.tintColor = myTheme.colorUnavailableCatetory
 		}
