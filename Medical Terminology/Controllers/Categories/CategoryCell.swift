@@ -26,13 +26,11 @@ class CategoryCell: UITableViewCell {
 		nameLabel.text  = displayCategory.name
 		countLabel.text = String (displayCategory.count)
 		
-		
 		if displayCategory.categoryID == currentCatetory {
 			//selected category
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain
-			
-			
+		
 		} else {
 			//not selected category
 			if displayCategory.count == 0 {
@@ -46,10 +44,12 @@ class CategoryCell: UITableViewCell {
 		
 	}
 	
-	func formatCellAssignCategory (displayCategory: Category2, assignedCategoryIDsForTerm ids: [Int]) {
+	func formatCellAssignCategory (displayCategory: Category2, assignedCategoryIDsForTerm ids: [Int], isEnabled: Bool ) {
 		
 		nameLabel.text  = displayCategory.name
 		countLabel.text = String (displayCategory.count)
+		
+		nameLabel.isEnabled = true
 		
 		if ids.contains(displayCategory.categoryID) {
 			// the term is assigned this category
@@ -61,6 +61,12 @@ class CategoryCell: UITableViewCell {
 			selectImage.image = myTheme.imageRowNotSelected
 			selectImage.tintColor = myTheme.colorText
 		}
+		
+		if isEnabled == false {
+			nameLabel.isEnabled = false
+			selectImage.tintColor = myTheme.colorButtonDisabledTint
+		}
+		
 		
 	}
 	

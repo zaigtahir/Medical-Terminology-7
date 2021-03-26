@@ -32,25 +32,6 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 		//
 	}
 	
-	// MARK: delegate functions for CategoryHomeDelegate
-	func selectedRowToAssignToAllTerms() {
-		// user selected to assign to all terms
-		let ac = UIAlertController(title: .none, message: "All terms are always part of this category. You can not change this category selection.", preferredStyle: .alert)
-		
-		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
-		ac.addAction(okay)
-		self.present(ac, animated: true, completion: nil)
-	}
-	
-	func selectedRowToAssignToMyTerms() {
-		// user selected to assign to my terms
-		let ac = UIAlertController(title: .none, message: "Custom terms will be placed in this category. You can not change this category selection.", preferredStyle: .alert)
-		
-		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
-		ac.addAction(okay)
-		self.present(ac, animated: true, completion: nil)
-	}
-	
 	func pressedInfoButtonOnStandardCategory() {
 		// add code
 	}

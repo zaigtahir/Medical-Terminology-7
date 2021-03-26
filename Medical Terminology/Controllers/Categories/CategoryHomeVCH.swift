@@ -13,10 +13,7 @@ import UIKit
 Use this protocol call to communicate back to the home controller
 */
 protocol CategoryHomeDelegate: class {
-	//will shoot functions to the CategoryHomeVHC
-	func selectedRowToAssignToAllTerms ()
-	func selectedRowToAssignToMyTerms ()
-
+	
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
 	func requestDeleteCategory (categoryID: Int, name: String)
@@ -35,7 +32,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 
 	var displayMode = CategoryViewMode.selectCategory
 	var currentCategoryID = 1	// just simulation, need to load in the segue
-	var termID = -1		// set when using the assign category term
+	var termID = 0				// set in segue when using the assign category
 	
 	// use to refer to the section of the table
 	let sectionCustom = 0
@@ -102,8 +99,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		} else {
 			category = customCategories[indexPath.row]
 		}
-		
-		// determine item count
+		// attach count
 		category.count = cc.getCountOfTerms(categoryID: category.categoryID)
 		
 		// format the cell based on the view mode
@@ -112,10 +108,23 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			return cell!
 			
 		} else {
+			
+			// make assign category cell
+			
 			let ids = tc.getTermCategoryIDs(termID: termID)
 			let term = tc.getTerm(termID: termID)
 		
-			cell?.formatCellAssignCategory(displayCategory: category, assignedCategoryIDsForTerm: ids)
+			// if this is a standard term && this is a standard category, disable the row
+			let rowIsEnabled : Bool
+			
+			if !term.isCustom && !category.isCustom {
+				rowIsEnabled = false
+			} else {
+				rowIsEnabled = true
+			}
+			
+			cell?.formatCellAssignCategory(displayCategory: category, assignedCategoryIDsForTerm: ids, isEnabled: rowIsEnabled)
+			
 			return cell!
 		}
 	}
@@ -138,14 +147,14 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		}
 
 		if displayMode == .selectCategory {
-			selectedSelectRow(didSelectRowAt: indexPath, categoryID: category.categoryID)
+			selectedRowInAssignMode(didSelectRowAt: indexPath, categoryID: category.categoryID)
 		} else {
-			selectedAssignRow(didSelectRowAt: indexPath, categoryID: category.categoryID)
+			selectedRowInAssignMode(didSelectRowAt: indexPath, category: category)
 		}
 		
 	}
 	
-	private func selectedSelectRow (didSelectRowAt indexPath: IndexPath, categoryID: Int) {
+	private func selectedRowInAssignMode (didSelectRowAt indexPath: IndexPath, categoryID: Int) {
 		
 		// if the user selected the same category then don't do anything
 		if categoryID == currentCategoryID {
@@ -164,21 +173,13 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 	}
 	
-	private func selectedAssignRow (didSelectRowAt indexPath: IndexPath, categoryID: Int) {
+	private func selectedRowInAssignMode (didSelectRowAt indexPath: IndexPath, category: Category2) {
 		
-		if categoryID == 1 {
-			// user pressed the all terms row
-			categoryHomeDelegate?.selectedRowToAssignToAllTerms()
-			return
-		}
+		let term = tc.getTerm(termID: termID)
 		
-		if categoryID == 2 {
-			// user pressed the all terms row
-			categoryHomeDelegate?.selectedRowToAssignToMyTerms()
-			return
-		}
+		// if this is a standard term, and the user pressed a standard category, don't do anything. Those categories show up "disabled" on the table
 		
-		// IMPORTANT, if the user removes or assigns a term to the current category, need to shoot off a notification so all the view controllers know
+		
 		
 	}
 	
