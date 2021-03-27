@@ -60,9 +60,10 @@
 		992E79D4260A2ADD00C19D49 /* FlashcardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79D1260A2ADD00C19D49 /* FlashcardVC.swift */; };
 		992E79DF260A43C700C19D49 /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79DD260A43C700C19D49 /* Term.swift */; };
 		992E79E0260A43C700C19D49 /* TermController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79DE260A43C700C19D49 /* TermController.swift */; };
-		992E79E4260B7BAA00C19D49 /* CategoryController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79E3260B7BAA00C19D49 /* CategoryController2.swift */; };
+		992E79E4260B7BAA00C19D49 /* CategoryController2bk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79E3260B7BAA00C19D49 /* CategoryController2bk.swift */; };
 		992E79E8260B834200C19D49 /* Category2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79E7260B834200C19D49 /* Category2.swift */; };
 		992E79EB260C413D00C19D49 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79EA260C413D00C19D49 /* AddCell.swift */; };
+		992E79FD260FBA3100C19D49 /* CategoryController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79FC260FBA3100C19D49 /* CategoryController2.swift */; };
 		994175DE245A38A900E281DB /* AudioFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175DD245A38A900E281DB /* AudioFileController.swift */; };
 		994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E1245B5BAE00E281DB /* SettingsController.swift */; };
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
@@ -147,9 +148,10 @@
 		992E79D1260A2ADD00C19D49 /* FlashcardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardVC.swift; sourceTree = "<group>"; };
 		992E79DD260A43C700C19D49 /* Term.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
 		992E79DE260A43C700C19D49 /* TermController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermController.swift; sourceTree = "<group>"; };
-		992E79E3260B7BAA00C19D49 /* CategoryController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController2.swift; sourceTree = "<group>"; };
+		992E79E3260B7BAA00C19D49 /* CategoryController2bk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController2bk.swift; sourceTree = "<group>"; };
 		992E79E7260B834200C19D49 /* Category2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category2.swift; sourceTree = "<group>"; };
 		992E79EA260C413D00C19D49 /* AddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
+		992E79FC260FBA3100C19D49 /* CategoryController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController2.swift; sourceTree = "<group>"; };
 		994175DD245A38A900E281DB /* AudioFileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileController.swift; sourceTree = "<group>"; };
 		994175E1245B5BAE00E281DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
@@ -406,8 +408,9 @@
 			children = (
 				992E79DD260A43C700C19D49 /* Term.swift */,
 				992E79DE260A43C700C19D49 /* TermController.swift */,
-				992E79E3260B7BAA00C19D49 /* CategoryController2.swift */,
+				992E79E3260B7BAA00C19D49 /* CategoryController2bk.swift */,
 				992E79E7260B834200C19D49 /* Category2.swift */,
+				992E79FC260FBA3100C19D49 /* CategoryController2.swift */,
 			);
 			path = "New Modules";
 			sourceTree = "<group>";
@@ -524,7 +527,7 @@
 				5A03478E22D39D0900749EBC /* FMDatabase.m in Sources */,
 				5AD08055227860D000962AB6 /* AlphaList.swift in Sources */,
 				5A2A58DD22F8C35200434910 /* QuizSetVC.swift in Sources */,
-				992E79E4260B7BAA00C19D49 /* CategoryController2.swift in Sources */,
+				992E79E4260B7BAA00C19D49 /* CategoryController2bk.swift in Sources */,
 				992E79D4260A2ADD00C19D49 /* FlashcardVC.swift in Sources */,
 				5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */,
 				5A03479022D39D0900749EBC /* FMDatabaseAdditions.m in Sources */,
@@ -563,6 +566,7 @@
 				5A03478C22D39D0900749EBC /* FMDatabaseQueue.m in Sources */,
 				5A37F87A22E74B18008A5FA5 /* ScrollController.swift in Sources */,
 				994175DE245A38A900E281DB /* AudioFileController.swift in Sources */,
+				992E79FD260FBA3100C19D49 /* CategoryController2.swift in Sources */,
 				99D55E1225F7EF92003ABE0B /* CategoryHomeVCH.swift in Sources */,
 				992E79DF260A43C700C19D49 /* Term.swift in Sources */,
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,

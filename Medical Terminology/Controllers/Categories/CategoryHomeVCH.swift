@@ -202,7 +202,9 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	}
 	
 	private func selectedAssignRow (didSelectRowAt indexPath: IndexPath, category: Category2) {
-		print("implement assign category")
+		
+		cc.toggleAssignedCategory(termID: termID, categoryID: category.categoryID)
+		categoryHomeDelegate?.reloadTable()
 	}
 	
 }

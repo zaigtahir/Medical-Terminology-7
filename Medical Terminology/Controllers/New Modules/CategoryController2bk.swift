@@ -8,16 +8,32 @@
 
 import Foundation
 
-class CategoryController2 {
+class CategoryController2bk {
 	
 	// to make the table name shorter and convenient
 	let categories =  myConstants.dbTableCategories2
 	let assignedCategories = myConstants.dbTableAssignedCategories
 	let mainSectionCategories = myConstants.dbTableMainSectionCategories
 	
-	// controllers
-	let tc = TermController()
+	func getCategoryID (mainSectionName: MainSectionName) -> Int {
 		
+		let query = "SELECT categoryID FROM \(mainSectionCategories) WHERE sectionName = '\(mainSectionName.rawValue)' "
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []){
+			resultSet.next()
+			let id = Int(resultSet.int(forColumnIndex: 0))
+			return id
+		} else {
+			print ("fatal error getting rs in getMainSectionCategoryID, returning 0")
+			return 0
+		}
+		
+	}
+	
+	func setCategoryID (mainSectionName: MainSectionName, categoryID: Int) {
+		myDB.executeUpdate("UPDATE \(mainSectionCategories) SET categoryID = ? WHERE sectionName = ?", withArgumentsIn: [categoryID, mainSectionName.rawValue ])
+	}
+	
 	func getCategory (categoryID: Int) -> Category2 {
 		
 		let query = "SELECT * from \(categories) WHERE categoryID = \(categoryID)"
@@ -40,6 +56,9 @@ class CategoryController2 {
 	func getCountOfTerms (categoryID: Int) -> Int {
 		
 		let query = "SELECT COUNT (*) FROM \(assignedCategories) WHERE categoryID = \(categoryID)"
+		
+		print ("query in cc.getCountOfTerms: \(query)")
+		
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
@@ -77,77 +96,22 @@ class CategoryController2 {
 		
 	}
 	
-	func toggleAssignedCategory (termID: Int, categoryID: Int) {
+	func unassignCategory (termID: Int, categoryID: Int){
 		/*
-		Will look at the term type (standard vs custom) and categoryID type (standard vs custom, All Terms, My Terms) and toggle the membership IF it is allowed
-		
-		RULE 1
-		if the term is a standard term:
-		may not assign or unassign from standard category
-		
-		RULE 2
-		if this is a custom term:
-		may not assign or unassign from category id 1 and 2
-
-		otherwise :
-		if the term is already assigned to the custom category, unassign it → notification :
-			termRemovedFromCategory (termID, categoryID)
-
-		if the term is not assigned to the category, then assign it → notification:
-		termAssignedToCategory (termID, categoryIDdb
+		will unassign this termID from this categoryID IF it is allowed.
+		Can not unassign from category 1 (All terms)
+		Can not unassign a standard term from standard category
 		*/
-		
-		let term = tc.getTerm(termID: termID)
-		let category = getCategory(categoryID: categoryID)
-		
-		if term.isStandard && category.isStandard {
-			// RULE 1
-			// do nothing
-			return
-		}
-		 
-		if !term.isStandard && categoryID <= 2 {
-			// RULE 2
-			// do nothing
-			return
-		}
-		
-		// is this term already assigned to this category?
-		let currentIDs = tc.getTermCategoryIDs(termID: termID)
-		
-		if currentIDs.contains(categoryID) {
-			//this category is already assigned to this term, so need to remove it
-			unassignCategory(termID: termID, categoryID: categoryID)
-			
-		} else {
-			//this category is not assigned to this term, so need to add it
-			assignCategory(termID: termID, categoryID: categoryID)
-		}
-		
 	}
 	
-	func assignCategory (termID: Int, categoryID: Int) {
-		let query = "INSERT INTO \(assignedCategories) ('termID', 'categoryID') VALUES (\(termID), \(categoryID))"
-		myDB.executeStatements(query)
-		
-		// send out notification
-		let data = ["termID" : termID, "categoryID" : categoryID]
-		let name = Notification.Name(myKeys.termAssignedCategory)
-		NotificationCenter.default.post(name: name, object: self, userInfo: data)
-	}
-	
-	func unassignCategory (termID: Int, categoryID: Int) {
-		let query = "DELETE FROM \(assignedCategories) WHERE termID = \(termID) AND categoryID = \(categoryID)"
-		myDB.executeStatements(query)
-		
-		// send out notification
-		// send out notification
-		let data = ["termID" : termID, "categoryID" : categoryID]
-		let name = Notification.Name(myKeys.termUnassignedCategory)
-		NotificationCenter.default.post(name: name, object: self, userInfo: data)
+	func assignCategory (termID: Int, catetoryID: Int) {
+		/*
+		will assign this termID to this categoryID IF it is allowed
+		*/
 	}
 	
 	private func fillCategory (resultSet: FMResultSet) -> Category2 {
+		
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))
 		let name = resultSet.string(forColumn: "name") ?? ""
 		let description = resultSet.string(forColumn: "description") ?? ""
@@ -166,4 +130,3 @@ class CategoryController2 {
 	}
 	
 }
-

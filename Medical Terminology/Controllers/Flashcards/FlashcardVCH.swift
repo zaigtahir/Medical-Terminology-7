@@ -33,11 +33,17 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		super.init()
 		
 		// add observers
-		let name1 = Notification.Name(myKeys.categoryChanged)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryChanged(notification:)), name: name1, object: nil)
+		let observer1 = Notification.Name(myKeys.categoryChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryChanged(notification:)), name: observer1, object: nil)
 		
-		let name2 = Notification.Name(myKeys.termInformationChanged)
-		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChanged(notification:)), name: name2, object: nil)
+		let observer2 = Notification.Name(myKeys.termInformationChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChanged(notification:)), name: observer2, object: nil)
+		
+		let observer3 = Notification.Name(myKeys.termAssignedCategory)
+		NotificationCenter.default.addObserver(self, selector: #selector(assignedCategory(notification:)), name: observer3, object: nil)
+		
+		let observer4 = Notification.Name(myKeys.termUnassignedCategory)
+		NotificationCenter.default.addObserver(self, selector: #selector(unassignedCategory(notification:)), name: observer4, object: nil)
 	
 		updateData(categoryID: currentCategoryID)
 	}
@@ -66,6 +72,36 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 				//there will be only one data here, the categoryID
 				print("flashcardVCH got notification of category change")
 				updateData(categoryID: d.value)
+			}
+		}
+	}
+	
+	@objc func assignedCategory (notification : Notification) {
+		print(" flashcardVCH got a assignedCategory notification")
+		if let data = notification.userInfo as? [String : Int] {
+			let categoryID = data["categoryID"]
+			if categoryID == currentCategoryID {
+				print ("flashcardVCH is refreshing the currentCategoryID because a term got assigned to it")
+				// a term got assigned to the current category from somewhere in the program
+				// will need to reload the list with the currentCategoryID and also update the home controller
+				updateData(categoryID: currentCategoryID)
+			}
+		}
+		
+	}
+	
+	@objc func unassignedCategory (notification : Notification){
+		print ("flashcardVCH up unassignCategory notification")
+		
+		if let data = notification.userInfo as? [String : Int] {
+
+			let categoryID = data["categoryID"]
+			if categoryID == currentCategoryID {
+				print ("flashcardVCH is refreshing the currentCategoryID because a term got UNassigned from it")
+				// a term got removed from the current category from somewhere in the program
+				// will need to reload the list with the currentCategoryID and also update the home controller
+
+				updateData(categoryID: currentCategoryID)
 			}
 		}
 	}
