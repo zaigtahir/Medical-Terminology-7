@@ -77,6 +77,10 @@ class MyTheme{
 	
 	let colorUnavailableCatetory = UIColor.systemGray4
 	
+	let imageSelectCatetory =  UIImage.init(systemName: "square.stack.3d.up.fill")
+	let imageAssignCategory = UIImage.init(systemName: "slider.horizontal.3")
+	
+	
 	//MARK: row selector images
 	let imageRowSelected = UIImage.init(systemName: "circle.fill")
 	let imageRowNotSelected = UIImage.init(systemName: "circle")

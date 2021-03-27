@@ -11,7 +11,7 @@ import UIKit
 class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 	
 	@IBOutlet weak var tableView: UITableView!
-	@IBOutlet weak var messageLabel: UILabel!
+	@IBOutlet weak var headerImage: UIImageView!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
 	
 	let categoryHomeVCH = CategoryHomeVCH()
@@ -29,7 +29,18 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-		//
+		
+		
+		//set the title and header image
+		if categoryHomeVCH.displayMode == .selectCategory {
+			self.title = "Category To View"
+			headerImage.image = myTheme.imageSelectCatetory
+		} else {
+			self.title = "Assign Categories"
+			headerImage.image = myTheme.imageAssignCategory
+		}
+		
+		
 	}
 	
 	func pressedInfoButtonOnStandardCategory() {
