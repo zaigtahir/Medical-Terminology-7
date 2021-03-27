@@ -56,6 +56,11 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	func fillCategoryLists () {
 		standardCategories = cc.getCategories(categoryType: .standard)
+		// remove the All Terms and My Terms row
+		standardCategories.remove(at: 0)
+		standardCategories.remove(at: 0)
+		
+		
 		customCategories = cc.getCategories(categoryType: .custom)
 	}
 	
