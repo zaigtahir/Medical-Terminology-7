@@ -71,7 +71,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		
 		if section == sectionCustom {
-			return "Custom Categories"
+			return "My Categories"
 		}
 		else {
 			return "Standard Categories"
@@ -170,7 +170,19 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			}
 		}
 		
+		// determine which category the row contains
+		var rowCategory = getRowCategory(indexPath: indexPath)
+		
+		if displayMode == .selectCategory {
+			self.selectedSelectRow(didSelectRowAt: indexPath, categoryID: rowCategory.categoryID)
+		} else {
+			self.selectedAssignRow(didSelectRowAt: indexPath, category: rowCategory)
+		}
+		
+	}
 	
+	private func getRowCategory (indexPath: IndexPath) -> Category2 {
+		
 		// determine which category the row contains
 		var rowCategory: Category2
 		
@@ -180,12 +192,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			rowCategory = customCategories[indexPath.row - 1]
 		}
 		
-		if displayMode == .selectCategory {
-			self.selectedSelectRow(didSelectRowAt: indexPath, categoryID: rowCategory.categoryID)
-		} else {
-			self.selectedAssignRow(didSelectRowAt: indexPath, category: rowCategory)
-		}
-		
+		return rowCategory
 	}
 	
 	private func selectedSelectRow (didSelectRowAt indexPath: IndexPath, categoryID: Int) {
@@ -211,6 +218,41 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		cc.toggleAssignedCategory(termID: termID, categoryID: category.categoryID)
 		categoryHomeDelegate?.reloadTable()
 	}
+	
+	// MARK: Make trailing swipe actions
+	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		
+		// do not allow left swipe action on the add category row
+		if indexPath.section == sectionCustom && indexPath.row == 0 {
+			return nil
+		}
+		
+		// show edit/delete in custom rows
+		// show info in the standard rows
+		
+		let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, _) in
+			// add action to do here
+		}
+		actionInfo.backgroundColor = myTheme.colorMain
+		
+		let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, _) in
+			// add edit code here
+		}
+		actionEdit.backgroundColor = myTheme.colorMain
+		
+		let actionDelete  = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
+			// add delete code here
+		}
+		
+		var rowCategory = getRowCategory(indexPath: indexPath)
+		
+		if rowCategory.isStandard {
+			return UISwipeActionsConfiguration(actions: [actionInfo])
+		} else {
+			return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
+		}
+	}
+	
 	
 }
 
