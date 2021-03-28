@@ -36,9 +36,18 @@ enum QuizStatus {
     case done
 }
 
-enum CategoryViewMode {
+
+// use to display the category list view
+enum CategoryListDisplayMode {
 	case selectCategory
 	case assignCategory
+}
+
+// use to display the category controller view
+enum CategoryDislayMode {
+	case add
+	case edit
+	case delete
 }
 
 // use to assign and check answeredTerm and answeredDefinition, and also for quiz answers and learning module

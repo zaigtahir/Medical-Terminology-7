@@ -31,9 +31,9 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	so, need to have a disabled, row view made
 	*/
 	
-	var displayMode = CategoryViewMode.selectCategory
-	var currentCategoryID : Int!	// just simulation, need to load in the segue
-	var termID : Int!	// set when using the assign category term
+	var displayMode = CategoryListDisplayMode.selectCategory
+	var currentCategoryID : Int = -1	// just simulation, need to load in the segue
+	var termID : Int = -1	// set when using the assign category term
 	
 	// use to refer to the section of the table
 	let sectionCustom = 0
