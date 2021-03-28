@@ -14,9 +14,10 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 	@IBOutlet weak var selectModeImage: UIImageView!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
 	@IBOutlet weak var termNameLabel: UILabel!
-	@IBOutlet weak var assignModeImage: UIImageView!
+	@IBOutlet weak var termPredefinedButton: UIButton!
+	
 	let categoryHomeVCH = CategoryHomeVCH()
-
+	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
@@ -29,31 +30,39 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 		
 		categoryHomeVCH.fillCategoryLists()
 		
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		
-		
 		//set the title and header image
 		if categoryHomeVCH.displayMode == .selectCategory {
 			self.title = "Category To View"
 			selectModeImage.isHidden = false
-			assignModeImage.isHidden = true
 			termNameLabel.isHidden = true
+			termPredefinedButton.isHidden = true
+			
 		} else {
 			self.title = "Assign Categories"
 			selectModeImage.isHidden = true
-			assignModeImage.isHidden = false
 			termNameLabel.isHidden = false
+			
+			let tc = TermController()
+			let term = tc.getTerm(termID: categoryHomeVCH.termID)
+			
+			termNameLabel.text = "For Term: \(term.name)"
+			
+			if term.isStandard {
+				termPredefinedButton.isHidden = false
+			} else {
+				termPredefinedButton.isHidden = true
+			}
 		}
-		
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
 		
 	}
 	
 	// MARK: Delegate Functions for categoryHomeDelegate
 	
 	func pressedInfoButtonOnStandardCategory() {
-		let aC = UIAlertController(title: "Standard Category", message: "This is a preset category and you cannot edit it. However, you can add your own categories and edit or delete them.", preferredStyle: .alert)
+		let aC = UIAlertController(title: "Standard Category", message: "This is a predefined category and you cannot edit it. However, you can add your own categories and edit or delete them.", preferredStyle: .alert)
 		
 		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
 		aC.addAction(okay)
@@ -71,10 +80,17 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 	func reloadTable() {
 		tableView.reloadData()
 	}
+	
 	@IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
 		self.dismiss(animated: true, completion: nil)
 	}
 	
+	@IBAction func termPredefinedButtonAction(_ sender: UIButton) {
+		let ac = UIAlertController(title: "Locked Term", message: "This is a predefined term, and you can't change it's standard categories. However, you can select any of the \"My Categories\"", preferredStyle: .alert)
+		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
+		
+		self.present(ac, animated: true, completion: nil)
+	}
 	/*
 	
 	
