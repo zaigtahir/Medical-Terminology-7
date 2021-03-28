@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
+class CategoryListVC: UIViewController, CategoryListVCH {
 	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var selectModeImage: UIImageView!

@@ -132,7 +132,7 @@ class ListVC: UIViewController, ListTCDelagate, UITableViewDelegate {
             let destVC = segue.destination as! DItemVC
             destVC.dItem = self.dItem
         } else if segue.identifier == "segueCategories" {
-            let vc = segue.destination as! CategoryHomeVC
+            let vc = segue.destination as! CategoryListVC
         } else {
             if isDevelopmentMode {
                 print ("no matching segue found: error state in FlashCardHomeVC prepare")

@@ -129,7 +129,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		case myConstants.segueSelectCatetory:
 			
 			let nc = segue.destination as! UINavigationController
-			let vc = nc.topViewController as! CategoryHomeVC
+			let vc = nc.topViewController as! CategoryListVC
 					
 			vc.categoryHomeVCH.displayMode = .selectCategory
 			vc.categoryHomeVCH.currentCategoryID = flashCardVCH.currentCategoryID
@@ -137,7 +137,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		case myConstants.segueAssignCategory:
 			
 			let nc = segue.destination as! UINavigationController
-			let vc = nc.topViewController as! CategoryHomeVC
+			let vc = nc.topViewController as! CategoryListVC
 			
 			vc.categoryHomeVCH.displayMode = .assignCategory
 			vc.categoryHomeVCH.currentCategoryID = flashCardVCH.currentCategoryID

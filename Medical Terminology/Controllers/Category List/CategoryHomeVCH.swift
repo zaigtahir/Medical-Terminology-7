@@ -13,7 +13,7 @@ import UIKit
 Fires off a notification if a user changes the currentCategoryID
 All controllers that are affected by that can respond to it
 */
-protocol CategoryHomeDelegate: class {
+protocol CategoryListVCH: class {
 	
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
@@ -47,7 +47,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	var standardCategories = [Category2]()
 	var customCategories = [Category2]()
 	
-	weak var categoryHomeDelegate : CategoryHomeDelegate?
+	weak var categoryHomeDelegate : CategoryListVCH?
 	
 	func fillCategoryLists () {
 		standardCategories = cc.getCategories(categoryType: .standard)
