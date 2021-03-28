@@ -11,9 +11,10 @@ import UIKit
 class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 	
 	@IBOutlet weak var tableView: UITableView!
-	@IBOutlet weak var headerImage: UIImageView!
+	@IBOutlet weak var selectModeImage: UIImageView!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
-	
+	@IBOutlet weak var termNameLabel: UILabel!
+	@IBOutlet weak var assignModeImage: UIImageView!
 	let categoryHomeVCH = CategoryHomeVCH()
 
 	override func viewDidLoad() {
@@ -34,10 +35,14 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 		//set the title and header image
 		if categoryHomeVCH.displayMode == .selectCategory {
 			self.title = "Category To View"
-			headerImage.image = myTheme.imageSelectCatetory
+			selectModeImage.isHidden = false
+			assignModeImage.isHidden = true
+			termNameLabel.isHidden = true
 		} else {
 			self.title = "Assign Categories"
-			headerImage.image = myTheme.imageAssignCategory
+			selectModeImage.isHidden = true
+			assignModeImage.isHidden = false
+			termNameLabel.isHidden = false
 		}
 		
 		

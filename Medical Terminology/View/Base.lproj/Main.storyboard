@@ -17,7 +17,7 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-gM-IpN">
@@ -223,7 +223,7 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
@@ -543,7 +543,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashcardVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TVx-7Q-M6g">
@@ -568,7 +568,7 @@
                                 </connections>
                             </slider>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="MHc-qK-9An" userLabel="favorite is empty view">
-                                <rect key="frame" x="94.666666666666686" y="222.66666666666669" width="225" height="197.66666666666669"/>
+                                <rect key="frame" x="94.666666666666686" y="198.33333333333337" width="225" height="197.66666666666663"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_gray_64" translatesAutoresizingMaskIntoConstraints="NO" id="KmB-yh-vPS">
                                         <rect key="frame" x="48.333333333333329" y="0.0" width="127.99999999999999" height="128"/>
@@ -579,7 +579,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no favorites to show" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQC-Gb-xpL">
-                                        <rect key="frame" x="27.666666666666657" y="158" width="169.66666666666666" height="39.666666666666657"/>
+                                        <rect key="frame" x="27.666666666666657" y="157.99999999999997" width="169.66666666666666" height="39.666666666666657"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" name="color text"/>
                                         <nil key="highlightedColor"/>
@@ -590,7 +590,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" contentMode="TopLeft" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rO-b0-lzN">
-                                <rect key="frame" x="0.0" y="139" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="139" width="414" height="365"/>
                                 <viewLayoutGuide key="safeArea" id="hA9-Ss-1OF"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="lSv-f9-3kR">
@@ -655,20 +655,21 @@
                                                             </connections>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="tty-EJ-bzH">
-                                                            <rect key="frame" x="231.66666666666663" y="20" width="136.33333333333337" height="24"/>
+                                                            <rect key="frame" x="229.66666666666663" y="20" width="138.33333333333337" height="24"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omj-fm-xHy">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="24.333333333333332" height="24"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="26.333333333333332" height="24"/>
                                                                     <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                                     <state key="normal">
-                                                                        <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
+                                                                        <imageReference key="image" image="slider.horizontal.3" catalog="system" symbolScale="large"/>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
                                                                     </state>
                                                                     <connections>
                                                                         <segue destination="Ruo-Ko-dgu" kind="presentation" identifier="segueAssignCategory" id="BkZ-EU-oas"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-Hv-Jif">
-                                                                    <rect key="frame" x="54.333333333333343" y="0.0" width="28" height="24"/>
+                                                                    <rect key="frame" x="56.333333333333343" y="0.0" width="28" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="28" id="9aS-SK-TYU"/>
                                                                         <constraint firstAttribute="height" constant="24" id="vRN-cB-pnJ"/>
@@ -682,7 +683,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqe-i7-fIi">
-                                                                    <rect key="frame" x="112.33333333333334" y="0.0" width="24" height="24"/>
+                                                                    <rect key="frame" x="114.33333333333334" y="0.0" width="24" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="13k-Kl-qJB"/>
                                                                         <constraint firstAttribute="width" constant="24" id="KrT-D9-vCI"/>
@@ -769,7 +770,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RQI-u8-z2t">
-                                <rect key="frame" x="20" y="573" width="374" height="50"/>
+                                <rect key="frame" x="20" y="524" width="374" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qF2-Hc-gGJ">
                                         <rect key="frame" x="0.0" y="0.0" width="119.33333333333333" height="50"/>
@@ -850,6 +851,7 @@
                             <constraint firstItem="eIr-cV-KmX" firstAttribute="trailing" secondItem="RQI-u8-z2t" secondAttribute="trailing" constant="20" id="yfX-Cb-eGF"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Flashcards" id="KGC-7N-SI7">
                         <barButtonItem key="rightBarButtonItem" image="settings zt" id="Cbe-ev-ZKK">
                             <color key="tintColor" name="color text"/>
@@ -858,6 +860,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoryButton" destination="Cp7-5L-QHV" id="VS6-2s-SNq"/>
                         <outlet property="collectionView" destination="3rO-b0-lzN" id="vrT-63-gqR"/>
@@ -880,7 +883,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashcardOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -953,7 +956,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -1054,7 +1057,7 @@
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="ListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="lvj-Zi-9Ji" userLabel="favorites list empty">
@@ -1287,7 +1290,7 @@
             <objects>
                 <viewController id="awX-yg-8xS" customClass="DItemVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4wH-cl-seN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L29-8G-zy9">
@@ -1389,7 +1392,7 @@
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-vJ-agb">
@@ -1599,7 +1602,7 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
@@ -1937,7 +1940,7 @@
             <objects>
                 <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -2191,7 +2194,7 @@
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
@@ -2504,11 +2507,11 @@
             <objects>
                 <viewController id="KTC-23-wdb" customClass="CategoryHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V6Z-tH-Ath">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W5i-R0-UWj">
-                                <rect key="frame" x="0.0" y="158" width="414" height="558"/>
+                                <rect key="frame" x="0.0" y="134" width="414" height="582"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="50" id="51Y-Dh-WQa" customClass="CategoryCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
@@ -2607,42 +2610,70 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slider.horizontal.3" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SGg-Av-AxF">
-                                <rect key="frame" x="20" y="78" width="64" height="60"/>
+                                <rect key="frame" x="20" y="78.333333333333314" width="40" height="35.666666666666671"/>
                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="Slq-ZS-7hA"/>
-                                    <constraint firstAttribute="width" constant="64" id="Vy4-bS-JkE"/>
+                                    <constraint firstAttribute="height" constant="40" id="Slq-ZS-7hA"/>
+                                    <constraint firstAttribute="width" constant="40" id="Vy4-bS-JkE"/>
                                 </constraints>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.stack.3d.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NQR-x2-ieV">
+                                <rect key="frame" x="187" y="76.333333333333329" width="40" height="40"/>
+                                <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Omi-T1-fRi"/>
+                                    <constraint firstAttribute="width" constant="40" id="n8T-xL-Kqq"/>
+                                </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Term: abdomen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f70-gs-dsI">
+                                <rect key="frame" x="67.999999999999986" y="85.666666666666671" width="154.66666666666663" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AEv-m3-hCA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="W5i-R0-UWj" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" id="3K4-jL-vc4"/>
                             <constraint firstItem="W5i-R0-UWj" firstAttribute="top" secondItem="SGg-Av-AxF" secondAttribute="bottom" constant="18" id="3v4-3X-176"/>
-                            <constraint firstItem="AEv-m3-hCA" firstAttribute="trailing" secondItem="W5i-R0-UWj" secondAttribute="trailing" id="Uda-JH-a0P"/>
+                            <constraint firstItem="f70-gs-dsI" firstAttribute="leading" secondItem="SGg-Av-AxF" secondAttribute="trailing" constant="8" symbolic="YES" id="7TJ-uB-iot"/>
+                            <constraint firstItem="NQR-x2-ieV" firstAttribute="centerX" secondItem="AEv-m3-hCA" secondAttribute="centerX" id="GOu-oh-wMp"/>
+                            <constraint firstItem="W5i-R0-UWj" firstAttribute="trailing" secondItem="AEv-m3-hCA" secondAttribute="trailing" id="U6K-01-wzi"/>
                             <constraint firstItem="AEv-m3-hCA" firstAttribute="bottom" secondItem="W5i-R0-UWj" secondAttribute="bottom" id="XIG-nS-ZOo"/>
+                            <constraint firstItem="W5i-R0-UWj" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" id="eDf-P7-sAy"/>
+                            <constraint firstItem="f70-gs-dsI" firstAttribute="centerY" secondItem="SGg-Av-AxF" secondAttribute="centerY" id="ly9-jd-NbZ"/>
                             <constraint firstItem="SGg-Av-AxF" firstAttribute="top" secondItem="AEv-m3-hCA" secondAttribute="top" constant="20" id="oZL-do-WIU"/>
                             <constraint firstItem="SGg-Av-AxF" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" constant="20" id="qDe-D4-uzL"/>
+                            <constraint firstItem="NQR-x2-ieV" firstAttribute="top" secondItem="AEv-m3-hCA" secondAttribute="top" constant="20" id="uPT-cg-sNG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="gbB-2e-HLI">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="GnI-tT-TmK">
-                            <connections>
-                                <action selector="doneButtonAction:" destination="KTC-23-wdb" id="1zs-mY-JsC"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="done" id="GnI-tT-TmK">
+                                <color key="tintColor" name="color text"/>
+                                <connections>
+                                    <action selector="doneButtonAction:" destination="KTC-23-wdb" id="1zs-mY-JsC"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="questionmark.circle" catalog="system" id="PkG-VT-SSv">
+                                <color key="tintColor" name="color text"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="assignModeImage" destination="SGg-Av-AxF" id="tTp-5X-Kwp"/>
                         <outlet property="doneButton" destination="GnI-tT-TmK" id="gVm-Mm-ttd"/>
-                        <outlet property="headerImage" destination="SGg-Av-AxF" id="JyE-TX-b49"/>
+                        <outlet property="selectModeImage" destination="NQR-x2-ieV" id="bvu-8b-0Po"/>
                         <outlet property="tableView" destination="W5i-R0-UWj" id="BSB-tn-FcP"/>
+                        <outlet property="termNameLabel" destination="f70-gs-dsI" id="ZJM-eE-dH7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0e-Et-7Ek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10602.898550724638" y="-2564.6739130434785"/>
+            <point key="canvasLocation" x="10821.739130434784" y="-2969.021739130435"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YqN-xb-VlR">
@@ -2685,6 +2716,7 @@
         <image name="learn_book" width="25" height="25"/>
         <image name="list2" width="25" height="25"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="quiz3" width="25" height="25"/>
         <image name="settings zt" width="24" height="24"/>
         <image name="shuffle" catalog="system" width="128" height="93"/>
