@@ -232,6 +232,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, _) in
 			// add action to do here
+			self.categoryHomeDelegate?.pressedInfoButtonOnStandardCategory()
 		}
 		actionInfo.backgroundColor = myTheme.colorMain
 		

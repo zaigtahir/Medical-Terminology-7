@@ -48,8 +48,14 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 		
 	}
 	
+	// MARK: Delegate Functions for categoryHomeDelegate
+	
 	func pressedInfoButtonOnStandardCategory() {
-		// add code
+		let aC = UIAlertController(title: "Standard Category", message: "This is a preset category and you cannot edit it. However, you can add your own categories and edit or delete them.", preferredStyle: .alert)
+		
+		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
+		aC.addAction(okay)
+		self.present(aC, animated: true, completion: nil)
 	}
 	
 	func pressedEditButtonOnCustomCategory(categoryID: Int, name: String) {
