@@ -89,6 +89,8 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 		let ac = UIAlertController(title: "Locked Term", message: "This is a predefined term, and you can't change it's standard categories. However, you can select any of the \"My Categories\"", preferredStyle: .alert)
 		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
 		
+		ac.addAction(okay)
+		
 		self.present(ac, animated: true, completion: nil)
 	}
 	/*
