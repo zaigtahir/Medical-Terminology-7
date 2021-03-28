@@ -14,7 +14,7 @@
 import UIKit
 
 class CategoryListVC: UIViewController, CategoryListVCH {
-	
+
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var selectModeImage: UIImageView!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
@@ -22,6 +22,11 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 	@IBOutlet weak var termPredefinedButton: UIButton!
 	
 	let categoryHomeVCH = CategoryHomeVCH()
+	
+	// segue settings, functions to set this before so that the correct settings can be set on the CategoryVC in prepare for segue
+	var segueCategory : Category2!
+	var categoryDisplayMode = CategoryDisplayMode.add
+	
 	
 	override func viewDidLoad() {
 		
@@ -74,21 +79,41 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 		self.present(aC, animated: true, completion: nil)
 	}
 	
-	func pressedEditButtonOnCustomCategory(categoryID: Int, name: String) {
-		// add code
+	func pressedEditButtonOnCustomCategory(category: Category2) {
+		self.categoryDisplayMode = .edit
+		self.segueCategory = category
+		performSegue(withIdentifier: myConstants.segueCategory, sender: self)
 	}
 	
-	func requestDeleteCategory(categoryID: Int, name: String) {
-		// add code
+	func pressedDeleteButtonOnCustomCatetory(category: Category2) {
+		self.categoryDisplayMode = .delete
+		self.segueCategory = category
+		performSegue(withIdentifier: myConstants.segueCategory, sender: self)
 	}
+	
+	func addACategory() {
+		self.categoryDisplayMode = .add
+		performSegue(withIdentifier: myConstants.segueCategory, sender: self)
+	}
+	
+	// END with delegate functions
 	
 	func reloadTable() {
 		tableView.reloadData()
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		let vc = segue.destination as? CategoryVC
-		vc?.categoryVCH.categoryDisplayMode = .delete
+		
+		switch segue.identifier {
+		
+		case myConstants.segueCategory:
+			let vc = segue.destination as? CategoryVC
+			vc?.categoryVCH.categoryDisplayMode = self.categoryDisplayMode
+		
+		default:
+			print ("fatal error did not find a matching segue in prepar funtion of categoryListVC")
+		}
+		
 	}
 	
 	@IBAction func doneButtonAction(_ sender: UIBarButtonItem) {

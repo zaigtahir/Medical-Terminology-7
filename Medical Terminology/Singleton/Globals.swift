@@ -44,7 +44,7 @@ enum CategoryListDisplayMode {
 }
 
 // use to display the category controller view
-enum CategoryDislayMode {
+enum CategoryDisplayMode {
 	case add
 	case edit
 	case delete

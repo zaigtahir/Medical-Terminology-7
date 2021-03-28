@@ -43,15 +43,14 @@ class MyConstants {
 	let segueFlashcardOptions = "segueFlashCardOptions"
 	let segueSelectCatetory = "segueSelectCategory"
 	let segueAssignCategory = "segueAssignCategory"
+	let segueCategory = "segueCategory"
 	
-    
     // question feedback remarks
     let feedbackNotAnswered = "Select An Answer"
     let feedbackAnsweredCorrect = ["Yes! You got it!", "Correct! Great job!", "You are right!", "Awesome! You're right!"]
     let feedbackAnsweredWrong = ["Incorrect"]
     
     // do not change these numbers. They are used as indexes of arrays too
-	
 	
 	// MARK: need to make this an literal enum
 	

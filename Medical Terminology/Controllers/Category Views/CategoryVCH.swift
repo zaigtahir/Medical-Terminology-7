@@ -9,7 +9,7 @@
 import Foundation
 
 class CategoryVCH {
-	var categoryDisplayMode = CategoryDislayMode.add	// just a default setting, need to set via prepare segue
+	var categoryDisplayMode = CategoryDisplayMode.add	// just a default setting, need to set via prepare segue
 }
 
 

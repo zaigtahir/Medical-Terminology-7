@@ -80,7 +80,7 @@
 		99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */; };
 		99D55E0525F6C7CA003ABE0B /* QuizHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0425F6C7CA003ABE0B /* QuizHome.swift */; };
 		99D55E0A25F6DAD8003ABE0B /* CategoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0925F6DAD8003ABE0B /* CategoryListVC.swift */; };
-		99D55E1225F7EF92003ABE0B /* CategoryHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */; };
+		99D55E1225F7EF92003ABE0B /* CategoryListVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1125F7EF92003ABE0B /* CategoryListVCH.swift */; };
 		99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1625F967AA003ABE0B /* CategoryCell.swift */; };
 		99D55E2F25FC7921003ABE0B /* DItemController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E2E25FC7921003ABE0B /* DItemController2.swift */; };
 		99D55E4A25FF2F17003ABE0B /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4925FF2F17003ABE0B /* CategoryController.swift */; };
@@ -170,7 +170,7 @@
 		99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCVCell.swift; sourceTree = "<group>"; };
 		99D55E0425F6C7CA003ABE0B /* QuizHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizHome.swift; sourceTree = "<group>"; };
 		99D55E0925F6DAD8003ABE0B /* CategoryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListVC.swift; sourceTree = "<group>"; };
-		99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeVCH.swift; sourceTree = "<group>"; };
+		99D55E1125F7EF92003ABE0B /* CategoryListVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListVCH.swift; sourceTree = "<group>"; };
 		99D55E1625F967AA003ABE0B /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		99D55E2E25FC7921003ABE0B /* DItemController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController2.swift; sourceTree = "<group>"; };
 		99D55E4925FF2F17003ABE0B /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
@@ -451,7 +451,7 @@
 				992E79EA260C413D00C19D49 /* AddCell.swift */,
 				99D55E1625F967AA003ABE0B /* CategoryCell.swift */,
 				9960A04726027EC4003F4994 /* NoCategoriesCell.swift */,
-				99D55E1125F7EF92003ABE0B /* CategoryHomeVCH.swift */,
+				99D55E1125F7EF92003ABE0B /* CategoryListVCH.swift */,
 				99D55E0925F6DAD8003ABE0B /* CategoryListVC.swift */,
 			);
 			path = "Category List";
@@ -583,7 +583,7 @@
 				5A37F87A22E74B18008A5FA5 /* ScrollController.swift in Sources */,
 				994175DE245A38A900E281DB /* AudioFileController.swift in Sources */,
 				992E79FD260FBA3100C19D49 /* CategoryController2.swift in Sources */,
-				99D55E1225F7EF92003ABE0B /* CategoryHomeVCH.swift in Sources */,
+				99D55E1225F7EF92003ABE0B /* CategoryListVCH.swift in Sources */,
 				992E79DF260A43C700C19D49 /* Term.swift in Sources */,
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
 				5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */,

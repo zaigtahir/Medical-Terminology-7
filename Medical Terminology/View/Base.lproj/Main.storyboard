@@ -2560,9 +2560,6 @@
                                                 <constraint firstItem="Qh8-uL-cJp" firstAttribute="leading" secondItem="4Mp-Tx-cbg" secondAttribute="trailing" constant="8" id="wAZ-0m-cOX"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="VL1-y5-jCp" kind="show" id="SjF-FI-BQA"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -2628,6 +2625,7 @@
                         <outlet property="tableView" destination="W5i-R0-UWj" id="BSB-tn-FcP"/>
                         <outlet property="termNameLabel" destination="f70-gs-dsI" id="ZJM-eE-dH7"/>
                         <outlet property="termPredefinedButton" destination="1b7-0b-i0V" id="eLQ-Gu-2Lz"/>
+                        <segue destination="VL1-y5-jCp" kind="show" identifier="segueCategory" id="xEa-Y0-RLS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0e-Et-7Ek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2661,8 +2659,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.square.fill.on.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="F84-yi-4hR">
-                                <rect key="frame" x="175" y="94.666666666666671" width="64" height="62.666666666666671"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wand.and.stars" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="F84-yi-4hR">
+                                <rect key="frame" x="175" y="119.99999999999999" width="64" height="62.333333333333343"/>
                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="BMg-3x-Ez0"/>
@@ -2671,7 +2669,7 @@
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-Lx-QRa">
-                                <rect key="frame" x="50" y="233" width="314" height="150.33333333333337"/>
+                                <rect key="frame" x="50" y="258" width="314" height="150.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add A New Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghp-DY-5lG">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="20.333333333333332"/>
@@ -2693,7 +2691,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWC-ob-A4K">
-                                <rect key="frame" x="180" y="448.33333333333331" width="54" height="30"/>
+                                <rect key="frame" x="180" y="473.33333333333331" width="54" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" name="color text"/>
                                 <state key="normal" title=" Cancel">
@@ -2704,7 +2702,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxc-rA-I9P">
-                                <rect key="frame" x="132" y="403.33333333333331" width="150" height="30"/>
+                                <rect key="frame" x="132" y="428.33333333333331" width="150" height="30"/>
                                 <color key="backgroundColor" name="color main"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Mcf-k7-Krh"/>
@@ -2730,7 +2728,7 @@
                             <constraint firstItem="xxc-rA-I9P" firstAttribute="top" secondItem="BPJ-Lx-QRa" secondAttribute="bottom" constant="20" id="Uvv-cq-NcX"/>
                             <constraint firstItem="BPJ-Lx-QRa" firstAttribute="leading" secondItem="6wi-4h-6kC" secondAttribute="leading" constant="50" id="asy-l7-4sB"/>
                             <constraint firstItem="mWC-ob-A4K" firstAttribute="top" secondItem="xxc-rA-I9P" secondAttribute="bottom" constant="15" id="r7P-Qh-4sQ"/>
-                            <constraint firstItem="F84-yi-4hR" firstAttribute="top" secondItem="6wi-4h-6kC" secondAttribute="top" constant="50" id="r8D-rn-sxH"/>
+                            <constraint firstItem="F84-yi-4hR" firstAttribute="top" secondItem="6wi-4h-6kC" secondAttribute="top" constant="75" id="r8D-rn-sxH"/>
                             <constraint firstItem="F84-yi-4hR" firstAttribute="centerX" secondItem="6wi-4h-6kC" secondAttribute="centerX" id="vJG-HM-rvp"/>
                             <constraint firstItem="naD-oX-5ej" firstAttribute="centerX" secondItem="6wi-4h-6kC" secondAttribute="centerX" id="wtJ-iZ-eBh"/>
                         </constraints>
@@ -2772,13 +2770,13 @@
         <image name="lock.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="plus.square.fill.on.square.fill" catalog="system" width="128" height="113"/>
         <image name="quiz3" width="25" height="25"/>
         <image name="redo-bk" width="22" height="19.333333969116211"/>
         <image name="settings zt" width="24" height="24"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="speaker.fill" catalog="system" width="128" height="128"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="124"/>
+        <image name="wand.and.stars" catalog="system" width="128" height="113"/>
         <namedColor name="color button disabled">
             <color red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

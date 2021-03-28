@@ -40,7 +40,7 @@ class CategoryVC: UIViewController {
 			
 		case .edit:
 			headerImage.image = myTheme.imageHeaderEdit
-			promptLabel.text = "Edit the Category Name"
+			promptLabel.text = "Edit This Category"
 			messageLabel.text = "Make changes to the category name"
 			textField.text = "Initial Name"
 			textField.isUserInteractionEnabled = true
@@ -64,7 +64,7 @@ class CategoryVC: UIViewController {
 	}
 	
 	@IBAction func cancelButtonAction(_ sender: UIButton) {
-		self.dismiss(animated: true, completion: nil)
+		self.navigationController?.popViewController(animated: true)
 	}
 	
 }

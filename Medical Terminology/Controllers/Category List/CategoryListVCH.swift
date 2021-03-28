@@ -16,8 +16,9 @@ All controllers that are affected by that can respond to it
 protocol CategoryListVCH: class {
 	
 	func pressedInfoButtonOnStandardCategory ()
-	func pressedEditButtonOnCustomCategory (categoryID: Int, name: String)
-	func requestDeleteCategory (categoryID: Int, name: String)
+	func pressedEditButtonOnCustomCategory (category: Category2)
+	func pressedDeleteButtonOnCustomCatetory (category: Category2)
+	func addACategory ()	// when you press on the add a category button/row
 	func reloadTable ()
 }
 
@@ -158,7 +159,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		// address the case if the user pressed the add category row
 		if indexPath.section == sectionCustom && indexPath.row == 0 {
-			print("add code to add a catetory")
+			self.categoryHomeDelegate?.addACategory()
 			return
 		}
 		
@@ -229,6 +230,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		// show edit/delete in custom rows
 		// show info in the standard rows
 		
+		let rowCategory = getRowCategory(indexPath: indexPath)
+		
 		let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, completionHandler) in
 			// add action to do here
 			self.categoryHomeDelegate?.pressedInfoButtonOnStandardCategory()
@@ -236,17 +239,20 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		}
 		actionInfo.backgroundColor = myTheme.colorMain
 		
-		let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, _) in
+		let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
 			// add edit code here
+			self.categoryHomeDelegate?.pressedEditButtonOnCustomCategory(category: rowCategory)
+			completionHandler(false)
 		}
 		actionEdit.backgroundColor = myTheme.colorMain
 		
-		let actionDelete  = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
+		let actionDelete  = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
 			// add delete code here
+			self.categoryHomeDelegate?.pressedDeleteButtonOnCustomCatetory(category: rowCategory)
+			completionHandler(false)
+		
 		}
-		
-		var rowCategory = getRowCategory(indexPath: indexPath)
-		
+	
 		if rowCategory.isStandard {
 			return UISwipeActionsConfiguration(actions: [actionInfo])
 		} else {
