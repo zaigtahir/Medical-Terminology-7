@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 class MyTheme{
-	
-	
+
 	/*
 	System gray 6	for card background set System Gray 6
 	System gray 5	for disabled button background color
@@ -27,8 +26,11 @@ class MyTheme{
 	let colorButtonDisabledBackground = (UIColor.systemGray5)
 	let colorButtonDisabledTint = (UIColor.systemGray2)
 	let colorButtonEnabledTint = UIColor(named: "color text button")
-
-	//let colorBackground = UIColor.systemBackground
+	
+	let colorAddButton = UIColor(named: "color main")
+	let colorSaveButton = UIColor(named: "color main")
+	// MARK: fix color
+	let colorDeleteButton = UIColor.systemPink
 	
 	//MARK: Table Colors
 	let colorCellGray = UIColor.secondarySystemBackground	//use for tables with cells that should be grayish
@@ -67,8 +69,8 @@ class MyTheme{
     
     //MARK: Quiz set colors
     let colorQsNotAnswered = UIColor(named: "color main")
-    
-	//MARK: Category controller colors
+    	
+	//MARK: Category List controller row swipe action colors
 	let colorInfoButton = UIColor(named: "color main")
 	let colorEditButton = UIColor(named: "color main")
 	
@@ -77,22 +79,26 @@ class MyTheme{
 	
 	let colorUnavailableCatetory = UIColor.systemGray4
 	
-	//MARK: row selector images
+	// MARK: row selector images
 	let imageRowSelected = UIImage.init(systemName: "circle.fill")
 	let imageRowNotSelected = UIImage.init(systemName: "circle")
 	let imageRowCurrentCategoryNotSelected = UIImage.init(systemName: "circle.circle")
 	
-    //MARK: images
+    // MARK: images
     let imageCorrect = UIImage(named: "check circle filled")
     let imageIncorrect = UIImage(named: "cross circle filled")
     
+	// MARK: view controller header images, show on top when adding / editing / deleting 
+	let imageHeaderAdd = UIImage.init(systemName: "plus.square.fill.on.square.fill")
+	let imageHeaderEdit = UIImage.init(systemName: "exclamationmark.bubble")
+	let imageHeaderDelete = UIImage.init(systemName: "exclamationmark.bubble")
+	
     //use next three speaker images to make animation
 	let imageSpeaker = UIImage.init(systemName: "speaker.fill")
     let imageSpeakerPlaying = UIImage(systemName: "speaker.wave.2.fill")
 
     //progress bar width
     let progressBarWidth = CGFloat(integerLiteral: 15)
-
 	
 	func formatButtonColor (button: UIButton, enabledColor: UIColor) {
 		

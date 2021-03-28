@@ -2670,30 +2670,30 @@
                                 </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-Lx-QRa">
-                                <rect key="frame" x="50" y="239.00000000000003" width="314" height="102.33333333333334"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-Lx-QRa">
+                                <rect key="frame" x="50" y="239" width="314" height="130.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add A New Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghp-DY-5lG">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" name="color text"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After you add a new category, you can add terms to it to organize your learning" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5f-7x-bQL">
-                                        <rect key="frame" x="0.0" y="35.333333333333314" width="314" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After you add a new category, you can add terms to it to organize your learning" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5f-7x-bQL">
+                                        <rect key="frame" x="0.0" y="40.333333333333314" width="314" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Category Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="naD-oX-5ej">
-                                        <rect key="frame" x="0.0" y="68.333333333333314" width="314" height="34"/>
+                                        <rect key="frame" x="0.0" y="96.333333333333314" width="314" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWC-ob-A4K">
-                                <rect key="frame" x="180" y="411.33333333333331" width="54" height="30"/>
+                                <rect key="frame" x="180" y="434.33333333333331" width="54" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" name="color text"/>
                                 <state key="normal" title=" Cancel">
@@ -2704,7 +2704,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxc-rA-I9P">
-                                <rect key="frame" x="132" y="361.33333333333331" width="150" height="30"/>
+                                <rect key="frame" x="132" y="389.33333333333331" width="150" height="30"/>
                                 <color key="backgroundColor" name="color main"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Mcf-k7-Krh"/>
@@ -2729,7 +2729,7 @@
                             <constraint firstItem="6wi-4h-6kC" firstAttribute="trailing" secondItem="BPJ-Lx-QRa" secondAttribute="trailing" constant="50" id="S0J-vJ-9aY"/>
                             <constraint firstItem="xxc-rA-I9P" firstAttribute="top" secondItem="BPJ-Lx-QRa" secondAttribute="bottom" constant="20" id="Uvv-cq-NcX"/>
                             <constraint firstItem="BPJ-Lx-QRa" firstAttribute="leading" secondItem="6wi-4h-6kC" secondAttribute="leading" constant="50" id="asy-l7-4sB"/>
-                            <constraint firstItem="mWC-ob-A4K" firstAttribute="top" secondItem="xxc-rA-I9P" secondAttribute="bottom" constant="20" id="r7P-Qh-4sQ"/>
+                            <constraint firstItem="mWC-ob-A4K" firstAttribute="top" secondItem="xxc-rA-I9P" secondAttribute="bottom" constant="15" id="r7P-Qh-4sQ"/>
                             <constraint firstItem="F84-yi-4hR" firstAttribute="top" secondItem="6wi-4h-6kC" secondAttribute="top" constant="50" id="r8D-rn-sxH"/>
                             <constraint firstItem="F84-yi-4hR" firstAttribute="centerX" secondItem="6wi-4h-6kC" secondAttribute="centerX" id="vJG-HM-rvp"/>
                             <constraint firstItem="naD-oX-5ej" firstAttribute="centerX" secondItem="6wi-4h-6kC" secondAttribute="centerX" id="wtJ-iZ-eBh"/>

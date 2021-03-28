@@ -6,6 +6,11 @@
 //  Copyright © 2021 Zaigham Tahir. All rights reserved.
 //
 
+
+// plus.square.fill.on.square.fill
+// pencil.circle
+// exclamationmark.bubble
+
 import UIKit
 
 class CategoryListVC: UIViewController, CategoryListVCH {
@@ -79,6 +84,11 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 	
 	func reloadTable() {
 		tableView.reloadData()
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		let vc = segue.destination as? CategoryVC
+		vc?.categoryVCH.categoryDisplayMode = .delete
 	}
 	
 	@IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
