@@ -32,8 +32,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	*/
 	
 	var displayMode = CategoryViewMode.selectCategory
-	var currentCategoryID = 1	// just simulation, need to load in the segue
-	var termID = -1		// set when using the assign category term
+	var currentCategoryID : Int!	// just simulation, need to load in the segue
+	var termID : Int!	// set when using the assign category term
 	
 	// use to refer to the section of the table
 	let sectionCustom = 0
@@ -48,12 +48,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	var customCategories = [Category2]()
 	
 	weak var categoryHomeDelegate : CategoryHomeDelegate?
-	
-	override init () {
-		super.init()
-		
-		fillCategoryLists()
-	}
 	
 	func fillCategoryLists () {
 		standardCategories = cc.getCategories(categoryType: .standard)

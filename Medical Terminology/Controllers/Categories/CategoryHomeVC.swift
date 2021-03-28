@@ -27,6 +27,8 @@ class CategoryHomeVC: UIViewController, CategoryHomeDelegate {
 		
 		categoryHomeVCH.categoryHomeDelegate = self
 		
+		categoryHomeVCH.fillCategoryLists()
+		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

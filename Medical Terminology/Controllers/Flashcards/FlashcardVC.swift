@@ -119,8 +119,6 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 	
-		print("preparing segue in FCVC ****************** ")
-		
 		switch segue.identifier {
 		
 		case myConstants.segueFlashcardOptions:
