@@ -51,15 +51,20 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	override init () {
 		super.init()
+		
 		fillCategoryLists()
 	}
 	
 	func fillCategoryLists () {
 		standardCategories = cc.getCategories(categoryType: .standard)
-		// remove the All Terms and My Terms row
-		standardCategories.remove(at: 0)
-		standardCategories.remove(at: 0)
 		
+		// remove the All Terms and My Terms row if this is in the assign mode
+		
+		if displayMode == .assignCategory {
+			print("removing first 2 standards in fillCategoryLissts as im in assign mode")
+			standardCategories.remove(at: 0)
+			standardCategories.remove(at: 0)
+		}
 		
 		customCategories = cc.getCategories(categoryType: .custom)
 	}
@@ -104,14 +109,14 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		}
 		// attach count
 		rowCategory.count = cc.getCountOfTerms(categoryID: rowCategory.categoryID)
-	
+		
 		
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CategoryCell {
 			
 			switch displayMode {
 			
 			case .selectCategory:
-								
+				
 				cell.formatCellSelectCategory(rowCategory: rowCategory, currentCatetory: self.currentCategoryID, isSelectable: true )
 				
 				return cell
@@ -143,14 +148,14 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		// if this is a standard term && this is a standard category, disable the row
 		if term.isStandard && rowCategory.isStandard {
-		rowIsEnabled = false
+			rowIsEnabled = false
 		}
 		
 		// if this is a custom category, disable All Terms (1) and My Terms (2) category
 		if !term.isStandard && rowCategory.categoryID <= 2 {
-		rowIsEnabled = false
+			rowIsEnabled = false
 		}
-			
+		
 		cell.formatCellAssignCategory(rowCategory: rowCategory, currentCategoryID: currentCategoryID, assignedCategoryIDsForTerm: ids, isSelectable: rowIsEnabled)
 		
 	}
@@ -230,9 +235,10 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		// show edit/delete in custom rows
 		// show info in the standard rows
 		
-		let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, _) in
+		let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, completionHandler) in
 			// add action to do here
 			self.categoryHomeDelegate?.pressedInfoButtonOnStandardCategory()
+			completionHandler(false)
 		}
 		actionInfo.backgroundColor = myTheme.colorMain
 		

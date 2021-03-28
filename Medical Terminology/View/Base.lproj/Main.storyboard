@@ -821,7 +821,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ruo-Ko-dgu" kind="presentation" identifier="segueSelectCategory" id="WY2-nN-SgM"/>
+                                    <segue destination="Ruo-Ko-dgu" kind="presentation" identifier="segueTest" id="VJF-Il-Ia4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2680,6 +2680,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ruo-Ko-dgu" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="G31-M9-Mrq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eOW-OW-06x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2695,7 +2696,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WY2-nN-SgM"/>
+        <segue reference="VJF-Il-Ia4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>

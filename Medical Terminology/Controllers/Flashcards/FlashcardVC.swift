@@ -114,7 +114,12 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			
 		}}
 	
+	
+	// MARK: why is this not getting the prepare?
+	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+	
+		print("preparing segue in FCVC ****************** ")
 		
 		switch segue.identifier {
 		
@@ -149,6 +154,8 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		}
 
 	}
+	
+	
 	
 	// MARK: Delegate functions for FlashcardVCHDelegate
 	
