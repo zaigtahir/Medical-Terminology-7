@@ -17,10 +17,10 @@ class MyKeys {
 	let showWelcomeScreen = "showWelcomeScreen"
 	let appPurchaseStatus = "appPurchaseStatus"
 	
-	let categoryChanged = "com.theappgalaxy.categoryChangedKey"
-	let termInformationChanged = "com.theappgalaxy.termInformationChanged"
-	let termAssignedCategory = "com.theappgalaxy.termAssignedCategory"
-	let termUnassignedCategory = "com.theappgalaxy.termUnassignedCategory"
+	let categoryChangedNotification = "com.theappgalaxy.categoryChangedNotification"
+	let termInformationChangedNotification = "com.theappgalaxy.termInformationChangedNotification"
+	let termAssignedCategoryNotification = "com.theappgalaxy.termAssignedCategoryNotification"
+	let termUnassignedCategoryNotification = "com.theappgalaxy.termUnassignedCategoryNotification"
 	
 }
 

@@ -10,23 +10,7 @@ import Foundation
 import UIKit
 
 class Utilities {
-    //sets the enabled and disabled state of my custom buttons
-    
-    func formatButtonColor (button: UIButton, enabledBackground: UIColor,enabledTint: UIColor, disabledBackground: UIColor, disabledTint: UIColor) {
-        
-        if button.isEnabled {
-            button.backgroundColor = enabledBackground
-            button.tintColor = enabledTint
-            button.setTitleColor(enabledTint, for: .normal)
-            
-        } else {
-            button.backgroundColor = disabledBackground
-            button.tintColor = disabledTint
-            button.setTitleColor(disabledTint, for: .disabled)
-        }
-        
-    }
-    
+
     func setFavoriteState (button: UIButton, isFavorite: Bool) {
         if isFavorite {
             button.tintColor = myTheme.colorFavorite
@@ -45,36 +29,6 @@ class Utilities {
         }
     }
     
-    func removeNewLines (string: String) -> String {
-        
-        var stringNew = string
-        
-        while let rangeToReplace = string.range(of: "\n") {
-            stringNew.replaceSubrange(rangeToReplace, with: " ")
-        }
-        return stringNew
-    }
-	
-	func cleanString (string: String) -> String {
-		// remove surrounding spaces
-		// return empty string if the input is only blank spaces
-		
-		let s = string.trimmingCharacters(in: .whitespaces)
-		
-		let isBlank = s.allSatisfy({ $0.isWhitespace})
-		
-		if isBlank {
-			return ""
-		} else {
-			return s
-		}
-	}
-	
-	func isBlank (string: String) -> Bool {
-		// return true if the string is just space characters
-		return string.allSatisfy({ $0.isWhitespace})
-	}
-	    
     func makeSampleDBEntries () {
         
         let dIC = DItemController()

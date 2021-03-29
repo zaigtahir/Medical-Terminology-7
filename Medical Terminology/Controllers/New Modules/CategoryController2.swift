@@ -132,7 +132,7 @@ class CategoryController2 {
 		
 		// send out notification
 		let data = ["termID" : termID, "categoryID" : categoryID]
-		let name = Notification.Name(myKeys.termAssignedCategory)
+		let name = Notification.Name(myKeys.termAssignedCategoryNotification)
 		NotificationCenter.default.post(name: name, object: self, userInfo: data)
 	}
 	
@@ -143,7 +143,7 @@ class CategoryController2 {
 		// send out notification
 		// send out notification
 		let data = ["termID" : termID, "categoryID" : categoryID]
-		let name = Notification.Name(myKeys.termUnassignedCategory)
+		let name = Notification.Name(myKeys.termUnassignedCategoryNotification)
 		NotificationCenter.default.post(name: name, object: self, userInfo: data)
 	}
 	

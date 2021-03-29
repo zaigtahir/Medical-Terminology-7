@@ -207,7 +207,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		currentCategoryID = categoryID
 		
 		// MARK: Fire off a notification of the category change!!
-		let name = Notification.Name(myKeys.categoryChanged)
+		let name = Notification.Name(myKeys.categoryChangedNotification)
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : currentCategoryID])
 		
 		categoryHomeDelegate?.reloadTable()

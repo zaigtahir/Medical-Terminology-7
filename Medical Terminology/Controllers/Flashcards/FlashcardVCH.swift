@@ -33,16 +33,16 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		super.init()
 		
 		// add observers
-		let observer1 = Notification.Name(myKeys.categoryChanged)
+		let observer1 = Notification.Name(myKeys.categoryChangedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryChanged(notification:)), name: observer1, object: nil)
 		
-		let observer2 = Notification.Name(myKeys.termInformationChanged)
+		let observer2 = Notification.Name(myKeys.termInformationChangedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChanged(notification:)), name: observer2, object: nil)
 		
-		let observer3 = Notification.Name(myKeys.termAssignedCategory)
+		let observer3 = Notification.Name(myKeys.termAssignedCategoryNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(assignedCategory(notification:)), name: observer3, object: nil)
 		
-		let observer4 = Notification.Name(myKeys.termUnassignedCategory)
+		let observer4 = Notification.Name(myKeys.termUnassignedCategoryNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignedCategory(notification:)), name: observer4, object: nil)
 	
 		updateData(categoryID: currentCategoryID)

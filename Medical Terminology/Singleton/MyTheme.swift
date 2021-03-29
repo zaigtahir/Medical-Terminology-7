@@ -110,7 +110,7 @@ class MyTheme{
 		} else {
 			button.backgroundColor = colorButtonDisabledBackground
 			button.tintColor = colorButtonDisabledTint
-			button.setTitleColor(UIColor.systemBackground, for: .disabled)
+			button.setTitleColor(colorButtonDisabledTint, for: .disabled)
 		}
 		
 	}

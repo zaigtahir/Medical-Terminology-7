@@ -109,6 +109,7 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 		case myConstants.segueCategory:
 			let vc = segue.destination as? CategoryVC
 			vc?.categoryVCH.categoryDisplayMode = self.categoryDisplayMode
+			vc?.categoryVCH.affectedCategory = segueCategory
 		
 		default:
 			print ("fatal error did not find a matching segue in prepar funtion of categoryListVC")
@@ -268,6 +269,9 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 	
 	let okay = UIAlertAction(title: "OK", style: .default) { [self] (_) in
 	if let inputText = alertC.textFields![0].text {
+	
+	
+	
 	let cleanText = utilities.cleanString(string: inputText)
 	if cleanText != "" {
 	
