@@ -110,7 +110,7 @@ class LearningHomeVC: UIViewController {
 		seeCurrentSetButton.isEnabled = learningHomeVCH.isLearningSetAvailable()
 		
 		for b in [seeCurrentSetButton, newSetButton] {
-			myTheme.formatButtonColor(button: b!, enabledColor: enabledButtonColor!)
+			myTheme.formatButtonState(button: b!, enabledColor: enabledButtonColor!)
 		}
 	}
 	

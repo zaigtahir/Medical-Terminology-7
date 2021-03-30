@@ -111,7 +111,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		
 		for b in [previousButton, randomButton, nextButton] {
 			
-			myTheme.formatButtonColor(button: b!, enabledColor: myTheme.colorFlashcardHomeButton!)
+			myTheme.formatButtonState(button: b!, enabledColor: myTheme.colorFlashcardHomeButton!)
 			
 		}
 }

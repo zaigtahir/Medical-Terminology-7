@@ -101,7 +101,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControlle
         nextButton.isEnabled =  scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
         
         for b in [previousButton, nextButton] {
-			myTheme.formatButtonColor(button: b!, enabledColor: myTheme.colorLhButton!)
+			myTheme.formatButtonState(button: b!, enabledColor: myTheme.colorLhButton!)
         }
     }
         

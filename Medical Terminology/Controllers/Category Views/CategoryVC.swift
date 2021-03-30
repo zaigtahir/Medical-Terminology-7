@@ -32,7 +32,13 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		super.viewDidLoad()
 		textField.delegate = self
 		
-		//commitButton.layer.cornerRadius = myConstants.button_cornerRadius
+		//adding a tap gesture recognizer to dismiss the keyboard
+		let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
+		view.addGestureRecognizer(tapGesture)
+		
+		commitButton.layer.cornerRadius = myConstants.button_cornerRadius
+		commitButton.isEnabled = false
+		myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
 		
 		switch categoryVCH.categoryDisplayMode {
 		
@@ -60,8 +66,6 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			commitButton.setTitle("Delete", for: .normal)
 		}
 		
-		// initial state of the save button
-		commitButton.isEnabled = false
 	}
 	
 	private func setCommitButtonState() {
@@ -71,11 +75,13 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		
 		if categoryNameIsValid {
 			commitButton.isEnabled = true
+			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
+			
 		} else {
 			commitButton.isEnabled = false
+			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
 		}
-		
-	//	myTheme.formatButtonColor(button: commitButton, enabledColor: myTheme.colorMain!)
+	
 	}
 	
 	func textFieldDidChangeSelection(_ textField: UITextField) {

@@ -121,7 +121,7 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         nextButton.isEnabled =  scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
         
         for b in [previousButton, nextButton] {
-			myTheme.formatButtonColor(button: b!, enabledColor: enabledButtonColor!)
+			myTheme.formatButtonState(button: b!, enabledColor: enabledButtonColor!)
         }
     }
     

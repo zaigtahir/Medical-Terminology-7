@@ -100,7 +100,7 @@ class MyTheme{
     //progress bar width
     let progressBarWidth = CGFloat(integerLiteral: 15)
 	
-	func formatButtonColor (button: UIButton, enabledColor: UIColor) {
+	func formatButtonState (button: UIButton, enabledColor: UIColor) {
 		
 		if button.isEnabled {
 			button.backgroundColor = enabledColor

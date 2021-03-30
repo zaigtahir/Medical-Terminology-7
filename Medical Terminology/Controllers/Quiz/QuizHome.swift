@@ -112,7 +112,7 @@ class QuizHome: UIViewController {
         currentQuizButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
 
         for b in [newQuizButton, currentQuizButton] {
-			myTheme.formatButtonColor(button: b!, enabledColor: enabledButtonColor!)
+			myTheme.formatButtonState(button: b!, enabledColor: enabledButtonColor!)
         }
         
     }
