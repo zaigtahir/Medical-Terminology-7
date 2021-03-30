@@ -14,9 +14,8 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var promptLabel: UILabel!
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var textField: UITextField!
-	@IBOutlet weak var commitButton: zUIButton!
-
 	@IBOutlet weak var cancelButton: UIButton!
+	@IBOutlet weak var commitButton: myButton!
 	
 	let categoryVCH = CategoryVCH()
 	let tu = TextUtilities()
@@ -32,7 +31,8 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		
 		super.viewDidLoad()
 		textField.delegate = self
-		commitButton.layer.cornerRadius = myConstants.button_cornerRadius
+		
+		//commitButton.layer.cornerRadius = myConstants.button_cornerRadius
 		
 		switch categoryVCH.categoryDisplayMode {
 		
@@ -59,6 +59,9 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			textField.isUserInteractionEnabled = false
 			commitButton.setTitle("Delete", for: .normal)
 		}
+		
+		// initial state of the save button
+		commitButton.isEnabled = false
 	}
 	
 	private func setCommitButtonState() {
