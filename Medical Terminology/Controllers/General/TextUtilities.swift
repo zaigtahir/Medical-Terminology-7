@@ -20,6 +20,19 @@ import Foundation
 
 class TextUtilities {
 	
+	func removeLeadingSpaces(input: String) -> String {
+		
+		guard let index = input.firstIndex(where: { !CharacterSet(charactersIn: String($0)).isSubset(of: .whitespaces) }) else {
+			
+				return input
+			}
+		
+			return String(input[index...])
+		}
+	
+	//MARK: -old stuff
+	
+	
 	public func validateString(string: String) -> Bool {
 	   let otherRegexString = "^[a-zA-Z0-9 -!:.]*$"
 	   let trimmedString = string.trimmingCharacters(in: .whitespaces)

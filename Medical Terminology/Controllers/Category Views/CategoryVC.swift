@@ -20,19 +20,20 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 	let categoryVCH = CategoryVCH()
 	let tu = TextUtilities()
 	
+	var originalTextColor : UIColor!
+	let invalidTextColor = UIColor.red
+	
+	// valid states, to use for saving field validations and enabling the save button
+	
+	var categoryNameIsValid = false
+	
+	
+	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
-		
-		// setup the view based on the categoryDisplayMode in the header file
-		
 		textField.delegate = self
-	//	textField.addTarget(self, action: #selector(myTextfieldFunction(textfield:)), for: .editingChanged)
-		
-		// format button
 		commitButton.layer.cornerRadius = myConstants.button_cornerRadius
-		
-		let utilities = Utilities()
 		
 		switch categoryVCH.categoryDisplayMode {
 		
@@ -60,56 +61,55 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			messageLabel.text = "When you delete a category, no terms are deleted"
 			textField.text = categoryVCH.affectedCategory.name
 			textField.isUserInteractionEnabled = false
+			
+			
 			commitButton.setTitle("Delete", for: .normal)
 			commitButton.backgroundColor = myTheme.colorDeleteButton
 		}
 		
-		// format the commit button as it has custom colors
-		myTheme.formatButtonColor(button: commitButton, enabledColor: myTheme.colorMain!)
-		
+		setCommitButtonState()
 	}
 	
-	@objc func myTextfieldFunction (textfield: UITextField) {
-		// do somethign
-		if tu.validateString(string: textField.text!) {
+	private func setCommitButtonState() {
+		
+		//look at the field's validations states. If all are valid, set the commit button to enabled
+		// format the commit button as it has custom colors
+		
+		if categoryNameIsValid {
 			commitButton.isEnabled = true
-			myTheme.formatButtonColor(button: commitButton, enabledColor: myTheme.colorMain!)
-			
 		} else {
 			commitButton.isEnabled = false
-			myTheme.formatButtonColor(button: commitButton, enabledColor: myTheme.colorMain!)
-			print ("The category name may only contain letters, numbers")
 		}
+		
+	//	myTheme.formatButtonColor(button: commitButton, enabledColor: myTheme.colorMain!)
 	}
 	
-	
-	// MARK: - UITextFieldDelegate
-
-	let allowedCharacters = CharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxyz ").inverted
-
-	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+	func textFieldDidChangeSelection(_ textField: UITextField) {
+		//don't worry about removing characters
+		let ac = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789-:!?."
 		
-		let components = string.components(separatedBy: allowedCharacters)
-		let filtered = components.joined(separator: "")
-		
-		if string == filtered {
+		if tu.ztIsTextValid(inputString: textField.text!, allowedCharacters: ac, maxLength: 30) {
+			textField.textColor = originalTextColor
 			
-			return true
+			if tu.isBlank(string: textField.text!) {
+				categoryNameIsValid = false
+			} else {
+				categoryNameIsValid = true
+			}
 
+			setCommitButtonState()
 		} else {
-			
-			return false
+			categoryNameIsValid = false
+			textField.textColor = invalidTextColor
+			setCommitButtonState()
 		}
 	}
 	
-		
 	// MARK: -Textfield delegate methods
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		textField.resignFirstResponder()
 		return true
 	}
-	
-	
 		
 	@IBAction func commitButtonAction(_ sender: Any) {
 		// should also resign the textfield first responder as the user may have pressed that before pressing /Users/zaighamtahir/Google Drive/Medical Terminology 6/Medical Terminology/Controllers/Flashcardsthe return key on the keyboard
