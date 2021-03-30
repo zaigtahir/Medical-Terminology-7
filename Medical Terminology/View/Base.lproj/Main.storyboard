@@ -2696,7 +2696,7 @@
                                     <action selector="cancelButtonAction:" destination="VL1-y5-jCp" eventType="touchUpInside" id="Yhx-FW-htT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxc-rA-I9P">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxc-rA-I9P" customClass="zUIButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                 <rect key="frame" x="132" y="447" width="150" height="30"/>
                                 <color key="backgroundColor" name="color main"/>
                                 <constraints>

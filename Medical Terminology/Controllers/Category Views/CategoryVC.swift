@@ -14,7 +14,8 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var promptLabel: UILabel!
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var textField: UITextField!
-	@IBOutlet weak var commitButton: UIButton!
+	@IBOutlet weak var commitButton: zUIButton!
+
 	@IBOutlet weak var cancelButton: UIButton!
 	
 	let categoryVCH = CategoryVCH()
@@ -26,8 +27,6 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 	// valid states, to use for saving field validations and enabling the save button
 	
 	var categoryNameIsValid = false
-	
-	
 	
 	override func viewDidLoad() {
 		
@@ -43,9 +42,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			messageLabel.text = "After you add a new category, you can assign terms to it to help organize your learning"
 			textField.isUserInteractionEnabled = true
 			commitButton.setTitle("Save", for: .normal)
-			commitButton.backgroundColor = myTheme.colorAddButton
-			//commitButton.isEnabled = false
-			
+	
 		case .edit:
 			headerImage.image = myTheme.imageHeaderEdit
 			promptLabel.text = "Edit This Category"
@@ -53,7 +50,6 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			textField.text = categoryVCH.affectedCategory.name
 			textField.isUserInteractionEnabled = true
 			commitButton.setTitle("Save", for: .normal)
-			commitButton.backgroundColor = myTheme.colorEditButton
 			
 		case .delete:
 			headerImage.image = myTheme.imageHeaderDelete
@@ -61,13 +57,8 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			messageLabel.text = "When you delete a category, no terms are deleted"
 			textField.text = categoryVCH.affectedCategory.name
 			textField.isUserInteractionEnabled = false
-			
-			
 			commitButton.setTitle("Delete", for: .normal)
-			commitButton.backgroundColor = myTheme.colorDeleteButton
 		}
-		
-		setCommitButtonState()
 	}
 	
 	private func setCommitButtonState() {
