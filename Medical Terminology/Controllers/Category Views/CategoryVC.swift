@@ -15,7 +15,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var textField: UITextField!
 	@IBOutlet weak var cancelButton: UIButton!
-	@IBOutlet weak var commitButton: myButton!
+	@IBOutlet weak var commitButton: zUIButton!
 	
 	let categoryVCH = CategoryVCH()
 	let tu = TextUtilities()
