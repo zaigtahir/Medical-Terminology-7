@@ -775,8 +775,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qF2-Hc-gGJ">
                                         <rect key="frame" x="0.0" y="0.0" width="119.33333333333333" height="50"/>
                                         <color key="backgroundColor" name="color main"/>
-                                        <color key="tintColor" name="color text button"/>
                                         <state key="normal">
+                                            <color key="titleColor" name="color text button"/>
                                             <imageReference key="image" image="chevron.up" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                         </state>
@@ -786,9 +786,10 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaW-rC-XtT">
                                         <rect key="frame" x="127.33333333333334" y="0.0" width="119.33333333333334" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                        <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                        <color key="backgroundColor" name="color main"/>
+                                        <color key="tintColor" name="color text button"/>
                                         <state key="normal">
+                                            <color key="titleColor" name="color text button"/>
                                             <imageReference key="image" image="arrow.right.circle.fill" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="regular"/>
                                         </state>
@@ -2712,7 +2713,7 @@
                                     <imageReference key="image" image="questionmark.circle.fill" catalog="system" symbolScale="large"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBr-eT-xQw" customClass="zUIButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBr-eT-xQw">
                                 <rect key="frame" x="175" y="426" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="color main"/>

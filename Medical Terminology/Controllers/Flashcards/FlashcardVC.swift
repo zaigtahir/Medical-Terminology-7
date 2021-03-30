@@ -16,6 +16,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	@IBOutlet weak var favoritesLabel: UILabel!
 	@IBOutlet weak var favoritesSwitch: UISwitch!
 	@IBOutlet weak var sliderOutlet: UISlider!
+	
 	@IBOutlet weak var previousButton: UIButton!
 	@IBOutlet weak var randomButton: UIButton!
 	@IBOutlet weak var nextButton: UIButton!
@@ -112,7 +113,8 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			
 			myTheme.formatButtonColor(button: b!, enabledColor: myTheme.colorFlashcardHomeButton!)
 			
-		}}
+		}
+}
 	
 	
 	// MARK: why is this not getting the prepare?
