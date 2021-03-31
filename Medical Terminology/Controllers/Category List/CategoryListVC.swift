@@ -27,7 +27,6 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 	var segueCategory : Category2!
 	var categoryDisplayMode = CategoryDisplayMode.add
 	
-	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
@@ -64,9 +63,7 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 			}
 		}
 	}
-	
 	override func viewWillAppear(_ animated: Bool) {
-		
 	}
 	
 	// MARK: Delegate Functions for categoryHomeDelegate

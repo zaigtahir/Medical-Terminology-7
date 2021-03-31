@@ -268,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				9959B73425EE85A700262CC3 /* Audio */,
-				992B56952612EEC1000457AA /* Components */,
 				5A03477F22D39CE400749EBC /* FMDB */,
 				5A6F31B821A1E3A200E6477E /* Singleton */,
 				5A15062822557B7500717AB8 /* Database */,
@@ -422,13 +421,6 @@
 				992B56642610E593000457AA /* CategoryVC.swift */,
 			);
 			path = "Category Views";
-			sourceTree = "<group>";
-		};
-		992B56952612EEC1000457AA /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		992B56A2261382BF000457AA /* Validation */ = {

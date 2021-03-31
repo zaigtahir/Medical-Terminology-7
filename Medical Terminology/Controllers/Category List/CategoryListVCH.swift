@@ -50,6 +50,25 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	weak var categoryHomeDelegate : CategoryListVCH?
 	
+	override init() {
+		super.init()
+		
+		// add the categoryChangedNotification observer
+		let observer1 = Notification.Name(myKeys.categoryAddedNotification)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryAdded(notification:)), name: observer1, object: nil)
+	}
+	
+	// MARK: - notification functions
+	
+	@objc func categoryAdded (notification: Notification) {
+		print("got message in categoryListVCH of category being added!!!")
+		
+		//refresh the data
+		fillCategoryLists()
+		categoryHomeDelegate?.reloadTable()
+	}
+	
+	
 	func fillCategoryLists () {
 		standardCategories = cc.getCategories(categoryType: .standard)
 		

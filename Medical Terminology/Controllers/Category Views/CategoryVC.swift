@@ -132,6 +132,10 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		// should also resign the textfield first responder as the user may have pressed that before dismissing the keyboard
 		textField.resignFirstResponder()
 		
+		let cc = CategoryController2()
+		cc.addCustomCategory(categoryName: "Airplane")
+		
+		
 	}
 	
 	@IBAction func cancelButtonAction(_ sender: UIButton) {

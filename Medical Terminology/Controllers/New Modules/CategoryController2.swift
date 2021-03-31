@@ -165,5 +165,35 @@ class CategoryController2 {
 		return c
 	}
 	
+	// MARK: -Add category functions
+	func isCategoryNameDuplicate () {
+		
+	}
+	
+	/*
+	shoot off notification of category creation
+	*/
+	func addCustomCategory (categoryName: String) {
+		// if duplicate name do not add it
+		// always add with display order = 1
+		// shift display order of other custom categories up by 1 to make room
+		// return true on success
+		// return false on not successful
+		
+		let moveQuery = "UPDATE \(myConstants.dbTableCategories2) SET displayOrder = displayOrder + 1 WHERE isStandard = 0"
+		
+		let _ = myDB.executeStatements(moveQuery)
+		
+		let addQuery = "INSERT INTO \(myConstants.dbTableCategories2) (name, description, isStandard, displayOrder) VALUES ('\(categoryName)', 'initial description', 0, 1)"
+		
+		let _ = myDB.executeStatements(addQuery)
+		
+		// need to shoot off categoryAddedNotification
+		// the only item that will need to respond to it is the categoryListVCH so it can refresh the categoryListCV list
+		
+		let name = Notification.Name(myKeys.categoryAddedNotification)
+		NotificationCenter.default.post(name: name, object: self, userInfo: nil)
+	}
+	
 }
 
