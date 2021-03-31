@@ -53,9 +53,13 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	override init() {
 		super.init()
 		
-		// add the newCategorySelectedNotification observer
+		// MARK: add the newCategorySelectedNotification observer
 		let observer1 = Notification.Name(myKeys.categoryAddedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryAddedNotification(notification:)), name: observer1, object: nil)
+		
+		let observer2 = Notification.Name(myKeys.categoryDeletedNotification)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer2, object: nil)
+		
 	}
 	
 	// MARK: - notification functions
@@ -63,11 +67,26 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	@objc func categoryAddedNotification (notification: Notification) {
 		print("got message in categoryListVCH of category being added!!!")
 		
-		//refresh the data
+		// refresh the data
 		fillCategoryLists()
 		categoryHomeDelegate?.reloadTable()
 	}
 	
+	@objc func categoryDeletedNotification (notification: Notification) {
+		// a category was deleted
+		
+		if let data = notification.userInfo as? [String : Int] {
+			if data["categoryID"] == currentCategoryID {
+				// refresh the data
+				currentCategoryID = myConstants.dbCategoryAllTermsID
+				fillCategoryLists()
+				categoryHomeDelegate?.reloadTable()
+			}
+		}
+		
+		fillCategoryLists()
+		categoryHomeDelegate?.reloadTable()
+	}
 	
 	func fillCategoryLists () {
 		standardCategories = cc.getCategories(categoryType: .standard)

@@ -14,7 +14,7 @@ protocol FlashcardHomeDelegate: class {
 	func refreshCurrentCell()
 }
 
-class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
+class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate, notificationProtocol {
 	
 	// holds state of the view
 	var currentCategoryID = 1 			// default starting off category
@@ -35,8 +35,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// notification that do not need to be addressed
 		// categoryAddedNotification
 		
-		
-		// add observers
+		// add observers for notification events
 		let observer1 = Notification.Name(myKeys.newCategorySelectedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryChangedNotification(notification:)), name: observer1, object: nil)
 		
@@ -48,7 +47,10 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		let observer4 = Notification.Name(myKeys.termUnassignedCategoryNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignedCategoryNotfication(notification:)), name: observer4, object: nil)
-	
+		
+		let observer5 = Notification.Name(myKeys.categoryDeletedNotification)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer5, object: nil)
+		
 		updateData(categoryID: currentCategoryID)
 	}
 	
@@ -57,6 +59,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		NotificationCenter.default.removeObserver(self)
 	}
 	
+	// MARK: - notification functions
 	@objc func termInformationChangedNotification (notification: Notification) {
 		
 		if let data = notification.userInfo as? [String: Int] {
@@ -98,14 +101,24 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		print ("flashcardVCH up unassignCategory notification")
 		
 		if let data = notification.userInfo as? [String : Int] {
-
+			
 			let categoryID = data["categoryID"]
+			
 			if categoryID == currentCategoryID {
 				print ("flashcardVCH is refreshing the currentCategoryID because a term got UNassigned from it")
-				// a term got removed from the current category from somewhere in the program
-				// will need to reload the list with the currentCategoryID and also update the home controller
-
 				updateData(categoryID: currentCategoryID)
+			}
+		}
+	}
+	
+	@objc func categoryDeletedNotification (notification: Notification){
+		// if the current category is deleted, then change the current category to 1 (All Terms) and reload the data
+		if let data = notification.userInfo as? [String: Int] {
+			
+			let deletedCategoryID = data["categoryID"]
+			if deletedCategoryID == currentCategoryID {
+				print ("current category deleted, will switch FC to All Terms")
+				updateData(categoryID: myConstants.dbCategoryAllTermsID)
 			}
 		}
 	}

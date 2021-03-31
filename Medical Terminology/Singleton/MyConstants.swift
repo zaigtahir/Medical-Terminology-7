@@ -22,6 +22,9 @@ class MyConstants {
 	
 	let dbTableMain = "dictionary"
 	let dbTableUser = "assignCategories"
+	
+	let dbCategoryAllTermsID = 1
+	let dbCategoryMyTermsID = 2	// am i using this anywhere?
 
 	let dbTableCatetories = "categories"
 	
@@ -67,7 +70,6 @@ class MyConstants {
 	
 	// MARK: - Maximum lengths for fields
 	let maxLengthCategoryName = 50
-	
 	
     let requeueInterval = 7 //interval to requeue a question in a learning set if it is answered wrong
 }

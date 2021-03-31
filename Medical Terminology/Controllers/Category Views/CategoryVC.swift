@@ -169,8 +169,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			self.navigationController?.popViewController(animated: true)
 		
 		case .delete:
-			
-			print(" add code to delete this category")
+			cc.deleteCustomCategoryPostNotification(categoryID: categoryVCH.affectedCategory.categoryID)
 		
 		case .edit:
 			print ("add code to save edits for this category")

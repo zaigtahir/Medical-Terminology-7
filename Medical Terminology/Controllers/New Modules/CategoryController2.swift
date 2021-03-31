@@ -183,7 +183,6 @@ class CategoryController2 {
 			print("fatal error did not get rs in isCategoryNameDuplicate. returning true")
 			return true
 		}
-		
 	}
 	
 	func deleteCustomCategoryPostNotification (categoryID: Int) {
@@ -197,7 +196,6 @@ class CategoryController2 {
 		
 		let name = Notification.Name(myKeys.categoryDeletedNotification)
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID": categoryID])
-		
 	}
 	
 	/*
