@@ -48,6 +48,7 @@ class CategoryCell: UITableViewCell {
 		nameLabel.text  = rowCategory.name
 		nameLabel.textColor = myTheme.colorText
 		countLabel.text = String (rowCategory.count)
+		countLabel.text = String (rowCategory.count)
 		self.isSelectable = isSelectable
 		
 		if ids.contains(rowCategory.categoryID) {
@@ -70,6 +71,7 @@ class CategoryCell: UITableViewCell {
 		if isSelectable == false {
 			nameLabel.textColor = myTheme.colorUnavailableCatetory
 			selectImage.tintColor = myTheme.colorUnavailableCatetory
+			countLabel.text = String (rowCategory.count)
 		}
 		
 		

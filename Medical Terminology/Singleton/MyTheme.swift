@@ -30,7 +30,7 @@ class MyTheme{
 	
 	let colorAddButton = UIColor(named: "color main")
 	let colorSaveButton = UIColor(named: "color main")
-	let colorDeleteButton = UIColor.systemPink
+	let colorButtonDelete = UIColor.systemPink
 	
 	// MARK: validation field colors
 	let validFieldEntryColor = UIColor(named: "color text")

@@ -21,6 +21,8 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 	let categoryVCH = CategoryVCH()
 	let tu = TextUtilities()
 	
+	let cc = CategoryController2()
+	
 	// valid states, to use for saving field validations and enabling the save button
 	
 	var categoryNameIsValid = true	// just to start so if the user presses the question button, it does not show a red color header icon in the ValidationVC
@@ -35,8 +37,6 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		view.addGestureRecognizer(tapGesture)
 		
 		commitButton.layer.cornerRadius = myConstants.button_cornerRadius
-		commitButton.isEnabled = false
-		myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
 		
 		switch categoryVCH.categoryDisplayMode {
 		
@@ -46,22 +46,36 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			messageLabel.text = "After you add a new category, you can assign terms to it to help organize your learning"
 			textField.isUserInteractionEnabled = true
 			commitButton.setTitle("Save", for: .normal)
-	
+			questionButton.isEnabled = true
+			commitButton.isEnabled = false
+			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
+			
 		case .edit:
 			headerImage.image = myTheme.imageHeaderEdit
 			promptLabel.text = "Edit This Category"
 			messageLabel.text = "Make changes to the category name"
 			textField.text = categoryVCH.affectedCategory.name
 			textField.isUserInteractionEnabled = true
+			questionButton.isEnabled = true
 			commitButton.setTitle("Save", for: .normal)
+			commitButton.isEnabled = true
+			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
+			
 			
 		case .delete:
 			headerImage.image = myTheme.imageHeaderDelete
 			promptLabel.text = "Delete This Category?"
-			messageLabel.text = "When you delete a category, no terms are deleted"
+			messageLabel.text = "Terms in this category will not be deleted. They will remain in other categories."
 			textField.text = categoryVCH.affectedCategory.name
 			textField.isUserInteractionEnabled = false
+		
+			//innerSquare.leftAnchor.constraint(equalTo: outerSquare.leftAnchor, constant: 40)
+			
+			questionButton.isEnabled = false
 			commitButton.setTitle("Delete", for: .normal)
+			commitButton.isEnabled = true
+			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorButtonDelete)
+			
 		}
 		
 	}
@@ -134,14 +148,35 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		// should also resign the textfield first responder as the user may have pressed that before dismissing the keyboard
 		textField.resignFirstResponder()
 		
-		// trimming the content to remove spaces
-		let text = textField.text ?? ""
-		let trimmedName = tu.trimEndSpaces(string: text)
+		switch categoryVCH.categoryDisplayMode {
 		
-		let cc = CategoryController2()
-		cc.addCustomCategory(categoryName: trimmedName)
+		case .add:
+			// trimming the content to remove spaces
+			let text = textField.text ?? ""
+			let trimmedName = tu.trimEndSpaces(string: text)
+			
+			if cc.isCategoryNameDuplicate(name: trimmedName) {
+				// duplicate category
+				let ac = UIAlertController(title: "Duplicate Name", message: "There is already a category with this name. Please choose a different name", preferredStyle: .alert)
+				let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+				ac.addAction(ok)
+				self.present(ac, animated: true, completion: nil)
+				
+				return
+			}
+			cc.addCustomCategory(categoryName: trimmedName)
+			
+			self.navigationController?.popViewController(animated: true)
 		
-		self.navigationController?.popViewController(animated: true)
+		case .delete:
+			print(" add code to delete this category")
+		
+		case .edit:
+			print ("add code to save edits for this category")
+		}
+		
+		
+	
 		
 	}
 	

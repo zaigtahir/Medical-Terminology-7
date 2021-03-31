@@ -124,7 +124,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		// attach count
 		rowCategory.count = cc.getCountOfTerms(categoryID: rowCategory.categoryID)
 		
-		
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CategoryCell {
 			
 			switch displayMode {

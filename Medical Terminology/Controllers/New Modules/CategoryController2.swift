@@ -41,9 +41,14 @@ class CategoryController2 {
 		
 		let query = "SELECT COUNT (*) FROM \(assignedCategories) WHERE categoryID = \(categoryID)"
 		
+		
+		
+		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
 			return Int(resultSet.int(forColumnIndex: 0))
+			
+			
 		} else {
 			print ("fatal error making result set in getCountOfTerms, returning 0")
 			return 0
@@ -166,7 +171,19 @@ class CategoryController2 {
 	}
 	
 	// MARK: -Add category functions
-	func isCategoryNameDuplicate () {
+	func isCategoryNameDuplicate (name: String) -> Bool {
+		
+		let query = "SELECT COUNT(*) FROM \(myConstants.dbTableCategories2) WHERE name = '\(name)'"
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			let c = Int(resultSet.int(forColumnIndex: 0))
+			
+			return c > 0 ? true : false
+		} else {
+			print("fatal error did not get rs in isCategoryNameDuplicate. returning true")
+			return true
+		}
 		
 	}
 	
