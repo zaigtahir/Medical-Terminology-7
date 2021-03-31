@@ -18,7 +18,7 @@ protocol CategoryListVCH: class {
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (category: Category2)
 	func pressedDeleteButtonOnCustomCatetory (category: Category2)
-	func addACategory ()	// when you press on the add a category button/row
+	//func addACategory ()	// when you press on the add a category button/row
 	func reloadTable ()
 }
 
