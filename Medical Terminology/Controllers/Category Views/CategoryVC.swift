@@ -85,7 +85,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 	func textFieldDidChangeSelection(_ textField: UITextField) {
 		
 		let ac = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789-:!?. "
-		let result = tu.formatTextField(textField: textField, allowedCharacters: ac, maxLength: 10, accessoryButton: questionButton)
+		let result = tu.formatTextField(textField: textField, allowedCharacters: ac, maxLength: myConstants.maxLengthCategoryName, accessoryButton: questionButton)
 		if result {
 			if !tu.isBlank(string: textField.text ?? "") {
 				categoryNameIsValid = true
@@ -117,6 +117,8 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		// there is only one segue to validationVC
 		let vc = segue.destination as? ValidationVC
+		
+		// trimming the content to get the count of characters without spaces on ends
 		let text = textField.text ?? ""
 		let trimmed = tu.trimEndSpaces(string: text)
 			
@@ -124,7 +126,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		vc?.message = """
 			The name can contain only letters, numbers and these characters ! : , ?
 
-			The length can be maximum of 50 characters. You currently have \(trimmed.count) characters entered.
+			The length can be maximum of \(myConstants.maxLengthCategoryName) characters. You currently have \(trimmed.count) characters entered.
 			"""
 	}
 	
@@ -132,9 +134,14 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		// should also resign the textfield first responder as the user may have pressed that before dismissing the keyboard
 		textField.resignFirstResponder()
 		
-		let cc = CategoryController2()
-		cc.addCustomCategory(categoryName: "Airplane")
+		// trimming the content to remove spaces
+		let text = textField.text ?? ""
+		let trimmedName = tu.trimEndSpaces(string: text)
 		
+		let cc = CategoryController2()
+		cc.addCustomCategory(categoryName: trimmedName)
+		
+		self.navigationController?.popViewController(animated: true)
 		
 	}
 	

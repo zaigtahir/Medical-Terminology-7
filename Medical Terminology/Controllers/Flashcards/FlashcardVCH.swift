@@ -32,18 +32,22 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	override init() {
 		super.init()
 		
+		// notification that do not need to be addressed
+		// categoryAddedNotification
+		
+		
 		// add observers
 		let observer1 = Notification.Name(myKeys.categoryChangedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryChanged(notification:)), name: observer1, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryChangedNotification(notification:)), name: observer1, object: nil)
 		
 		let observer2 = Notification.Name(myKeys.termInformationChangedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChanged(notification:)), name: observer2, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedNotification(notification:)), name: observer2, object: nil)
 		
 		let observer3 = Notification.Name(myKeys.termAssignedCategoryNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(assignedCategory(notification:)), name: observer3, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(assignedCategoryNotification(notification:)), name: observer3, object: nil)
 		
 		let observer4 = Notification.Name(myKeys.termUnassignedCategoryNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(unassignedCategory(notification:)), name: observer4, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(unassignedCategoryNotfication(notification:)), name: observer4, object: nil)
 	
 		updateData(categoryID: currentCategoryID)
 	}
@@ -53,7 +57,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		NotificationCenter.default.removeObserver(self)
 	}
 	
-	@objc func termInformationChanged (notification: Notification) {
+	@objc func termInformationChangedNotification (notification: Notification) {
 		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"] ?? 0
@@ -65,7 +69,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
-	@objc func categoryChanged (notification : Notification) {
+	@objc func categoryChangedNotification (notification : Notification) {
 		
 		if let data = notification.userInfo as? [String : Int] {
 			for d in data {
@@ -76,7 +80,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
-	@objc func assignedCategory (notification : Notification) {
+	@objc func assignedCategoryNotification (notification : Notification) {
 		print(" flashcardVCH got a assignedCategory notification")
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]
@@ -90,7 +94,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 	}
 	
-	@objc func unassignedCategory (notification : Notification){
+	@objc func unassignedCategoryNotfication (notification : Notification){
 		print ("flashcardVCH up unassignCategory notification")
 		
 		if let data = notification.userInfo as? [String : Int] {

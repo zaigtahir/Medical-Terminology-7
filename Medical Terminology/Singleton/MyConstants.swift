@@ -44,7 +44,6 @@ class MyConstants {
 	let segueSelectCatetory = "segueSelectCategory"
 	let segueAssignCategory = "segueAssignCategory"
 	let segueCategory = "segueCategory"
-	
 	let segueValidationVC = "segueValidationVC"
 	
     // question feedback remarks
@@ -65,6 +64,10 @@ class MyConstants {
     let layout_cornerRadius = CGFloat(integerLiteral: 10)
     let layout_sideMargin = CGFloat(integerLiteral: 20)
     let layout_topBottomMargin = CGFloat(integerLiteral: 10)
+	
+	// MARK: - Maximum lengths for fields
+	let maxLengthCategoryName = 50
+	
 	
     let requeueInterval = 7 //interval to requeue a question in a learning set if it is answered wrong
 }

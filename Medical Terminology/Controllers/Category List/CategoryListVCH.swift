@@ -18,7 +18,7 @@ protocol CategoryListVCH: class {
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (category: Category2)
 	func pressedDeleteButtonOnCustomCatetory (category: Category2)
-	//func addACategory ()	// when you press on the add a category button/row
+	func addACategory ()	// when you press on the add a category button/row
 	func reloadTable ()
 }
 
@@ -55,12 +55,12 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		// add the categoryChangedNotification observer
 		let observer1 = Notification.Name(myKeys.categoryAddedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryAdded(notification:)), name: observer1, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryAddedNotification(notification:)), name: observer1, object: nil)
 	}
 	
 	// MARK: - notification functions
 	
-	@objc func categoryAdded (notification: Notification) {
+	@objc func categoryAddedNotification (notification: Notification) {
 		print("got message in categoryListVCH of category being added!!!")
 		
 		//refresh the data
