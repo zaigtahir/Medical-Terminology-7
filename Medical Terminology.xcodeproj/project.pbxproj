@@ -58,6 +58,7 @@
 		992B56652610E593000457AA /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56642610E593000457AA /* CategoryVC.swift */; };
 		992B566E2610E9A0000457AA /* CategoryVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B566D2610E9A0000457AA /* CategoryVCH.swift */; };
 		992B56812612870C000457AA /* TextUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56802612870C000457AA /* TextUtilities.swift */; };
+		992B56A4261382BF000457AA /* ValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56A3261382BF000457AA /* ValidationVC.swift */; };
 		992E79D2260A2ADD00C19D49 /* FlashCardOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79CF260A2ADD00C19D49 /* FlashCardOptionsVC.swift */; };
 		992E79D3260A2ADD00C19D49 /* FlashcardVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79D0260A2ADD00C19D49 /* FlashcardVCH.swift */; };
 		992E79D4260A2ADD00C19D49 /* FlashcardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79D1260A2ADD00C19D49 /* FlashcardVC.swift */; };
@@ -149,6 +150,7 @@
 		992B56642610E593000457AA /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		992B566D2610E9A0000457AA /* CategoryVCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryVCH.swift; sourceTree = "<group>"; };
 		992B56802612870C000457AA /* TextUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtilities.swift; sourceTree = "<group>"; };
+		992B56A3261382BF000457AA /* ValidationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationVC.swift; sourceTree = "<group>"; };
 		992E79CF260A2ADD00C19D49 /* FlashCardOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardOptionsVC.swift; sourceTree = "<group>"; };
 		992E79D0260A2ADD00C19D49 /* FlashcardVCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardVCH.swift; sourceTree = "<group>"; };
 		992E79D1260A2ADD00C19D49 /* FlashcardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardVC.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				99D55E4925FF2F17003ABE0B /* CategoryController.swift */,
 				99D55E882601A01A003ABE0B /* UserCategoryController.swift */,
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
+				99D55E4C25FF5A03003ABE0B /* Tests.swift */,
 				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
 				99D55E5725FF685C003ABE0B /* DItemController3.swift */,
 				5AF85733228F26A1008929D5 /* FlashCardController.swift */,
@@ -230,7 +233,6 @@
 				5AC448B422BC072C004B47C1 /* QuestionController.swift */,
 				5A4471602283DFB9008E3107 /* SearchLists.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
-				99D55E4C25FF5A03003ABE0B /* Tests.swift */,
 				5A886373218E82330013FC8B /* DItemController.swift */,
 				99D55E2E25FC7921003ABE0B /* DItemController2.swift */,
 			);
@@ -373,6 +375,7 @@
 		5A88634C21853DC90013FC8B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				992B56A2261382BF000457AA /* Validation */,
 				992B566A2610E8CC000457AA /* Category Views */,
 				992E79DC260A43C700C19D49 /* New Modules */,
 				998398E025F6AAAF00CC0354 /* Category List */,
@@ -426,6 +429,14 @@
 			children = (
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		992B56A2261382BF000457AA /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				992B56A3261382BF000457AA /* ValidationVC.swift */,
+			);
+			path = Validation;
 			sourceTree = "<group>";
 		};
 		992E79DC260A43C700C19D49 /* New Modules */ = {
@@ -575,6 +586,7 @@
 				5A4471552281C655008E3107 /* ListVCH.swift in Sources */,
 				5A88634E218560030013FC8B /* ListVC.swift in Sources */,
 				5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */,
+				992B56A4261382BF000457AA /* ValidationVC.swift in Sources */,
 				992E79E0260A43C700C19D49 /* TermController.swift in Sources */,
 				99D55E0A25F6DAD8003ABE0B /* CategoryListVC.swift in Sources */,
 				5A1506252255796C00717AB8 /* Question.swift in Sources */,

@@ -24,13 +24,17 @@ class MyTheme{
 	
 	// Button Colors
 	let colorButtonDisabledBackground = (UIColor.systemGray5)
+	let colorButtonEnabledBackground = (UIColor.secondaryLabel)			// use for color of header icons, and image buttons
 	let colorButtonDisabledTint = (UIColor.systemGray2)
 	let colorButtonEnabledTint = UIColor(named: "color text button")
 	
 	let colorAddButton = UIColor(named: "color main")
 	let colorSaveButton = UIColor(named: "color main")
-	// MARK: fix color
 	let colorDeleteButton = UIColor.systemPink
+	
+	// MARK: validation field colors
+	let validFieldEntryColor = UIColor(named: "color text")
+	let invalidFieldEntryColor = UIColor.systemPink
 	
 	//MARK: Table Colors
 	let colorCellGray = UIColor.secondarySystemBackground	//use for tables with cells that should be grayish

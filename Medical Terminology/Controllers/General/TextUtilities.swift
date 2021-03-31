@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 //
 //  textUtilities.swift
@@ -19,39 +20,15 @@ import Foundation
 import Foundation
 
 class TextUtilities {
-	
+
 	func removeLeadingSpaces(input: String) -> String {
-		
 		guard let index = input.firstIndex(where: { !CharacterSet(charactersIn: String($0)).isSubset(of: .whitespaces) }) else {
-			
 				return input
 			}
-		
 			return String(input[index...])
 		}
 	
-	//MARK: -old stuff
-	
-	
-	public func validateString(string: String) -> Bool {
-	   let otherRegexString = "^[a-zA-Z0-9 -!:.]*$"
-	   let trimmedString = string.trimmingCharacters(in: .whitespaces)
-	   let validateOtherString = NSPredicate(format: "SELF MATCHES %@", otherRegexString)
-	   let isValidateOtherString = validateOtherString.evaluate(with: trimmedString)
-	   return isValidateOtherString
-	}
-	
-	func removeNewLines (string: String) -> String {
-		
-		var stringNew = string
-		
-		while let rangeToReplace = string.range(of: "\n") {
-			stringNew.replaceSubrange(rangeToReplace, with: " ")
-		}
-		return stringNew
-	}
-	
-	func cleanString (string: String) -> String {
+	func trimEndSpaces (string: String) -> String {
 		// remove surrounding spaces
 		// return empty string if the input is only blank spaces
 		
@@ -66,27 +43,70 @@ class TextUtilities {
 		}
 	}
 	
-	func isBlank (string: String) -> Bool {
-		// return true if the string is just space characters
-		return string.allSatisfy({ $0.isWhitespace})
-	}
-	
-	func ztIsTextValid (inputString: String, allowedCharacters: String, maxLength: Int) -> Bool {
+	func ztIsTextValid (inputString: String, allowedCharacters: String) -> Bool {
 	
 		let cs = CharacterSet(charactersIn: allowedCharacters).inverted
 		
 		let components = inputString.components(separatedBy: cs)
 		let filtered = components.joined(separator: "")
 		
-		if inputString != filtered {
-			return false
-		}
-		
-		if inputString.count <= maxLength {
+		if inputString == filtered {
 			return true
 		} else {
 			return false
 		}
+	}
+	
+	/*
+	Will check for validity of text and make the textbox.text and the accessory button red color if the text is not valid
+	Will return TRUE if the text if VALID OR if it is BLANK
+	Will return FALSE if the text is invalid, and will also make the text and the accessory button red color (well the invalid text color from myTheme)
+	*/
+	func formatTextField (textField: UITextField, allowedCharacters: String, maxLength: Int, accessoryButton: UIButton?) -> Bool {
+		
+		// do not allow user to start with a space
+		if textField.text ?? "" == " " {
+			textField.text = ""
+		}
+		
+		// does not allow leading spaces. Would be good if the user pastes text with leading space
+		let text = textField.text ?? ""
+		let removedLeading = removeLeadingSpaces(input: text)
+		if text != removedLeading {
+			textField.text = removedLeading
+		}
+		
+		// to get count, just count the trimmed String
+		let trimmed = trimEndSpaces(string: text)
+		if trimmed.count > maxLength {
+			textField.textColor = myTheme.invalidFieldEntryColor
+			accessoryButton?.tintColor = myTheme.invalidFieldEntryColor
+			return false	// not valid data in the text field
+		} else {
+			textField.textColor = myTheme.validFieldEntryColor
+		}
+		
+		// now look at the content of the string and check for invalid characters
+		if ztIsTextValid(inputString: textField.text!, allowedCharacters: allowedCharacters) {
+			textField.textColor = myTheme.validFieldEntryColor
+			accessoryButton?.tintColor = myTheme.validFieldEntryColor
+			return true
+	
+		} else {
+			textField.textColor = myTheme.invalidFieldEntryColor
+			accessoryButton?.tintColor = myTheme.invalidFieldEntryColor
+			return false
+		}
 		
 	}
+	
+	
+	//MARK: -old stuff
+	
+	func isBlank (string: String) -> Bool {
+		// return true if the string is just space characters
+		return string.allSatisfy({ $0.isWhitespace})
+	}
+	
+	
 }

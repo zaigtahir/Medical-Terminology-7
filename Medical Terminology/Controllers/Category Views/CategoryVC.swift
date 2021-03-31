@@ -14,18 +14,16 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var promptLabel: UILabel!
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var textField: UITextField!
+	@IBOutlet weak var questionButton: UIButton!
 	@IBOutlet weak var cancelButton: UIButton!
 	@IBOutlet weak var commitButton: UIButton!
 	
 	let categoryVCH = CategoryVCH()
 	let tu = TextUtilities()
 	
-	var originalTextColor : UIColor!
-	let invalidTextColor = UIColor.red
-	
 	// valid states, to use for saving field validations and enabling the save button
 	
-	var categoryNameIsValid = false
+	var categoryNameIsValid = true	// just to start so if the user presses the question button, it does not show a red color header icon in the ValidationVC
 	
 	override func viewDidLoad() {
 		
@@ -85,34 +83,53 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 	}
 	
 	func textFieldDidChangeSelection(_ textField: UITextField) {
-		//don't worry about removing characters
-		let ac = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789-:!?."
 		
-		if tu.ztIsTextValid(inputString: textField.text!, allowedCharacters: ac, maxLength: 30) {
-			textField.textColor = originalTextColor
-			
-			if tu.isBlank(string: textField.text!) {
-				categoryNameIsValid = false
-			} else {
+		let ac = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789-:!?. "
+		let result = tu.formatTextField(textField: textField, allowedCharacters: ac, maxLength: 10, accessoryButton: questionButton)
+		if result {
+			if !tu.isBlank(string: textField.text ?? "") {
 				categoryNameIsValid = true
+			} else {
+				categoryNameIsValid = false
 			}
-
-			setCommitButtonState()
 		} else {
 			categoryNameIsValid = false
-			textField.textColor = invalidTextColor
-			setCommitButtonState()
 		}
+		
+		updateSaveButtonStatus()
 	}
 	
-	// MARK: -Textfield delegate methods
+	private func updateSaveButtonStatus () {
+		//enable it if all textfields are valid (only one in this controller)
+		commitButton.isEnabled = categoryNameIsValid
+		myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
+	}
+	
+	// MARK: - Textfield delegate methods
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		textField.resignFirstResponder()
 		return true
 	}
 		
+	// MARK: - name saving functions
+	
+	// MARK: - segues
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		// there is only one segue to validationVC
+		let vc = segue.destination as? ValidationVC
+		let text = textField.text ?? ""
+		let trimmed = tu.trimEndSpaces(string: text)
+			
+		vc?.isValid = categoryNameIsValid
+		vc?.message = """
+			The name can contain only letters, numbers and these characters ! : , ?
+
+			The length can be maximum of 50 characters. You currently have \(trimmed.count) characters entered.
+			"""
+	}
+	
 	@IBAction func commitButtonAction(_ sender: Any) {
-		// should also resign the textfield first responder as the user may have pressed that before pressing /Users/zaighamtahir/Google Drive/Medical Terminology 6/Medical Terminology/Controllers/Flashcardsthe return key on the keyboard
+		// should also resign the textfield first responder as the user may have pressed that before dismissing the keyboard
 		textField.resignFirstResponder()
 		
 	}
