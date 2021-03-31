@@ -35,7 +35,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// notification that do not need to be addressed
 		// categoryAddedNotification
 		
-		// add observers for notification events
+		// MARK: - Observers for notification events
+		
 		let observer1 = Notification.Name(myKeys.newCategorySelectedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryChangedNotification(notification:)), name: observer1, object: nil)
 		
@@ -50,6 +51,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		let observer5 = Notification.Name(myKeys.categoryDeletedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer5, object: nil)
+		
+		let observer6 = Notification.Name(myKeys.categoryNameUpdatedNotification)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameUpdatedNotification(notification:)), name: observer6, object: nil)
 		
 		updateData(categoryID: currentCategoryID)
 	}
@@ -123,6 +127,18 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
+	@objc func categoryNameUpdatedNotification (notification: Notification) {
+		// if this is the current category, reload the category and then refresh the display
+		
+		if let data = notification.userInfo as? [String : Int] {
+			let changedCategoryID = data["categoryID"]
+			if changedCategoryID == currentCategoryID {
+				delegate?.updateHomeDisplay()
+			}
+		}
+		
+	}
+	
 	func updateData (categoryID : Int?) {
 		
 		if let newID = categoryID {
@@ -184,7 +200,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// here to meet the delegate requirement, but will not be using this function here
 	}
 	
-	// MARK: Flashcard options delegate
+	// MARK: -Flashcard options delegate
 	func flashCardViewModeChanged(fcvMode: FlashcardViewMode) {
 		self.viewMode = fcvMode
 		delegate?.refreshCurrentCell()

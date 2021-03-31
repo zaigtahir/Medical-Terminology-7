@@ -198,9 +198,6 @@ class CategoryController2 {
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID": categoryID])
 	}
 	
-	/*
-	shoot off notification of category creation
-	*/
 	func addCustomCategoryPostNotification (categoryName: String) {
 		// if duplicate name do not add it
 		// always add with display order = 1
@@ -221,6 +218,18 @@ class CategoryController2 {
 		
 		let name = Notification.Name(myKeys.categoryAddedNotification)
 		NotificationCenter.default.post(name: name, object: self, userInfo: nil)
+	}
+	
+	func updateCategoryNamePostNotification (categoryID: Int, newName: String) {
+		
+		let query = "UPDATE \(categories) SET name = '\(newName)' WHERE categoryID = \(categoryID)"
+		myDB.executeStatements(query)
+		
+		print("updateCatetoryName query: \(query)")
+		
+		let name = Notification.Name(myKeys.categoryNameUpdatedNotification)
+		
+		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : categoryID])
 	}
 	
 }

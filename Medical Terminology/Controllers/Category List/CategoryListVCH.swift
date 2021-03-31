@@ -60,6 +60,13 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		let observer2 = Notification.Name(myKeys.categoryDeletedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer2, object: nil)
 		
+		let observer3 = Notification.Name(myKeys.categoryNameUpdatedNotification)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameUpdatedNotification(notification:)), name: observer3, object: nil)
+	}
+	
+	deinit {
+		// remove observer (s)
+		NotificationCenter.default.removeObserver(self)
 	}
 	
 	// MARK: - notification functions
@@ -75,17 +82,24 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	@objc func categoryDeletedNotification (notification: Notification) {
 		// a category was deleted
 		
+		// if the current category was deleted, then load up All Terms category
 		if let data = notification.userInfo as? [String : Int] {
 			if data["categoryID"] == currentCategoryID {
 				// refresh the data
 				currentCategoryID = myConstants.dbCategoryAllTermsID
-				fillCategoryLists()
-				categoryHomeDelegate?.reloadTable()
 			}
 		}
 		
+		//refresh the lists and table
 		fillCategoryLists()
 		categoryHomeDelegate?.reloadTable()
+	}
+	
+	@objc func categoryNameUpdatedNotification (notification: Notification) {
+		// refresh the lists and table
+		fillCategoryLists()
+		categoryHomeDelegate?.reloadTable()
+		
 	}
 	
 	func fillCategoryLists () {
@@ -287,9 +301,9 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			// add delete code here
 			self.categoryHomeDelegate?.pressedDeleteButtonOnCustomCatetory(category: rowCategory)
 			completionHandler(false)
-		
+			
 		}
-	
+		
 		if rowCategory.isStandard {
 			return UISwipeActionsConfiguration(actions: [actionInfo])
 		} else {

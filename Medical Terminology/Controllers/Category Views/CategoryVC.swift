@@ -68,7 +68,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			messageLabel.text = "Terms in this category will not be deleted. They will remain in other categories."
 			textField.text = categoryVCH.affectedCategory.name
 			textField.isUserInteractionEnabled = false
-		
+			
 			//innerSquare.leftAnchor.constraint(equalTo: outerSquare.leftAnchor, constant: 40)
 			
 			questionButton.isEnabled = false
@@ -93,7 +93,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			commitButton.isEnabled = false
 			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
 		}
-	
+		
 	}
 	
 	func textFieldDidChangeSelection(_ textField: UITextField) {
@@ -119,12 +119,19 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
 	}
 	
+	private func showNameIsDuplicateAlert () {
+		let ac = UIAlertController(title: "Duplicate Name", message: "There is already a category with this name. Please choose a different name", preferredStyle: .alert)
+		let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+		ac.addAction(ok)
+		self.present(ac, animated: true, completion: nil)
+	}
+	
 	// MARK: - Textfield delegate methods
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		textField.resignFirstResponder()
 		return true
 	}
-		
+	
 	// MARK: - name saving functions
 	
 	// MARK: - segues
@@ -135,7 +142,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		// trimming the content to get the count of characters without spaces on ends
 		let text = textField.text ?? ""
 		let trimmed = tu.trimEndSpaces(string: text)
-			
+		
 		vc?.isValid = categoryNameIsValid
 		vc?.message = """
 			The name can contain only letters, numbers and these characters ! : , ?
@@ -157,24 +164,28 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		
 		case .add:
 			if cc.isCategoryNameDuplicate(name: trimmedName) {
-				// duplicate category
-				let ac = UIAlertController(title: "Duplicate Name", message: "There is already a category with this name. Please choose a different name", preferredStyle: .alert)
-				let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-				ac.addAction(ok)
-				self.present(ac, animated: true, completion: nil)
-				
+				showNameIsDuplicateAlert()
 				return
 			}
 			cc.addCustomCategoryPostNotification(categoryName: trimmedName)
 			self.navigationController?.popViewController(animated: true)
-		
+			
 		case .delete:
 			cc.deleteCustomCategoryPostNotification(categoryID: categoryVCH.affectedCategory.categoryID)
-		
+			self.navigationController?.popViewController(animated: true)
+			
 		case .edit:
-			print ("add code to save edits for this category")
+			
+			if cc.isCategoryNameDuplicate(name: trimmedName) {
+				showNameIsDuplicateAlert()
+			}
+			
+			let cID = categoryVCH.affectedCategory.categoryID
+			
+			cc.updateCategoryNamePostNotification (categoryID: cID, newName: trimmedName)
+			
+			self.navigationController?.popViewController(animated: true)
 		}
-		
 	}
 	
 	@IBAction func cancelButtonAction(_ sender: UIButton) {
