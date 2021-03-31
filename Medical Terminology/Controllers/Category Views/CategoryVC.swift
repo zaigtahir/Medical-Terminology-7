@@ -148,13 +148,14 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		// should also resign the textfield first responder as the user may have pressed that before dismissing the keyboard
 		textField.resignFirstResponder()
 		
+		
+		// trimming the content to remove spaces
+		let text = textField.text ?? ""
+		let trimmedName = tu.trimEndSpaces(string: text)
+		
 		switch categoryVCH.categoryDisplayMode {
 		
 		case .add:
-			// trimming the content to remove spaces
-			let text = textField.text ?? ""
-			let trimmedName = tu.trimEndSpaces(string: text)
-			
 			if cc.isCategoryNameDuplicate(name: trimmedName) {
 				// duplicate category
 				let ac = UIAlertController(title: "Duplicate Name", message: "There is already a category with this name. Please choose a different name", preferredStyle: .alert)
@@ -164,19 +165,16 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 				
 				return
 			}
-			cc.addCustomCategory(categoryName: trimmedName)
-			
+			cc.addCustomCategoryPostNotification(categoryName: trimmedName)
 			self.navigationController?.popViewController(animated: true)
 		
 		case .delete:
+			
 			print(" add code to delete this category")
 		
 		case .edit:
 			print ("add code to save edits for this category")
 		}
-		
-		
-	
 		
 	}
 	

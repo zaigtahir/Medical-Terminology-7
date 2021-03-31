@@ -37,7 +37,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		
 		// add observers
-		let observer1 = Notification.Name(myKeys.categoryChangedNotification)
+		let observer1 = Notification.Name(myKeys.newCategorySelectedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryChangedNotification(notification:)), name: observer1, object: nil)
 		
 		let observer2 = Notification.Name(myKeys.termInformationChangedNotification)
@@ -155,7 +155,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		print("in vch userPressedFavoriteButton")
 		
 		let favoriteStatus = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: termID)
-		tc.setFavoriteStatus(categoryID: currentCategoryID, termID: termID, isFavorite: !favoriteStatus)
+		tc.setFavoriteStatusPostNotification(categoryID: currentCategoryID, termID: termID, isFavorite: !favoriteStatus)
 		
 		//note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed. The VCH will listen for that and tell the home view to refresh it's current cell
 		

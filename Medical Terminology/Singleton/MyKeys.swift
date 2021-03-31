@@ -19,7 +19,7 @@ class MyKeys {
 	
 	
 	// MARK: - CategoryVCH notifications
-	let categoryChangedNotification = "com.theappgalaxy.categoryChangedNotification"
+	let newCategorySelectedNotification = "com.theappgalaxy.newCategorySelectedNotification"
 	
 	// MARK: - Term Controller notifications
 	let termInformationChangedNotification = "com.theappgalaxy.termInformationChangedNotification"
@@ -30,5 +30,7 @@ class MyKeys {
 	
 	// MARK: - Category controller notifications
 	let categoryAddedNotification = "com.theappgalaxy.categoryAddedNotification"
+	
+	let categoryDeletedNotification = "com.theappgalaxy.categoryDeletedNotification"
 }
 

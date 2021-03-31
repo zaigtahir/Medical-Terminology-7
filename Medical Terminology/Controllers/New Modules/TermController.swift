@@ -98,7 +98,7 @@ class TermController {
 		
 	}
 	
-	func setFavoriteStatus (categoryID: Int, termID: Int, isFavorite: Bool) {
+	func setFavoriteStatusPostNotification (categoryID: Int, termID: Int, isFavorite: Bool) {
 		let query = "UPDATE \(myConstants.dbTableAssignedCategories) SET isFavorite = \( isFavorite ? 1 : 0 ) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		_ = myDB.executeStatements(query)
 		

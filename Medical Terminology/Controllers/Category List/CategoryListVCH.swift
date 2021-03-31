@@ -53,7 +53,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	override init() {
 		super.init()
 		
-		// add the categoryChangedNotification observer
+		// add the newCategorySelectedNotification observer
 		let observer1 = Notification.Name(myKeys.categoryAddedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryAddedNotification(notification:)), name: observer1, object: nil)
 	}
@@ -225,7 +225,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		currentCategoryID = categoryID
 		
 		// MARK: Fire off a notification of the category change!!
-		let name = Notification.Name(myKeys.categoryChangedNotification)
+		let name = Notification.Name(myKeys.newCategorySelectedNotification)
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : currentCategoryID])
 		
 		categoryHomeDelegate?.reloadTable()

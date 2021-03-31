@@ -13,7 +13,6 @@ class CategoryController2 {
 	// to make the table name shorter and convenient
 	let categories =  myConstants.dbTableCategories2
 	let assignedCategories = myConstants.dbTableAssignedCategories
-	let mainSectionCategories = myConstants.dbTableMainSectionCategories
 	
 	// controllers
 	let tc = TermController()
@@ -122,16 +121,16 @@ class CategoryController2 {
 		
 		if currentIDs.contains(categoryID) {
 			//this category is already assigned to this term, so need to remove it
-			unassignCategory(termID: termID, categoryID: categoryID)
+			unassignCategoryPostNotification(termID: termID, categoryID: categoryID)
 			
 		} else {
 			//this category is not assigned to this term, so need to add it
-			assignCategory(termID: termID, categoryID: categoryID)
+			assignCategoryPostNotification(termID: termID, categoryID: categoryID)
 		}
 		
 	}
 	
-	func assignCategory (termID: Int, categoryID: Int) {
+	func assignCategoryPostNotification (termID: Int, categoryID: Int) {
 		let query = "INSERT INTO \(assignedCategories) ('termID', 'categoryID') VALUES (\(termID), \(categoryID))"
 		myDB.executeStatements(query)
 		
@@ -141,7 +140,7 @@ class CategoryController2 {
 		NotificationCenter.default.post(name: name, object: self, userInfo: data)
 	}
 	
-	func unassignCategory (termID: Int, categoryID: Int) {
+	func unassignCategoryPostNotification (termID: Int, categoryID: Int) {
 		let query = "DELETE FROM \(assignedCategories) WHERE termID = \(termID) AND categoryID = \(categoryID)"
 		myDB.executeStatements(query)
 		
@@ -187,10 +186,24 @@ class CategoryController2 {
 		
 	}
 	
+	func deleteCustomCategoryPostNotification (categoryID: Int) {
+		// will delete this category from the category table, and also remove all assignments from the assigned category
+		
+		let query1 = "DELETE FROM \(categories) WHERE categoryID = \(categoryID)"
+		let _ = myDB.executeStatements(query1)
+		
+		let query2 = "DELETE FROM \(assignedCategories) WHERE categoryID = \(categoryID)"
+		let _ = myDB.executeStatements(query2)
+		
+		let name = Notification.Name(myKeys.categoryDeletedNotification)
+		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID": categoryID])
+		
+	}
+	
 	/*
 	shoot off notification of category creation
 	*/
-	func addCustomCategory (categoryName: String) {
+	func addCustomCategoryPostNotification (categoryName: String) {
 		// if duplicate name do not add it
 		// always add with display order = 1
 		// shift display order of other custom categories up by 1 to make room
