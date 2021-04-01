@@ -13,7 +13,7 @@ class Tests {
 	func testQueries () {
 		
 	let tc = TermController()
-		tc.getCount(categoryID: 2, isFavorite: true, answeredTerm: .correct, answeredDefinition: .correct, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		tc.getCount(categoryID: 2, isFavorite: true, answeredTerm: .correct, answeredDefinition: .correct, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, searchNameText: .none)
 		
 	}
 	
