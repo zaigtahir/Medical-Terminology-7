@@ -10,6 +10,13 @@ import Foundation
 import SQLite3
 
 /*
+Query example for removing the leading prefix
+SELECT *, replace(name,’-’,’’) as partForSortingHyphen
+FROM terms
+ORDER BY partForSortingHyphen ASC
+*/
+
+/*
 Query example
 
 SELECT terms.termID
@@ -39,7 +46,7 @@ class TermController {
 	
 	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) -> [Int]{
 		
-		let selectStatement = "SELECT \(terms).termID FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
+		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS partForSortingHyphen FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
 		let whereStatement = self.whereStatement(categoryID: categoryID,
 												 showOnlyFavorites: showFavoritesOnly,
