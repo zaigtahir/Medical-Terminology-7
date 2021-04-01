@@ -322,7 +322,7 @@
 			path = Flashcards;
 			sourceTree = "<group>";
 		};
-		5A2A58E422F8DEC900434910 /* List */ = {
+		5A2A58E422F8DEC900434910 /* Term List */ = {
 			isa = PBXGroup;
 			children = (
 				5A6F31B6219C776000E6477E /* DItemVC.swift */,
@@ -330,7 +330,7 @@
 				5A4471542281C655008E3107 /* TermListVCH.swift */,
 				5A88634D218560030013FC8B /* TermListVC.swift */,
 			);
-			path = List;
+			path = "Term List";
 			sourceTree = "<group>";
 		};
 		5A2A58F122FCA4F400434910 /* Quiz Models */ = {
@@ -380,7 +380,7 @@
 				992E79DC260A43C700C19D49 /* New Modules */,
 				998398E025F6AAAF00CC0354 /* Category List */,
 				5A2A58E322F8DEA500434910 /* Flashcards */,
-				5A2A58E422F8DEC900434910 /* List */,
+				5A2A58E422F8DEC900434910 /* Term List */,
 				5A15062722557B4600717AB8 /* General */,
 				5A78911123428AC600F7EC48 /* Info */,
 				5A2A58E222F8DDB800434910 /* Learning */,
