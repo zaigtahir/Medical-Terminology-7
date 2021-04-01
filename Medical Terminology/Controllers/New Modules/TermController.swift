@@ -177,7 +177,9 @@ class TermController {
 		
 		let learnedFlashcardString = self.learnedFlashcardString(learned: learnedFlashcard)
 		
-		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString )"
+		let nameContainsString = self.nameContains(search: nameContains)
+		
+		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(nameContainsString)"
 		
 		return whereStatement
 	}
@@ -185,63 +187,48 @@ class TermController {
 	// MARK: WHERE string components
 	
 	private func favorteString (isFavorite: Bool?) -> String {
-		
 		guard let f = isFavorite else { return "" }
 		return f ? "AND isfavorite = 1" : "AND isfavorite = 0"
-		
 	}
 	
 	private func learnedString (learned: Bool?) -> String {
-		
 		guard let l = learned else { return "" }
 		return l ? "AND (learnedTerm = 1 AND learnedDefinition = 1)" : "AND (learnedTerm = 0 OR learnedDefinition = 0)"
 	}
 	
 	private func learnedTermString (learnedTerm: Bool?) -> String {
-		
 		guard let lt = learnedTerm else { return ""}
 		return lt ? "AND learnedTerm = 1" : "AND learnedTerm = 0"
-		
 	}
 	
 	private func learnedDefinitionString (learnedDefinition: Bool?) -> String {
-		
 		guard let ld = learnedDefinition else { return ""}
 		return ld ? "AND learnedDefinition = 1" : "AND learnedDefinition = 0"
-		
 	}
 	
 	private func answeredTermString (state: AnsweredState?) -> String {
-		
 		guard let s = state else { return "" }
 		return "AND answeredTerm = \(s.rawValue)"
-		
 	}
 	
 	private func answeredDefinitionString (state: AnsweredState?) -> String {
-		
 		guard let s = state else { return "" }
 		return "AND answeredDefinition = \(s.rawValue)"
-		
 	}
 	
 	private func showOnlyFavoritesString (show: Bool?) -> String {
-		
 		guard let s = show else { return "" }
 		return s ? "AND isFavorite = 1" : ""
 	}
 	
 	private func learnedFlashcardString (learned: Bool?) -> String {
-		
 		guard let l = learned else {return ""}
 		return l ? "AND learnedFlashcard = 1" : ""
 	}
 	
 	private func nameContains (search: String? ) -> String {
 		guard let s = search else {return ""}
-		return "name LIKE %\(s)%"
-		
-		//query = "WHERE term LIKE '\(myChar)%' ORDER BY term"
+		return "AND name LIKE %\(s)%"
 	}
 	
 	// End WHERE string components
