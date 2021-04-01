@@ -44,7 +44,7 @@ class TermController {
 		}
 	}
 	
-	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, searchNameText: String?) -> [Int]{
+	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?) -> [Int]{
 		
 		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS partForSortingHyphen FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
@@ -57,7 +57,7 @@ class TermController {
 												 learnedTerm: learnedTerm,
 												 learnedDefinition: learnedDefinition,
 												 learnedFlashcard: learnedFlashcard,
-												 searchNameText: searchNameText)
+												 nameContains: nameContains)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
@@ -75,7 +75,7 @@ class TermController {
 		return ids
 	}
 
-	func getCount (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, searchNameText: String?) -> Int {
+	func getCount (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?) -> Int {
 		
 		let selectStatement = "SELECT COUNT (*) FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
@@ -88,7 +88,7 @@ class TermController {
 												 learnedTerm: learnedTerm,
 												 learnedDefinition: learnedDefinition,
 												 learnedFlashcard: learnedFlashcard,
-												 searchNameText: searchNameText)
+												 nameContains: nameContains)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
@@ -162,7 +162,7 @@ class TermController {
 		return term
 	}
 	
-	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, searchNameText: String?) -> String {
+	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?) -> String {
 		
 		let showOnlyFavoritesString = self.showOnlyFavoritesString(show: showOnlyFavorites)
 		
@@ -237,9 +237,9 @@ class TermController {
 		return l ? "AND learnedFlashcard = 1" : ""
 	}
 	
-	private func searchNameText (search: String? ) -> String {
+	private func nameContains (search: String? ) -> String {
 		guard let s = search else {return ""}
-		return "name LIKE \(s)%"
+		return "name LIKE %\(s)%"
 		
 		//query = "WHERE term LIKE '\(myChar)%' ORDER BY term"
 	}
