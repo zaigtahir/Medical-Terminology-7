@@ -61,14 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Audio file check done! if there were any missing they would be listed before this ending line.")
 
         }
- */
-		
-		let tc = TermController()
-		let ids = tc.getTermIDs (categoryID: 1, showFavoritesOnly: true, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, nameContains: "a", nameStartsWith: .none, orderByName: true)
-		
-		let count = tc.getCount(categoryID: 1, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, nameContains: .none, nameStartsWith: "a")
-		
-		
+ */		
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {
             
