@@ -10,17 +10,6 @@ import Foundation
 
 class Tests {
 	
-	let tc = TermController()
-	init() {
-		
-		
-			
-		}
-		
-	func testStatements () -> [Int] {
-		let ids = tc.getTermIDs(categoryID: 1, showFavoritesOnly: false, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, nameContains: "ha", nameStartingWith: .none)
-		return ids
-	}
 
 	
 }
