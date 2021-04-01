@@ -181,7 +181,7 @@ class TermController {
 		
 		let nameContainsString = self.nameContains(search: nameContains)
 		
-		let nameStartsWith = self.nameStartsWith(search: nameStartingWith)
+		let nameStartingWith = self.nameStartsWith(search: nameStartingWith)
 		
 		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(nameContainsString) \(nameStartingWith)"
 		
@@ -232,12 +232,12 @@ class TermController {
 	
 	private func nameContains (search: String? ) -> String {
 		guard let s = search else {return ""}
-		return "AND name LIKE %\(s)%"
+		return "AND name LIKE '%\(s)%' "
 	}
 	
 	private func nameStartsWith (search: String? ) -> String {
 		guard let s = search else {return ""}
-		return "AND noHyphenInName LIKE \(s)%"
+		return "AND noHyphenInName LIKE '\(s)%'"
 	}
 	
 	
