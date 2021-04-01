@@ -41,7 +41,7 @@
 		5A67C14B231071D900BAA2A0 /* QuizDoneCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67C14A231071D900BAA2A0 /* QuizDoneCVCell.swift */; };
 		5A67C14D231077FA00BAA2A0 /* LearnDoneCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67C14C231077FA00BAA2A0 /* LearnDoneCVCell.swift */; };
 		5A6F31B7219C776000E6477E /* DItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F31B6219C776000E6477E /* DItemVC.swift */; };
-		5A6F31C421A458E100E6477E /* AlphaListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F31C321A458E100E6477E /* AlphaListController.swift */; };
+		5A6F31C421A458E100E6477E /* AlphaListController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F31C321A458E100E6477E /* AlphaListController2.swift */; };
 		5A6F31CA21A7032E00E6477E /* DList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F31C921A7032E00E6477E /* DList.swift */; };
 		5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78911223428AFA00F7EC48 /* InfoVC.swift */; };
 		5A88633F217226180013FC8B /* Medical Terminology.db in Resources */ = {isa = PBXBuildFile; fileRef = 5A88633D217226180013FC8B /* Medical Terminology.db */; };
@@ -64,7 +64,6 @@
 		992E79D4260A2ADD00C19D49 /* FlashcardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79D1260A2ADD00C19D49 /* FlashcardVC.swift */; };
 		992E79DF260A43C700C19D49 /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79DD260A43C700C19D49 /* Term.swift */; };
 		992E79E0260A43C700C19D49 /* TermController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79DE260A43C700C19D49 /* TermController.swift */; };
-		992E79E4260B7BAA00C19D49 /* CategoryController2bk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79E3260B7BAA00C19D49 /* CategoryController2bk.swift */; };
 		992E79E8260B834200C19D49 /* Category2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79E7260B834200C19D49 /* Category2.swift */; };
 		992E79EB260C413D00C19D49 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79EA260C413D00C19D49 /* AddCell.swift */; };
 		992E79FD260FBA3100C19D49 /* CategoryController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79FC260FBA3100C19D49 /* CategoryController2.swift */; };
@@ -134,7 +133,7 @@
 		5A67C14A231071D900BAA2A0 /* QuizDoneCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDoneCVCell.swift; sourceTree = "<group>"; };
 		5A67C14C231077FA00BAA2A0 /* LearnDoneCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDoneCVCell.swift; sourceTree = "<group>"; };
 		5A6F31B6219C776000E6477E /* DItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemVC.swift; sourceTree = "<group>"; };
-		5A6F31C321A458E100E6477E /* AlphaListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaListController.swift; sourceTree = "<group>"; };
+		5A6F31C321A458E100E6477E /* AlphaListController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaListController2.swift; sourceTree = "<group>"; };
 		5A6F31C921A7032E00E6477E /* DList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DList.swift; sourceTree = "<group>"; };
 		5A78911223428AFA00F7EC48 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
 		5A88633D217226180013FC8B /* Medical Terminology.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Medical Terminology.db"; sourceTree = "<group>"; };
@@ -157,7 +156,6 @@
 		992E79D1260A2ADD00C19D49 /* FlashcardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardVC.swift; sourceTree = "<group>"; };
 		992E79DD260A43C700C19D49 /* Term.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
 		992E79DE260A43C700C19D49 /* TermController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermController.swift; sourceTree = "<group>"; };
-		992E79E3260B7BAA00C19D49 /* CategoryController2bk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController2bk.swift; sourceTree = "<group>"; };
 		992E79E7260B834200C19D49 /* Category2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category2.swift; sourceTree = "<group>"; };
 		992E79EA260C413D00C19D49 /* AddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
 		992E79FC260FBA3100C19D49 /* CategoryController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController2.swift; sourceTree = "<group>"; };
@@ -221,7 +219,7 @@
 		5A15062722557B4600717AB8 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				5A6F31C321A458E100E6477E /* AlphaListController.swift */,
+				5A6F31C321A458E100E6477E /* AlphaListController2.swift */,
 				992B56802612870C000457AA /* TextUtilities.swift */,
 				994175DD245A38A900E281DB /* AudioFileController.swift */,
 				99D55E4925FF2F17003ABE0B /* CategoryController.swift */,
@@ -439,7 +437,6 @@
 			children = (
 				992E79DD260A43C700C19D49 /* Term.swift */,
 				992E79DE260A43C700C19D49 /* TermController.swift */,
-				992E79E3260B7BAA00C19D49 /* CategoryController2bk.swift */,
 				992E79E7260B834200C19D49 /* Category2.swift */,
 				992E79FC260FBA3100C19D49 /* CategoryController2.swift */,
 			);
@@ -559,7 +556,6 @@
 				5AD08055227860D000962AB6 /* AlphaList.swift in Sources */,
 				5A2A58DD22F8C35200434910 /* QuizSetVC.swift in Sources */,
 				992B56812612870C000457AA /* TextUtilities.swift in Sources */,
-				992E79E4260B7BAA00C19D49 /* CategoryController2bk.swift in Sources */,
 				992E79D4260A2ADD00C19D49 /* FlashcardVC.swift in Sources */,
 				5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */,
 				5A03479022D39D0900749EBC /* FMDatabaseAdditions.m in Sources */,
@@ -609,7 +605,7 @@
 				5A886374218E82330013FC8B /* DItemController.swift in Sources */,
 				998B3D1926150F230062AFD2 /* Protocols.swift in Sources */,
 				5A67C14D231077FA00BAA2A0 /* LearnDoneCVCell.swift in Sources */,
-				5A6F31C421A458E100E6477E /* AlphaListController.swift in Sources */,
+				5A6F31C421A458E100E6477E /* AlphaListController2.swift in Sources */,
 				992E79E8260B834200C19D49 /* Category2.swift in Sources */,
 				5A2A58EE22FBC24900434910 /* QuizOptionsVC.swift in Sources */,
 				5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */,
