@@ -44,9 +44,9 @@ class TermController {
 		}
 	}
 	
-	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?) -> [Int]{
+	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?, nameStartingWith: String?) -> [Int]{
 		
-		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS partForSortingHyphen FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
+		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
 		let whereStatement = self.whereStatement (categoryID: categoryID,
 												 showOnlyFavorites: showFavoritesOnly,
@@ -57,7 +57,8 @@ class TermController {
 												 learnedTerm: learnedTerm,
 												 learnedDefinition: learnedDefinition,
 												 learnedFlashcard: learnedFlashcard,
-												 nameContains: nameContains)
+												 nameContains: nameContains,
+												 nameStartingWith: nameStartingWith)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
@@ -75,9 +76,9 @@ class TermController {
 		return ids
 	}
 
-	func getCount (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?) -> Int {
+	func getCount (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?, nameStartingWith: String?) -> Int {
 		
-		let selectStatement = "SELECT COUNT (*) FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
+		let selectStatement = "SELECT COUNT (REPLACE (name, '-' , '') AS noHyphenInName) FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
 		let whereStatement = self.whereStatement(categoryID: categoryID,
 												 showOnlyFavorites: .none,
@@ -88,7 +89,8 @@ class TermController {
 												 learnedTerm: learnedTerm,
 												 learnedDefinition: learnedDefinition,
 												 learnedFlashcard: learnedFlashcard,
-												 nameContains: nameContains)
+												 nameContains: nameContains,
+												 nameStartingWith: nameStartingWith)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
@@ -162,7 +164,7 @@ class TermController {
 		return term
 	}
 	
-	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?) -> String {
+	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?, nameStartingWith: String?) -> String {
 		
 		let showOnlyFavoritesString = self.showOnlyFavoritesString(show: showOnlyFavorites)
 		
@@ -179,7 +181,9 @@ class TermController {
 		
 		let nameContainsString = self.nameContains(search: nameContains)
 		
-		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(nameContainsString)"
+		let nameStartsWith = self.nameStartsWith(search: nameStartingWith)
+		
+		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(nameContainsString) \(nameStartingWith)"
 		
 		return whereStatement
 	}
@@ -230,6 +234,13 @@ class TermController {
 		guard let s = search else {return ""}
 		return "AND name LIKE %\(s)%"
 	}
+	
+	private func nameStartsWith (search: String? ) -> String {
+		guard let s = search else {return ""}
+		return "AND noHyphenInName LIKE \(s)%"
+	}
+	
+	
 	
 	// End WHERE string components
 	
