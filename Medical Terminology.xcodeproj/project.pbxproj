@@ -30,9 +30,9 @@
 		5A367D2E22EA683F003A7E4B /* LearningHomeOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D2D22EA683F003A7E4B /* LearningHomeOptionsVC.swift */; };
 		5A367D3422EF513F003A7E4B /* CircularBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D3322EF513F003A7E4B /* CircularBar.swift */; };
 		5A37F87A22E74B18008A5FA5 /* ScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37F87922E74B18008A5FA5 /* ScrollController.swift */; };
-		5A4471552281C655008E3107 /* ListVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471542281C655008E3107 /* ListVCH.swift */; };
+		5A4471552281C655008E3107 /* TermListVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471542281C655008E3107 /* TermListVCH.swift */; };
 		5A4471612283DFB9008E3107 /* SearchLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471602283DFB9008E3107 /* SearchLists.swift */; };
-		5A4471652284EE85008E3107 /* ListCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471642284EE85008E3107 /* ListCC.swift */; };
+		5A4471652284EE85008E3107 /* TermCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4471642284EE85008E3107 /* TermCell.swift */; };
 		5A4F854822B168870016621C /* LearnCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854722B168870016621C /* LearnCVCell.swift */; };
 		5A4F854A22B16C2E0016621C /* LearnSetVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854922B16C2E0016621C /* LearnSetVCH.swift */; };
 		5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854B22B173B40016621C /* LearnSetVC.swift */; };
@@ -45,7 +45,7 @@
 		5A6F31CA21A7032E00E6477E /* DList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F31C921A7032E00E6477E /* DList.swift */; };
 		5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78911223428AFA00F7EC48 /* InfoVC.swift */; };
 		5A88633F217226180013FC8B /* Medical Terminology.db in Resources */ = {isa = PBXBuildFile; fileRef = 5A88633D217226180013FC8B /* Medical Terminology.db */; };
-		5A88634E218560030013FC8B /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A88634D218560030013FC8B /* ListVC.swift */; };
+		5A88634E218560030013FC8B /* TermListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A88634D218560030013FC8B /* TermListVC.swift */; };
 		5A886374218E82330013FC8B /* DItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A886373218E82330013FC8B /* DItemController.swift */; };
 		5ABE7221226CB25F005B83C4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE7220226CB25F005B83C4 /* Utilities.swift */; };
 		5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC0C56E22D6AB77009965F1 /* LearningHomeVC.swift */; };
@@ -123,9 +123,9 @@
 		5A367D2D22EA683F003A7E4B /* LearningHomeOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeOptionsVC.swift; sourceTree = "<group>"; };
 		5A367D3322EF513F003A7E4B /* CircularBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBar.swift; sourceTree = "<group>"; };
 		5A37F87922E74B18008A5FA5 /* ScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollController.swift; sourceTree = "<group>"; };
-		5A4471542281C655008E3107 /* ListVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVCH.swift; sourceTree = "<group>"; };
+		5A4471542281C655008E3107 /* TermListVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermListVCH.swift; sourceTree = "<group>"; };
 		5A4471602283DFB9008E3107 /* SearchLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLists.swift; sourceTree = "<group>"; };
-		5A4471642284EE85008E3107 /* ListCC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCC.swift; sourceTree = "<group>"; };
+		5A4471642284EE85008E3107 /* TermCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermCell.swift; sourceTree = "<group>"; };
 		5A4F854722B168870016621C /* LearnCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnCVCell.swift; sourceTree = "<group>"; };
 		5A4F854922B16C2E0016621C /* LearnSetVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSetVCH.swift; sourceTree = "<group>"; };
 		5A4F854B22B173B40016621C /* LearnSetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnSetVC.swift; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 		5A6F31C921A7032E00E6477E /* DList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DList.swift; sourceTree = "<group>"; };
 		5A78911223428AFA00F7EC48 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
 		5A88633D217226180013FC8B /* Medical Terminology.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Medical Terminology.db"; sourceTree = "<group>"; };
-		5A88634D218560030013FC8B /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
+		5A88634D218560030013FC8B /* TermListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermListVC.swift; sourceTree = "<group>"; };
 		5A886373218E82330013FC8B /* DItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController.swift; sourceTree = "<group>"; };
 		5ABE7220226CB25F005B83C4 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		5AC0C56E22D6AB77009965F1 /* LearningHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeVC.swift; sourceTree = "<group>"; };
@@ -328,9 +328,9 @@
 			isa = PBXGroup;
 			children = (
 				5A6F31B6219C776000E6477E /* DItemVC.swift */,
-				5A4471642284EE85008E3107 /* ListCC.swift */,
-				5A4471542281C655008E3107 /* ListVCH.swift */,
-				5A88634D218560030013FC8B /* ListVC.swift */,
+				5A4471642284EE85008E3107 /* TermCell.swift */,
+				5A4471542281C655008E3107 /* TermListVCH.swift */,
+				5A88634D218560030013FC8B /* TermListVC.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -578,8 +578,8 @@
 				992B56652610E593000457AA /* CategoryVC.swift in Sources */,
 				5A18DF71241E8AD10006825B /* MyConstants.swift in Sources */,
 				5A4F854A22B16C2E0016621C /* LearnSetVCH.swift in Sources */,
-				5A4471552281C655008E3107 /* ListVCH.swift in Sources */,
-				5A88634E218560030013FC8B /* ListVC.swift in Sources */,
+				5A4471552281C655008E3107 /* TermListVCH.swift in Sources */,
+				5A88634E218560030013FC8B /* TermListVC.swift in Sources */,
 				5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */,
 				992B56A4261382BF000457AA /* ValidationVC.swift in Sources */,
 				992E79E0260A43C700C19D49 /* TermController.swift in Sources */,
@@ -615,7 +615,7 @@
 				5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */,
 				5A4471612283DFB9008E3107 /* SearchLists.swift in Sources */,
 				9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */,
-				5A4471652284EE85008E3107 /* ListCC.swift in Sources */,
+				5A4471652284EE85008E3107 /* TermCell.swift in Sources */,
 				99D55E0525F6C7CA003ABE0B /* QuizHome.swift in Sources */,
 				99D55E892601A01A003ABE0B /* UserCategoryController.swift in Sources */,
 				5A15062A22557E7C00717AB8 /* Answer.swift in Sources */,

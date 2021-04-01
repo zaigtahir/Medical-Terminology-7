@@ -8,7 +8,7 @@
 
 import UIKit
 import SQLite3
-class ListVC: UIViewController, ListTCDelagate, UITableViewDelegate {
+class TermListVC: UIViewController, ListTCDelagate, UITableViewDelegate {
  
     //will use ListTC as the table datasource
     //use this VC to use as the table delegate as lots of actions happen based on selection including segue
@@ -21,7 +21,7 @@ class ListVC: UIViewController, ListTCDelagate, UITableViewDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var dItem: DItem! //to hold the dItem for the segue
-    var listTC: ListVCH! //need to keep a reference here
+    var listTC: TermListVCH! //need to keep a reference here
     
     let dIC = DItemController()
     
@@ -30,7 +30,7 @@ class ListVC: UIViewController, ListTCDelagate, UITableViewDelegate {
         super.viewDidLoad()
         
         //setting my ListTC class as the tableview datasource and delegate
-        listTC = ListVCH()
+        listTC = TermListVCH()
         tableView.dataSource = listTC
         tableView.delegate = self
         
@@ -110,7 +110,7 @@ class ListVC: UIViewController, ListTCDelagate, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //save the dItem user selected based on section and row
                 
-        if let cell = tableView.cellForRow(at: indexPath) as? ListCC {
+        if let cell = tableView.cellForRow(at: indexPath) as? TermCell {
             dItem = cell.dItem
         }
         

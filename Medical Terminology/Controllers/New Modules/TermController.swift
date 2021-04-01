@@ -37,12 +37,12 @@ class TermController {
 		}
 	}
 	
-	func getTermIDs (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) -> [Int]{
+	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) -> [Int]{
 		
 		let selectStatement = "SELECT \(terms).termID FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
 		let whereStatement = self.whereStatement(categoryID: categoryID,
-												 showOnlyFavorites: showOnlyFavorites,
+												 showOnlyFavorites: showFavoritesOnly,
 												 isFavorite: isFavorite,
 												 answeredTerm: answeredTerm,
 												 answeredDefinition: answeredDefinition,

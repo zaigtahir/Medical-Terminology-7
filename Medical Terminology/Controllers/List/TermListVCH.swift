@@ -15,11 +15,11 @@ import UIKit
 
 protocol ListTCDelagate: class {
     func favoriteItemChanged()  //when the user changes the state of a favorite item
-    func tableDataChanged()     //when the table data is changed and the ListVC needs to refresh the table
+    func tableDataChanged()     //when the table data is changed and the TermListVC needs to refresh the table
 }
 
-//Have to incude NSObject to that ListVCH can implement the table view and search bar delegates
-class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDelegate, UISearchBarDelegate
+//Have to incude NSObject to that TermListVCH can implement the table view and search bar delegates
+class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDelegate, UISearchBarDelegate
 {
    
     private var searchText = ""
@@ -58,7 +58,7 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //use a default cell with subtitle setting in the story board
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListCC
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! TermCell
         //get the dItem for which ever list is set
         
         var dItem: DItem
@@ -118,12 +118,12 @@ class ListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDel
         
     }
     
-    //ListCC delegate function
+    //TermCell delegate function
     func pressedFavoriteButton(dItem: DItem) {
         dItem.isFavorite = !dItem.isFavorite
         dIC.saveFavorite(itemID: dItem.itemID, isFavorite: dItem.isFavorite)
         
-        //need to notify the ListVC that favorites count is changed
+        //need to notify the TermListVC that favorites count is changed
         delegate?.favoriteItemChanged()
     }
     

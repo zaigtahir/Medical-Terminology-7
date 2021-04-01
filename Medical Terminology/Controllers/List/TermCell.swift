@@ -13,7 +13,7 @@ protocol ListCellDelegate: class {
     func pressedFavoriteButton (dItem: DItem)
 }
 
-class ListCC: UITableViewCell, AVAudioPlayerDelegate {
+class TermCell: UITableViewCell, AVAudioPlayerDelegate {
     
     @IBOutlet weak var termLabel: UILabel!
     @IBOutlet weak var definitionLabel: UILabel!
