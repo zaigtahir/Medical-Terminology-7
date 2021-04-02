@@ -61,7 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Audio file check done! if there were any missing they would be listed before this ending line.")
 
         }
- */		
+ 		*/
+		
+		
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {
             

@@ -9,17 +9,10 @@
 import UIKit
 
 //Have to incude NSObject to that TermListVCH can implement the table view and search bar delegates
-class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
+class TermListVCH: NSObject, UISearchBarDelegate
 
 {
 	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		<#code#>
-	}
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		<#code#>
-	}
 	
 }
 

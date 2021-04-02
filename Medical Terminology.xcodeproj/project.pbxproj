@@ -275,7 +275,6 @@
 				5A15062822557B7500717AB8 /* Database */,
 				5A88634C21853DC90013FC8B /* Controllers */,
 				5A88636F2186AC400013FC8B /* Model */,
-				99D76AB7261688BF0062CCD4 /* AlphaList2.swift */,
 				5A8863702186AC840013FC8B /* View */,
 				5A189C2A216D8E8400929AB8 /* Products */,
 				5A189C2C216D8E8400929AB8 /* AppDelegate.swift */,
@@ -438,6 +437,7 @@
 		992E79DC260A43C700C19D49 /* New Modules */ = {
 			isa = PBXGroup;
 			children = (
+				99D76AB7261688BF0062CCD4 /* AlphaList2.swift */,
 				992E79DD260A43C700C19D49 /* Term.swift */,
 				992E79DE260A43C700C19D49 /* TermController.swift */,
 				992E79E7260B834200C19D49 /* Category2.swift */,

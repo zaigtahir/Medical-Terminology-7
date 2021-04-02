@@ -251,7 +251,7 @@ class TermController {
 	// this is ONLY added for getTermID as that is the only SELECT that will make this virtual column for ordering
 	
 	private func orderByNameString (toOrder: Bool?) -> String {
-		guard let t = toOrder else {return ""}
+		guard let _ = toOrder else {return ""}
 		return "ORDER BY noHyphenInName"
 	}
 		
