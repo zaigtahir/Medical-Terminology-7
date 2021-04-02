@@ -15,7 +15,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UISearchBarDelegate
 
 	var currentCategoryID = 1 			// default starting off category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
-	var termsList = AlphaList2()			// holds the list to view
+	var termsList = AlphaList()			// holds the list to view
 	var searchText : String? = nil
 	
 	let tc = TermController()

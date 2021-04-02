@@ -49,7 +49,6 @@
 		5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC0C56E22D6AB77009965F1 /* LearningHomeVC.swift */; };
 		5AC0C57322D6C83C009965F1 /* LearningHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC0C57222D6C83C009965F1 /* LearningHomeVCH.swift */; };
 		5AC448B522BC072C004B47C1 /* QuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC448B422BC072C004B47C1 /* QuestionController.swift */; };
-		5AD08055227860D000962AB6 /* AlphaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD08054227860D000962AB6 /* AlphaList.swift */; };
 		5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD725E5225E4E2F007CED84 /* MyTheme.swift */; };
 		5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85733228F26A1008929D5 /* FlashCardController.swift */; };
 		5AF85739228F2C27008929D5 /* FlashcardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashcardCell.swift */; };
@@ -87,7 +86,7 @@
 		99D55E4D25FF5A03003ABE0B /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4C25FF5A03003ABE0B /* Tests.swift */; };
 		99D55E5825FF685C003ABE0B /* DItemController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E5725FF685C003ABE0B /* DItemController3.swift */; };
 		99D55E892601A01A003ABE0B /* UserCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E882601A01A003ABE0B /* UserCategoryController.swift */; };
-		99D76AB8261688BF0062CCD4 /* AlphaList2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AB7261688BF0062CCD4 /* AlphaList2.swift */; };
+		99D76AB8261688BF0062CCD4 /* AlphaList3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AB7261688BF0062CCD4 /* AlphaList3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,7 +139,6 @@
 		5AC0C56E22D6AB77009965F1 /* LearningHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeVC.swift; sourceTree = "<group>"; };
 		5AC0C57222D6C83C009965F1 /* LearningHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeVCH.swift; sourceTree = "<group>"; };
 		5AC448B422BC072C004B47C1 /* QuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionController.swift; sourceTree = "<group>"; };
-		5AD08054227860D000962AB6 /* AlphaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaList.swift; sourceTree = "<group>"; };
 		5AD725E5225E4E2F007CED84 /* MyTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTheme.swift; sourceTree = "<group>"; };
 		5AF85733228F26A1008929D5 /* FlashCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardController.swift; sourceTree = "<group>"; };
 		5AF85738228F2C27008929D5 /* FlashcardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardCell.swift; sourceTree = "<group>"; };
@@ -178,7 +176,7 @@
 		99D55E4C25FF5A03003ABE0B /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		99D55E5725FF685C003ABE0B /* DItemController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController3.swift; sourceTree = "<group>"; };
 		99D55E882601A01A003ABE0B /* UserCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCategoryController.swift; sourceTree = "<group>"; };
-		99D76AB7261688BF0062CCD4 /* AlphaList2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaList2.swift; sourceTree = "<group>"; };
+		99D76AB7261688BF0062CCD4 /* AlphaList3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaList3.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -396,7 +394,6 @@
 				5A6F31C921A7032E00E6477E /* DList.swift */,
 				5A1506242255796C00717AB8 /* Question.swift */,
 				5A15062922557E7C00717AB8 /* Answer.swift */,
-				5AD08054227860D000962AB6 /* AlphaList.swift */,
 				998398E225F6AB3C00CC0354 /* Category.swift */,
 			);
 			path = Model;
@@ -431,7 +428,7 @@
 		992E79DC260A43C700C19D49 /* New Modules */ = {
 			isa = PBXGroup;
 			children = (
-				99D76AB7261688BF0062CCD4 /* AlphaList2.swift */,
+				99D76AB7261688BF0062CCD4 /* AlphaList3.swift */,
 				992E79DD260A43C700C19D49 /* Term.swift */,
 				992E79DE260A43C700C19D49 /* TermController.swift */,
 				992E79E7260B834200C19D49 /* Category2.swift */,
@@ -550,7 +547,6 @@
 				5A189C3F217123B900929AB8 /* DItem.swift in Sources */,
 				5A367D3422EF513F003A7E4B /* CircularBar.swift in Sources */,
 				5A03478E22D39D0900749EBC /* FMDatabase.m in Sources */,
-				5AD08055227860D000962AB6 /* AlphaList.swift in Sources */,
 				5A2A58DD22F8C35200434910 /* QuizSetVC.swift in Sources */,
 				992B56812612870C000457AA /* TextUtilities.swift in Sources */,
 				992E79D4260A2ADD00C19D49 /* FlashcardVC.swift in Sources */,
@@ -605,7 +601,7 @@
 				992E79E8260B834200C19D49 /* Category2.swift in Sources */,
 				5A2A58EE22FBC24900434910 /* QuizOptionsVC.swift in Sources */,
 				5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */,
-				99D76AB8261688BF0062CCD4 /* AlphaList2.swift in Sources */,
+				99D76AB8261688BF0062CCD4 /* AlphaList3.swift in Sources */,
 				9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */,
 				5A4471652284EE85008E3107 /* TermCell.swift in Sources */,
 				99D55E0525F6C7CA003ABE0B /* QuizHome.swift in Sources */,
