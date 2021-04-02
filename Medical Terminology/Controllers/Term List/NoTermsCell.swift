@@ -14,7 +14,8 @@ class NoTermsCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+	@IBOutlet weak var helloLabel: UILabel!
+	
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

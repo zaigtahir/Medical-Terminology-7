@@ -117,8 +117,6 @@ class TermController {
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
-		print("query in getTermIDs: \(query)")
-		
 		var ids = [Int]()
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -148,8 +146,6 @@ class TermController {
 												 orderByName: .none)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
-		
-		print("query in get count: \(query)")
 		
 		var count = 0
 		
@@ -200,9 +196,7 @@ class TermController {
 		let whereStatement = "WHERE categoryID = \(categoryID) \(favorteString(isFavorite: isFavorite)) \(nameStartsWithString(search: nameStartsWith)) \(nameContainsString(search: nameContains)) \(containsTextString(search: containsText)) \(orderByNameString(toOrder: true))"
 		
 		let query = ("\(selectStatement) \(whereStatement)" )
-		
-		print("query in searchTermIDs: \(query)")
-		
+	
 		var ids = [Int]()
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {

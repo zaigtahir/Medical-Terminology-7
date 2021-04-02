@@ -55,21 +55,20 @@ class TermListVCH: NSObject, UITableViewDataSource
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		if termsList.getCount() == 0 {
-			print("getting the empty cell")
 			let cell = tableView.dequeueReusableCell(withIdentifier: "noTermsCell", for: indexPath) as? NoTermsCell
 		
 			return cell!
 		}
 		
-		
-		let cell = tableView.dequeueReusableCell(withIdentifier: "termCell", for: indexPath)
+	
+		let termCell = tableView.dequeueReusableCell(withIdentifier: "termCell", for: indexPath) as? TermCell
 		
 		let termID = termsList.getTermID(indexPath: indexPath)
 		let term = tc.getTerm(termID: termID)
 		
-		cell.textLabel!.text = term.name
+		termCell!.configure(term: term, indexPath: indexPath)
 		
-		return cell
+		return termCell!
 	}
 	
 	

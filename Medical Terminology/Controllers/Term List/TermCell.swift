@@ -23,6 +23,11 @@ class TermCell: UITableViewCell, AVAudioPlayerDelegate {
     
     var indexPath : IndexPath!
     var dItem : DItem!
+	
+	// set up in segue
+	var term : Term!
+	
+	
     let utilities = Utilities()
     let aFC = AudioFileController()
     
@@ -35,25 +40,26 @@ class TermCell: UITableViewCell, AVAudioPlayerDelegate {
         // Initialization code
     }
     
-    func configure(dItem: DItem, indexPath: IndexPath) {
-        self.dItem = dItem
+    func configure(term: Term, indexPath: IndexPath) {
+        self.term = term
         self.indexPath = indexPath
-        self.termLabel.text = dItem.term
-        self.definitionLabel.text = dItem.definition
+		self.termLabel.text = term.name
+		self.definitionLabel.text = term.definition
         
-        if dItem.audioFile != "" && aFC.isAudioFilePresentInBundle(filename: dItem.audioFile, extension: "mp3")
+		if term.audioFile != "" && aFC.isAudioFilePresentInBundle(filename: term.audioFile ?? "", extension: "mp3")
         {
             playAudioButton.isEnabled = true
         } else {
             playAudioButton.isEnabled = false
         }
         
-        utilities.setFavoriteState(button: favoriteButton, isFavorite: dItem.isFavorite)
+		// MARK: Figure this out
+		//utilities.setFavoriteState(button: favoriteButton, //isFavorite: term.)
     }
     
     func playAudio () {
         
-		let fileName = "\(myConstants.audioFolder)/\(dItem.audioFile).mp3"
+		let fileName = "\(myConstants.audioFolder)/\(term.audioFile).mp3"
         
         let path = Bundle.main.path(forResource: fileName, ofType: nil)!
         

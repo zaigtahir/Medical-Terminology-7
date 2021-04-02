@@ -17,7 +17,7 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-gM-IpN">
@@ -223,7 +223,7 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
@@ -543,7 +543,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashcardVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TVx-7Q-M6g">
@@ -891,7 +891,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashcardOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -964,7 +964,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -1065,7 +1065,7 @@
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="TermListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="100" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tGH-PG-Amh" propertyAccessControl="none">
@@ -1172,40 +1172,40 @@
                                             <outlet property="termLabel" destination="FRH-Sg-Cu8" id="Ccb-wB-fs8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noTermsCell" rowHeight="162" id="Qof-m5-2UM" customClass="NoTermsCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="114" width="414" height="162"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noTermsCell" rowHeight="164" id="Qof-m5-2UM" customClass="NoTermsCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="114" width="414" height="164"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qof-m5-2UM" id="mkq-pi-KQB" customClass="NoTermsCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                        <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qof-m5-2UM" id="mkq-pi-KQB">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text.bubble" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Pu0-M8-1i7">
-                                                    <rect key="frame" x="175" y="32" width="64" height="63"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text.bubble" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DGh-LO-7tX">
+                                                    <rect key="frame" x="175" y="31.5" width="64" height="63.5"/>
                                                     <color key="tintColor" name="color main 2"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="64" id="Umb-sf-lPw"/>
-                                                        <constraint firstAttribute="width" constant="64" id="ZTN-v3-gyb"/>
+                                                        <constraint firstAttribute="width" constant="64" id="Xhw-Yd-Qgc"/>
+                                                        <constraint firstAttribute="height" constant="64" id="dI0-mx-eJ0"/>
                                                     </constraints>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Terms Were Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqQ-Tx-rIS">
-                                                    <rect key="frame" x="50" y="115" width="314" height="27"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no terms available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRs-UZ-BvG">
+                                                    <rect key="frame" x="100" y="115" width="214.5" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="color text"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="Pu0-M8-1i7" firstAttribute="centerX" secondItem="mkq-pi-KQB" secondAttribute="centerX" id="Air-XJ-wyt"/>
-                                                <constraint firstItem="gqQ-Tx-rIS" firstAttribute="leading" secondItem="mkq-pi-KQB" secondAttribute="leading" constant="50" id="Owz-a0-uQB"/>
-                                                <constraint firstAttribute="bottom" secondItem="gqQ-Tx-rIS" secondAttribute="bottom" constant="20" id="Un5-Av-a8w"/>
-                                                <constraint firstItem="gqQ-Tx-rIS" firstAttribute="top" secondItem="Pu0-M8-1i7" secondAttribute="bottom" constant="20" id="fhb-mg-Zs7"/>
-                                                <constraint firstAttribute="trailing" secondItem="gqQ-Tx-rIS" secondAttribute="trailing" constant="50" id="xNB-uf-i1a"/>
-                                                <constraint firstItem="Pu0-M8-1i7" firstAttribute="top" secondItem="mkq-pi-KQB" secondAttribute="topMargin" constant="20" id="zuJ-tq-1r8"/>
+                                                <constraint firstAttribute="bottom" secondItem="hRs-UZ-BvG" secondAttribute="bottom" constant="20" id="6Fi-OI-Yoo"/>
+                                                <constraint firstItem="DGh-LO-7tX" firstAttribute="top" secondItem="mkq-pi-KQB" secondAttribute="topMargin" constant="20" id="6SJ-VA-Q2y"/>
+                                                <constraint firstItem="hRs-UZ-BvG" firstAttribute="centerX" secondItem="mkq-pi-KQB" secondAttribute="centerX" id="USQ-Z7-zVD"/>
+                                                <constraint firstItem="DGh-LO-7tX" firstAttribute="centerX" secondItem="mkq-pi-KQB" secondAttribute="centerX" id="kje-NQ-K0Q"/>
+                                                <constraint firstItem="hRs-UZ-BvG" firstAttribute="top" secondItem="DGh-LO-7tX" secondAttribute="bottom" constant="20" id="mea-fq-waO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="helloLabel" destination="hRs-UZ-BvG" id="pAa-t6-Yec"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1304,7 +1304,7 @@
             <objects>
                 <viewController id="awX-yg-8xS" customClass="DItemVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4wH-cl-seN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L29-8G-zy9">
@@ -1406,7 +1406,7 @@
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-vJ-agb">
@@ -1616,7 +1616,7 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
@@ -1820,19 +1820,19 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="kV9-4f-zn3">
                                                                     <rect key="frame" x="0.0" y="17" width="351" height="104"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="You got 2 of 8 (or 58%) correct" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaM-4q-Vfi">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You got 2 of 8 (or 58%) correct" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaM-4q-Vfi">
                                                                             <rect key="frame" x="56.5" y="0.0" width="238.5" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" name="color text"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Scroll back to review your answers" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9r-yz-4lR">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scroll back to review your answers" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9r-yz-4lR">
                                                                             <rect key="frame" x="44.5" y="35.5" width="262.5" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" name="color text"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dww-Lm-sOc">
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dww-Lm-sOc">
                                                                             <rect key="frame" x="103.5" y="71" width="144" height="33"/>
                                                                             <color key="backgroundColor" name="color main"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1954,7 +1954,7 @@
             <objects>
                 <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -2178,10 +2178,10 @@
             </objects>
             <point key="canvasLocation" x="2235" y="-1372"/>
         </scene>
-        <!--My Custom Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="KvA-dn-KGr">
             <objects>
-                <tabBarController storyboardIdentifier="appTabController" automaticallyAdjustsScrollViewInsets="NO" id="9CB-n8-Tpz" customClass="MyCustomTabBarController" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="9CB-n8-Tpz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="u0E-CD-P8q"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="XEg-C1-IMD">
@@ -2208,7 +2208,7 @@
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">

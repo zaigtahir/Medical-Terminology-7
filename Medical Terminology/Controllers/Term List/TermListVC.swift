@@ -17,8 +17,6 @@ class TermListVC: UIViewController, UISearchBarDelegate {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var favoritesLabel: UILabel!
 	@IBOutlet weak var favoritesSwitch: UISwitch!
-	@IBOutlet weak var heartImage: UIImageView!
-	@IBOutlet weak var noFavoritesLabel: UILabel!
 	@IBOutlet weak var searchBar: UISearchBar!
 	
 	let termListVCH = TermListVCH()
