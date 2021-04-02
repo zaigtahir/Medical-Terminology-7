@@ -8,7 +8,8 @@
 
 import UIKit
 import SQLite3
-class TermListVC: UIViewController, ListTCDelagate, UITableViewDelegate {
+
+class TermListVC: UIViewController {
  
     //will use ListTC as the table datasource
     //use this VC to use as the table delegate as lots of actions happen based on selection including segue
@@ -20,6 +21,9 @@ class TermListVC: UIViewController, ListTCDelagate, UITableViewDelegate {
     @IBOutlet weak var noFavoritesLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     
+	
+	/*
+	
     var dItem: DItem! //to hold the dItem for the segue
     var listTC: TermListVCH! //need to keep a reference here
     
@@ -148,4 +152,6 @@ class TermListVC: UIViewController, ListTCDelagate, UITableViewDelegate {
         
         updateDisplay()
     }
+
+*/
 }

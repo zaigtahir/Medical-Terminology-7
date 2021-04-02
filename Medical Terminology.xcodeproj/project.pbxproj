@@ -89,6 +89,7 @@
 		99D55E4D25FF5A03003ABE0B /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4C25FF5A03003ABE0B /* Tests.swift */; };
 		99D55E5825FF685C003ABE0B /* DItemController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E5725FF685C003ABE0B /* DItemController3.swift */; };
 		99D55E892601A01A003ABE0B /* UserCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E882601A01A003ABE0B /* UserCategoryController.swift */; };
+		99D76AB8261688BF0062CCD4 /* AlphaList2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AB7261688BF0062CCD4 /* AlphaList2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,6 +182,7 @@
 		99D55E4C25FF5A03003ABE0B /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		99D55E5725FF685C003ABE0B /* DItemController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController3.swift; sourceTree = "<group>"; };
 		99D55E882601A01A003ABE0B /* UserCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCategoryController.swift; sourceTree = "<group>"; };
+		99D76AB7261688BF0062CCD4 /* AlphaList2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaList2.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -273,6 +275,7 @@
 				5A15062822557B7500717AB8 /* Database */,
 				5A88634C21853DC90013FC8B /* Controllers */,
 				5A88636F2186AC400013FC8B /* Model */,
+				99D76AB7261688BF0062CCD4 /* AlphaList2.swift */,
 				5A8863702186AC840013FC8B /* View */,
 				5A189C2A216D8E8400929AB8 /* Products */,
 				5A189C2C216D8E8400929AB8 /* AppDelegate.swift */,
@@ -609,6 +612,7 @@
 				992E79E8260B834200C19D49 /* Category2.swift in Sources */,
 				5A2A58EE22FBC24900434910 /* QuizOptionsVC.swift in Sources */,
 				5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */,
+				99D76AB8261688BF0062CCD4 /* AlphaList2.swift in Sources */,
 				5A4471612283DFB9008E3107 /* SearchLists.swift in Sources */,
 				9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */,
 				5A4471652284EE85008E3107 /* TermCell.swift in Sources */,
