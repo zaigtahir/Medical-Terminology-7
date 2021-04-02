@@ -49,17 +49,17 @@ class TermController {
 		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
 		let whereStatement = self.whereStatement (categoryID: categoryID,
-												 showOnlyFavorites: showFavoritesOnly,
-												 isFavorite: isFavorite,
-												 answeredTerm: answeredTerm,
-												 answeredDefinition: answeredDefinition,
-												 learned: learned,
-												 learnedTerm: learnedTerm,
-												 learnedDefinition: learnedDefinition,
-												 learnedFlashcard: learnedFlashcard,
-												 nameContains: nameContains,
-												 nameStartsWith: nameStartsWith,
-												 orderByName: orderByName)
+												  showOnlyFavorites: showFavoritesOnly,
+												  isFavorite: isFavorite,
+												  answeredTerm: answeredTerm,
+												  answeredDefinition: answeredDefinition,
+												  learned: learned,
+												  learnedTerm: learnedTerm,
+												  learnedDefinition: learnedDefinition,
+												  learnedFlashcard: learnedFlashcard,
+												  nameContains: nameContains,
+												  nameStartsWith: nameStartsWith,
+												  orderByName: orderByName)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
@@ -76,7 +76,7 @@ class TermController {
 		}
 		return ids
 	}
-
+	
 	func getCount (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?, nameStartsWith: String?) -> Int {
 		
 		// will remove leading hypen for count purposes
@@ -134,7 +134,7 @@ class TermController {
 			return false
 		}
 	}
-
+	
 	func getTermCategoryIDs ( termID: Int) -> [Int] {
 		
 		var ids = [Int]()
@@ -198,13 +198,22 @@ class TermController {
 	
 	// MARK: - search queries
 	
-	// Return list of termIDs that start with this character
-	func getSearchList (categoryID: Int, isFavorite: Bool?, startTermCharacter: String, containsText: String?) {
+	/**
+	Return list of termIDs. containsText searches terms and definitions
+	
+	*/
+	func getSearchList (categoryID: Int, isFavorite: Bool?, nameStartsWith: String, nameContains: String?, containsText: String?) {
+		var definitionString = ""
+		if containsText != nil {
+			definitionString = ", definition"
+		}
 		
-
+		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName \(definitionString) FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
+		
+		let whereStatement = "categoryID = \(categoryID) \(favorteString(isFavorite: isFavorite)) \(nameStartsWithString(search: nameStartsWith)) \(nameContainsString(search: nameContains)) \(containsTextString(search: containsText)) \(orderByNameString(toOrder: true)) )"
 		
 	}
-
+	
 	
 	
 	
@@ -255,6 +264,11 @@ class TermController {
 		return "AND name LIKE '%\(s)%' "
 	}
 	
+	private func containsTextString (search: String?) -> String {
+		guard let s = search else {return ""}
+		return "AND (name LIKE '%\(s)%' OR (definition LIKE %\(s)% "
+	}
+	
 	private func nameStartsWithString (search: String? ) -> String {
 		guard let s = search else {return ""}
 		return "AND (name LIKE '\(s)%' OR name LIKE '-\(s)%')"
@@ -266,7 +280,7 @@ class TermController {
 		guard let _ = toOrder else {return ""}
 		return "ORDER BY noHyphenInName"
 	}
-		
+	
 	// End WHERE string components
 	
 }
