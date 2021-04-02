@@ -212,7 +212,7 @@ class TermController {
 		
 		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName \(definitionString) FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
-		let whereStatement = "categoryID = \(categoryID) \(favorteString(isFavorite: isFavorite)) \(nameStartsWithString(search: nameStartsWith)) \(nameContainsString(search: nameContains)) \(containsTextString(search: containsText)) \(orderByNameString(toOrder: true)) )"
+		let whereStatement = "WHERE categoryID = \(categoryID) \(favorteString(isFavorite: isFavorite)) \(nameStartsWithString(search: nameStartsWith)) \(nameContainsString(search: nameContains)) \(containsTextString(search: containsText)) \(orderByNameString(toOrder: true))"
 		
 		let query = ("\(selectStatement) \(whereStatement)" )
 		
@@ -270,7 +270,7 @@ class TermController {
 	
 	private func containsTextString (search: String?) -> String {
 		guard let s = search else {return ""}
-		return "AND (name LIKE '%\(s)%' OR (definition LIKE %\(s)% "
+		return "AND ((name LIKE '%\(s)%') OR (definition LIKE '%\(s)%')) "
 	}
 	
 	private func nameStartsWithString (search: String? ) -> String {
