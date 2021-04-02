@@ -86,6 +86,7 @@
 		99D55E4D25FF5A03003ABE0B /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E4C25FF5A03003ABE0B /* Tests.swift */; };
 		99D55E5825FF685C003ABE0B /* DItemController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E5725FF685C003ABE0B /* DItemController3.swift */; };
 		99D55E892601A01A003ABE0B /* UserCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E882601A01A003ABE0B /* UserCategoryController.swift */; };
+		99D76AC52616C9CE0062CCD4 /* AlphaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AC42616C9CE0062CCD4 /* AlphaList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,6 +176,7 @@
 		99D55E4C25FF5A03003ABE0B /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		99D55E5725FF685C003ABE0B /* DItemController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController3.swift; sourceTree = "<group>"; };
 		99D55E882601A01A003ABE0B /* UserCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCategoryController.swift; sourceTree = "<group>"; };
+		99D76AC42616C9CE0062CCD4 /* AlphaList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaList.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -317,6 +319,7 @@
 		5A2A58E422F8DEC900434910 /* Term List */ = {
 			isa = PBXGroup;
 			children = (
+				99D76AC42616C9CE0062CCD4 /* AlphaList.swift */,
 				5A6F31B6219C776000E6477E /* DItemVC.swift */,
 				5A4471642284EE85008E3107 /* TermCell.swift */,
 				5A4471542281C655008E3107 /* TermListVCH.swift */,
@@ -556,6 +559,7 @@
 				992E79EB260C413D00C19D49 /* AddCell.swift in Sources */,
 				5AC0C57322D6C83C009965F1 /* LearningHomeVCH.swift in Sources */,
 				992B566E2610E9A0000457AA /* CategoryVCH.swift in Sources */,
+				99D76AC52616C9CE0062CCD4 /* AlphaList.swift in Sources */,
 				5A03478F22D39D0900749EBC /* FMDatabasePool.m in Sources */,
 				5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */,
 				5A67C14B231071D900BAA2A0 /* QuizDoneCVCell.swift in Sources */,

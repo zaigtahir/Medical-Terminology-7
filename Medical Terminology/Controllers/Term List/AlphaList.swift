@@ -28,6 +28,10 @@ class AlphaList {
 		}
 	}
 	
+	func getSectionNames () -> [String] {
+		return sectionNames
+	}
+	
 	func getSectionName (section: Int) -> String {
 		return sectionNames[section]
 	}
