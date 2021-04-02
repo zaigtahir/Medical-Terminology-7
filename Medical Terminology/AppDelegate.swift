@@ -63,16 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
  		*/
 		
-		// testing
-		let tc = TermController()
-		let q1 = tc.getSearchList(categoryID: 1, isFavorite: false, nameStartsWith: "b", nameContains: .none, containsText: .none)
-		let q2 = tc.getSearchList(categoryID: 2, isFavorite: true, nameStartsWith: "a", nameContains: .none, containsText: "da")
-		let q3 = tc.getSearchList(categoryID: 2, isFavorite: true, nameStartsWith: "a", nameContains: "qa", containsText: .none)
-		
-		print (q1)
-		print (q2)
-		print (q3)
-	
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {
             

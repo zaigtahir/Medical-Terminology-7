@@ -22,7 +22,14 @@ class AlphaList {
 		
 		for s in sectionNames {
 			
-			let termIDs = tc.getTermIDs(categoryID: categoryID, showFavoritesOnly: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, nameContains: nameContains, nameStartsWith: s, orderByName: true)
+			var isFavorite: Bool?
+			if showFavoritesOnly == true {
+				isFavorite = true
+			}
+			
+			let termIDs = tc.searchTermIDs(categoryID: categoryID, isFavorite: isFavorite, nameStartsWith: s, nameContains: .none, containsText: .none)
+			
+			//let termIDs = tc.getTermIDs(categoryID: categoryID, showFavoritesOnly: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, nameContains: nameContains, nameStartsWith: s, orderByName: true)
 			
 			termIDsList.append(termIDs)
 		}

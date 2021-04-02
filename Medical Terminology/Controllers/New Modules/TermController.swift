@@ -127,7 +127,6 @@ class TermController {
 			while resultSet.next() {
 				let id = Int(resultSet.int(forColumnIndex: 0))
 				ids.append(id)
-				
 			}
 		}
 		return ids
@@ -196,7 +195,6 @@ class TermController {
 	}
 	
 	
-	
 	// MARK: - Search text queries
 	
 	/**
@@ -204,7 +202,7 @@ class TermController {
 	use nameStartsWith with nameContains OR containsText and loop through the alphabet to make an alphabetic list
 	containsText searches terms and definitions
 	*/
-	func getSearchList (categoryID: Int, isFavorite: Bool?, nameStartsWith: String, nameContains: String?, containsText: String?) {
+	func searchTermIDs (categoryID: Int, isFavorite: Bool?, nameStartsWith: String, nameContains: String?, containsText: String?) -> [Int] {
 		var definitionString = ""
 		if containsText != nil {
 			definitionString = ", definition"
@@ -216,9 +214,18 @@ class TermController {
 		
 		let query = ("\(selectStatement) \(whereStatement)" )
 		
-		print (query)
+		print("query in searchTermIDs: \(query)")
+		
+		var ids = [Int]()
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+			}
+		}
+		return ids
 	}
-	
 	
 	
 	// MARK: -WHERE string components
