@@ -37,12 +37,68 @@ class TermController {
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
-			return makeTerm(resultSet: resultSet)
+			
+			let termID = Int(resultSet.int(forColumn: "termID"))
+			let name = resultSet.string(forColumn: "name") ?? ""
+			let definition = resultSet.string(forColumn: "definition")  ?? ""
+			let example = resultSet.string(forColumn: "example")  ?? ""
+			let secondCategoryID = Int(resultSet.int(forColumn: "secondCategoryID"))
+			let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
+			let s = Int(resultSet.int(forColumn: "isStandard"))
+			
+			let term = Term(termID: termID, name: name, definition: definition, example: example, secondCategoryID: secondCategoryID, audioFile: audioFile, isStandard: s == 1)
+			
+			return term
+			
 		} else {
 			print("fatal error could not make result set or get term in getTerm")
 			return Term()
 		}
 	}
+	
+	func setFavoriteStatusPostNotification (categoryID: Int, termID: Int, isFavorite: Bool) {
+		let query = "UPDATE \(myConstants.dbTableAssignedCategories) SET isFavorite = \( isFavorite ? 1 : 0 ) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		_ = myDB.executeStatements(query)
+		
+		// fire off notification that a terms information changed
+		
+		let data = ["categoryID" : categoryID, "termID" : termID]
+		
+		let name = Notification.Name(myKeys.termInformationChangedNotification)
+		NotificationCenter.default.post(name: name, object: self, userInfo: data)
+	}
+	
+	func getFavoriteStatus ( categoryID: Int, termID: Int ) -> Bool {
+		let query = "SELECT isFavorite FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			let status = Int(resultSet.int(forColumnIndex: 0))
+			return status == 1 ?  true : false
+		} else {
+			print ("fatal error getting resultSet in getFavoriteStatus, returning false")
+			return false
+		}
+	}
+	
+	func getTermCategoryIDs ( termID: Int) -> [Int] {
+		
+		var ids = [Int]()
+		
+		let query = "SELECT categoryID FROM \(myConstants.dbTableAssignedCategories) WHERE termID = \(termID)"
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+			}
+		} else {
+			print ("fatal error getting result set in getTermCategoryIDs")
+		}
+		
+		return ids
+		
+	}
+	
+	// MARK: - Non search text queries
 	
 	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?, nameStartsWith: String?, orderByName: Bool?) -> [Int]{
 		
@@ -111,63 +167,6 @@ class TermController {
 		
 	}
 	
-	func setFavoriteStatusPostNotification (categoryID: Int, termID: Int, isFavorite: Bool) {
-		let query = "UPDATE \(myConstants.dbTableAssignedCategories) SET isFavorite = \( isFavorite ? 1 : 0 ) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		_ = myDB.executeStatements(query)
-		
-		// fire off notification that a terms information changed
-		
-		let data = ["categoryID" : categoryID, "termID" : termID]
-		
-		let name = Notification.Name(myKeys.termInformationChangedNotification)
-		NotificationCenter.default.post(name: name, object: self, userInfo: data)
-	}
-	
-	func getFavoriteStatus ( categoryID: Int, termID: Int ) -> Bool {
-		let query = "SELECT isFavorite FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			resultSet.next()
-			let status = Int(resultSet.int(forColumnIndex: 0))
-			return status == 1 ?  true : false
-		} else {
-			print ("fatal error getting resultSet in getFavoriteStatus, returning false")
-			return false
-		}
-	}
-	
-	func getTermCategoryIDs ( termID: Int) -> [Int] {
-		
-		var ids = [Int]()
-		
-		let query = "SELECT categoryID FROM \(myConstants.dbTableAssignedCategories) WHERE termID = \(termID)"
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			while resultSet.next() {
-				let id = Int(resultSet.int(forColumnIndex: 0))
-				ids.append(id)
-			}
-		} else {
-			print ("fatal error getting result set in getTermCategoryIDs")
-		}
-		
-		return ids
-		
-	}
-	
-	private func makeTerm (resultSet: FMResultSet) -> Term {
-		
-		let termID = Int(resultSet.int(forColumn: "termID"))
-		let name = resultSet.string(forColumn: "name") ?? ""
-		let definition = resultSet.string(forColumn: "definition")  ?? ""
-		let example = resultSet.string(forColumn: "example")  ?? ""
-		let secondCategoryID = Int(resultSet.int(forColumn: "secondCategoryID"))
-		let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
-		let s = Int(resultSet.int(forColumn: "isStandard"))
-		
-		let term = Term(termID: termID, name: name, definition: definition, example: example, secondCategoryID: secondCategoryID, audioFile: audioFile, isStandard: s == 1)
-		
-		return term
-	}
-	
 	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?, nameStartsWith: String?, orderByName: Bool?) -> String {
 		
 		let showOnlyFavoritesString = self.showOnlyFavoritesString(show: showOnlyFavorites)
@@ -196,11 +195,14 @@ class TermController {
 		return whereStatement
 	}
 	
-	// MARK: - search queries
+	
+	
+	// MARK: - Search text queries
 	
 	/**
-	Return list of termIDs. containsText searches terms and definitions
-	
+	Return list of termIDs.
+	use nameStartsWith with nameContains OR containsText and loop through the alphabet to make an alphabetic list
+	containsText searches terms and definitions
 	*/
 	func getSearchList (categoryID: Int, isFavorite: Bool?, nameStartsWith: String, nameContains: String?, containsText: String?) {
 		var definitionString = ""
@@ -212,8 +214,10 @@ class TermController {
 		
 		let whereStatement = "categoryID = \(categoryID) \(favorteString(isFavorite: isFavorite)) \(nameStartsWithString(search: nameStartsWith)) \(nameContainsString(search: nameContains)) \(containsTextString(search: containsText)) \(orderByNameString(toOrder: true)) )"
 		
+		let query = ("\(selectStatement) \(whereStatement)" )
+		
+		print (query)
 	}
-	
 	
 	
 	
@@ -280,8 +284,6 @@ class TermController {
 		guard let _ = toOrder else {return ""}
 		return "ORDER BY noHyphenInName"
 	}
-	
-	// End WHERE string components
 	
 }
 
