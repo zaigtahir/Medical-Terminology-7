@@ -15,7 +15,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UISearchBarDelegate
 
 	var currentCategoryID = 1 			// default starting off category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
-	var termsList = AlphaList()			// holds the list to view
+	var termsList =
 	var searchText : String? = nil
 	
 	let tc = TermController()
@@ -28,6 +28,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UISearchBarDelegate
 	func makeTermsList () {
 		termsList.makeList(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, nameContains: searchText)
 	}
+	
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return termsList.getRowCount(section: section)
