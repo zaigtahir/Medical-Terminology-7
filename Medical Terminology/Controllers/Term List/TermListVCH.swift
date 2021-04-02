@@ -9,24 +9,30 @@
 import UIKit
 
 //Have to incude NSObject to that TermListVCH can implement the table view and search bar delegates
-class TermListVCH: NSObject, UITableViewDataSource, UISearchBarDelegate
+class TermListVCH: NSObject, UITableViewDataSource
 
 {
-
+	
 	var currentCategoryID = 1 			// default starting off category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
-	var termsList = AlphaList()
-	var searchText : String? = nil
+	var termsList = TermsList()
 	
 	let tc = TermController()
 	
 	override init() {
 		super.init()
-		makeTermsList()
+		updateTermsList(searchText: "")
 	}
 	
-	func makeTermsList () {
-		termsList.makeList(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, nameContains: searchText)
+	func updateTermsList (searchText: String) {
+		
+		var contains : String?
+		if searchText != "" {
+			contains = searchText
+		}
+		
+		self.termsList.makeList(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, containsText: contains)
+		
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,10 +41,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UISearchBarDelegate
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return termsList.getRowCount(section: section)
-	}
-	
-	func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-		return termsList.getSectionNames()
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,6 +53,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UISearchBarDelegate
 		
 		return cell
 	}
+	
 	
 }
 
@@ -67,7 +70,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 
 private var searchText = ""
 private var favoritesOnly = false
-private var alphaList = AlphaList()
+private var alphaList = TermsList()
 private var dIC = DItemController()
 private var searchList = [DItem]()
 private let searchLists = SearchLists()
@@ -208,26 +211,6 @@ func isFavoritesOnly () -> Bool {
 return self.favoritesOnly
 }
 
-//search bar delegate functions
-func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-if searchBar.showsCancelButton == false {
-searchBar.showsCancelButton = true
-}
-makeList(favoritesOnly: favoritesOnly, searchText: searchText)
-}
-
-func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-// Stop doing the search stuff
-// and clear the text in the search bar
-searchBar.text = ""
-searchText = ""
-// Hide the cancel button
-searchBar.showsCancelButton = false
-// You could also change the position, frame etc of the searchBar
-searchBar.endEditing(true)
-
-makeList(favoritesOnly: favoritesOnly, searchText: searchText)
-}
 
 }
 

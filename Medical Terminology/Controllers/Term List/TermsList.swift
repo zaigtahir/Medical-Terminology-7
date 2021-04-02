@@ -18,7 +18,15 @@ class TermsList {
 	
 	private var termIDsList = [[Int]] ()
 	
+	/**
+	If containsText = nil then will make an alphabetical list of the term names
+	If containsText = some value, then will wake an alphabetial list of term names or the definition that contains that value
+	*/
+	
 	func makeList (categoryID: Int, showFavoritesOnly: Bool?, containsText: String?) {
+		
+		// clear any current values from the termIDsList first
+		termIDsList = [[Int]] ()
 		
 		for s in sectionNames {
 			
@@ -27,9 +35,7 @@ class TermsList {
 				isFavorite = true
 			}
 			
-			let termIDs = tc.searchTermIDs(categoryID: categoryID, isFavorite: isFavorite, nameStartsWith: s, nameContains: .none, containsText: .none)
-			
-			//let termIDs = tc.getTermIDs(categoryID: categoryID, showFavoritesOnly: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, nameContains: nameContains, nameStartsWith: s, orderByName: true)
+			let termIDs = tc.searchTermIDs(categoryID: categoryID, isFavorite: isFavorite, nameStartsWith: s, nameContains: .none, containsText: containsText)
 			
 			termIDsList.append(termIDs)
 		}
