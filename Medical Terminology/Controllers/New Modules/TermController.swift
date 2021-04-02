@@ -196,7 +196,19 @@ class TermController {
 		return whereStatement
 	}
 	
-	// MARK: WHERE string components
+	// MARK: - search queries
+	
+	// Return list of termIDs that start with this character
+	func getSearchList (categoryID: Int, isFavorite: Bool?, startTermCharacter: String, containsText: String?) {
+		
+
+		
+	}
+
+	
+	
+	
+	// MARK: -WHERE string components
 	
 	private func favorteString (isFavorite: Bool?) -> String {
 		guard let f = isFavorite else { return "" }
