@@ -99,7 +99,7 @@ class DItemController2 {
 			table = "assignedCategories"
 		}
 		
-		var query = "SELECT itemID FROM \(table) \(whereQuery)"
+		let query = "SELECT itemID FROM \(table) \(whereQuery)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			while resultSet.next() {
@@ -123,7 +123,7 @@ class DItemController2 {
 			table = "assignedCategories"
 		}
 		
-		var query = "SELECT COUNT(*) FROM \(table) \(whereQuery)"
+		let query = "SELECT COUNT(*) FROM \(table) \(whereQuery)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()

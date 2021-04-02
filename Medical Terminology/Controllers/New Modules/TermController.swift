@@ -100,7 +100,7 @@ class TermController {
 	
 	// MARK: - Non search text queries
 	
-	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?, nameStartsWith: String?, orderByName: Bool?) -> [Int]{
+	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?) -> [Int]{
 		
 		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
@@ -113,8 +113,6 @@ class TermController {
 												  learnedTerm: learnedTerm,
 												  learnedDefinition: learnedDefinition,
 												  learnedFlashcard: learnedFlashcard,
-												  nameContains: nameContains,
-												  nameStartsWith: nameStartsWith,
 												  orderByName: orderByName)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
@@ -132,7 +130,7 @@ class TermController {
 		return ids
 	}
 	
-	func getCount (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?, nameStartsWith: String?) -> Int {
+	func getCount (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) -> Int {
 		
 		// will remove leading hypen for count purposes
 		
@@ -147,8 +145,6 @@ class TermController {
 												 learnedTerm: learnedTerm,
 												 learnedDefinition: learnedDefinition,
 												 learnedFlashcard: learnedFlashcard,
-												 nameContains: nameContains,
-												 nameStartsWith: nameStartsWith,
 												 orderByName: .none)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
@@ -166,30 +162,21 @@ class TermController {
 		
 	}
 	
-	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, nameContains: String?, nameStartsWith: String?, orderByName: Bool?) -> String {
+	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?) -> String {
 		
 		let showOnlyFavoritesString = self.showOnlyFavoritesString(show: showOnlyFavorites)
-		
 		let favoriteString = self.favorteString(isFavorite: isFavorite)
-		
 		let learnedString = self.learnedString(learned: learned)
 		let learnedTermString = self.learnedTermString(learnedTerm: learnedTerm)
 		let learnedDefinitionString = self.learnedDefinitionString(learnedDefinition: learnedDefinition)
-		
 		let answeredTermString = self.answeredTermString(state: answeredTerm)
 		let answeredDefinitionString = self.answeredDefinitionString(state: answeredDefinition)
-		
 		let learnedFlashcardString = self.learnedFlashcardString(learned: learnedFlashcard)
-		
-		let nameContainsString = self.nameContainsString(search: nameContains)
-		
-		let nameStartsWithString = self.nameStartsWithString(search: nameStartsWith)
-		
 		let orderByNameString = self.orderByNameString(toOrder: orderByName)
 		
 		// need to add ORDER BY
 		
-		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(nameContainsString) \(nameStartsWithString) \(orderByNameString)"
+		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(orderByNameString)"
 		
 		return whereStatement
 	}
