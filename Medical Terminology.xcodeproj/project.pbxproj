@@ -86,6 +86,7 @@
 		99D55E5825FF685C003ABE0B /* DItemController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E5725FF685C003ABE0B /* DItemController3.swift */; };
 		99D55E892601A01A003ABE0B /* UserCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E882601A01A003ABE0B /* UserCategoryController.swift */; };
 		99D76AC52616C9CE0062CCD4 /* TermsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AC42616C9CE0062CCD4 /* TermsList.swift */; };
+		99D76AD22617909A0062CCD4 /* NoTermsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AD12617909A0062CCD4 /* NoTermsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,6 +176,7 @@
 		99D55E5725FF685C003ABE0B /* DItemController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemController3.swift; sourceTree = "<group>"; };
 		99D55E882601A01A003ABE0B /* UserCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCategoryController.swift; sourceTree = "<group>"; };
 		99D76AC42616C9CE0062CCD4 /* TermsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsList.swift; sourceTree = "<group>"; };
+		99D76AD12617909A0062CCD4 /* NoTermsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTermsCell.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -318,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				99D76AC42616C9CE0062CCD4 /* TermsList.swift */,
+				99D76AD12617909A0062CCD4 /* NoTermsCell.swift */,
 				5A6F31B6219C776000E6477E /* DItemVC.swift */,
 				5A4471642284EE85008E3107 /* TermCell.swift */,
 				5A4471542281C655008E3107 /* TermListVCH.swift */,
@@ -603,6 +606,7 @@
 				99D55E0525F6C7CA003ABE0B /* QuizHome.swift in Sources */,
 				99D55E892601A01A003ABE0B /* UserCategoryController.swift in Sources */,
 				5A15062A22557E7C00717AB8 /* Answer.swift in Sources */,
+				99D76AD22617909A0062CCD4 /* NoTermsCell.swift in Sources */,
 				9960A04826027EC4003F4994 /* NoCategoriesCell.swift in Sources */,
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
 				5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */,

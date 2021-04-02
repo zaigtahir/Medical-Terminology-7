@@ -36,15 +36,33 @@ class TermListVCH: NSObject, UITableViewDataSource
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return 26
+		if termsList.getCount() == 0 {
+			return 1
+		} else {
+			return 26
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return termsList.getRowCount(section: section)
+		
+		if termsList.getCount() == 0 {
+			return 1
+		} else {
+			return termsList.getRowCount(section: section)
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+		
+		if termsList.getCount() == 0 {
+			print("getting the empty cell")
+			let cell = tableView.dequeueReusableCell(withIdentifier: "noTermsCell", for: indexPath) as? NoTermsCell
+		
+			return cell!
+		}
+		
+		
+		let cell = tableView.dequeueReusableCell(withIdentifier: "termCell", for: indexPath)
 		
 		let termID = termsList.getTermID(indexPath: indexPath)
 		let term = tc.getTerm(termID: termID)

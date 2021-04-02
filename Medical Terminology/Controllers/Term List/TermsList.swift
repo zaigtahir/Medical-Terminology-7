@@ -18,6 +18,8 @@ class TermsList {
 	
 	private var termIDsList = [[Int]] ()
 	
+	private var count: Int = 0 	// used to maintain the count of terms in the list
+	
 	/**
 	If containsText = nil then will make an alphabetical list of the term names
 	If containsText = some value, then will wake an alphabetial list of term names or the definition that contains that value
@@ -25,7 +27,8 @@ class TermsList {
 	
 	func makeList (categoryID: Int, showFavoritesOnly: Bool?, containsText: String?) {
 		
-		// clear any current values from the termIDsList first
+		// clear any current values from the termIDsList and count
+		count = 0
 		termIDsList = [[Int]] ()
 		
 		for s in sectionNames {
@@ -38,11 +41,18 @@ class TermsList {
 			let termIDs = tc.searchTermIDs(categoryID: categoryID, isFavorite: isFavorite, nameStartsWith: s, nameContains: .none, containsText: containsText)
 			
 			termIDsList.append(termIDs)
+			
+			// adding to the list count
+			count = count + termIDs.count
 		}
 	}
 	
 	func getSectionNames () -> [String] {
 		return sectionNames
+	}
+	
+	func getCount () -> Int {
+		return count
 	}
 	
 	func getSectionName (section: Int) -> String {
@@ -56,5 +66,5 @@ class TermsList {
 	func getTermID (indexPath: IndexPath) -> Int {
 		return termIDsList[indexPath.section][indexPath.row]
 	}
-	
+
 }
