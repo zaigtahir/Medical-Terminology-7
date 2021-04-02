@@ -21,6 +21,13 @@ class TermListVC: UIViewController {
     @IBOutlet weak var noFavoritesLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     
+	let termListVCH = TermListVCH()
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		tableView.dataSource = termListVCH
+	}
+	
 	
 	/*
 	

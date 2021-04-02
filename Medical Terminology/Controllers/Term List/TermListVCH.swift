@@ -9,10 +9,40 @@
 import UIKit
 
 //Have to incude NSObject to that TermListVCH can implement the table view and search bar delegates
-class TermListVCH: NSObject, UISearchBarDelegate
+class TermListVCH: NSObject, UITableViewDataSource, UISearchBarDelegate
 
 {
+
+	var currentCategoryID = 1 			// default starting off category
+	var showFavoritesOnly = false		// this is different than saying isFavorite = false
+	var termsList = AlphaList2()			// holds the list to view
+	var searchText : String? = nil
 	
+	let tc = TermController()
+	
+	override init() {
+		super.init()
+		makeTermsList()
+	}
+	
+	func makeTermsList () {
+		termsList.makeList(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, nameContains: searchText)
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return termsList.getRowCount(section: section)
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+		
+		let termID = termsList.getTermID(indexPath: indexPath)
+		let term = tc.getTerm(termID: termID)
+		
+		cell.textLabel!.text = term.name
+		
+		return cell
+	}
 	
 }
 

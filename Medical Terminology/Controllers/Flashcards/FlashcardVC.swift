@@ -33,8 +33,6 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	let scrollController = ScrollController()
 	let flashCardVCH = FlashcardVCH()
 	
-	let dIC = DItemController3()
-	
 	let cc = CategoryController2()
 	
 	override func viewDidLoad() {

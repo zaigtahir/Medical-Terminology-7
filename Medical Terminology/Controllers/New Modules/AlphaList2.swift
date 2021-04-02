@@ -32,8 +32,12 @@ class AlphaList2 {
 		return sectionNames[section]
 	}
 	
-	func getTermIDs (section: Int) -> [Int] {
-		return termIDsList[section]
+	func getRowCount (section: Int) -> Int {
+		return termIDsList[section].count
+	}
+	
+	func getTermID (indexPath: IndexPath) -> Int {
+		return termIDsList[indexPath.section][indexPath.row]
 	}
 	
 }
