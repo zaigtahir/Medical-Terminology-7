@@ -319,6 +319,7 @@
 		5A2A58E422F8DEC900434910 /* Term List */ = {
 			isa = PBXGroup;
 			children = (
+				99D76AB7261688BF0062CCD4 /* AlphaList.swift */,
 				5A6F31B6219C776000E6477E /* DItemVC.swift */,
 				5A4471642284EE85008E3107 /* TermCell.swift */,
 				5A4471542281C655008E3107 /* TermListVCH.swift */,
@@ -411,7 +412,6 @@
 		992B566A2610E8CC000457AA /* Category Views */ = {
 			isa = PBXGroup;
 			children = (
-				99D76AB7261688BF0062CCD4 /* AlphaList.swift */,
 				992B566D2610E9A0000457AA /* CategoryVCH.swift */,
 				992B56642610E593000457AA /* CategoryVC.swift */,
 			);
