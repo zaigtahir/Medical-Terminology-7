@@ -27,7 +27,6 @@ class ZUIToggleButton: UIButton {
 	// custom fields to show on the IB
 	@IBInspectable var onTintColor: UIColor?
 	@IBInspectable var offTintColor: UIColor?
-	@IBInspectable var offImate: UIImage?
 	
 	private var iIsOn = false
 	private var onImage : UIImage!

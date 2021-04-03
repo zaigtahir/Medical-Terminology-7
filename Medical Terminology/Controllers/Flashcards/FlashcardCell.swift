@@ -45,7 +45,6 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDeleg
 		
 		// set speaker button to not playing
 		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
-		
 		playAudioButton.isEnabled = term.isAudioFilePresent()
 		
 		switch fcvMode {
@@ -94,7 +93,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDeleg
         cellView.layer.borderColor = myTheme.colorCardBorder?.cgColor
     }
     
-    // MARK: TermAudioDelegate methods
+    // MARK: -TermAudioDelegate methods
 	
 	func termAudioStartedPlaying() {
 		playAudioButton.setImage(myTheme.imageSpeakerPlaying, for: .normal)

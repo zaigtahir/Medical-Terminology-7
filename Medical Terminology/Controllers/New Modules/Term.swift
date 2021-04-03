@@ -62,6 +62,13 @@ class Term: NSObject, AVAudioPlayerDelegate {
 		
 		//if this player is already playing, stop the play
 		
+		do {
+			try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+		 }
+		 catch {
+			print("problem with AVAudioSession.sharedInstance")
+		 }
+		
 		if audioPlayer.isPlaying{
 			audioPlayer.stop()
 		}
