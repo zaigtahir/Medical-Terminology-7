@@ -28,7 +28,8 @@ class TermCell: UITableViewCell, AVAudioPlayerDelegate {
 	var term : Term!
 	
 	
-    let utilities = Utilities()
+   // let utilities = Utilities()
+	
     let aFC = AudioFileController()
     
     private var audioPlayer: AVAudioPlayer?
@@ -94,9 +95,10 @@ class TermCell: UITableViewCell, AVAudioPlayerDelegate {
     }
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
-        
+     
+		
         //change the favorite button image locally
-        utilities.setFavoriteState(button: favoriteButton, isFavorite: !dItem.isFavorite)
+   //     utilities.setFavoriteState(button: favoriteButton, isFavorite: !dItem.isFavorite)
         
         //now need to pass this info back to database
         delegate?.pressedFavoriteButton(dItem: dItem)
