@@ -47,13 +47,8 @@ class TermCell: UITableViewCell, AVAudioPlayerDelegate {
 		self.termLabel.text = term.name
 		self.definitionLabel.text = term.definition
         
-		if let audioFile = term.audioFile {
-			if aFC.isAudioFilePresentInBundle(filename: audioFile, extension: "mp3") {
-				playAudioButton.isEnabled = true
-			} else {
-				playAudioButton.isEnabled = false
-			}
-		}
+		playAudioButton.isEnabled = term.isAudioFilePresent()
+
     }
     
     func playAudio () {

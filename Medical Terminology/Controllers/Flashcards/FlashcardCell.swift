@@ -45,16 +45,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
 		// set speaker button to not playing
 		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
 		
-		//check if the audioFile is present in the bundle
-		let aFC = AudioFileController()
-
-		if let audioFile = term.audioFile {
-			if aFC.isAudioFilePresentInBundle(filename: audioFile, extension: "mp3") {
-				playAudioButton.isEnabled = true
-			} else {
-				playAudioButton.isEnabled = false
-			}
-		}
+		playAudioButton.isEnabled = term.isAudioFilePresent()
 		
 		switch fcvMode {
 		

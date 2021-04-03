@@ -14,14 +14,14 @@ class Term {
 	var definition: String = "default"
 	var example: String = "default"
 	var secondCategoryID : Int = -1
-	var audioFile: String?
+	var audioFile: String = ""
 	var isStandard: Bool = true
 	
 	init () {
 	
 	}
 	
-	convenience init(termID: Int, name: String, definition: String, example: String, secondCategoryID: Int, audioFile: String?, isStandard: Bool) {
+	convenience init(termID: Int, name: String, definition: String, example: String, secondCategoryID: Int, audioFile: String, isStandard: Bool) {
 		
 		self.init()
 		self.termID = termID
@@ -37,4 +37,21 @@ class Term {
 		print("term name: \(self.name)")
 		print("term ID: \(self.termID)")
 	}
+	
+	func playAudiio () {
+		if audioFile == "" {
+			// there Is no audiofile available, return
+		}
+		
+	}
+	
+	func isAudioFilePresent () -> Bool {
+		let aFC = AudioFileController()
+		if aFC.isAudioFilePresentInBundle(filename: audioFile, extension: "mp3") {
+			return true
+		} else {
+			return false
+		}
+	}
+	
 }
