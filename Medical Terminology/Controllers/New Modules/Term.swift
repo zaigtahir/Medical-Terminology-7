@@ -9,7 +9,12 @@
 import Foundation
 import AVFoundation
 
-class Term {
+protocol TermAudioDelegate: class {
+	func termAudioStartedPlaying()
+	func termAudioStoppedPlaying()
+}
+
+class Term: NSObject, AVAudioPlayerDelegate {
 	var termID: Int = -1
 	var name: String = "default"
 	var definition: String = "default"
@@ -19,8 +24,11 @@ class Term {
 	var isStandard: Bool = true
 	
 	var audioPlayer = AVAudioPlayer()
+
+	weak var delegate: TermAudioDelegate?
 	
-	init () {
+	override init () {
+		super.init()
 	}
 	
 	convenience init(termID: Int, name: String, definition: String, example: String, secondCategoryID: Int, audioFile: String, isStandard: Bool) {
@@ -40,11 +48,13 @@ class Term {
 		print("term ID: \(self.termID)")
 	}
 	
-	func playAudio (audioPlayer: AVAudioPlayer) {
+	func playAudio () {
 		
-		self.audioPlayer = audioPlayer
+		if !isAudioFilePresent() {
+			return
+		}
 		
-		let fileName = "\(myConstants.audioFolder)/\(audioFile ?? "").mp3"
+		let fileName = "\(myConstants.audioFolder)/\(audioFile).mp3"
 		
 		let path = Bundle.main.path(forResource: fileName, ofType: nil)!
 		
@@ -52,14 +62,16 @@ class Term {
 		
 		//if this player is already playing, stop the play
 		
-		if self.audioPlayer.isPlaying{
-			self.audioPlayer.stop()
-			}
-	
+		if audioPlayer.isPlaying{
+			audioPlayer.stop()
+		}
+		
 		do {
-			self.audioPlayer = try AVAudioPlayer(contentsOf: url)
-			self.audioPlayer.prepareToPlay()
-			self.audioPlayer.play()
+			audioPlayer = try AVAudioPlayer(contentsOf: url)
+			audioPlayer.delegate = self
+			audioPlayer.prepareToPlay()
+			audioPlayer.play()
+			delegate?.termAudioStartedPlaying()
 			
 		} catch {
 			print("couldn't load audio file")
@@ -75,5 +87,9 @@ class Term {
 			return false
 		}
 	}
-		
+	
+	// MARK: -Delegate methods
+	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+		delegate?.termAudioStoppedPlaying()
+	}
 }

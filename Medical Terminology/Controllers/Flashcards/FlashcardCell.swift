@@ -13,8 +13,8 @@ protocol FlashcardCellDelegate: AnyObject {
     func userPressedFavoriteButton(termID: Int)
 }
 
-class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
-    
+class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDelegate {
+	
     @IBOutlet weak var termLabel: UILabel!
     @IBOutlet weak var showHiddenTermButton: UIButton!
     @IBOutlet weak var definitionLabel: UILabel!
@@ -29,7 +29,6 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
 	
 	private let tc = TermController()
     private var utilities = Utilities()
-    private var audioPlayer = AVAudioPlayer ()
 	
     weak var delegate: FlashcardCellDelegate?
 	
@@ -41,6 +40,8 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
 		exampleLabel.text = "Example(s): \(term.example)"
 		flashCardCounter.text = counter
 		favoriteButton.isOn = isFavorite
+		
+		term.delegate = self
 		
 		// set speaker button to not playing
 		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
@@ -73,81 +74,11 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
 			exampleLabel.isHidden = false
 		}
 	}
-    
-	/*
-    func configure (dItem: DItem, fcvMode: FlashcardViewMode, counter: String) {
-        
-        itemID = dItem.itemID
-        
-        self.dItem = dItem
-        
-        termLabel.text = dItem.term
-        definitionLabel.text = "Definition: \(dItem.definition)"
-        
-        //look for a comma, if there is a comma, use Examples: for sample text
-        
-        if dItem.example == "" {
-            exampleLabel.text = ""
-            
-        } else {
-            exampleLabel.text = "Example: \(dItem.example)"
-        }
-        
-        //set the favorite button
-        
-        utilities.setFavoriteState(button: favoriteButton, isFavorite: dItem.isFavorite)
-        
-        //set speaker button to not playing
-        playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
-        
-        //check if the audioFile is present in the bundle
-        let aFC = AudioFileController()
-        
-        //set audio button enable or disable
-        if dItem.audioFile != "" && aFC.isAudioFilePresentInBundle(filename: dItem.audioFile, extension: "mp3"){
-            
-            playAudioButton.isEnabled = true
-        } else {
-            playAudioButton.isEnabled = false
-            
-        }
-        
-        flashCardCounter.text = counter
-        
-        switch fcvMode {
-        
-        case .definition:
-            //show definition, hide term
-            termLabel.isHidden = true
-            showHiddenTermButton.isHidden = false
-            showHiddenDefinitionButton.isHidden = true
-            definitionLabel.isHidden = false
-            exampleLabel.isHidden = false
-            
-        case .term:
-            //show term, hide definition
-            termLabel.isHidden = false
-            showHiddenTermButton.isHidden = true
-            showHiddenDefinitionButton.isHidden = false
-            definitionLabel.isHidden = true
-            exampleLabel.isHidden = true
-            
-        default:
-            termLabel.isHidden = false
-            showHiddenTermButton.isHidden = true
-            showHiddenDefinitionButton.isHidden = true
-            definitionLabel.isHidden = false
-            exampleLabel.isHidden = false
-        }
-    }
-    */
 	
     override func awakeFromNib() {
         
         super.awakeFromNib()
         // Initialization code
-        
-		audioPlayer.delegate = self
 		
         cellView.layer.cornerRadius = myConstants.layout_cornerRadius
         cellView.layer.borderWidth = 1
@@ -163,20 +94,16 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
         cellView.layer.borderColor = myTheme.colorCardBorder?.cgColor
     }
     
-    func playAudio () {
-		term.playAudio(audioPlayer: audioPlayer)
-    }
+    // MARK: TermAudioDelegate methods
 	
-    // MARK: Delegate methods
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        //change the speaker image to no playing
-      
-		
-		print ("got message of audio completion")
-		
-        playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
-    }
-    
+	func termAudioStartedPlaying() {
+		playAudioButton.setImage(myTheme.imageSpeakerPlaying, for: .normal)
+	}
+	
+	func termAudioStoppedPlaying() {
+		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
+	}
+	    
     @IBAction func favoriteButtonAction(_ sender: Any) {
 		delegate?.userPressedFavoriteButton(termID: term.termID)
     }
@@ -192,8 +119,6 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
     }
     
     @IBAction func playAudioAction(_ sender: Any) {
-        playAudioButton.setImage(myTheme.imageSpeakerPlaying, for: .normal)
-        playAudio()
-      
+		term.playAudio()
     }
 }
