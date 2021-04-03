@@ -18,10 +18,9 @@ class Term {
 	var audioFile: String = ""
 	var isStandard: Bool = true
 	
-	var audioPlayer: AVAudioPlayer!
+	var audioPlayer = AVAudioPlayer()
 	
 	init () {
-	
 	}
 	
 	convenience init(termID: Int, name: String, definition: String, example: String, secondCategoryID: Int, audioFile: String, isStandard: Bool) {
@@ -66,6 +65,15 @@ class Term {
 			print("couldn't load audio file")
 		}
 		
+	}
+	
+	func isAudioFilePresent () -> Bool {
+		
+		if Bundle.main.url(forResource: "\(myConstants.audioFolder)/\(audioFile)", withExtension: "mp3") != nil {
+			return true
+		} else {
+			return false
+		}
 	}
 		
 }

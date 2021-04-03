@@ -29,7 +29,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
 	
 	private let tc = TermController()
     private var utilities = Utilities()
-    private var audioPlayer: AVAudioPlayer?
+    private var audioPlayer = AVAudioPlayer ()
 	
     weak var delegate: FlashcardCellDelegate?
 	
@@ -147,9 +147,12 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
         super.awakeFromNib()
         // Initialization code
         
+		audioPlayer.delegate = self
+		
         cellView.layer.cornerRadius = myConstants.layout_cornerRadius
         cellView.layer.borderWidth = 1
         cellView.clipsToBounds = true
+		
         showHiddenTermButton.layer.cornerRadius = myConstants.button_cornerRadius
         showHiddenDefinitionButton.layer.cornerRadius = myConstants.button_cornerRadius
         
@@ -161,39 +164,16 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
     }
     
     func playAudio () {
- 
-		let fileName = "\(myConstants.audioFolder)/\(term.audioFile ?? "").mp3"
-        
-        let path = Bundle.main.path(forResource: fileName, ofType: nil)!
-        
-        let url = URL(fileURLWithPath: path)
-        
-        //if this player is already playing, stop the play
-        
-        if let player = audioPlayer {
-            if player.isPlaying{
-                player.stop()
-            }
-        }
-        
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.prepareToPlay()
-            audioPlayer?.delegate = self
-            audioPlayer?.play()
-            
-        } catch {
-            print("couldn't load audio file")
-        }
-        
-        return
+		term.playAudio(audioPlayer: audioPlayer)
     }
 	
-    
     // MARK: Delegate methods
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         //change the speaker image to no playing
       
+		
+		print ("got message of audio completion")
+		
         playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
     }
     
