@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 class Term {
 	var termID: Int = -1
@@ -16,6 +17,8 @@ class Term {
 	var secondCategoryID : Int = -1
 	var audioFile: String = ""
 	var isStandard: Bool = true
+	
+	var audioPlayer: AVAudioPlayer!
 	
 	init () {
 	
@@ -38,20 +41,31 @@ class Term {
 		print("term ID: \(self.termID)")
 	}
 	
-	func playAudiio () {
-		if audioFile == "" {
-			// there Is no audiofile available, return
+	func playAudio (audioPlayer: AVAudioPlayer) {
+		
+		self.audioPlayer = audioPlayer
+		
+		let fileName = "\(myConstants.audioFolder)/\(audioFile ?? "").mp3"
+		
+		let path = Bundle.main.path(forResource: fileName, ofType: nil)!
+		
+		let url = URL(fileURLWithPath: path)
+		
+		//if this player is already playing, stop the play
+		
+		if self.audioPlayer.isPlaying{
+			self.audioPlayer.stop()
+			}
+	
+		do {
+			self.audioPlayer = try AVAudioPlayer(contentsOf: url)
+			self.audioPlayer.prepareToPlay()
+			self.audioPlayer.play()
+			
+		} catch {
+			print("couldn't load audio file")
 		}
 		
 	}
-	
-	func isAudioFilePresent () -> Bool {
-		let aFC = AudioFileController()
-		if aFC.isAudioFilePresentInBundle(filename: audioFile, extension: "mp3") {
-			return true
-		} else {
-			return false
-		}
-	}
-	
+		
 }

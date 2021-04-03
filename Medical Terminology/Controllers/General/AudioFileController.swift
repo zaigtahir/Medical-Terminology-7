@@ -82,7 +82,7 @@ class AudioFileController {
         }
     }
     
-    func isAudioFilePresentInBundle (filename: String, extension: String) ->Bool {
+    func isAudioFilePresentInBundle6 (filename: String, extension: String) ->Bool {
         
         if Bundle.main.url(forResource: "\(myConstants.audioFolder)/\(filename)", withExtension: "mp3") != nil {
             return true
