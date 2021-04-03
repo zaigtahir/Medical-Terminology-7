@@ -21,7 +21,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
     @IBOutlet weak var showHiddenDefinitionButton: UIButton!
     @IBOutlet weak var exampleLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: ZUIToggleButton!	//my custom button! :)
     @IBOutlet weak var flashCardCounter: UILabel!
     @IBOutlet weak var playAudioButton: UIButton!
 
@@ -40,9 +40,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
 		definitionLabel.text = "Definition: \(term.definition)"
 		exampleLabel.text = "Example(s): \(term.example)"
 		flashCardCounter.text = counter
-		
-		// favorite button status
-		utilities.setFavoriteState(button: favoriteButton, isFavorite: isFavorite)
+		favoriteButton.isOn = isFavorite
 		
 		// set speaker button to not playing
 		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)

@@ -17,19 +17,27 @@ import UIKit
 
 import UIKit
 
+/**
+This class works as a toggle button with an image. It will change the color of the image based on the onTintColor and offTintColor custom properties in the IB
+You can get/set the isOn property
+*/
+
 class ZUIToggleButton: UIButton {
 	
-	@IBInspectable var highlightedSelectedImage:UIImage?
-	
+	// custom fields to show on the IB
 	@IBInspectable var onTintColor: UIColor?
 	@IBInspectable var offTintColor: UIColor?
+	@IBInspectable var offImate: UIImage?
 	
 	private var iIsOn = false
+	private var onImage : UIImage!
 	
 	override func awakeFromNib() {
+		
 		self.addTarget(self, action: #selector(btnClicked(_:)),
 					   for: .touchUpInside)
 		
+		onImage = self.image(for: .normal)
 		self.tintColor = offTintColor
 	
 	}
@@ -37,7 +45,9 @@ class ZUIToggleButton: UIButton {
 	var isOn : Bool {
 		set {
 			iIsOn = newValue
+			
 			self.tintColor = iIsOn ? onTintColor : offTintColor
+			self.setImage(onImage, for: .normal)
 		}
 		
 		get {

@@ -682,7 +682,7 @@
                                                                         <action selector="playAudioAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="le6-6R-AqU"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqe-i7-fIi">
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqe-i7-fIi" customClass="ZUIToggleButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                                                     <rect key="frame" x="114.5" y="0.0" width="24" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="13k-Kl-qJB"/>
@@ -692,6 +692,15 @@
                                                                     <state key="normal" image="heart.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                                            <color key="value" systemColor="systemPinkColor"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="offTintColor">
+                                                                            <color key="value" systemColor="secondaryLabelColor"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="heart.circle.fill" catalog="system"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="favoriteButtonAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="EGP-R1-iS5"/>
                                                                     </connections>
@@ -815,10 +824,10 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cp7-5L-QHV">
-                                <rect key="frame" x="20" y="22.5" width="227.5" height="26"/>
+                                <rect key="frame" x="20" y="25" width="227.5" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="tintColor" name="color text"/>
-                                <state key="normal" title="  Categories" image="square.stack.3d.up.fill" catalog="system">
+                                <state key="normal" title="  Categories" image="heart" catalog="system">
                                     <color key="titleColor" name="color text"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
@@ -1820,19 +1829,19 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="kV9-4f-zn3">
                                                                     <rect key="frame" x="0.0" y="17" width="351" height="104"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You got 2 of 8 (or 58%) correct" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaM-4q-Vfi">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="You got 2 of 8 (or 58%) correct" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaM-4q-Vfi">
                                                                             <rect key="frame" x="56.5" y="0.0" width="238.5" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" name="color text"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scroll back to review your answers" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9r-yz-4lR">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Scroll back to review your answers" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9r-yz-4lR">
                                                                             <rect key="frame" x="44.5" y="35.5" width="262.5" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" name="color text"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dww-Lm-sOc">
+                                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dww-Lm-sOc">
                                                                             <rect key="frame" x="103.5" y="71" width="144" height="33"/>
                                                                             <color key="backgroundColor" name="color main"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -2866,6 +2875,8 @@
         <image name="circle.circle" catalog="system" width="128" height="121"/>
         <image name="flashcard3" width="25" height="25"/>
         <image name="gradeCircle" width="150" height="150"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="heart_gray_64" width="64" height="64"/>
         <image name="info" width="30" height="30"/>
@@ -2939,6 +2950,9 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
