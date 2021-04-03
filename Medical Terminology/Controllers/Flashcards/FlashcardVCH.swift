@@ -35,10 +35,18 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// notification that do not need to be addressed
 		// categoryAddedNotification
 		
-		// MARK: - Observers for notification events
+		// MARK: - Observers for category notification events
 		
 		let observer1 = Notification.Name(myKeys.newCategorySelectedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryChangedNotification(notification:)), name: observer1, object: nil)
+		
+		let observer5 = Notification.Name(myKeys.categoryDeletedNotification)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer5, object: nil)
+		
+		let observer6 = Notification.Name(myKeys.categoryNameUpdatedNotification)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameUpdatedNotification(notification:)), name: observer6, object: nil)
+		
+		// MARK: - Observers for term notification events
 		
 		let observer2 = Notification.Name(myKeys.termInformationChangedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedNotification(notification:)), name: observer2, object: nil)
@@ -48,12 +56,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		let observer4 = Notification.Name(myKeys.termUnassignedCategoryNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignedCategoryNotfication(notification:)), name: observer4, object: nil)
-		
-		let observer5 = Notification.Name(myKeys.categoryDeletedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer5, object: nil)
-		
-		let observer6 = Notification.Name(myKeys.categoryNameUpdatedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameUpdatedNotification(notification:)), name: observer6, object: nil)
+	
 		
 		updateData(categoryID: currentCategoryID)
 	}
@@ -181,12 +184,15 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// MARK: - Cell delegate protocol
 	
 	func userPressedFavoriteButton(termID: Int) {
+		// when the user clicks the heart button, it toggles locally, but need to change the value in the database
+		
 		print("in vch userPressedFavoriteButton")
 		
 		let favoriteStatus = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: termID)
 		tc.setFavoriteStatusPostNotification(categoryID: currentCategoryID, termID: termID, isFavorite: !favoriteStatus)
 		
-		//note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed. The VCH will listen for that and tell the home view to refresh it's current cell
+		// Note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed so that all the components of this program can react.
+		// The VCH will listen for that and tell the home view to refresh it's current cell. This is redundant for this case where the user changed the value of the term favorite status on the flash card itself. However, it will be relavent to react to when the user changes this term's favorite status on an other part of the program.
 		
 	}
 	

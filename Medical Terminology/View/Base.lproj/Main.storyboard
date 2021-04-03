@@ -699,7 +699,7 @@
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="offTintColor">
                                                                             <color key="value" systemColor="secondaryLabelColor"/>
                                                                         </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="heart.circle.fill" catalog="system"/>
+                                                                        
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="favoriteButtonAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="EGP-R1-iS5"/>
