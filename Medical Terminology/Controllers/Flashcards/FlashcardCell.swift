@@ -48,13 +48,12 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate {
 		//check if the audioFile is present in the bundle
 		let aFC = AudioFileController()
 
-		//set audio button enable or disable
-		if term.audioFile != "" && aFC.isAudioFilePresentInBundle(filename: term.audioFile ?? "", extension: "mp3"){
-			
-			playAudioButton.isEnabled = true
-		} else {
-			playAudioButton.isEnabled = false
-			
+		if let audioFile = term.audioFile {
+			if aFC.isAudioFilePresentInBundle(filename: audioFile, extension: "mp3") {
+				playAudioButton.isEnabled = true
+			} else {
+				playAudioButton.isEnabled = false
+			}
 		}
 		
 		switch fcvMode {

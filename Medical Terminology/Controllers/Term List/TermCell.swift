@@ -47,20 +47,18 @@ class TermCell: UITableViewCell, AVAudioPlayerDelegate {
 		self.termLabel.text = term.name
 		self.definitionLabel.text = term.definition
         
-		if term.audioFile != "" && aFC.isAudioFilePresentInBundle(filename: term.audioFile ?? "", extension: "mp3")
-        {
-            playAudioButton.isEnabled = true
-        } else {
-            playAudioButton.isEnabled = false
-        }
-        
-		// MARK: Figure this out
-		//utilities.setFavoriteState(button: favoriteButton, //isFavorite: term.)
+		if let audioFile = term.audioFile {
+			if aFC.isAudioFilePresentInBundle(filename: audioFile, extension: "mp3") {
+				playAudioButton.isEnabled = true
+			} else {
+				playAudioButton.isEnabled = false
+			}
+		}
     }
     
     func playAudio () {
         
-		let fileName = "\(myConstants.audioFolder)/\(term.audioFile).mp3"
+		let fileName = "\(myConstants.audioFolder)/\(term.audioFile ?? "no file name").mp3"
         
         let path = Bundle.main.path(forResource: fileName, ofType: nil)!
         
