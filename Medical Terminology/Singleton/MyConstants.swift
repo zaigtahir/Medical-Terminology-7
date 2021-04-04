@@ -48,6 +48,7 @@ class MyConstants {
 	let segueAssignCategory = "segueAssignCategory"
 	let segueCategory = "segueCategory"
 	let segueValidationVC = "segueValidationVC"
+	let segueTerm = "segueTerm"
 	
     // question feedback remarks
     let feedbackNotAnswered = "Select An Answer"

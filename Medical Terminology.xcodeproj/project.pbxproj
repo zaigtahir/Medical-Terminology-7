@@ -89,6 +89,7 @@
 		99D76AD22617909A0062CCD4 /* NoTermsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AD12617909A0062CCD4 /* NoTermsCell.swift */; };
 		99D76AE926181C560062CCD4 /* ZUIToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AE826181C560062CCD4 /* ZUIToggleButton.swift */; };
 		99D76B01261969AA0062CCD4 /* TermVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76B00261969AA0062CCD4 /* TermVC.swift */; };
+		99D76B0526197E540062CCD4 /* TermVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76B0426197E540062CCD4 /* TermVCH.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,6 +182,7 @@
 		99D76AD12617909A0062CCD4 /* NoTermsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTermsCell.swift; sourceTree = "<group>"; };
 		99D76AE826181C560062CCD4 /* ZUIToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZUIToggleButton.swift; sourceTree = "<group>"; };
 		99D76B00261969AA0062CCD4 /* TermVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermVC.swift; sourceTree = "<group>"; };
+		99D76B0426197E540062CCD4 /* TermVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermVCH.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -396,6 +398,7 @@
 		5A88636F2186AC400013FC8B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				992E79DD260A43C700C19D49 /* Term.swift */,
 				5A2A58F122FCA4F400434910 /* Quiz Models */,
 				5A189C3E217123B900929AB8 /* DItem.swift */,
 				5A6F31C921A7032E00E6477E /* DList.swift */,
@@ -435,7 +438,6 @@
 		992E79DC260A43C700C19D49 /* New Modules */ = {
 			isa = PBXGroup;
 			children = (
-				992E79DD260A43C700C19D49 /* Term.swift */,
 				992E79DE260A43C700C19D49 /* TermController.swift */,
 				992E79E7260B834200C19D49 /* Category2.swift */,
 				992E79FC260FBA3100C19D49 /* CategoryController2.swift */,
@@ -483,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				99D76B00261969AA0062CCD4 /* TermVC.swift */,
+				99D76B0426197E540062CCD4 /* TermVCH.swift */,
 			);
 			path = Term;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 				992E79FD260FBA3100C19D49 /* CategoryController2.swift in Sources */,
 				99D55E1225F7EF92003ABE0B /* CategoryListVCH.swift in Sources */,
 				99D76AE926181C560062CCD4 /* ZUIToggleButton.swift in Sources */,
+				99D76B0526197E540062CCD4 /* TermVCH.swift in Sources */,
 				992E79DF260A43C700C19D49 /* Term.swift in Sources */,
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
 				5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */,
