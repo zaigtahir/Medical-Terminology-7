@@ -8,8 +8,7 @@
 
 import UIKit
 
-class TermVC: UIViewController {
-	
+class TermVC: UIViewController, TermAudioDelegate {
 	
 	@IBOutlet weak var nameLabel: UILabel!
 	
@@ -31,7 +30,7 @@ class TermVC: UIViewController {
 	
 	let termVCH = TermVCH()
 	
-	private var term = Term()
+	private var term : Term!	// store term here so it can be used to play audio as a class function
 	
 	private let tc = TermController()
 	
@@ -127,6 +126,15 @@ class TermVC: UIViewController {
 		}
 	}
 	
+	// MARK: - TermAudioDelegate functions
+	func termAudioStartedPlaying() {
+		playAudioButton.setImage(myTheme.imageSpeakerPlaying, for: .normal)
+	}
+	
+	func termAudioStoppedPlaying() {
+		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
+	}
+	
 	@IBAction func cancelButtonAction(_ sender: Any) {
 		self.dismiss(animated: true, completion: nil)
 	}
@@ -161,8 +169,10 @@ class TermVC: UIViewController {
 	
 	@IBAction func playAudioButtonAction(_ sender: UIButton) {
 		
-		let term = tc.getTerm(termID: termVCH.termID)
-		termVCH.playAudio(audioFile: term.audioFile)
+		term = tc.getTerm(termID: termVCH.termID)
+		term.delegate = self
+		term.playAudio()
+		
 	}
 	
 }

@@ -44,7 +44,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		scrollController.delegate = flashCardVCH
 		scrollController.sideMargin = myConstants.layout_sideMargin
 		scrollController.topBottomMargin = myConstants.layout_topBottomMargin
-	
+		
 		collectionView.dataSource = flashCardVCH
 		collectionView.delegate = scrollController
 		
@@ -70,7 +70,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		
 		updateDisplay()
 	}
-		
+	
 	func updateDisplay () {
 		
 		let favoriteCount = flashCardVCH.getFavoriteCount()
@@ -112,13 +112,11 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			myTheme.formatButtonState(button: b!, enabledColor: myTheme.colorFlashcardHomeButton!)
 			
 		}
-}
+	}
 	
-	
-	// MARK: why is this not getting the prepare?
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-	
+		
 		switch segue.identifier {
 		
 		case myConstants.segueFlashcardOptions:
@@ -130,7 +128,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC
-					
+			
 			vc.categoryHomeVCH.displayMode = .selectCategory
 			vc.categoryHomeVCH.currentCategoryID = flashCardVCH.currentCategoryID
 			
@@ -144,12 +142,12 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			
 			vc.termVCH.termID = termID
 			vc.termVCH.currentCategoryID = flashCardVCH.currentCategoryID
-	
+			
 			
 		default:
 			print("fatal error no matching segue in flashcardCV prepare function")
 		}
-
+		
 	}
 	
 	
