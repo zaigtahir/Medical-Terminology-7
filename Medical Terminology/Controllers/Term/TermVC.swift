@@ -99,6 +99,7 @@ class TermVC: UIViewController {
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC
 			vc.categoryHomeVCH.displayMode = .assignCategory
+			vc.categoryHomeVCH.termID = termVCH.termID
 			
 		default:
 			print("fatal error, no segue identifier found in prepare TermVC")
