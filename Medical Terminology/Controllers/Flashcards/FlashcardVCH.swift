@@ -12,6 +12,7 @@ protocol FlashcardHomeDelegate: class {
 	func updateHomeDisplay()		// update state of other controls on the flashcard home screen
 	func refreshCollectionView()	// reload all the data
 	func refreshCurrentCell()
+	func reloadCellAtIndex (termIDIndex: Int)
 }
 
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate, notificationProtocol {
@@ -52,7 +53,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedNotification(notification:)), name: observer2, object: nil)
 		
 		let observer3 = Notification.Name(myKeys.termAssignedCategoryNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(assignedCategoryNotification(notification:)), name: observer3, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryAssignedNotfication(notification:)), name: observer3, object: nil)
 		
 		let observer4 = Notification.Name(myKeys.termUnassignedCategoryNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignedCategoryNotfication(notification:)), name: observer4, object: nil)
@@ -72,10 +73,15 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"] ?? 0
 			
-			if termIDs.contains(affectedTermID) {
+			// if this term id exists in termIDs, need to reload that term from the database and then reload just that term in the collection
+			if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
+				
+				delegate?.reloadCellAtIndex(termIDIndex: termIDIndex)
 				delegate?.refreshCollectionView()
-				delegate?.updateHomeDisplay()	// to update favorite counts
+				delegate?.updateHomeDisplay()
+				
 			}
+			
 		}
 	}
 	
@@ -90,7 +96,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
-	@objc func assignedCategoryNotification (notification : Notification) {
+	@objc func categoryAssignedNotfication (notification : Notification) {
 		print(" flashcardVCH got a assignedCategory notification")
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]

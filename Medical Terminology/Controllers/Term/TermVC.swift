@@ -23,9 +23,16 @@ class TermVC: UIViewController {
 	
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
 	
+	@IBOutlet weak var speakerButton: UIButton!
+	
+	@IBOutlet weak var favoriteButton: ZUIToggleButton!
+	
+	@IBOutlet weak var deleteTermButton: UIButton!
+	
 	let termVCH = TermVCH()
 	
 	private var term = Term()
+	
 	private let tc = TermController()
 	
 	override func viewDidLoad() {
@@ -38,6 +45,14 @@ class TermVC: UIViewController {
 	}
 	
 	func updateView () {
+		
+		speakerButton.isEnabled = term.isAudioFilePresent()
+		
+		// even if no term exists yet ( as a new term will be id = 0, this will result in result = false
+		
+		let termIsFavorite  = tc.getFavoriteStatus(categoryID: 1, termID: term.termID)
+		
+		favoriteButton.isOn = termIsFavorite
 		
 		switch termVCH.displayMode {
 		
@@ -58,6 +73,7 @@ class TermVC: UIViewController {
 			
 			cancelButton.isEnabled = false
 			
+			deleteTermButton.isEnabled = !term.isStandard
 			
 		case .edit:
 			nameLabel.text = term.name
@@ -75,6 +91,8 @@ class TermVC: UIViewController {
 			leftButton.isEnabled = termVCH.isReadyToSaveTerm ? true : false
 			cancelButton.isEnabled = true
 			
+			deleteTermButton.isEnabled = !term.isStandard
+			
 			
 		default:
 			// add (case delete is not used)
@@ -86,6 +104,9 @@ class TermVC: UIViewController {
 			leftButton.title = "Save"
 			leftButton.isEnabled = termVCH.isReadyToSaveTerm ? true : false
 			cancelButton.isEnabled = true
+			
+			deleteTermButton.isEnabled = false
+			
 		}
 		
 	}
@@ -122,4 +143,15 @@ class TermVC: UIViewController {
 		
 	}
 	
+	@IBAction func isFavoriteButtonAction(_ sender: Any) {
+		
+		switch termVCH.displayMode {
+		case .add:
+			// just allow local toggling
+			return
+		default:
+			print("saving favorite state")
+			tc.setFavoriteStatusPostNotification(categoryID: termVCH.currentCategoryID, termID: termVCH.termID, isFavorite: favoriteButton.isOn)		}
+		
+	}
 }

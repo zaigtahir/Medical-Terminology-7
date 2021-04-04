@@ -14,7 +14,7 @@ protocol notificationProtocol {
 	
 	func categoryChangedNotification (notification : Notification)
 	
-	func assignedCategoryNotification (notification : Notification)
+	func categoryAssignedNotfication (notification : Notification)
 	
 	func unassignedCategoryNotfication (notification : Notification)
 	

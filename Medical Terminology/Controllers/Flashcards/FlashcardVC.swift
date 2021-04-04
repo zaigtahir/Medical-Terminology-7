@@ -170,6 +170,11 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		collectionView.reloadItems(at: [IndexPath(row: cellIndex, section: 0)])
 	}
 	
+	func reloadCellAtIndex (termIDIndex: Int) {
+		let indexPath = IndexPath(row: 0, section: termIDIndex)
+		collectionView.reloadItems(at: [indexPath])
+	}
+	
 	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
 		flashCardVCH.showFavoritesOnly = sender.isOn
 		flashCardVCH.updateData(categoryID: .none)

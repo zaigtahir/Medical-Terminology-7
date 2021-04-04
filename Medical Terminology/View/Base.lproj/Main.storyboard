@@ -988,14 +988,23 @@
                                             <action selector="playAudioButton:" destination="48e-e9-509" eventType="touchUpInside" id="cPg-ae-DWw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wze-wG-I1k">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wze-wG-I1k" customClass="ZUIToggleButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="45.333333333333314" y="0.0" width="25.333333333333329" height="22"/>
                                         <color key="tintColor" systemColor="secondaryLabelColor"/>
                                         <state key="normal">
                                             <imageReference key="image" image="heart.fill" catalog="system" symbolScale="large"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                <color key="value" name="color favorite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="offTintColor">
+                                                <color key="value" systemColor="secondaryLabelColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="isFavoriteButton:" destination="48e-e9-509" eventType="touchUpInside" id="bOT-vz-oJd"/>
+                                            <action selector="isFavoriteButtonAction:" destination="cpZ-GR-xZj" eventType="touchUpInside" id="JQq-Av-qcz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9JE-si-ovT">
@@ -1175,10 +1184,13 @@
                     <connections>
                         <outlet property="cancelButton" destination="LWF-3G-OyZ" id="wR0-bb-qwq"/>
                         <outlet property="definitionLabel" destination="GJc-sg-B9e" id="aSg-g6-jyM"/>
+                        <outlet property="deleteTermButton" destination="9JE-si-ovT" id="j0n-gB-nbc"/>
                         <outlet property="exampleLabel" destination="kfb-YM-0Y4" id="oYV-pl-1ve"/>
+                        <outlet property="favoriteButton" destination="wze-wG-I1k" id="gMa-Tm-d5U"/>
                         <outlet property="leftButton" destination="fuk-gz-e1J" id="B4b-IE-0tr"/>
                         <outlet property="myNotesLabel" destination="Qpt-sA-AtM" id="IEX-Nr-raj"/>
                         <outlet property="nameLabel" destination="08w-aP-d8G" id="n2g-jH-mLS"/>
+                        <outlet property="speakerButton" destination="XO0-U3-fcX" id="9Z4-Yq-kQ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTr-o9-BCo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2710,17 +2722,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzs-LV-fey">
-                                                    <rect key="frame" x="364" y="0.0" width="50" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="4DI-ab-Kz3"/>
-                                                    </constraints>
-                                                    <color key="tintColor" name="color text"/>
-                                                    <state key="normal" image="chevron.right" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="showDetailButtonAction:" destination="51Y-Dh-WQa" eventType="touchUpInside" id="mD4-Um-hXj"/>
-                                                    </connections>
-                                                </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H6y-PU-drn">
                                                     <rect key="frame" x="20" y="1" width="18" height="48.666666666666671"/>
                                                     <color key="tintColor" name="color text"/>
@@ -2729,14 +2730,14 @@
                                                         <constraint firstAttribute="width" constant="18" id="yBE-lS-zkl"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Jyj-Dt-KaJ">
-                                                    <rect key="frame" x="353.66666666666669" y="0.0" width="10.333333333333314" height="50"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Jyj-Dt-KaJ">
+                                                    <rect key="frame" x="383.66666666666669" y="0.0" width="10.333333333333314" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="color text"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tKT-hT-nzj">
-                                                    <rect key="frame" x="46" y="0.0" width="41" height="50"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tKT-hT-nzj">
+                                                    <rect key="frame" x="46" y="0.0" width="41.333333333333343" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="color text"/>
                                                     <nil key="highlightedColor"/>
@@ -2745,15 +2746,13 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="tKT-hT-nzj" secondAttribute="bottom" id="7sw-bT-JsV"/>
                                                 <constraint firstItem="tKT-hT-nzj" firstAttribute="leading" secondItem="H6y-PU-drn" secondAttribute="trailing" constant="8" id="BPQ-PX-PjF"/>
-                                                <constraint firstItem="Fzs-LV-fey" firstAttribute="leading" secondItem="Jyj-Dt-KaJ" secondAttribute="trailing" id="Idb-6s-pDQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="Jyj-Dt-KaJ" secondAttribute="bottom" id="QNC-dE-Xl9"/>
                                                 <constraint firstAttribute="bottom" secondItem="H6y-PU-drn" secondAttribute="bottom" id="Tq7-gO-uf4"/>
                                                 <constraint firstItem="H6y-PU-drn" firstAttribute="top" secondItem="GQC-xv-BYC" secondAttribute="top" id="U0u-Mb-sej"/>
                                                 <constraint firstItem="Jyj-Dt-KaJ" firstAttribute="top" secondItem="GQC-xv-BYC" secondAttribute="top" id="V1h-fd-Dmf"/>
-                                                <constraint firstItem="Fzs-LV-fey" firstAttribute="top" secondItem="GQC-xv-BYC" secondAttribute="top" id="YDN-Yp-wLu"/>
-                                                <constraint firstAttribute="trailing" secondItem="Fzs-LV-fey" secondAttribute="trailing" id="d3C-Go-kwk"/>
+                                                <constraint firstAttribute="trailing" secondItem="Jyj-Dt-KaJ" secondAttribute="trailing" constant="20" id="nMV-J0-P5i"/>
                                                 <constraint firstItem="tKT-hT-nzj" firstAttribute="top" secondItem="GQC-xv-BYC" secondAttribute="top" id="pK7-Cb-MLv"/>
-                                                <constraint firstAttribute="bottom" secondItem="Fzs-LV-fey" secondAttribute="bottom" id="w23-8k-svu"/>
+                                                <constraint firstItem="Jyj-Dt-KaJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tKT-hT-nzj" secondAttribute="trailing" constant="20" id="wLz-Pu-y0W"/>
                                                 <constraint firstItem="H6y-PU-drn" firstAttribute="leading" secondItem="GQC-xv-BYC" secondAttribute="leading" constant="20" id="xnA-kc-cjq"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -2761,7 +2760,6 @@
                                             <outlet property="countLabel" destination="Jyj-Dt-KaJ" id="AMb-uN-rgd"/>
                                             <outlet property="nameLabel" destination="tKT-hT-nzj" id="4E6-1t-vFO"/>
                                             <outlet property="selectImage" destination="H6y-PU-drn" id="kt0-aK-LnQ"/>
-                                            <outlet property="showDetailButton" destination="Fzs-LV-fey" id="3Tk-2e-91O"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addCell" rowHeight="50" id="yUh-vz-Q9T" customClass="AddCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
@@ -2875,7 +2873,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0e-Et-7Ek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10796" y="-2565"/>
+            <point key="canvasLocation" x="10795.652173913044" y="-2565.489130434783"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YqN-xb-VlR">
