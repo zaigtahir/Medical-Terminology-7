@@ -59,7 +59,7 @@ class Term: NSObject, AVAudioPlayerDelegate {
 		let path = Bundle.main.path(forResource: fileName, ofType: nil)!
 		
 		let url = URL(fileURLWithPath: path)
-		
+		print(url.absoluteURL)
 		//if this player is already playing, stop the play
 		
 		do {
@@ -74,6 +74,9 @@ class Term: NSObject, AVAudioPlayerDelegate {
 		}
 		
 		do {
+			
+			print("playing audio")
+			
 			audioPlayer = try AVAudioPlayer(contentsOf: url)
 			audioPlayer.delegate = self
 			audioPlayer.prepareToPlay()

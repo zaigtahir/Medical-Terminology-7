@@ -63,6 +63,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
  		*/
 		
+		// Testing
+		let tc = TermController()
+		let term = tc.getTerm(termID: 18)
+		term.playAudio()
+		
+		
+		
         // Determine and set the start screen
         if sController.getShowWelcomeScreen() == false {
             

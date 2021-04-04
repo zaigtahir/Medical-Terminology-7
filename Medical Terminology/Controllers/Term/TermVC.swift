@@ -23,7 +23,7 @@ class TermVC: UIViewController {
 	
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
 	
-	@IBOutlet weak var speakerButton: UIButton!
+	@IBOutlet weak var playAudioButton: UIButton!
 	
 	@IBOutlet weak var favoriteButton: ZUIToggleButton!
 	
@@ -46,7 +46,7 @@ class TermVC: UIViewController {
 	
 	func updateView () {
 		
-		speakerButton.isEnabled = term.isAudioFilePresent()
+		playAudioButton.isEnabled = term.isAudioFilePresent()
 		
 		// even if no term exists yet ( as a new term will be id = 0, this will result in result = false
 		
@@ -146,12 +146,23 @@ class TermVC: UIViewController {
 	@IBAction func isFavoriteButtonAction(_ sender: Any) {
 		
 		switch termVCH.displayMode {
+		
 		case .add:
 			// just allow local toggling
 			return
+			
 		default:
-			print("saving favorite state")
-			tc.setFavoriteStatusPostNotification(categoryID: termVCH.currentCategoryID, termID: termVCH.termID, isFavorite: favoriteButton.isOn)		}
-		
+			
+			// Note, can't use my button's isOn property here to check as it is not set yet as action triggers before it is set/unset
+			
+			let favoriteState  = tc.getFavoriteStatus(categoryID: termVCH.currentCategoryID, termID: term.termID)
+			tc.setFavoriteStatusPostNotification(categoryID: termVCH.currentCategoryID, termID: termVCH.termID, isFavorite: !favoriteState)		}
 	}
+	
+	@IBAction func playAudioButtonAction(_ sender: UIButton) {
+		
+		let term = tc.getTerm(termID: termVCH.termID)
+		termVCH.playAudio(audioFile: term.audioFile)
+	}
+	
 }

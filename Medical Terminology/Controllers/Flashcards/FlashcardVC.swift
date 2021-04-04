@@ -171,7 +171,8 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	}
 	
 	func reloadCellAtIndex (termIDIndex: Int) {
-		let indexPath = IndexPath(row: 0, section: termIDIndex)
+		
+		let indexPath = IndexPath(row: termIDIndex, section: 0)
 		collectionView.reloadItems(at: [indexPath])
 	}
 	

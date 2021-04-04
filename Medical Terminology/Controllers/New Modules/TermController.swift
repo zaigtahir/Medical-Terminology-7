@@ -64,6 +64,8 @@ class TermController {
 		
 		let data = ["categoryID" : categoryID, "termID" : termID]
 		
+		print ("In TermController: setFavoriteStatusPostNotification, posting this notification")
+		
 		let name = Notification.Name(myKeys.termInformationChangedNotification)
 		NotificationCenter.default.post(name: name, object: self, userInfo: data)
 	}
