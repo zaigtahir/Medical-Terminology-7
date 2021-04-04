@@ -189,7 +189,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// MARK: - Cell delegate protocol
 	
-	func userPressedFavoriteButton(termID: Int) {
+	func pressedFavoriteButton(termID: Int) {
 		// when the user clicks the heart button, it toggles locally, but need to change the value in the database
 		
 		print("in vch userPressedFavoriteButton")

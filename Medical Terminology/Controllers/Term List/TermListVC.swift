@@ -16,14 +16,16 @@ class TermListVC: UIViewController, UISearchBarDelegate {
 	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var favoritesLabel: UILabel!
-	@IBOutlet weak var favoritesSwitch: UISwitch!
 	@IBOutlet weak var searchBar: UISearchBar!
+	@IBOutlet weak var favoriteButton: ZUIToggleButton!
 	
 	let termListVCH = TermListVCH()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.dataSource = termListVCH
+		
+		favoriteButton.isOn = termListVCH.showFavoritesOnly
 	}
 	
 	
@@ -49,6 +51,12 @@ class TermListVC: UIViewController, UISearchBarDelegate {
 		searchBar.text = nil
 		searchBar.showsCancelButton = false
 		searchBar.endEditing(true)
+	}
+	
+	@IBAction func favoritesButton(_ sender: ZUIToggleButton) {
+		termListVCH.showFavoritesOnly.toggle()
+		termListVCH.updateTermsList(searchText: searchBar.text ?? "")
+		tableView.reloadData()
 	}
 }
 

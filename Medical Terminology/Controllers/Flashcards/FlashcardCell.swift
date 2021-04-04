@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 protocol FlashcardCellDelegate: AnyObject {
-    func userPressedFavoriteButton(termID: Int)
+    func pressedFavoriteButton(termID: Int)
 }
 
 class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDelegate {
@@ -104,7 +104,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDeleg
 	}
 	    
     @IBAction func favoriteButtonAction(_ sender: Any) {
-		delegate?.userPressedFavoriteButton(termID: term.termID)
+		delegate?.pressedFavoriteButton(termID: term.termID)
     }
     
     @IBAction func showTermButtonAction(_ sender: Any) {

@@ -10,23 +10,22 @@ import UIKit
 import AVFoundation
 
 protocol ListCellDelegate: class {
-    func pressedFavoriteButton (dItem: DItem)
+	func pressedFavoriteButton (termID: Int)
 }
 
-class TermCell: UITableViewCell, AVAudioPlayerDelegate {
+class TermCell: UITableViewCell, TermAudioDelegate {
     
     @IBOutlet weak var termLabel: UILabel!
     @IBOutlet weak var definitionLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: ZUIToggleButton!
+	
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var playAudioButton: UIButton!
     
     var indexPath : IndexPath!
-    var dItem : DItem!
-	
-	// set up in segue
+    
+	// set up in segue. This will be a class variable so can use it for playing the audio
 	var term : Term!
-	
 	
    // let utilities = Utilities()
 	
@@ -51,55 +50,23 @@ class TermCell: UITableViewCell, AVAudioPlayerDelegate {
 
     }
     
-    func playAudio () {
-        
-		let fileName = "\(myConstants.audioFolder)/\(term.audioFile ?? "no file name").mp3"
-        
-        let path = Bundle.main.path(forResource: fileName, ofType: nil)!
-        
-        let url = URL(fileURLWithPath: path)
-        
-        //if this player is already playing, stop the play
-        
-        if let player = audioPlayer {
-            if player.isPlaying{
-                player.stop()
-            }
-        }
-        
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.prepareToPlay()
-            audioPlayer?.delegate = self
-            audioPlayer?.play()
-            
-        } catch {
-            print("couldn't load audio file")
-        }
-        
-        return
-    }
-    
-    //MARK: Delegate methods
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        //change the speaker image to no playing
-        
-        playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
-    }
+    //MARK: TermAudioDelegate
+	func termAudioStartedPlaying() {
+		playAudioButton.setImage(myTheme.imageSpeakerPlaying, for: .normal)
+	}
+	
+	func termAudioStoppedPlaying() {
+		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
+	}
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
-     
-		
-        //change the favorite button image locally
-   //     utilities.setFavoriteState(button: favoriteButton, isFavorite: !dItem.isFavorite)
-        
-        //now need to pass this info back to database
-        delegate?.pressedFavoriteButton(dItem: dItem)
+		// the favorite button will make a local toggle in appearance
+		delegate?.pressedFavoriteButton(termID: term.termID)
     }
     
     @IBAction func playAudioButtonAction(_ sender: UIButton) {
-        playAudioButton.setImage(myTheme.imageSpeakerPlaying, for: .normal)
-        playAudio()
+		term.delegate = self
+		term.playAudio()
     }
     
 }
