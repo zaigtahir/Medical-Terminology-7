@@ -42,7 +42,7 @@ class TermListVC: UIViewController, UISearchBarDelegate {
 			searchBar.text = ""
 		}
 		
-		termListVCH.updateTermsList(searchText: searchBar.text ?? "")
+		termListVCH.update(searchText: searchBar.text ?? "")
 		
 		tableView.reloadData()
 	}
@@ -55,7 +55,7 @@ class TermListVC: UIViewController, UISearchBarDelegate {
 	
 	@IBAction func favoritesButton(_ sender: ZUIToggleButton) {
 		termListVCH.showFavoritesOnly.toggle()
-		termListVCH.updateTermsList(searchText: searchBar.text ?? "")
+		termListVCH.update(searchText: searchBar.text ?? "")
 		tableView.reloadData()
 	}
 }
