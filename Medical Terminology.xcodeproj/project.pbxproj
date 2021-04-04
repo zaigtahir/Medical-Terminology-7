@@ -88,6 +88,7 @@
 		99D76AC52616C9CE0062CCD4 /* TermsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AC42616C9CE0062CCD4 /* TermsList.swift */; };
 		99D76AD22617909A0062CCD4 /* NoTermsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AD12617909A0062CCD4 /* NoTermsCell.swift */; };
 		99D76AE926181C560062CCD4 /* ZUIToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AE826181C560062CCD4 /* ZUIToggleButton.swift */; };
+		99D76B01261969AA0062CCD4 /* TermVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76B00261969AA0062CCD4 /* TermVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -179,6 +180,7 @@
 		99D76AC42616C9CE0062CCD4 /* TermsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsList.swift; sourceTree = "<group>"; };
 		99D76AD12617909A0062CCD4 /* NoTermsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTermsCell.swift; sourceTree = "<group>"; };
 		99D76AE826181C560062CCD4 /* ZUIToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZUIToggleButton.swift; sourceTree = "<group>"; };
+		99D76B00261969AA0062CCD4 /* TermVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermVC.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -374,6 +376,7 @@
 		5A88634C21853DC90013FC8B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				99D76AFE261969880062CCD4 /* Term */,
 				992B56A2261382BF000457AA /* Validation */,
 				992B566A2610E8CC000457AA /* Category Views */,
 				992E79DC260A43C700C19D49 /* New Modules */,
@@ -474,6 +477,14 @@
 				99D76AE826181C560062CCD4 /* ZUIToggleButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		99D76AFE261969880062CCD4 /* Term */ = {
+			isa = PBXGroup;
+			children = (
+				99D76B00261969AA0062CCD4 /* TermVC.swift */,
+			);
+			path = Term;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -611,6 +622,7 @@
 				998B3D1926150F230062AFD2 /* Protocols.swift in Sources */,
 				5A67C14D231077FA00BAA2A0 /* LearnDoneCVCell.swift in Sources */,
 				992E79E8260B834200C19D49 /* Category2.swift in Sources */,
+				99D76B01261969AA0062CCD4 /* TermVC.swift in Sources */,
 				5A2A58EE22FBC24900434910 /* QuizOptionsVC.swift in Sources */,
 				5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */,
 				9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */,

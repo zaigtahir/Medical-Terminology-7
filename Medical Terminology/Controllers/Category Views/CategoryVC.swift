@@ -50,18 +50,6 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			commitButton.isEnabled = false
 			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
 			
-		case .edit:
-			headerImage.image = myTheme.imageHeaderEdit
-			promptLabel.text = "Edit This Category"
-			messageLabel.text = "Make changes to the category name"
-			textField.text = categoryVCH.affectedCategory.name
-			textField.isUserInteractionEnabled = true
-			questionButton.isEnabled = true
-			commitButton.setTitle("Save", for: .normal)
-			commitButton.isEnabled = true
-			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
-			
-			
 		case .delete:
 			headerImage.image = myTheme.imageHeaderDelete
 			promptLabel.text = "Delete This Category?"
@@ -75,6 +63,19 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			commitButton.setTitle("Delete", for: .normal)
 			commitButton.isEnabled = true
 			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorButtonDelete)
+			
+		default:
+			// add
+			
+			headerImage.image = myTheme.imageHeaderEdit
+			promptLabel.text = "Edit This Category"
+			messageLabel.text = "Make changes to the category name"
+			textField.text = categoryVCH.affectedCategory.name
+			textField.isUserInteractionEnabled = true
+			questionButton.isEnabled = true
+			commitButton.setTitle("Save", for: .normal)
+			commitButton.isEnabled = true
+			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
 			
 		}
 		
@@ -161,15 +162,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		let trimmedName = tu.trimEndSpaces(string: text)
 		
 		switch categoryVCH.categoryDisplayMode {
-		
-		case .add:
-			if cc.isCategoryNameDuplicate(name: trimmedName) {
-				showNameIsDuplicateAlert()
-				return
-			}
-			cc.addCustomCategoryPostNotification(categoryName: trimmedName)
-			self.navigationController?.popViewController(animated: true)
-			
+					
 		case .delete:
 			cc.deleteCustomCategoryPostNotification(categoryID: categoryVCH.affectedCategory.categoryID)
 			self.navigationController?.popViewController(animated: true)
@@ -185,6 +178,16 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			cc.updateCategoryNamePostNotification (categoryID: cID, newName: trimmedName)
 			
 			self.navigationController?.popViewController(animated: true)
+			
+		default:
+			// add
+			if cc.isCategoryNameDuplicate(name: trimmedName) {
+				showNameIsDuplicateAlert()
+				return
+			}
+			cc.addCustomCategoryPostNotification(categoryName: trimmedName)
+			self.navigationController?.popViewController(animated: true)
+			
 		}
 	}
 	
