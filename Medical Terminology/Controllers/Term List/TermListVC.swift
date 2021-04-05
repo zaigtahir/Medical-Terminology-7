@@ -19,13 +19,28 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	@IBOutlet weak var searchBar: UISearchBar!
 	@IBOutlet weak var favoriteButton: ZUIToggleButton!
 	
+	@IBOutlet weak var categoryLabel: UILabel!
+	@IBOutlet weak var categoryButton: UIButton!
+	
 	let termListVCH = TermListVCH()
+	let cc = CategoryController2()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.dataSource = termListVCH
 		
+		tableView.dataSource = termListVCH
 		favoriteButton.isOn = termListVCH.showFavoritesOnly
+		updateDisplay()
+	}
+	
+	func updateDisplay () {
+		
+		// update favorite count
+		// update category name
+		let category = cc.getCategory(categoryID: termListVCH.currentCategoryID)
+		let count = termListVCH.termsList.getCount()
+		
+		categoryLabel.text = ("\(category.name) (\(count))")
 	}
 	
 	// MARK: - TermListVCHDelegate functions
