@@ -22,7 +22,7 @@ class MyKeys {
 	let newCategorySelectedNotification = "com.theappgalaxy.newCategorySelectedNotification"
 	
 	// MARK: - Term Controller notifications
-	let termInformationChangedNotification = "com.theappgalaxy.termInformationChangedNotification"
+	let termFavoriteStatusChangedNotification = "com.theappgalaxy.termInformationChangedNotification"
 	
 	let termAssignedCategoryNotification = "com.theappgalaxy.termAssignedCategoryNotification"
 	

@@ -51,7 +51,7 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		
 		// MARK: - Observers for term notification events
 		
-		let observer2 = Notification.Name(myKeys.termInformationChangedNotification)
+		let observer2 = Notification.Name(myKeys.termFavoriteStatusChangedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedNotification(notification:)), name: observer2, object: nil)
 		
 		let observer3 = Notification.Name(myKeys.termAssignedCategoryNotification)
@@ -156,7 +156,7 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		
 		let isFavorite = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: termID)
 		
-		tc.setFavoriteStatusPostNotification(categoryID: currentCategoryID, termID: termID, isFavorite: !isFavorite)
+		tc.setFavoriteStatusAndPostNotification(categoryID: currentCategoryID, termID: termID, isFavorite: !isFavorite)
 		
 		// after the save method broadcasts the notification, this VCH will instruct the homeVC to update it's cell
 	}

@@ -15,12 +15,11 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	//use this VC to use as the table delegate as lots of actions happen based on selection including segue
 	
 	@IBOutlet weak var tableView: UITableView!
-	@IBOutlet weak var favoritesLabel: UILabel!
+	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var searchBar: UISearchBar!
-	@IBOutlet weak var favoriteButton: ZUIToggleButton!
-	
-	@IBOutlet weak var categoryLabel: UILabel!
-	@IBOutlet weak var categoryButton: UIButton!
+	@IBOutlet weak var showOnlyFavoriteButton: ZUIToggleButton!
+	@IBOutlet weak var categoryNameLabel: UILabel!
+	@IBOutlet weak var categorySelectButton: UIButton!
 	
 	let termListVCH = TermListVCH()
 	let cc = CategoryController2()
@@ -29,7 +28,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		super.viewDidLoad()
 		
 		tableView.dataSource = termListVCH
-		favoriteButton.isOn = termListVCH.showFavoritesOnly
+		showOnlyFavoriteButton.isOn = termListVCH.showFavoritesOnly
 		updateDisplay()
 	}
 	
@@ -40,7 +39,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		let category = cc.getCategory(categoryID: termListVCH.currentCategoryID)
 		let count = termListVCH.termsList.getCount()
 		
-		categoryLabel.text = ("\(category.name) (\(count))")
+		categoryNameLabel.text = ("\(category.name) (\(count))")
 	}
 	
 	// MARK: - TermListVCHDelegate functions

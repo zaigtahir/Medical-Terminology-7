@@ -121,16 +121,16 @@ class CategoryController2 {
 		
 		if currentIDs.contains(categoryID) {
 			//this category is already assigned to this term, so need to remove it
-			unassignCategoryPostNotification(termID: termID, categoryID: categoryID)
+			unassignCategoryAndPostNotification(termID: termID, categoryID: categoryID)
 			
 		} else {
 			//this category is not assigned to this term, so need to add it
-			assignCategoryPostNotification(termID: termID, categoryID: categoryID)
+			assignCategoryAndPostNotification(termID: termID, categoryID: categoryID)
 		}
 		
 	}
 	
-	func assignCategoryPostNotification (termID: Int, categoryID: Int) {
+	func assignCategoryAndPostNotification (termID: Int, categoryID: Int) {
 		let query = "INSERT INTO \(assignedCategories) ('termID', 'categoryID') VALUES (\(termID), \(categoryID))"
 		myDB.executeStatements(query)
 		
@@ -140,7 +140,7 @@ class CategoryController2 {
 		NotificationCenter.default.post(name: name, object: self, userInfo: data)
 	}
 	
-	func unassignCategoryPostNotification (termID: Int, categoryID: Int) {
+	func unassignCategoryAndPostNotification (termID: Int, categoryID: Int) {
 		let query = "DELETE FROM \(assignedCategories) WHERE termID = \(termID) AND categoryID = \(categoryID)"
 		myDB.executeStatements(query)
 		
@@ -185,7 +185,7 @@ class CategoryController2 {
 		}
 	}
 	
-	func deleteCustomCategoryPostNotification (categoryID: Int) {
+	func deleteCustomCategoryAndPostNotification (categoryID: Int) {
 		// will delete this category from the category table, and also remove all assignments from the assigned category
 		
 		let query1 = "DELETE FROM \(categories) WHERE categoryID = \(categoryID)"
@@ -198,7 +198,7 @@ class CategoryController2 {
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID": categoryID])
 	}
 	
-	func addCustomCategoryPostNotification (categoryName: String) {
+	func addCustomCategoryAndPostNotification (categoryName: String) {
 		// if duplicate name do not add it
 		// always add with display order = 1
 		// shift display order of other custom categories up by 1 to make room
@@ -220,7 +220,7 @@ class CategoryController2 {
 		NotificationCenter.default.post(name: name, object: self, userInfo: nil)
 	}
 	
-	func updateCategoryNamePostNotification (categoryID: Int, newName: String) {
+	func updateCategoryNameAndPostNotification (categoryID: Int, newName: String) {
 		
 		let query = "UPDATE \(categories) SET name = '\(newName)' WHERE categoryID = \(categoryID)"
 		myDB.executeStatements(query)
