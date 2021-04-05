@@ -152,18 +152,20 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	
-	func updateData (categoryID : Int?) {
+	func updateData (categoryID : Int) {
 		
-		if let newID = categoryID {
-			currentCategoryID = newID
-		}
+		currentCategoryID = categoryID
 		
 		termIDs = tc.getTermIDs(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: true)
 	}
 	
-	func getFavoriteCount () -> Int {
+	func getFavoriteTermsCount () -> Int {
 		//return the count of favorites or this catetory
 		return tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+	}
+	
+	func getAllTermsCount () -> Int {
+		return tc.getCount(categoryID: currentCategoryID, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 	}
 	
 	// MARK: - CollectionViewDataSource Functions

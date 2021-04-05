@@ -13,8 +13,12 @@ import UIKit
 class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	
 	@IBOutlet weak var collectionView: UICollectionView!
-	@IBOutlet weak var favoritesLabel: UILabel!
-	@IBOutlet weak var favoritesSwitch: UISwitch!
+	@IBOutlet weak var favoritesCountLabel: UILabel!
+	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
+	
+	@IBOutlet weak var categorySelectButton: UIButton!
+	
+	@IBOutlet weak var categoryNameLabel: UILabel!
 	@IBOutlet weak var sliderOutlet: UISlider!
 	
 	@IBOutlet weak var previousButton: UIButton!
@@ -23,8 +27,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	
 	@IBOutlet weak var emptyListLabel: UILabel!
 	@IBOutlet weak var emptyListImage: UIImageView!
-	
-	@IBOutlet weak var categoryButton: UIButton!
+
 	
 	//button listing the category name
 	
@@ -58,10 +61,6 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		randomButton.isEnabled = true
 		nextButton.isEnabled = true
 		
-		favoritesSwitch.layer.cornerRadius = 16
-		favoritesSwitch.isOn = flashCardVCH.showFavoritesOnly
-		favoritesSwitch.onTintColor = myTheme.colorFavorite
-		
 		previousButton.layer.cornerRadius = myConstants.button_cornerRadius
 		nextButton.layer.cornerRadius = myConstants.button_cornerRadius
 		randomButton.layer.cornerRadius = myConstants.button_cornerRadius
@@ -73,7 +72,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	
 	func updateDisplay () {
 		
-		let favoriteCount = flashCardVCH.getFavoriteCount()
+		let favoriteCount = flashCardVCH.getFavoriteTermsCount()
 		
 		if favoriteCount == 0 && flashCardVCH.showFavoritesOnly {
 			collectionView.isHidden = true
@@ -81,21 +80,22 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			collectionView.isHidden = false
 		}
 		
+		showFavoritesOnlyButton.isOn = flashCardVCH.showFavoritesOnly
+		
+		favoritesCountLabel.text = "\(favoriteCount)"
+		
 		let c = cc.getCategory(categoryID: flashCardVCH.currentCategoryID)
 		
 		c.count = cc.getCountOfTerms(categoryID: flashCardVCH.currentCategoryID)
 		
-		let title = "  \(c.name) (\(c.count))"
+		let title = "  \(c.name) (\(flashCardVCH.getAllTermsCount()))"
 		
-		categoryButton.setTitle(title, for: .normal)
-		
+		categoryNameLabel.text = title
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0
 		
 		sliderOutlet.maximumValue = Float(flashCardVCH.termIDs.count - 1)
 		sliderOutlet.value = Float (scrollController.getCellIndex(collectionView: collectionView))
-		
-		favoritesLabel.text = "\(favoriteCount)"
 		
 		updateButtons()
 		
@@ -172,10 +172,13 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		let indexPath = IndexPath(row: termIDIndex, section: 0)
 		collectionView.reloadItems(at: [indexPath])
 	}
-	
-	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
-		flashCardVCH.showFavoritesOnly = sender.isOn
-		flashCardVCH.updateData(categoryID: .none)
+
+	@IBAction func showFavoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
+		return
+		flashCardVCH.showFavoritesOnly = !flashCardVCH.showFavoritesOnly
+		flashCardVCH.updateData(categoryID: flashCardVCH.currentCategoryID)
+		collectionView.reloadData()
+		updateDisplay()
 	}
 	
 	@IBAction func sliderAction(_ sender: UISlider) {
