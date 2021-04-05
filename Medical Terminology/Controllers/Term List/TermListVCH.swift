@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TermListVCHDelegate: class {
-	//func updateHomeDisplay()		// update state of other controls on the flashcard home screen
+	//func shouldUpdateDisplay()		// update state of other controls on the flashcard home screen
 	//func reloadTableView()	// reload all the data
 	
 	func shouldReloadTable()

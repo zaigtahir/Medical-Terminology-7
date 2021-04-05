@@ -9,13 +9,11 @@
 import UIKit
 
 protocol FlashcardHomeDelegate: class {
-	func updateHomeDisplay()		// update state of other controls on the flashcard home screen
-	func refreshCollectionView()	// reload all the data
-	func refreshCurrentCell()
-	func reloadCellAtIndex (termIDIndex: Int)
+	func shouldUpdateDisplay()		// update state of other controls on the flashcard home screen
+	func shouldRefreshCollectionView()	// reload all the data
+	func shouldRefreshCurrentCell()
+	func shouldReloadCellAtIndex (termIDIndex: Int)
 }
-
-
 
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
 	
@@ -93,9 +91,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			// if this term id exists in termIDs, need to reload that term from the database and then reload just that term in the collection
 			if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
 				
-				delegate?.reloadCellAtIndex(termIDIndex: termIDIndex)
-				delegate?.refreshCollectionView()
-				delegate?.updateHomeDisplay()
+				delegate?.shouldReloadCellAtIndex(termIDIndex: termIDIndex)
+				delegate?.shouldRefreshCollectionView()
+				delegate?.shouldUpdateDisplay()
 				
 			}
 			
@@ -145,7 +143,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		if let data = notification.userInfo as? [String : Int] {
 			let changedCategoryID = data["categoryID"]
 			if changedCategoryID == currentCategoryID {
-				delegate?.updateHomeDisplay()
+				delegate?.shouldUpdateDisplay()
 			}
 		}
 		
@@ -206,7 +204,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// MARK: - Scroll delegate protocol
 	
 	func CVCellChanged(cellIndex: Int) {
-		delegate?.updateHomeDisplay()
+		delegate?.shouldUpdateDisplay()
 	}
 	
 	func CVCellDragging(cellIndex: Int) {
@@ -216,7 +214,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// MARK: -Flashcard options delegate
 	func flashCardViewModeChanged(fcvMode: FlashcardViewMode) {
 		self.viewMode = fcvMode
-		delegate?.refreshCurrentCell()
+		delegate?.shouldRefreshCurrentCell()
 	}
 	
 }

@@ -153,21 +153,21 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 
 	// MARK: Delegate functions for FlashcardVCHDelegate
 	
-	func updateHomeDisplay() {
+	func shouldUpdateDisplay() {
 		self.updateDisplay()
 	}
 	
-	func refreshCollectionView() {
+	func shouldRefreshCollectionView() {
 		collectionView.reloadData()
 	}
 	
-	func refreshCurrentCell() {
+	func shouldRefreshCurrentCell() {
 		//need to refresh cell
 		let cellIndex  = scrollController.getCellIndex(collectionView: collectionView)
 		collectionView.reloadItems(at: [IndexPath(row: cellIndex, section: 0)])
 	}
 	
-	func reloadCellAtIndex (termIDIndex: Int) {
+	func shouldReloadCellAtIndex (termIDIndex: Int) {
 		
 		let indexPath = IndexPath(row: termIDIndex, section: 0)
 		collectionView.reloadItems(at: [indexPath])
