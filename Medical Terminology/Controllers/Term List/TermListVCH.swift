@@ -54,10 +54,10 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		let observer2 = Notification.Name(myKeys.termFavoriteStatusChangedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedNotification(notification:)), name: observer2, object: nil)
 		
-		let observer3 = Notification.Name(myKeys.termAssignedCategoryNotification)
+		let observer3 = Notification.Name(myKeys.assignedCategoryNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryAssignedNotfication(notification:)), name: observer3, object: nil)
 		
-		let observer4 = Notification.Name(myKeys.termUnassignedCategoryNotification)
+		let observer4 = Notification.Name(myKeys.unassignedCategoryNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignedCategoryNotfication(notification:)), name: observer4, object: nil)
 		
 	}

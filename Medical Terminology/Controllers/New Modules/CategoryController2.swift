@@ -130,27 +130,6 @@ class CategoryController2 {
 		
 	}
 	
-	func assignCategoryAndPostNotification (termID: Int, categoryID: Int) {
-		let query = "INSERT INTO \(assignedCategories) ('termID', 'categoryID') VALUES (\(termID), \(categoryID))"
-		myDB.executeStatements(query)
-		
-		// send out notification
-		let data = ["termID" : termID, "categoryID" : categoryID]
-		let name = Notification.Name(myKeys.termAssignedCategoryNotification)
-		NotificationCenter.default.post(name: name, object: self, userInfo: data)
-	}
-	
-	func unassignCategoryAndPostNotification (termID: Int, categoryID: Int) {
-		let query = "DELETE FROM \(assignedCategories) WHERE termID = \(termID) AND categoryID = \(categoryID)"
-		myDB.executeStatements(query)
-		
-		// send out notification
-		// send out notification
-		let data = ["termID" : termID, "categoryID" : categoryID]
-		let name = Notification.Name(myKeys.termUnassignedCategoryNotification)
-		NotificationCenter.default.post(name: name, object: self, userInfo: data)
-	}
-	
 	private func fillCategory (resultSet: FMResultSet) -> Category2 {
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))
 		let name = resultSet.string(forColumn: "name") ?? ""
@@ -169,7 +148,6 @@ class CategoryController2 {
 		return c
 	}
 	
-	// MARK: -Add category functions
 	func isCategoryNameDuplicate (name: String) -> Bool {
 		
 		let query = "SELECT COUNT(*) FROM \(myConstants.dbTableCategories2) WHERE name = '\(name)'"
@@ -185,20 +163,9 @@ class CategoryController2 {
 		}
 	}
 	
-	func deleteCustomCategoryAndPostNotification (categoryID: Int) {
-		// will delete this category from the category table, and also remove all assignments from the assigned category
-		
-		let query1 = "DELETE FROM \(categories) WHERE categoryID = \(categoryID)"
-		let _ = myDB.executeStatements(query1)
-		
-		let query2 = "DELETE FROM \(assignedCategories) WHERE categoryID = \(categoryID)"
-		let _ = myDB.executeStatements(query2)
-		
-		let name = Notification.Name(myKeys.categoryDeletedNotification)
-		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID": categoryID])
-	}
+	// MARK: - Functions that send off program wide notifications
 	
-	func addCustomCategoryAndPostNotification (categoryName: String) {
+	func addCategoryAndPostNotification (categoryName: String) {
 		// if duplicate name do not add it
 		// always add with display order = 1
 		// shift display order of other custom categories up by 1 to make room
@@ -220,6 +187,19 @@ class CategoryController2 {
 		NotificationCenter.default.post(name: name, object: self, userInfo: nil)
 	}
 	
+	func deleteCategoryAndPostNotification (categoryID: Int) {
+		// will delete this category from the category table, and also remove all assignments from the assigned category
+		
+		let query1 = "DELETE FROM \(categories) WHERE categoryID = \(categoryID)"
+		let _ = myDB.executeStatements(query1)
+		
+		let query2 = "DELETE FROM \(assignedCategories) WHERE categoryID = \(categoryID)"
+		let _ = myDB.executeStatements(query2)
+		
+		let name = Notification.Name(myKeys.categoryDeletedNotification)
+		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID": categoryID])
+	}
+	
 	func updateCategoryNameAndPostNotification (categoryID: Int, newName: String) {
 		
 		let query = "UPDATE \(categories) SET name = '\(newName)' WHERE categoryID = \(categoryID)"
@@ -230,6 +210,27 @@ class CategoryController2 {
 		let name = Notification.Name(myKeys.categoryNameUpdatedNotification)
 		
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : categoryID])
+	}
+	
+	func assignCategoryAndPostNotification (termID: Int, categoryID: Int) {
+		let query = "INSERT INTO \(assignedCategories) ('termID', 'categoryID') VALUES (\(termID), \(categoryID))"
+		myDB.executeStatements(query)
+		
+		// send out notification
+		let data = ["termID" : termID, "categoryID" : categoryID]
+		let name = Notification.Name(myKeys.assignedCategoryNotification)
+		NotificationCenter.default.post(name: name, object: self, userInfo: data)
+	}
+	
+	func unassignCategoryAndPostNotification (termID: Int, categoryID: Int) {
+		let query = "DELETE FROM \(assignedCategories) WHERE termID = \(termID) AND categoryID = \(categoryID)"
+		myDB.executeStatements(query)
+		
+		// send out notification
+		// send out notification
+		let data = ["termID" : termID, "categoryID" : categoryID]
+		let name = Notification.Name(myKeys.unassignedCategoryNotification)
+		NotificationCenter.default.post(name: name, object: self, userInfo: data)
 	}
 	
 }

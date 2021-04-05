@@ -24,9 +24,9 @@ class MyKeys {
 	// MARK: - Term Controller notifications
 	let termFavoriteStatusChangedNotification = "com.theappgalaxy.termInformationChangedNotification"
 	
-	let termAssignedCategoryNotification = "com.theappgalaxy.termAssignedCategoryNotification"
+	let assignedCategoryNotification = "com.theappgalaxy.termAssignedCategoryNotification"
 	
-	let termUnassignedCategoryNotification = "com.theappgalaxy.termUnassignedCategoryNotification"
+	let unassignedCategoryNotification = "com.theappgalaxy.termUnassignedCategoryNotification"
 	
 	// MARK: - Category controller notifications
 	let categoryAddedNotification = "com.theappgalaxy.categoryAddedNotification"
