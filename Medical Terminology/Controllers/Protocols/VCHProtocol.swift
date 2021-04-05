@@ -31,7 +31,7 @@ protocol VCHProtocol {
 	func categoryAssignedNotification (notification: Notification)
 	func categoryUnassignedNotification (notification: Notification)
 	func categoryDeletedNotification (notification: Notification)
-
+	
 	func updateData ()
 	
 	
