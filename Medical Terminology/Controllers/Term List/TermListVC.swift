@@ -27,6 +27,8 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		termListVCH.delegate = self
+		
 		tableView.dataSource = termListVCH
 		showOnlyFavoriteButton.isOn = termListVCH.showFavoritesOnly
 		updateDisplay()
@@ -36,6 +38,8 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		
 		// update favorite count
 		// update category name
+		
+		print("in termListVC updateDisplay")
 		
 		let category = cc.getCategory(categoryID: termListVCH.currentCategoryID)
 		let count = termListVCH.termsList.getCount()

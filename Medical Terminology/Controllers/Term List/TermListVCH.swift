@@ -82,6 +82,11 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		
 		self.termsList.makeList(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, containsText: contains)
 		
+		print("in termListVCH updateData")
+		delegate?.shouldClearSearchText()
+		delegate?.shouldReloadTable()
+		delegate?.shouldUpdateDisplay()
+		
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -137,12 +142,7 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 				print("in TermListVCH currentCategoryChangedNotification")
 				
 				let categoryID = d.value
-				currentCategoryID = categoryID
-				
 				updateData(categoryID: categoryID, searchText: "")
-				delegate?.shouldClearSearchText()
-				delegate?.shouldReloadTable()
-				delegate?.shouldUpdateDisplay()
 			}
 		}
 	}
