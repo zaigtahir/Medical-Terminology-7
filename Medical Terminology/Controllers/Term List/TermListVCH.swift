@@ -24,9 +24,19 @@ protocol TermListVCHDelegate: class {
 }
 
 //Have to incude NSObject to that TermListVCH can implement the table view and search bar delegates
-class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
+class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate, VCHProtocol
 
 {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	var currentCategoryID = 1 			// default starting off category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
@@ -44,24 +54,24 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		
 		// MARK: - Observers for category notification events
 		
-		let observer1 = Notification.Name(myKeys.currentCategoryChangedNotification)
+		let observer1 = Notification.Name(myKeys.currentCategoryChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryChangedNotification(notification:)), name: observer1, object: nil)
 		
-		let observer5 = Notification.Name(myKeys.categoryDeletedNotification)
+		let observer5 = Notification.Name(myKeys.deleteCategoryKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer5, object: nil)
 		
-		let observer6 = Notification.Name(myKeys.categoryInformationChanged)
+		let observer6 = Notification.Name(myKeys.changeCategoryNameKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryInformationChangedNotification(notification:)), name: observer6, object: nil)
 		
 		// MARK: - Observers for term notification events
 		
-		let observer2 = Notification.Name(myKeys.termFavoriteStatusChangedNotification)
+		let observer2 = Notification.Name(myKeys.termFavoriteStatusChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedNotification(notification:)), name: observer2, object: nil)
 		
-		let observer3 = Notification.Name(myKeys.assignedCategoryNotification)
+		let observer3 = Notification.Name(myKeys.assignCategoryKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryAssignedNotfication(notification:)), name: observer3, object: nil)
 		
-		let observer4 = Notification.Name(myKeys.unassignedCategoryNotification)
+		let observer4 = Notification.Name(myKeys.unassignCategoryKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryUnassignedNotification(notification:)), name: observer4, object: nil)
 		
 	}

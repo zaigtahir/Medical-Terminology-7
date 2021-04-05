@@ -19,20 +19,20 @@ class MyKeys {
 	
 	
 	// MARK: - CategoryVCH notifications
-	let currentCategoryChangedNotification = "com.theappgalaxy.currentCategoryChanged"
+	let currentCategoryChangedKey = "com.theappgalaxy.currentCategoryChanged"
 	
 	// MARK: - Term Controller notifications
-	let termFavoriteStatusChangedNotification = "com.theappgalaxy.termInformationChangedNotification"
+	let termFavoriteStatusChangedKey = "com.theappgalaxy.termInformationChangedNotification"
 	
-	let assignedCategoryNotification = "com.theappgalaxy.termAssignedCategoryNotification"
+	let assignCategoryKey = "com.theappgalaxy.termAssignedCategoryNotification"
 	
-	let unassignedCategoryNotification = "com.theappgalaxy.termUnassignedCategoryNotification"
+	let unassignCategoryKey = "com.theappgalaxy.termUnassignedCategoryNotification"
 	
 	// MARK: - Category controller notifications
-	let categoryAddedNotification = "com.theappgalaxy.categoryAddedNotification"
+	let addCategoryNK = "com.theappgalaxy.categoryAddedNotification"
 	
-	let categoryDeletedNotification = "com.theappgalaxy.categoryDeletedNotification"
+	let deleteCategoryKey = "com.theappgalaxy.categoryDeletedNotification"
 	
-	let categoryInformationChanged = "com.theappgalaxy.categoryNameUpdatedNotification"
+	let changeCategoryNameKey = "com.theappgalaxy.categoryNameUpdatedNotification"
 }
 

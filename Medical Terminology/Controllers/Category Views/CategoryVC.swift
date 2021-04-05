@@ -164,7 +164,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		switch categoryVCH.categoryDisplayMode {
 					
 		case .delete:
-			cc.deleteCategoryAndPostNotification(categoryID: categoryVCH.affectedCategory.categoryID)
+			cc.deleteCategoryPN(categoryID: categoryVCH.affectedCategory.categoryID)
 			self.navigationController?.popViewController(animated: true)
 			
 		case .edit:
@@ -175,7 +175,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			
 			let cID = categoryVCH.affectedCategory.categoryID
 			
-			cc.updateCategoryNameAndPostNotification (categoryID: cID, newName: trimmedName)
+			cc.changeCategoryNamePN (categoryID: cID, newName: trimmedName)
 			
 			self.navigationController?.popViewController(animated: true)
 			
@@ -185,7 +185,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 				showNameIsDuplicateAlert()
 				return
 			}
-			cc.addCategoryAndPostNotification(categoryName: trimmedName)
+			cc.addCategoryPN(categoryName: trimmedName)
 			self.navigationController?.popViewController(animated: true)
 			
 		}
