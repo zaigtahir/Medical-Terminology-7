@@ -164,7 +164,7 @@ class TermVC: UIViewController, TermAudioDelegate {
 			// Note, can't use my button's isOn property here to check as it is not set yet as action triggers before it is set/unset
 			
 			let favoriteState  = tc.getFavoriteStatus(categoryID: termVCH.currentCategoryID, termID: term.termID)
-			tc.setFavoriteStatusAndPostNotification(categoryID: termVCH.currentCategoryID, termID: termVCH.termID, isFavorite: !favoriteState)		}
+			tc.setFavoriteStatusPN(categoryID: termVCH.currentCategoryID, termID: termVCH.termID, isFavorite: !favoriteState)		}
 	}
 	
 	@IBAction func playAudioButtonAction(_ sender: UIButton) {

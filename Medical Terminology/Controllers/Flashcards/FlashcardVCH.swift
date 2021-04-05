@@ -15,6 +15,8 @@ protocol FlashcardHomeDelegate: class {
 	func reloadCellAtIndex (termIDIndex: Int)
 }
 
+
+
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
 	
 	// holds state of the view
@@ -33,33 +35,37 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	override init() {
 		super.init()
 		
-		// notification that do not need to be addressed
-		// categoryAddedNotification
-		
-		// MARK: - Observers for category notification events
-		
-		let observer1 = Notification.Name(myKeys.currentCategoryChangedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryChanged(notification:)), name: observer1, object: nil)
-		
-		let observer5 = Notification.Name(myKeys.categoryDeletedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer5, object: nil)
-		
-		let observer6 = Notification.Name(myKeys.categoryInformationChanged)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryInformationChangedNotification(notification:)), name: observer6, object: nil)
-		
-		// MARK: - Observers for term notification events
-		
-		let observer2 = Notification.Name(myKeys.termFavoriteStatusChangedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedNotification(notification:)), name: observer2, object: nil)
-		
-		let observer3 = Notification.Name(myKeys.assignedCategoryNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryAssignedNotfication(notification:)), name: observer3, object: nil)
-		
-		let observer4 = Notification.Name(myKeys.unassignedCategoryNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryUnassignedNotification(notification:)), name: observer4, object: nil)
-	
-		
 		updateData(categoryID: currentCategoryID)
+		
+		/*
+		Notification keys this controller will need to respond to
+		
+		currentCategoryChangedKey
+		setFavoriteStatusKey
+		assignCategoryKey
+		unassignCategoryKey
+		deleteCategoryKey
+		changeCategoryNameKey
+		*/
+		
+		let nameCCCN = Notification.Name(myKeys.currentCategoryChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryChangedN(notification:)), name: nameCCCN, object: nil)
+		
+		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
+		
+		let nameACK = Notification.Name(myKeys.assignCategoryKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(assignCategoryN(notification:)), name: nameACK, object: nil)
+		
+		let nameUCK = Notification.Name(myKeys.unassignCategoryKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(unassignCategoryN(notification:)), name: nameUCK, object: nil)
+		
+		let nameDCK = Notification.Name(myKeys.deleteCategoryKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN (notification:)), name: nameDCK, object: nil)
+		
+		let nameCCN = Notification.Name(myKeys.changeCategoryNameKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN(notification:)), name: nameCCN, object: nil)
+		
 	}
 	
 	deinit {
@@ -68,7 +74,18 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	// MARK: - notification functions
-	@objc func termInformationChangedNotification (notification: Notification) {
+	
+	@objc func currentCategoryChangedN (notification : Notification) {
+		
+		if let data = notification.userInfo as? [String : Int] {
+			for d in data {
+				//there will be only one data here, the categoryID
+				updateData(categoryID: d.value)
+			}
+		}
+	}
+	
+	@objc func setFavoriteStatusN (notification: Notification) {
 		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"] ?? 0
@@ -84,20 +101,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			
 		}
 	}
-	
-	@objc func currentCategoryChanged (notification : Notification) {
-		
-		if let data = notification.userInfo as? [String : Int] {
-			for d in data {
-				//there will be only one data here, the categoryID
-				print("flashcardVCH got notification of category change")
-				updateData(categoryID: d.value)
-			}
-		}
-	}
-	
-	@objc func categoryAssignedNotfication (notification : Notification) {
-		print(" flashcardVCH got a assignedCategory notification")
+
+	@objc func assignCategoryN (notification : Notification) {
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]
 			if categoryID == currentCategoryID {
@@ -107,11 +112,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 				updateData(categoryID: currentCategoryID)
 			}
 		}
-		
 	}
 	
-	@objc func categoryUnassignedNotification (notification : Notification){
-		print ("flashcardVCH up unassignCategory notification")
+	@objc func unassignCategoryN (notification : Notification){
 		
 		if let data = notification.userInfo as? [String : Int] {
 			
@@ -124,7 +127,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
-	@objc func categoryDeletedNotification (notification: Notification){
+	@objc func deleteCategoryN (notification: Notification){
 		// if the current category is deleted, then change the current category to 1 (All Terms) and reload the data
 		if let data = notification.userInfo as? [String: Int] {
 			
@@ -136,7 +139,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
-	@objc func categoryInformationChangedNotification (notification: Notification) {
+	@objc func changeCategoryNameN (notification: Notification) {
 		// if this is the current category, reload the category and then refresh the display
 		
 		if let data = notification.userInfo as? [String : Int] {
@@ -148,6 +151,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 	}
 	
+	
 	func updateData (categoryID : Int?) {
 		
 		if let newID = categoryID {
@@ -155,9 +159,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 		
 		termIDs = tc.getTermIDs(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: true)
-		
-		delegate?.updateHomeDisplay()
-		delegate?.refreshCollectionView()
 	}
 	
 	func getFavoriteCount () -> Int {
@@ -195,7 +196,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		print("in vch userPressedFavoriteButton")
 		
 		let favoriteStatus = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: termID)
-		tc.setFavoriteStatusAndPostNotification(categoryID: currentCategoryID, termID: termID, isFavorite: !favoriteStatus)
+		tc.setFavoriteStatusPN(categoryID: currentCategoryID, termID: termID, isFavorite: !favoriteStatus)
 		
 		// Note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed so that all the components of this program can react.
 		// The VCH will listen for that and tell the home view to refresh it's current cell. This is redundant for this case where the user changed the value of the term favorite status on the flash card itself. However, it will be relavent to react to when the user changes this term's favorite status on an other part of the program.

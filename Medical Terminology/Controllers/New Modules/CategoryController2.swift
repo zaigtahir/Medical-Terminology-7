@@ -183,7 +183,7 @@ class CategoryController2 {
 		// need to shoot off categoryAddedNotification
 		// the only item that will need to respond to it is the categoryListVCH so it can refresh the categoryListCV list
 		
-		let name = Notification.Name(myKeys.addCategoryNK)
+		let name = Notification.Name(myKeys.addCategoryKey)
 		NotificationCenter.default.post(name: name, object: self, userInfo: nil)
 	}
 	

@@ -53,15 +53,23 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	override init() {
 		super.init()
 		
-		// MARK: observers
-		let observer1 = Notification.Name(myKeys.categoryAddedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryAddedNotification(notification:)), name: observer1, object: nil)
+		/*
+		Need to listen to 4 notifications and address them
+
+		addCategoryKey
+		deleteCategoryKey
+		changeCategoryNameKey
+		*/
 		
-		let observer2 = Notification.Name(myKeys.categoryDeletedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer2, object: nil)
+		let nameACK = Notification.Name(myKeys.addCategoryKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(addCategoryN (notification:)), name: nameACK, object: nil)
 		
-		let observer3 = Notification.Name(myKeys.categoryInformationChanged)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryInformationChangedNotification(notification:)), name: observer3, object: nil)
+		let nameDCK = Notification.Name(myKeys.deleteCategoryKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN (notification:)), name: nameDCK, object: nil)
+		
+		let nameCCN = Notification.Name(myKeys.changeCategoryNameKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN(notification:)), name: nameCCN, object: nil)
+
 	}
 	
 	deinit {
@@ -71,14 +79,21 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	// MARK: - notification functions
 	
-	@objc func categoryAddedNotification (notification: Notification) {
+	@objc func addCategoryN (notification: Notification) {
 		
 		// refresh the data
 		fillCategoryLists()
 		categoryHomeDelegate?.reloadTable()
 	}
 	
-	@objc func categoryDeletedNotification (notification: Notification) {
+	@objc func changeCategoryNameN (notification: Notification) {
+		// refresh the lists and table
+		fillCategoryLists()
+		categoryHomeDelegate?.reloadTable()
+		
+	}
+	
+	@objc func deleteCategoryN (notification: Notification) {
 		// a category was deleted
 		
 		// if the current category was deleted, then load up All Terms category
@@ -94,12 +109,18 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		categoryHomeDelegate?.reloadTable()
 	}
 	
-	@objc func categoryNameUpdatedNotification (notification: Notification) {
-		// refresh the lists and table
-		fillCategoryLists()
-		categoryHomeDelegate?.reloadTable()
-		
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	func fillCategoryLists () {
 		standardCategories = cc.getCategories(categoryType: .standard)
@@ -224,7 +245,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		var rowCategory = getRowCategory(indexPath: indexPath)
 		
 		if displayMode == .selectCategory {
-			self.selectedSelectRow(didSelectRowAt: indexPath, categoryID: rowCategory.categoryID)
+			self.selectedSelectRowPN(didSelectRowAt: indexPath, categoryID: rowCategory.categoryID)
 		} else {
 			self.selectedAssignRow(didSelectRowAt: indexPath, category: rowCategory)
 		}
@@ -245,7 +266,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		return rowCategory
 	}
 	
-	private func selectedSelectRow (didSelectRowAt indexPath: IndexPath, categoryID: Int) {
+	private func selectedSelectRowPN (didSelectRowAt indexPath: IndexPath, categoryID: Int) {
 		
 		// if the user selected the same category then don't do anything
 		if categoryID == currentCategoryID {
@@ -257,7 +278,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		currentCategoryID = categoryID
 		
 		// MARK: Fire off a notification of the category change!!
-		let name = Notification.Name(myKeys.currentCategoryChangedNotification)
+		let name = Notification.Name(myKeys.currentCategoryChangedKey)
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : currentCategoryID])
 		
 		categoryHomeDelegate?.reloadTable()

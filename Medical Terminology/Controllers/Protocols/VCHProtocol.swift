@@ -15,24 +15,24 @@ Implement this protocol for the main VCH so they have consistent variables and f
 protocol VCHProtocol {
 	
 	// properties to contain
-	var currentCatetoryID: Int {get set}
+	var currentCategoryID: Int {get set}
 	var showFavoritesOnly: Bool {get set}
 	
 	// functions to implement
 	func getFavoriteCount () -> Int
 	func getCategoryCount () -> Int
 	func getSearchCount   () -> Int
-	
-	// notification functions
-	func currentCategoryChanged (notification: Notification)
-	func catetoryAddedNotification (notification: Notification)
-	func categoryInformationChanged (notification: Notification)
-	func catetoryDeletedNotification (notification: Notification)
-	func categoryAssignedNotification (notification: Notification)
-	func categoryUnassignedNotification (notification: Notification)
-	func categoryDeletedNotification (notification: Notification)
-	
-	func updateData ()
+		
+	// term notifications
+	func setFavoriteStatusN (notification: Notification)
 	
 	
+	// category notifications
+	func currentCategoryChangedN (notification: Notification)
+	func addCategoryN (notification: Notification)
+	func deleteCategoryN (notification: Notification)
+	func changeCategoryNameN (notification: Notification)
+	func assignCategoryN (notification: Notification)
+	func unassignCategoryN  (notification: Notification)
+
 }

@@ -56,7 +56,7 @@ class TermController {
 		}
 	}
 	
-	func setFavoriteStatusAndPostNotification (categoryID: Int, termID: Int, isFavorite: Bool) {
+	func setFavoriteStatusPN (categoryID: Int, termID: Int, isFavorite: Bool) {
 		let query = "UPDATE \(myConstants.dbTableAssignedCategories) SET isFavorite = \( isFavorite ? 1 : 0 ) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		_ = myDB.executeStatements(query)
 		
@@ -66,7 +66,7 @@ class TermController {
 		
 		print ("In TermController: setFavoriteStatusPostNotification, posting this notification")
 		
-		let name = Notification.Name(myKeys.termFavoriteStatusChangedNotification)
+		let name = Notification.Name(myKeys.setFavoriteStatusKey)
 		NotificationCenter.default.post(name: name, object: self, userInfo: data)
 	}
 	

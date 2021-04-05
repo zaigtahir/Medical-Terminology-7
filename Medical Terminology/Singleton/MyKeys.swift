@@ -22,14 +22,14 @@ class MyKeys {
 	let currentCategoryChangedKey = "com.theappgalaxy.currentCategoryChanged"
 	
 	// MARK: - Term Controller notifications
-	let termFavoriteStatusChangedKey = "com.theappgalaxy.termInformationChangedNotification"
+	let setFavoriteStatusKey = "com.theappgalaxy.termInformationChangedNotification"
 	
 	let assignCategoryKey = "com.theappgalaxy.termAssignedCategoryNotification"
 	
 	let unassignCategoryKey = "com.theappgalaxy.termUnassignedCategoryNotification"
 	
 	// MARK: - Category controller notifications
-	let addCategoryNK = "com.theappgalaxy.categoryAddedNotification"
+	let addCategoryKey = "com.theappgalaxy.categoryAddedNotification"
 	
 	let deleteCategoryKey = "com.theappgalaxy.categoryDeletedNotification"
 	
