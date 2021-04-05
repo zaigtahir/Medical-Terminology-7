@@ -8,17 +8,22 @@
 
 import UIKit
 
-protocol TermListVCHDelegate {
-	func updateHomeDisplay()		// update state of other controls on the flashcard home screen
-	func reloadTableView()	// reload all the data
-	func reloadCellAtIndex (cellOIndex: Int)
+protocol TermListVCHDelegate: class {
+	//func updateHomeDisplay()		// update state of other controls on the flashcard home screen
+	//func reloadTableView()	// reload all the data
+	func reloadCellAt (indexPath: IndexPath)
+	
+	/**
+	clear the searh text. Use this before changing the category
+	*/
+	func clearSearchText()
 }
 
 //Have to incude NSObject to that TermListVCH can implement the table view and search bar delegates
 class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 
 {
-
+	
 	var currentCategoryID = 1 			// default starting off category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	
@@ -26,10 +31,12 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 	
 	let tc = TermController()
 	
+	weak var delegate: TermListVCHDelegate?
+	
 	override init() {
 		super.init()
 		
-		updateData (searchText: "")
+		updateData (categoryID: currentCategoryID, searchText: "")
 		
 		// MARK: - Observers for category notification events
 		
@@ -53,10 +60,16 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		let observer4 = Notification.Name(myKeys.termUnassignedCategoryNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignedCategoryNotfication(notification:)), name: observer4, object: nil)
 		
-		
 	}
 	
-	func updateData (searchText: String) {
+	deinit {
+		// remove observer (s)
+		NotificationCenter.default.removeObserver(self)
+	}
+	
+	func updateData (categoryID: Int, searchText: String) {
+		
+		currentCategoryID = categoryID
 		
 		var contains : String?
 		if searchText != "" {
@@ -88,17 +101,18 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		
 		if termsList.getCount() == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "noTermsCell", for: indexPath) as? NoTermsCell
-		
+			
 			return cell!
 		}
 		
-	
+		
 		let termCell = tableView.dequeueReusableCell(withIdentifier: "termCell", for: indexPath) as? TermCell
 		
 		let termID = termsList.getTermID(indexPath: indexPath)
 		let term = tc.getTerm(termID: termID)
 		
 		termCell!.configure(term: term, indexPath: indexPath)
+		termCell?.delegate = self
 		
 		return termCell!
 	}
@@ -106,9 +120,22 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 	
 	// MARK: - notification functions
 	@objc func termInformationChangedNotification (notification: Notification) {
+		// will need to update just that cell of the table view
+	
+		
 	}
 	
 	@objc func categoryChangedNotification (notification : Notification) {
+		if let data = notification.userInfo as? [String : Int] {
+			for d in data {
+				// there will be only one data here, the categoryID
+				
+				let categoryID = d.value
+				
+				delegate?.clearSearchText()
+				updateData(categoryID: categoryID, searchText: "")
+			}
+		}
 	}
 	
 	@objc func categoryAssignedNotfication (notification : Notification) {
@@ -131,6 +158,6 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		
 		tc.setFavoriteStatusPostNotification(categoryID: currentCategoryID, termID: termID, isFavorite: !isFavorite)
 		
-		// handle this notification to refresh the screen/cell
+		// after the save method broadcasts the notification, this VCH will instruct the homeVC to update it's cell
 	}
 }

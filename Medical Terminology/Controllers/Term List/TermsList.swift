@@ -8,8 +8,10 @@
 
 import Foundation
 
-// a class to hold an list of termIDs in sections a-z
-
+/**
+My class to hold an list of termIDs in sections a-z
+The list should be such that the termIDs are unique to that my implementation of firstOccuranceOf will work
+*/
 class TermsList {
 	
 	private let tc = TermController()
@@ -65,6 +67,19 @@ class TermsList {
 	
 	func getTermID (indexPath: IndexPath) -> Int {
 		return termIDsList[indexPath.section][indexPath.row]
+	}
+	
+	/**
+	Returns the index path of the first matching termID. As this list is supposed to be unique, this will be considered to be the only possible matching value
+	*/
+	func findIndexOf (termID: Int) -> IndexPath? {
+		for i in 0...sectionNames.count - 1 {
+			if let row = termIDsList[i].firstIndex(of: termID) {
+				
+				return IndexPath(row: row, section: i)
+			}
+		}
+		return nil
 	}
 
 }

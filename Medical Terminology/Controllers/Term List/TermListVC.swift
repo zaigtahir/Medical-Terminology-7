@@ -9,7 +9,7 @@
 import UIKit
 import SQLite3
 
-class TermListVC: UIViewController, UISearchBarDelegate {
+class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	//will use ListTC as the table datasource
 	//use this VC to use as the table delegate as lots of actions happen based on selection including segue
@@ -28,9 +28,35 @@ class TermListVC: UIViewController, UISearchBarDelegate {
 		favoriteButton.isOn = termListVCH.showFavoritesOnly
 	}
 	
+	// MARK: - TermListVCHDelegate functions
+	func reloadCellAt(indexPath: IndexPath) {
+		print("in TermListVC reloadCellAt delegate function")
+		tableView.reloadData()
+		tableView.reloadRows(at: [indexPath], with: .automatic)
+	}
+	
+	func clearSearchText () {
+		searchBar.text = ""
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
+		switch segue.identifier {
+		
+		case myConstants.segueSelectCatetory:
+			
+			let nc = segue.destination as! UINavigationController
+			let vc = nc.topViewController as! CategoryListVC
+			
+			vc.categoryHomeVCH.displayMode = .selectCategory
+			vc.categoryHomeVCH.currentCategoryID = termListVCH.currentCategoryID
+			
+		default:
+			print("fatal error no matching segue in flashcardCV prepare function")
+		}
+	}
 	
 	// MARK: - Search bar functions and delegates
-	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		if searchBar.showsCancelButton == false {
 			searchBar.showsCancelButton = true
@@ -42,7 +68,7 @@ class TermListVC: UIViewController, UISearchBarDelegate {
 			searchBar.text = ""
 		}
 		
-		termListVCH.update(searchText: searchBar.text ?? "")
+		termListVCH.updateData (categoryID: termListVCH.currentCategoryID, searchText: searchBar.text ?? "")
 		
 		tableView.reloadData()
 	}
@@ -55,7 +81,7 @@ class TermListVC: UIViewController, UISearchBarDelegate {
 	
 	@IBAction func favoritesButton(_ sender: ZUIToggleButton) {
 		termListVCH.showFavoritesOnly.toggle()
-		termListVCH.update(searchText: searchBar.text ?? "")
+		termListVCH.updateData (categoryID: termListVCH.currentCategoryID, searchText: searchBar.text ?? "")
 		tableView.reloadData()
 	}
 }

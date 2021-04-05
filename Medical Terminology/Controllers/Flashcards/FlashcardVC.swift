@@ -150,8 +150,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		
 	}
 	
-	
-	
+
 	// MARK: Delegate functions for FlashcardVCHDelegate
 	
 	func updateHomeDisplay() {
