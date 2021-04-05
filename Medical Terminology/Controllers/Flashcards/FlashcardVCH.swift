@@ -79,6 +79,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			for d in data {
 				//there will be only one data here, the categoryID
 				updateData(categoryID: d.value)
+				delegate?.shouldRefreshCollectionView()
+				delegate?.shouldUpdateDisplay()
 			}
 		}
 	}
