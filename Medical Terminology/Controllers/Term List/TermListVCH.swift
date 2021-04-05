@@ -50,8 +50,8 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		let observer5 = Notification.Name(myKeys.categoryDeletedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer5, object: nil)
 		
-		let observer6 = Notification.Name(myKeys.categoryNameUpdatedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameUpdatedNotification(notification:)), name: observer6, object: nil)
+		let observer6 = Notification.Name(myKeys.categoryInformationChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryInformationChangedNotification(notification:)), name: observer6, object: nil)
 		
 		// MARK: - Observers for term notification events
 		
@@ -62,7 +62,7 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryAssignedNotfication(notification:)), name: observer3, object: nil)
 		
 		let observer4 = Notification.Name(myKeys.unassignedCategoryNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(unassignedCategoryNotfication(notification:)), name: observer4, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryUnassignedNotification(notification:)), name: observer4, object: nil)
 		
 	}
 	

@@ -33,6 +33,6 @@ class MyKeys {
 	
 	let categoryDeletedNotification = "com.theappgalaxy.categoryDeletedNotification"
 	
-	let categoryNameUpdatedNotification = "com.theappgalaxy.categoryNameUpdatedNotification"
+	let categoryInformationChanged = "com.theappgalaxy.categoryNameUpdatedNotification"
 }
 

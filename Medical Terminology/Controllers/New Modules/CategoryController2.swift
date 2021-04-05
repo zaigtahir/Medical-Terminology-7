@@ -207,7 +207,7 @@ class CategoryController2 {
 		
 		print("updateCatetoryName query: \(query)")
 		
-		let name = Notification.Name(myKeys.categoryNameUpdatedNotification)
+		let name = Notification.Name(myKeys.categoryInformationChanged)
 		
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : categoryID])
 	}

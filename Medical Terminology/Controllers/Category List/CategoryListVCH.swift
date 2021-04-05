@@ -60,8 +60,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		let observer2 = Notification.Name(myKeys.categoryDeletedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer2, object: nil)
 		
-		let observer3 = Notification.Name(myKeys.categoryNameUpdatedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameUpdatedNotification(notification:)), name: observer3, object: nil)
+		let observer3 = Notification.Name(myKeys.categoryInformationChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryInformationChangedNotification(notification:)), name: observer3, object: nil)
 	}
 	
 	deinit {

@@ -1313,7 +1313,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="100" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tGH-PG-Amh" propertyAccessControl="none">
-                                <rect key="frame" x="0.0" y="126" width="414" height="517"/>
+                                <rect key="frame" x="0.0" y="131" width="414" height="512"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="color text"/>
                                 <color key="separatorColor" name="color card border"/>
@@ -1475,79 +1475,89 @@
                                     <outlet property="delegate" destination="wde-Jg-jwX" id="NXT-1E-g2T"/>
                                 </connections>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eFO-8W-eVe">
-                                <rect key="frame" x="315" y="74" width="50" height="18"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLD-Yi-91I">
+                                <rect key="frame" x="0.0" y="56" width="414" height="75"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktY-D4-prE">
+                                        <rect key="frame" x="20" y="20" width="285" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="285" id="ceY-4e-buR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="tintColor" name="color text"/>
+                                        <state key="normal" image="square.stack.3d.up.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Ruo-Ko-dgu" kind="presentation" identifier="segueSelectCategory" modalPresentationStyle="fullScreen" id="WdJ-IQ-Ral"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rm8-ZP-4B3">
+                                        <rect key="frame" x="52" y="20" width="253" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="color text"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eFO-8W-eVe">
+                                        <rect key="frame" x="315" y="23" width="50" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="tUV-fr-hdj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="color text"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-Ip-UKw" customClass="ZUIToggleButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
+                                        <rect key="frame" x="370" y="20" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="B46-yx-dJ2"/>
+                                            <constraint firstAttribute="width" constant="24" id="C1W-Xb-HW5"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                        <state key="normal" image="heart.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                <color key="value" name="color favorite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="offTintColor">
+                                                <color key="value" systemColor="secondaryLabelColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="favoritesButton:" destination="wde-Jg-jwX" eventType="touchUpInside" id="S6B-Bi-0RH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="tUV-fr-hdj"/>
+                                    <constraint firstAttribute="bottom" secondItem="ktY-D4-prE" secondAttribute="bottom" constant="20" id="1yF-tz-9A4"/>
+                                    <constraint firstItem="ktY-D4-prE" firstAttribute="leading" secondItem="TLD-Yi-91I" secondAttribute="leading" constant="20" id="Aho-Pg-Zdm"/>
+                                    <constraint firstItem="pSM-Ip-UKw" firstAttribute="leading" secondItem="eFO-8W-eVe" secondAttribute="trailing" constant="5" id="Ec0-3R-ij3"/>
+                                    <constraint firstItem="eFO-8W-eVe" firstAttribute="centerY" secondItem="pSM-Ip-UKw" secondAttribute="centerY" id="HgC-sH-eP3"/>
+                                    <constraint firstItem="ktY-D4-prE" firstAttribute="top" secondItem="TLD-Yi-91I" secondAttribute="top" constant="20" id="PxL-hJ-9Oe"/>
+                                    <constraint firstItem="Rm8-ZP-4B3" firstAttribute="trailing" secondItem="ktY-D4-prE" secondAttribute="trailing" id="YBk-ji-Y2k"/>
+                                    <constraint firstItem="Rm8-ZP-4B3" firstAttribute="top" secondItem="ktY-D4-prE" secondAttribute="top" id="aZt-DB-i4M"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="biF-7d-GoX"/>
+                                    <constraint firstItem="pSM-Ip-UKw" firstAttribute="top" secondItem="TLD-Yi-91I" secondAttribute="top" constant="20" id="dlO-FG-Yiy"/>
+                                    <constraint firstAttribute="trailing" secondItem="pSM-Ip-UKw" secondAttribute="trailing" constant="20" id="ver-Nr-EdL"/>
+                                    <constraint firstItem="Rm8-ZP-4B3" firstAttribute="leading" secondItem="TLD-Yi-91I" secondAttribute="leading" constant="52" id="x7i-jF-vE1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" name="color text"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktY-D4-prE">
-                                <rect key="frame" x="20" y="71" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="CAS-3I-QAh"/>
-                                    <constraint firstAttribute="height" constant="30" id="j0V-kI-LRf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" name="color text"/>
-                                <state key="normal" image="square.stack.3d.up.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Ruo-Ko-dgu" kind="presentation" identifier="segueSelectCategory" modalPresentationStyle="fullScreen" id="WdJ-IQ-Ral"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-Ip-UKw" customClass="ZUIToggleButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
-                                <rect key="frame" x="370" y="71" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="B46-yx-dJ2"/>
-                                    <constraint firstAttribute="width" constant="24" id="C1W-Xb-HW5"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                <state key="normal" image="heart.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
-                                        <color key="value" name="color favorite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="offTintColor">
-                                        <color key="value" systemColor="secondaryLabelColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="favoritesButton:" destination="wde-Jg-jwX" eventType="touchUpInside" id="S6B-Bi-0RH"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rm8-ZP-4B3">
-                                <rect key="frame" x="60" y="71" width="245" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" name="color text"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="26A-yx-iFb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9Fm-OV-cCY" firstAttribute="trailing" secondItem="26A-yx-iFb" secondAttribute="trailing" id="3RA-Eh-4ui"/>
-                            <constraint firstItem="eFO-8W-eVe" firstAttribute="centerY" secondItem="pSM-Ip-UKw" secondAttribute="centerY" id="5px-X3-6dl"/>
-                            <constraint firstItem="ktY-D4-prE" firstAttribute="top" secondItem="9Fm-OV-cCY" secondAttribute="bottom" constant="15" id="Iv6-hk-RrT"/>
-                            <constraint firstItem="eFO-8W-eVe" firstAttribute="leading" secondItem="Rm8-ZP-4B3" secondAttribute="trailing" constant="10" id="KvT-Kq-xDl"/>
-                            <constraint firstItem="ktY-D4-prE" firstAttribute="leading" secondItem="26A-yx-iFb" secondAttribute="leading" constant="20" id="OCq-x9-QU3"/>
                             <constraint firstItem="9Fm-OV-cCY" firstAttribute="top" secondItem="26A-yx-iFb" secondAttribute="top" id="Orz-5l-Yac"/>
                             <constraint firstItem="tGH-PG-Amh" firstAttribute="leading" secondItem="26A-yx-iFb" secondAttribute="leading" id="VJk-Q8-FpV"/>
                             <constraint firstItem="9Fm-OV-cCY" firstAttribute="leading" secondItem="26A-yx-iFb" secondAttribute="leading" id="Vgf-ds-9rO"/>
-                            <constraint firstItem="Rm8-ZP-4B3" firstAttribute="leading" secondItem="ktY-D4-prE" secondAttribute="trailing" constant="10" id="XrL-pT-Ppy"/>
-                            <constraint firstItem="Rm8-ZP-4B3" firstAttribute="top" secondItem="ktY-D4-prE" secondAttribute="top" id="b30-K3-onb"/>
-                            <constraint firstItem="Rm8-ZP-4B3" firstAttribute="bottom" secondItem="ktY-D4-prE" secondAttribute="bottom" id="cUk-ys-R1P"/>
-                            <constraint firstItem="26A-yx-iFb" firstAttribute="trailing" secondItem="pSM-Ip-UKw" secondAttribute="trailing" constant="20" id="mBE-eY-8xz"/>
-                            <constraint firstItem="pSM-Ip-UKw" firstAttribute="top" secondItem="ktY-D4-prE" secondAttribute="top" id="nAN-2W-zvT"/>
-                            <constraint firstItem="pSM-Ip-UKw" firstAttribute="leading" secondItem="eFO-8W-eVe" secondAttribute="trailing" constant="5" id="sZ0-YR-2OI"/>
+                            <constraint firstItem="TLD-Yi-91I" firstAttribute="top" secondItem="9Fm-OV-cCY" secondAttribute="bottom" id="bfz-MO-UWJ"/>
+                            <constraint firstItem="26A-yx-iFb" firstAttribute="trailing" secondItem="TLD-Yi-91I" secondAttribute="trailing" id="ig9-fm-b2w"/>
+                            <constraint firstItem="TLD-Yi-91I" firstAttribute="leading" secondItem="26A-yx-iFb" secondAttribute="leading" id="m61-Tc-bpU"/>
                             <constraint firstItem="26A-yx-iFb" firstAttribute="bottom" secondItem="tGH-PG-Amh" secondAttribute="bottom" id="sZd-32-ciM"/>
+                            <constraint firstItem="tGH-PG-Amh" firstAttribute="top" secondItem="TLD-Yi-91I" secondAttribute="bottom" id="swS-8X-VHa"/>
                             <constraint firstItem="26A-yx-iFb" firstAttribute="trailing" secondItem="tGH-PG-Amh" secondAttribute="trailing" id="wwv-OZ-blA"/>
-                            <constraint firstItem="tGH-PG-Amh" firstAttribute="top" secondItem="9Fm-OV-cCY" secondAttribute="bottom" constant="70" id="yG9-0b-rIe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Review List" id="HdV-01-PCi"/>

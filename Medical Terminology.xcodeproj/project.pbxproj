@@ -89,6 +89,7 @@
 		99D76AE926181C560062CCD4 /* ZUIToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76AE826181C560062CCD4 /* ZUIToggleButton.swift */; };
 		99D76B01261969AA0062CCD4 /* TermVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76B00261969AA0062CCD4 /* TermVC.swift */; };
 		99D76B0526197E540062CCD4 /* TermVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76B0426197E540062CCD4 /* TermVCH.swift */; };
+		99D76B14261B60900062CCD4 /* VCHProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D76B13261B60900062CCD4 /* VCHProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,6 +182,7 @@
 		99D76AE826181C560062CCD4 /* ZUIToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZUIToggleButton.swift; sourceTree = "<group>"; };
 		99D76B00261969AA0062CCD4 /* TermVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermVC.swift; sourceTree = "<group>"; };
 		99D76B0426197E540062CCD4 /* TermVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermVCH.swift; sourceTree = "<group>"; };
+		99D76B13261B60900062CCD4 /* VCHProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCHProtocol.swift; sourceTree = "<group>"; };
 		99DF26522470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DF26532470F3790021AFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -375,6 +377,7 @@
 		5A88634C21853DC90013FC8B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				99D76B0E261B603F0062CCD4 /* Protocols */,
 				99D76AFE261969880062CCD4 /* Term */,
 				992B56A2261382BF000457AA /* Validation */,
 				992B566A2610E8CC000457AA /* Category Views */,
@@ -487,6 +490,14 @@
 			path = Term;
 			sourceTree = "<group>";
 		};
+		99D76B0E261B603F0062CCD4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				99D76B13261B60900062CCD4 /* VCHProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -576,6 +587,7 @@
 				5A03479022D39D0900749EBC /* FMDatabaseAdditions.m in Sources */,
 				5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */,
 				5A2A58DB22EF7F1400434910 /* QuizHomeVCH.swift in Sources */,
+				99D76B14261B60900062CCD4 /* VCHProtocol.swift in Sources */,
 				5A03479622D3EE7500749EBC /* Globals.swift in Sources */,
 				992E79D3260A2ADD00C19D49 /* FlashcardVCH.swift in Sources */,
 				992E79EB260C413D00C19D49 /* AddCell.swift in Sources */,
