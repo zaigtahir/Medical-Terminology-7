@@ -15,7 +15,7 @@ protocol FlashcardHomeDelegate: class {
 	func reloadCellAtIndex (termIDIndex: Int)
 }
 
-class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate, notificationProtocol {
+class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
 	
 	// holds state of the view
 	var currentCategoryID = 1 			// default starting off category
@@ -38,8 +38,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		// MARK: - Observers for category notification events
 		
-		let observer1 = Notification.Name(myKeys.newCategorySelectedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryChangedNotification(notification:)), name: observer1, object: nil)
+		let observer1 = Notification.Name(myKeys.currentCategoryChangedNotification)
+		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryChanged(notification:)), name: observer1, object: nil)
 		
 		let observer5 = Notification.Name(myKeys.categoryDeletedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer5, object: nil)
@@ -85,7 +85,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
-	@objc func categoryChangedNotification (notification : Notification) {
+	@objc func currentCategoryChanged (notification : Notification) {
 		
 		if let data = notification.userInfo as? [String : Int] {
 			for d in data {

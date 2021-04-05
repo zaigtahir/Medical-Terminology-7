@@ -19,7 +19,7 @@ class MyKeys {
 	
 	
 	// MARK: - CategoryVCH notifications
-	let newCategorySelectedNotification = "com.theappgalaxy.newCategorySelectedNotification"
+	let currentCategoryChangedNotification = "com.theappgalaxy.currentCategoryChanged"
 	
 	// MARK: - Term Controller notifications
 	let termFavoriteStatusChangedNotification = "com.theappgalaxy.termInformationChangedNotification"

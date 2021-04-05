@@ -10,7 +10,7 @@ import UIKit
 import SQLite3
 
 class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
-	
+
 	//will use ListTC as the table datasource
 	//use this VC to use as the table delegate as lots of actions happen based on selection including segue
 	
@@ -36,6 +36,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		
 		// update favorite count
 		// update category name
+		
 		let category = cc.getCategory(categoryID: termListVCH.currentCategoryID)
 		let count = termListVCH.termsList.getCount()
 		
@@ -43,13 +44,22 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	}
 	
 	// MARK: - TermListVCHDelegate functions
+	
+	func shouldReloadTable() {
+		tableView.reloadData()
+	}
+	
+	func shouldUpdateDisplay() {
+		updateDisplay()
+	}
+	
 	func reloadCellAt(indexPath: IndexPath) {
 		print("in TermListVC reloadCellAt delegate function")
 		tableView.reloadData()
 		tableView.reloadRows(at: [indexPath], with: .automatic)
 	}
 	
-	func clearSearchText () {
+	func shouldClearSearchText () {
 		searchBar.text = ""
 	}
 	

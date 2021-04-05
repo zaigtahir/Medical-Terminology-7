@@ -40,11 +40,12 @@ class TermCell: UITableViewCell, TermAudioDelegate {
         // Initialization code
     }
     
-    func configure(term: Term, indexPath: IndexPath) {
+	func configure(term: Term, isFavorite: Bool, indexPath: IndexPath) {
         self.term = term
         self.indexPath = indexPath
-		self.termLabel.text = term.name
-		self.definitionLabel.text = term.definition
+		termLabel.text = term.name
+		definitionLabel.text = term.definition
+		favoriteButton.isOn = isFavorite
         
 		playAudioButton.isEnabled = term.isAudioFilePresent()
 

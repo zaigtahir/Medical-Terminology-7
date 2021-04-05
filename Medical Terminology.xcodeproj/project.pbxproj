@@ -72,7 +72,6 @@
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
 		9983980F25F05B6B00CC0354 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9983980E25F05B6B00CC0354 /* StoreKit.framework */; };
 		998398E325F6AB3C00CC0354 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998398E225F6AB3C00CC0354 /* Category.swift */; };
-		998B3D1926150F230062AFD2 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B3D1826150F230062AFD2 /* Protocols.swift */; };
 		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
 		99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */; };
 		99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */; };
@@ -165,7 +164,6 @@
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9983980E25F05B6B00CC0354 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		998398E225F6AB3C00CC0354 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		998B3D1826150F230062AFD2 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
 		99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtilities.swift; sourceTree = "<group>"; };
 		99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCVCell.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 				5A189C2C216D8E8400929AB8 /* AppDelegate.swift */,
 				5A189C38216D8E8400929AB8 /* Info.plist */,
 				9963C24D2475828B0096E348 /* Assets.xcassets */,
-				998B3D1826150F230062AFD2 /* Protocols.swift */,
 			);
 			path = "Medical Terminology";
 			sourceTree = "<group>";
@@ -623,7 +620,6 @@
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
 				5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */,
 				5A886374218E82330013FC8B /* DItemController.swift in Sources */,
-				998B3D1926150F230062AFD2 /* Protocols.swift in Sources */,
 				5A67C14D231077FA00BAA2A0 /* LearnDoneCVCell.swift in Sources */,
 				992E79E8260B834200C19D49 /* Category2.swift in Sources */,
 				99D76B01261969AA0062CCD4 /* TermVC.swift in Sources */,

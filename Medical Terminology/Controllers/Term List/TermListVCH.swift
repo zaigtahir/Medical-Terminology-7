@@ -11,12 +11,16 @@ import UIKit
 protocol TermListVCHDelegate: class {
 	//func updateHomeDisplay()		// update state of other controls on the flashcard home screen
 	//func reloadTableView()	// reload all the data
+	
+	func shouldReloadTable()
+	func shouldUpdateDisplay()
+	
 	func reloadCellAt (indexPath: IndexPath)
 	
 	/**
-	clear the searh text. Use this before changing the category
+	clear the searh text. Use this before changing the category.  The notification function for changing the category will trigger this
 	*/
-	func clearSearchText()
+	func shouldClearSearchText()
 }
 
 //Have to incude NSObject to that TermListVCH can implement the table view and search bar delegates
@@ -40,8 +44,8 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		
 		// MARK: - Observers for category notification events
 		
-		let observer1 = Notification.Name(myKeys.newCategorySelectedNotification)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryChangedNotification(notification:)), name: observer1, object: nil)
+		let observer1 = Notification.Name(myKeys.currentCategoryChangedNotification)
+		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryChangedNotification(notification:)), name: observer1, object: nil)
 		
 		let observer5 = Notification.Name(myKeys.categoryDeletedNotification)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedNotification(notification:)), name: observer5, object: nil)
@@ -110,8 +114,9 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		
 		let termID = termsList.getTermID(indexPath: indexPath)
 		let term = tc.getTerm(termID: termID)
+		let isFavorite = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: termID)
 		
-		termCell!.configure(term: term, indexPath: indexPath)
+		termCell!.configure(term: term, isFavorite: isFavorite, indexPath: indexPath)
 		termCell?.delegate = self
 		
 		return termCell!
@@ -125,15 +130,19 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		
 	}
 	
-	@objc func categoryChangedNotification (notification : Notification) {
+	@objc func currentCategoryChangedNotification (notification : Notification) {
 		if let data = notification.userInfo as? [String : Int] {
 			for d in data {
-				// there will be only one data here, the categoryID
+				
+				print("in TermListVCH currentCategoryChangedNotification")
 				
 				let categoryID = d.value
+				currentCategoryID = categoryID
 				
-				delegate?.clearSearchText()
 				updateData(categoryID: categoryID, searchText: "")
+				delegate?.shouldClearSearchText()
+				delegate?.shouldReloadTable()
+				delegate?.shouldUpdateDisplay()
 			}
 		}
 	}
