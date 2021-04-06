@@ -6,6 +6,11 @@
 //  Copyright © 2019 Zaigham Tahir. All rights reserved.
 //
 
+
+/*
+hack around refreshing row thing: in local view, just toggle the favorite icon
+when the notification comes back, check the database. If the term is already the new value then dont' renew the row do it doesn't flicker
+*/
 import UIKit
 
 protocol TermListVCHDelegate: class {
@@ -99,7 +104,10 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 			
 			if let termIDIndexPath = termsList.findIndexOf(termID: affectedTermID) {
 				
-				delegate?.shouldReloadCellAt(indexPath: termIDIndexPath)
+				// delegate?.shouldReloadCellAt(indexPath: termIDIndexPath)
+				// updating just the row causes some misalignment issues unless I use an animation of .fade, but then the row has a slight faid flicker animation which I don't want
+				
+				delegate?.shouldReloadTable()
 				
 				delegate?.shouldUpdateDisplay()
 			}
@@ -108,15 +116,22 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 	}
 	
 	@objc func assignCategoryN (notification : Notification) {
-		/*
+		
+		// HERE... do i remove the search string from update hre? keep search string as a class  variable?
+		
+		
+		
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]!
 			if categoryID == currentCategoryID {
 				print ("flashcardVCH is refreshing the currentCategoryID because a term got assigned to it")
+				
+				// probably need to preserve the search text???
+				// if i preserve it, just re run with any search text present
 				updateDataAndDisplay(categoryID: categoryID)
 			}
 		}
-		*/
+		
 	}
 	
 	@objc func unassignCategoryN (notification : Notification){
@@ -180,7 +195,7 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 	}
 	
 	/**
-	Will update the internal termsList and also use the delegat functions to update the home tableView and display
+	Will update the internal termsList and also use the delegate functions to update the home tableView and display
 	*/
 	func updateDataAndDisplay (categoryID: Int, searchText: String) {
 		

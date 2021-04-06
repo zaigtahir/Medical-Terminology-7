@@ -17,7 +17,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var searchBar: UISearchBar!
-	@IBOutlet weak var showOnlyFavoriteButton: ZUIToggleButton!
+	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	@IBOutlet weak var categorySelectButton: UIButton!
 	
@@ -30,13 +30,12 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		termListVCH.delegate = self
 		
 		tableView.dataSource = termListVCH
-		showOnlyFavoriteButton.isOn = termListVCH.showFavoritesOnly
+		showFavoritesOnlyButton.isOn = termListVCH.showFavoritesOnly
 		updateDisplay()
 	}
 	
 	func updateDisplay () {
-		
-		
+				
 		let category = cc.getCategory(categoryID: termListVCH.currentCategoryID)
 		
 		let count = termListVCH.getAllTermsCount()
@@ -44,6 +43,8 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		categoryNameLabel.text = ("\(category.name) (\(count))")
 		
 		favoritesCountLabel.text = String (termListVCH.getFavoriteTermsCount())
+		
+		showFavoritesOnlyButton.isOn = termListVCH.showFavoritesOnly
 	}
 	
 	// MARK: - TermListVCHDelegate functions
@@ -107,10 +108,13 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		searchBar.endEditing(true)
 	}
 	
-	@IBAction func favoritesButton(_ sender: ZUIToggleButton) {
+	@IBAction func ShowFavoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
+		print("here at button action")
 		termListVCH.showFavoritesOnly.toggle()
 		termListVCH.updateData (categoryID: termListVCH.currentCategoryID, searchText: searchBar.text ?? "")
 		tableView.reloadData()
+		updateDisplay()
+		
 	}
 }
 

@@ -46,7 +46,9 @@ class TermCell: UITableViewCell, TermAudioDelegate {
 		termLabel.text = term.name
 		definitionLabel.text = term.definition
 		favoriteButton.isOn = isFavorite
-        
+		
+		// set non playing speaker
+		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
 		playAudioButton.isEnabled = term.isAudioFilePresent()
 
     }
