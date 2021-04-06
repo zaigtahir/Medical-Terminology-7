@@ -76,40 +76,32 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	@objc func currentCategoryChangedN (notification : Notification) {
 		
 		if let data = notification.userInfo as? [String : Int] {
-			for d in data {
-				//there will be only one data here, the categoryID
-				updateData(categoryID: d.value)
-				delegate?.shouldRefreshCollectionView()
-				delegate?.shouldUpdateDisplay()
-			}
+			
+			//there will be only one data here, the categoryID
+			updateDataAndDisplay(categoryID: data["categoryID"]!)
 		}
 	}
 	
 	@objc func setFavoriteStatusN (notification: Notification) {
 		
 		if let data = notification.userInfo as? [String: Int] {
-			let affectedTermID = data["termID"] ?? 0
+			let affectedTermID = data["termID"]!
 			
 			// if this term id exists in termIDs, need to reload that term from the database and then reload just that term in the collection
 			if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
 				
 				delegate?.shouldReloadCellAtIndex(termIDIndex: termIDIndex)
-				delegate?.shouldRefreshCollectionView()
 				delegate?.shouldUpdateDisplay()
-				
 			}
-			
 		}
 	}
-
+	
 	@objc func assignCategoryN (notification : Notification) {
 		if let data = notification.userInfo as? [String : Int] {
-			let categoryID = data["categoryID"]
+			let categoryID = data["categoryID"]!
 			if categoryID == currentCategoryID {
 				print ("flashcardVCH is refreshing the currentCategoryID because a term got assigned to it")
-				// a term got assigned to the current category from somewhere in the program
-				// will need to reload the list with the currentCategoryID and also update the home controller
-				updateData(categoryID: currentCategoryID)
+				updateDataAndDisplay(categoryID: categoryID)
 			}
 		}
 	}
@@ -118,11 +110,11 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		if let data = notification.userInfo as? [String : Int] {
 			
-			let categoryID = data["categoryID"]
+			let categoryID = data["categoryID"]!
 			
 			if categoryID == currentCategoryID {
 				print ("flashcardVCH is refreshing the currentCategoryID because a term got UNassigned from it")
-				updateData(categoryID: currentCategoryID)
+				updateDataAndDisplay(categoryID: categoryID)
 			}
 		}
 	}
@@ -134,7 +126,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			let deletedCategoryID = data["categoryID"]
 			if deletedCategoryID == currentCategoryID {
 				print ("current category deleted, will switch FC to All Terms")
-				updateData(categoryID: myConstants.dbCategoryAllTermsID)
+				updateDataAndDisplay(categoryID: myConstants.dbCategoryAllTermsID)
 			}
 		}
 	}
@@ -151,12 +143,23 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 	}
 	
-	
+	/**
+	Will update just the termIDs array
+	*/
 	func updateData (categoryID : Int) {
 		
 		currentCategoryID = categoryID
 		
 		termIDs = tc.getTermIDs(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: true)
+	}
+	
+	/**
+	Will update the termIDs array and will reload the collection view and display
+	*/
+	func updateDataAndDisplay (categoryID: Int) {
+		updateData(categoryID: categoryID)
+		delegate?.shouldRefreshCollectionView()
+		delegate?.shouldUpdateDisplay()
 	}
 	
 	func getFavoriteTermsCount () -> Int {
