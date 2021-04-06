@@ -19,7 +19,7 @@ class TermVCH {
 	var currentCategoryID : Int!
 	var displayMode = DisplayMode.view
 	
-	weak var delegate = TermVCHDelegate?
+	weak var delegate: TermVCHDelegate?
 	
 	///set this to true when the user is in edit/add mode and the data is valid to save as a term
 	var isReadyToSaveTerm = false

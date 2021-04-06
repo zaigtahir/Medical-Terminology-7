@@ -14,7 +14,7 @@ When a term is added, changed, deleted the view will keep it's search text activ
 */
 import UIKit
 
-protocol TermListVCHDelegate: class {
+protocol TermListVCHDelegate: AnyObject {
 	//func shouldUpdateDisplay()		// update state of other controls on the flashcard home screen
 	//func reloadTableView()	// reload all the data
 	

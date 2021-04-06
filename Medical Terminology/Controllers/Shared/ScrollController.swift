@@ -17,7 +17,7 @@ import UIKit
 
 // delegate function. This will fire off when a new cell loads into the controller
 
-protocol ScrollControllerDelegate: class {
+protocol ScrollControllerDelegate: AnyObject {
     
     //when the scroll is fully at a stopped position of a new cell
     func CVCellChanged (cellIndex: Int)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LearningOptionsUpdated: class {
+protocol LearningOptionsUpdated: AnyObject {
     func learningOptionsUpdated (isFavoriteMode: Bool, numberOfTerms: Int)
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LearnCVCellDelegate: class {
+protocol LearnCVCellDelegate: AnyObject {
     // user selected an answer
     func selectedAnswer(questionIndex: Int, answerIndex: Int)
     

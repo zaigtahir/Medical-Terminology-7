@@ -13,7 +13,7 @@ import UIKit
 Fires off a notification if a user changes the currentCategoryID
 All controllers that are affected by that can respond to it
 */
-protocol CategoryListVCH: class {
+protocol CategoryListVCH: AnyObject {
 	
 	func pressedInfoButtonOnStandardCategory ()
 	func pressedEditButtonOnCustomCategory (category: Category2)

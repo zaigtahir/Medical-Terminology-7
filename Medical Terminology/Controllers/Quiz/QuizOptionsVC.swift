@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol QuizOptionsUpdated: class {
+protocol QuizOptionsUpdated: AnyObject {
     func quizOptionsUpdate (numberOfQuestions: Int, questionsTypes: QuestionsType, isFavoriteMode: Bool)
 }
 

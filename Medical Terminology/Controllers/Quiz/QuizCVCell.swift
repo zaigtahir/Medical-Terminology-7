@@ -11,7 +11,7 @@ import UIKit
 
 //note make this similar to LearnCVCell
 
-protocol QuizCVCellDelegate: class {
+protocol QuizCVCellDelegate: AnyObject {
     
     func selectedAnswer(questionIndex: Int, answerIndex: Int)
     func showAnswer(questionIndex: Int, showAnswer: Bool)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FlashcardOptionsDelegate {
+protocol FlashcardOptionsDelegate: AnyObject {
     func flashCardViewModeChanged (fcvMode: FlashcardViewMode)
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-protocol ListCellDelegate: class {
+protocol ListCellDelegate: AnyObject {
 	func pressedFavoriteButton (termID: Int)
 }
 

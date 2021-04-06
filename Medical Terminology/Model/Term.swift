@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-protocol TermAudioDelegate: class {
+protocol TermAudioDelegate: AnyObject {
 	func termAudioStartedPlaying()
 	func termAudioStoppedPlaying()
 }
