@@ -33,7 +33,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	override init() {
 		super.init()
 		
-		updateData(categoryID: currentCategoryID)
+		updateData()
 		
 		/*
 		Notification keys this controller will need to respond to
@@ -78,7 +78,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		if let data = notification.userInfo as? [String : Int] {
 			
 			//there will be only one data here, the categoryID
-			updateDataAndDisplay(categoryID: data["categoryID"]!)
+			currentCategoryID = data["categoryID"]!
+			updateDataAndDisplay()
 		}
 	}
 	
@@ -100,21 +101,16 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]!
 			if categoryID == currentCategoryID {
-				print ("flashcardVCH is refreshing the currentCategoryID because a term got assigned to it")
-				updateDataAndDisplay(categoryID: categoryID)
+				updateDataAndDisplay()
 			}
 		}
 	}
 	
 	@objc func unassignCategoryN (notification : Notification){
-		
 		if let data = notification.userInfo as? [String : Int] {
-			
 			let categoryID = data["categoryID"]!
-			
 			if categoryID == currentCategoryID {
-				print ("flashcardVCH is refreshing the currentCategoryID because a term got UNassigned from it")
-				updateDataAndDisplay(categoryID: categoryID)
+				updateDataAndDisplay()
 			}
 		}
 	}
@@ -125,8 +121,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			
 			let deletedCategoryID = data["categoryID"]
 			if deletedCategoryID == currentCategoryID {
-				print ("current category deleted, will switch FC to All Terms")
-				updateDataAndDisplay(categoryID: myConstants.dbCategoryAllTermsID)
+				currentCategoryID = myConstants.dbCategoryAllTermsID
+				updateDataAndDisplay()
 			}
 		}
 	}
@@ -148,9 +144,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	/**
 	Will update just the termIDs array
 	*/
-	func updateData (categoryID : Int) {
-		
-		currentCategoryID = categoryID
+	func updateData () {
 		
 		termIDs = tc.getTermIDs(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: true)
 	}
@@ -158,8 +152,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	/**
 	Will update the termIDs array and will reload the collection view and display
 	*/
-	func updateDataAndDisplay (categoryID: Int) {
-		updateData(categoryID: categoryID)
+	func updateDataAndDisplay () {
+		updateData()
 		delegate?.shouldRefreshCollectionView()
 		delegate?.shouldUpdateDisplay()
 	}

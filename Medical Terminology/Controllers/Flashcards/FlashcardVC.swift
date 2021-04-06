@@ -180,7 +180,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	@IBAction func showFavoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
 		
 		flashCardVCH.showFavoritesOnly = !flashCardVCH.showFavoritesOnly
-		flashCardVCH.updateData(categoryID: flashCardVCH.currentCategoryID)
+		flashCardVCH.updateData()
 		collectionView.reloadData()
 		
 		updateDisplay()
