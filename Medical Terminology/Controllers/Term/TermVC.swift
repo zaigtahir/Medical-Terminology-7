@@ -28,11 +28,15 @@ class TermVC: UIViewController, TermAudioDelegate {
 	
 	@IBOutlet weak var deleteTermButton: UIButton!
 	
+	@IBOutlet weak var categoriesListTextView: UITextView!
+	
 	let termVCH = TermVCH()
 	
 	private var term : Term!	// store term here so it can be used to play audio as a class function
 	
 	private let tc = TermController()
+	
+	private let cc = CategoryController2()
 	
 	override func viewDidLoad() {
 		
@@ -52,6 +56,20 @@ class TermVC: UIViewController, TermAudioDelegate {
 		let termIsFavorite  = tc.getFavoriteStatus(categoryID: 1, termID: term.termID)
 		
 		favoriteButton.isOn = termIsFavorite
+		
+		// make list of categories
+		let categoryIDs = tc.getTermCategoryIDs(termID: term.termID)
+		var categoryList = ""
+		
+		for id in categoryIDs {
+			if (id != myConstants.dbCategoryMyTermsID) && (id != myConstants.dbCategoryAllTermsID) {
+				// note not including id 1 = All terms and 2 = My Terms
+				
+				let category = cc.getCategory(categoryID: id)
+				categoryList.append("\(category.name)\n")
+				
+			}
+		}
 		
 		switch termVCH.displayMode {
 		
@@ -74,6 +92,8 @@ class TermVC: UIViewController, TermAudioDelegate {
 			
 			deleteTermButton.isEnabled = !term.isStandard
 			
+			categoriesListTextView.text = categoryList
+			
 		case .edit:
 			nameLabel.text = term.name
 			definitionLabel.text = term.definition
@@ -92,6 +112,8 @@ class TermVC: UIViewController, TermAudioDelegate {
 			
 			deleteTermButton.isEnabled = !term.isStandard
 			
+			categoriesListTextView.text = categoryList
+			
 			
 		default:
 			// add (case delete is not used)
@@ -105,6 +127,8 @@ class TermVC: UIViewController, TermAudioDelegate {
 			cancelButton.isEnabled = true
 			
 			deleteTermButton.isEnabled = false
+			
+			categoriesListTextView.text = "Your new term will automatically be added to \"My Terms\" category in addition to any others you assign it to."
 			
 		}
 		
@@ -151,10 +175,13 @@ class TermVC: UIViewController, TermAudioDelegate {
 		
 	}
 	
-	@IBAction func isFavoriteButtonAction(_ sender: Any) {
+	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
+		
+		favoriteButton.isOn = !favoriteButton.isOn
 		
 		switch termVCH.displayMode {
 		
+		// toggle the button image
 		case .add:
 			// just allow local toggling
 			return

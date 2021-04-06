@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FlashcardHomeDelegate: class {
+protocol FlashcardHomeDelegate: AnyObject {
 	func shouldUpdateDisplay()		// update state of other controls on the flashcard home screen
 	func shouldRefreshCollectionView()	// reload all the data
 	func shouldRefreshCurrentCell()
@@ -62,7 +62,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN (notification:)), name: nameDCK, object: nil)
 		
 		let nameCCN = Notification.Name(myKeys.changeCategoryNameKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN(notification:)), name: nameCCN, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(changeCategoryNameN(notification:)), name: nameCCN, object: nil)
 		
 	}
 	

@@ -74,7 +74,7 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN (notification:)), name: nameDCK, object: nil)
 		
 		let nameCCN = Notification.Name(myKeys.changeCategoryNameKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN(notification:)), name: nameCCN, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(changeCategoryNameN(notification:)), name: nameCCN, object: nil)
 		
 	}
 	
@@ -259,6 +259,16 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		return termCell!
 	}
 	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		
+		if termsList.getRowCount(section: section) > 0 {
+			return termsList.getSectionName(section: section)
+		} else {
+			return nil
+		}
+		
+		
+	}
 	
 	
 	// MARK: - ListCellDelegate functions

@@ -12,7 +12,6 @@ class CategoryCell: UITableViewCell {
 	
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var selectImage: UIImageView!
-	@IBOutlet weak var showDetailButton: UIButton!
 	@IBOutlet weak var countLabel: UILabel!
 	
 	// hold the state of this cells isEnable so I can use it later in the didSelectRow method I just have a default value here, but when you format the cell, you will also end up setting this value
@@ -25,12 +24,12 @@ class CategoryCell: UITableViewCell {
 		// Initialization code
 	}
 	
-	func formatCellSelectCategory (rowCategory: Category2, currentCatetory: Int, isSelectable: Bool ) {
+	func formatCellSelectCategory (rowCategory: Category2, currentCategory: Int, isSelectable: Bool ) {
 		nameLabel.text  = rowCategory.name
 		countLabel.text = String (rowCategory.count)
 		self.isSelectable = isSelectable
 		
-		if rowCategory.categoryID == currentCatetory {
+		if rowCategory.categoryID == currentCategory {
 			//selected category
 			selectImage.image = myTheme.imageRowSelected
 			selectImage.tintColor = myTheme.colorMain

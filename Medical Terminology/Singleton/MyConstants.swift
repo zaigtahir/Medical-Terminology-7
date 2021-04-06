@@ -24,7 +24,7 @@ class MyConstants {
 	let dbTableUser = "assignCategories"
 	
 	let dbCategoryAllTermsID = 1
-	let dbCategoryMyTermsID = 2	// am i using this anywhere?
+	let dbCategoryMyTermsID = 2
 
 	let dbTableCatetories = "categories"
 	

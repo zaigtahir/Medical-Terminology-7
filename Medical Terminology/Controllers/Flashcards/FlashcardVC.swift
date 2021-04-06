@@ -214,4 +214,3 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	}
 	
 }
-

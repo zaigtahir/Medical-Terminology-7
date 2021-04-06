@@ -68,7 +68,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN (notification:)), name: nameDCK, object: nil)
 		
 		let nameCCN = Notification.Name(myKeys.changeCategoryNameKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN(notification:)), name: nameCCN, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(changeCategoryNameN(notification:)), name: nameCCN, object: nil)
 
 	}
 	
@@ -88,6 +88,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	@objc func changeCategoryNameN (notification: Notification) {
 		// refresh the lists and table
+		print("categoryListVCH got changeCategoryNameN")
 		fillCategoryLists()
 		categoryHomeDelegate?.reloadTable()
 		
@@ -95,7 +96,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	@objc func deleteCategoryN (notification: Notification) {
 		// a category was deleted
-		
+		print("categoryListVCH got deleteCategoryN")
 		// if the current category was deleted, then load up All Terms category
 		if let data = notification.userInfo as? [String : Int] {
 			if data["categoryID"] == currentCategoryID {
@@ -108,19 +109,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		fillCategoryLists()
 		categoryHomeDelegate?.reloadTable()
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	func fillCategoryLists () {
 		standardCategories = cc.getCategories(categoryType: .standard)
@@ -183,7 +171,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			
 			case .selectCategory:
 				
-				cell.formatCellSelectCategory(rowCategory: rowCategory, currentCatetory: self.currentCategoryID, isSelectable: true )
+				cell.formatCellSelectCategory(rowCategory: rowCategory, currentCategory: self.currentCategoryID, isSelectable: true )
 				
 				return cell
 				
