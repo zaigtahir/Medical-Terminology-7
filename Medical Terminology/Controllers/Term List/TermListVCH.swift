@@ -14,7 +14,7 @@ protocol TermListVCHDelegate: class {
 	
 	func shouldReloadTable()
 	func shouldUpdateDisplay()
-	func reloadCellAt (indexPath: IndexPath)
+	func shouldReloadCellAt (indexPath: IndexPath)
 	func shouldClearSearchText()
 }
 
@@ -65,7 +65,6 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		
 		let nameCCN = Notification.Name(myKeys.changeCategoryNameKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN(notification:)), name: nameCCN, object: nil)
-
 		
 	}
 	
@@ -91,18 +90,21 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 	
 	@objc func setFavoriteStatusN (notification: Notification) {
 		
-		/*
+		print("got setFavoriteStatusN in TermListVCH")
+		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			
-			// if this term id exists in termIDs, need to reload that term from the database and then reload just that term in the collection
-			if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
+			// if this term id exists in termIDs, need to reload that term from the database and then reload just that term cell in the table
+			
+			if let termIDIndexPath = termsList.findIndexOf(termID: affectedTermID) {
 				
-				delegate?.shouldReloadCellAtIndex(termIDIndex: termIDIndex)
+				delegate?.shouldReloadCellAt(indexPath: termIDIndexPath)
+				
 				delegate?.shouldUpdateDisplay()
 			}
 		}
-		*/
+		
 	}
 	
 	@objc func assignCategoryN (notification : Notification) {

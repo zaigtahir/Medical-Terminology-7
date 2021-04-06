@@ -56,10 +56,11 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		updateDisplay()
 	}
 	
-	func reloadCellAt(indexPath: IndexPath) {
+	func shouldReloadCellAt(indexPath: IndexPath) {
 		print("in TermListVC reloadCellAt delegate function")
-		tableView.reloadData()
-		tableView.reloadRows(at: [indexPath], with: .automatic)
+		//tableView.reloadData()
+		tableView.reloadRows(at: [indexPath], with: .fade)
+		
 	}
 	
 	func shouldClearSearchText () {
