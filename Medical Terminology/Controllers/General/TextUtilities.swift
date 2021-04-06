@@ -28,7 +28,7 @@ class TextUtilities {
 			return String(input[index...])
 		}
 	
-	func trimEndSpaces (string: String) -> String {
+	func removeLeadingTrailingSpaces (string: String) -> String {
 		// remove surrounding spaces
 		// return empty string if the input is only blank spaces
 		
@@ -77,7 +77,7 @@ class TextUtilities {
 		}
 		
 		// to get count, just count the trimmed String
-		let trimmed = trimEndSpaces(string: text)
+		let trimmed = removeLeadingTrailingSpaces(string: text)
 		if trimmed.count > maxLength {
 			textField.textColor = myTheme.invalidFieldEntryColor
 			accessoryButton?.tintColor = myTheme.invalidFieldEntryColor

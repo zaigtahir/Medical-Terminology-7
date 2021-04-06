@@ -10,7 +10,7 @@ import UIKit
 import SQLite3
 
 class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
-
+	
 	//will use ListTC as the table datasource
 	//use this VC to use as the table delegate as lots of actions happen based on selection including segue
 	
@@ -23,6 +23,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	let termListVCH = TermListVCH()
 	let cc = CategoryController2()
+	let tu = TextUtilities()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -30,12 +31,13 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		termListVCH.delegate = self
 		
 		tableView.dataSource = termListVCH
+		tableView.tableFooterView = UIView()
 		showFavoritesOnlyButton.isOn = termListVCH.showFavoritesOnly
 		updateDisplay()
 	}
 	
 	func updateDisplay () {
-				
+		
 		let category = cc.getCategory(categoryID: termListVCH.currentCategoryID)
 		
 		let count = termListVCH.getAllTermsCount()
@@ -87,31 +89,33 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	// MARK: - Search bar functions and delegates
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		
 		if searchBar.showsCancelButton == false {
 			searchBar.showsCancelButton = true
 		}
 		
-		// don't allow a leading space
-		if searchBar.text == " "
-		{
-			searchBar.text = ""
-		}
-		
-		termListVCH.updateData (categoryID: termListVCH.currentCategoryID, searchText: searchBar.text ?? "")
-		
+		termListVCH.searchText = searchBar.text
+		termListVCH.updateData()
 		tableView.reloadData()
+		updateDisplay()
+		
 	}
 	
 	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		
 		searchBar.text = nil
 		searchBar.showsCancelButton = false
 		searchBar.endEditing(true)
+		
+		termListVCH.searchText = .none
+		termListVCH.updateData()
+		updateDisplay()
 	}
 	
 	@IBAction func ShowFavoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
 		print("here at button action")
 		termListVCH.showFavoritesOnly.toggle()
-		termListVCH.updateData (categoryID: termListVCH.currentCategoryID, searchText: searchBar.text ?? "")
+		termListVCH.updateData ()
 		tableView.reloadData()
 		updateDisplay()
 		
@@ -119,7 +123,29 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 }
 
 
+/*
+working on search function
+// remove any leading spaces and if blank, make search text nil and return
 
+let noLeading = tu.removeLeadingSpaces(input: searchBar.text ?? "")
+
+if noLeading == "" {
+	// the search box is empty spaces only
+	searchBar.text = .none
+	termListVCH.searchText = .none
+	return
+} else {
+	
+}
+
+// when here there is some text in the search box.
+
+termListVCH.searchText = cleanText
+
+termListVCH.updateData()
+tableView.reloadData()
+updateDisplay()
+*/
 
 
 

@@ -8,8 +8,9 @@
 
 
 /*
-hack around refreshing row thing: in local view, just toggle the favorite icon
-when the notification comes back, check the database. If the term is already the new value then dont' renew the row do it doesn't flicker
+
+When a term is added, changed, deleted the view will keep it's search text active and refresh the screen based on the search text. So there is a chance you could add a term but it won't show on the screen due to the content of the search box
+
 */
 import UIKit
 
@@ -31,16 +32,20 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 	var currentCategoryID = 1 			// default starting off category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	
+	var searchText : String?			// use for searching. Update this when the user enters text in the search bar
+	
 	var termsList = TermsList()
 	
 	let tc = TermController()
+	
+	let tu = TextUtilities()
 	
 	weak var delegate: TermListVCHDelegate?
 	
 	override init() {
 		super.init()
 		
-		updateData (categoryID: currentCategoryID, searchText: "")
+		updateData ()
 		
 		/*
 		Notification keys this controller will need to respond to
@@ -82,14 +87,14 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 	
 	@objc func currentCategoryChangedN (notification : Notification) {
 		
-		
 		if let data = notification.userInfo as? [String : Int] {
 			
 			// clear any search text
 			delegate?.shouldClearSearchText()
 			
 			//there will be only one data here, the categoryID
-			updateDataAndDisplay(categoryID: data["categoryID"]!, searchText: "")
+			currentCategoryID = data ["categoryID"]!
+			updateDataAndDisplay()
 		}
 	}
 	
@@ -102,13 +107,12 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 			
 			// if this term id exists in termIDs, need to reload that term from the database and then reload just that term cell in the table
 			
-			if let termIDIndexPath = termsList.findIndexOf(termID: affectedTermID) {
+			if let _ = termsList.findIndexOf(termID: affectedTermID) {
 				
-				// delegate?.shouldReloadCellAt(indexPath: termIDIndexPath)
 				// updating just the row causes some misalignment issues unless I use an animation of .fade, but then the row has a slight faid flicker animation which I don't want
+				// don't have to reload the data, as the termsList will only contain termIDs. When the cell refreshes, it will get the new term information from the database
 				
 				delegate?.shouldReloadTable()
-				
 				delegate?.shouldUpdateDisplay()
 			}
 		}
@@ -116,56 +120,49 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 	}
 	
 	@objc func assignCategoryN (notification : Notification) {
-		
-		// HERE... do i remove the search string from update hre? keep search string as a class  variable?
-		
-		
-		
+		print("got assignCategoryN in termListVCH")
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]!
 			if categoryID == currentCategoryID {
-				print ("flashcardVCH is refreshing the currentCategoryID because a term got assigned to it")
 				
-				// probably need to preserve the search text???
-				// if i preserve it, just re run with any search text present
-				updateDataAndDisplay(categoryID: categoryID)
+				updateDataAndDisplay()
 			}
 		}
-		
 	}
 	
 	@objc func unassignCategoryN (notification : Notification){
-		/*
+		
+		print ("termListVCH got unassignedCategoryN")
 		if let data = notification.userInfo as? [String : Int] {
 			
 			let categoryID = data["categoryID"]!
 			
 			if categoryID == currentCategoryID {
-				print ("flashcardVCH is refreshing the currentCategoryID because a term got UNassigned from it")
-				updateDataAndDisplay(categoryID: categoryID)
+				
+				updateDataAndDisplay()
 			}
 		}
-		*/
+		
 	}
 	
 	@objc func deleteCategoryN (notification: Notification){
 		
-		/*
+		print("termListVCH got deleteCategoryN")
+		
 		// if the current category is deleted, then change the current category to 1 (All Terms) and reload the data
 		if let data = notification.userInfo as? [String: Int] {
 			
 			let deletedCategoryID = data["categoryID"]
 			if deletedCategoryID == currentCategoryID {
-				print ("current category deleted, will switch FC to All Terms")
-				updateDataAndDisplay(categoryID: myConstants.dbCategoryAllTermsID)
+				
+				currentCategoryID = myConstants.dbCategoryAllTermsID
+				updateDataAndDisplay()
 			}
 		}
-*/
-}
+	}
 	
 	@objc func changeCategoryNameN (notification: Notification) {
-		
-		/*
+		print("termListVCH got changeCategoryN")
 		// if this is the current category, reload the category and then refresh the display
 		
 		if let data = notification.userInfo as? [String : Int] {
@@ -174,7 +171,7 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 				delegate?.shouldUpdateDisplay()
 			}
 		}
-		*/
+		
 	}
 	
 	// MARK: - Update data function
@@ -182,24 +179,29 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 	/**
 	Will update the internal termsList
 	*/
-	func updateData (categoryID: Int, searchText: String) {
+	func updateData () {
 		
-		currentCategoryID = categoryID
+		// MARK: add code to remove more than 1 space also?
 		
-		var contains : String?
-		if searchText != "" {
-			contains = searchText
+		// Clean up the search text
+		if let nonCleanText = searchText {
+			
+			let cleanText = tu.removeLeadingTrailingSpaces(string: nonCleanText)
+			
+			self.termsList.makeList(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, containsText: cleanText)
+			
+		} else {
+			termsList.makeList(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, containsText: .none)
 		}
 		
-		self.termsList.makeList(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, containsText: contains)
 	}
 	
 	/**
 	Will update the internal termsList and also use the delegate functions to update the home tableView and display
 	*/
-	func updateDataAndDisplay (categoryID: Int, searchText: String) {
+	func updateDataAndDisplay () {
 		
-		updateData(categoryID: categoryID, searchText: searchText)
+		updateData()
 		
 		delegate?.shouldClearSearchText()
 		delegate?.shouldReloadTable()
@@ -270,64 +272,3 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		// after the save method broadcasts the notification, this VCH will instruct the homeVC to update it's cell
 	}
 }
-
-
-/*
-// MARK: - notification functions
-@objc func termInformationChangedNotification (notification: Notification) {
-// will need to update just that cell of the table view
-
-
-}
-
-@objc func currentCategoryChangedN (notification : Notification) {
-if let data = notification.userInfo as? [String : Int] {
-for d in data {
-
-print("in TermListVCH currentCategoryChangedNotification")
-
-let categoryID = d.value
-updateData(categoryID: categoryID, searchText: "")
-}
-}
-}
-
-@objc func categoryAssignedNotfication (notification : Notification) {
-}
-
-@objc func unassignedCategoryNotfication (notification : Notification){
-}
-
-@objc func categoryDeletedN (notification: Notification){
-}
-
-@objc func categoryNameUpdatedNotification (notification: Notification) {
-}
-*/
-
-
-
-
-/*
-// MARK: - Observers for category notification events
-
-let observer1 = Notification.Name(myKeys.currentCategoryChangedKey)
-NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryChangedN(notification:)), name: observer1, object: nil)
-
-let observer5 = Notification.Name(myKeys.deleteCategoryKey)
-NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedN(notification:)), name: observer5, object: nil)
-
-let observer6 = Notification.Name(myKeys.changeCategoryNameKey)
-NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)(notification:)), name: observer6, object: nil)
-
-// MARK: - Observers for term notification events
-
-let observer2 = Notification.Name(myKeys.termFavoriteStatusChangedKey)
-NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedNotification(notification:)), name: observer2, object: nil)
-
-let observer3 = Notification.Name(myKeys.assignCategoryKey)
-NotificationCenter.default.addObserver(self, selector: #selector(categoryAssignedNotfication(notification:)), name: observer3, object: nil)
-
-let observer4 = Notification.Name(myKeys.unassignCategoryKey)
-NotificationCenter.default.addObserver(self, selector: #selector(categoryUnassignedNotification(notification:)), name: observer4, object: nil)
-*/

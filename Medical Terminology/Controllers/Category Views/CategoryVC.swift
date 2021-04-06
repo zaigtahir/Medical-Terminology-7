@@ -142,7 +142,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		
 		// trimming the content to get the count of characters without spaces on ends
 		let text = textField.text ?? ""
-		let trimmed = tu.trimEndSpaces(string: text)
+		let trimmed = tu.removeLeadingTrailingSpaces(string: text)
 		
 		vc?.isValid = categoryNameIsValid
 		vc?.message = """
@@ -159,7 +159,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		
 		// trimming the content to remove spaces
 		let text = textField.text ?? ""
-		let trimmedName = tu.trimEndSpaces(string: text)
+		let trimmedName = tu.removeLeadingTrailingSpaces(string: text)
 		
 		switch categoryVCH.categoryDisplayMode {
 					
