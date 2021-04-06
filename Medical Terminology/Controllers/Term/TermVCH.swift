@@ -24,6 +24,10 @@ class TermVCH {
 	///set this to true when the user is in edit/add mode and the data is valid to save as a term
 	var isReadyToSaveTerm = false
 	
+	private let tc = TermController()
+	
+	private let cc = CategoryController2()
+	
 	init () {
 
 		/*
@@ -49,24 +53,45 @@ class TermVCH {
 	// MARK: - notification functions
 	@objc func assignCategoryN (notification : Notification) {
 		if let data = notification.userInfo as? [String : Int] {
-			let categoryID = data["categoryID"]!
-			if categoryID == currentCategoryID {
-				//updateDataAndDisplay()
+			delegate?.shouldUpdateDisplay()
+			
+			let affectedTermID = data["termID"]!
+			let currentTermID = tc.getTerm(termID: termID).termID
+			
+			if currentTermID == affectedTermID {
+				delegate?.shouldUpdateDisplay()
 			}
 		}
 	}
 	
 	@objc func unassignCategoryN (notification : Notification){
 		if let data = notification.userInfo as? [String : Int] {
-			let categoryID = data["categoryID"]!
-			if categoryID == currentCategoryID {
-				//updateDataAndDisplay()
+			delegate?.shouldUpdateDisplay()
+			
+			let affectedTermID = data["termID"]!
+			let currentTermID = tc.getTerm(termID: termID).termID
+			
+			if currentTermID == affectedTermID {
+				delegate?.shouldUpdateDisplay()
 			}
 		}
 	}
 	
-	func updateData() {
-		// update the internal data
+	func getCategoryNamesText () -> String {
+		
+		// make list of categories
+		let categoryIDs = tc.getTermCategoryIDs(termID: termID)
+		var categoryList = ""
+		
+		for id in categoryIDs {
+			if (id != myConstants.dbCategoryMyTermsID) && (id != myConstants.dbCategoryAllTermsID) {
+				// note not including id 1 = All terms and 2 = My Terms
+				
+				let category = cc.getCategory(categoryID: id)
+				categoryList.append("\(category.name)\n")
+			}
+		}
+		
+		return categoryList
 	}
-	
 }

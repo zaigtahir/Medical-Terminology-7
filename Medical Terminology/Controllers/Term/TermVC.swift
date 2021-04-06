@@ -8,8 +8,8 @@
 
 import UIKit
 
-class TermVC: UIViewController, TermAudioDelegate {
-	
+class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
+
 	@IBOutlet weak var nameLabel: UILabel!
 	
 	@IBOutlet weak var definitionLabel: UILabel!
@@ -42,12 +42,14 @@ class TermVC: UIViewController, TermAudioDelegate {
 		
 		super.viewDidLoad()
 		
+		termVCH.delegate = self
+		
 		term = tc.getTerm(termID: termVCH.termID)
 		
-		updateView()
+		updateDisplay()
 	}
 	
-	func updateView () {
+	func updateDisplay () {
 		
 		playAudioButton.isEnabled = term.isAudioFilePresent()
 		
@@ -57,19 +59,7 @@ class TermVC: UIViewController, TermAudioDelegate {
 		
 		favoriteButton.isOn = termIsFavorite
 		
-		// make list of categories
-		let categoryIDs = tc.getTermCategoryIDs(termID: term.termID)
-		var categoryList = ""
 		
-		for id in categoryIDs {
-			if (id != myConstants.dbCategoryMyTermsID) && (id != myConstants.dbCategoryAllTermsID) {
-				// note not including id 1 = All terms and 2 = My Terms
-				
-				let category = cc.getCategory(categoryID: id)
-				categoryList.append("\(category.name)\n")
-				
-			}
-		}
 		
 		switch termVCH.displayMode {
 		
@@ -92,7 +82,7 @@ class TermVC: UIViewController, TermAudioDelegate {
 			
 			deleteTermButton.isEnabled = !term.isStandard
 			
-			categoriesListTextView.text = categoryList
+			categoriesListTextView.text = termVCH.getCategoryNamesText()
 			
 		case .edit:
 			nameLabel.text = term.name
@@ -112,7 +102,7 @@ class TermVC: UIViewController, TermAudioDelegate {
 			
 			deleteTermButton.isEnabled = !term.isStandard
 			
-			categoriesListTextView.text = categoryList
+			categoriesListTextView.text = termVCH.getCategoryNamesText()
 			
 			
 		default:
@@ -173,6 +163,11 @@ class TermVC: UIViewController, TermAudioDelegate {
 			print ("take save action!")
 		}
 		
+	}
+	
+	// MARK: - TermVCH delegate functions
+	func shouldUpdateDisplay() {
+		updateDisplay()
 	}
 	
 	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
