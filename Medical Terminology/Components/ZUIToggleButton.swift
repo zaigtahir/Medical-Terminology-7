@@ -10,11 +10,7 @@
 import UIKit
 
 /**
-This class works as a toggle button with an image. It will change the color of the image based on the onTintColor and offTintColor custom properties in the IB
-You can get/set the isOn property
-
-ISSUE this action is triggered AFTER the original button clickec action. So when the original button click action is triggered, the isOn value is still the original value.
-
+This button will change it's color based on it's isOn property you can get/set. The tint color is to  be set in the IB. You basically use it to manually set the state you want and use it like a toggle
 */
 
 class ZUIToggleButton: UIButton {
@@ -28,15 +24,13 @@ class ZUIToggleButton: UIButton {
 	
 	override func awakeFromNib() {
 		
-		self.addTarget(self, action: #selector(btnClicked(_:)),
-					   for: .touchUpInside)
+	//	self.addTarget(self, action: #selector(btnClicked(_:)),
+				//	   for: .touchUpInside)
 		
 		onImage = self.image(for: .normal)
 		self.tintColor = offTintColor
 	
 	}
-	
-	
 	
 	var isOn : Bool {
 		set {
@@ -51,16 +45,5 @@ class ZUIToggleButton: UIButton {
 		}
 	}
 	
-	@objc func btnClicked (_ sender:UIButton) {
-		
-		iIsOn.toggle()	//toggle the internal state
-		
-		// now need to update it's colors
-		
-		self.tintColor = iIsOn ? onTintColor : offTintColor
-		self.setImage(onImage, for: .normal)
-		
-		
-	}
 }
 
