@@ -36,15 +36,14 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	func updateDisplay () {
 		
-		// update favorite count
-		// update category name
-		
-		print("in termListVC updateDisplay")
 		
 		let category = cc.getCategory(categoryID: termListVCH.currentCategoryID)
-		let count = termListVCH.termsList.getCount()
+		
+		let count = termListVCH.getAllTermsCount()
 		
 		categoryNameLabel.text = ("\(category.name) (\(count))")
+		
+		favoritesCountLabel.text = String (termListVCH.getFavoriteTermsCount())
 	}
 	
 	// MARK: - TermListVCHDelegate functions

@@ -143,6 +143,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 	}
 	
+	// MARK: - update data functions
+	
 	/**
 	Will update just the termIDs array
 	*/
@@ -162,6 +164,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		delegate?.shouldUpdateDisplay()
 	}
 	
+	// MARK: - count functions
 	func getFavoriteTermsCount () -> Int {
 		//return the count of favorites or this catetory
 		return tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
