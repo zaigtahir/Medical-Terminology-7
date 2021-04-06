@@ -6,14 +6,6 @@
 //  Copyright © 2021 Zaigham Tahir. All rights reserved.
 //
 
-import UIKit
-
-//
-//  ZUIToggleButton.swift
-//  Testing
-//
-//  Created by Zaigham Tahir on 4/2/21.
-//
 
 import UIKit
 
@@ -60,7 +52,15 @@ class ZUIToggleButton: UIButton {
 	}
 	
 	@objc func btnClicked (_ sender:UIButton) {
-		isOn.toggle()
+		
+		iIsOn.toggle()	//toggle the internal state
+		
+		// now need to update it's colors
+		
+		self.tintColor = iIsOn ? onTintColor : offTintColor
+		self.setImage(onImage, for: .normal)
+		
+		
 	}
 }
 

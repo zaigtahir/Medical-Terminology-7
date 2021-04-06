@@ -80,7 +80,11 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			collectionView.isHidden = false
 		}
 		
+		print("updateDisplay: setting fav button isOn = \(flashCardVCH.showFavoritesOnly)")
+		
 		showFavoritesOnlyButton.isOn = flashCardVCH.showFavoritesOnly
+		
+		print("in updateDisplay: showFavoritesonly = \(flashCardVCH.showFavoritesOnly)")
 		
 		favoritesCountLabel.text = "\(favoriteCount)"
 		
@@ -174,10 +178,11 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	}
 
 	@IBAction func showFavoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
-		return
+		
 		flashCardVCH.showFavoritesOnly = !flashCardVCH.showFavoritesOnly
 		flashCardVCH.updateData(categoryID: flashCardVCH.currentCategoryID)
 		collectionView.reloadData()
+		
 		updateDisplay()
 	}
 	

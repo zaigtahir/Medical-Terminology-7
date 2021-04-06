@@ -918,7 +918,7 @@
                         <outlet property="nextButton" destination="9gz-re-QyZ" id="uFS-mG-Acf"/>
                         <outlet property="previousButton" destination="qF2-Hc-gGJ" id="kas-Uf-nYI"/>
                         <outlet property="randomButton" destination="kaW-rC-XtT" id="BS8-ZW-ftw"/>
-                        <outlet property="showFavoritesOnlyButton" destination="A4t-cB-YlP" id="zfG-db-0jE"/>
+                        <outlet property="showFavoritesOnlyButton" destination="A4t-cB-YlP" id="FQN-eJ-DbH"/>
                         <outlet property="sliderOutlet" destination="Gpl-Rk-z7l" id="LEy-rj-4db"/>
                     </connections>
                 </viewController>
@@ -1596,7 +1596,6 @@
                         <outlet property="categorySelectButton" destination="ktY-D4-prE" id="b3r-Zx-ZAN"/>
                         <outlet property="favoritesCountLabel" destination="eFO-8W-eVe" id="LSV-B4-l7c"/>
                         <outlet property="searchBar" destination="9Fm-OV-cCY" id="Axk-CS-B4U"/>
-                        <outlet property="showOnlyFavoriteButton" destination="pSM-Ip-UKw" id="dBQ-la-sGA"/>
                         <outlet property="tableView" destination="tGH-PG-Amh" id="Hcb-hG-gE1"/>
                     </connections>
                 </viewController>
