@@ -17,7 +17,7 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-gM-IpN">
@@ -222,7 +222,7 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
@@ -542,7 +542,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashcardVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TVx-7Q-M6g">
@@ -930,7 +930,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashcardOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -1252,7 +1252,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -1353,7 +1353,7 @@
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="TermListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="100" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tGH-PG-Amh" propertyAccessControl="none">
@@ -1363,91 +1363,93 @@
                                 <color key="separatorColor" name="color card border"/>
                                 <color key="sectionIndexColor" name="color text"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="termCell" rowHeight="86" id="YEn-IV-khC" customClass="TermCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="86"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="termCell" rowHeight="241" id="YEn-IV-khC" customClass="TermCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="241"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YEn-IV-khC" id="Zms-YZ-1LW">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="241"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmN-iy-yIw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="241"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jas-t2-2ea">
-                                                            <rect key="frame" x="20" y="10" width="374" height="56"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Olq-jl-L68">
+                                                            <rect key="frame" x="278" y="10" width="116" height="24"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="v9U-Fv-AXx">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="282" height="43.333333333333336"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FRH-Sg-Cu8">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="282" height="20.333333333333332"/>
-                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                                            <color key="textColor" name="color heading"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBy-Ho-qWd">
-                                                                            <rect key="frame" x="0.0" y="25.333333333333336" width="282" height="18"/>
-                                                                            <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                            <color key="textColor" name="color text"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Olq-jl-L68">
-                                                                    <rect key="frame" x="302" y="0.0" width="72" height="24"/>
-                                                                    <subviews>
-                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qka-vl-NQZ">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="28" height="24"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="28" id="lec-lX-Ewe"/>
-                                                                            </constraints>
-                                                                            <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                                                            <state key="normal" image="speaker.fill" catalog="system">
-                                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                                                            </state>
-                                                                            <connections>
-                                                                                <action selector="playAudioButtonAction:" destination="YEn-IV-khC" eventType="touchUpInside" id="LOc-Re-tIe"/>
-                                                                            </connections>
-                                                                        </button>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-z6-45m" customClass="ZUIToggleButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
-                                                                            <rect key="frame" x="48" y="0.0" width="24" height="24"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="24" id="muE-3o-URA"/>
-                                                                                <constraint firstAttribute="width" constant="24" id="utP-LP-0ls"/>
-                                                                            </constraints>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="5"/>
-                                                                            <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                                                            <state key="normal" title="Button">
-                                                                                <imageReference key="image" image="heart.fill" catalog="system" symbolScale="default"/>
-                                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                                                            </state>
-                                                                            <userDefinedRuntimeAttributes>
-                                                                                <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
-                                                                                    <color key="value" name="color favorite"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                                <userDefinedRuntimeAttribute type="color" keyPath="offTintColor">
-                                                                                    <color key="value" systemColor="secondaryLabelColor"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                            </userDefinedRuntimeAttributes>
-                                                                            <connections>
-                                                                                <action selector="favoriteButtonAction:" destination="YEn-IV-khC" eventType="touchUpInside" id="FmL-WC-8BS"/>
-                                                                            </connections>
-                                                                        </button>
-                                                                    </subviews>
-                                                                </stackView>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qka-vl-NQZ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="28" height="24"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="28" id="lec-lX-Ewe"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                                                    <state key="normal" image="speaker.fill" catalog="system">
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                                    </state>
+                                                                    <connections>
+                                                                        <action selector="playAudioButtonAction:" destination="YEn-IV-khC" eventType="touchUpInside" id="LOc-Re-tIe"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-z6-45m" customClass="ZUIToggleButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
+                                                                    <rect key="frame" x="48" y="0.0" width="24" height="24"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="24" id="muE-3o-URA"/>
+                                                                        <constraint firstAttribute="width" constant="24" id="utP-LP-0ls"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="5"/>
+                                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                                                    <state key="normal" title="Button">
+                                                                        <imageReference key="image" image="heart.fill" catalog="system" symbolScale="default"/>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                                            <color key="value" name="color favorite"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="offTintColor">
+                                                                            <color key="value" systemColor="secondaryLabelColor"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="favoriteButtonAction:" destination="YEn-IV-khC" eventType="touchUpInside" id="FmL-WC-8BS"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slider.horizontal.3" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sQk-4M-z7l">
+                                                                    <rect key="frame" x="92" y="3.6666666666666643" width="24" height="17.000000000000004"/>
+                                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="24" id="TM6-8I-HXE"/>
+                                                                    </constraints>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                                                </imageView>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="Olq-jl-L68" firstAttribute="leading" secondItem="v9U-Fv-AXx" secondAttribute="trailing" constant="20" id="Ika-VE-dIo"/>
-                                                            </constraints>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="v9U-Fv-AXx">
+                                                            <rect key="frame" x="20" y="44" width="374" height="187"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FRH-Sg-Cu8">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="164"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <color key="textColor" name="color heading"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBy-Ho-qWd">
+                                                                    <rect key="frame" x="0.0" y="169" width="374" height="18"/>
+                                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" name="color text"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
                                                         </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="jas-t2-2ea" secondAttribute="bottom" constant="20" id="IfH-6R-Ugr"/>
-                                                        <constraint firstAttribute="trailing" secondItem="jas-t2-2ea" secondAttribute="trailing" constant="20" id="adS-Pi-58t"/>
-                                                        <constraint firstItem="jas-t2-2ea" firstAttribute="top" secondItem="mmN-iy-yIw" secondAttribute="top" constant="10" id="q1j-HV-zzQ"/>
-                                                        <constraint firstItem="jas-t2-2ea" firstAttribute="leading" secondItem="mmN-iy-yIw" secondAttribute="leading" constant="20" id="qL2-W5-ATQ"/>
+                                                        <constraint firstItem="Olq-jl-L68" firstAttribute="top" secondItem="mmN-iy-yIw" secondAttribute="top" constant="10" id="97F-wK-uc7"/>
+                                                        <constraint firstAttribute="bottom" secondItem="v9U-Fv-AXx" secondAttribute="bottom" constant="10" id="FgL-xq-Myj"/>
+                                                        <constraint firstItem="v9U-Fv-AXx" firstAttribute="top" secondItem="Olq-jl-L68" secondAttribute="bottom" constant="10" id="LeI-8Y-3AE"/>
+                                                        <constraint firstItem="v9U-Fv-AXx" firstAttribute="leading" secondItem="mmN-iy-yIw" secondAttribute="leading" constant="20" id="hvN-4a-OOY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Olq-jl-L68" secondAttribute="trailing" constant="20" id="jFz-in-c2g"/>
+                                                        <constraint firstAttribute="trailing" secondItem="v9U-Fv-AXx" secondAttribute="trailing" constant="20" id="vlS-Aw-EBo"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -1469,7 +1471,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noTermsCell" rowHeight="164" id="Qof-m5-2UM" customClass="NoTermsCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="114" width="414" height="164"/>
+                                        <rect key="frame" x="0.0" y="269" width="414" height="164"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qof-m5-2UM" id="mkq-pi-KQB">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
@@ -1617,14 +1619,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ro2-hw-EGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7435" y="-479"/>
+            <point key="canvasLocation" x="7434.7826086956529" y="-479.34782608695656"/>
         </scene>
         <!--Quiz Home-->
         <scene sceneID="6Pq-P2-vtR">
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-vJ-agb">
@@ -1833,7 +1835,7 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
@@ -2171,7 +2173,7 @@
             <objects>
                 <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -2425,7 +2427,7 @@
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
