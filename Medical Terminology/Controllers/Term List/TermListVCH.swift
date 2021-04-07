@@ -22,10 +22,11 @@ protocol TermListVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
 	func shouldReloadCellAt (indexPath: IndexPath)
 	func shouldClearSearchText()
+	func shouldSegueToTermVC()
 }
 
 
-class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
+class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCellDelegate
 
 {
 	
@@ -36,11 +37,14 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 	
 	var termsList = TermsList()
 	
+	/// initialize with the termID when the user clicks a row so that termListVC can access it for performing the seque
+	var termIDForSegue : Int!
+	
+	weak var delegate: TermListVCHDelegate?
+	
 	let tc = TermController()
 	
 	let tu = TextUtilities()
-	
-	weak var delegate: TermListVCHDelegate?
 	
 	override init() {
 		super.init()
@@ -257,6 +261,13 @@ class TermListVCH: NSObject, UITableViewDataSource, ListCellDelegate
 		termCell?.delegate = self
 		
 		return termCell!
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		// will need to determine the termID then tell the termListVC to perform the seque to the termVC
+		let termID = termsList.getTermID(indexPath: indexPath)
+		self.termIDForSegue = termID
+		delegate?.shouldSegueToTermVC()
 	}
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

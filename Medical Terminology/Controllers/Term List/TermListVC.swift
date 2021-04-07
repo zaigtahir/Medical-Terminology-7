@@ -29,7 +29,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		super.viewDidLoad()
 		
 		termListVCH.delegate = self
-		
+		tableView.delegate = termListVCH
 		tableView.dataSource = termListVCH
 		tableView.tableFooterView = UIView()
 		showFavoritesOnlyButton.isOn = termListVCH.showFavoritesOnly
@@ -70,6 +70,11 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		searchBar.text = ""
 	}
 	
+	func shouldSegueToTermVC() {
+		performSegue(withIdentifier: myConstants.segueTerm, sender: self)
+	}
+	
+	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
 		switch segue.identifier {
@@ -82,8 +87,16 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			vc.categoryHomeVCH.displayMode = .selectCategory
 			vc.categoryHomeVCH.currentCategoryID = termListVCH.currentCategoryID
 			
+		case myConstants.segueTerm:
+			// will do this segue manually. When the user clicks a row, the termVCH will determine the termID
+			let nc = segue.destination as! UINavigationController
+			let vc = nc.topViewController as! TermVC
+			
+			vc.termVCH.termID = termListVCH.termIDForSegue
+			vc.termVCH.currentCategoryID = termListVCH.currentCategoryID
+			
 		default:
-			print("fatal error no matching segue in flashcardCV prepare function")
+			print("fatal error no matching segue in termListVC prepare function")
 		}
 	}
 	
