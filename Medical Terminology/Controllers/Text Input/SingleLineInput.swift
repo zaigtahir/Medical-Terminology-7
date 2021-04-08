@@ -15,7 +15,7 @@ If the text input is invalid, will make it red, and will disable the save button
 If the text input is blank, it will show (required or optional as  place holder text)
 */
 class SingleLineInput: UIViewController, UITextFieldDelegate {
-
+	
 	//
 	//  textInputVC.swift
 	//  Medical Terminology
@@ -29,18 +29,20 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var textField: UITextField!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var validationLabel: UILabel!
+	@IBOutlet weak var counterLabel: UILabel!
 	
 	var fieldTitle: String = "DEFAULT"
 	var inputFieldText: String = "DEFAULT"
 	var validationText: String = "DEFAULT"
 	var validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789"
-	var isRequired = true
-	var maxLength = 100
+	
+	var inputIsRequired = true
+	var maxLength = 20
 	
 	private var inputIsValid = false
 	
 	let tu = TextUtilities()
-		
+	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
@@ -53,6 +55,7 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 		titleLabel.text = fieldTitle
 		textField.text = inputFieldText
 		validationLabel.text = validationText
+		updateCounterText()
 	}
 	
 	// MARK: - Textfield delegate methods
@@ -61,22 +64,105 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 		return true
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	func textFieldDidChangeSelection(_ textField: UITextField) {
-				
-		let result = tu.formatTextField(textField: textField, allowedCharacters: validationAllowedCharacters, maxLength: myConstants.maxLengthCategoryName, accessoryButton: nil)
 		
-		if result {
-			if !tu.isBlank(string: textField.text ?? "") {
-				inputIsValid = true
-			} else {
-				inputIsValid = false
+		let validResult = tu.validateAndFormatField(textField: textField, allowedCharacters: validationAllowedCharacters, maxLength: myConstants.maxLengthCategoryName, accessoryButton: nil)
+		
+		let isBlank = tu.isBlank(string: textField.text ?? "")
+		
+		switch validResult {
+		
+		case true:
+			// the input is valid
+			
+			switch inputIsRequired {
+			
+			case true:
+				// input is required
+			
+				if isBlank {
+					saveButton.isEnabled = false
+					textField.placeholder = "Required"
+				} else {
+					saveButton.isEnabled = true
+				}
+			
+			case false:
+				// input is not requried
+				
+				saveButton.isEnabled = true
+				
+				if isBlank {
+					textField.placeholder = "Optional"
+				}
 			}
-		} else {
-			inputIsValid = false
+			
+		case false:
+			
+			// the input is not valid
+			saveButton.isEnabled = false
+			
+			if textField.text?.count ?? 0 > maxLength {
+				counterLabel.textColor = myTheme.invalidFieldEntryColor
+			} else {
+				textField.textColor = myTheme.colorText
+			}
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		updateCounterText()
 		
 		saveButton.isEnabled = inputIsValid
 		saveButton.updateBackgroundColor()
+	}
+	
+	private func updateCounterText () {
+		counterLabel.text = String (maxLength - Int(textField.text?.count ?? 0))
+		
+		if textField.text?.count ?? 0 > maxLength {
+			counterLabel.textColor = myTheme.invalidFieldEntryColor
+		} else {
+			counterLabel.textColor = myTheme.colorText
+		}
 	}
 	
 }

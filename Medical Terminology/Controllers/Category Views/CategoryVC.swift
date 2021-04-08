@@ -100,7 +100,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 	func textFieldDidChangeSelection(_ textField: UITextField) {
 		
 		let ac = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789-:!?. "
-		let result = tu.formatTextField(textField: textField, allowedCharacters: ac, maxLength: myConstants.maxLengthCategoryName, accessoryButton: questionButton)
+		let result = tu.validateAndFormatField(textField: textField, allowedCharacters: ac, maxLength: myConstants.maxLengthCategoryName, accessoryButton: questionButton)
 		if result {
 			if !tu.isBlank(string: textField.text ?? "") {
 				categoryNameIsValid = true

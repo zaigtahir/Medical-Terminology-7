@@ -57,12 +57,12 @@ class TextUtilities {
 		}
 	}
 	
-	/*
-	Will check for validity of text and make the textbox.text and the accessory button red color if the text is not valid
-	Will return TRUE if the text if VALID OR if it is BLANK
-	Will return FALSE if the text is invalid, and will also make the text and the accessory button red color (well the invalid text color from myTheme)
+	/**
+	Will check for validity of text and make the textbox.text and the accessory button red color if the text is not valid.
+	Will return TRUE if the text if VALID OR if it is BLANK.
+	Will return FALSE if the text is invalid, and will also make the text and the accessory button red color (well the invalid text color from myTheme).
 	*/
-	func formatTextField (textField: UITextField, allowedCharacters: String, maxLength: Int, accessoryButton: UIButton?) -> Bool {
+	func validateAndFormatField (textField: UITextField, allowedCharacters: String, maxLength: Int, accessoryButton: UIButton?) -> Bool {
 		
 		// do not allow user to start with a space
 		if textField.text ?? "" == " " {
