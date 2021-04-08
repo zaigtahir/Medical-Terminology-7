@@ -9,7 +9,7 @@
 import UIKit
 
 class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
-
+	
 	@IBOutlet weak var nameLabel: UILabel!
 	
 	@IBOutlet weak var definitionLabel: UILabel!
@@ -37,7 +37,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	@IBOutlet weak var exampleEditButton: UIButton!
 	
 	@IBOutlet weak var myNotesEditButton: UIButton!
-	
 	
 	let termVCH = TermVCH()
 	
@@ -140,13 +139,16 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			let vc = nc.topViewController as! CategoryListVC
 			vc.categoryHomeVCH.displayMode = .assignCategory
 			vc.categoryHomeVCH.termID = termVCH.termID
-		
+			
 		case myConstants.segueTextInput:
 			let vc = segue.destination as! SingleLineInput
 			
 			vc.fieldTitle = "TERM NAME"
 			vc.inputFieldText = term.name
 			vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
+			vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/."
+			vc.inputIsRequired = true
+			vc.maxLength = 20
 			
 		default:
 			print("fatal error, no segue identifier found in prepare TermVC")

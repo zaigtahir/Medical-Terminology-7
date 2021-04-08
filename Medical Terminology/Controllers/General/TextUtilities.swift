@@ -43,7 +43,7 @@ class TextUtilities {
 		}
 	}
 	
-	func ztIsTextValid (inputString: String, allowedCharacters: String) -> Bool {
+	func textIsValid (inputString: String, allowedCharacters: String) -> Bool {
 	
 		let cs = CharacterSet(charactersIn: allowedCharacters).inverted
 		
@@ -87,7 +87,7 @@ class TextUtilities {
 		}
 		
 		// now look at the content of the string and check for invalid characters
-		if ztIsTextValid(inputString: textField.text!, allowedCharacters: allowedCharacters) {
+		if textIsValid(inputString: textField.text!, allowedCharacters: allowedCharacters) {
 			textField.textColor = myTheme.validFieldEntryColor
 			accessoryButton?.tintColor = myTheme.validFieldEntryColor
 			return true
@@ -101,11 +101,17 @@ class TextUtilities {
 	}
 	
 	
-	//MARK: -old stuff
-	
-	func isBlank (string: String) -> Bool {
+	/**
+	will return true if this string is nil or is just blank characters
+	*/
+	func isBlank (string: String?) -> Bool {
+		
+		guard let s = string else {
+			return false
+		}
+		
 		// return true if the string is just space characters
-		return string.allSatisfy({ $0.isWhitespace})
+		return s.allSatisfy({ $0.isWhitespace})
 	}
 	
 	

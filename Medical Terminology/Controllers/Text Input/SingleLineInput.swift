@@ -12,7 +12,8 @@ import UIKit
 Will display the input view, and prefill the inputFieldText
 Will enable/disable save button based on the validitity of the input
 If the text input is invalid, will make it red, and will disable the save button
-If the text input is blank, it will show (required or optional as  place holder text)
+If the text input is blank, it will show (required or optional as  place holder text).
+Assume that on startup, the text will be valid as I will never be saving invalid text in the db. If you do enter invalid text, when the user clicks on the field to get focus, it will become in it's invalid state
 */
 class SingleLineInput: UIViewController, UITextFieldDelegate {
 	
@@ -26,7 +27,7 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var saveButton: ZUIRoundedButton!
 	@IBOutlet weak var cancelButton: UIButton!
 	@IBOutlet weak var headerImage: UIImageView!
-	@IBOutlet weak var textField: UITextField!
+	@IBOutlet weak var textInput: UITextField!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var validationLabel: UILabel!
 	@IBOutlet weak var counterLabel: UILabel!
@@ -34,27 +35,34 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 	var fieldTitle: String = "DEFAULT"
 	var inputFieldText: String?
 	var validationText: String = "DEFAULT"
-	var validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789"
+	var validationAllowedCharacters = "DEFAULT"
 	var inputIsRequired = true
 	var maxLength = 20
 	
-	private var inputIsValid = false
+	private var originalText : String?
 	
 	let tu = TextUtilities()
 	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
-		textField.delegate = self
+		
+		textInput.delegate = self
 		
 		//adding a tap gesture recognizer to dismiss the keyboard
 		let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
 		view.addGestureRecognizer(tapGesture)
 		
 		titleLabel.text = fieldTitle
-		textField.text = inputFieldText
+		textInput.text = inputFieldText
 		validationLabel.text = validationText
-		updateAndFormatCounter()
+	
+		// backed up original to compare to the textbox.text when validating
+		originalText = inputFieldText
+		
+		// initital setting of the counter
+		let _ = updateAndFormatCounter()
+		
 	}
 	
 	// MARK: - Textfield delegate methods
@@ -67,16 +75,27 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 		
 		let textIsValid = tu.validateAndFormatField(textField: textField, allowedCharacters: validationAllowedCharacters, maxLength: myConstants.maxLengthCategoryName, accessoryButton: nil)
 		
-		let lengthIsValid = updateAndFormatCounter()
-		
 		
 		
 	}
 	
-	private func updateAndFormatCounter () -> Bool {
-		counterLabel.text = String (maxLength - Int(textField.text?.count ?? 0))
+	
+	private func hasChangedFromOriginal () {
+	
+	}
+	
+	private func meetsMaxLengthCriteria () {
 		
-		if textField.text?.count ?? 0 > maxLength {
+	}
+	
+	private func meetsMinCriteria () {
+		
+	}
+
+	private func updateAndFormatCounter () -> Bool {
+		counterLabel.text = String (maxLength - Int(textInput.text?.count ?? 0))
+		
+		if textInput.text?.count ?? 0 > maxLength {
 			counterLabel.textColor = myTheme.invalidFieldEntryColor
 			return false
 		} else {

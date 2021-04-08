@@ -3141,7 +3141,7 @@
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bn-Ta-nh2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bn-Ta-nh2">
                                 <rect key="frame" x="30" y="319.33333333333331" width="354" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -3167,7 +3167,9 @@
                         <constraints>
                             <constraint firstItem="pNg-qk-fZp" firstAttribute="top" secondItem="cnt-qL-rYN" secondAttribute="top" constant="50" id="1Fr-lk-Yjx"/>
                             <constraint firstItem="BIh-6e-Esg" firstAttribute="leading" secondItem="wV9-95-ClV" secondAttribute="leading" id="9iU-yG-iS9"/>
+                            <constraint firstItem="1bn-Ta-nh2" firstAttribute="leading" secondItem="Qhs-mu-Sca" secondAttribute="leading" id="E3s-pE-SCG"/>
                             <constraint firstItem="BqS-2E-1Fq" firstAttribute="centerY" secondItem="pNg-qk-fZp" secondAttribute="centerY" id="JNm-mh-Vqw"/>
+                            <constraint firstItem="1bn-Ta-nh2" firstAttribute="trailing" secondItem="Qhs-mu-Sca" secondAttribute="trailing" id="Ns5-Ql-P1Y"/>
                             <constraint firstItem="wV9-95-ClV" firstAttribute="top" secondItem="Qhs-mu-Sca" secondAttribute="bottom" constant="10" id="Ul5-u1-GWn"/>
                             <constraint firstItem="3q3-aa-K2J" firstAttribute="centerX" secondItem="cnt-qL-rYN" secondAttribute="centerX" id="Uvb-NF-HZD"/>
                             <constraint firstItem="BIh-6e-Esg" firstAttribute="trailing" secondItem="wV9-95-ClV" secondAttribute="trailing" id="X7e-wx-QGQ"/>
@@ -3189,7 +3191,7 @@
                         <outlet property="counterLabel" destination="BIh-6e-Esg" id="Ql0-5g-haw"/>
                         <outlet property="headerImage" destination="BqS-2E-1Fq" id="f4D-ZG-VFQ"/>
                         <outlet property="saveButton" destination="Y1C-16-1MM" id="0GS-Jf-TwL"/>
-                        <outlet property="textField" destination="wV9-95-ClV" id="W1J-IV-Q0B"/>
+                        <outlet property="textInput" destination="wV9-95-ClV" id="W1J-IV-Q0B"/>
                         <outlet property="titleLabel" destination="Qhs-mu-Sca" id="aCe-LI-wLr"/>
                         <outlet property="validationLabel" destination="1bn-Ta-nh2" id="lGP-UZ-Qsd"/>
                     </connections>
