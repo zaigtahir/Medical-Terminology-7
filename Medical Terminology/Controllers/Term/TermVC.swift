@@ -147,7 +147,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			vc.inputFieldText = ""
 			vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
 			vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-			vc.inputIsRequired = false
+			vc.inputIsRequired = true
 			vc.maxLength = 20
 			
 		default:

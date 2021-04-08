@@ -43,6 +43,7 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 		
 		inputBox.delegate = self
 		
+		
 		//adding a tap gesture recognizer to dismiss the keyboard
 		let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
 		view.addGestureRecognizer(tapGesture)
@@ -50,18 +51,16 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 		titleLabel.text = fieldTitle
 		inputBox.text = inputFieldText
 		validationLabel.text = validationText
-	
+		
 		// backed up original to compare to the textbox.text when validating
 		originalText = inputFieldText
 		
-		// initital setting of the counter
-		let _ = meetsMaxLengthCriteria()
-		fillInputPlaceHolder()
+		// perform initial validation and set up of controls
+		textFieldDidChangeSelection(inputBox)
 		
-		// initial setting of the save button state
+		// no change is made yet as the information is just loaded, so disable the save button
 		saveButton.isEnabled = false
-		saveButton.updateBackgroundColor()
-		
+	
 	}
 	
 	// MARK: - Textfield delegate methods
@@ -80,14 +79,10 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 		} else {
 			inputBox.textColor = myTheme.invalidFieldEntryColor
 		}
-		
-		
-		print("changed from original: \(hasChangedFromOriginal())")
-		print ("meets min criteria: \(meetsMinCriteria())")
-		
+	
 		
 		// check to see if meeting other criteria
-		if (textContainsValidCharacters && meetsMinCriteria() && meetsMaxLengthCriteria() && hasChangedFromOriginal()){
+		if (textContainsValidCharacters && meetsMinCriteria() && meetsMaxLengthCriteria()){
 			
 			saveButton.isEnabled = true
 		} else {
@@ -97,13 +92,9 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 		
 		// working
 		fillInputPlaceHolder()
-		
-		// format custom colors
-		saveButton.updateBackgroundColor()
-		
 	}
 	
-	private func hasChangedFromOriginal () -> Bool {
+func hasChangedFromOriginal () -> Bool {
 		let cleanText = tu.removeLeadingTrailingSpaces(string: inputBox.text ?? "")
 		if originalText ?? "" == cleanText {
 			return false

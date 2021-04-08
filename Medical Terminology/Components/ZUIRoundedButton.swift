@@ -29,6 +29,11 @@ class ZUIRoundedButton: UIButton {
 		}
 	}
 	
+	override var isEnabled: Bool {
+		didSet {
+			updateBackgroundColor()
+		}
+	}
 	
 
 }
