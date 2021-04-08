@@ -113,7 +113,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		
 		updateSaveButtonStatus()
 	}
-	
+	 
 	private func updateSaveButtonStatus () {
 		//enable it if all textfields are valid (only one in this controller)
 		commitButton.isEnabled = categoryNameIsValid

@@ -24,12 +24,8 @@ class ZUIToggleButton: UIButton {
 	
 	override func awakeFromNib() {
 		
-	//	self.addTarget(self, action: #selector(btnClicked(_:)),
-				//	   for: .touchUpInside)
-		
 		onImage = self.image(for: .normal)
 		self.tintColor = offTintColor
-	
 	}
 	
 	var isOn : Bool {

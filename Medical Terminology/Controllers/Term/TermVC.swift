@@ -30,6 +30,15 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	@IBOutlet weak var categoriesListTextView: UITextView!
 	
+	@IBOutlet weak var nameEditButton: UIButton!
+	
+	@IBOutlet weak var definitionEditButton: UIButton!
+	
+	@IBOutlet weak var exampleEditButton: UIButton!
+	
+	@IBOutlet weak var myNotesEditButton: UIButton!
+	
+	
 	let termVCH = TermVCH()
 	
 	private var term : Term!	// store term here so it can be used to play audio as a class function
@@ -46,6 +55,9 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		term = tc.getTerm(termID: termVCH.termID)
 		
+		print ("in TermVC. For testing setting term to be not isStandard")
+		term.isStandard = false
+		
 		updateDisplay()
 	}
 	
@@ -58,7 +70,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		let termIsFavorite  = tc.getFavoriteStatus(categoryID: 1, termID: term.termID)
 		
 		favoriteButton.isOn = termIsFavorite
-		
 		
 		
 		switch termVCH.displayMode {
@@ -81,28 +92,23 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			cancelButton.isEnabled = false
 			
 			deleteTermButton.isEnabled = !term.isStandard
-			
 			categoriesListTextView.text = termVCH.getCategoryNamesText()
 			
-		case .edit:
-			nameLabel.text = term.name
-			definitionLabel.text = term.definition
 			
-			if term.example == "" {
-				exampleLabel.text = "none available"
+			if term.isStandard {
+				deleteTermButton.isEnabled = false
+				nameEditButton.isHidden = true
+				definitionEditButton.isHidden = true
+				exampleEditButton.isHidden = true
+				myNotesEditButton.isHidden = false
+				
 			} else {
-				exampleLabel.text = term.example
+				deleteTermButton.isEnabled = true
+				nameEditButton.isHidden = false
+				exampleEditButton.isHidden = false
+				definitionEditButton.isHidden = false
+				myNotesEditButton.isHidden = false
 			}
-			
-			myNotesLabel.text = "none available"
-			
-			leftButton.title = "Save"
-			leftButton.isEnabled = termVCH.isReadyToSaveTerm ? true : false
-			cancelButton.isEnabled = true
-			
-			deleteTermButton.isEnabled = !term.isStandard
-			
-			categoriesListTextView.text = termVCH.getCategoryNamesText()
 			
 			
 		default:
@@ -134,6 +140,13 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			let vc = nc.topViewController as! CategoryListVC
 			vc.categoryHomeVCH.displayMode = .assignCategory
 			vc.categoryHomeVCH.termID = termVCH.termID
+		
+		case myConstants.segueTextInput:
+			let vc = segue.destination as! SingleLineInput
+			
+			vc.fieldTitle = "TERM NAME"
+			vc.inputFieldText = term.name
+			vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
 			
 		default:
 			print("fatal error, no segue identifier found in prepare TermVC")
