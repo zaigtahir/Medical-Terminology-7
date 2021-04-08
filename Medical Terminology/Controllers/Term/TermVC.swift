@@ -8,7 +8,8 @@
 
 import UIKit
 
-class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
+class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineInputDelegate {
+	
 	
 	@IBOutlet weak var nameLabel: UILabel!
 	
@@ -149,6 +150,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
 			vc.inputIsRequired = true
 			vc.maxLength = 20
+			vc.delegate = self
 			
 		default:
 			print("fatal error, no segue identifier found in prepare TermVC")
@@ -184,6 +186,23 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	func shouldUpdateDisplay() {
 		updateDisplay()
 	}
+	
+	// MARK: - SingleLineInputDelegate function
+
+	func testAlertBox(inputVC: SingleLineInput) {
+	
+		inputVC.navigationController?.popViewController(animated: true)
+	
+		//testing
+		
+		let ac = UIAlertController(title: "Hey there!", message: "There is already a term with that name. Please choose a different name.", preferredStyle: .alert)
+		let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
+		
+		ac.addAction(ok)
+		
+		self.present(ac, animated: true, completion: .none)
+	}
+	
 	
 	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
 		

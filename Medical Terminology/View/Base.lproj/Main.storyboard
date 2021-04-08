@@ -3125,6 +3125,9 @@
                                                 <color key="value" systemColor="systemGray5Color"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveButtonAction:" destination="cUP-dB-hs5" eventType="touchUpInside" id="ase-c0-DYi"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7a-M0-mdO">
                                         <rect key="frame" x="0.0" y="40" width="100" height="30"/>

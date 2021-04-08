@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol SingleLineInputDelegate: AnyObject {
+	func testAlertBox(inputVC: SingleLineInput)
+}
 
 class SingleLineInput: UIViewController, UITextFieldDelegate {
 	
@@ -35,6 +38,9 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 	
 	private var originalText : String?
 	
+	weak var delegate: SingleLineInputDelegate?
+	
+	
 	let tu = TextUtilities()
 	
 	override func viewDidLoad() {
@@ -60,7 +66,7 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 		
 		// no change is made yet as the information is just loaded, so disable the save button
 		saveButton.isEnabled = false
-	
+		
 	}
 	
 	// MARK: - Textfield delegate methods
@@ -75,19 +81,19 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 		
 		// check for valid characters
 		let textContainsValidCharacters = tu.textIsValid(inputString: inputBox.text ?? "", allowedCharacters: validationAllowedCharacters)
-
+		
 		if textContainsValidCharacters {
 			inputBox.textColor = myTheme.colorText
 		} else {
 			inputBox.textColor = myTheme.invalidFieldEntryColor
 		}
-	
+		
 		// calling these separately. Important to do this if I want them all to run, which they won't do if I place them in a multi-and statement
 		
 		let meetsMax = meetsMaxLengthCriteria()
 		let meetsMin = meetsMinCriteria()
 		let isValid = textContainsValidCharacters
-	
+		
 		// check to see if meeting other criteria
 		if (isValid && meetsMin && meetsMax){
 			
@@ -101,7 +107,7 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 		fillInputPlaceHolder()
 	}
 	
-func hasChangedFromOriginal () -> Bool {
+	func hasChangedFromOriginal () -> Bool {
 		let cleanText = tu.removeLeadingTrailingSpaces(string: inputBox.text ?? "")
 		if originalText ?? "" == cleanText {
 			return false
@@ -155,88 +161,7 @@ func hasChangedFromOriginal () -> Bool {
 		}
 	}
 	
+	@IBAction func saveButtonAction(_ sender: Any) {
+		delegate?.testAlertBox(inputVC: self)
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-func textFieldDidChangeSelection(_ textField: UITextField) {
-
-let validResult = tu.validateAndFormatField(textField: textField, allowedCharacters: validationAllowedCharacters, maxLength: myConstants.maxLengthCategoryName, accessoryButton: nil)
-
-let isBlank = tu.isBlank(string: textField.text ?? "")
-
-switch validResult {
-
-case true:
-// the input is valid
-
-switch inputIsRequired {
-
-case true:
-// input is required
-
-if isBlank {
-saveButton.isEnabled = false
-textField.placeholder = "Required"
-} else {
-saveButton.isEnabled = true
-}
-
-case false:
-// input is not requried
-
-saveButton.isEnabled = true
-
-if isBlank {
-textField.placeholder = "Optional"
-}
-}
-
-case false:
-
-// the input is not valid
-saveButton.isEnabled = false
-
-if textField.text?.count ?? 0 > maxLength {
-counterLabel.textColor = myTheme.invalidFieldEntryColor
-} else {
-textField.textColor = myTheme.colorText
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-updateCounterText()
-
-saveButton.isEnabled = inputIsValid
-saveButton.updateBackgroundColor()
-}
-
-*/
