@@ -71,6 +71,8 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 	
 	func textFieldDidChangeSelection(_ textField: UITextField) {
 		
+		print("called textFieldDidChangeSelection")
+		
 		// check for valid characters
 		let textContainsValidCharacters = tu.textIsValid(inputString: inputBox.text ?? "", allowedCharacters: validationAllowedCharacters)
 
@@ -80,9 +82,14 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 			inputBox.textColor = myTheme.invalidFieldEntryColor
 		}
 	
+		// calling these separately. Important to do this if I want them all to run, which they won't do if I place them in a multi-and statement
 		
+		let meetsMax = meetsMaxLengthCriteria()
+		let meetsMin = meetsMinCriteria()
+		let isValid = textContainsValidCharacters
+	
 		// check to see if meeting other criteria
-		if (textContainsValidCharacters && meetsMinCriteria() && meetsMaxLengthCriteria()){
+		if (isValid && meetsMin && meetsMax){
 			
 			saveButton.isEnabled = true
 		} else {
@@ -107,24 +114,28 @@ func hasChangedFromOriginal () -> Bool {
 	will return true/false and also format the counter label color
 	*/
 	private func meetsMaxLengthCriteria () -> Bool {
+		
 		counterLabel.text = String (maxLength - Int(inputBox.text?.count ?? 0))
 		
 		if inputBox.text?.count ?? 0 > maxLength {
+			inputBox.textColor = myTheme.invalidFieldEntryColor
 			counterLabel.textColor = myTheme.invalidFieldEntryColor
 			return false
 		} else {
+			inputBox.textColor = myTheme.colorText
 			counterLabel.textColor = myTheme.colorText
 			return true
-		}	}
+		}
+		
+		
+	}
 	
 	private func meetsMinCriteria () -> Bool {
 		
 		let cleanText = tu.removeLeadingSpaces(input: inputBox.text ?? "")
 		
-		print("count: \(cleanText.count)")
-		
 		if inputIsRequired {
-			if cleanText.count > 1 {
+			if cleanText.count > 0 {
 				return true
 			} else {
 				return false
