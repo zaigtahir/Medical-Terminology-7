@@ -57,6 +57,8 @@ class TextUtilities {
 		}
 	}
 	
+	
+	// MARK: - to remove after taking care of category editing
 	/**
 	Will check for validity of text and make the textbox.text and the accessory button red color if the text is not valid.
 	Will return TRUE if the text if VALID OR if it is BLANK.

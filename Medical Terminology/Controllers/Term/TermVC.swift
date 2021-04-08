@@ -144,10 +144,10 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			let vc = segue.destination as! SingleLineInput
 			
 			vc.fieldTitle = "TERM NAME"
-			vc.inputFieldText = term.name
+			vc.inputFieldText = ""
 			vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
-			vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/."
-			vc.inputIsRequired = true
+			vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+			vc.inputIsRequired = false
 			vc.maxLength = 20
 			
 		default:
