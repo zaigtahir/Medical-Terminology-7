@@ -9,8 +9,8 @@
 import UIKit
 
 class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineInputDelegate {
-	
-	
+
+
 	@IBOutlet weak var nameLabel: UILabel!
 	
 	@IBOutlet weak var definitionLabel: UILabel!
@@ -150,6 +150,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
 			vc.inputIsRequired = true
 			vc.maxLength = 20
+			vc.itemReference = "term name"
 			vc.delegate = self
 			
 		default:
@@ -189,8 +190,11 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	
 	// MARK: - SingleLineInputDelegate function
 
-	func testAlertBox(inputVC: SingleLineInput) {
 	
+	func testAlertBox(inputVC: SingleLineInput, itemReference: String) {
+	
+		// won't need to use an item reference here because only the term name will use the SingleLineInputDelegate here
+		
 		inputVC.navigationController?.popViewController(animated: true)
 	
 		//testing

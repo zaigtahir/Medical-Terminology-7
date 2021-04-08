@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SingleLineInputDelegate: AnyObject {
-	func testAlertBox(inputVC: SingleLineInput)
+	func testAlertBox(inputVC: SingleLineInput, itemReference: String)
 }
 
 class SingleLineInput: UIViewController, UITextFieldDelegate {
@@ -35,6 +35,11 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 	var validationAllowedCharacters = "DEFAULT"
 	var inputIsRequired = true
 	var maxLength = 20
+	
+	/**
+	Use this to pass a string. The delegate will send this reference string back so the calling VC knows which value is being affected
+	*/
+	var itemReference = "DEFAULT"
 	
 	private var originalText : String?
 	
@@ -162,6 +167,6 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 	}
 	
 	@IBAction func saveButtonAction(_ sender: Any) {
-		delegate?.testAlertBox(inputVC: self)
+		delegate?.testAlertBox(inputVC: self, itemReference: self.itemReference)
 	}
 }
