@@ -34,5 +34,7 @@ class MyKeys {
 	let deleteCategoryKey = "com.theappgalaxy.categoryDeletedNotification"
 	
 	let changeCategoryNameKey = "com.theappgalaxy.categoryNameUpdatedNotification"
+	
+	let changeTermInfoKey = "com.theappgalaxy.changeTermInfoNotification"
 }
 

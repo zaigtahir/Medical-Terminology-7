@@ -100,6 +100,54 @@ class TermController {
 		
 	}
 	
+	/**
+	Not including TermID is used to filter out the current term name. The user just might want to change the letter CaSE. In that case, i still want to save that change. So This query will look for duplicates of any other row.
+	*/
+	func termNameIsUnique (name: String, notIncludingTermID: Int) -> Bool {
+		let query = "SELECT COUNT (*) from \(terms) where name LIKE '\(name)' AND termID != \(notIncludingTermID)"
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			let count = Int (resultSet.int(forColumnIndex: 0))
+			
+			if count > 0 {
+				return false
+			} else {
+				return true
+			}
+			
+		} else {
+			print("fatal error making RS in termNameisDuplicate. returning false as safety default")
+			return false
+		}
+	}
+	
+	
+	// MARK: - term update functions
+	
+	func updateTermNamePN (termID: Int, name: String) {
+		let query = "UPDATE \(terms) SET name = '\(name)' WHERE termID = \(termID)"
+		myDB.executeStatements(query)
+		
+		// post notification
+		let nName = Notification.Name(myKeys.changeTermInfoKey)
+	}
+	
+	func updateTermExample (termID: Int, example: String) {
+		
+	}
+	
+	func updateTermDefinition (termID: Int, definition: String) {
+	
+	}
+	
+	func updateTermMyNotes (termID: Int, myNotes: String) {
+		
+		
+	}
+	
+	
+	
 	// MARK: - Non search text queries
 	
 	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?) -> [Int]{

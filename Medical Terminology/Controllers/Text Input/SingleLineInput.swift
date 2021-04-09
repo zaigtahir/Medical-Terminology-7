@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SingleLineInputDelegate: AnyObject {
-	func testAlertBox(inputVC: SingleLineInput, itemReference: String)
+	func shouldUpdateInformation(inputVC: SingleLineInput, itemReference: String, cleanString: String)
 }
 
 class SingleLineInput: UIViewController, UITextFieldDelegate {
@@ -167,6 +167,9 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 	}
 	
 	@IBAction func saveButtonAction(_ sender: Any) {
-		delegate?.testAlertBox(inputVC: self, itemReference: self.itemReference)
+		
+	// if the text field contains nothing, default to empty string ""
+		
+		delegate?.shouldUpdateInformation(inputVC: self, itemReference: self.itemReference, cleanString: inputBox?.text ?? "")
 	}
 }

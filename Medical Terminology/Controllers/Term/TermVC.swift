@@ -145,7 +145,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			let vc = segue.destination as! SingleLineInput
 			
 			vc.fieldTitle = "TERM NAME"
-			vc.inputFieldText = ""
+			vc.inputFieldText = term.name
 			vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
 			vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
 			vc.inputIsRequired = true
@@ -189,22 +189,51 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	}
 	
 	// MARK: - SingleLineInputDelegate function
-
 	
-	func testAlertBox(inputVC: SingleLineInput, itemReference: String) {
+	/**
+	This function will allow you to save an empty string, so if a blank string should not be saved, need to address that before calling this function
+	*/
+	func shouldUpdateInformation(inputVC: SingleLineInput, itemReference: String, cleanString: String) {
 	
 		// won't need to use an item reference here because only the term name will use the SingleLineInputDelegate here
 		
-		inputVC.navigationController?.popViewController(animated: true)
-	
-		//testing
+		// if there is no change from the original information, just pop the input controller and do nothing
 		
-		let ac = UIAlertController(title: "Hey there!", message: "There is already a term with that name. Please choose a different name.", preferredStyle: .alert)
-		let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
+		if !inputVC.hasChangedFromOriginal() {
+			print ("no change from before, not doing anything")
+			return
+		}
 		
-		ac.addAction(ok)
+		print ("there was a change! looking to see if this is a duplicate")
 		
-		self.present(ac, animated: true, completion: .none)
+		// if this is a duplicate term name, show an alert, and do not pop the input controller
+		
+		print("checking name: \(cleanString)")
+		
+		// look for a duplicate name in any OTHER row
+		if tc.termNameIsUnique(name: cleanString, notIncludingTermID: term.termID) {
+			
+			tc.updateTermNamePN (termID: term.termID, name: cleanString)
+			
+			// reload the term from the db to show changes
+			self.term = tc.getTerm(termID: self.term.termID)
+			
+			updateDisplay()
+			
+			inputVC.navigationController?.popViewController(animated: true)
+		
+		} else {
+			
+			let ac = UIAlertController(title: "Hey there!", message: "There is already a term with that name. Please choose a different name.", preferredStyle: .alert)
+			let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
+			
+			ac.addAction(ok)
+			
+			self.present(ac, animated: true, completion: .none)
+			
+			return
+		}
+
 	}
 	
 	
