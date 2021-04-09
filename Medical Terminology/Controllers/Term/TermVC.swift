@@ -125,9 +125,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			deleteTermButton.isEnabled = false
 			
 			categoriesListTextView.text = "Your new term will automatically be added to \"My Terms\" category in addition to any others you assign it to."
-			
 		}
-		
 	}
 	
 	// MARK: -Segue
@@ -193,22 +191,15 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	/**
 	This function will allow you to save an empty string, so if a blank string should not be saved, need to address that before calling this function
 	*/
-	func shouldUpdateInformation(inputVC: SingleLineInput, itemReference: String, cleanString: String) {
+	func shouldUpdateSingleLineInfo(inputVC: SingleLineInput, itemReference: String, cleanString: String) {
 	
 		// won't need to use an item reference here because only the term name will use the SingleLineInputDelegate here
 		
 		// if there is no change from the original information, just pop the input controller and do nothing
 		
 		if !inputVC.hasChangedFromOriginal() {
-			print ("no change from before, not doing anything")
 			return
 		}
-		
-		print ("there was a change! looking to see if this is a duplicate")
-		
-		// if this is a duplicate term name, show an alert, and do not pop the input controller
-		
-		print("checking name: \(cleanString)")
 		
 		// look for a duplicate name in any OTHER row
 		if tc.termNameIsUnique(name: cleanString, notIncludingTermID: term.termID) {

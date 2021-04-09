@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SingleLineInputDelegate: AnyObject {
-	func shouldUpdateInformation(inputVC: SingleLineInput, itemReference: String, cleanString: String)
+	func shouldUpdateSingleLineInfo(inputVC: SingleLineInput, itemReference: String, cleanString: String)
 }
 
 class SingleLineInput: UIViewController, UITextFieldDelegate {
@@ -170,6 +170,6 @@ class SingleLineInput: UIViewController, UITextFieldDelegate {
 		
 	// if the text field contains nothing, default to empty string ""
 		
-		delegate?.shouldUpdateInformation(inputVC: self, itemReference: self.itemReference, cleanString: inputBox?.text ?? "")
+		delegate?.shouldUpdateSingleLineInfo(inputVC: self, itemReference: self.itemReference, cleanString: inputBox?.text ?? "")
 	}
 }
