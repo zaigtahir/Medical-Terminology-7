@@ -49,7 +49,8 @@ class MyConstants {
 	let segueCategory = "segueCategory"
 	let segueValidationVC = "segueValidationVC"
 	let segueTerm = "segueTerm"
-	let segueTextInput = "segueSingleLineInput"
+	let segueSingleLineInput = "segueSingleLineInput"
+	let segueMultiLineInput = "segueMultiLineInput"
 	
     // question feedback remarks
     let feedbackNotAnswered = "Select An Answer"

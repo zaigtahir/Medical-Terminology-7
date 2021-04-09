@@ -71,3 +71,11 @@ enum CategoryType : Int {
 	case standard = 1	// the raw value coorelates to the db value
 	case custom = 0		// the raw value coorelates to the db value
 }
+
+// used for coordinating the segue and protocol/delegate for editing fields
+enum EditingPropertyType {
+	case name
+	case definition
+	case example
+	case myNotes
+}

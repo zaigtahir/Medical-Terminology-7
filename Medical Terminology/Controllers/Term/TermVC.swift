@@ -8,9 +8,8 @@
 
 import UIKit
 
-class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineInputDelegate {
-
-
+class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineInputDelegate, MultiLineInputDelegate {
+	
 	@IBOutlet weak var nameLabel: UILabel!
 	
 	@IBOutlet weak var definitionLabel: UILabel!
@@ -41,7 +40,11 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	
 	let termVCH = TermVCH()
 	
-	private var term : Term!	// store term here so it can be used to play audio as a class function
+	// store term here so it can be used to play audio as a class function
+	private var term : Term!
+	
+	// used to store the property type that will be edited with the segue functions
+	private var editingPropertyType : EditingPropertyType?
 	
 	private let tc = TermController()
 	
@@ -139,21 +142,65 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			vc.categoryHomeVCH.displayMode = .assignCategory
 			vc.categoryHomeVCH.termID = termVCH.termID
 			
-		case myConstants.segueTextInput:
-			let vc = segue.destination as! SingleLineInput
+		case myConstants.segueSingleLineInput:
 			
+			let vc = segue.destination as! SingleLineInputVC
 			vc.fieldTitle = "TERM NAME"
 			vc.inputFieldText = term.name
 			vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
 			vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
 			vc.inputIsRequired = true
 			vc.maxLength = 20
-			vc.itemReference = "term name"
+			vc.editingPropertyType = .name
 			vc.delegate = self
+			
+		case myConstants.segueMultiLineInput:
+			
+			let vc = segue.destination as! MultiLineInputVC
+			
+			switch self.editingPropertyType {
+			
+			case .definition:
+				
+				vc.fieldTitle = "DEFINITION"
+				vc.inputFieldText = term.definition
+				vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+				vc.inputIsRequired = true
+				vc.maxLength = 20
+				vc.editingPropertyType = .definition
+				vc.delegate = self
+				
+				
+			case .example:
+				
+				vc.fieldTitle = "EXAMPLE"
+				vc.inputFieldText = term.example
+				vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+				vc.inputIsRequired = true
+				vc.maxLength = 20
+				vc.editingPropertyType = .example
+				vc.delegate = self
+				
+				
+			default:
+				vc.fieldTitle = "MY NOTES"
+				vc.inputFieldText = term.myNotes
+				vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+				vc.inputIsRequired = true
+				vc.maxLength = 20
+				vc.editingPropertyType = .myNotes
+				vc.delegate = self
+				
+			}
 			
 		default:
 			print("fatal error, no segue identifier found in prepare TermVC")
 		}
+		
+		
 	}
 	
 	// MARK: - TermAudioDelegate functions
@@ -191,8 +238,8 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	/**
 	This function will allow you to save an empty string, so if a blank string should not be saved, need to address that before calling this function
 	*/
-	func shouldUpdateSingleLineInfo(inputVC: SingleLineInput, itemReference: String, cleanString: String) {
-	
+	func shouldUpdateSingleLineInfo(inputVC: SingleLineInputVC, editingPropertyType: EditingPropertyType?, cleanString: String) {
+		
 		// won't need to use an item reference here because only the term name will use the SingleLineInputDelegate here
 		
 		// if there is no change from the original information, just pop the input controller and do nothing
@@ -212,10 +259,10 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			updateDisplay()
 			
 			inputVC.navigationController?.popViewController(animated: true)
-		
+			
 		} else {
 			
-			let ac = UIAlertController(title: "Hey there!", message: "There is already a term with that name. Please choose a different name.", preferredStyle: .alert)
+			let ac = UIAlertController(title: "Opps!", message: "There is already a term with that name. Please choose a different name.", preferredStyle: .alert)
 			let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
 			
 			ac.addAction(ok)
@@ -224,9 +271,14 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			
 			return
 		}
-
+		
 	}
 	
+	
+	// MARK: - MultiLineInputDelegate function
+	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, editingPropertyType: EditingPropertyType?, cleanString: String) {
+		print("back in TermVC shouldUpdateMultilineInfo")
+	}
 	
 	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
 		

@@ -19,10 +19,10 @@ class Term: NSObject, AVAudioPlayerDelegate {
 	var name: String = "default"
 	var definition: String = "default"
 	var example: String = "default"
+	var myNotes: String = "There are my default notes"
 	var secondCategoryID : Int = -1
 	var audioFile: String = ""
 	var isStandard: Bool = true
-	
 	var audioPlayer = AVAudioPlayer()
 
 	weak var delegate: TermAudioDelegate?

@@ -72,8 +72,9 @@
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
 		9983980F25F05B6B00CC0354 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9983980E25F05B6B00CC0354 /* StoreKit.framework */; };
 		998398E325F6AB3C00CC0354 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998398E225F6AB3C00CC0354 /* Category.swift */; };
-		99A722D5261E7846001DEDBD /* SingleLineInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722D4261E7846001DEDBD /* SingleLineInput.swift */; };
+		99A722D5261E7846001DEDBD /* SingleLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */; };
 		99A722DC261F5693001DEDBD /* ZUIRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */; };
+		99A723042620D036001DEDBD /* MultiLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A723032620D036001DEDBD /* MultiLineInputVC.swift */; };
 		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
 		99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */; };
 		99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */; };
@@ -166,8 +167,9 @@
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9983980E25F05B6B00CC0354 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		998398E225F6AB3C00CC0354 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		99A722D4261E7846001DEDBD /* SingleLineInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineInput.swift; sourceTree = "<group>"; };
+		99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineInputVC.swift; sourceTree = "<group>"; };
 		99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZUIRoundedButton.swift; sourceTree = "<group>"; };
+		99A723032620D036001DEDBD /* MultiLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineInputVC.swift; sourceTree = "<group>"; };
 		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
 		99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtilities.swift; sourceTree = "<group>"; };
 		99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCVCell.swift; sourceTree = "<group>"; };
@@ -478,7 +480,8 @@
 		99A722D3261E7824001DEDBD /* Text Input */ = {
 			isa = PBXGroup;
 			children = (
-				99A722D4261E7846001DEDBD /* SingleLineInput.swift */,
+				99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */,
+				99A723032620D036001DEDBD /* MultiLineInputVC.swift */,
 			);
 			path = "Text Input";
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				992B566E2610E9A0000457AA /* CategoryVCH.swift in Sources */,
 				99D76AC52616C9CE0062CCD4 /* TermsList.swift in Sources */,
 				5A03478F22D39D0900749EBC /* FMDatabasePool.m in Sources */,
+				99A723042620D036001DEDBD /* MultiLineInputVC.swift in Sources */,
 				5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */,
 				5A67C14B231071D900BAA2A0 /* QuizDoneCVCell.swift in Sources */,
 				992E79D2260A2ADD00C19D49 /* FlashCardOptionsVC.swift in Sources */,
@@ -606,7 +610,7 @@
 				5A4F854A22B16C2E0016621C /* LearnSetVCH.swift in Sources */,
 				5A4471552281C655008E3107 /* TermListVCH.swift in Sources */,
 				5A88634E218560030013FC8B /* TermListVC.swift in Sources */,
-				99A722D5261E7846001DEDBD /* SingleLineInput.swift in Sources */,
+				99A722D5261E7846001DEDBD /* SingleLineInputVC.swift in Sources */,
 				5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */,
 				992B56A4261382BF000457AA /* ValidationVC.swift in Sources */,
 				992E79E0260A43C700C19D49 /* TermController.swift in Sources */,
