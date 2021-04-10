@@ -80,7 +80,7 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		
 		// check for valid characters
 		let textContainsValidCharacters = tu.textIsValid(inputString: inputBox.text ?? "", allowedCharacters: validationAllowedCharacters)
-		
+				
 		if textContainsValidCharacters {
 			inputBox.textColor = myTheme.colorText
 		} else {
@@ -95,10 +95,10 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		
 		// check to see if meeting other criteria
 		if (isValid && meetsMin && meetsMax){
-			
+			textField.textColor = myTheme.colorText
 			saveButton.isEnabled = true
 		} else {
-			
+			textField.textColor = myTheme.invalidFieldEntryColor
 			saveButton.isEnabled = false
 		}
 		
@@ -123,16 +123,12 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		counterLabel.text = String (maxLength - Int(inputBox.text?.count ?? 0))
 		
 		if inputBox.text?.count ?? 0 > maxLength {
-			inputBox.textColor = myTheme.invalidFieldEntryColor
 			counterLabel.textColor = myTheme.invalidFieldEntryColor
 			return false
 		} else {
-			inputBox.textColor = myTheme.colorText
 			counterLabel.textColor = myTheme.colorText
 			return true
 		}
-		
-		
 	}
 	
 	private func meetsMinCriteria () -> Bool {
