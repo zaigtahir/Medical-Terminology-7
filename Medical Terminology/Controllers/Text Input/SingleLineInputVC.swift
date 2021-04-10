@@ -78,8 +78,6 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	
 	func textFieldDidChangeSelection(_ textField: UITextField) {
 		
-		print("called textFieldDidChangeSelection")
-		
 		// check for valid characters
 		let textContainsValidCharacters = tu.textIsValid(inputString: inputBox.text ?? "", allowedCharacters: validationAllowedCharacters)
 		

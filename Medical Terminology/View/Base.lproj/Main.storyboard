@@ -1095,7 +1095,7 @@
                                 <color key="tintColor" name="color text"/>
                                 <state key="normal" image="chevron.right" catalog="system"/>
                                 <connections>
-                                    <segue destination="6nL-Ki-amP" kind="show" identifier="segueMultiLineInput" id="qxh-va-suH"/>
+                                    <action selector="definitionEditButtonAction:" destination="cpZ-GR-xZj" eventType="touchUpInside" id="h8T-Vg-hJW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cie-KH-EBq">
@@ -1106,6 +1106,9 @@
                                 </constraints>
                                 <color key="tintColor" name="color text"/>
                                 <state key="normal" image="chevron.right" catalog="system"/>
+                                <connections>
+                                    <action selector="exampleEditButtonAction:" destination="cpZ-GR-xZj" eventType="touchUpInside" id="Vdj-cJ-M8r"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(none available)" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpt-sA-AtM">
                                 <rect key="frame" x="20" y="353.33333333333331" width="324" height="18"/>
@@ -1166,6 +1169,9 @@
                                 </constraints>
                                 <color key="tintColor" name="color text"/>
                                 <state key="normal" image="chevron.right" catalog="system"/>
+                                <connections>
+                                    <action selector="myNotesEditButtonAction:" destination="cpZ-GR-xZj" eventType="touchUpInside" id="dxq-8C-ovP"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="catetories list. If there are no categories assigned, just leave blank" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0J-BT-Ber">
                                 <rect key="frame" x="20" y="411.33333333333326" width="324" height="294.66666666666674"/>
@@ -1250,6 +1256,7 @@
                         <outlet property="nameEditButton" destination="ACE-r7-tgp" id="YEy-jJ-gG8"/>
                         <outlet property="nameLabel" destination="08w-aP-d8G" id="n2g-jH-mLS"/>
                         <outlet property="playAudioButton" destination="XO0-U3-fcX" id="9Z4-Yq-kQ2"/>
+                        <segue destination="6nL-Ki-amP" kind="show" identifier="segueMultiLineInput" id="i1H-T2-eqP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTr-o9-BCo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

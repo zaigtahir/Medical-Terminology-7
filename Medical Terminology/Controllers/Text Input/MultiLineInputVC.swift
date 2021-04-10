@@ -72,24 +72,14 @@ class MultiLineInputVC: UIViewController, UITextViewDelegate {
 		
 		// perform initial validation and set up of controls
 		
-		
-		
-		
-		
-		//textFieldDidChangeSelection(inputBox)
-		
-		
-		
-		
-		
-		
-		
-		
 		// no change is made yet as the information is just loaded, so disable the save button
 		saveButton.isEnabled = false
 		
 	}
 	
+	func textViewDidChange(_ textView: UITextView) {
+		print("info changed")
+	}
 	
 	
 	/*

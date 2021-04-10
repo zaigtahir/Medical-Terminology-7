@@ -307,4 +307,21 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 		
 	}
 	
+	@IBAction func definitionEditButtonAction(_ sender: Any) {
+		self.editingPropertyType = .definition
+		performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
+	}
+	
+	@IBAction func exampleEditButtonAction(_ sender: Any) {
+		self.editingPropertyType = .example
+		performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
+	}
+	
+	@IBAction func myNotesEditButtonAction(_ sender: Any) {
+		self.editingPropertyType = .myNotes
+		performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
+	}
+	
+	
+	
 }
