@@ -145,13 +145,13 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 		case myConstants.segueSingleLineInput:
 			
 			let vc = segue.destination as! SingleLineInputVC
-			vc.fieldTitle = "TERM NAME"
-			vc.inputFieldText = term.name
-			vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
-			vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-			vc.inputIsRequired = true
-			vc.maxLength = 20
-			vc.editingPropertyType = .name
+			vc.vcc.fieldTitle = "TERM NAME"
+			vc.vcc.inputFieldText = term.name
+			vc.vcc.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+			vc.vcc.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+			vc.vcc.minLength = 1
+			vc.vcc.maxLength = 20
+			vc.vcc.propertyReference = .name
 			vc.delegate = self
 			
 		case myConstants.segueMultiLineInput:
