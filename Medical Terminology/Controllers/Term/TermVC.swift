@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineInputDelegate, MultiLineInputDelegate {
+class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, MultiLineInputDelegate {
 	
 	@IBOutlet weak var nameLabel: UILabel!
 	
@@ -43,25 +43,31 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	// store term here so it can be used to play audio as a class function
 	private var term : Term!
 	
+	// controllers
 	private let tc = TermController()
-	
 	private let cc = CategoryController2()
 	
+	// keeping these vc as a class varialbe so I can dismiss them through protocol functions
+	private var singleLineInputVC : SingleLineInputVC!
+	private var multiLineInputVC : MultiLineInputVC!
+	
+
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
 		
 		termVCH.delegate = self
 		
-		term = tc.getTerm(termID: termVCH.termID)
-		
-		print ("in TermVC. For testing setting term to be not isStandard")
-		term.isStandard = false
-		
 		updateDisplay()
 	}
 	
 	func updateDisplay () {
+		
+		term = tc.getTerm(termID: termVCH.termID)
+		
+		print ("in TermVC. For testing setting term to be not isStandard")
+		
+		term.isStandard = false
 		
 		playAudioButton.isEnabled = term.isAudioFilePresent()
 		
@@ -139,62 +145,61 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			
 		case myConstants.segueSingleLineInput:
 			
-			let vc = segue.destination as! SingleLineInputVC
-			vc.vcc.fieldTitle = "TERM NAME"
-			vc.vcc.initialText = term.name
-			vc.vcc.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-			vc.vcc.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-			vc.vcc.minLength = 1
-			vc.vcc.maxLength = myConstants.maxLengthTermName
-			vc.vcc.propertyReference = .name
-			vc.delegate = self
+			singleLineInputVC = segue.destination as? SingleLineInputVC
+			singleLineInputVC.textInputVCH.fieldTitle = "TERM NAME"
+			singleLineInputVC.textInputVCH.initialText = term.name
+			singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+			singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+			singleLineInputVC.textInputVCH.minLength = 1
+			singleLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermName
+			singleLineInputVC.textInputVCH.propertyReference = .name
+			singleLineInputVC.delegate = termVCH
 			
 		case myConstants.segueMultiLineInput:
 			
-			let vc = segue.destination as! MultiLineInputVC
+			multiLineInputVC = segue.destination as? MultiLineInputVC
 			
 			switch termVCH.propertyReference  {
 			
 			case .definition:
 				
-				vc.textInputVCH.fieldTitle = "DEFINITION"
-				vc.textInputVCH.initialText = term.definition
-				vc.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-				vc.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
-				vc.textInputVCH.minLength = 0
-				vc.textInputVCH.maxLength = myConstants.maxLengthTermDefinition
-				vc.textInputVCH.propertyReference = .definition
-				vc.delegate = self
+				multiLineInputVC.textInputVCH.fieldTitle = "DEFINITION"
+				multiLineInputVC.textInputVCH.initialText = term.definition
+				multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
+				multiLineInputVC.textInputVCH.minLength = 0
+				multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermDefinition
+				multiLineInputVC.textInputVCH.propertyReference = .definition
+				multiLineInputVC.delegate = self
 				
 			case .example:
 				
-				vc.textInputVCH.fieldTitle = "EXAMPLE"
-				vc.textInputVCH.initialText = term.example
-				vc.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-				vc.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
-				vc.textInputVCH.minLength = 0
-				vc.textInputVCH.maxLength = myConstants.maxLengthTermExample
-				vc.textInputVCH.propertyReference = .example
-				vc.delegate = self
+				multiLineInputVC.textInputVCH.fieldTitle = "EXAMPLE"
+				multiLineInputVC.textInputVCH.initialText = term.example
+				multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
+				multiLineInputVC.textInputVCH.minLength = 0
+				multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermExample
+				multiLineInputVC.textInputVCH.propertyReference = .example
+				multiLineInputVC.delegate = self
 				
 			default:
 				
-				vc.textInputVCH.fieldTitle = "MY NOTES"
-				vc.textInputVCH.initialText = term.myNotes
-				vc.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ? ."
-				vc.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/?.-\n\t"
-				vc.textInputVCH.minLength = 0
-				vc.textInputVCH.maxLength = myConstants.maxLengthMyNotes
-				vc.textInputVCH.propertyReference = .myNotes
-				vc.delegate = self
+				multiLineInputVC.textInputVCH.fieldTitle = "MY NOTES"
+				multiLineInputVC.textInputVCH.initialText = term.myNotes
+				multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ? ."
+				multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/?.-\n\t"
+				multiLineInputVC.textInputVCH.minLength = 0
+				multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthMyNotes
+				multiLineInputVC.textInputVCH.propertyReference = .myNotes
+				multiLineInputVC.delegate = self
 				
 			}
 			
 		default:
 			print("fatal error, no segue identifier found in prepare TermVC")
 		}
-		
-		
+	
 	}
 	
 	// MARK: - TermAudioDelegate functions
@@ -227,58 +232,21 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 		updateDisplay()
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// TO DELETE
-	// MARK: - SingleLineInputDelegate function
-	/**
-	This function will allow you to save an empty string, so if a blank string should not be saved, need to address that before calling this function
-	*/
-	func shouldUpdateSingleLineInfo(inputVC: SingleLineInputVC, editingPropertyType: PropertyReference?, cleanString: String) {
+	func shouldDisplayDuplicateTermNameAlert() {
+		let ac = UIAlertController(title: "Opps!", message: "There is already a term with that name. Please choose a different name.", preferredStyle: .alert)
+		let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
 		
-		// won't need to use an item reference here because only the term name will use the SingleLineInputDelegate here
+		ac.addAction(ok)
 		
-		if term.name == cleanString {
-			// nothing has changed. Do nothing
-			print ("nothing changed")
-			inputVC.navigationController?.popViewController(animated: true)
-			return
-		}
-		
-		
-		// look for a duplicate name in any OTHER row
-		if tc.termNameIsUnique(name: cleanString, notIncludingTermID: term.termID) {
-			
-			tc.updateTermNamePN (termID: term.termID, name: cleanString)
-			
-			// reload the term from the db to show changes
-			self.term = tc.getTerm(termID: self.term.termID)
-			
-			updateDisplay()
-			
-			inputVC.navigationController?.popViewController(animated: true)
-			
-		} else {
-			
-			let ac = UIAlertController(title: "Opps!", message: "There is already a term with that name. Please choose a different name.", preferredStyle: .alert)
-			let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
-			
-			ac.addAction(ok)
-			
-			self.present(ac, animated: true, completion: .none)
-			
-			return
-		}
+		self.present(ac, animated: true, completion: .none)
 		
 	}
 	
+	func shouldDismissTextInputVC() {
+		multiLineInputVC?.navigationController?.popViewController(animated: true)
+		singleLineInputVC?.navigationController?.popViewController(animated: true)
+	}
+
 	
 	// MARK: - MultiLineInputDelegate function
 	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, propertyReference: PropertyReference?, cleanString: String) {
@@ -323,19 +291,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

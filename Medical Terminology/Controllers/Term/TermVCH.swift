@@ -11,11 +11,15 @@ import UIKit
 
 protocol TermVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
-	//func shouldDismissTextInputVC()
+	
+	/// dismiss single or multiline input vc
+	func shouldDismissTextInputVC()
+	func shouldDisplayDuplicateTermNameAlert()
 }
 
-class TermVCH {
-	
+class TermVCH: SingleLineInputDelegate {
+
+
 	var termID : Int!
 	var currentCategoryID : Int!
 	var displayMode = DisplayMode.view
@@ -102,7 +106,29 @@ class TermVCH {
 	
 	func shouldUpdateSingleLineInfo (propertyReference: PropertyReference, cleanString: String) {
 		
+		// this will only be for the term name
 		
+		let term = tc.getTerm(termID: termID)
+		
+		if term.name == cleanString {
+			// nothing changed
+			// home VC can dismiss the input VC
+			delegate?.shouldDismissTextInputVC()
+			return
+		}
+		
+		if !tc.termNameIsUnique(name: cleanString, notIncludingTermID: term.termID) {
+			// this is a duplicate term name!
+			delegate?.shouldDisplayDuplicateTermNameAlert()
+			return
+		}
+		
+		// update the db
+		tc.updateTermNamePN(termID: termID, name: cleanString)
+		
+		delegate?.shouldUpdateDisplay()
+		
+		delegate?.shouldDismissTextInputVC()
 		
 	}
 	

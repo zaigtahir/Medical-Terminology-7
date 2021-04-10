@@ -9,7 +9,8 @@
 import UIKit
 
 protocol SingleLineInputDelegate: AnyObject {
-	func shouldUpdateSingleLineInfo(inputVC: SingleLineInputVC, editingPropertyType: PropertyReference?, cleanString: String)
+	
+	func shouldUpdateSingleLineInfo(propertyReference: PropertyReference, cleanString: String)
 }
 
 class SingleLineInputVC: UIViewController, UITextFieldDelegate {
@@ -29,7 +30,7 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var validationLabel: UILabel!
 	@IBOutlet weak var counterLabel: UILabel!
 
-	var vcc = TextInputVCH()
+	var textInputVCH = TextInputVCH()
 
 	weak var delegate: SingleLineInputDelegate?
 	
@@ -45,9 +46,9 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
 		view.addGestureRecognizer(tapGesture)
 		
-		titleLabel.text = vcc.fieldTitle
-		textField.text = vcc.initialText
-		validationLabel.text = vcc.validationPrompt
+		titleLabel.text = textInputVCH.fieldTitle
+		textField.text = textInputVCH.initialText
+		validationLabel.text = textInputVCH.validationPrompt
 		
 		// perform initial validation and set up of controls
 		textFieldDidChangeSelection(textField)
@@ -60,7 +61,7 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	// Only appplies to the text field
 	private func fillInputPlaceHolder () {
 		if tu.isBlank(string: textField.text) {
-			if vcc.minLength > 0 {
+			if textInputVCH.minLength > 0 {
 				textField.placeholder = "Required"
 			} else {
 				textField.placeholder = "Optional"
@@ -77,7 +78,7 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	func textFieldDidChangeSelection(_ textField: UITextField) {
 		
 		// check for valid text
-		if vcc.textMeetsAllCriteria(inputString: textField.text) {
+		if textInputVCH.textMeetsAllCriteria(inputString: textField.text) {
 			textField.textColor = myTheme.colorText
 			saveButton.isEnabled = true
 		} else {
@@ -86,9 +87,9 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		}
 		
 		// update counter
-		counterLabel.text = String (vcc.maxLength - vcc.getCleanText(inputString: textField.text).count)
+		counterLabel.text = String (textInputVCH.maxLength - textInputVCH.getCleanText(inputString: textField.text).count)
 		
-		if vcc.meetsMaxLengthCriteria(inputString: textField.text) {
+		if textInputVCH.meetsMaxLengthCriteria(inputString: textField.text) {
 			counterLabel.textColor = myTheme.colorText
 		} else {
 			counterLabel.textColor = myTheme.invalidFieldEntryColor
@@ -102,9 +103,9 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		
 	// if the text field contains nothing, default to empty string ""
 		
-		let cleanText = vcc.getCleanText(inputString: textField.text)
+		let cleanText = textInputVCH.getCleanText(inputString: textField.text)
 		
-		delegate?.shouldUpdateSingleLineInfo(inputVC: self, editingPropertyType: vcc.propertyReference, cleanString: cleanText)
+		delegate?.shouldUpdateSingleLineInfo(propertyReference: textInputVCH.propertyReference, cleanString: cleanText)
 	}
 	
 	@IBAction func cancelButtonAction(_ sender: Any) {

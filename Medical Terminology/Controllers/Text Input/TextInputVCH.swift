@@ -21,7 +21,7 @@ class TextInputVCH  {
 	var maxLength = 20
 	var minLength = 0
 	
-	var propertyReference: PropertyReference?
+	var propertyReference: PropertyReference!
 	
 	private var tu = TextUtilities()
 	
