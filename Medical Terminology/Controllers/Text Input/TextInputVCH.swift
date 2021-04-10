@@ -11,7 +11,7 @@ import UIKit
 /**
 Use this class as controller for the single or multiline input VCs
 */
-class TextInputVCC  {
+class TextInputVCH  {
 	
 	var fieldTitle: String = "DEFAULT"
 	var initialText: String? // setter for originalText also
@@ -23,22 +23,9 @@ class TextInputVCC  {
 	
 	var propertyReference: PropertyReference?
 	
-	// holds a copy of initialText for comparison later
-	var copyInitialText : String?
-	
 	private var tu = TextUtilities()
 	
-	/// Will clean the input text
-	func meetsMaxLengthCriteria (inputString: String?) -> Bool {
-		let cleanText = tu.removeLeadingSpaces(input: inputString ?? "")
-		if cleanText.count > maxLength {
-			return false
-		} else {
-			return true
-		}
-	}
-	
-	/// Will clean the input text
+	// Will clean the input text
 	private func meetsMinCriteria (inputString: String?) -> Bool {
 		
 		let cleanText = tu.removeLeadingSpaces(input: inputString ?? "")
@@ -65,7 +52,17 @@ class TextInputVCC  {
 		
 		return (isValid && meetsMin && meetsMax)
 	}
-
+	
+	/// Will clean the input text
+	func meetsMaxLengthCriteria (inputString: String?) -> Bool {
+		let cleanText = tu.removeLeadingSpaces(input: inputString ?? "")
+		if cleanText.count > maxLength {
+			return false
+		} else {
+			return true
+		}
+	}
+	
 	/**
 	Get the text not including any leading or trailing spaces
 	Will return nil as empty string

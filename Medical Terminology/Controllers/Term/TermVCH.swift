@@ -24,9 +24,14 @@ class TermVCH {
 	///set this to true when the user is in edit/add mode and the data is valid to save as a term
 	var isReadyToSaveTerm = false
 	
+	// used to store the property type that will be edited with the segue functions
+	var propertyReference : PropertyReference?
+	
 	private let tc = TermController()
 	
 	private let cc = CategoryController2()
+	
+	
 	
 	init () {
 
@@ -94,4 +99,5 @@ class TermVCH {
 		
 		return categoryList
 	}
+	
 }

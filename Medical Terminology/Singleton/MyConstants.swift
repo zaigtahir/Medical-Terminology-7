@@ -72,6 +72,10 @@ class MyConstants {
     let layout_topBottomMargin = CGFloat(integerLiteral: 10)
 	
 	// MARK: - Maximum lengths for fields
+	let maxLengthTermName = 50
+	let maxLengthTermDefinition = 100
+	let maxLengthTermExample = 100
+	let maxLengthMyNotes = 100
 	let maxLengthCategoryName = 50
 	
     let requeueInterval = 7 //interval to requeue a question in a learning set if it is answered wrong

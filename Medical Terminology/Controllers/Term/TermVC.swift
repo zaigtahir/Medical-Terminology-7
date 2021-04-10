@@ -43,9 +43,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	// store term here so it can be used to play audio as a class function
 	private var term : Term!
 	
-	// used to store the property type that will be edited with the segue functions
-	private var editingPropertyType : PropertyReference?
-	
 	private let tc = TermController()
 	
 	private let cc = CategoryController2()
@@ -97,7 +94,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			deleteTermButton.isEnabled = !term.isStandard
 			categoriesListTextView.text = termVCH.getCategoryNamesText()
 			
-			
 			if term.isStandard {
 				deleteTermButton.isEnabled = false
 				nameEditButton.isHidden = true
@@ -112,7 +108,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 				definitionEditButton.isHidden = false
 				myNotesEditButton.isHidden = false
 			}
-			
 			
 		default:
 			// add (case delete is not used)
@@ -150,7 +145,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			vc.vcc.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
 			vc.vcc.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
 			vc.vcc.minLength = 1
-			vc.vcc.maxLength = 20
+			vc.vcc.maxLength = myConstants.maxLengthTermName
 			vc.vcc.propertyReference = .name
 			vc.delegate = self
 			
@@ -158,39 +153,39 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			
 			let vc = segue.destination as! MultiLineInputVC
 			
-			switch self.editingPropertyType {
+			switch termVCH.propertyReference  {
 			
 			case .definition:
 				
-				vc.vcc.fieldTitle = "DEFINITION"
-				vc.vcc.initialText = term.definition
-				vc.vcc.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-				vc.vcc.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-				vc.vcc.minLength = 0
-				vc.vcc.maxLength = 20
-				vc.vcc.propertyReference = .definition
+				vc.textInputVCH.fieldTitle = "DEFINITION"
+				vc.textInputVCH.initialText = term.definition
+				vc.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				vc.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
+				vc.textInputVCH.minLength = 0
+				vc.textInputVCH.maxLength = myConstants.maxLengthTermDefinition
+				vc.textInputVCH.propertyReference = .definition
 				vc.delegate = self
 				
 			case .example:
 				
-				vc.vcc.fieldTitle = "EXAMPLE"
-				vc.vcc.initialText = term.example
-				vc.vcc.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-				vc.vcc.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-				vc.vcc.minLength = 0
-				vc.vcc.maxLength = 20
-				vc.vcc.propertyReference = .example
+				vc.textInputVCH.fieldTitle = "EXAMPLE"
+				vc.textInputVCH.initialText = term.example
+				vc.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				vc.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
+				vc.textInputVCH.minLength = 0
+				vc.textInputVCH.maxLength = myConstants.maxLengthTermExample
+				vc.textInputVCH.propertyReference = .example
 				vc.delegate = self
 				
 			default:
 				
-				vc.vcc.fieldTitle = "MY NOTES"
-				vc.vcc.initialText = term.myNotes
-				vc.vcc.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-				vc.vcc.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-				vc.vcc.minLength = 0
-				vc.vcc.maxLength = 20
-				vc.vcc.propertyReference = .myNotes
+				vc.textInputVCH.fieldTitle = "MY NOTES"
+				vc.textInputVCH.initialText = term.myNotes
+				vc.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ? ."
+				vc.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/?.-\n\t"
+				vc.textInputVCH.minLength = 0
+				vc.textInputVCH.maxLength = myConstants.maxLengthMyNotes
+				vc.textInputVCH.propertyReference = .myNotes
 				vc.delegate = self
 				
 			}
@@ -233,7 +228,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	}
 	
 	// MARK: - SingleLineInputDelegate function
-	
 	/**
 	This function will allow you to save an empty string, so if a blank string should not be saved, need to address that before calling this function
 	*/
@@ -241,15 +235,13 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 		
 		// won't need to use an item reference here because only the term name will use the SingleLineInputDelegate here
 		
-		// if there is no change from the original information, just pop the input controller and do nothing
-		
-		// MARK: - need to figure out has changed
-		/*
-		if !inputVC.hasChangedFromOriginal() {
+		if term.name == cleanString {
+			// nothing has changed. Do nothing
+			print ("nothing changed")
+			inputVC.navigationController?.popViewController(animated: true)
 			return
 		}
-
-*/
+		
 		
 		// look for a duplicate name in any OTHER row
 		if tc.termNameIsUnique(name: cleanString, notIncludingTermID: term.termID) {
@@ -279,8 +271,47 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	
 	
 	// MARK: - MultiLineInputDelegate function
-	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, editingPropertyType: PropertyReference?, cleanString: String) {
-		print("back in TermVC shouldUpdateMultilineInfo")
+	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, propertyReference: PropertyReference?, cleanString: String) {
+		
+		// need to see what field we are dealing with
+		
+		switch propertyReference {
+		
+		case .definition:
+			if term.definition == cleanString {
+				
+				// nothing has changed. Do nothing
+				inputVC.navigationController?.popViewController(animated: true)
+			} else {
+				
+				tc.updateTermDefinitionPN(termID: term.termID, definition: cleanString)
+			}
+		case .example:
+			if term.example == cleanString {
+				
+				// nothing has changed. Do nothing
+				inputVC.navigationController?.popViewController(animated: true)
+			} else {
+				
+				
+			}
+			
+		case .myNotes:
+			if term.myNotes == cleanString {
+				
+				// nothing has changed. Do nothing
+				inputVC.navigationController?.popViewController(animated: true)
+				return
+			} else {
+				
+				tc.updateTermExamplePN(termID: term.termID, example: cleanString)
+			}
+			
+		default:
+			print ("fatal error no matching case found in shouldUpdateMultilineInfo")
+			return
+		}
+		
 	}
 	
 	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
@@ -311,17 +342,17 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	}
 	
 	@IBAction func definitionEditButtonAction(_ sender: Any) {
-		self.editingPropertyType = .definition
+		termVCH.propertyReference = .definition
 		performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
 	}
 	
 	@IBAction func exampleEditButtonAction(_ sender: Any) {
-		self.editingPropertyType = .example
+		termVCH.propertyReference = .example
 		performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
 	}
 	
 	@IBAction func myNotesEditButtonAction(_ sender: Any) {
-		self.editingPropertyType = .myNotes
+		termVCH.propertyReference  = .myNotes
 		performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
 	}
 	

@@ -29,7 +29,7 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var validationLabel: UILabel!
 	@IBOutlet weak var counterLabel: UILabel!
 
-	var vcc = TextInputVCC()
+	var vcc = TextInputVCH()
 
 	weak var delegate: SingleLineInputDelegate?
 	
@@ -48,9 +48,6 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		titleLabel.text = vcc.fieldTitle
 		textField.text = vcc.initialText
 		validationLabel.text = vcc.validationPrompt
-		
-		// backed up original to compare to the textbox.text when validating
-		vcc.copyInitialText = vcc.initialText
 		
 		// perform initial validation and set up of controls
 		textFieldDidChangeSelection(textField)
@@ -108,5 +105,9 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		let cleanText = vcc.getCleanText(inputString: textField.text)
 		
 		delegate?.shouldUpdateSingleLineInfo(inputVC: self, editingPropertyType: vcc.propertyReference, cleanString: cleanText)
+	}
+	
+	@IBAction func cancelButtonAction(_ sender: Any) {
+		self.navigationController?.popViewController(animated: true)
 	}
 }
