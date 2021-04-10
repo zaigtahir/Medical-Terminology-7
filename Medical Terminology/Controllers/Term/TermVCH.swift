@@ -11,6 +11,7 @@ import UIKit
 
 protocol TermVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
+	//func shouldDismissTextInputVC()
 }
 
 class TermVCH {
@@ -28,10 +29,7 @@ class TermVCH {
 	var propertyReference : PropertyReference?
 	
 	private let tc = TermController()
-	
 	private let cc = CategoryController2()
-	
-	
 	
 	init () {
 
@@ -99,5 +97,15 @@ class TermVCH {
 		
 		return categoryList
 	}
+	
+	// MARK: - SingleLineInputDelegate function
+	
+	func shouldUpdateSingleLineInfo (propertyReference: PropertyReference, cleanString: String) {
+		
+		
+		
+	}
+	
+	// MARK: - MultiLineInputDelegate Function
 	
 }

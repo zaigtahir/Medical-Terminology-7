@@ -227,6 +227,16 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 		updateDisplay()
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// TO DELETE
 	// MARK: - SingleLineInputDelegate function
 	/**
 	This function will allow you to save an empty string, so if a blank string should not be saved, need to address that before calling this function
@@ -313,6 +323,22 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 		}
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
 		
