@@ -3325,8 +3325,8 @@
                         <outlet property="cancelButton" destination="oW7-ln-Ia8" id="rCj-6b-tn3"/>
                         <outlet property="counterLabel" destination="hDs-2Q-LdA" id="xmg-ap-lNE"/>
                         <outlet property="headerImage" destination="lcz-cT-goV" id="rAH-or-Shb"/>
-                        <outlet property="inputBox" destination="bY7-xc-fFb" id="kyp-Hi-j3A"/>
                         <outlet property="saveButton" destination="dzz-Y5-pxF" id="AfH-Gr-LDn"/>
+                        <outlet property="textView" destination="bY7-xc-fFb" id="kyp-Hi-j3A"/>
                         <outlet property="titleLabel" destination="wwR-0w-Kam" id="WZo-9a-aP7"/>
                         <outlet property="validationLabel" destination="zUA-Wr-dDH" id="RWI-IV-StP"/>
                     </connections>

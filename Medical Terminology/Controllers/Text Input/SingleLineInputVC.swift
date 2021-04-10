@@ -28,9 +28,7 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var validationLabel: UILabel!
 	@IBOutlet weak var counterLabel: UILabel!
-	
-	private var originalText : String?
-	
+
 	var vcc = TextInputVCC()
 
 	weak var delegate: SingleLineInputDelegate?
@@ -48,11 +46,11 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		view.addGestureRecognizer(tapGesture)
 		
 		titleLabel.text = vcc.fieldTitle
-		textField.text = vcc.inputFieldText
+		textField.text = vcc.initialText
 		validationLabel.text = vcc.validationPrompt
 		
 		// backed up original to compare to the textbox.text when validating
-		originalText = vcc.inputFieldText
+		vcc.copyInitialText = vcc.initialText
 		
 		// perform initial validation and set up of controls
 		textFieldDidChangeSelection(textField)
@@ -107,6 +105,8 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		
 	// if the text field contains nothing, default to empty string ""
 		
-		delegate?.shouldUpdateSingleLineInfo(inputVC: self, editingPropertyType: vcc.propertyReference, cleanString: textField?.text ?? "")
+		let cleanText = vcc.getCleanText(inputString: textField.text)
+		
+		delegate?.shouldUpdateSingleLineInfo(inputVC: self, editingPropertyType: vcc.propertyReference, cleanString: cleanText)
 	}
 }

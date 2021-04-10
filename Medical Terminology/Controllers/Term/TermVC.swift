@@ -146,7 +146,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			
 			let vc = segue.destination as! SingleLineInputVC
 			vc.vcc.fieldTitle = "TERM NAME"
-			vc.vcc.inputFieldText = term.name
+			vc.vcc.initialText = term.name
 			vc.vcc.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
 			vc.vcc.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
 			vc.vcc.minLength = 1
@@ -162,36 +162,35 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 			
 			case .definition:
 				
-				vc.fieldTitle = "DEFINITION"
-				vc.inputFieldText = term.definition
-				vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
-				vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-				vc.inputIsRequired = true
-				vc.maxLength = 20
-				vc.editingPropertyType = .definition
+				vc.vcc.fieldTitle = "DEFINITION"
+				vc.vcc.initialText = term.definition
+				vc.vcc.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				vc.vcc.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+				vc.vcc.minLength = 0
+				vc.vcc.maxLength = 20
+				vc.vcc.propertyReference = .definition
 				vc.delegate = self
-				
 				
 			case .example:
 				
-				vc.fieldTitle = "EXAMPLE"
-				vc.inputFieldText = term.example
-				vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
-				vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-				vc.inputIsRequired = true
-				vc.maxLength = 20
-				vc.editingPropertyType = .example
+				vc.vcc.fieldTitle = "EXAMPLE"
+				vc.vcc.initialText = term.example
+				vc.vcc.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				vc.vcc.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+				vc.vcc.minLength = 0
+				vc.vcc.maxLength = 20
+				vc.vcc.propertyReference = .example
 				vc.delegate = self
 				
-				
 			default:
-				vc.fieldTitle = "MY NOTES"
-				vc.inputFieldText = term.myNotes
-				vc.validationText = "You may use letters, numbers and the following characters: ! , ( ) / ."
-				vc.validationAllowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-				vc.inputIsRequired = true
-				vc.maxLength = 20
-				vc.editingPropertyType = .myNotes
+				
+				vc.vcc.fieldTitle = "MY NOTES"
+				vc.vcc.initialText = term.myNotes
+				vc.vcc.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				vc.vcc.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+				vc.vcc.minLength = 0
+				vc.vcc.maxLength = 20
+				vc.vcc.propertyReference = .myNotes
 				vc.delegate = self
 				
 			}

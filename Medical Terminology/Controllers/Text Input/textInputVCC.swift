@@ -7,74 +7,71 @@
 //
 
 import Foundation
-
+import UIKit
 /**
 Use this class as controller for the single or multiline input VCs
 */
-class TextInputVCC {
+class TextInputVCC  {
 	
 	var fieldTitle: String = "DEFAULT"
-	var inputFieldText: String?
-	var validationText: String = "DEFAULT"
-	var validationAllowedCharacters = "DEFAULT"
-	var inputIsRequired = true
+	var initialText: String? // setter for originalText also
+	var validationPrompt: String = "DEFAULT"
+	var allowedCharacters = "DEFAULT"
+	
 	var maxLength = 20
-	var editingPropertyType: EditingPropertyType?
+	var minLength = 0
 	
-	private var originalText : String?
+	var propertyReference: PropertyReference?
 	
-
+	// holds a copy of initialText for comparison later
+	var copyInitialText : String?
 	
+	private var tu = TextUtilities()
+	
+	/// Will clean the input text
+	func meetsMaxLengthCriteria (inputString: String?) -> Bool {
+		let cleanText = tu.removeLeadingSpaces(input: inputString ?? "")
+		if cleanText.count > maxLength {
+			return false
+		} else {
+			return true
+		}
+	}
+	
+	/// Will clean the input text
+	private func meetsMinCriteria (inputString: String?) -> Bool {
+		
+		let cleanText = tu.removeLeadingSpaces(input: inputString ?? "")
+		
+		if cleanText.count > minLength {
+			return true
+		} else {
+			return false
+		}
+		
+	}
+	
+	private func textIsValid (inputString: String?) -> Bool {
+		return tu.textIsValid(inputString: inputString ?? "", allowedCharacters: 	allowedCharacters)
+	}
 	
 	/**
-	will return true/false and also format the counter label color
+	Will check for valid text, meets min and max criteria
 	*/
-	func meetsMaxLengthCriteria () -> Bool {
+	func textMeetsAllCriteria (inputString: String?) -> Bool {
+		let isValid = textIsValid(inputString: inputString)
+		let meetsMin = meetsMinCriteria(inputString: inputString)
+		let meetsMax = meetsMaxLengthCriteria(inputString: inputString)
 		
-		counterLabel.text = String (maxLength - Int(inputBox.text?.count ?? 0))
-		
-		if inputBox.text?.count ?? 0 > maxLength {
-			counterLabel.textColor = myTheme.invalidFieldEntryColor
-			return false
-		} else {
-			counterLabel.textColor = myTheme.colorText
-			return true
-		}
+		return (isValid && meetsMin && meetsMax)
 	}
-	
-	func meetsMinCriteria () -> Bool {
-		
-		let cleanText = tu.removeLeadingSpaces(input: inputBox.text ?? "")
-		
-		if inputIsRequired {
-			if cleanText.count > 0 {
-				return true
-			} else {
-				return false
-			}
-		} else {
-			return true
-		}
+
+	/**
+	Get the text not including any leading or trailing spaces
+	Will return nil as empty string
+	*/
+	func getCleanText (inputString: String?) -> String {
+		return tu.removeLeadingSpaces(input: inputString ?? "")
 	}
-	
-	func fillInputPlaceHolder () {
-		if tu.isBlank(string: inputBox.text) {
-			if inputIsRequired {
-				inputBox.placeholder = "Required"
-			} else {
-				inputBox.placeholder = "Optional"
-			}
-		}
-	}
-	
-	func hasChangedFromOriginal () -> Bool {
-		let cleanText = tu.removeLeadingTrailingSpaces(string: inputBox.text ?? "")
-		if originalText ?? "" == cleanText {
-			return false
-		} else {
-			return true
-		}
-	}
-	
 	
 }
