@@ -44,7 +44,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	private var term : Term!
 	
 	// used to store the property type that will be edited with the segue functions
-	private var editingPropertyType : EditingPropertyType?
+	private var editingPropertyType : PropertyReference?
 	
 	private let tc = TermController()
 	
@@ -238,15 +238,19 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	/**
 	This function will allow you to save an empty string, so if a blank string should not be saved, need to address that before calling this function
 	*/
-	func shouldUpdateSingleLineInfo(inputVC: SingleLineInputVC, editingPropertyType: EditingPropertyType?, cleanString: String) {
+	func shouldUpdateSingleLineInfo(inputVC: SingleLineInputVC, editingPropertyType: PropertyReference?, cleanString: String) {
 		
 		// won't need to use an item reference here because only the term name will use the SingleLineInputDelegate here
 		
 		// if there is no change from the original information, just pop the input controller and do nothing
 		
+		// MARK: - need to figure out has changed
+		/*
 		if !inputVC.hasChangedFromOriginal() {
 			return
 		}
+
+*/
 		
 		// look for a duplicate name in any OTHER row
 		if tc.termNameIsUnique(name: cleanString, notIncludingTermID: term.termID) {
@@ -276,7 +280,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, SingleLineIn
 	
 	
 	// MARK: - MultiLineInputDelegate function
-	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, editingPropertyType: EditingPropertyType?, cleanString: String) {
+	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, editingPropertyType: PropertyReference?, cleanString: String) {
 		print("back in TermVC shouldUpdateMultilineInfo")
 	}
 	

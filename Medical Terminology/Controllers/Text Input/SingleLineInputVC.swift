@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SingleLineInputDelegate: AnyObject {
-	func shouldUpdateSingleLineInfo(inputVC: SingleLineInputVC, editingPropertyType: EditingPropertyType?, cleanString: String)
+	func shouldUpdateSingleLineInfo(inputVC: SingleLineInputVC, editingPropertyType: PropertyReference?, cleanString: String)
 }
 
 class SingleLineInputVC: UIViewController, UITextFieldDelegate {
@@ -24,7 +24,7 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var saveButton: ZUIRoundedButton!
 	@IBOutlet weak var cancelButton: UIButton!
 	@IBOutlet weak var headerImage: UIImageView!
-	@IBOutlet weak var inputBox: UITextField!
+	@IBOutlet weak var textField: UITextField!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var validationLabel: UILabel!
 	@IBOutlet weak var counterLabel: UILabel!
@@ -35,11 +35,12 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	var validationAllowedCharacters = "DEFAULT"
 	var inputIsRequired = true
 	var maxLength = 20
-	var editingPropertyType: EditingPropertyType?
+	var editingPropertyType: PropertyReference?
 	
 	private var originalText : String?
-
 	
+	var vcc = TextInputVCC()
+
 	weak var delegate: SingleLineInputDelegate?
 	
 	let tu = TextUtilities()
@@ -48,22 +49,21 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		
 		super.viewDidLoad()
 		
-		inputBox.delegate = self
-		
+		textField.delegate = self
 		
 		//adding a tap gesture recognizer to dismiss the keyboard
 		let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
 		view.addGestureRecognizer(tapGesture)
 		
 		titleLabel.text = fieldTitle
-		inputBox.text = inputFieldText
+		textField.text = inputFieldText
 		validationLabel.text = validationText
 		
 		// backed up original to compare to the textbox.text when validating
 		originalText = inputFieldText
 		
 		// perform initial validation and set up of controls
-		textFieldDidChangeSelection(inputBox)
+		textFieldDidChangeSelection(textField)
 		
 		// no change is made yet as the information is just loaded, so disable the save button
 		saveButton.isEnabled = false
@@ -79,12 +79,12 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	func textFieldDidChangeSelection(_ textField: UITextField) {
 		
 		// check for valid characters
-		let textContainsValidCharacters = tu.textIsValid(inputString: inputBox.text ?? "", allowedCharacters: validationAllowedCharacters)
+		let textContainsValidCharacters = tu.textIsValid(inputString: textField.text ?? "", allowedCharacters: validationAllowedCharacters)
 				
 		if textContainsValidCharacters {
-			inputBox.textColor = myTheme.colorText
+			textField.textColor = myTheme.colorText
 		} else {
-			inputBox.textColor = myTheme.invalidFieldEntryColor
+			textField.textColor = myTheme.invalidFieldEntryColor
 		}
 		
 		// calling these separately. Important to do this if I want them all to run, which they won't do if I place them in a multi-and statement
@@ -106,8 +106,8 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		fillInputPlaceHolder()
 	}
 	
-	func hasChangedFromOriginal () -> Bool {
-		let cleanText = tu.removeLeadingTrailingSpaces(string: inputBox.text ?? "")
+	func hasChangedFrom44Original () -> Bool {
+		let cleanText = tu.removeLeadingTrailingSpaces(string: textField.text ?? "")
 		if originalText ?? "" == cleanText {
 			return false
 		} else {
@@ -120,9 +120,9 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	*/
 	private func meetsMaxLengthCriteria () -> Bool {
 		
-		counterLabel.text = String (maxLength - Int(inputBox.text?.count ?? 0))
+		counterLabel.text = String (maxLength - Int(textField.text?.count ?? 0))
 		
-		if inputBox.text?.count ?? 0 > maxLength {
+		if textField.text?.count ?? 0 > maxLength {
 			counterLabel.textColor = myTheme.invalidFieldEntryColor
 			return false
 		} else {
@@ -133,7 +133,7 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	
 	private func meetsMinCriteria () -> Bool {
 		
-		let cleanText = tu.removeLeadingSpaces(input: inputBox.text ?? "")
+		let cleanText = tu.removeLeadingSpaces(input: textField.text ?? "")
 		
 		if inputIsRequired {
 			if cleanText.count > 0 {
@@ -147,11 +147,11 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	}
 	
 	private func fillInputPlaceHolder () {
-		if tu.isBlank(string: inputBox.text) {
+		if tu.isBlank(string: textField.text) {
 			if inputIsRequired {
-				inputBox.placeholder = "Required"
+				textField.placeholder = "Required"
 			} else {
-				inputBox.placeholder = "Optional"
+				textField.placeholder = "Optional"
 			}
 		}
 	}
@@ -160,6 +160,6 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		
 	// if the text field contains nothing, default to empty string ""
 		
-		delegate?.shouldUpdateSingleLineInfo(inputVC: self, editingPropertyType: self.editingPropertyType, cleanString: inputBox?.text ?? "")
+		delegate?.shouldUpdateSingleLineInfo(inputVC: self, editingPropertyType: self.editingPropertyType, cleanString: textField?.text ?? "")
 	}
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MultiLineInputDelegate: AnyObject {
-	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, editingPropertyType: EditingPropertyType?, cleanString: String)
+	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, editingPropertyType: PropertyReference?, cleanString: String)
 }
 
 // shouldUpdateMultiLineInfo
@@ -38,7 +38,7 @@ class MultiLineInputVC: UIViewController, UITextViewDelegate {
 	var validationAllowedCharacters = "DEFAULT"
 	var inputIsRequired = true
 	var maxLength = 20
-	var editingPropertyType: EditingPropertyType?
+	var editingPropertyType: PropertyReference?
 	
 	private var originalText : String?
 	

@@ -73,7 +73,7 @@ enum CategoryType : Int {
 }
 
 // used for coordinating the segue and protocol/delegate for editing fields
-enum EditingPropertyType {
+enum PropertyReference {
 	case name
 	case definition
 	case example

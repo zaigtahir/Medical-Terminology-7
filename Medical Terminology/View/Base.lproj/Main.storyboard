@@ -3203,8 +3203,8 @@
                         <outlet property="cancelButton" destination="V7a-M0-mdO" id="QUD-I9-344"/>
                         <outlet property="counterLabel" destination="BIh-6e-Esg" id="Ql0-5g-haw"/>
                         <outlet property="headerImage" destination="BqS-2E-1Fq" id="f4D-ZG-VFQ"/>
-                        <outlet property="inputBox" destination="wV9-95-ClV" id="W1J-IV-Q0B"/>
                         <outlet property="saveButton" destination="Y1C-16-1MM" id="0GS-Jf-TwL"/>
+                        <outlet property="textField" destination="wV9-95-ClV" id="W1J-IV-Q0B"/>
                         <outlet property="titleLabel" destination="Qhs-mu-Sca" id="aCe-LI-wLr"/>
                         <outlet property="validationLabel" destination="1bn-Ta-nh2" id="lGP-UZ-Qsd"/>
                     </connections>
