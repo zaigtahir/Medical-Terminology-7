@@ -19,7 +19,7 @@ class Term: NSObject, AVAudioPlayerDelegate {
 	var name: String = "default"
 	var definition: String = "default"
 	var example: String = "default"
-	var myNotes: String = "There are my default notes"
+	var myNotes: String = "default"
 	var secondCategoryID : Int = -1
 	var audioFile: String = ""
 	var isStandard: Bool = true
@@ -31,13 +31,14 @@ class Term: NSObject, AVAudioPlayerDelegate {
 		super.init()
 	}
 	
-	convenience init(termID: Int, name: String, definition: String, example: String, secondCategoryID: Int, audioFile: String, isStandard: Bool) {
+	convenience init(termID: Int, name: String, definition: String, example: String, myNotes: String, secondCategoryID: Int, audioFile: String, isStandard: Bool) {
 		
 		self.init()
 		self.termID = termID
 		self.name = name
 		self.definition = definition
 		self.example = example
+		self.myNotes = myNotes
 		self.secondCategoryID = secondCategoryID
 		self.audioFile = audioFile
 		self.isStandard = isStandard

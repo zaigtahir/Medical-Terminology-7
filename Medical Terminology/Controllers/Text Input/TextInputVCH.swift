@@ -14,7 +14,7 @@ Use this class as controller for the single or multiline input VCs
 class TextInputVCH  {
 	
 	var fieldTitle: String = "DEFAULT"
-	var initialText: String? // setter for originalText also
+	var initialText: String? 
 	var validationPrompt: String = "DEFAULT"
 	var allowedCharacters = "DEFAULT"
 	

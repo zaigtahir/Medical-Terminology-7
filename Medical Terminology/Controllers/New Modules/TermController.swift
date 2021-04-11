@@ -42,11 +42,12 @@ class TermController {
 			let name = resultSet.string(forColumn: "name") ?? ""
 			let definition = resultSet.string(forColumn: "definition")  ?? ""
 			let example = resultSet.string(forColumn: "example")  ?? ""
+			let myNotes = resultSet.string(forColumn: "myNotes") ?? ""
 			let secondCategoryID = Int(resultSet.int(forColumn: "secondCategoryID"))
 			let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
 			let s = Int(resultSet.int(forColumn: "isStandard"))
 			
-			let term = Term(termID: termID, name: name, definition: definition, example: example, secondCategoryID: secondCategoryID, audioFile: audioFile, isStandard: s == 1)
+			let term = Term(termID: termID, name: name, definition: definition, example: example, myNotes: myNotes, secondCategoryID: secondCategoryID, audioFile: audioFile, isStandard: s == 1)
 			
 			return term
 			
@@ -163,7 +164,6 @@ class TermController {
 		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
 		
 	}
-	
 	
 	
 	// MARK: - Non search text queries

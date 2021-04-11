@@ -90,7 +90,11 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 				exampleLabel.text = term.example
 			}
 			
-			myNotesLabel.text = "none available"
+			if term.myNotes == "" {
+				myNotesLabel.text = "none available"
+			} else {
+				myNotesLabel.text = term.myNotes
+			}
 			
 			leftButton.title = "Done"
 			leftButton.isEnabled  = true
