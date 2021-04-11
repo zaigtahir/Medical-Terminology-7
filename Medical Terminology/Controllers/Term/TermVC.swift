@@ -41,7 +41,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	let termVCH = TermVCH()
 	
 	// store term here so it can be used to play audio as a class function
-	private var term : Term!
+	private var localTerm : Term!
 	
 	// controllers
 	private let tc = TermController()
@@ -75,33 +75,33 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	private func updateDisplayView () {
 		
-		term = tc.getTerm(termID: termVCH.termID)
+		localTerm = tc.getTerm(termID: termVCH.termID)
 		
 		print ("in TermVC. For testing setting term to be not isStandard")
 		
-		term.isStandard = false
+		localTerm.isStandard = false
 		
-		playAudioButton.isEnabled = term.isAudioFilePresent()
+		playAudioButton.isEnabled = localTerm.isAudioFilePresent()
 		
 		// even if no term exists yet ( as a new term will be id = 0, this will result in result = false
 		
-		let termIsFavorite  = tc.getFavoriteStatus(categoryID: 1, termID: term.termID)
+		let termIsFavorite  = tc.getFavoriteStatus(categoryID: 1, termID: localTerm.termID)
 		
 		favoriteButton.isOn = termIsFavorite
 		
-		nameLabel.text = term.name
-		definitionLabel.text = term.definition
+		nameLabel.text = localTerm.name
+		definitionLabel.text = localTerm.definition
 		
-		if term.example == "" {
+		if localTerm.example == "" {
 			exampleLabel.text = "none available"
 		} else {
-			exampleLabel.text = term.example
+			exampleLabel.text = localTerm.example
 		}
 		
-		if term.myNotes == "" {
+		if localTerm.myNotes == "" {
 			myNotesLabel.text = "none available"
 		} else {
-			myNotesLabel.text = term.myNotes
+			myNotesLabel.text = localTerm.myNotes
 		}
 		
 		leftButton.title = "Done"
@@ -109,10 +109,10 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		cancelButton.isEnabled = false
 		
-		deleteTermButton.isEnabled = !term.isStandard
+		deleteTermButton.isEnabled = !localTerm.isStandard
 		categoriesListTextView.text = termVCH.getCategoryNamesText()
 		
-		if term.isStandard {
+		if localTerm.isStandard {
 			deleteTermButton.isEnabled = false
 			nameEditButton.isHidden = true
 			definitionEditButton.isHidden = true
@@ -182,66 +182,19 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		// needs to take into account if I am in the add or view mode. This will determine whether to get the term from the database based on the termVC.termID, or whether to use the newTerm
 		
-		
-		var termToUse : Term!
-		
+			
 		if termVCH.termEditMode == .view {
-			termToUse =
+			localTerm = tc.getTerm(termID: termVCH.termID)
+		} else {
+			localTerm = termVCH.newTerm
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		switch segue.identifier {
 		
 		case myConstants.segueAssignCategory:
 			
-			
-			
-			
-			
-			
-			
-			
-			
+			// MARK: need to account for add vs view term
 			
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC
@@ -252,7 +205,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			
 			singleLineInputVC = segue.destination as? SingleLineInputVC
 			singleLineInputVC.textInputVCH.fieldTitle = "TERM NAME"
-			singleLineInputVC.textInputVCH.initialText = term.name
+			singleLineInputVC.textInputVCH.initialText = localTerm.name
 			singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
 			singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
 			singleLineInputVC.textInputVCH.minLength = 1
@@ -269,7 +222,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			case .definition:
 				
 				multiLineInputVC.textInputVCH.fieldTitle = "DEFINITION"
-				multiLineInputVC.textInputVCH.initialText = term.definition
+				multiLineInputVC.textInputVCH.initialText = localTerm.definition
 				multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
 				multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
 				multiLineInputVC.textInputVCH.minLength = 0
@@ -280,7 +233,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			case .example:
 				
 				multiLineInputVC.textInputVCH.fieldTitle = "EXAMPLE"
-				multiLineInputVC.textInputVCH.initialText = term.example
+				multiLineInputVC.textInputVCH.initialText = localTerm.example
 				multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
 				multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
 				multiLineInputVC.textInputVCH.minLength = 0
@@ -291,7 +244,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			default:
 				
 				multiLineInputVC.textInputVCH.fieldTitle = "MY NOTES"
-				multiLineInputVC.textInputVCH.initialText = term.myNotes
+				multiLineInputVC.textInputVCH.initialText = localTerm.myNotes
 				multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ? ."
 				multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/?.-\n\t"
 				multiLineInputVC.textInputVCH.minLength = 0
@@ -367,15 +320,15 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			
 			// Note, can't use my button's isOn property here to check as it is not set yet as action triggers before it is set/unset
 			
-			let favoriteState  = tc.getFavoriteStatus(categoryID: termVCH.currentCategoryID, termID: term.termID)
+			let favoriteState  = tc.getFavoriteStatus(categoryID: termVCH.currentCategoryID, termID: localTerm.termID)
 			tc.setFavoriteStatusPN(categoryID: termVCH.currentCategoryID, termID: termVCH.termID, isFavorite: !favoriteState)		}
 	}
 	
 	@IBAction func playAudioButtonAction(_ sender: UIButton) {
 		
-		term = tc.getTerm(termID: termVCH.termID)
-		term.delegate = self
-		term.playAudio()
+		localTerm = tc.getTerm(termID: termVCH.termID)
+		localTerm.delegate = self
+		localTerm.playAudio()
 		
 	}
 	
