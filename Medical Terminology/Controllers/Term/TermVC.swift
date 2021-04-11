@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, MultiLineInputDelegate {
+class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	@IBOutlet weak var nameLabel: UILabel!
 	
@@ -170,7 +170,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, MultiLineInp
 				multiLineInputVC.textInputVCH.minLength = 0
 				multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermDefinition
 				multiLineInputVC.textInputVCH.propertyReference = .definition
-				multiLineInputVC.delegate = self
+				multiLineInputVC.delegate = termVCH
 				
 			case .example:
 				
@@ -181,7 +181,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, MultiLineInp
 				multiLineInputVC.textInputVCH.minLength = 0
 				multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermExample
 				multiLineInputVC.textInputVCH.propertyReference = .example
-				multiLineInputVC.delegate = self
+				multiLineInputVC.delegate = termVCH
 				
 			default:
 				
@@ -192,7 +192,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, MultiLineInp
 				multiLineInputVC.textInputVCH.minLength = 0
 				multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthMyNotes
 				multiLineInputVC.textInputVCH.propertyReference = .myNotes
-				multiLineInputVC.delegate = self
+				multiLineInputVC.delegate = termVCH
 				
 			}
 			
@@ -247,54 +247,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate, MultiLineInp
 		singleLineInputVC?.navigationController?.popViewController(animated: true)
 	}
 
-	
-	// MARK: - MultiLineInputDelegate function
-	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, propertyReference: PropertyReference?, cleanString: String) {
-		
-		// need to see what field we are dealing with
-		
-		switch propertyReference {
-		
-		case .definition:
-			if term.definition == cleanString {
-				
-				// nothing has changed. Do nothing
-				inputVC.navigationController?.popViewController(animated: true)
-			} else {
-				
-				tc.updateTermDefinitionPN(termID: term.termID, definition: cleanString)
-			}
-		case .example:
-			if term.example == cleanString {
-				
-				// nothing has changed. Do nothing
-				inputVC.navigationController?.popViewController(animated: true)
-			} else {
-				
-				
-			}
-			
-		case .myNotes:
-			if term.myNotes == cleanString {
-				
-				// nothing has changed. Do nothing
-				inputVC.navigationController?.popViewController(animated: true)
-				return
-			} else {
-				
-				tc.updateTermExamplePN(termID: term.termID, example: cleanString)
-			}
-			
-		default:
-			print ("fatal error no matching case found in shouldUpdateMultilineInfo")
-			return
-		}
-		
-	}
-	
-	
-	
-	
 	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
 		
 		favoriteButton.isOn = !favoriteButton.isOn

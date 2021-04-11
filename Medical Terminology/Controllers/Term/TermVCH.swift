@@ -17,8 +17,7 @@ protocol TermVCHDelegate: AnyObject {
 	func shouldDisplayDuplicateTermNameAlert()
 }
 
-class TermVCH: SingleLineInputDelegate {
-
+class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 
 	var termID : Int!
 	var currentCategoryID : Int!
@@ -133,5 +132,42 @@ class TermVCH: SingleLineInputDelegate {
 	}
 	
 	// MARK: - MultiLineInputDelegate Function
+	
+	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, propertyReference: PropertyReference?, cleanString: String) {
+		
+		let term = tc.getTerm(termID: termID)
+		
+		switch propertyReference {
+		
+		case .definition:
+			
+			if term.definition != cleanString {
+				tc.updateTermDefinitionPN(termID: term.termID, definition: cleanString)
+			}
+			
+			delegate?.shouldDismissTextInputVC()
+			
+		case .example:
+			
+			if term.example != cleanString {
+				tc.updateTermExamplePN(termID: termID, example: cleanString)
+			}
+			
+			delegate?.shouldDismissTextInputVC()
+			
+		case .myNotes:
+			
+			if term.myNotes != cleanString {
+				tc.updateTermMyNotesPN(termID: termID, myNotes: cleanString)
+			}
+			
+			delegate?.shouldDismissTextInputVC()
+			
+		default:
+			print ("fatal error no matching case found in shouldUpdateMultilineInfo")
+		
+		}
+	}
+	
 	
 }
