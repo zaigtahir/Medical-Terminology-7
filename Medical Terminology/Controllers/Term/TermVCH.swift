@@ -135,6 +135,8 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, propertyReference: PropertyReference?, cleanString: String) {
 		
+		print("getting update message in term vch")
+		
 		let term = tc.getTerm(termID: termID)
 		
 		switch propertyReference {
