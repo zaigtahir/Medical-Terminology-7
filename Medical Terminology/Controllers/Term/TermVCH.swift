@@ -18,7 +18,7 @@ protocol TermVCHDelegate: AnyObject {
 }
 
 class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
-
+	
 	var termID : Int!
 	var currentCategoryID : Int!
 	var termEditMode = TermEditMode.view
@@ -36,7 +36,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	private let cc = CategoryController2()
 	
 	init () {
-
+		
 		/*
 		Notification keys this controller will need to respond to
 		This is a modal view controller, and the only thing that will affect it is when the user assigns/unassigns categories and when the term information is edited
@@ -61,7 +61,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		newTerm.example = ""
 		newTerm.myNotes = ""
 		newTerm.audioFile = ""
-
+		
 	}
 	
 	deinit {
@@ -123,8 +123,8 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 			updateSingleLineCurrentTerm (propertyReference: propertyReference, cleanString: cleanString)
 			
 		case .add:
-			updateSingleLineNewTerm (propertyReference: propertyReference, cleanString: cleanString)
-
+			updateSingleLineAddTerm (propertyReference: propertyReference, cleanString: cleanString)
+			
 		}
 		
 	}
@@ -152,9 +152,10 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		delegate?.shouldUpdateDisplay()
 		
 		delegate?.shouldDismissTextInputVC()
+		
 	}
 	
-	private func updateSingleLineNewTerm (propertyReference: PropertyReference, cleanString: String) {
+	private func updateSingleLineAddTerm (propertyReference: PropertyReference, cleanString: String) {
 		
 		if newTerm.name == cleanString {
 			// nothing changed
@@ -162,8 +163,6 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 			delegate?.shouldDismissTextInputVC()
 			return
 		}
-		
-		// -1 termID does not exist in the db. I use it here to check all terms as this current term is not stored in the db
 		
 		if !tc.termNameIsUnique(name: cleanString, notIncludingTermID: -1) {
 			// this is a duplicate term name!
@@ -182,9 +181,18 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	// MARK: - MultiLineInputDelegate Function
 	
-	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, propertyReference: PropertyReference?, cleanString: String) {
+	func shouldUpdateMultiLineInfo (propertyReference: PropertyReference?, cleanString: String) {
 		
-		
+		switch termEditMode {
+		case .view:
+		updateMultiLineCurrentTerm(propertyReference: propertyReference, cleanString: cleanString)
+			
+		case .add:
+			updateMultilineAddTerm(propertyReference: propertyReference, cleanString: cleanString)
+		}
+	}
+	
+	private func updateMultiLineCurrentTerm (propertyReference: PropertyReference?, cleanString: String) {
 		
 		let term = tc.getTerm(termID: termID)
 		
@@ -219,9 +227,46 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 			
 		default:
 			print ("fatal error no matching case found in shouldUpdateMultilineInfo")
-		
+			
 		}
+		
 	}
 	
+	private func updateMultilineAddTerm (propertyReference: PropertyReference?, cleanString: String) {
+				
+		switch propertyReference {
+		
+		case .definition:
+			
+			if newTerm.definition != cleanString {
+				newTerm.definition = cleanString
+				delegate?.shouldUpdateDisplay()
+			}
+			
+			delegate?.shouldDismissTextInputVC()
+			
+		case .example:
+			
+			if newTerm.example != cleanString {
+				newTerm.example = cleanString
+				delegate?.shouldUpdateDisplay()
+			}
+			
+			delegate?.shouldDismissTextInputVC()
+			
+		case .myNotes:
+			
+			if newTerm.myNotes != cleanString {
+				newTerm.myNotes = cleanString
+				delegate?.shouldUpdateDisplay()
+			}
+			
+			delegate?.shouldDismissTextInputVC()
+			
+		default:
+			print ("fatal error no matching case found in shouldUpdateMultilineInfo")
+			
+		}
+	}
 	
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MultiLineInputDelegate: AnyObject {
-	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, propertyReference: PropertyReference?, cleanString: String)
+	func shouldUpdateMultiLineInfo(propertyReference: PropertyReference?, cleanString: String)
 }
 
 class MultiLineInputVC: UIViewController, UITextViewDelegate {
@@ -90,7 +90,7 @@ class MultiLineInputVC: UIViewController, UITextViewDelegate {
 		
 		let cleanText = textInputVCH.getCleanText(inputString: textView.text)
 		
-		delegate?.shouldUpdateMultiLineInfo (inputVC: self, propertyReference: textInputVCH.propertyReference, cleanString: cleanText)
+		delegate?.shouldUpdateMultiLineInfo (propertyReference: textInputVCH.propertyReference, cleanString: cleanText)
 	}
 	@IBAction func cancelButtonAction(_ sender: Any) {
 		self.navigationController?.popViewController(animated: true)
