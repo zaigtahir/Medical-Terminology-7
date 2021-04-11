@@ -34,7 +34,15 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	var displayMode = CategoryListDisplayMode.selectCategory
 	var currentCategoryID : Int = -1	// just simulation, need to load in the segue
-	var termID : Int = -1	// set when using the assign category term
+	
+	// use when assignign the catetories. If this is -1, will use the new term varialbes for reading and storing name/categories
+	// if this is a new term, keep termID = -1
+	var termID : Int = -1
+	
+	
+	// New term variables
+	var newTermName: String = "my new term name"
+	var newTermCategories = [1 , 2]
 	
 	// use to refer to the section of the table
 	let sectionCustom = 0

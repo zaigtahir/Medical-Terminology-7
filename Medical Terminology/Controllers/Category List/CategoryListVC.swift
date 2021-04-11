@@ -25,7 +25,7 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 	
 	// segue settings, functions to set this before so that the correct settings can be set on the CategoryVC in prepare for segue
 	var segueCategory : Category2!
-	var categoryDisplayMode = EditDisplayMode.add
+	var categoryEditMode = CategoryEditMode.add
 	
 	override func viewDidLoad() {
 		
@@ -53,9 +53,6 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 			
 			let tc = TermController()
 			
-			
-			
-			
 			let term = tc.getTerm(termID: categoryHomeVCH.termID)
 			
 			termNameLabel.text = "For Term: \(term.name)"
@@ -81,19 +78,19 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 	}
 	
 	func pressedEditButtonOnCustomCategory(category: Category2) {
-		self.categoryDisplayMode = .edit
+		self.categoryEditMode = .edit
 		self.segueCategory = category
 		performSegue(withIdentifier: myConstants.segueCategory, sender: self)
 	}
 	
 	func pressedDeleteButtonOnCustomCatetory(category: Category2) {
-		self.categoryDisplayMode = .delete
+		self.categoryEditMode = .delete
 		self.segueCategory = category
 		performSegue(withIdentifier: myConstants.segueCategory, sender: self)
 	}
 	
 	func addACategory() {
-		self.categoryDisplayMode = .add
+		self.categoryEditMode = .add
 		performSegue(withIdentifier: myConstants.segueCategory, sender: self)
 	}
 	
@@ -109,7 +106,7 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 		
 		case myConstants.segueCategory:
 			let vc = segue.destination as? CategoryVC
-			vc?.categoryVCH.categoryDisplayMode = self.categoryDisplayMode
+			vc?.categoryVCH.categoryEditMode = self.categoryEditMode
 			vc?.categoryVCH.affectedCategory = segueCategory
 		
 		default:

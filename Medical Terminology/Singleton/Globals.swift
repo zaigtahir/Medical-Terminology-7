@@ -51,11 +51,8 @@ enum TermEditMode {
 
 
 
-
-
-
 // use to display the category or term
-enum EditDisplayMode {
+enum CategoryEditMode {
 	case view
 	case add
 	case edit
@@ -68,14 +65,6 @@ enum AnsweredState: Int {
 	case unanswered = 0
 	case correct = 1
 	case incorrect = 2
-}
-
-//use for assigning and getting section categories and for talking with the database table
-enum MainSectionName: String {
-	case flashcards = "flashcards"
-	case list = "list"
-	case quiz = "quiz"
-	case learning = "learning"
 }
 
 enum CategoryType : Int {

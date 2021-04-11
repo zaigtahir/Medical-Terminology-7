@@ -38,7 +38,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		
 		commitButton.layer.cornerRadius = myConstants.button_cornerRadius
 		
-		switch categoryVCH.categoryDisplayMode {
+		switch categoryVCH.categoryEditMode {
 		
 		case .add:
 			headerImage.image = myTheme.imageHeaderAdd
@@ -161,7 +161,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		let text = textField.text ?? ""
 		let trimmedName = tu.removeLeadingTrailingSpaces(string: text)
 		
-		switch categoryVCH.categoryDisplayMode {
+		switch categoryVCH.categoryEditMode {
 					
 		case .delete:
 			cc.deleteCategoryPN(categoryID: categoryVCH.affectedCategory.categoryID)
