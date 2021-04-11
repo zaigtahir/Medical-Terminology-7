@@ -135,7 +135,7 @@ class TermController {
 	}
 	
 	func updateTermExamplePN (termID: Int, example: String) {
-		let query = "UPDATE \(terms) SET name = '\(example)' WHERE termID = \(termID)"
+		let query = "UPDATE \(terms) SET example = '\(example)' WHERE termID = \(termID)"
 		myDB.executeStatements(query)
 		
 		// post notification
@@ -144,7 +144,8 @@ class TermController {
 	}
 	
 	func updateTermDefinitionPN (termID: Int, definition: String) {
-		let query = "UPDATE \(terms) SET name = '\(definition)' WHERE termID = \(termID)"
+		
+		let query = "UPDATE \(terms) SET definition = '\(definition)' WHERE termID = \(termID)"
 		myDB.executeStatements(query)
 		
 		// post notification
@@ -154,7 +155,7 @@ class TermController {
 	
 	func updateTermMyNotesPN (termID: Int, myNotes: String) {
 		
-		let query = "UPDATE \(terms) SET name = '\(myNotes)' WHERE termID = \(termID)"
+		let query = "UPDATE \(terms) SET myNotes = '\(myNotes)' WHERE termID = \(termID)"
 		myDB.executeStatements(query)
 		
 		// post notification

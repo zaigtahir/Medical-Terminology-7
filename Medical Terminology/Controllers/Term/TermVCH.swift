@@ -135,7 +135,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	func shouldUpdateMultiLineInfo(inputVC: MultiLineInputVC, propertyReference: PropertyReference?, cleanString: String) {
 		
-		print("getting update message in term vch")
+		
 		
 		let term = tc.getTerm(termID: termID)
 		
@@ -145,6 +145,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 			
 			if term.definition != cleanString {
 				tc.updateTermDefinitionPN(termID: term.termID, definition: cleanString)
+				delegate?.shouldUpdateDisplay()
 			}
 			
 			delegate?.shouldDismissTextInputVC()
@@ -153,6 +154,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 			
 			if term.example != cleanString {
 				tc.updateTermExamplePN(termID: termID, example: cleanString)
+				delegate?.shouldUpdateDisplay()
 			}
 			
 			delegate?.shouldDismissTextInputVC()
@@ -161,6 +163,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 			
 			if term.myNotes != cleanString {
 				tc.updateTermMyNotesPN(termID: termID, myNotes: cleanString)
+				delegate?.shouldUpdateDisplay()
 			}
 			
 			delegate?.shouldDismissTextInputVC()
