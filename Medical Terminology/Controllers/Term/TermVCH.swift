@@ -19,16 +19,33 @@ protocol TermVCHDelegate: AnyObject {
 
 class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
-	var termID : Int!
+	/// Everything will be based on this term. If this termID = -1, this will be considered to be a NEW term that is not saved yet
+	var term : Term!
 	var currentCategoryID : Int!
-	var termEditMode = TermEditMode.view
 	
-	weak var delegate: TermVCHDelegate?
+	
+	
+	
+	
+	
+	
+	// MARK: goal is to remove these
+	
 	
 	// variables to use for making a new term
-	var newTerm : Term!
+	   var newTerm : Term!
+	
+	
 	var newTermIsFavorite = false
 	var newTermCategories = [myConstants.dbCategoryAllTermsID, myConstants.dbCategoryMyTermsID]
+	
+	
+	var termID : Int!
+	var termEditMode = TermEditMode.view
+	
+		
+	weak var delegate: TermVCHDelegate?
+
 	
 	// used to store the property type that will be edited with the segue functions
 	var propertyReference : PropertyReference?
