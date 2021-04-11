@@ -177,8 +177,58 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 	}
 	
-	// MARK: -Segue
+	// MARK: -Prepare for segue
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
+		// needs to take into account if I am in the add or view mode. This will determine whether to get the term from the database based on the termVC.termID, or whether to use the newTerm
+		
+		
+		var termToUse : Term!
+		
+		if termVCH.termEditMode == .view {
+			termToUse =
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		switch segue.identifier {
 		
