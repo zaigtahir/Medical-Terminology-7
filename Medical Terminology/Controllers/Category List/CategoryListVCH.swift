@@ -230,7 +230,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		}
 		
 		// determine which category the row contains
-		var rowCategory = getRowCategory(indexPath: indexPath)
+		let rowCategory = getRowCategory(indexPath: indexPath)
 		
 		if displayMode == .selectCategory {
 			self.selectedSelectRowPN(didSelectRowAt: indexPath, categoryID: rowCategory.categoryID)

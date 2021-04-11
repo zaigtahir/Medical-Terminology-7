@@ -52,6 +52,10 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 			termNameLabel.isHidden = false
 			
 			let tc = TermController()
+			
+			
+			
+			
 			let term = tc.getTerm(termID: categoryHomeVCH.termID)
 			
 			termNameLabel.text = "For Term: \(term.name)"

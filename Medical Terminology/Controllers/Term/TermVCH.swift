@@ -28,6 +28,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	// variables to use for making a new term
 	var newTerm : Term!
 	var newTermIsFavorite = false
+	var newTermCategories = [myConstants.dbCategoryAllTermsID, myConstants.dbCategoryMyTermsID]
 	
 	// used to store the property type that will be edited with the segue functions
 	var propertyReference : PropertyReference?

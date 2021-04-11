@@ -30,7 +30,7 @@ class TextInputVCH  {
 		
 		let cleanText = tu.removeLeadingSpaces(input: inputString ?? "")
 		
-		if cleanText.count > minLength {
+		if cleanText.count >= minLength {
 			return true
 		} else {
 			return false
