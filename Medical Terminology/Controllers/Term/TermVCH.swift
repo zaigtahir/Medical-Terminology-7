@@ -21,7 +21,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 
 	var termID : Int!
 	var currentCategoryID : Int!
-	var displayMode = EditDisplayMode.view
+	var termEditMode = TermEditMode.view
 	
 	weak var delegate: TermVCHDelegate?
 	
@@ -117,14 +117,14 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	func shouldUpdateSingleLineInfo (propertyReference: PropertyReference, cleanString: String) {
 		
-		switch displayMode {
+		switch termEditMode {
 		
 		case .view:
 			updateSingleLineCurrentTerm (propertyReference: propertyReference, cleanString: cleanString)
 			
-		default:
+		case .add:
 			updateSingleLineNewTerm (propertyReference: propertyReference, cleanString: cleanString)
-			
+
 		}
 		
 	}

@@ -41,7 +41,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	var termIDForSegue : Int!
 	
 	// set this value when the user clicks a row to view a current term or when clicks the add term button. Use this value to determine the display mode of the TermVC when it is displayed to view or add a term
-	var displayModeForTermVC : EditDisplayMode!
+	var termEditMode = TermEditMode.view
 	
 	weak var delegate: TermListVCHDelegate?
 	

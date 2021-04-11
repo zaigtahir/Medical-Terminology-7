@@ -43,6 +43,17 @@ enum CategoryListDisplayMode {
 	case assignCategory
 }
 
+// use to display the termVC
+enum TermEditMode {
+	case add
+	case view
+}
+
+
+
+
+
+
 // use to display the category or term
 enum EditDisplayMode {
 	case view

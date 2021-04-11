@@ -71,7 +71,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	}
 	
 	func shouldSegueToTermVC() {
-		termListVCH.displayModeForTermVC = .view
+		termListVCH.termEditMode = .view
 		performSegue(withIdentifier: myConstants.segueTerm, sender: self)
 	}
 	
@@ -98,15 +98,16 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			let vc = nc.topViewController as! TermVC
 			vc.termVCH.currentCategoryID = termListVCH.currentCategoryID
 			
-			switch termListVCH.displayModeForTermVC {
+			switch termListVCH.termEditMode {
+			
 			case .view:
 				vc.termVCH.termID = termListVCH.termIDForSegue
-				vc.termVCH.displayMode = .view
+				vc.termVCH.termEditMode = .view
 				
-			default:
+			case .add:
 				// all other: bascially show add
 				vc.termVCH.termID = -1 // does not exist yet
-				vc.termVCH.displayMode = .add
+				vc.termVCH.termEditMode = .add
 			}
 	
 			
@@ -150,7 +151,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	}
 	
 	@IBAction func addTermButtonAction(_ sender: Any) {
-		termListVCH.displayModeForTermVC = .add
+		termListVCH.termEditMode = .add
 		performSegue(withIdentifier: myConstants.segueTerm, sender: self)
 	}
 	

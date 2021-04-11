@@ -63,7 +63,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	func updateDisplay () {
 		
-		if termVCH.displayMode == .view {
+		if termVCH.termEditMode == .view {
 			
 			updateDisplayView()
 			
@@ -272,7 +272,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	@IBAction func leftButtonAction(_ sender: Any) {
 		
-		switch termVCH.displayMode {
+		switch termVCH.termEditMode {
 		
 		case .view:
 			self.dismiss(animated: true, completion: nil)
@@ -306,7 +306,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		favoriteButton.isOn = !favoriteButton.isOn
 		
-		switch termVCH.displayMode {
+		switch termVCH.termEditMode {
 		
 		// toggle the button image
 		case .add:
