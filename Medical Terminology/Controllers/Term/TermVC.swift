@@ -63,6 +63,18 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	func updateDisplay () {
 		
+		if termVCH.displayMode == .view {
+			
+			updateDisplayView()
+			
+		} else {
+			
+			updateDisplayAdd()
+		}
+	}
+	
+	private func updateDisplayView () {
+		
 		term = tc.getTerm(termID: termVCH.termID)
 		
 		print ("in TermVC. For testing setting term to be not isStandard")
@@ -77,63 +89,92 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		favoriteButton.isOn = termIsFavorite
 		
+		nameLabel.text = term.name
+		definitionLabel.text = term.definition
 		
-		switch termVCH.displayMode {
-		
-		case .view:
-			nameLabel.text = term.name
-			definitionLabel.text = term.definition
-			
-			if term.example == "" {
-				exampleLabel.text = "none available"
-			} else {
-				exampleLabel.text = term.example
-			}
-			
-			if term.myNotes == "" {
-				myNotesLabel.text = "none available"
-			} else {
-				myNotesLabel.text = term.myNotes
-			}
-			
-			leftButton.title = "Done"
-			leftButton.isEnabled  = true
-			
-			cancelButton.isEnabled = false
-			
-			deleteTermButton.isEnabled = !term.isStandard
-			categoriesListTextView.text = termVCH.getCategoryNamesText()
-			
-			if term.isStandard {
-				deleteTermButton.isEnabled = false
-				nameEditButton.isHidden = true
-				definitionEditButton.isHidden = true
-				exampleEditButton.isHidden = true
-				myNotesEditButton.isHidden = false
-				
-			} else {
-				deleteTermButton.isEnabled = true
-				nameEditButton.isHidden = false
-				exampleEditButton.isHidden = false
-				definitionEditButton.isHidden = false
-				myNotesEditButton.isHidden = false
-			}
-			
-		default:
-			// add (case delete is not used)
-			nameLabel.text = "(required)"
-			definitionLabel.text = "(optional)"
-			exampleLabel.text = "(optional)"
-			myNotesLabel.text = "(optional)"
-			
-			leftButton.title = "Save"
-			leftButton.isEnabled = termVCH.isReadyToSaveTerm ? true : false
-			cancelButton.isEnabled = true
-			
-			deleteTermButton.isEnabled = false
-			
-			categoriesListTextView.text = "Your new term will automatically be added to \"My Terms\" category in addition to any others you assign it to."
+		if term.example == "" {
+			exampleLabel.text = "none available"
+		} else {
+			exampleLabel.text = term.example
 		}
+		
+		if term.myNotes == "" {
+			myNotesLabel.text = "none available"
+		} else {
+			myNotesLabel.text = term.myNotes
+		}
+		
+		leftButton.title = "Done"
+		leftButton.isEnabled  = true
+		
+		cancelButton.isEnabled = false
+		
+		deleteTermButton.isEnabled = !term.isStandard
+		categoriesListTextView.text = termVCH.getCategoryNamesText()
+		
+		if term.isStandard {
+			deleteTermButton.isEnabled = false
+			nameEditButton.isHidden = true
+			definitionEditButton.isHidden = true
+			exampleEditButton.isHidden = true
+			myNotesEditButton.isHidden = false
+			
+		} else {
+			deleteTermButton.isEnabled = true
+			nameEditButton.isHidden = false
+			exampleEditButton.isHidden = false
+			definitionEditButton.isHidden = false
+			myNotesEditButton.isHidden = false
+		}
+		
+	}
+	
+	private func updateDisplayAdd () {
+		
+		playAudioButton.isEnabled = termVCH.newTerm.isAudioFilePresent()
+	
+		favoriteButton.isOn = termVCH.newTermIsFavorite
+		
+		if termVCH.newTerm.name == "" {
+			nameLabel.text = "New Name"
+		} else {
+			nameLabel.text = termVCH.newTerm.name
+		}
+		
+		if termVCH.newTerm.definition == "" {
+			definitionLabel.text = "(required)"
+		} else {
+			definitionLabel.text = termVCH.newTerm.definition
+		}
+		
+		if termVCH.newTerm.example == "" {
+			exampleLabel.text = "(optional)"
+		} else {
+			exampleLabel.text = termVCH.newTerm.example
+		}
+		
+		if termVCH.newTerm.myNotes == "" {
+			myNotesLabel.text = "(optional)"
+		} else {
+			myNotesLabel.text = termVCH.newTerm.myNotes
+		}
+		
+		leftButton.title = "Save"
+		
+		// enable/disable save button based on the content of name and definition
+		
+		if termVCH.newTerm.name != "" && termVCH.newTerm.definition != "" {
+			leftButton.isEnabled = true
+		} else {
+			leftButton.isEnabled = false
+		}
+	
+		cancelButton.isEnabled = true
+	
+		deleteTermButton.isEnabled = false
+		
+		categoriesListTextView.text = "Your new term will automatically be added to \"My Terms\" category in addition to any others you assign it to."
+		
 	}
 	
 	// MARK: -Segue
@@ -142,6 +183,16 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		switch segue.identifier {
 		
 		case myConstants.segueAssignCategory:
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC
 			vc.categoryHomeVCH.displayMode = .assignCategory

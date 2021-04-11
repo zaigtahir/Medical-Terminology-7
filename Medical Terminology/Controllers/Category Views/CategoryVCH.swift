@@ -10,7 +10,7 @@ import Foundation
 
 class CategoryVCH {
 	
-	var categoryDisplayMode = DisplayMode.add	// just a default setting, need to set via prepare segue
+	var categoryDisplayMode = EditDisplayMode.add	// just a default setting, need to set via prepare segue
 	
 	var affectedCategory: Category2! 	// set when making the segue for edit/add function to uses
 	

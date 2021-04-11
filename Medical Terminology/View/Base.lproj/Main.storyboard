@@ -1365,7 +1365,7 @@
             </objects>
             <point key="canvasLocation" x="8354" y="518"/>
         </scene>
-        <!--Review List-->
+        <!--Terms-->
         <scene sceneID="EiC-iA-KMT">
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="TermListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
@@ -1623,7 +1623,13 @@
                             <constraint firstItem="26A-yx-iFb" firstAttribute="trailing" secondItem="tGH-PG-Amh" secondAttribute="trailing" id="wwv-OZ-blA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Review List" id="HdV-01-PCi"/>
+                    <navigationItem key="navigationItem" title="Terms" id="HdV-01-PCi">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="g4H-NT-gdm">
+                            <connections>
+                                <action selector="addTermButtonAction:" destination="wde-Jg-jwX" id="Pv9-yu-nf2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryNameLabel" destination="Rm8-ZP-4B3" id="uHZ-7J-wer"/>
                         <outlet property="categorySelectButton" destination="ktY-D4-prE" id="b3r-Zx-ZAN"/>
@@ -3344,8 +3350,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Nhy-Yr-H6x"/>
-        <segue reference="UJA-hr-35q"/>
+        <segue reference="HWU-Cd-rtW"/>
+        <segue reference="WdJ-IQ-Ral"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
@@ -3367,6 +3373,7 @@
         <image name="lock.circle.fill" catalog="system" width="128" height="121"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="quiz3" width="25" height="25"/>

@@ -21,12 +21,13 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 
 	var termID : Int!
 	var currentCategoryID : Int!
-	var displayMode = DisplayMode.view
+	var displayMode = EditDisplayMode.view
 	
 	weak var delegate: TermVCHDelegate?
 	
-	///set this to true when the user is in edit/add mode and the data is valid to save as a term
-	var isReadyToSaveTerm = false
+	// variables to use for making a new term
+	var newTerm : Term!
+	var newTermIsFavorite = false
 	
 	// used to store the property type that will be edited with the segue functions
 	var propertyReference : PropertyReference?
@@ -50,6 +51,17 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		
 		let nameUCK = Notification.Name(myKeys.unassignCategoryKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignCategoryN(notification:)), name: nameUCK, object: nil)
+		
+		
+		// make a blank newTerm to use if the user is adding a new term
+		newTerm = Term()
+		newTerm.termID = -1
+		newTerm.name = ""
+		newTerm.definition = ""
+		newTerm.example = ""
+		newTerm.myNotes = ""
+		newTerm.audioFile = ""
+
 	}
 	
 	deinit {
@@ -105,7 +117,19 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	func shouldUpdateSingleLineInfo (propertyReference: PropertyReference, cleanString: String) {
 		
-		// this will only be for the term name
+		switch displayMode {
+		
+		case .view:
+			updateSingleLineCurrentTerm (propertyReference: propertyReference, cleanString: cleanString)
+			
+		default:
+			updateSingleLineNewTerm (propertyReference: propertyReference, cleanString: cleanString)
+			
+		}
+		
+	}
+	
+	private func updateSingleLineCurrentTerm (propertyReference: PropertyReference, cleanString: String) {
 		
 		let term = tc.getTerm(termID: termID)
 		
@@ -128,8 +152,33 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		delegate?.shouldUpdateDisplay()
 		
 		delegate?.shouldDismissTextInputVC()
+	}
+	
+	private func updateSingleLineNewTerm (propertyReference: PropertyReference, cleanString: String) {
+		
+		if newTerm.name == cleanString {
+			// nothing changed
+			// home VC can dismiss the input VC
+			delegate?.shouldDismissTextInputVC()
+			return
+		}
+		
+		// -1 termID does not exist in the db. I use it here to check all terms as this current term is not stored in the db
+		
+		if !tc.termNameIsUnique(name: cleanString, notIncludingTermID: -1) {
+			// this is a duplicate term name!
+			delegate?.shouldDisplayDuplicateTermNameAlert()
+			return
+		}
+		
+		newTerm.name = cleanString
+		
+		delegate?.shouldUpdateDisplay()
+		
+		delegate?.shouldDismissTextInputVC()
 		
 	}
+	
 	
 	// MARK: - MultiLineInputDelegate Function
 	

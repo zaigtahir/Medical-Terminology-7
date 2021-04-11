@@ -44,7 +44,7 @@ enum CategoryListDisplayMode {
 }
 
 // use to display the category or term
-enum DisplayMode {
+enum EditDisplayMode {
 	case view
 	case add
 	case edit

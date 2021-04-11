@@ -22,6 +22,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
 	
+	
+	
 	weak var delegate: FlashcardHomeDelegate?
 	
 	// controllers

@@ -71,9 +71,9 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	}
 	
 	func shouldSegueToTermVC() {
+		termListVCH.displayModeForTermVC = .view
 		performSegue(withIdentifier: myConstants.segueTerm, sender: self)
 	}
-	
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
@@ -88,12 +88,27 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			vc.categoryHomeVCH.currentCategoryID = termListVCH.currentCategoryID
 			
 		case myConstants.segueTerm:
-			// will do this segue manually. When the user clicks a row, the termVCH will determine the termID
+			
+			// need to determine with displayMode to show the TermVC in
+			// displayMode = view if the user clicked a row to view a term
+			// displayMode = add if the user clicked the add term button
+			// use the variable termListVCH.displayModeForTermVC
+			
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! TermVC
-			
-			vc.termVCH.termID = termListVCH.termIDForSegue
 			vc.termVCH.currentCategoryID = termListVCH.currentCategoryID
+			
+			switch termListVCH.displayModeForTermVC {
+			case .view:
+				vc.termVCH.termID = termListVCH.termIDForSegue
+				vc.termVCH.displayMode = .view
+				
+			default:
+				// all other: bascially show add
+				vc.termVCH.termID = -1 // does not exist yet
+				vc.termVCH.displayMode = .add
+			}
+	
 			
 		default:
 			print("fatal error no matching segue in termListVC prepare function")
@@ -133,6 +148,12 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		updateDisplay()
 		
 	}
+	
+	@IBAction func addTermButtonAction(_ sender: Any) {
+		termListVCH.displayModeForTermVC = .add
+		performSegue(withIdentifier: myConstants.segueTerm, sender: self)
+	}
+	
 }
 
 

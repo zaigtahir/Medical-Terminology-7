@@ -40,6 +40,9 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	/// initialize with the termID when the user clicks a row so that termListVC can access it for performing the seque
 	var termIDForSegue : Int!
 	
+	// set this value when the user clicks a row to view a current term or when clicks the add term button. Use this value to determine the display mode of the TermVC when it is displayed to view or add a term
+	var displayModeForTermVC : EditDisplayMode!
+	
 	weak var delegate: TermListVCHDelegate?
 	
 	let tc = TermController()

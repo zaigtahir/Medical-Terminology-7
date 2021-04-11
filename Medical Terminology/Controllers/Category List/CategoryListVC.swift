@@ -25,7 +25,7 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 	
 	// segue settings, functions to set this before so that the correct settings can be set on the CategoryVC in prepare for segue
 	var segueCategory : Category2!
-	var categoryDisplayMode = DisplayMode.add
+	var categoryDisplayMode = EditDisplayMode.add
 	
 	override func viewDidLoad() {
 		
