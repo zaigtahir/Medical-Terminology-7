@@ -23,6 +23,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	let termListVCH = TermListVCH()
 	let cc = CategoryController2()
+	let tc = TermController()
 	let tu = TextUtilities()
 	
 	override func viewDidLoad() {
@@ -85,6 +86,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			let vc = nc.topViewController as! CategoryListVC
 			
 			vc.categoryHomeVCH.displayMode = .selectCategory
+			
 			vc.categoryHomeVCH.currentCategoryID = termListVCH.currentCategoryID
 			
 		case myConstants.segueTerm:
@@ -101,13 +103,10 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			switch termListVCH.termEditMode {
 			
 			case .view:
-				vc.termVCH.termID = termListVCH.termIDForSegue
-				vc.termVCH.termEditMode = .view
+				vc.termVCH.term = tc.getTerm(termID: termListVCH.termIDForSegue)
 				
 			case .add:
-				// all other: bascially show add
-				vc.termVCH.termID = -1 // does not exist yet
-				vc.termVCH.termEditMode = .add
+				vc.termVCH.term = Term()
 			}
 	
 			

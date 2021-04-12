@@ -16,13 +16,13 @@ protocol TermAudioDelegate: AnyObject {
 
 class Term: NSObject, AVAudioPlayerDelegate {
 	var termID: Int = -1
-	var name: String = "default"
-	var definition: String = "default"
-	var example: String = "default"
-	var myNotes: String = "default"
+	var name: String = ""
+	var definition: String = ""
+	var example: String = ""
+	var myNotes: String = ""
 	var secondCategoryID : Int = -1
 	var audioFile: String = ""
-	var isStandard: Bool = true
+	var isStandard: Bool = false
 	var audioPlayer = AVAudioPlayer()
 	
 	/// use to hold the category assignments for displaying and keeping track

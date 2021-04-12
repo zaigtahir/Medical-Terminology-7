@@ -37,6 +37,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	let flashCardVCH = FlashcardVCH()
 	
 	let cc = CategoryController2()
+	let tc = TermController()
 	
 	override func viewDidLoad() {
 		
@@ -80,11 +81,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			collectionView.isHidden = false
 		}
 		
-		print("updateDisplay: setting fav button isOn = \(flashCardVCH.showFavoritesOnly)")
-		
 		showFavoritesOnlyButton.isOn = flashCardVCH.showFavoritesOnly
-		
-		print("in updateDisplay: showFavoritesonly = \(flashCardVCH.showFavoritesOnly)")
 		
 		favoritesCountLabel.text = "\(favoriteCount)"
 		
@@ -144,7 +141,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			let cellIndex = scrollController.getCellIndex(collectionView: collectionView)
 			let termID  = flashCardVCH.termIDs[cellIndex]
 			
-			vc.termVCH.termID = termID
+			vc.termVCH.term = tc.getTerm(termID: termID)
 			vc.termVCH.currentCategoryID = flashCardVCH.currentCategoryID
 			
 			

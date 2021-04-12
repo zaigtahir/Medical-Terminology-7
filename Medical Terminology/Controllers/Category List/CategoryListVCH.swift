@@ -33,6 +33,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	*/
 	
 	var displayMode = CategoryListDisplayMode.selectCategory
+	
 	var currentCategoryID : Int = -1	// just simulation, need to load in the segue
 	
 	// use when assignign the catetories. If this is -1, will use the new term varialbes for reading and storing name/categories
