@@ -30,6 +30,7 @@ class TermController {
 	// MARK: shorter table names to make things easier
 	let terms = myConstants.dbTableTerms
 	let assignedCategories = myConstants.dbTableAssignedCategories
+	let categories = myConstants.dbTableCategories2
 	
 	func getTerm (termID: Int) -> Term {
 		
@@ -87,8 +88,30 @@ class TermController {
 		
 		var ids = [Int]()
 		
-		let query = "SELECT categoryID FROM \(myConstants.dbTableAssignedCategories) WHERE termID = \(termID)"
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+		/*
+		SELECT assignedCategories.categoryID, categories2.name
+		FROM assignedCategories
+		JOIN categories2 ON assignedCategories.categoryID = categories2.categoryID
+		WHERE assignedCategories.termID = 1
+		AND categories2.isStandard = 1
+		*/
+		
+		// using a local function :)
+		func getQuery (termID: Int, isStandard: Int) -> String {
+			let query = """
+				SELECT \(assignedCategories).categoryID, \(categories).categoryID
+				FROM \(assignedCategories)
+				JOIN \(categories) ON \(assignedCategories).categoryID = \(categories).categoryID
+				WHERE \(assignedCategories).termID = \(termID)
+				AND \(categories).isStandard = \(isStandard)
+				"""
+			return query
+		}
+		
+	
+		// first add the custom categories
+		
+		if let resultSet = myDB.executeQuery(getQuery(termID: termID, isStandard: 0), withArgumentsIn: []) {
 			while resultSet.next() {
 				let id = Int(resultSet.int(forColumnIndex: 0))
 				ids.append(id)
@@ -96,6 +119,18 @@ class TermController {
 		} else {
 			print ("fatal error getting result set in getTermCategoryIDs")
 		}
+		
+		// then add standard categories so they are on the bottom when displaying them
+		
+		if let resultSet = myDB.executeQuery(getQuery(termID: termID, isStandard: 1), withArgumentsIn: []) {
+			while resultSet.next() {
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+			}
+		} else {
+			print ("fatal error getting result set in getTermCategoryIDs")
+		}
+		
 		
 		return ids
 		
@@ -266,7 +301,7 @@ class TermController {
 		let whereStatement = "WHERE categoryID = \(categoryID) \(favorteString(isFavorite: isFavorite)) \(nameStartsWithString(search: nameStartsWith)) \(nameContainsString(search: nameContains)) \(containsTextString(search: containsText)) \(orderByNameString(toOrder: true))"
 		
 		let query = ("\(selectStatement) \(whereStatement)" )
-	
+		
 		var ids = [Int]()
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {

@@ -76,7 +76,7 @@
 		99A722DC261F5693001DEDBD /* ZUIRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */; };
 		99A723042620D036001DEDBD /* MultiLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A723032620D036001DEDBD /* MultiLineInputVC.swift */; };
 		99A7230A2621EEAB001DEDBD /* TextInputVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A723092621EEAB001DEDBD /* TextInputVCH.swift */; };
-		99A723192623A445001DEDBD /* TermVCH2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A723182623A445001DEDBD /* TermVCH2.swift */; };
+		99A723192623A445001DEDBD /* TermVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A723182623A445001DEDBD /* TermVCH.swift */; };
 		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
 		99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */; };
 		99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */; };
@@ -173,7 +173,7 @@
 		99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZUIRoundedButton.swift; sourceTree = "<group>"; };
 		99A723032620D036001DEDBD /* MultiLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineInputVC.swift; sourceTree = "<group>"; };
 		99A723092621EEAB001DEDBD /* TextInputVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputVCH.swift; sourceTree = "<group>"; };
-		99A723182623A445001DEDBD /* TermVCH2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermVCH2.swift; sourceTree = "<group>"; };
+		99A723182623A445001DEDBD /* TermVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermVCH.swift; sourceTree = "<group>"; };
 		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
 		99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtilities.swift; sourceTree = "<group>"; };
 		99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCVCell.swift; sourceTree = "<group>"; };
@@ -505,7 +505,7 @@
 			children = (
 				99D76B00261969AA0062CCD4 /* TermVC.swift */,
 				99D76B0426197E540062CCD4 /* TermVCHBACK.swift */,
-				99A723182623A445001DEDBD /* TermVCH2.swift */,
+				99A723182623A445001DEDBD /* TermVCH.swift */,
 			);
 			path = Term;
 			sourceTree = "<group>";
@@ -659,7 +659,7 @@
 				5A15062A22557E7C00717AB8 /* Answer.swift in Sources */,
 				99D76AD22617909A0062CCD4 /* NoTermsCell.swift in Sources */,
 				9960A04826027EC4003F4994 /* NoCategoriesCell.swift in Sources */,
-				99A723192623A445001DEDBD /* TermVCH2.swift in Sources */,
+				99A723192623A445001DEDBD /* TermVCH.swift in Sources */,
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
 				5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */,
 				5A6F31B7219C776000E6477E /* DItemVC.swift in Sources */,

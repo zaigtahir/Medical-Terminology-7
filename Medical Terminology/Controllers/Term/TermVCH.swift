@@ -82,7 +82,23 @@ class TermVCH {
 	}
 	
 	// MARK: - move getCategoryNameText ()
-	// need to account for new vs current term
+	
+	func getCategoryNamesText () -> String {
+		// make list of categories
+		let categoryIDs = tc.getTermCategoryIDs(termID: term.termID)
+		var categoryList = ""
+		
+		for id in categoryIDs {
+			if (id != myConstants.dbCategoryMyTermsID) && (id != myConstants.dbCategoryAllTermsID) {
+				// note not including id 1 = All terms and 2 = My Terms
+				
+				let category = cc.getCategory(categoryID: id)
+				categoryList.append("\(category.name)\n")
+			}
+		}
+		
+		return categoryList
+	}
 	
 	
 	

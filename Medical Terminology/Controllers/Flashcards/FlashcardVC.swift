@@ -141,7 +141,11 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			let cellIndex = scrollController.getCellIndex(collectionView: collectionView)
 			let termID  = flashCardVCH.termIDs[cellIndex]
 			
-			vc.termVCH.term = tc.getTerm(termID: termID)
+			let term = tc.getTerm(termID: termID)
+			term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
+			
+			vc.termVCH.term = term
+			
 			vc.termVCH.currentCategoryID = flashCardVCH.currentCategoryID
 			
 			

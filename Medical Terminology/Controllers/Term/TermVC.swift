@@ -93,6 +93,12 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			myNotesLabel.text = termVCH.term.myNotes
 		}
 		
+		if termVCH.term.assignedCategories.count == 0 {
+			categoriesListTextView.text = "(optional)"
+		} else {
+			categoriesListTextView.text = termVCH.getCategoryNamesText()
+		}
+		
 		// MARK: setup buttons
 		
 		if termVCH.term.isStandard {
