@@ -22,12 +22,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	/// Everything will be based on this term. If this termID = -1, this will be considered to be a NEW term that is not saved yet
 	var term : Term!
 	var currentCategoryID : Int!
-	
-	
-	
-	
-	
-	
+
 	
 	// MARK: goal is to remove these
 	
