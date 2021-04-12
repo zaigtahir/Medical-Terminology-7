@@ -137,13 +137,38 @@ class TermVCH2 {
 			
 			delegate?.shouldDismissTextInputVC()
 			
-			
-			
-			
-			
-			
 		case .example:
+			
+			if term.example == cleanString {
+				delegate?.shouldDismissTextInputVC()
+				return
+			}
+			
+			if term.termID == -1 {
+				term.example = cleanString
+			} else {
+				tc.updateTermExamplePN (termID: term.termID, example: cleanString)
+				delegate?.shouldUpdateDisplay()
+			}
+			
+			delegate?.shouldDismissTextInputVC()
+			
 		case .myNotes:
+			
+			if term.myNotes == cleanString {
+				delegate?.shouldDismissTextInputVC()
+				return
+			}
+			
+			if term.termID == -1 {
+				term.myNotes = cleanString
+			} else {
+				tc.updateTermMyNotesPN(termID: term.termID, myNotes: cleanString)
+				delegate?.shouldUpdateDisplay()
+			}
+			
+			delegate?.shouldDismissTextInputVC()
+			
 		default:
 			print ("fatal error passeed a propertyReference that should not be passed here")
 		}
