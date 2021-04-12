@@ -13,7 +13,7 @@
 
 import UIKit
 
-class CategoryListVC: UIViewController, CategoryListVCH {
+class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var selectModeImage: UIImageView!
@@ -21,26 +21,22 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 	@IBOutlet weak var termNameLabel: UILabel!
 	@IBOutlet weak var termPredefinedButton: UIButton!
 	
-	let categoryHomeVCH = CategoryHomeVCH()
-	
-	// segue settings, functions to set this before so that the correct settings can be set on the CategoryVC in prepare for segue
-	var segueCategory : Category2!
-	var categoryEditMode = CategoryEditMode.add
+	let categoryListVCH = CategoryListVCH()
 	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
-		tableView.dataSource = categoryHomeVCH
-		tableView.delegate = categoryHomeVCH
+		tableView.dataSource = categoryListVCH
+		tableView.delegate = categoryListVCH
 		tableView.tableFooterView = UIView()
 		
-		categoryHomeVCH.categoryHomeDelegate = self
+		categoryListVCH.delegate = self
 		
-		categoryHomeVCH.fillCategoryLists()
+		categoryListVCH.fillCategoryLists()
 		
 		//set the title and header image
-		if categoryHomeVCH.displayMode == .selectCategory {
+		if categoryListVCH.categoryListMode == .selectCategory {
 			self.title = "Category To View"
 			selectModeImage.isHidden = false
 			termNameLabel.isHidden = true
@@ -51,22 +47,60 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 			selectModeImage.isHidden = true
 			termNameLabel.isHidden = false
 			
-			let tc = TermController()
+			termNameLabel.text = "For Term: \(categoryListVCH.term.name)"
 			
-			let term = tc.getTerm(termID: categoryHomeVCH.termID)
-			
-			termNameLabel.text = "For Term: \(term.name)"
-			
-			if term.isStandard {
+			if categoryListVCH.term.isStandard {
 				termPredefinedButton.isHidden = false
 			} else {
 				termPredefinedButton.isHidden = true
 			}
 		}
 	}
+	
 	override func viewWillAppear(_ animated: Bool) {
 	}
 	
+	// MARK: - categoryListVCHDelegate functions
+	
+	func shouldReloadTable() {
+		tableView.reloadData()
+	}
+	
+	// MARK: - prepare segue
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
+		switch segue.identifier {
+		
+		case myConstants.segueCategory:
+			let vc = segue.destination as? CategoryVC
+			
+			print ("add code to preset CategoryVC for segue")
+			
+			//vc?.categoryVCH.categoryEditMode = self.categoryEditMode
+			//vc?.categoryVCH.affectedCategory = segueCategory
+		
+		default:
+			print ("fatal error did not find a matching segue in prepar funtion of categoryListVC")
+		}
+		
+	}
+	
+	@IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
+		self.dismiss(animated: true, completion: nil)
+	}
+	
+	@IBAction func termPredefinedButtonAction(_ sender: UIButton) {
+		let ac = UIAlertController(title: "Locked Term", message: "This is a predefined term, and you can't change it's standard categories. However, you can select any of the \"My Categories\"", preferredStyle: .alert)
+		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
+		
+		ac.addAction(okay)
+		
+		self.present(ac, animated: true, completion: nil)
+	}
+	
+	
+	/*
 	// MARK: Delegate Functions for categoryHomeDelegate
 	
 	func pressedInfoButtonOnStandardCategory() {
@@ -95,38 +129,19 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 	}
 	
 	// END with delegate functions
+	*/
 	
-	func reloadTable() {
-		tableView.reloadData()
-	}
 	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		
-		switch segue.identifier {
-		
-		case myConstants.segueCategory:
-			let vc = segue.destination as? CategoryVC
-			vc?.categoryVCH.categoryEditMode = self.categoryEditMode
-			vc?.categoryVCH.affectedCategory = segueCategory
-		
-		default:
-			print ("fatal error did not find a matching segue in prepar funtion of categoryListVC")
-		}
-		
-	}
 	
-	@IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
-		self.dismiss(animated: true, completion: nil)
-	}
 	
-	@IBAction func termPredefinedButtonAction(_ sender: UIButton) {
-		let ac = UIAlertController(title: "Locked Term", message: "This is a predefined term, and you can't change it's standard categories. However, you can select any of the \"My Categories\"", preferredStyle: .alert)
-		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
-		
-		ac.addAction(okay)
-		
-		self.present(ac, animated: true, completion: nil)
-	}
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	
 	
@@ -141,7 +156,7 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 	override func viewDidLoad() {
 	super.viewDidLoad()
 	// Do any additional setup after loading the view.
-	tableView.dataSource = categoryHomeVCH
+	tableView.dataSource = categoryListVCH
 	tableView.delegate = categoryHomeVCH
 	tableView.tableFooterView = UIView()
 	
@@ -161,7 +176,7 @@ class CategoryListVC: UIViewController, CategoryListVCH {
 	
 	// set the message label
 	
-	if categoryHomeVCH.displayMode == .selectCategory {
+	if categoryHomeVCH.categoryListMode == .selectCategory {
 	messageLabel.text = "Select A Category To View"
 	
 	} else {

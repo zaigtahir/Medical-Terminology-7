@@ -38,7 +38,7 @@ enum QuizStatus {
 
 
 // use to display the category list view
-enum CategoryListDisplayMode {
+enum CategoryListMode {
 	case selectCategory
 	case assignCategory
 }

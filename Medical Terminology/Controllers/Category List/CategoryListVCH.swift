@@ -1,5 +1,5 @@
 //
-//  CategoryHomeVCH.swift
+//  CategoryListVCH.swift
 //  Medical Terminology
 //
 //  Created by Zaigham Tahir on 3/9/21.
@@ -13,16 +13,12 @@ import UIKit
 Fires off a notification if a user changes the currentCategoryID
 All controllers that are affected by that can respond to it
 */
-protocol CategoryListVCH: AnyObject {
+protocol CategoryListVCHDelegate: AnyObject {
 	
-	func pressedInfoButtonOnStandardCategory ()
-	func pressedEditButtonOnCustomCategory (category: Category2)
-	func pressedDeleteButtonOnCustomCatetory (category: Category2)
-	func addACategory ()	// when you press on the add a category button/row
-	func reloadTable ()
+	func shouldReloadTable ()
 }
 
-class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
+class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	
 	/*
 	In the assign category mode:
@@ -32,32 +28,12 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	*/
 	
 	// Set these in prepare segue
-	var displayMode = CategoryListDisplayMode.selectCategory
-	var currentCategoryID : Int!	// just simulation, need to load in the segue
+	var categoryListMode = CategoryListMode.selectCategory
+	var currentCategoryID : Int!
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// use when assignign the catetories. If this is -1, will use the new term varialbes for reading and storing name/categories
-	// if this is a new term, keep termID = -1
-	var termID : Int = -1
-	
-	
-	// New term variables
-	var newTermName: String = "my new term name"
-	var newTermCategories = [1 , 2]
+	// Term to use for category assignments
+	// When the termID = -1, the VCH will use the term var to read and save the categories instead of the db
+	var term: Term!
 	
 	// use to refer to the section of the table
 	let sectionCustom = 0
@@ -71,14 +47,13 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	var standardCategories = [Category2]()
 	var customCategories = [Category2]()
 	
-	weak var categoryHomeDelegate : CategoryListVCH?
+	weak var delegate : CategoryListVCHDelegate?
 	
 	override init() {
 		super.init()
 		
 		/*
 		Need to listen to 4 notifications and address them
-
 		addCategoryKey
 		deleteCategoryKey
 		changeCategoryNameKey
@@ -92,7 +67,14 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		let nameCCN = Notification.Name(myKeys.changeCategoryNameKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(changeCategoryNameN(notification:)), name: nameCCN, object: nil)
-
+		
+		if categoryListMode == .assignCategory {
+		// if this is not a new term, add it's assigned categories to it
+			if term.termID != -1 {
+			term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
+		}
+		}
+		
 	}
 	
 	deinit {
@@ -106,14 +88,14 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		// refresh the data
 		fillCategoryLists()
-		categoryHomeDelegate?.reloadTable()
+		delegate?.shouldReloadTable()
 	}
 	
 	@objc func changeCategoryNameN (notification: Notification) {
 		// refresh the lists and table
 		print("categoryListVCH got changeCategoryNameN")
 		fillCategoryLists()
-		categoryHomeDelegate?.reloadTable()
+		delegate?.shouldReloadTable()
 		
 	}
 	
@@ -130,7 +112,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		//refresh the lists and table
 		fillCategoryLists()
-		categoryHomeDelegate?.reloadTable()
+		delegate?.shouldReloadTable()
 	}
 	
 	func fillCategoryLists () {
@@ -138,7 +120,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		// remove the All Terms and My Terms row if this is in the assign mode
 		
-		if displayMode == .assignCategory {
+		if categoryListMode == .assignCategory {
 			print("removing first 2 standards in fillCategoryLissts as im in assign mode")
 			standardCategories.remove(at: 0)
 			standardCategories.remove(at: 0)
@@ -169,6 +151,8 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		}
 	}
 	
+	// MARK: - tableview cellForRowAt
+	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		// MARK: if this is the "add custom category row"
@@ -190,7 +174,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CategoryCell {
 			
-			switch displayMode {
+			switch categoryListMode {
 			
 			case .selectCategory:
 				
@@ -218,9 +202,6 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		I can't use make the cell non-interactable completely
 		*/
 		
-		let ids = tc.getTermCategoryIDs(termID: termID)
-		let term = tc.getTerm(termID: termID)
-		
 		var rowIsEnabled  = true
 		
 		// if this is a standard term && this is a standard category, disable the row
@@ -233,15 +214,20 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			rowIsEnabled = false
 		}
 		
-		cell.formatCellAssignCategory(rowCategory: rowCategory, currentCategoryID: currentCategoryID, assignedCategoryIDsForTerm: ids, isSelectable: rowIsEnabled)
+		cell.formatCellAssignCategory(rowCategory: rowCategory, currentCategoryID: currentCategoryID, assignedCategoryIDsForTerm: term.assignedCategories, isSelectable: rowIsEnabled)
 		
 	}
+	
+	
+	// MARK: - tableview didSelectRowAt
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		// address the case if the user pressed the add category row
 		if indexPath.section == sectionCustom && indexPath.row == 0 {
-			self.categoryHomeDelegate?.addACategory()
+			
+			print("add code for adding a category categoroyListVCH didSelectRowAt")
+			// self.categoryHomeDelegate?.addACategory()
 			return
 		}
 		
@@ -255,7 +241,7 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		// determine which category the row contains
 		let rowCategory = getRowCategory(indexPath: indexPath)
 		
-		if displayMode == .selectCategory {
+		if categoryListMode == .selectCategory {
 			self.selectedSelectRowPN(didSelectRowAt: indexPath, categoryID: rowCategory.categoryID)
 		} else {
 			self.selectedAssignRow(didSelectRowAt: indexPath, category: rowCategory)
@@ -290,55 +276,19 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		
 		// MARK: Fire off a notification of the category change!!
 		let name = Notification.Name(myKeys.currentCategoryChangedKey)
-		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : currentCategoryID])
+		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : currentCategoryID as Any])
 		
-		categoryHomeDelegate?.reloadTable()
+		delegate?.shouldReloadTable()
 	}
 	
 	private func selectedAssignRow (didSelectRowAt indexPath: IndexPath, category: Category2) {
 		
-		cc.toggleAssignedCategory(termID: termID, categoryID: category.categoryID)
-		categoryHomeDelegate?.reloadTable()
-	}
-	
-	// MARK: Make trailing swipe actions
-	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		
-		// do not allow left swipe action on the add category row
-		if indexPath.section == sectionCustom && indexPath.row == 0 {
-			return nil
-		}
-		
-		// show edit/delete in custom rows
-		// show info in the standard rows
-		
-		let rowCategory = getRowCategory(indexPath: indexPath)
-		
-		let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, completionHandler) in
-			// add action to do here
-			self.categoryHomeDelegate?.pressedInfoButtonOnStandardCategory()
-			completionHandler(false)
-		}
-		actionInfo.backgroundColor = myTheme.colorMain
-		
-		let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
-			// add edit code here
-			self.categoryHomeDelegate?.pressedEditButtonOnCustomCategory(category: rowCategory)
-			completionHandler(false)
-		}
-		actionEdit.backgroundColor = myTheme.colorMain
-		
-		let actionDelete  = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
-			// add delete code here
-			self.categoryHomeDelegate?.pressedDeleteButtonOnCustomCatetory(category: rowCategory)
-			completionHandler(false)
-			
-		}
-		
-		if rowCategory.isStandard {
-			return UISwipeActionsConfiguration(actions: [actionInfo])
+		if term.termID == -1 {
+			print("need code to toggle local term categories as this is a new term. selectedAssignRow in categoryListVCH")
 		} else {
-			return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
+		
+			cc.toggleAssignedCategory(termID: term.termID, categoryID: category.categoryID)
+		delegate?.shouldReloadTable()
 		}
 	}
 	
@@ -353,7 +303,52 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 
 
 
+/*
 
+
+// MARK: Make trailing swipe actions
+func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+	
+	// do not allow left swipe action on the add category row
+	if indexPath.section == sectionCustom && indexPath.row == 0 {
+		return nil
+	}
+	
+	// show edit/delete in custom rows
+	// show info in the standard rows
+	
+	let rowCategory = getRowCategory(indexPath: indexPath)
+	
+	let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, completionHandler) in
+		// add action to do here
+		self.categoryHomeDelegate?.pressedInfoButtonOnStandardCategory()
+		completionHandler(false)
+	}
+	actionInfo.backgroundColor = myTheme.colorMain
+	
+	let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
+		// add edit code here
+		self.categoryHomeDelegate?.pressedEditButtonOnCustomCategory(category: rowCategory)
+		completionHandler(false)
+	}
+	actionEdit.backgroundColor = myTheme.colorMain
+	
+	let actionDelete  = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
+		// add delete code here
+		self.categoryHomeDelegate?.pressedDeleteButtonOnCustomCatetory(category: rowCategory)
+		completionHandler(false)
+		
+	}
+	
+	if rowCategory.isStandard {
+		return UISwipeActionsConfiguration(actions: [actionInfo])
+	} else {
+		return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
+	}
+}
+
+
+*/
 
 
 
