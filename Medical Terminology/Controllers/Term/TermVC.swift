@@ -40,8 +40,8 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate2 {
 	
 	let termVCH = TermVCH2()
 	
-
 	// store term here so it can be used to play audio as a class function
+	// after i get this working, test using the term in the termVCH
 	private var localTerm : Term!
 	
 	// controllers
@@ -51,7 +51,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate2 {
 	// keeping these vc as a class varialbe so I can dismiss them through protocol functions
 	private var singleLineInputVC : SingleLineInputVC!
 	private var multiLineInputVC : MultiLineInputVC!
-	
 	
 	override func viewDidLoad() {
 		
@@ -118,181 +117,184 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate2 {
 		}
 		
 	}
-		
 	
+	// MARK: - Prepare Segue
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
-		// MARK: -Prepare for segue
-		override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		switch segue.identifier {
+		
+		case myConstants.segueAssignCategory:
+			print ("assign categories")
 			
-			// needs to take into account if I am in the add or view mode. This will determine whether to get the term from the database based on the termVC.termID, or whether to use the newTerm
+		case myConstants.segueSingleLineInput:
 			
+			prepareEditNameSegue(for: segue)
 			
-			if termVCH.termEditMode == .view {
-				localTerm = tc.getTerm(termID: termVCH.termID)
-			} else {
-				localTerm = termVCH.newTerm
-			}
+		case myConstants.segueMultiLineInput:
 			
+			switch termVCH.propertyReference  {
 			
-			switch segue.identifier {
-			
-			/*
-			case myConstants.segueAssignCategory:
-			
-			// MARK: need to account for add vs view term
-			
-			let nc = segue.destination as! UINavigationController
-			let vc = nc.topViewController as! CategoryListVC
-			vc.categoryHomeVCH.categoryEditMode = .assignCategory
-			vc.categoryHomeVCH.termID = termVCH.termID
-			*/
-			case myConstants.segueSingleLineInput:
+			case .definition:
 				
-				singleLineInputVC = segue.destination as? SingleLineInputVC
-				singleLineInputVC.textInputVCH.fieldTitle = "TERM NAME"
-				singleLineInputVC.textInputVCH.initialText = localTerm.name
-				singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-				singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-				singleLineInputVC.textInputVCH.minLength = 1
-				singleLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermName
-				singleLineInputVC.textInputVCH.propertyReference = .name
-				singleLineInputVC.delegate = termVCH
+				prepareEditDefinitionSegue(for: segue)
 				
-			case myConstants.segueMultiLineInput:
+			case .example:
 				
-				multiLineInputVC = segue.destination as? MultiLineInputVC
+				prepareEditExampleSegue(for: segue)
 				
-				switch termVCH.propertyReference  {
+			case .myNotes:
 				
-				case .definition:
-					
-					multiLineInputVC.textInputVCH.fieldTitle = "DEFINITION"
-					multiLineInputVC.textInputVCH.initialText = localTerm.definition
-					multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-					multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
-					multiLineInputVC.textInputVCH.minLength = 0
-					multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermDefinition
-					multiLineInputVC.textInputVCH.propertyReference = .definition
-					multiLineInputVC.delegate = termVCH
-					
-				case .example:
-					
-					multiLineInputVC.textInputVCH.fieldTitle = "EXAMPLE"
-					multiLineInputVC.textInputVCH.initialText = localTerm.example
-					multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-					multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
-					multiLineInputVC.textInputVCH.minLength = 0
-					multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermExample
-					multiLineInputVC.textInputVCH.propertyReference = .example
-					multiLineInputVC.delegate = termVCH
-					
-				default:
-					
-					multiLineInputVC.textInputVCH.fieldTitle = "MY NOTES"
-					multiLineInputVC.textInputVCH.initialText = localTerm.myNotes
-					multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ? ."
-					multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/?.-\n\t"
-					multiLineInputVC.textInputVCH.minLength = 0
-					multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthMyNotes
-					multiLineInputVC.textInputVCH.propertyReference = .myNotes
-					multiLineInputVC.delegate = termVCH
-					
-				}
+				prepareEditMyNotesSegue(for: segue)
 				
 			default:
 				print("fatal error, no segue identifier found in prepare TermVC")
 			}
 			
+		default:
+			print("fatal error, no segue identifier found in prepare TermVC")
+			
 		}
+	}
+	
+	private func prepareAssignCategorySegue (for segue: UIStoryboardSegue) {
+		let nc = segue.destination as! UINavigationController
+		let vc = nc.topViewController as! CategoryListVC
 		
-		// MARK: - TermAudioDelegate functions
-		func termAudioStartedPlaying() {
-			playAudioButton.setImage(myTheme.imageSpeakerPlaying, for: .normal)
-		}
+		//vc.categoryHomeVCH.categoryEditMode = .assignCategory
+		//vc.categoryHomeVCH.termID = termVCH.termID
+	}
+	
+	private func prepareEditNameSegue (for segue: UIStoryboardSegue) {
+		singleLineInputVC = segue.destination as? SingleLineInputVC
+		singleLineInputVC.textInputVCH.fieldTitle = "TERM NAME"
+		singleLineInputVC.textInputVCH.initialText = localTerm.name
+		singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+		singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+		singleLineInputVC.textInputVCH.minLength = 1
+		singleLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermName
+		singleLineInputVC.textInputVCH.propertyReference = .name
 		
-		func termAudioStoppedPlaying() {
-			playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
-		}
+		//singleLineInputVC.delegate = termVCH
+	}
+	
+	private func prepareEditDefinitionSegue (for segue: UIStoryboardSegue) {
+		multiLineInputVC.textInputVCH.fieldTitle = "DEFINITION"
+		multiLineInputVC.textInputVCH.initialText = localTerm.definition
+		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
+		multiLineInputVC.textInputVCH.minLength = 0
+		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermDefinition
+		multiLineInputVC.textInputVCH.propertyReference = .definition
+		//multiLineInputVC.delegate = termVCH
+	}
+	
+	private func prepareEditExampleSegue (for segue: UIStoryboardSegue) {
+		multiLineInputVC.textInputVCH.fieldTitle = "EXAMPLE"
+		multiLineInputVC.textInputVCH.initialText = localTerm.example
+		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
+		multiLineInputVC.textInputVCH.minLength = 0
+		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermExample
+		multiLineInputVC.textInputVCH.propertyReference = .example
+		//multiLineInputVC.delegate = termVCH
+	}
+	
+	private func prepareEditMyNotesSegue (for segue: UIStoryboardSegue) {
+		multiLineInputVC.textInputVCH.fieldTitle = "MY NOTES"
+		multiLineInputVC.textInputVCH.initialText = localTerm.myNotes
+		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ? ."
+		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/?.-\n\t"
+		multiLineInputVC.textInputVCH.minLength = 0
+		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthMyNotes
+		multiLineInputVC.textInputVCH.propertyReference = .myNotes
+		//multiLineInputVC.delegate = termVCH
+	}
+	
+	
+	// MARK: - TermAudioDelegate functions
+	func termAudioStartedPlaying() {
+		playAudioButton.setImage(myTheme.imageSpeakerPlaying, for: .normal)
+	}
+	
+	func termAudioStoppedPlaying() {
+		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
+	}
+	
+	@IBAction func cancelButtonAction(_ sender: Any) {
+		self.dismiss(animated: true, completion: nil)
+	}
+	
+	@IBAction func leftButtonAction(_ sender: Any) {
 		
-		@IBAction func cancelButtonAction(_ sender: Any) {
+		if termVCH.term.termID == -1 {
+			// this is a new term and it's ready to be saved
+			print ("Yay!!! write code to save the term")
+		} else {
 			self.dismiss(animated: true, completion: nil)
 		}
 		
-		@IBAction func leftButtonAction(_ sender: Any) {
-			
-			switch termVCH.termEditMode {
-			
-			case .view:
-				self.dismiss(animated: true, completion: nil)
-			default:
-				print ("take save action!")
-			}
-			
-		}
+	}
+	
+	// MARK: - TermVCH delegate functions
+	func shouldUpdateDisplay() {
+		updateDisplay()
+	}
+	
+	func shouldDisplayDuplicateTermNameAlert() {
+		let ac = UIAlertController(title: "Opps!", message: "There is already a term with that name. Please choose a different name.", preferredStyle: .alert)
+		let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
 		
-		// MARK: - TermVCH delegate functions
-		func shouldUpdateDisplay() {
-			updateDisplay()
-		}
+		ac.addAction(ok)
 		
-		func shouldDisplayDuplicateTermNameAlert() {
-			let ac = UIAlertController(title: "Opps!", message: "There is already a term with that name. Please choose a different name.", preferredStyle: .alert)
-			let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
-			
-			ac.addAction(ok)
-			
-			self.present(ac, animated: true, completion: .none)
-			
-		}
-		
-		func shouldDismissTextInputVC() {
-			multiLineInputVC?.navigationController?.popViewController(animated: true)
-			singleLineInputVC?.navigationController?.popViewController(animated: true)
-		}
-		
-		@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
-			
-			favoriteButton.isOn = !favoriteButton.isOn
-			
-			switch termVCH.termEditMode {
-			
-			case .view:
-				// Note, can't use my button's isOn property here to check as it is not set yet as action triggers before it is set/unset
-				let favoriteState  = tc.getFavoriteStatus(categoryID: termVCH.currentCategoryID, termID: localTerm.termID)
-				tc.setFavoriteStatusPN(categoryID: termVCH.currentCategoryID, termID: termVCH.termID, isFavorite: !favoriteState)
-				
-			case .add:
-				// update the variable in the termVCH
-				termVCH.newTermIsFavorite.toggle()
-				return
-			}
-		}
-		
-		@IBAction func playAudioButtonAction(_ sender: UIButton) {
-			
-			localTerm = tc.getTerm(termID: termVCH.termID)
-			localTerm.delegate = self
-			localTerm.playAudio()
-			
-		}
-		
-		@IBAction func definitionEditButtonAction(_ sender: Any) {
-			termVCH.propertyReference = .definition
-			performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
-		}
-		
-		@IBAction func exampleEditButtonAction(_ sender: Any) {
-			termVCH.propertyReference = .example
-			performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
-		}
-		
-		@IBAction func myNotesEditButtonAction(_ sender: Any) {
-			termVCH.propertyReference  = .myNotes
-			performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
-		}
-		
+		self.present(ac, animated: true, completion: .none)
 		
 	}
+	
+	func shouldDismissTextInputVC() {
+		multiLineInputVC?.navigationController?.popViewController(animated: true)
+		singleLineInputVC?.navigationController?.popViewController(animated: true)
+	}
+	
+	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
+		
+		favoriteButton.isOn = !favoriteButton.isOn
+		
+		if termVCH.term.termID == -1 {
+			
+			termVCH.newTermFavoriteStatus.toggle()
+			
+		} else {
+			
+			let favoriteState  = tc.getFavoriteStatus(categoryID: termVCH.currentCategoryID, termID: localTerm.termID)
+			tc.setFavoriteStatusPN(categoryID: termVCH.currentCategoryID, termID: termVCH.term.termID, isFavorite: !favoriteState)
+		}
+	}
+	
+	@IBAction func playAudioButtonAction(_ sender: UIButton) {
+		
+		localTerm = tc.getTerm(termID: termVCH.term.termID)
+		localTerm.delegate = self
+		localTerm.playAudio()
+		
+	}
+	
+	@IBAction func definitionEditButtonAction(_ sender: Any) {
+		termVCH.propertyReference = .definition
+		performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
+	}
+	
+	@IBAction func exampleEditButtonAction(_ sender: Any) {
+		termVCH.propertyReference = .example
+		performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
+	}
+	
+	@IBAction func myNotesEditButtonAction(_ sender: Any) {
+		termVCH.propertyReference  = .myNotes
+		performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
+	}
+	
+}
 
 /*
 
