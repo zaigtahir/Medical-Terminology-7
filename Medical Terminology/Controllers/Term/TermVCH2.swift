@@ -10,7 +10,7 @@
 import Foundation
 import UIKit
 
-protocol TermVCHDelegate2: AnyObject {
+protocol TermVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
 	
 	/// dismiss single or multiline input vc
@@ -18,7 +18,7 @@ protocol TermVCHDelegate2: AnyObject {
 	func shouldDisplayDuplicateTermNameAlert()
 }
 
-class TermVCH2 {
+class TermVCH {
 	
 	/// Everything will be based on this term. If this termID = -1, this will be considered to be a NEW term that is not saved yet
 	var term : Term!
@@ -27,7 +27,7 @@ class TermVCH2 {
 	
 	var propertyReference : PropertyReference!
 	
-	var delegate: TermVCHDelegate2?
+	var delegate: TermVCHDelegate?
 	
 	// controllers
 	private let tc = TermController()

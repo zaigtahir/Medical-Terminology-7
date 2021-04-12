@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol TermVCHDelegate: AnyObject {
+protocol TermVCHDelegateBACK: AnyObject {
 	func shouldUpdateDisplay()
 	
 	/// dismiss single or multiline input vc
@@ -17,7 +17,7 @@ protocol TermVCHDelegate: AnyObject {
 	func shouldDisplayDuplicateTermNameAlert()
 }
 
-class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate {
+class TermVCHBACK: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	/// Everything will be based on this term. If this termID = -1, this will be considered to be a NEW term that is not saved yet
 	var term : Term!

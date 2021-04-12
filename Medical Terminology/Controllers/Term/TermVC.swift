@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate2 {
+class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	@IBOutlet weak var nameLabel: UILabel!
 	
@@ -38,7 +38,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate2 {
 	
 	@IBOutlet weak var myNotesEditButton: UIButton!
 	
-	let termVCH = TermVCH2()
+	let termVCH = TermVCH()
 	
 	// store term here so it can be used to play audio as a class function
 	// after i get this working, test using the term in the termVCH
