@@ -264,7 +264,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			
 		} else {
 			
-			let favoriteState  = tc.getFavoriteStatus(categoryID: termVCH.currentCategoryID, termID: localTerm.termID)
+			let favoriteState  = tc.getFavoriteStatus(categoryID: termVCH.currentCategoryID, termID: termVCH.term.termID)
 			tc.setFavoriteStatusPN(categoryID: termVCH.currentCategoryID, termID: termVCH.term.termID, isFavorite: !favoriteState)
 		}
 	}
