@@ -40,10 +40,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	let termVCH = TermVCH()
 	
-	// store term here so it can be used to play audio as a class function
-	// after i get this working, test using the term in the termVCH
-	private var localTerm : Term!
-	
 	// controllers
 	private let tc = TermController()
 	private let cc = CategoryController2()
@@ -65,7 +61,9 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		// MARK: fill fields
 		
-		playAudioButton.isEnabled = localTerm.isAudioFilePresent()
+		//playAudioButton.isEnabled = localTerm.isAudioFilePresent()
+		
+		playAudioButton.isEnabled = termVCH.term.isAudioFilePresent()
 		
 		if termVCH.term.name == "" {
 			nameLabel.text = "New Name"
@@ -168,7 +166,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	private func prepareEditNameSegue (for segue: UIStoryboardSegue) {
 		singleLineInputVC = segue.destination as? SingleLineInputVC
 		singleLineInputVC.textInputVCH.fieldTitle = "TERM NAME"
-		singleLineInputVC.textInputVCH.initialText = localTerm.name
+		singleLineInputVC.textInputVCH.initialText = termVCH.term.name
 		singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
 		singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
 		singleLineInputVC.textInputVCH.minLength = 1
@@ -180,7 +178,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	private func prepareEditDefinitionSegue (for segue: UIStoryboardSegue) {
 		multiLineInputVC.textInputVCH.fieldTitle = "DEFINITION"
-		multiLineInputVC.textInputVCH.initialText = localTerm.definition
+		multiLineInputVC.textInputVCH.initialText = termVCH.term.definition
 		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
 		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
 		multiLineInputVC.textInputVCH.minLength = 0
@@ -191,7 +189,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	private func prepareEditExampleSegue (for segue: UIStoryboardSegue) {
 		multiLineInputVC.textInputVCH.fieldTitle = "EXAMPLE"
-		multiLineInputVC.textInputVCH.initialText = localTerm.example
+		multiLineInputVC.textInputVCH.initialText = termVCH.term.example
 		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
 		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
 		multiLineInputVC.textInputVCH.minLength = 0
@@ -202,7 +200,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	private func prepareEditMyNotesSegue (for segue: UIStoryboardSegue) {
 		multiLineInputVC.textInputVCH.fieldTitle = "MY NOTES"
-		multiLineInputVC.textInputVCH.initialText = localTerm.myNotes
+		multiLineInputVC.textInputVCH.initialText = termVCH.term.myNotes
 		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ? ."
 		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/?.-\n\t"
 		multiLineInputVC.textInputVCH.minLength = 0
@@ -273,10 +271,8 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	@IBAction func playAudioButtonAction(_ sender: UIButton) {
 		
-		localTerm = tc.getTerm(termID: termVCH.term.termID)
-		localTerm.delegate = self
-		localTerm.playAudio()
-		
+		termVCH.term.delegate = self
+		termVCH.term.playAudio()
 	}
 	
 	@IBAction func definitionEditButtonAction(_ sender: Any) {
