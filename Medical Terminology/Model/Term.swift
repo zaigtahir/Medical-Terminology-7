@@ -24,9 +24,9 @@ class Term: NSObject, AVAudioPlayerDelegate {
 	var audioFile: String = ""
 	var isStandard: Bool = false
 	var audioPlayer = AVAudioPlayer()
-	
-	/// use to hold the category assignments for displaying and keeping track
-	var termCategorIDs = [Int]()
+
+	/// initialize with the values when need  when using the TermVC and CategoryListVC
+	var assignedCategories = [Int]()
 
 	weak var delegate: TermAudioDelegate?
 	

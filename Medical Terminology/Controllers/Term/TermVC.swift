@@ -54,6 +54,9 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		termVCH.delegate = self
 		
+		print ("making term set to custom for testing")
+		termVCH.term.isStandard = false
+		
 		updateDisplay()
 	}
 	
@@ -177,6 +180,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	}
 	
 	private func prepareEditDefinitionSegue (for segue: UIStoryboardSegue) {
+		multiLineInputVC = segue.destination as? MultiLineInputVC
 		multiLineInputVC.textInputVCH.fieldTitle = "DEFINITION"
 		multiLineInputVC.textInputVCH.initialText = termVCH.term.definition
 		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
@@ -188,6 +192,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	}
 	
 	private func prepareEditExampleSegue (for segue: UIStoryboardSegue) {
+		multiLineInputVC = segue.destination as? MultiLineInputVC
 		multiLineInputVC.textInputVCH.fieldTitle = "EXAMPLE"
 		multiLineInputVC.textInputVCH.initialText = termVCH.term.example
 		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
@@ -199,6 +204,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	}
 	
 	private func prepareEditMyNotesSegue (for segue: UIStoryboardSegue) {
+		multiLineInputVC = segue.destination as? MultiLineInputVC
 		multiLineInputVC.textInputVCH.fieldTitle = "MY NOTES"
 		multiLineInputVC.textInputVCH.initialText = termVCH.term.myNotes
 		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ? ."

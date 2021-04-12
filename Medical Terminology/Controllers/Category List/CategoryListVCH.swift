@@ -28,13 +28,27 @@ class CategoryHomeVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	In the assign category mode:
 	If the term is a standard term, disable all the standard rows
 	if the term is a custom term, disable standard and my terms
-	
 	so, need to have a disabled, row view made
 	*/
 	
+	// Set these in prepare segue
 	var displayMode = CategoryListDisplayMode.selectCategory
+	var currentCategoryID : Int!	// just simulation, need to load in the segue
 	
-	var currentCategoryID : Int = -1	// just simulation, need to load in the segue
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	// use when assignign the catetories. If this is -1, will use the new term varialbes for reading and storing name/categories
 	// if this is a new term, keep termID = -1
