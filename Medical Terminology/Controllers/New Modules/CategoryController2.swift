@@ -16,7 +16,7 @@ class CategoryController2 {
 	
 	// controllers
 	let tc = TermController()
-		
+	
 	func getCategory (categoryID: Int) -> Category2 {
 		
 		let query = "SELECT * from \(categories) WHERE categoryID = \(categoryID)"
@@ -81,7 +81,7 @@ class CategoryController2 {
 		
 	}
 	
-	func toggleAssignedCategory (termID: Int, categoryID: Int) {
+	func toggleAssignedCategoryBK (termID: Int, categoryID: Int) {
 		/*
 		Will look at the term type (standard vs custom) and categoryID type (standard vs custom, All Terms, My Terms) and toggle the membership IF it is allowed
 		
@@ -92,11 +92,11 @@ class CategoryController2 {
 		RULE 2
 		if this is a custom term:
 		may not assign or unassign from category id 1 and 2
-
+		
 		otherwise :
 		if the term is already assigned to the custom category, unassign it → notification :
-			termRemovedFromCategory (termID, categoryID)
-
+		termRemovedFromCategory (termID, categoryID)
+		
 		if the term is not assigned to the category, then assign it → notification:
 		termAssignedToCategory (termID, categoryIDdb
 		*/
@@ -109,7 +109,7 @@ class CategoryController2 {
 			// do nothing
 			return
 		}
-		 
+		
 		if !term.isStandard && categoryID <= 2 {
 			// RULE 2
 			// do nothing
@@ -130,6 +130,114 @@ class CategoryController2 {
 		
 	}
 	
+	// MARK: - toggle category functions
+	/**
+	If the category is not already assigned, assign it (and vice versa), update the DB and reload the assigned categories in the term
+	
+	Note, this function is NOT updating the local term assignedCategories property. You will need to update that list when needed
+	
+	*/
+	func toggleCategories (term: Term, categoryID: Int) {
+		
+		if term.assignedCategories.contains(categoryID) {
+			//this category is already assigned to this term, so need to remove it
+			unassignCategoryPN(termID: term.termID, categoryID: categoryID)
+			
+		} else {
+			//this category is not assigned to this term, so need to add it
+			assignCategoryPN(termID: term.termID, categoryID: categoryID)
+		}
+		
+	}
+	
+	/**
+	Update the categories just locally in the term, and nothing is saved to the DB
+	Ideally want the sequence of the categories to be as if they were pulled from the db in the display order and custom on top
+	*/
+	func toggleCategoriesNewTermPN (term: Term, categoryID: Int) {
+		
+		if term.assignedCategories.contains(categoryID) {
+			
+			// need to remove it
+			if term.assignedCategories.last == categoryID {
+				term.assignedCategories.removeLast()
+			} else {
+				
+				if let indexToRemove = term.assignedCategories.firstIndex(of: categoryID) {
+					
+					term.assignedCategories.remove(at: indexToRemove)
+				}
+				
+			}
+			
+			// send out notification
+			let data = ["termID" : term.termID, "categoryID" : categoryID]
+			let name = Notification.Name(myKeys.unassignCategoryKey)
+			NotificationCenter.default.post(name: name, object: self, userInfo: data)
+			
+			
+		} else {
+			
+			// categoryID is not part of assignedCategories, so add to it
+			term.assignedCategories.append(categoryID)
+			
+			// send out a term assigned notification so that the termVC can update itself
+			
+			// send out notification
+			let data = ["termID" : term.termID, "categoryID" : categoryID]
+			let name = Notification.Name(myKeys.assignCategoryKey)
+			NotificationCenter.default.post(name: name, object: self, userInfo: data)
+			
+		}
+		
+		
+	}
+	
+	private func sortAssignedCategories (term: Term) {
+		// will take a array of [categoryID] and sort them. the custom categores will be first based on their display order, then the standard categories after based on their display order
+		
+		
+		/*
+		select categoryID, displayOrder from categories2 where categoryID = 1 OR categoryID = 3 OR categoryID = 6
+		ORDER BY isStandard, displayOrder
+		*/
+		
+		
+		if term.assignedCategories.count == 0 {
+			return
+		}
+		
+		var query = "SELECT categoryID, isStandard, displayOrder FROM \(categories) WHERE categoryID = \(term.assignedCategories[0]) "
+		
+		for id in term.assignedCategories {
+			
+			if id != term.assignedCategories[0] { // skip the first one as I added that already
+				query.append(" OR categoryID = \(id)")
+			}
+		}
+		
+		query.append("  ORDER BY isStandard, displayOrder")
+		
+		var orderedArray = [Int]()
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			
+			while resultSet.next() {
+				orderedArray.append(Int(resultSet.int(forColumnIndex: 0)))
+			}
+			
+		} else {
+			print ("fatal error not able to get result set in CategoryController sortAssignedCategoreis")
+		}
+		
+		// reversing it so that it shows in the correct order
+		orderedArray.reverse()
+		
+		// attaching the ordered list to the array
+		term.assignedCategories = orderedArray
+		
+	}
+	
 	private func fillCategory (resultSet: FMResultSet) -> Category2 {
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))
 		let name = resultSet.string(forColumn: "name") ?? ""
@@ -138,11 +246,11 @@ class CategoryController2 {
 		let isStandard = Int(resultSet.int(forColumn: "isStandard"))
 		
 		let c = Category2 (categoryID: categoryID,
-						  name: name,
-						  description: description,
-						  displayOrder: displayOrder,
-						  isStandard: isStandard == 1 ? true : false,
-						  count: 0		// will need to update this when the program needs
+						   name: name,
+						   description: description,
+						   displayOrder: displayOrder,
+						   isStandard: isStandard == 1 ? true : false,
+						   count: 0		// will need to update this when the program needs
 		)
 		
 		return c
@@ -226,7 +334,7 @@ class CategoryController2 {
 		let query = "DELETE FROM \(assignedCategories) WHERE termID = \(termID) AND categoryID = \(categoryID)"
 		myDB.executeStatements(query)
 		
-		// send out notification
+
 		// send out notification
 		let data = ["termID" : termID, "categoryID" : categoryID]
 		let name = Notification.Name(myKeys.unassignCategoryKey)

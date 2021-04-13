@@ -63,6 +63,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	// MARK: - categoryListVCHDelegate functions
 	
 	func shouldReloadTable() {
+		print ("reloading the table")
 		tableView.reloadData()
 	}
 	

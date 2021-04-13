@@ -84,11 +84,11 @@ class TermVCH {
 	// MARK: - move getCategoryNameText ()
 	
 	func getCategoryNamesText () -> String {
+		
 		// make list of categories
-		let categoryIDs = tc.getTermCategoryIDs(termID: term.termID)
 		var categoryList = ""
 		
-		for id in categoryIDs {
+		for id in term.assignedCategories {
 			if (id != myConstants.dbCategoryMyTermsID) && (id != myConstants.dbCategoryAllTermsID) {
 				// note not including id 1 = All terms and 2 = My Terms
 				

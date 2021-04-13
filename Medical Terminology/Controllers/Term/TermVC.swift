@@ -132,7 +132,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		switch segue.identifier {
 		
 		case myConstants.segueAssignCategory:
-			print ("assign categories")
+			prepareAssignCategorySegue(for: segue)
 			
 		case myConstants.segueSingleLineInput:
 			
@@ -165,11 +165,13 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	}
 	
 	private func prepareAssignCategorySegue (for segue: UIStoryboardSegue) {
+		
 		let nc = segue.destination as! UINavigationController
 		let vc = nc.topViewController as! CategoryListVC
+		vc.categoryListVCH.categoryListMode = .assignCategory
+		vc.categoryListVCH.currentCategoryID = termVCH.currentCategoryID
+		vc.categoryListVCH.term = termVCH.term
 		
-		//vc.categoryListVCH.categoryEditMode = .assignCategory
-		//vc.categoryListVCH.termID = termVCH.termID
 	}
 	
 	private func prepareEditNameSegue (for segue: UIStoryboardSegue) {

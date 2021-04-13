@@ -108,7 +108,7 @@ class TermController {
 			return query
 		}
 		
-	
+		
 		// first add the custom categories
 		
 		if let resultSet = myDB.executeQuery(getQuery(termID: termID, isStandard: 0), withArgumentsIn: []) {

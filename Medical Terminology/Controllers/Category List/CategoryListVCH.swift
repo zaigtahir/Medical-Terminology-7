@@ -69,11 +69,12 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		NotificationCenter.default.addObserver(self, selector: #selector(changeCategoryNameN(notification:)), name: nameCCN, object: nil)
 		
 		if categoryListMode == .assignCategory {
-		// if this is not a new term, add it's assigned categories to it
+			// if this is not a new term, add it's assigned categories to it
 			if term.termID != -1 {
-			term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
+				term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
+			}
 		}
-		}
+		
 		
 	}
 	
@@ -113,6 +114,17 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		//refresh the lists and table
 		fillCategoryLists()
 		delegate?.shouldReloadTable()
+	}
+	
+	func updateData() {
+		if term.termID == -1 {
+			//refresh the term from the db
+			term = tc.getTerm(termID: term.termID)
+		}
+		
+		term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
+		
+		print("categoryListVCH undateData, forcing the term = isStandard = no for testing")
 	}
 	
 	func fillCategoryLists () {
@@ -284,11 +296,16 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 	private func selectedAssignRow (didSelectRowAt indexPath: IndexPath, category: Category2) {
 		
 		if term.termID == -1 {
-			print("need code to toggle local term categories as this is a new term. selectedAssignRow in categoryListVCH")
-		} else {
+			
+			cc.toggleCategoriesNewTermPN(term: term, categoryID: category.categoryID)
 		
-			cc.toggleAssignedCategory(termID: term.termID, categoryID: category.categoryID)
-		delegate?.shouldReloadTable()
+			delegate?.shouldReloadTable()
+			
+		} else {
+			
+			cc.toggleCategories(term: term, categoryID: category.categoryID)
+			updateData()
+			delegate?.shouldReloadTable()
 		}
 	}
 	
@@ -298,53 +315,48 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 
 
 
-
-
-
-
-
 /*
 
 
 // MARK: Make trailing swipe actions
 func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-	
-	// do not allow left swipe action on the add category row
-	if indexPath.section == sectionCustom && indexPath.row == 0 {
-		return nil
-	}
-	
-	// show edit/delete in custom rows
-	// show info in the standard rows
-	
-	let rowCategory = getRowCategory(indexPath: indexPath)
-	
-	let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, completionHandler) in
-		// add action to do here
-		self.categoryHomeDelegate?.pressedInfoButtonOnStandardCategory()
-		completionHandler(false)
-	}
-	actionInfo.backgroundColor = myTheme.colorMain
-	
-	let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
-		// add edit code here
-		self.categoryHomeDelegate?.pressedEditButtonOnCustomCategory(category: rowCategory)
-		completionHandler(false)
-	}
-	actionEdit.backgroundColor = myTheme.colorMain
-	
-	let actionDelete  = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
-		// add delete code here
-		self.categoryHomeDelegate?.pressedDeleteButtonOnCustomCatetory(category: rowCategory)
-		completionHandler(false)
-		
-	}
-	
-	if rowCategory.isStandard {
-		return UISwipeActionsConfiguration(actions: [actionInfo])
-	} else {
-		return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
-	}
+
+// do not allow left swipe action on the add category row
+if indexPath.section == sectionCustom && indexPath.row == 0 {
+return nil
+}
+
+// show edit/delete in custom rows
+// show info in the standard rows
+
+let rowCategory = getRowCategory(indexPath: indexPath)
+
+let actionInfo = UIContextualAction(style: .normal, title: "Info") { (_, _, completionHandler) in
+// add action to do here
+self.categoryHomeDelegate?.pressedInfoButtonOnStandardCategory()
+completionHandler(false)
+}
+actionInfo.backgroundColor = myTheme.colorMain
+
+let actionEdit = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
+// add edit code here
+self.categoryHomeDelegate?.pressedEditButtonOnCustomCategory(category: rowCategory)
+completionHandler(false)
+}
+actionEdit.backgroundColor = myTheme.colorMain
+
+let actionDelete  = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
+// add delete code here
+self.categoryHomeDelegate?.pressedDeleteButtonOnCustomCatetory(category: rowCategory)
+completionHandler(false)
+
+}
+
+if rowCategory.isStandard {
+return UISwipeActionsConfiguration(actions: [actionInfo])
+} else {
+return UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
+}
 }
 
 

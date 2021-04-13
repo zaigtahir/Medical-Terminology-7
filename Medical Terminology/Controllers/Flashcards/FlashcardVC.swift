@@ -143,9 +143,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			
 			let term = tc.getTerm(termID: termID)
 			term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
-			
 			vc.termVCH.term = term
-			
 			vc.termVCH.currentCategoryID = flashCardVCH.currentCategoryID
 			
 			
