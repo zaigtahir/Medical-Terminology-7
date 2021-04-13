@@ -15,7 +15,6 @@ class CategoryController2 {
 	let assignedCategories = myConstants.dbTableAssignedCategories
 	
 	// controllers
-	let tc = TermController()
 	
 	func getCategory (categoryID: Int) -> Category2 {
 		
@@ -81,54 +80,6 @@ class CategoryController2 {
 		
 	}
 	
-	func toggleAssignedCategoryBK (termID: Int, categoryID: Int) {
-		/*
-		Will look at the term type (standard vs custom) and categoryID type (standard vs custom, All Terms, My Terms) and toggle the membership IF it is allowed
-		
-		RULE 1
-		if the term is a standard term:
-		may not assign or unassign from standard category
-		
-		RULE 2
-		if this is a custom term:
-		may not assign or unassign from category id 1 and 2
-		
-		otherwise :
-		if the term is already assigned to the custom category, unassign it → notification :
-		termRemovedFromCategory (termID, categoryID)
-		
-		if the term is not assigned to the category, then assign it → notification:
-		termAssignedToCategory (termID, categoryIDdb
-		*/
-		
-		let term = tc.getTerm(termID: termID)
-		let category = getCategory(categoryID: categoryID)
-		
-		if term.isStandard && category.isStandard {
-			// RULE 1
-			// do nothing
-			return
-		}
-		
-		if !term.isStandard && categoryID <= 2 {
-			// RULE 2
-			// do nothing
-			return
-		}
-		
-		// is this term already assigned to this category?
-		let currentIDs = tc.getTermCategoryIDs(termID: termID)
-		
-		if currentIDs.contains(categoryID) {
-			//this category is already assigned to this term, so need to remove it
-			unassignCategoryPN(termID: termID, categoryID: categoryID)
-			
-		} else {
-			//this category is not assigned to this term, so need to add it
-			assignCategoryPN(termID: termID, categoryID: categoryID)
-		}
-		
-	}
 	
 	// MARK: - toggle category functions
 	/**
@@ -147,7 +98,7 @@ class CategoryController2 {
 			//this category is not assigned to this term, so need to add it
 			assignCategoryPN(termID: term.termID, categoryID: categoryID)
 		}
-		
+
 	}
 	
 	/**

@@ -18,7 +18,7 @@ protocol TermVCHDelegate: AnyObject {
 	func shouldDisplayDuplicateTermNameAlert()
 }
 
-class TermVCH {
+class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	
 	/// Everything will be based on this term. If this termID = -1, this will be considered to be a NEW term that is not saved yet
 	var term : Term!
@@ -148,9 +148,9 @@ class TermVCH {
 				term.definition = cleanString
 			} else {
 				tc.updateTermDefinitionPN(termID: term.termID, definition: cleanString)
-				delegate?.shouldUpdateDisplay()
 			}
 			
+			delegate?.shouldUpdateDisplay()
 			delegate?.shouldDismissTextInputVC()
 			
 		case .example:
@@ -164,9 +164,9 @@ class TermVCH {
 				term.example = cleanString
 			} else {
 				tc.updateTermExamplePN (termID: term.termID, example: cleanString)
-				delegate?.shouldUpdateDisplay()
 			}
 			
+			delegate?.shouldUpdateDisplay()
 			delegate?.shouldDismissTextInputVC()
 			
 		case .myNotes:
@@ -180,9 +180,10 @@ class TermVCH {
 				term.myNotes = cleanString
 			} else {
 				tc.updateTermMyNotesPN(termID: term.termID, myNotes: cleanString)
-				delegate?.shouldUpdateDisplay()
+				
 			}
 			
+			delegate?.shouldUpdateDisplay()
 			delegate?.shouldDismissTextInputVC()
 			
 		default:

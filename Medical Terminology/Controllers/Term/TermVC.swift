@@ -43,6 +43,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	// controllers
 	private let tc = TermController()
 	private let cc = CategoryController2()
+	private let tu = TextUtilities()
 	
 	// keeping these vc as a class varialbe so I can dismiss them through protocol functions
 	private var singleLineInputVC : SingleLineInputVC!
@@ -53,10 +54,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		super.viewDidLoad()
 		
 		termVCH.delegate = self
-		
-		print ("making term set to custom for testing")
-		termVCH.term.isStandard = false
-		
+
 		updateDisplay()
 	}
 	
@@ -119,6 +117,13 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		if termVCH.term.termID == -1 {
 			leftButton.title = "Save"
+			
+			if (termVCH.term.name != "" && termVCH.term.definition != "") {
+				leftButton.isEnabled = true
+			} else {
+				leftButton.isEnabled = false
+			}
+			
 		} else {
 			leftButton.title = "Done"
 		}
@@ -168,6 +173,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		let nc = segue.destination as! UINavigationController
 		let vc = nc.topViewController as! CategoryListVC
+		
 		vc.categoryListVCH.categoryListMode = .assignCategory
 		vc.categoryListVCH.currentCategoryID = termVCH.currentCategoryID
 		vc.categoryListVCH.term = termVCH.term
@@ -184,7 +190,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		singleLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermName
 		singleLineInputVC.textInputVCH.propertyReference = .name
 		
-		//singleLineInputVC.delegate = termVCH
+		singleLineInputVC.delegate = termVCH
 	}
 	
 	private func prepareEditDefinitionSegue (for segue: UIStoryboardSegue) {
@@ -196,7 +202,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		multiLineInputVC.textInputVCH.minLength = 0
 		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermDefinition
 		multiLineInputVC.textInputVCH.propertyReference = .definition
-		//multiLineInputVC.delegate = termVCH
+		multiLineInputVC.delegate = termVCH
 	}
 	
 	private func prepareEditExampleSegue (for segue: UIStoryboardSegue) {
@@ -208,7 +214,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		multiLineInputVC.textInputVCH.minLength = 0
 		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermExample
 		multiLineInputVC.textInputVCH.propertyReference = .example
-		//multiLineInputVC.delegate = termVCH
+		multiLineInputVC.delegate = termVCH
 	}
 	
 	private func prepareEditMyNotesSegue (for segue: UIStoryboardSegue) {
@@ -220,7 +226,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		multiLineInputVC.textInputVCH.minLength = 0
 		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthMyNotes
 		multiLineInputVC.textInputVCH.propertyReference = .myNotes
-		//multiLineInputVC.delegate = termVCH
+		multiLineInputVC.delegate = termVCH
 	}
 	
 	
@@ -241,7 +247,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		if termVCH.term.termID == -1 {
 			// this is a new term and it's ready to be saved
-			print ("Yay!!! write code to save the term")
+			tc.saveTerm(term: termVCH.term)
 		} else {
 			self.dismiss(animated: true, completion: nil)
 		}

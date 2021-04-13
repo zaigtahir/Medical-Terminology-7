@@ -32,6 +32,8 @@ class TermController {
 	let assignedCategories = myConstants.dbTableAssignedCategories
 	let categories = myConstants.dbTableCategories2
 	
+	let cc = CategoryController2()
+	
 	func getTerm (termID: Int) -> Term {
 		
 		let query = "SELECT * FROM \(myConstants.dbTableTerms) WHERE termID = \(termID)"
@@ -135,7 +137,7 @@ class TermController {
 		return ids
 		
 	}
-	
+
 	/**
 	Not including TermID is used to filter out the current term name. The user just might want to change the letter CaSE. In that case, i still want to save that change. So This query will look for duplicates of any other row.
 	*/
@@ -158,6 +160,34 @@ class TermController {
 		}
 	}
 	
+	/**
+	will save the term to the database creating a new row in the terms table
+	will assign catetory All Terms, My Terms and any other that are in term.assignedTerms
+	Wil return the termID of the added term
+	*/
+	func saveTerm (term: Term) {
+		
+		// saving a custom term with secondCategory = 2 and isStandard value is redundant, but makes for smoother programming
+		
+		let query  = """
+		INSERT INTO \(terms) (name, definition, example, myNotes, isStandard, secondCategoryID)
+		VALUES ('\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2)
+		"""
+		
+		myDB.executeStatements(query)
+	
+		
+		let addedTermID = Int(myDB.lastInsertRowId)
+		
+		print ("saved the new term!!!!! the new termID = \(addedTermID)")
+		
+		// now assign All Terms, MyTerms
+		cc.assignCategoryPN(termID: addedTermID, categoryID: myConstants.dbCategoryAllTermsID)
+		cc.assignCategoryPN(termID: addedTermID, categoryID: myConstants.dbCategoryMyTermsID)
+		
+		
+	
+	}
 	
 	// MARK: - term update functions
 	
