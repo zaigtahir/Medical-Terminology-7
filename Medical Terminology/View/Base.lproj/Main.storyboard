@@ -2803,8 +2803,8 @@
                                 </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slider.horizontal.3" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jm2-fe-7SJ">
-                                <rect key="frame" x="187" y="96" width="40" height="36.333333333333329"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.stack.3d.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jm2-fe-7SJ">
+                                <rect key="frame" x="187" y="94" width="40" height="40.666666666666671"/>
                                 <color key="tintColor" name="color text"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Mgw-30-OrW"/>
@@ -3517,8 +3517,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HWU-Cd-rtW"/>
-        <segue reference="WdJ-IQ-Ral"/>
+        <segue reference="Nhy-Yr-H6x"/>
+        <segue reference="Sbm-EN-3iq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>

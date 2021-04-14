@@ -13,11 +13,13 @@ class CategoryVC2: UIViewController {
 	@IBOutlet weak var headerImage: UIImageView!
 	
 	@IBOutlet weak var deleteCategoryButton: UIButton!
-	
+
 	@IBOutlet weak var nameTitleLabel: UILabel!
+	
 	@IBOutlet weak var nameLabel: UILabel!
 	
 	@IBOutlet weak var nameEditButton: UIButton!
+	
 	@IBOutlet weak var descriptionLabel: UILabel!
 	
 	@IBOutlet weak var descriptionEditButton: UIButton!
@@ -42,6 +44,20 @@ class CategoryVC2: UIViewController {
 			nameTitleLabel.text = "MY CATEGORY"
 		}
 		
+		
+		// delete icon
+		if categoryVCH.category.isStandard {
+			deleteCategoryButton.isHidden = true
+		} else {
+			deleteCategoryButton.isHidden = false
+			if categoryVCH.category.categoryID == -1 {
+				deleteCategoryButton.isEnabled = false
+			} else {
+				deleteCategoryButton.isEnabled = true
+			}
+		}
+		
+		
 		if categoryVCH.category.name == "" {
 			nameLabel.text = "New Name"
 		} else {
@@ -62,8 +78,6 @@ class CategoryVC2: UIViewController {
 		
 		if categoryVCH.category.categoryID == -1 {
 			headerImage.image = myTheme.imageHeaderAdd
-		} else {
-			
 		}
 		
 		
