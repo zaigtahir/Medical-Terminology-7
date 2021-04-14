@@ -93,7 +93,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		} else {
 			self.title = "Term Details"
 			leftButton.title = "Done"
-			deleteTermButton.isEnabled = true
+			deleteTermButton.isEnabled = false
 		}
 		
 		
