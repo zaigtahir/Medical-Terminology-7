@@ -22,6 +22,9 @@ class CategoryVC2: UIViewController {
 	
 	@IBOutlet weak var descriptionEditButton: UIButton!
 	
+	var categoryVCH = CategoryVCH2()
+		
+		
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +34,32 @@ class CategoryVC2: UIViewController {
 	// MARK: - updateDisplay
 	
 	func updateDisplay() {
+		
+		if categoryVCH.category.isStandard {
+			nameTitleLabel.text = "PREDEFINED CATEGORY"
+		} else {
+			nameTitleLabel.text = "MY CATEGORY"
+		}
+		
+		if categoryVCH.category.name == "" {
+			nameLabel.text = "New Name"
+		} else {
+			nameLabel.text = categoryVCH.category.name
+		}
+		
+		if categoryVCH.category.description == "" {
+			descriptionLabel.text = "(optional)"
+		} else {
+			descriptionLabel.text = categoryVCH.category.description
+		}
+		
+		if categoryVCH.category.categoryID == -1 {
+			headerImage.image = myTheme.imageHeaderAdd
+		} else {
+			
+		}
+		
+		
 		
 	}
 	

@@ -16,6 +16,7 @@ class Category {
     var name = "none"
     var description = "none"
     var displayOrder = 0
+	var isStandard = false
 	var count : Int?			//hold count of times in this category
     
     // just reminder never use category with ID 999 as it's just a placeholder in the database

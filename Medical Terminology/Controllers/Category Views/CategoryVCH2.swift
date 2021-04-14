@@ -13,16 +13,11 @@ class CategoryVCH2 {
 	
 	// if catetory id = -1, you are adding a new catetory
 	
-	var catetory: Category2!
+	var category : Category2!
 	
-
-	
-	
-	
-	
-	
-	
-	
+	init () {
+		
+	}
 	
 	
 	

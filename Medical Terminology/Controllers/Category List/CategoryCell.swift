@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CategoryCellDelegate: AnyObject {
+	func shouldSegueToCategory (category: Category2)
+}
+
 class CategoryCell: UITableViewCell {
 	
 	@IBOutlet weak var nameLabel: UILabel!
@@ -15,9 +19,13 @@ class CategoryCell: UITableViewCell {
 	@IBOutlet weak var countLabel: UILabel!
 	
 	// hold the state of this cells isEnable so I can use it later in the didSelectRow method I just have a default value here, but when you format the cell, you will also end up setting this value
-	var isSelectable = true
+	private var  isSelectable = true
 	
-	//	private var categoryID = 0 // used so I can pass it in the delegate method
+	// itialize this with the rowCategory value so that I can use it in the delegate function
+	
+	private var category: Category2!
+	
+	weak var delegate : CategoryCellDelegate?
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -28,6 +36,7 @@ class CategoryCell: UITableViewCell {
 		nameLabel.text  = rowCategory.name
 		countLabel.text = String (rowCategory.count)
 		self.isSelectable = isSelectable
+		self.category = rowCategory
 		
 		if rowCategory.categoryID == currentCategory {
 			//selected category
@@ -73,11 +82,10 @@ class CategoryCell: UITableViewCell {
 			countLabel.text = String (rowCategory.count)
 		}
 		
-		
 	}
 	
 	@IBAction func showDetailButtonAction(_ sender: UIButton) {
-		print("show detail button pressed")
+		delegate?.shouldSegueToCategory(category: self.category)
 	}
 	
 }

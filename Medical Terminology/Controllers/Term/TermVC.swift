@@ -67,8 +67,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		// MARK: fill fields
 		
-		//playAudioButton.isEnabled = localTerm.isAudioFilePresent()
-		
 		playAudioButton.isEnabled = termVCH.term.isAudioFilePresent()
 		
 		if termVCH.term.isStandard {
