@@ -22,7 +22,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	
 	/// Everything will be based on this term. If this termID = -1, this will be considered to be a NEW term that is not saved yet
 	var term : Term!
-	var newTermFavoriteStatus: Bool!
+	var newTermFavoriteStatus = false
 	var currentCategoryID : Int!
 	
 	var propertyReference : PropertyReference!
@@ -56,6 +56,17 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		NotificationCenter.default.removeObserver(self)
 	}
 	
+	func saveNewTerm () {
+		let _ = tc.saveTerm(term: term)
+		
+		// if this is favorite, make it favorite for each catetory
+		if newTermFavoriteStatus {
+			for c in term.assignedCategories {
+				tc.setFavoriteStatusPN(categoryID: c, termID: term.termID, isFavorite: true)
+			}
+		}
+	}
+	
 	// MARK: - notification functions
 	@objc func assignCategoryN (notification : Notification) {
 		if let data = notification.userInfo as? [String : Int] {
@@ -64,12 +75,18 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 			let affectedTermID = data["termID"]!
 			
 			if term.termID == affectedTermID {
+				
+				// if this is a new term, need to
+				
+				
+				
 				delegate?.shouldUpdateDisplay()
 			}
 		}
 	}
 	
 	@objc func unassignCategoryN (notification : Notification){
+		
 		if let data = notification.userInfo as? [String : Int] {
 			delegate?.shouldUpdateDisplay()
 			
@@ -89,12 +106,8 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		var categoryList = ""
 		
 		for id in term.assignedCategories {
-			if (id != myConstants.dbCategoryMyTermsID) && (id != myConstants.dbCategoryAllTermsID) {
-				// note not including id 1 = All terms and 2 = My Terms
-				
-				let category = cc.getCategory(categoryID: id)
-				categoryList.append("\(category.name)\n")
-			}
+			let category = cc.getCategory(categoryID: id)
+			categoryList.append("\(category.name)\n")
 		}
 		
 		return categoryList
@@ -187,4 +200,5 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 			print ("fatal error passeed a propertyReference that should not be passed here")
 		}
 	}
+	
 }

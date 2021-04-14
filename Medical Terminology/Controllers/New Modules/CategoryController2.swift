@@ -121,6 +121,9 @@ class CategoryController2 {
 				
 			}
 			
+			// sort the categories to the usual order
+			sortAssignedCategories(term: term)
+			
 			// send out notification
 			let data = ["termID" : term.termID, "categoryID" : categoryID]
 			let name = Notification.Name(myKeys.unassignCategoryKey)
@@ -132,9 +135,10 @@ class CategoryController2 {
 			// categoryID is not part of assignedCategories, so add to it
 			term.assignedCategories.append(categoryID)
 			
-			// send out a term assigned notification so that the termVC can update itself
+			// sort the categories to the usual order
+			sortAssignedCategories(term: term)
 			
-			// send out notification
+			// send out a term assigned notification so that the termVC can update itself
 			let data = ["termID" : term.termID, "categoryID" : categoryID]
 			let name = Notification.Name(myKeys.assignCategoryKey)
 			NotificationCenter.default.post(name: name, object: self, userInfo: data)
@@ -144,50 +148,51 @@ class CategoryController2 {
 		
 	}
 	
-	private func sortAssignedCategories (term: Term) {
-		// will take a array of [categoryID] and sort them. the custom categores will be first based on their display order, then the standard categories after based on their display order
-		
-		
-		/*
-		select categoryID, displayOrder from categories2 where categoryID = 1 OR categoryID = 3 OR categoryID = 6
-		ORDER BY isStandard, displayOrder
-		*/
-		
-		
-		if term.assignedCategories.count == 0 {
-			return
-		}
-		
-		var query = "SELECT categoryID, isStandard, displayOrder FROM \(categories) WHERE categoryID = \(term.assignedCategories[0]) "
-		
-		for id in term.assignedCategories {
-			
-			if id != term.assignedCategories[0] { // skip the first one as I added that already
-				query.append(" OR categoryID = \(id)")
-			}
-		}
-		
-		query.append("  ORDER BY isStandard, displayOrder")
-		
-		var orderedArray = [Int]()
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			
-			while resultSet.next() {
-				orderedArray.append(Int(resultSet.int(forColumnIndex: 0)))
-			}
-			
-		} else {
-			print ("fatal error not able to get result set in CategoryController sortAssignedCategoreis")
-		}
-		
-		// reversing it so that it shows in the correct order
-		orderedArray.reverse()
-		
-		// attaching the ordered list to the array
-		term.assignedCategories = orderedArray
-		
+	/**
+	Use this to sort the categories in a new term as they are no retrived from the db in my ususual order
+	*/
+	func sortAssignedCategories (term: Term) {
+	// will take a array of [categoryID] and sort them. the custom categores will be first based on their display order, then the standard categories after based on their display order
+	
+	
+	/*
+	select categoryID, displayOrder from categories2 where categoryID = 1 OR categoryID = 3 OR categoryID = 6
+	ORDER BY isStandard, displayOrder
+	*/
+	
+	
+	if term.assignedCategories.count == 0 {
+		return
 	}
+	
+	var query = "SELECT categoryID, isStandard, displayOrder FROM \(categories) WHERE categoryID = \(term.assignedCategories[0]) "
+	
+	for id in term.assignedCategories {
+		
+		if id != term.assignedCategories[0] { // skip the first one as I added that already
+			query.append(" OR categoryID = \(id)")
+		}
+	}
+	
+	query.append("  ORDER BY isStandard, displayOrder")
+	
+	var orderedArray = [Int]()
+	
+	if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+		
+		while resultSet.next() {
+			orderedArray.append(Int(resultSet.int(forColumnIndex: 0)))
+		}
+		
+	} else {
+		print ("fatal error not able to get result set in CategoryController sortAssignedCategoreis")
+	}
+	
+	
+	// attaching the ordered list to the array
+	term.assignedCategories = orderedArray
+	
+}
 	
 	private func fillCategory (resultSet: FMResultSet) -> Category2 {
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))

@@ -27,6 +27,7 @@ class CategoryVC2: UIViewController {
 		
     override func viewDidLoad() {
         super.viewDidLoad()
+		updateDisplay()
 
         // Do any additional setup after loading the view.
     }
@@ -48,7 +49,13 @@ class CategoryVC2: UIViewController {
 		}
 		
 		if categoryVCH.category.description == "" {
-			descriptionLabel.text = "(optional)"
+			
+			if categoryVCH.category.categoryID == -1 {
+				descriptionLabel.text = "(optional)"
+			} else {
+				descriptionLabel.text = "No description available"
+			}
+		
 		} else {
 			descriptionLabel.text = categoryVCH.category.description
 		}

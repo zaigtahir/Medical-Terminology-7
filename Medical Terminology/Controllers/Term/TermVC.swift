@@ -71,9 +71,31 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		if termVCH.term.isStandard {
 			nameTitleLabel.text = "PREDEFINED TERM"
+			deleteTermButton.isEnabled = false
 		} else {
 			nameTitleLabel.text = "MY TERM"
+			deleteTermButton.isEnabled = true
 		}
+		
+		
+		if termVCH.term.termID == -1 {
+			self.title = "Add New"
+			leftButton.title = "Save"
+			headerImage.image = myTheme.imageHeaderAdd
+			deleteTermButton.isEnabled = false
+			
+			if (termVCH.term.name != "" && termVCH.term.definition != "") {
+				leftButton.isEnabled = true
+			} else {
+				leftButton.isEnabled = false
+			}
+			
+		} else {
+			self.title = "Term Details"
+			leftButton.title = "Done"
+			deleteTermButton.isEnabled = true
+		}
+		
 		
 		if termVCH.term.name == "" {
 			nameLabel.text = "New Name"
@@ -87,58 +109,56 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			definitionLabel.text = termVCH.term.definition
 		}
 		
+		// MARK: change the other optional fields like this
+		
 		if termVCH.term.example == "" {
-			exampleLabel.text = "(optional)"
-		} else {
+			
+			if termVCH.term.termID == -1 {
+				exampleLabel.text = "(optional)"
+			} else {
+				exampleLabel.text = "No example available"
+			}
+			
+		}  else {
 			exampleLabel.text = termVCH.term.example
 		}
+				
 		
 		if termVCH.term.myNotes == ""
 		{
-			myNotesLabel.text = "(optional)"
+			
+			if termVCH.term.termID == -1 {
+				myNotesLabel.text = "(optional)"
+			} else {
+				myNotesLabel.text = "No notes available"
+			}
+
+			
 		} else {
 			myNotesLabel.text = termVCH.term.myNotes
 		}
 		
-		if termVCH.term.assignedCategories.count == 0 {
-			categoriesListTextView.text = "(optional)"
-		} else {
-			categoriesListTextView.text = termVCH.getCategoryNamesText()
-		}
+		// MARK: category count will never be 0
+		
+		categoriesListTextView.text = termVCH.getCategoryNamesText()
 		
 		// MARK: setup buttons
 		
 		if termVCH.term.isStandard {
-			deleteTermButton.isEnabled = false
+			
 			nameEditButton.isHidden = true
 			definitionEditButton.isHidden = true
 			exampleEditButton.isHidden = true
 			myNotesEditButton.isHidden = false
 			
 		} else {
-			deleteTermButton.isEnabled = true
+
 			nameEditButton.isHidden = false
 			exampleEditButton.isHidden = false
 			definitionEditButton.isHidden = false
 			myNotesEditButton.isHidden = false
 		}
 		
-		
-		if termVCH.term.termID == -1 {
-			self.title = "Add New"
-			leftButton.title = "Save"
-			headerImage.image = myTheme.imageHeaderAdd
-			
-			if (termVCH.term.name != "" && termVCH.term.definition != "") {
-				leftButton.isEnabled = true
-			} else {
-				leftButton.isEnabled = false
-			}
-			
-		} else {
-			self.title = "Term Details"
-			leftButton.title = "Done"
-		}
 		
 	}
 	
@@ -257,10 +277,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	@IBAction func leftButtonAction(_ sender: Any) {
 		
-		if termVCH.term.termID == -1 {
-			// this is a new term and it's ready to be saved
-			let _ = tc.saveTerm(term: termVCH.term)
-		}
+		termVCH.saveNewTerm()
 		
 		self.dismiss(animated: true) {
 			// no code

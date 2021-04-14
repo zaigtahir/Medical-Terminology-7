@@ -80,6 +80,8 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		performSegue(withIdentifier: myConstants.segueTerm, sender: self)
 	}
 	
+	// MARK: - prepare segue
+	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
 		switch segue.identifier {
@@ -95,13 +97,10 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			
 		case myConstants.segueTerm:
 			
-			// need to determine with displayMode to show the TermVC in
-			// displayMode = view if the user clicked a row to view a term
-			// displayMode = add if the user clicked the add term button
-			// use the variable termListVCH.displayModeForTermVC
 			
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! TermVC
+			
 			vc.termVCH.currentCategoryID = termListVCH.currentCategoryID
 			
 			switch termListVCH.termEditMode {
@@ -110,7 +109,18 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 				vc.termVCH.term = tc.getTerm(termID: termListVCH.termIDForSegue)
 				
 			case .add:
-				vc.termVCH.term = Term()
+				
+				let newTerm = Term()
+				newTerm.assignedCategories.append(myConstants.dbCategoryAllTermsID)
+				newTerm.assignedCategories.append(myConstants.dbCategoryMyTermsID)
+				if (termListVCH.currentCategoryID != myConstants.dbCategoryAllTermsID) && (termListVCH.currentCategoryID != myConstants.dbCategoryMyTermsID) {
+					newTerm.assignedCategories.append(termListVCH.currentCategoryID)
+				}
+				
+				// sort the category names in the correct sequence
+				cc.sortAssignedCategories(term: newTerm)
+				
+				vc.termVCH.term = newTerm
 			}
 	
 			

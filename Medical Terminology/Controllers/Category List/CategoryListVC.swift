@@ -15,6 +15,7 @@ import UIKit
 
 class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 
+
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var selectModeImage: UIImageView!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
@@ -22,6 +23,9 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	@IBOutlet weak var termPredefinedButton: UIButton!
 	
 	let categoryListVCH = CategoryListVCH()
+	
+	// used just to pass info from performSegue to prepare for segue
+	private var segueCategory: Category2!
 	
 	override func viewDidLoad() {
 		
@@ -67,6 +71,14 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		tableView.reloadData()
 	}
 	
+	func shouldSegueToCatetory(category: Category2) {
+		
+		self.segueCategory = category
+		
+		performSegue(withIdentifier: myConstants.segueCategory, sender: self)
+	}
+	
+	
 	// MARK: - prepare segue
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,13 +86,8 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		switch segue.identifier {
 		
 		case myConstants.segueCategory:
-			let vc = segue.destination as? CategoryVC
-			
-			print ("add code to preset CategoryVC for segue")
-			
-			//vc?.categoryVCH.categoryEditMode = self.categoryEditMode
-			//vc?.categoryVCH.affectedCategory = segueCategory
-		
+			let vc = segue.destination as? CategoryVC2
+			vc?.categoryVCH.category = segueCategory
 		default:
 			print ("fatal error did not find a matching segue in prepar funtion of categoryListVC")
 		}

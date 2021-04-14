@@ -16,6 +16,7 @@ All controllers that are affected by that can respond to it
 protocol CategoryListVCHDelegate: AnyObject {
 	
 	func shouldReloadTable ()
+	func shouldSegueToCatetory (category: Category2)
 }
 
 class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate {
@@ -299,7 +300,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		if term.termID == -1 {
 			
 			cc.toggleCategoriesNewTermPN(term: term, categoryID: category.categoryID)
-		
+			
 			delegate?.shouldReloadTable()
 			
 		} else {
@@ -313,7 +314,8 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	// MARK: - CategoryCellDelegate
 	func shouldSegueToCategory(category: Category2) {
-		print("got request to segue to category")
+		
+		delegate?.shouldSegueToCatetory(category: category)
 	}
 	
 }
