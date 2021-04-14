@@ -18,7 +18,7 @@ protocol CategoryListVCHDelegate: AnyObject {
 	func shouldReloadTable ()
 }
 
-class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
+class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate {
 	
 	/*
 	In the assign category mode:
@@ -191,7 +191,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 			case .selectCategory:
 				
 				cell.formatCellSelectCategory(rowCategory: rowCategory, currentCategory: self.currentCategoryID, isSelectable: true )
-				
+				cell.delegate = self
 				return cell
 				
 			case .assignCategory:
@@ -227,6 +227,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		}
 		
 		cell.formatCellAssignCategory(rowCategory: rowCategory, currentCategoryID: currentCategoryID, assignedCategoryIDsForTerm: term.assignedCategories, isSelectable: rowIsEnabled)
+		cell.delegate = self
 		
 	}
 	
@@ -309,6 +310,11 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate {
 		}
 	}
 	
+	
+	// MARK: - CategoryCellDelegate
+	func shouldSegueToCategory(category: Category2) {
+		print("got request to segue to category")
+	}
 	
 }
 

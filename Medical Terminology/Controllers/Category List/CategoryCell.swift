@@ -19,7 +19,7 @@ class CategoryCell: UITableViewCell {
 	@IBOutlet weak var countLabel: UILabel!
 	
 	// hold the state of this cells isEnable so I can use it later in the didSelectRow method I just have a default value here, but when you format the cell, you will also end up setting this value
-	private var  isSelectable = true
+	var  isSelectable = true
 	
 	// itialize this with the rowCategory value so that I can use it in the delegate function
 	
