@@ -61,6 +61,8 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		updateDisplay()
 	}
 	
+	// MARK: - updateDisplay
+	
 	func updateDisplay () {
 		
 		// MARK: fill fields
