@@ -33,12 +33,15 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		tableView.delegate = termListVCH
 		tableView.dataSource = termListVCH
 		tableView.tableFooterView = UIView()
+		
+		searchBar.delegate = self
+		
 		showFavoritesOnlyButton.isOn = termListVCH.showFavoritesOnly
 		updateDisplay()
 	}
 	
 	func updateDisplay () {
-		
+				
 		let category = cc.getCategory(categoryID: termListVCH.currentCategoryID)
 		
 		let count = termListVCH.getAllTermsCount()
@@ -48,6 +51,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		favoritesCountLabel.text = String (termListVCH.getFavoriteTermsCount())
 		
 		showFavoritesOnlyButton.isOn = termListVCH.showFavoritesOnly
+
 	}
 	
 	// MARK: - TermListVCHDelegate functions
@@ -131,17 +135,18 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
 		
-		searchBar.text = nil
+		searchBar.text = .none
 		searchBar.showsCancelButton = false
 		searchBar.endEditing(true)
 		
-		termListVCH.searchText = .none
+		termListVCH.searchText = ""
 		termListVCH.updateData()
+		tableView.reloadData()
 		updateDisplay()
 	}
 	
 	@IBAction func ShowFavoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
-		print("here at button action")
+
 		termListVCH.showFavoritesOnly.toggle()
 		termListVCH.updateData ()
 		tableView.reloadData()

@@ -29,6 +29,9 @@ class TermsList {
 	
 	func makeList (categoryID: Int, showFavoritesOnly: Bool?, containsText: String?) {
 		
+		print ("making terms List")
+		
+		
 		// clear any current values from the termIDsList and count
 		count = 0
 		termIDsList = [[Int]] ()

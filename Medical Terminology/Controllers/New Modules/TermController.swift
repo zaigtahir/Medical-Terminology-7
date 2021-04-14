@@ -165,7 +165,7 @@ class TermController {
 	will assign catetory All Terms, My Terms and any other that are in term.assignedTerms
 	Wil return the termID of the added term
 	*/
-	func saveTerm (term: Term) {
+	func saveTerm (term: Term) -> Int {
 		
 		// saving a custom term with secondCategory = 2 and isStandard value is redundant, but makes for smoother programming
 		
@@ -176,17 +176,18 @@ class TermController {
 		
 		myDB.executeStatements(query)
 	
-		
 		let addedTermID = Int(myDB.lastInsertRowId)
-		
-		print ("saved the new term!!!!! the new termID = \(addedTermID)")
-		
-		// now assign All Terms, MyTerms
-		cc.assignCategoryPN(termID: addedTermID, categoryID: myConstants.dbCategoryAllTermsID)
-		cc.assignCategoryPN(termID: addedTermID, categoryID: myConstants.dbCategoryMyTermsID)
-		
-		
 	
+		// now assign All Terms, MyTerms
+		term.assignedCategories.append(myConstants.dbCategoryAllTermsID)
+		term.assignedCategories.append(myConstants.dbCategoryMyTermsID)
+		
+		for c in term.assignedCategories {
+			cc.assignCategoryPN(termID: addedTermID, categoryID: c)
+		}
+		
+		return addedTermID
+		
 	}
 	
 	// MARK: - term update functions

@@ -9,6 +9,9 @@
 import UIKit
 
 class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
+	@IBOutlet weak var nameTitleLabel: UILabel!
+	
+	@IBOutlet weak var headerImage: UIImageView!
 	
 	@IBOutlet weak var nameLabel: UILabel!
 	
@@ -66,6 +69,12 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		playAudioButton.isEnabled = termVCH.term.isAudioFilePresent()
 		
+		if termVCH.term.isStandard {
+			nameTitleLabel.text = "PREDEFINED TERM"
+		} else {
+			nameTitleLabel.text = "MY TERM"
+		}
+		
 		if termVCH.term.name == "" {
 			nameLabel.text = "New Name"
 		} else {
@@ -116,7 +125,9 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		
 		if termVCH.term.termID == -1 {
+			self.title = "Add New"
 			leftButton.title = "Save"
+			headerImage.image = myTheme.imageHeaderAdd
 			
 			if (termVCH.term.name != "" && termVCH.term.definition != "") {
 				leftButton.isEnabled = true
@@ -125,6 +136,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			}
 			
 		} else {
+			self.title = "Term Details"
 			leftButton.title = "Done"
 		}
 		
@@ -247,9 +259,11 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		if termVCH.term.termID == -1 {
 			// this is a new term and it's ready to be saved
-			tc.saveTerm(term: termVCH.term)
-		} else {
-			self.dismiss(animated: true, completion: nil)
+			let _ = tc.saveTerm(term: termVCH.term)
+		}
+		
+		self.dismiss(animated: true) {
+			// no code
 		}
 		
 	}

@@ -33,7 +33,8 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	var currentCategoryID = 1 			// default starting off category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	
-	var searchText : String?			// use for searching. Update this when the user enters text in the search bar
+	
+	var searchText : String?
 	
 	var termsList = TermsList()
 	
@@ -189,7 +190,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	func updateData () {
 		
 		// MARK: add code to remove more than 1 space also?
-		
 		// Clean up the search text
 		if let nonCleanText = searchText {
 			

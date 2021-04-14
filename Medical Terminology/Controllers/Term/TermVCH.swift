@@ -100,9 +100,6 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		return categoryList
 	}
 	
-	
-	
-	
 	// MARK: - SingleLineInputDelegate function
 	
 	func shouldUpdateSingleLineInfo (propertyReference: PropertyReference, cleanString: String) {
