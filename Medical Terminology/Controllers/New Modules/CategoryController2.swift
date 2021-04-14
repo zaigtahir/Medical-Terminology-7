@@ -80,7 +80,6 @@ class CategoryController2 {
 		
 	}
 	
-	
 	// MARK: - toggle category functions
 	/**
 	If the category is not already assigned, assign it (and vice versa), update the DB and reload the assigned categories in the term
@@ -93,17 +92,15 @@ class CategoryController2 {
 		if term.assignedCategories.contains(categoryID) {
 			//this category is already assigned to this term, so need to remove it
 			unassignCategoryPN(termID: term.termID, categoryID: categoryID)
-			
 		} else {
+			
 			//this category is not assigned to this term, so need to add it
 			assignCategoryPN(termID: term.termID, categoryID: categoryID)
 		}
-
 	}
 	
 	/**
-	Update the categories just locally in the term, and nothing is saved to the DB
-	Ideally want the sequence of the categories to be as if they were pulled from the db in the display order and custom on top
+	Update the categories just locally in the term, and nothing is saved to the DB. The categories are sorted.
 	*/
 	func toggleCategoriesNewTermPN (term: Term, categoryID: Int) {
 		
@@ -118,17 +115,12 @@ class CategoryController2 {
 					
 					term.assignedCategories.remove(at: indexToRemove)
 				}
-				
 			}
-			
-			// sort the categories to the usual order
-			sortAssignedCategories(term: term)
-			
+		
 			// send out notification
 			let data = ["termID" : term.termID, "categoryID" : categoryID]
 			let name = Notification.Name(myKeys.unassignCategoryKey)
 			NotificationCenter.default.post(name: name, object: self, userInfo: data)
-			
 			
 		} else {
 			
@@ -138,61 +130,59 @@ class CategoryController2 {
 			// sort the categories to the usual order
 			sortAssignedCategories(term: term)
 			
-			// send out a term assigned notification so that the termVC can update itself
+			// send out notification
 			let data = ["termID" : term.termID, "categoryID" : categoryID]
 			let name = Notification.Name(myKeys.assignCategoryKey)
 			NotificationCenter.default.post(name: name, object: self, userInfo: data)
-			
 		}
-		
-		
+	
 	}
 	
 	/**
 	Use this to sort the categories in a new term as they are no retrived from the db in my ususual order
 	*/
 	func sortAssignedCategories (term: Term) {
-	// will take a array of [categoryID] and sort them. the custom categores will be first based on their display order, then the standard categories after based on their display order
-	
-	
-	/*
-	select categoryID, displayOrder from categories2 where categoryID = 1 OR categoryID = 3 OR categoryID = 6
-	ORDER BY isStandard, displayOrder
-	*/
-	
-	
-	if term.assignedCategories.count == 0 {
-		return
-	}
-	
-	var query = "SELECT categoryID, isStandard, displayOrder FROM \(categories) WHERE categoryID = \(term.assignedCategories[0]) "
-	
-	for id in term.assignedCategories {
+		// will take a array of [categoryID] and sort them. the custom categores will be first based on their display order, then the standard categories after based on their display order
 		
-		if id != term.assignedCategories[0] { // skip the first one as I added that already
-			query.append(" OR categoryID = \(id)")
-		}
-	}
-	
-	query.append("  ORDER BY isStandard, displayOrder")
-	
-	var orderedArray = [Int]()
-	
-	if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 		
-		while resultSet.next() {
-			orderedArray.append(Int(resultSet.int(forColumnIndex: 0)))
+		/*
+		select categoryID, displayOrder from categories2 where categoryID = 1 OR categoryID = 3 OR categoryID = 6
+		ORDER BY isStandard, displayOrder
+		*/
+		
+		
+		if term.assignedCategories.count == 0 {
+			return
 		}
 		
-	} else {
-		print ("fatal error not able to get result set in CategoryController sortAssignedCategoreis")
+		var query = "SELECT categoryID, isStandard, displayOrder FROM \(categories) WHERE categoryID = \(term.assignedCategories[0]) "
+		
+		for id in term.assignedCategories {
+			
+			if id != term.assignedCategories[0] { // skip the first one as I added that already
+				query.append(" OR categoryID = \(id)")
+			}
+		}
+		
+		query.append("  ORDER BY isStandard, displayOrder")
+		
+		var orderedArray = [Int]()
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			
+			while resultSet.next() {
+				orderedArray.append(Int(resultSet.int(forColumnIndex: 0)))
+			}
+			
+		} else {
+			print ("fatal error not able to get result set in CategoryController sortAssignedCategoreis")
+		}
+		
+		
+		// attaching the ordered list to the array
+		term.assignedCategories = orderedArray
+		
 	}
-	
-	
-	// attaching the ordered list to the array
-	term.assignedCategories = orderedArray
-	
-}
 	
 	private func fillCategory (resultSet: FMResultSet) -> Category2 {
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))
@@ -290,7 +280,7 @@ class CategoryController2 {
 		let query = "DELETE FROM \(assignedCategories) WHERE termID = \(termID) AND categoryID = \(categoryID)"
 		myDB.executeStatements(query)
 		
-
+		
 		// send out notification
 		let data = ["termID" : termID, "categoryID" : categoryID]
 		let name = Notification.Name(myKeys.unassignCategoryKey)

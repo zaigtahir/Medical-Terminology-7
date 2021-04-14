@@ -169,19 +169,12 @@ class TermController {
 		
 		// saving a custom term with secondCategory = 2 and isStandard value is redundant, but makes for smoother programming
 		
-		let query  = """
-		INSERT INTO \(terms) (name, definition, example, myNotes, isStandard, secondCategoryID)
-		VALUES ('\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2)
-		"""
-		
+		let query  = "INSERT INTO \(terms) (name, definition, example, myNotes, isStandard, secondCategoryID) VALUES ('\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2)"
+				
 		myDB.executeStatements(query)
 	
 		let addedTermID = Int(myDB.lastInsertRowId)
-	
-		// now assign All Terms, MyTerms
-		term.assignedCategories.append(myConstants.dbCategoryAllTermsID)
-		term.assignedCategories.append(myConstants.dbCategoryMyTermsID)
-		
+			
 		for c in term.assignedCategories {
 			cc.assignCategoryPN(termID: addedTermID, categoryID: c)
 		}

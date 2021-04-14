@@ -57,7 +57,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		super.viewDidLoad()
 		
 		termVCH.delegate = self
-
+		
 		updateDisplay()
 	}
 	
@@ -122,7 +122,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		}  else {
 			exampleLabel.text = termVCH.term.example
 		}
-				
+		
 		
 		if termVCH.term.myNotes == ""
 		{
@@ -132,7 +132,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			} else {
 				myNotesLabel.text = "No notes available"
 			}
-
+			
 			
 		} else {
 			myNotesLabel.text = termVCH.term.myNotes
@@ -152,7 +152,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			myNotesEditButton.isHidden = false
 			
 		} else {
-
+			
 			nameEditButton.isHidden = false
 			exampleEditButton.isHidden = false
 			definitionEditButton.isHidden = false
@@ -276,12 +276,10 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	}
 	
 	@IBAction func leftButtonAction(_ sender: Any) {
-		
-		termVCH.saveNewTerm()
-		
-		self.dismiss(animated: true) {
-			// no code
+		if termVCH.term.termID == -1 {
+			termVCH.saveTerm()
 		}
+		self.dismiss(animated: true, completion: nil)
 		
 	}
 	

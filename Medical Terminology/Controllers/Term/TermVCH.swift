@@ -24,9 +24,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	var term : Term!
 	var newTermFavoriteStatus = false
 	var currentCategoryID : Int!
-	
 	var propertyReference : PropertyReference!
-	
 	var delegate: TermVCHDelegate?
 	
 	// controllers
@@ -49,26 +47,37 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		let nameUCK = Notification.Name(myKeys.unassignCategoryKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignCategoryN(notification:)), name: nameUCK, object: nil)
-		
+				
 	}
 	
 	deinit {
 		NotificationCenter.default.removeObserver(self)
 	}
 	
-	func saveNewTerm () {
-		let _ = tc.saveTerm(term: term)
+	func updateData (){
+		
+		// If the termID = -1, I will be updating the term object locally so there is no updating needed
+		if term.termID != -1 {
+			term = tc.getTerm(termID: term.termID)
+			term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
+		}
+	}
+	
+	func saveTerm () {
+		let newTermID = tc.saveTerm(term: term)
 		
 		// if this is favorite, make it favorite for each catetory
 		if newTermFavoriteStatus {
 			for c in term.assignedCategories {
-				tc.setFavoriteStatusPN(categoryID: c, termID: term.termID, isFavorite: true)
+				tc.setFavoriteStatusPN(categoryID: c, termID: newTermID, isFavorite: true)
 			}
 		}
+		
 	}
 	
 	// MARK: - notification functions
 	@objc func assignCategoryN (notification : Notification) {
+		
 		if let data = notification.userInfo as? [String : Int] {
 			delegate?.shouldUpdateDisplay()
 			
@@ -78,8 +87,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 				
 				// if this is a new term, need to
 				
-				
-				
+				updateData()
 				delegate?.shouldUpdateDisplay()
 			}
 		}
@@ -91,6 +99,8 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 			delegate?.shouldUpdateDisplay()
 			
 			let affectedTermID = data["termID"]!
+			
+			updateData()
 			
 			if term.termID == affectedTermID {
 				delegate?.shouldUpdateDisplay()
@@ -136,8 +146,8 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 			tc.updateTermNamePN(termID: term.termID, name: cleanString)
 		}
 		
+		updateData()
 		delegate?.shouldUpdateDisplay()
-		
 		delegate?.shouldDismissTextInputVC()
 		
 	}
@@ -160,9 +170,6 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 				tc.updateTermDefinitionPN(termID: term.termID, definition: cleanString)
 			}
 			
-			delegate?.shouldUpdateDisplay()
-			delegate?.shouldDismissTextInputVC()
-			
 		case .example:
 			
 			if term.example == cleanString {
@@ -176,8 +183,6 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 				tc.updateTermExamplePN (termID: term.termID, example: cleanString)
 			}
 			
-			delegate?.shouldUpdateDisplay()
-			delegate?.shouldDismissTextInputVC()
 			
 		case .myNotes:
 			
@@ -193,12 +198,18 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 				
 			}
 			
-			delegate?.shouldUpdateDisplay()
-			delegate?.shouldDismissTextInputVC()
-			
 		default:
 			print ("fatal error passeed a propertyReference that should not be passed here")
 		}
+		
+		
+		if term.termID != -1 {
+			updateData()
+		}
+		
+		delegate?.shouldUpdateDisplay()
+		delegate?.shouldDismissTextInputVC()
+		
 	}
 	
 }

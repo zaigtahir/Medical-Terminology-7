@@ -106,7 +106,8 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			switch termListVCH.termEditMode {
 			
 			case .view:
-				vc.termVCH.term = tc.getTerm(termID: termListVCH.termIDForSegue)
+				let term = tc.getTerm(termID: termListVCH.termIDForSegue)
+				vc.termVCH.term = term
 				
 			case .add:
 				
