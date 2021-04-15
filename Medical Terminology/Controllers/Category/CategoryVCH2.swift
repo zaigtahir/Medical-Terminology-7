@@ -19,13 +19,6 @@ class CategoryVCH2 {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 }
 
 

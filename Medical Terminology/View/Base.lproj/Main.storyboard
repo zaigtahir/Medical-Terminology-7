@@ -2754,7 +2754,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cUP-dB-hs5" kind="show" id="RQg-Yy-Rkk"/>
+                                    <segue destination="cUP-dB-hs5" kind="show" identifier="segueSingleLineInput" id="RQg-Yy-Rkk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWa-bR-57k">
@@ -2767,7 +2767,7 @@
                                 <state key="normal" image="chevron.right" catalog="system"/>
                                 <connections>
                                     <action selector="definitionEditButtonAction:" destination="cpZ-GR-xZj" eventType="touchUpInside" id="Ckz-mY-F05"/>
-                                    <segue destination="6nL-Ki-amP" kind="show" id="FY8-JO-v3w"/>
+                                    <segue destination="6nL-Ki-amP" kind="show" identifier="segueMultiLineInput" id="FY8-JO-v3w"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(none available)" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mH-Gk-dde">
@@ -3523,7 +3523,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="FY8-JO-v3w"/>
         <segue reference="RQg-Yy-Rkk"/>
-        <segue reference="Nhy-Yr-H6x"/>
+        <segue reference="HWU-Cd-rtW"/>
         <segue reference="Sbm-EN-3iq"/>
     </inferredMetricsTieBreakers>
     <resources>

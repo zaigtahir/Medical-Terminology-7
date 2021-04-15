@@ -30,6 +30,8 @@ class CategoryVC2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		updateDisplay()
+		
+		
 
         // Do any additional setup after loading the view.
     }
@@ -40,8 +42,13 @@ class CategoryVC2: UIViewController {
 		
 		if categoryVCH.category.isStandard {
 			nameTitleLabel.text = "PREDEFINED CATEGORY"
+			nameEditButton.isHidden = true
+			descriptionEditButton.isHidden = true
+			
 		} else {
 			nameTitleLabel.text = "MY CATEGORY"
+			nameEditButton.isHidden = false
+			descriptionEditButton.isHidden = false
 		}
 		
 		
@@ -86,4 +93,44 @@ class CategoryVC2: UIViewController {
 	
 	// MARK: - prepare segue
 
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
+		switch segue.identifier {
+		
+		case myConstants.segueSingleLineInput:
+			
+			if let singleLineInputVC = segue.destination as? SingleLineInputVC {
+				singleLineInputVC.textInputVCH.fieldTitle = "CATEGORY NAME"
+				singleLineInputVC.textInputVCH.initialText = categoryVCH.category.name
+				singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+				singleLineInputVC.textInputVCH.minLength = 1
+				singleLineInputVC.textInputVCH.maxLength = myConstants.maxLengthCategoryName
+				singleLineInputVC.textInputVCH.propertyReference = .none
+				// need to add delegate
+				
+				
+			}
+			
+		case myConstants.segueMultiLineInput:
+			
+			if let multiLineInputVC = segue.destination as? MultiLineInputVC {
+				multiLineInputVC.textInputVCH.fieldTitle = "DESCRIPTION"
+				multiLineInputVC.textInputVCH.initialText = categoryVCH.category.description
+				multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+				multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
+				multiLineInputVC.textInputVCH.minLength = 0
+				multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthCategoryDescription
+				multiLineInputVC.textInputVCH.propertyReference = .definition
+				// need to add delegate
+			}
+			
+			
+		default:
+			print("fatal error, called with an unexpecting segue in categoryVC prepare for segue")
+		}
+		
+		
+	}
+	
 }

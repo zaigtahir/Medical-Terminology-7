@@ -77,6 +77,7 @@ class MyConstants {
 	let maxLengthTermExample = 100
 	let maxLengthMyNotes = 100
 	let maxLengthCategoryName = 50
+	let maxLengthCategoryDescription = 100
 	
     let requeueInterval = 7 //interval to requeue a question in a learning set if it is answered wrong
 }
