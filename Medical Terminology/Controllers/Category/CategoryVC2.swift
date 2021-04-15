@@ -12,6 +12,10 @@ class CategoryVC2: UIViewController {
 
 	@IBOutlet weak var headerImage: UIImageView!
 	
+	@IBOutlet weak var cancelButton: UIBarButtonItem!
+	
+	@IBOutlet weak var leftButton: UIBarButtonItem!
+	
 	@IBOutlet weak var deleteCategoryButton: UIButton!
 
 	@IBOutlet weak var nameTitleLabel: UILabel!
@@ -31,9 +35,12 @@ class CategoryVC2: UIViewController {
         super.viewDidLoad()
 		updateDisplay()
 		
+		//navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
+		
+		self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "My Title", style: .plain, target: nil, action: nil)
 		
 
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
     }
     
 	// MARK: - updateDisplay
@@ -131,6 +138,12 @@ class CategoryVC2: UIViewController {
 		}
 		
 		
+	}
+	@IBAction func leftButtonAction(_ sender: Any) {
+	}
+	
+	@IBAction func cancelButtonAction(_ sender: Any) {
+		self.navigationController?.popViewController(animated: true)
 	}
 	
 }

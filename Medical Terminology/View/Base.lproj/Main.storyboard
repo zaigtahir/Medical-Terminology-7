@@ -2845,12 +2845,25 @@
                             <constraint firstItem="XVS-YS-k4L" firstAttribute="leading" secondItem="mwr-Bu-FcM" secondAttribute="leading" constant="20" id="wgt-VY-B3D"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Category Detail" id="lhj-8N-3CI"/>
+                    <navigationItem key="navigationItem" title="Category Detail" id="lhj-8N-3CI">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="Vje-88-BOl">
+                            <connections>
+                                <action selector="leftButtonAction:" destination="BPm-yE-Jpz" id="YpV-iq-GY0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Pcb-KE-zQd">
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="BPm-yE-Jpz" id="55w-cE-d9v"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="Pcb-KE-zQd" id="olQ-Qb-D9L"/>
                         <outlet property="deleteCategoryButton" destination="SiL-P8-kWj" id="FcL-Zj-4rA"/>
                         <outlet property="descriptionEditButton" destination="BWa-bR-57k" id="Hsy-LO-c7e"/>
                         <outlet property="descriptionLabel" destination="1mH-Gk-dde" id="aKx-as-I2X"/>
                         <outlet property="headerImage" destination="jm2-fe-7SJ" id="Hp5-mY-b1P"/>
+                        <outlet property="leftButton" destination="Vje-88-BOl" id="Tdo-Vz-Bqa"/>
                         <outlet property="nameEditButton" destination="3fu-G8-yGj" id="hXw-ly-kE7"/>
                         <outlet property="nameLabel" destination="MaY-Vt-qaJ" id="gKL-Qh-Vra"/>
                         <outlet property="nameTitleLabel" destination="XVS-YS-k4L" id="AFm-fp-QsG"/>
@@ -3423,8 +3436,8 @@
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FcX-d8-uLe">
-                                <rect key="frame" x="157" y="488" width="100" height="70"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FcX-d8-uLe">
+                                <rect key="frame" x="157" y="488" width="100" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzz-Y5-pxF" customClass="ZUIRoundedButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
@@ -3449,7 +3462,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oW7-ln-Ia8">
-                                        <rect key="frame" x="0.0" y="40" width="100" height="30"/>
+                                        <rect key="frame" x="0.0" y="50" width="100" height="30"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
                                             <action selector="cancelButtonAction:" destination="6nL-Ki-amP" eventType="touchUpInside" id="R57-e0-5TV"/>
@@ -3524,7 +3537,7 @@
         <segue reference="FY8-JO-v3w"/>
         <segue reference="RQg-Yy-Rkk"/>
         <segue reference="HWU-Cd-rtW"/>
-        <segue reference="Sbm-EN-3iq"/>
+        <segue reference="WdJ-IQ-Ral"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
