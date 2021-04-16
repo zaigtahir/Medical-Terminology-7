@@ -53,7 +53,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		updateDisplay()
 	}
 	
-	func shouldDisplayDuplicateCategoryNameAlert() {
+	func duplicateCatetoryName() {
 		print ("hey this is a duplicate category  name")
 	}
 	

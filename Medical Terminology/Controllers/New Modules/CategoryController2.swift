@@ -259,13 +259,17 @@ class CategoryController2 {
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID": categoryID])
 	}
 	
+	func updateCategoryDescription (categoryID: Int, description: String) {
+		let query = "UPDATE \(categories) SET description = '\(description)' WHERE categoryID = \(categoryID)"
+		
+		myDB.executeStatements(query)
+	}
+	
 	func updateCategoryNamePN (categoryID: Int, newName: String) {
 		
 		let query = "UPDATE \(categories) SET name = '\(newName)' WHERE categoryID = \(categoryID)"
 		myDB.executeStatements(query)
-		
-		print("updateCatetoryName query: \(query)")
-		
+	
 		let name = Notification.Name(myKeys.changeCategoryNameKey)
 		
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : categoryID])

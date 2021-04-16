@@ -11,7 +11,7 @@ import UIKit
 
 protocol CategoryVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
-	func shouldDisplayDuplicateCategoryNameAlert()
+	func duplicateCatetoryName()
 }
 
 class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
@@ -50,6 +50,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	func configureMultiLineInputVC (vc: MultiLineInputVC) {
 		
+		referenceMultiLineInputVC = vc
 		vc.textInputVCH.fieldTitle = "DESCRIPTION"
 		vc.textInputVCH.initialText = category.description
 		vc.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
@@ -70,7 +71,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		
 		if !cc.categoryNameIsUnique(name: cleanString, notIncludingCategoryID: category.categoryID) {
 			// this is a duplicate category name
-			delegate?.shouldDisplayDuplicateCategoryNameAlert()
+			delegate?.duplicateCatetoryName()
 			return
 		}
 		
@@ -82,13 +83,28 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		
 		delegate?.shouldUpdateDisplay()
 		referenceSingleLineInputVC.navigationController?.popViewController(animated: true)
-		
 	}
 	
 	func shouldUpdateMultiLineInfo(propertyReference: PropertyReference?, cleanString: String) {
-		print ("categoryVCH: write code update description")
+		
+		if category.description == cleanString {
+			// nothing changed, just pop off the input vc
+			referenceSingleLineInputVC.navigationController?.popViewController(animated: true)
+		}
+		
+		category.description = cleanString
+		
+		// no notification sent as this is the only VC that will show a category description and it is modal
+		
+		if category.categoryID != -1 {
+			cc.updateCategoryDescription(categoryID: category.categoryID, description: cleanString)
+		}
+		
+		delegate?.shouldUpdateDisplay()
+	
 		referenceMultiLineInputVC.navigationController?.popViewController(animated: true)
 	}
+	
 	
 }
 

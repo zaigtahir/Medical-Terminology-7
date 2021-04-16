@@ -288,7 +288,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		updateDisplay()
 	}
 	
-	func shouldDisplayDuplicateTermNameAlert() {
+	func duplicateTermName() {
 		let ac = UIAlertController(title: "Opps!", message: "There is already a term with that name. Please choose a different name.", preferredStyle: .alert)
 		let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
 		

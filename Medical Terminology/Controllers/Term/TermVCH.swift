@@ -15,7 +15,7 @@ protocol TermVCHDelegate: AnyObject {
 	
 	/// dismiss single or multiline input vc
 	func shouldDismissTextInputVC()
-	func shouldDisplayDuplicateTermNameAlert()
+	func duplicateTermName()
 }
 
 class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
@@ -135,7 +135,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		if !tc.termNameIsUnique(name: cleanString, notIncludingTermID: term.termID) {
 			// this is a duplicate term name!
-			delegate?.shouldDisplayDuplicateTermNameAlert()
+			delegate?.duplicateTermName()
 			return
 		}
 		
