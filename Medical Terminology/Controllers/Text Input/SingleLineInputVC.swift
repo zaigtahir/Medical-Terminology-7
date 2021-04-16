@@ -10,7 +10,7 @@ import UIKit
 
 protocol SingleLineInputDelegate: AnyObject {
 	
-	func shouldUpdateSingleLineInfo(propertyReference: PropertyReference, cleanString: String)
+	func shouldUpdateSingleLineInfo(propertyReference: PropertyReference?, cleanString: String)
 }
 
 class SingleLineInputVC: UIViewController, UITextFieldDelegate {

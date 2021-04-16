@@ -142,7 +142,7 @@ class TermController {
 	Not including TermID is used to filter out the current term name. The user just might want to change the letter CaSE. In that case, i still want to save that change. So This query will look for duplicates of any other row.
 	*/
 	func termNameIsUnique (name: String, notIncludingTermID: Int) -> Bool {
-		let query = "SELECT COUNT (*) from \(terms) where name LIKE '\(name)' AND termID != \(notIncludingTermID)"
+		let query = "SELECT COUNT (*) FROM \(terms) WHERE name LIKE '\(name)' AND termID != \(notIncludingTermID)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()

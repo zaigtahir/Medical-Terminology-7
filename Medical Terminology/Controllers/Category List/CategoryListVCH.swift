@@ -16,7 +16,8 @@ All controllers that are affected by that can respond to it
 protocol CategoryListVCHDelegate: AnyObject {
 	
 	func shouldReloadTable ()
-	func shouldSegueToCatetory (category: Category2)
+	func shouldSegueToPreexistingCategory (category: Category2)
+	func shouldSegueToNewCategory ()
 }
 
 class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate {
@@ -124,8 +125,6 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		}
 		
 		term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
-		
-		print("categoryListVCH undateData, forcing the term = isStandard = no for testing")
 	}
 	
 	func fillCategoryLists () {
@@ -232,16 +231,13 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 	}
 	
-	
 	// MARK: - tableview didSelectRowAt
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		// address the case if the user pressed the add category row
 		if indexPath.section == sectionCustom && indexPath.row == 0 {
-			
-			print("add code for adding a category categoroyListVCH didSelectRowAt")
-			// self.categoryHomeDelegate?.addACategory()
+			delegate?.shouldSegueToNewCategory()
 			return
 		}
 		
@@ -315,7 +311,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	// MARK: - CategoryCellDelegate
 	func shouldSegueToCategory(category: Category2) {
 		
-		delegate?.shouldSegueToCatetory(category: category)
+		delegate?.shouldSegueToPreexistingCategory(category: category)
 	}
 	
 }

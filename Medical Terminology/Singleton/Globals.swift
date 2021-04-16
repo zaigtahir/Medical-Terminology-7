@@ -50,7 +50,6 @@ enum TermEditMode {
 }
 
 
-
 // use to display the category or term
 enum CategoryEditMode {
 	case view
@@ -76,6 +75,7 @@ enum CategoryType : Int {
 enum PropertyReference {
 	case name
 	case definition
+	case description
 	case example
 	case myNotes
 }

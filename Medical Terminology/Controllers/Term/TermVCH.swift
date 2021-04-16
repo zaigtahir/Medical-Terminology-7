@@ -125,7 +125,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	
 	// MARK: - SingleLineInputDelegate function
 	
-	func shouldUpdateSingleLineInfo (propertyReference: PropertyReference, cleanString: String) {
+	func shouldUpdateSingleLineInfo (propertyReference: PropertyReference?, cleanString: String) {
 		
 		if term.name == cleanString {
 			// nothing changed

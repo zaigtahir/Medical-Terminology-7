@@ -10,11 +10,11 @@ import Foundation
 
 class Category2 {
 	
-	var categoryID = 0
-	var name = "none"
-	var description = "none"
+	var categoryID = -1
+	var name = ""
+	var description = ""
 	var displayOrder = 0
-	var isStandard = true
+	var isStandard = false
 	var count = 0				//hold count of times in this category, not stored in the db, and I will need to calculate the latest value when needed
 	
 	init() {

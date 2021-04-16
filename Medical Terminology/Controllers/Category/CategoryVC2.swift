@@ -17,7 +17,7 @@ class CategoryVC2: UIViewController {
 	@IBOutlet weak var leftButton: UIBarButtonItem!
 	
 	@IBOutlet weak var deleteCategoryButton: UIButton!
-
+	
 	@IBOutlet weak var nameTitleLabel: UILabel!
 	
 	@IBOutlet weak var nameLabel: UILabel!
@@ -29,20 +29,22 @@ class CategoryVC2: UIViewController {
 	@IBOutlet weak var descriptionEditButton: UIButton!
 	
 	var categoryVCH = CategoryVCH2()
-		
-		
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	
+	// keeping a class reference so I can dismiss it in another function
+	var singleLineInputVC : SingleLineInputVC!
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		updateDisplay()
 		
 		//navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
 		
 		self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "My Title", style: .plain, target: nil, action: nil)
 		
-
-        // Do any additional setup after loading the view.UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
-    }
-    
+		
+		// Do any additional setup after loading the view.UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
+	}
+	
 	// MARK: - updateDisplay
 	
 	func updateDisplay() {
@@ -85,7 +87,7 @@ class CategoryVC2: UIViewController {
 			} else {
 				descriptionLabel.text = "No description available"
 			}
-		
+			
 		} else {
 			descriptionLabel.text = categoryVCH.category.description
 		}
@@ -99,26 +101,26 @@ class CategoryVC2: UIViewController {
 	}
 	
 	// MARK: - prepare segue
-
+	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
 		switch segue.identifier {
 		
 		case myConstants.segueSingleLineInput:
 			
-			if let singleLineInputVC = segue.destination as? SingleLineInputVC {
-				singleLineInputVC.textInputVCH.fieldTitle = "CATEGORY NAME"
-				singleLineInputVC.textInputVCH.initialText = categoryVCH.category.name
-				singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-				singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-				singleLineInputVC.textInputVCH.minLength = 1
-				singleLineInputVC.textInputVCH.maxLength = myConstants.maxLengthCategoryName
-				singleLineInputVC.textInputVCH.propertyReference = .none
-				// need to add delegate
-				
-				
-			}
+			singleLineInputVC = segue.destination as? SingleLineInputVC
 			
+			singleLineInputVC.textInputVCH.fieldTitle = "CATEGORY NAME"
+			singleLineInputVC.textInputVCH.initialText = categoryVCH.category.name
+			singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+			singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+			singleLineInputVC.textInputVCH.minLength = 1
+			singleLineInputVC.textInputVCH.maxLength = myConstants.maxLengthCategoryName
+			singleLineInputVC.textInputVCH.propertyReference = .none
+			
+			singleLineInputVC.delegate = categoryVCH
+		
+		
 		case myConstants.segueMultiLineInput:
 			
 			if let multiLineInputVC = segue.destination as? MultiLineInputVC {
@@ -139,6 +141,7 @@ class CategoryVC2: UIViewController {
 		
 		
 	}
+	
 	@IBAction func leftButtonAction(_ sender: Any) {
 	}
 	

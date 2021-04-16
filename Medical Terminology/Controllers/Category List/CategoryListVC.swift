@@ -15,7 +15,6 @@ import UIKit
 
 class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 
-
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var selectModeImage: UIImageView!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
@@ -67,13 +66,19 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	// MARK: - categoryListVCHDelegate functions
 	
 	func shouldReloadTable() {
-		print ("reloading the table")
 		tableView.reloadData()
 	}
 	
-	func shouldSegueToCatetory(category: Category2) {
+	func shouldSegueToPreexistingCategory(category: Category2) {
 		
 		self.segueCategory = category
+		
+		performSegue(withIdentifier: myConstants.segueCategory, sender: self)
+	}
+	
+	func shouldSegueToNewCategory() {
+		// new empty category will have id = -1
+		self.segueCategory = Category2()
 		
 		performSegue(withIdentifier: myConstants.segueCategory, sender: self)
 	}

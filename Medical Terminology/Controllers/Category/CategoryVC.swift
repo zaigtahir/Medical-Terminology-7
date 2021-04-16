@@ -156,6 +156,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 		// should also resign the textfield first responder as the user may have pressed that before dismissing the keyboard
 		textField.resignFirstResponder()
 		
+		/*
 		
 		// trimming the content to remove spaces
 		let text = textField.text ?? ""
@@ -175,7 +176,7 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			
 			let cID = categoryVCH.affectedCategory.categoryID
 			
-			cc.changeCategoryNamePN (categoryID: cID, newName: trimmedName)
+			cc.updateCategoryName (categoryID: cID, newName: trimmedName)
 			
 			self.navigationController?.popViewController(animated: true)
 			
@@ -189,6 +190,8 @@ class CategoryVC: UIViewController, UITextFieldDelegate {
 			self.navigationController?.popViewController(animated: true)
 			
 		}
+
+*/
 	}
 	
 	@IBAction func cancelButtonAction(_ sender: UIButton) {

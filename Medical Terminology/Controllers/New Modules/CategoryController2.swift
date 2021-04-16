@@ -202,18 +202,23 @@ class CategoryController2 {
 		return c
 	}
 	
-	func isCategoryNameDuplicate (name: String) -> Bool {
-		
-		let query = "SELECT COUNT(*) FROM \(myConstants.dbTableCategories2) WHERE name = '\(name)'"
+	
+	func categoryNameIsUnique (name: String, notIncludingCategoryID: Int) -> Bool {
+		let query = "SELECT COUNT (*) FROM \(categories) WHERE name LIKE '\(name)' AND categoryID != \(notIncludingCategoryID)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
-			let c = Int(resultSet.int(forColumnIndex: 0))
+			let count = Int (resultSet.int(forColumnIndex: 0))
 			
-			return c > 0 ? true : false
+			if count > 0 {
+				return false
+			} else {
+				return true
+			}
+			
 		} else {
-			print("fatal error did not get rs in isCategoryNameDuplicate. returning true")
-			return true
+			print("fatal error making RS in categoryNameIsUnique. returning false as safety default")
+			return false
 		}
 	}
 	
@@ -254,7 +259,7 @@ class CategoryController2 {
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID": categoryID])
 	}
 	
-	func changeCategoryNamePN (categoryID: Int, newName: String) {
+	func updateCategoryNamePN (categoryID: Int, newName: String) {
 		
 		let query = "UPDATE \(categories) SET name = '\(newName)' WHERE categoryID = \(categoryID)"
 		myDB.executeStatements(query)

@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class CategoryVCH {
 	
 	var categoryEditMode = CategoryEditMode.add	// just a default setting, need to set via prepare segue
