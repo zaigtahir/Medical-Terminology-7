@@ -114,11 +114,9 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			
 			if termVCH.term.termID == -1 {
 				// term is new
-				self.title = "Add New"
+				self.title = "Add New Term"
 				headerImage.image = myTheme.imageHeaderAdd
 				leftButton.title = "Save"
-				
-				// ** NEED to check clean text
 				
 				if (termVCH.term.name != "" && termVCH.term.definition != "") {
 					leftButton.isEnabled = true

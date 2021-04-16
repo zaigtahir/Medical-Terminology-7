@@ -30,6 +30,8 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	var categoryVCH = CategoryVCH()
 	
+	private let tu = TextUtilities()
+	
 	// keeping a class reference so I can dismiss it in another function
 	
 	
@@ -102,14 +104,11 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			
 			if categoryVCH.category.categoryID == -1 {
 				// category is new
-				self.title = "Add New"
+				self.title = "Add New Category"
 				headerImage.image = myTheme.imageHeaderAdd
 				deleteCategoryButton.isEnabled = false
 				
 				leftButton.title = "Save"
-				
-				// ** NEED to check clean text
-				
 				
 				if categoryVCH.category.name != "" {
 					leftButton.isEnabled = true
