@@ -65,37 +65,85 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	func updateDisplay () {
 		
-		// MARK: fill fields
+		
+		/*
+		If term is standard
+		DONE |  CANCEL: disable
+		Hide edit buttons for name, definition, example
+		Show edit buttons for my notes, categories
+		
+		If the term is NOT standard, and IS NEW
+		SAVE: enable if name and definition are not blank, otherwise disable
+		CANCEL: enable
+		Show and enable all the edit buttons
+		
+		If the term is NOT standard and IS NOT NEW
+		DONE | CANCEL: disable
+		Show and enable all the edit buttons
+		*/
+		
+		
+		// MARK: update buttons and titles
+		
 		
 		playAudioButton.isEnabled = termVCH.term.isAudioFilePresent()
 		
+		
 		if termVCH.term.isStandard {
-			nameTitleLabel.text = "PREDEFINED TERM"
-			deleteTermButton.isEnabled = false
-		} else {
-			nameTitleLabel.text = "MY TERM"
-			deleteTermButton.isEnabled = true
-		}
-		
-		
-		if termVCH.term.termID == -1 {
-			self.title = "Add New"
-			leftButton.title = "Save"
-			headerImage.image = myTheme.imageHeaderAdd
-			deleteTermButton.isEnabled = false
-			
-			if (termVCH.term.name != "" && termVCH.term.definition != "") {
-				leftButton.isEnabled = true
-			} else {
-				leftButton.isEnabled = false
-			}
-			
-		} else {
+			// term is standard
 			self.title = "Term Details"
+			nameTitleLabel.text = "PREDEFINED TERM"
+			
 			leftButton.title = "Done"
+			cancelButton.isEnabled = false
+			
 			deleteTermButton.isEnabled = false
+			
+			nameEditButton.isHidden = true
+			definitionEditButton.isHidden = true
+			exampleEditButton.isHidden = true
+			myNotesEditButton.isHidden = false
+			
+		} else {
+			// term is not standard
+			nameTitleLabel.text = "MY TERM"
+			nameEditButton.isHidden = false
+			exampleEditButton.isHidden = false
+			definitionEditButton.isHidden = false
+			myNotesEditButton.isHidden = false
+			
+			if termVCH.term.termID == -1 {
+				// term is new
+				self.title = "Add New"
+				headerImage.image = myTheme.imageHeaderAdd
+				leftButton.title = "Save"
+				
+				// ** NEED to check clean text
+				
+				if (termVCH.term.name != "" && termVCH.term.definition != "") {
+					leftButton.isEnabled = true
+				} else {
+					leftButton.isEnabled = false
+				}
+				
+				cancelButton.isEnabled = true
+				deleteTermButton.isEnabled = false
+				
+				
+			} else {
+				// term is not new
+				self.title = "My Term Details"
+				
+				leftButton.title = "Done"
+				cancelButton.isEnabled = false
+				
+				deleteTermButton.isEnabled = true
+				
+			}
 		}
 		
+		
+		// MARK: fill fields
 		
 		if termVCH.term.name == "" {
 			nameLabel.text = "New Name"
@@ -141,24 +189,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		// MARK: category count will never be 0
 		
 		categoriesListTextView.text = termVCH.getCategoryNamesText()
-		
-		// MARK: setup buttons
-		
-		if termVCH.term.isStandard {
-			
-			nameEditButton.isHidden = true
-			definitionEditButton.isHidden = true
-			exampleEditButton.isHidden = true
-			myNotesEditButton.isHidden = false
-			
-		} else {
-			
-			nameEditButton.isHidden = false
-			exampleEditButton.isHidden = false
-			definitionEditButton.isHidden = false
-			myNotesEditButton.isHidden = false
-		}
-		
 		
 	}
 	

@@ -105,13 +105,25 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 				self.title = "Add New"
 				headerImage.image = myTheme.imageHeaderAdd
 				deleteCategoryButton.isEnabled = false
+				
 				leftButton.title = "Save"
+				
+				// ** NEED to check clean text
+				
+				
+				if categoryVCH.category.name != "" {
+					leftButton.isEnabled = true
+				} else {
+					leftButton.isEnabled = false
+				}
+				
 				cancelButton.isEnabled = true
 				
 			} else {
 				// category is not new
 				self.title = "My Categoroy Details"
 				deleteCategoryButton.isEnabled = true
+				
 				leftButton.title = "Done"
 				cancelButton.isEnabled = false
 			}
