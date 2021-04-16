@@ -1,23 +1,94 @@
 //
-//  CategoryVCH.swift
+//  CategoryVCH2.swift
 //  Medical Terminology
 //
-//  Created by Zaigham Tahir on 3/28/21.
+//  Created by Zaigham Tahir on 4/13/21.
 //  Copyright © 2021 Zaigham Tahir. All rights reserved.
 //
 
 import Foundation
+import UIKit
 
+protocol CategoryVCHDelegate: AnyObject {
+	func shouldUpdateDisplay()
+	func shouldDisplayDuplicateCategoryNameAlert()
+}
 
-class CategoryVCH {
+class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
-	var categoryEditMode = CategoryEditMode.add	// just a default setting, need to set via prepare segue
+	// if catetory id = -1, you are adding a new catetory
 	
-	var affectedCategory: Category2! 	// set when making the segue for edit/add function to uses
+	var category : Category2!
 	
-	// handle delete category, edit, and add category functions
-	// the underlying category controller will perform these functions and it will send out notifications of the events
+	weak var delegate: CategoryVCHDelegate?
+
+	private var referenceSingleLineInputVC : SingleLineInputVC!
 	
+	private var referenceMultiLineInputVC : MultiLineInputVC!
+	
+	private let cc = CategoryController2()
+	
+	init () {
+		
+	}
+		
+	func configureSingleLineInputVC (vc: SingleLineInputVC) {
+		
+		// setting the class variable
+		referenceSingleLineInputVC = vc
+		
+		vc.textInputVCH.fieldTitle = "CATEGORY NAME"
+		vc.textInputVCH.initialText = category.name
+		vc.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+		vc.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+		vc.textInputVCH.minLength = 1
+		vc.textInputVCH.maxLength = myConstants.maxLengthCategoryName
+		vc.textInputVCH.propertyReference = .none
+		vc.delegate = self
+
+	}
+	
+	func configureMultiLineInputVC (vc: MultiLineInputVC) {
+		
+		vc.textInputVCH.fieldTitle = "DESCRIPTION"
+		vc.textInputVCH.initialText = category.description
+		vc.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+		vc.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
+		vc.textInputVCH.minLength = 0
+		vc.textInputVCH.maxLength = myConstants.maxLengthCategoryDescription
+		vc.textInputVCH.propertyReference = .definition
+		vc.delegate = self
+		
+	}
+	// MARK: - delegate functions
+	func shouldUpdateSingleLineInfo(propertyReference: PropertyReference?, cleanString: String) {
+		
+		if category.name == cleanString {
+			// nothing changed, just pop off the input vc
+			referenceSingleLineInputVC.navigationController?.popViewController(animated: true)
+		}
+		
+		if !cc.categoryNameIsUnique(name: cleanString, notIncludingCategoryID: category.categoryID) {
+			// this is a duplicate category name
+			delegate?.shouldDisplayDuplicateCategoryNameAlert()
+			return
+		}
+		
+		category.name = cleanString
+		
+		if category.categoryID != -1 {
+			cc.updateCategoryNamePN(categoryID: category.categoryID, newName: cleanString)
+		}
+		
+		delegate?.shouldUpdateDisplay()
+		referenceSingleLineInputVC.navigationController?.popViewController(animated: true)
+		
+	}
+	
+	func shouldUpdateMultiLineInfo(propertyReference: PropertyReference?, cleanString: String) {
+		print ("categoryVCH: write code update description")
+		referenceMultiLineInputVC.navigationController?.popViewController(animated: true)
+	}
 	
 }
 

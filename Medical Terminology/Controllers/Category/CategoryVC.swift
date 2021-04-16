@@ -1,200 +1,141 @@
 //
-//  CategoryVC.swift
+//  CategoryVC2.swift
 //  Medical Terminology
 //
-//  Created by Zaigham Tahir on 3/28/21.
+//  Created by Zaigham Tahir on 4/13/21.
 //  Copyright © 2021 Zaigham Tahir. All rights reserved.
 //
 
 import UIKit
 
-class CategoryVC: UIViewController, UITextFieldDelegate {
+class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	@IBOutlet weak var headerImage: UIImageView!
-	@IBOutlet weak var promptLabel: UILabel!
-	@IBOutlet weak var messageLabel: UILabel!
-	@IBOutlet weak var textField: UITextField!
-	@IBOutlet weak var questionButton: UIButton!
-	@IBOutlet weak var cancelButton: UIButton!
-	@IBOutlet weak var commitButton: UIButton!
 	
-	let categoryVCH = CategoryVCH()
-	let tu = TextUtilities()
+	@IBOutlet weak var cancelButton: UIBarButtonItem!
 	
-	let cc = CategoryController2()
+	@IBOutlet weak var leftButton: UIBarButtonItem!
 	
-	// valid states, to use for saving field validations and enabling the save button
+	@IBOutlet weak var deleteCategoryButton: UIButton!
 	
-	var categoryNameIsValid = true	// just to start so if the user presses the question button, it does not show a red color header icon in the ValidationVC
+	@IBOutlet weak var nameTitleLabel: UILabel!
+	
+	@IBOutlet weak var nameLabel: UILabel!
+	
+	@IBOutlet weak var nameEditButton: UIButton!
+	
+	@IBOutlet weak var descriptionLabel: UILabel!
+	
+	@IBOutlet weak var descriptionEditButton: UIButton!
+	
+	var categoryVCH = CategoryVCH()
+	
+	// keeping a class reference so I can dismiss it in another function
+	
 	
 	override func viewDidLoad() {
-		
 		super.viewDidLoad()
-		textField.delegate = self
+		updateDisplay()
 		
-		//adding a tap gesture recognizer to dismiss the keyboard
-		let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
-		view.addGestureRecognizer(tapGesture)
+		//navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
 		
-		commitButton.layer.cornerRadius = myConstants.button_cornerRadius
+		self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "My Title", style: .plain, target: nil, action: nil)
 		
-		switch categoryVCH.categoryEditMode {
 		
-		case .add:
-			headerImage.image = myTheme.imageHeaderAdd
-			promptLabel.text = "Add a New Category"
-			messageLabel.text = "After you add a new category, you can assign terms to it to help organize your learning"
-			textField.isUserInteractionEnabled = true
-			commitButton.setTitle("Save", for: .normal)
-			questionButton.isEnabled = true
-			commitButton.isEnabled = false
-			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
-			
-		case .delete:
-			headerImage.image = myTheme.imageHeaderDelete
-			promptLabel.text = "Delete This Category?"
-			messageLabel.text = "Terms in this category will not be deleted. They will remain in other categories."
-			textField.text = categoryVCH.affectedCategory.name
-			textField.isUserInteractionEnabled = false
-			
-			//innerSquare.leftAnchor.constraint(equalTo: outerSquare.leftAnchor, constant: 40)
-			
-			questionButton.isEnabled = false
-			commitButton.setTitle("Delete", for: .normal)
-			commitButton.isEnabled = true
-			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorButtonDelete)
-			
-		default:
-			// add
-			
-			headerImage.image = myTheme.imageHeaderEdit
-			promptLabel.text = "Edit This Category"
-			messageLabel.text = "Make changes to the category name"
-			textField.text = categoryVCH.affectedCategory.name
-			textField.isUserInteractionEnabled = true
-			questionButton.isEnabled = true
-			commitButton.setTitle("Save", for: .normal)
-			commitButton.isEnabled = true
-			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
-			
-		}
+		categoryVCH.delegate = self
 		
+		// Do any additional setup after loading the view.UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
 	}
 	
-	private func setCommitButtonState() {
+	// MARK: - categoryVCH2Delegate
+	
+	func shouldUpdateDisplay() {
+		updateDisplay()
+	}
+	
+	func shouldDisplayDuplicateCategoryNameAlert() {
+		print ("hey this is a duplicate category  name")
+	}
+	
+	// MARK: - updateDisplay
+	
+	func updateDisplay() {
 		
-		//look at the field's validations states. If all are valid, set the commit button to enabled
-		// format the commit button as it has custom colors
-		
-		if categoryNameIsValid {
-			commitButton.isEnabled = true
-			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
+		if categoryVCH.category.isStandard {
+			nameTitleLabel.text = "PREDEFINED CATEGORY"
+			nameEditButton.isHidden = true
+			descriptionEditButton.isHidden = true
 			
 		} else {
-			commitButton.isEnabled = false
-			myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
+			nameTitleLabel.text = "MY CATEGORY"
+			nameEditButton.isHidden = false
+			descriptionEditButton.isHidden = false
 		}
 		
-	}
-	
-	func textFieldDidChangeSelection(_ textField: UITextField) {
 		
-		let ac = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789-:!?. "
-		let result = tu.validateAndFormatField(textField: textField, allowedCharacters: ac, maxLength: myConstants.maxLengthCategoryName, accessoryButton: questionButton)
-		if result {
-			if !tu.isBlank(string: textField.text ?? "") {
-				categoryNameIsValid = true
+		// delete icon
+		if categoryVCH.category.isStandard {
+			deleteCategoryButton.isHidden = true
+		} else {
+			deleteCategoryButton.isHidden = false
+			if categoryVCH.category.categoryID == -1 {
+				deleteCategoryButton.isEnabled = false
 			} else {
-				categoryNameIsValid = false
+				deleteCategoryButton.isEnabled = true
 			}
+		}
+		
+		
+		if categoryVCH.category.name == "" {
+			nameLabel.text = "New Name"
 		} else {
-			categoryNameIsValid = false
+			nameLabel.text = categoryVCH.category.name
 		}
 		
-		updateSaveButtonStatus()
-	}
-	 
-	private func updateSaveButtonStatus () {
-		//enable it if all textfields are valid (only one in this controller)
-		commitButton.isEnabled = categoryNameIsValid
-		myTheme.formatButtonState(button: commitButton, enabledColor: myTheme.colorMain!)
-	}
-	
-	private func showNameIsDuplicateAlert () {
-		let ac = UIAlertController(title: "Duplicate Name", message: "There is already a category with this name. Please choose a different name", preferredStyle: .alert)
-		let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-		ac.addAction(ok)
-		self.present(ac, animated: true, completion: nil)
-	}
-	
-	// MARK: - Textfield delegate methods
-	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		textField.resignFirstResponder()
-		return true
+		if categoryVCH.category.description == "" {
+			
+			if categoryVCH.category.categoryID == -1 {
+				descriptionLabel.text = "(optional)"
+			} else {
+				descriptionLabel.text = "No description available"
+			}
+			
+		} else {
+			descriptionLabel.text = categoryVCH.category.description
+		}
+		
+		if categoryVCH.category.categoryID == -1 {
+			headerImage.image = myTheme.imageHeaderAdd
+		}
+		
+		
+		
 	}
 	
-	// MARK: - name saving functions
+	// MARK: - prepare segue
 	
-	// MARK: - segues
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		// there is only one segue to validationVC
-		let vc = segue.destination as? ValidationVC
 		
-		// trimming the content to get the count of characters without spaces on ends
-		let text = textField.text ?? ""
-		let trimmed = tu.removeLeadingTrailingSpaces(string: text)
+		switch segue.identifier {
 		
-		vc?.isValid = categoryNameIsValid
-		vc?.message = """
-			The name can contain only letters, numbers and these characters ! : , ?
-
-			The length can be maximum of \(myConstants.maxLengthCategoryName) characters. You currently have \(trimmed.count) characters entered.
-			"""
-	}
-	
-	@IBAction func commitButtonAction(_ sender: Any) {
-		// should also resign the textfield first responder as the user may have pressed that before dismissing the keyboard
-		textField.resignFirstResponder()
-		
-		/*
-		
-		// trimming the content to remove spaces
-		let text = textField.text ?? ""
-		let trimmedName = tu.removeLeadingTrailingSpaces(string: text)
-		
-		switch categoryVCH.categoryEditMode {
-					
-		case .delete:
-			cc.deleteCategoryPN(categoryID: categoryVCH.affectedCategory.categoryID)
-			self.navigationController?.popViewController(animated: true)
+		case myConstants.segueSingleLineInput:
 			
-		case .edit:
+			let vc = segue.destination as! SingleLineInputVC
+			categoryVCH.configureSingleLineInputVC(vc: vc)
 			
-			if cc.isCategoryNameDuplicate(name: trimmedName) {
-				showNameIsDuplicateAlert()
-			}
+		case myConstants.segueMultiLineInput:
 			
-			let cID = categoryVCH.affectedCategory.categoryID
-			
-			cc.updateCategoryName (categoryID: cID, newName: trimmedName)
-			
-			self.navigationController?.popViewController(animated: true)
-			
+			let vc = segue.destination as! MultiLineInputVC
+			categoryVCH.configureMultiLineInputVC(vc: vc)
 		default:
-			// add
-			if cc.isCategoryNameDuplicate(name: trimmedName) {
-				showNameIsDuplicateAlert()
-				return
-			}
-			cc.addCategoryPN(categoryName: trimmedName)
-			self.navigationController?.popViewController(animated: true)
-			
+			print("fatal error, called with an unexpecting segue in categoryVC prepare for segue")
 		}
-
-*/
 	}
 	
-	@IBAction func cancelButtonAction(_ sender: UIButton) {
+	@IBAction func leftButtonAction(_ sender: Any) {
+	}
+	
+	@IBAction func cancelButtonAction(_ sender: Any) {
 		self.navigationController?.popViewController(animated: true)
 	}
 	

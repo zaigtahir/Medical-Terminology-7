@@ -52,10 +52,8 @@
 		5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD725E5225E4E2F007CED84 /* MyTheme.swift */; };
 		5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85733228F26A1008929D5 /* FlashCardController.swift */; };
 		5AF85739228F2C27008929D5 /* FlashcardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashcardCell.swift */; };
-		991AC59F262693DF00E52062 /* CategoryVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC59E262693DF00E52062 /* CategoryVC2.swift */; };
-		991AC5A7262755E300E52062 /* CategoryVCH2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC5A6262755E300E52062 /* CategoryVCH2.swift */; };
-		992B56652610E593000457AA /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56642610E593000457AA /* CategoryVC.swift */; };
-		992B566E2610E9A0000457AA /* CategoryVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B566D2610E9A0000457AA /* CategoryVCH.swift */; };
+		991AC59F262693DF00E52062 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC59E262693DF00E52062 /* CategoryVC.swift */; };
+		991AC5A7262755E300E52062 /* CategoryVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC5A6262755E300E52062 /* CategoryVCH.swift */; };
 		992B56812612870C000457AA /* TextUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56802612870C000457AA /* TextUtilities.swift */; };
 		992B56A4261382BF000457AA /* ValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56A3261382BF000457AA /* ValidationVC.swift */; };
 		992E79D2260A2ADD00C19D49 /* FlashCardOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79CF260A2ADD00C19D49 /* FlashCardOptionsVC.swift */; };
@@ -150,10 +148,8 @@
 		5AD725E5225E4E2F007CED84 /* MyTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTheme.swift; sourceTree = "<group>"; };
 		5AF85733228F26A1008929D5 /* FlashCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardController.swift; sourceTree = "<group>"; };
 		5AF85738228F2C27008929D5 /* FlashcardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardCell.swift; sourceTree = "<group>"; };
-		991AC59E262693DF00E52062 /* CategoryVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC2.swift; sourceTree = "<group>"; };
-		991AC5A6262755E300E52062 /* CategoryVCH2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryVCH2.swift; sourceTree = "<group>"; };
-		992B56642610E593000457AA /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
-		992B566D2610E9A0000457AA /* CategoryVCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryVCH.swift; sourceTree = "<group>"; };
+		991AC59E262693DF00E52062 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
+		991AC5A6262755E300E52062 /* CategoryVCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryVCH.swift; sourceTree = "<group>"; };
 		992B56802612870C000457AA /* TextUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtilities.swift; sourceTree = "<group>"; };
 		992B56A3261382BF000457AA /* ValidationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationVC.swift; sourceTree = "<group>"; };
 		992E79CF260A2ADD00C19D49 /* FlashCardOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardOptionsVC.swift; sourceTree = "<group>"; };
@@ -431,10 +427,8 @@
 		992B566A2610E8CC000457AA /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				991AC5A6262755E300E52062 /* CategoryVCH2.swift */,
-				992B566D2610E9A0000457AA /* CategoryVCH.swift */,
-				991AC59E262693DF00E52062 /* CategoryVC2.swift */,
-				992B56642610E593000457AA /* CategoryVC.swift */,
+				991AC5A6262755E300E52062 /* CategoryVCH.swift */,
+				991AC59E262693DF00E52062 /* CategoryVC.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -607,17 +601,15 @@
 				992E79D3260A2ADD00C19D49 /* FlashcardVCH.swift in Sources */,
 				992E79EB260C413D00C19D49 /* AddCell.swift in Sources */,
 				5AC0C57322D6C83C009965F1 /* LearningHomeVCH.swift in Sources */,
-				992B566E2610E9A0000457AA /* CategoryVCH.swift in Sources */,
-				991AC5A7262755E300E52062 /* CategoryVCH2.swift in Sources */,
+				991AC5A7262755E300E52062 /* CategoryVCH.swift in Sources */,
 				99D76AC52616C9CE0062CCD4 /* TermsList.swift in Sources */,
 				5A03478F22D39D0900749EBC /* FMDatabasePool.m in Sources */,
 				99A723042620D036001DEDBD /* MultiLineInputVC.swift in Sources */,
 				5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */,
 				5A67C14B231071D900BAA2A0 /* QuizDoneCVCell.swift in Sources */,
-				991AC59F262693DF00E52062 /* CategoryVC2.swift in Sources */,
+				991AC59F262693DF00E52062 /* CategoryVC.swift in Sources */,
 				992E79D2260A2ADD00C19D49 /* FlashCardOptionsVC.swift in Sources */,
 				99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */,
-				992B56652610E593000457AA /* CategoryVC.swift in Sources */,
 				5A18DF71241E8AD10006825B /* MyConstants.swift in Sources */,
 				5A4F854A22B16C2E0016621C /* LearnSetVCH.swift in Sources */,
 				5A4471552281C655008E3107 /* TermListVCH.swift in Sources */,

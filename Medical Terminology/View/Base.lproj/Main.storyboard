@@ -2732,7 +2732,7 @@
         <!--Category Detail-->
         <scene sceneID="vDp-kx-bt9">
             <objects>
-                <viewController id="BPm-yE-Jpz" customClass="CategoryVC2" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BPm-yE-Jpz" customClass="CategoryVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gj2-ba-kJw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
