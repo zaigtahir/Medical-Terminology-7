@@ -85,7 +85,24 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			}
 		}
 		
+		if categoryVCH.category.categoryID == -1 {
+			self.title = "Add New"
+			leftButton.title = "Save"
+			headerImage.image = myTheme.imageHeaderAdd
+			deleteCategoryButton.isEnabled = false
+			
+			if categoryVCH.category.name != "" {
+				leftButton.isEnabled = true
+			} else {
+				leftButton.isEnabled = false
+			}
+		}  else {
+			self.title = "Category Details"
+			leftButton.title = "Done"
+			deleteCategoryButton.isEnabled = false
+		}
 		
+	
 		if categoryVCH.category.name == "" {
 			nameLabel.text = "New Name"
 		} else {
@@ -107,9 +124,6 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		if categoryVCH.category.categoryID == -1 {
 			headerImage.image = myTheme.imageHeaderAdd
 		}
-		
-		
-		
 	}
 	
 	// MARK: - prepare segue
