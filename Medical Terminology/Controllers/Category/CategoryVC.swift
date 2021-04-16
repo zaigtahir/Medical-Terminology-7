@@ -61,48 +61,64 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	func updateDisplay() {
 		
+		/*
+		If catetory is standard
+		DONE | Cancel: disabled
+		Hide delete icon
+		Hide edit button for name and description
+		
+		If the category is NOT standard, and IS NEW
+		SAVE: enable if name is not blank, otherwise disable
+		CANCEL: enabled
+		Disable delete icon
+		Show edit name and edit description buttons
+		
+		If the category is NOT standard and IS NOT NEW
+		DONE | Cancel: enabled
+		Enable delete icon
+		Show edit name and edit description buttons
+		
+		*/
+		
+		
+		// MARK: update buttons and titles
 		if categoryVCH.category.isStandard {
+			// category is standard
+			self.title = "Category Details"
 			nameTitleLabel.text = "PREDEFINED CATEGORY"
 			nameEditButton.isHidden = true
 			descriptionEditButton.isHidden = true
+			deleteCategoryButton.isHidden = true
+			
+			leftButton.title = "Done"
+			cancelButton.isEnabled = false
 			
 		} else {
+			// category is not standard
 			nameTitleLabel.text = "MY CATEGORY"
 			nameEditButton.isHidden = false
 			descriptionEditButton.isHidden = false
-		}
-		
-		
-		// delete icon
-		if categoryVCH.category.isStandard {
-			deleteCategoryButton.isHidden = true
-		} else {
 			deleteCategoryButton.isHidden = false
-			if categoryVCH.category.categoryID == -1 {
-				deleteCategoryButton.isEnabled = false
-			} else {
-				deleteCategoryButton.isEnabled = true
-			}
-		}
-		
-		if categoryVCH.category.categoryID == -1 {
-			self.title = "Add New"
-			leftButton.title = "Save"
-			headerImage.image = myTheme.imageHeaderAdd
-			deleteCategoryButton.isEnabled = false
 			
-			if categoryVCH.category.name != "" {
-				leftButton.isEnabled = true
+			if categoryVCH.category.categoryID == -1 {
+				// category is new
+				self.title = "Add New"
+				headerImage.image = myTheme.imageHeaderAdd
+				deleteCategoryButton.isEnabled = false
+				leftButton.title = "Save"
+				cancelButton.isEnabled = true
+				
 			} else {
-				leftButton.isEnabled = false
+				// category is not new
+				self.title = "My Categoroy Details"
+				deleteCategoryButton.isEnabled = true
+				leftButton.title = "Done"
+				cancelButton.isEnabled = false
 			}
-		}  else {
-			self.title = "Category Details"
-			leftButton.title = "Done"
-			deleteCategoryButton.isEnabled = false
 		}
 		
-	
+		// MARK: fill fields
+		
 		if categoryVCH.category.name == "" {
 			nameLabel.text = "New Name"
 		} else {
@@ -147,10 +163,19 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	}
 	
 	@IBAction func leftButtonAction(_ sender: Any) {
+		
+		if categoryVCH.category.categoryID == -1 {
+			// this is a new category, save it
+			categoryVCH.saveCategory()
+		}
+		
+		self.navigationController?.popViewController(animated: true)
 	}
 	
 	@IBAction func cancelButtonAction(_ sender: Any) {
 		self.navigationController?.popViewController(animated: true)
 	}
+	
+	
 	
 }

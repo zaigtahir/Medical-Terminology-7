@@ -137,7 +137,7 @@ class CategoryController2 {
 		}
 	
 	}
-	
+
 	/**
 	Use this to sort the categories in a new term as they are no retrived from the db in my ususual order
 	*/
@@ -181,6 +181,23 @@ class CategoryController2 {
 		
 		// attaching the ordered list to the array
 		term.assignedCategories = orderedArray
+		
+	}
+	
+	func addCategoryPN (category: Category2) {
+		
+		// the new category will be added with custom catetory display order = 1, so need to increment all custom category display order by 1
+		
+		let query = "UPDATE \(categories) SET displayOrder = displayOrder  + 1 WHERE isStandard = 0"
+		
+		myDB.executeStatements(query)
+		
+		let queryInsert = "INSERT INTO \(categories) (name, description, displayOrder, isStandard) VALUES ('\(category.name)', '\(category.description)', 1, 0)"
+		
+		myDB.executeStatements(queryInsert)
+		
+		let nName = Notification.Name(myKeys.addCategoryKey)
+		NotificationCenter.default.post(name: nName, object: self, userInfo: nil)
 		
 	}
 	

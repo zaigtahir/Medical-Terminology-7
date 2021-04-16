@@ -32,6 +32,10 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		
 	}
 		
+	func saveCategory() {
+		let _ = cc.addCategoryPN (category: category)
+	}
+
 	func configureSingleLineInputVC (vc: SingleLineInputVC) {
 		
 		// setting the class variable
