@@ -50,7 +50,7 @@ class CategoryVCH2: SingleLineInputDelegate, MultiLineInputDelegate {
 		category.name = cleanString
 		
 		if category.categoryID != -1 {
-			cc.updateCategoryNamePN(categoryID: category.count, newName: cleanString)
+			cc.updateCategoryNamePN(categoryID: category.categoryID, newName: cleanString)
 		}
 		
 		delegate?.shouldUpdateDisplay()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryVC2: UIViewController {
+class CategoryVC2: UIViewController, CategoryVCH2Delegate {
 
 	@IBOutlet weak var headerImage: UIImageView!
 	
@@ -43,6 +43,20 @@ class CategoryVC2: UIViewController {
 		
 		
 		// Do any additional setup after loading the view.UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
+	}
+	
+	// MARK: - categoryVCH2Delegate
+	
+	func shouldUpdateDisplay() {
+		updateDisplay()
+	}
+	
+	func shouldDismissTextInputVC() {
+		singleLineInputVC?.dismiss(animated: true, completion: nil)
+	}
+	
+	func shouldDisplayDuplicateCategoryNameAlert() {
+		print ("hey this is a duplicate category  name")
 	}
 	
 	// MARK: - updateDisplay
