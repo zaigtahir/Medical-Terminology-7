@@ -157,18 +157,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
-		switch segue.identifier {
-		
-		case myConstants.segueSingleLineInput:
-
-			categoryVCH.prepareSingleLineInputVC(segue: segue)
-	
-		case myConstants.segueMultiLineInput:
-		
-			categoryVCH.prepareMultiLineInputVC(segue: segue)
-		default:
-			print("fatal error, called with an unexpecting segue in categoryVC prepare for segue")
-		}
+		categoryVCH.prepare(for: segue, sender: sender)
 	}
 	
 	@IBAction func leftButtonAction(_ sender: Any) {
