@@ -160,14 +160,12 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		switch segue.identifier {
 		
 		case myConstants.segueSingleLineInput:
-			
-			let vc = segue.destination as! SingleLineInputVC
-			categoryVCH.configureSingleLineInputVC(vc: vc)
-			
+
+			categoryVCH.prepareSingleLineInputVC(segue: segue)
+	
 		case myConstants.segueMultiLineInput:
-			
-			let vc = segue.destination as! MultiLineInputVC
-			categoryVCH.configureMultiLineInputVC(vc: vc)
+		
+			categoryVCH.prepareMultiLineInputVC(segue: segue)
 		default:
 			print("fatal error, called with an unexpecting segue in categoryVC prepare for segue")
 		}

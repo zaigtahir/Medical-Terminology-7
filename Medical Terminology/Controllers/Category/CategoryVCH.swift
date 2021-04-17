@@ -22,9 +22,9 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	weak var delegate: CategoryVCHDelegate?
 
-	private var referenceSingleLineInputVC : SingleLineInputVC!
+	private var singleLineInputVC : SingleLineInputVC!
 	
-	private var referenceMultiLineInputVC : MultiLineInputVC!
+	private var multiLineInputVC : MultiLineInputVC!
 	
 	private let cc = CategoryController2()
 	
@@ -36,41 +36,43 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		let _ = cc.addCategoryPN (category: category)
 	}
 
-	func configureSingleLineInputVC (vc: SingleLineInputVC) {
-		
+	func prepareSingleLineInputVC (segue: UIStoryboardSegue) {
+
 		// setting the class variable
-		referenceSingleLineInputVC = vc
+		singleLineInputVC = segue.destination as? SingleLineInputVC
 		
-		vc.textInputVCH.fieldTitle = "CATEGORY NAME"
-		vc.textInputVCH.initialText = category.name
-		vc.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-		vc.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-		vc.textInputVCH.minLength = 1
-		vc.textInputVCH.maxLength = myConstants.maxLengthCategoryName
-		vc.textInputVCH.propertyReference = .none
-		vc.delegate = self
+		singleLineInputVC.textInputVCH.fieldTitle = "CATEGORY NAME"
+		singleLineInputVC.textInputVCH.initialText = category.name
+		singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+		singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+		singleLineInputVC.textInputVCH.minLength = 1
+		singleLineInputVC.textInputVCH.maxLength = myConstants.maxLengthCategoryName
+		singleLineInputVC.textInputVCH.propertyReference = .none
+		singleLineInputVC.delegate = self
 
 	}
 	
-	func configureMultiLineInputVC (vc: MultiLineInputVC) {
+	func prepareMultiLineInputVC (segue: UIStoryboardSegue) {
 		
-		referenceMultiLineInputVC = vc
-		vc.textInputVCH.fieldTitle = "DESCRIPTION"
-		vc.textInputVCH.initialText = category.description
-		vc.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-		vc.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
-		vc.textInputVCH.minLength = 0
-		vc.textInputVCH.maxLength = myConstants.maxLengthCategoryDescription
-		vc.textInputVCH.propertyReference = .definition
-		vc.delegate = self
+		multiLineInputVC = segue.destination as? MultiLineInputVC
+		multiLineInputVC.textInputVCH.fieldTitle = "DESCRIPTION"
+		multiLineInputVC.textInputVCH.initialText = category.description
+		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
+		multiLineInputVC.textInputVCH.minLength = 0
+		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthCategoryDescription
+		multiLineInputVC.textInputVCH.propertyReference = .definition
+		multiLineInputVC.delegate = self
 		
 	}
+
+
 	// MARK: - delegate functions
 	func shouldUpdateSingleLineInfo(propertyReference: PropertyReference?, cleanString: String) {
 		
 		if category.name == cleanString {
 			// nothing changed, just pop off the input vc
-			referenceSingleLineInputVC.navigationController?.popViewController(animated: true)
+			singleLineInputVC.navigationController?.popViewController(animated: true)
 		}
 		
 		if !cc.categoryNameIsUnique(name: cleanString, notIncludingCategoryID: category.categoryID) {
@@ -86,14 +88,14 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		}
 		
 		delegate?.shouldUpdateDisplay()
-		referenceSingleLineInputVC.navigationController?.popViewController(animated: true)
+		singleLineInputVC.navigationController?.popViewController(animated: true)
 	}
 	
 	func shouldUpdateMultiLineInfo(propertyReference: PropertyReference?, cleanString: String) {
 		
 		if category.description == cleanString {
 			// nothing changed, just pop off the input vc
-			referenceSingleLineInputVC.navigationController?.popViewController(animated: true)
+			singleLineInputVC.navigationController?.popViewController(animated: true)
 		}
 		
 		category.description = cleanString
@@ -106,7 +108,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		
 		delegate?.shouldUpdateDisplay()
 	
-		referenceMultiLineInputVC.navigationController?.popViewController(animated: true)
+		multiLineInputVC.navigationController?.popViewController(animated: true)
 	}
 	
 	
