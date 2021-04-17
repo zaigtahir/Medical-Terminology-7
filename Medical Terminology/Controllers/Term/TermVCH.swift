@@ -12,9 +12,6 @@ import UIKit
 
 protocol TermVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
-	
-	/// dismiss single or multiline input vc
-	func shouldDismissTextInputVC()
 	func duplicateTermName()
 }
 
@@ -30,6 +27,9 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	// controllers
 	private let tc = TermController()
 	private let cc = CategoryController2()
+	
+	private var singleLineInputVC : SingleLineInputVC!
+	private var multiLineInputVC : MultiLineInputVC!
 	
 	init () {
 		
@@ -129,7 +129,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		if term.name == cleanString {
 			// nothing changed
-			delegate?.shouldDismissTextInputVC()
+			singleLineInputVC.navigationController?.popViewController(animated: true)
 			return
 		}
 		
@@ -148,7 +148,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		updateData()
 		delegate?.shouldUpdateDisplay()
-		delegate?.shouldDismissTextInputVC()
+		singleLineInputVC.navigationController?.popViewController(animated: true)
 		
 	}
 	
@@ -160,7 +160,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		case .definition:
 			if term.description == cleanString {
-				delegate?.shouldDismissTextInputVC()
+				multiLineInputVC.navigationController?.popViewController(animated: true)
 				return
 			}
 			
@@ -173,7 +173,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		case .example:
 			
 			if term.example == cleanString {
-				delegate?.shouldDismissTextInputVC()
+				multiLineInputVC.navigationController?.popViewController(animated: true)
 				return
 			}
 			
@@ -187,7 +187,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		case .myNotes:
 			
 			if term.myNotes == cleanString {
-				delegate?.shouldDismissTextInputVC()
+				multiLineInputVC.navigationController?.popViewController(animated: true)
 				return
 			}
 			
@@ -208,8 +208,107 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		}
 		
 		delegate?.shouldUpdateDisplay()
-		delegate?.shouldDismissTextInputVC()
+		multiLineInputVC.navigationController?.popViewController(animated: true)
 		
+	}
+	
+	
+	// MARK: - Moved segues
+	
+	func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
+		switch segue.identifier {
+		
+		case myConstants.segueAssignCategory:
+			prepareAssignCategorySegue(for: segue)
+			
+		case myConstants.segueSingleLineInput:
+			
+			prepareEditNameSegue(for: segue)
+			
+		case myConstants.segueMultiLineInput:
+			
+			switch propertyReference  {
+			
+			case .definition:
+				
+				prepareEditDefinitionSegue(for: segue)
+				
+			case .example:
+				
+				prepareEditExampleSegue(for: segue)
+				
+			case .myNotes:
+				
+				prepareEditMyNotesSegue(for: segue)
+				
+			default:
+				print("fatal error, no segue identifier found in prepare TermVC")
+			}
+			
+		default:
+			print("fatal error, no segue identifier found in prepare TermVC")
+		}
+	}
+	
+	private func prepareAssignCategorySegue (for segue: UIStoryboardSegue) {
+		
+		let nc = segue.destination as! UINavigationController
+		let vc = nc.topViewController as! CategoryListVC
+		
+		vc.categoryListVCH.categoryListMode = .assignCategory
+		vc.categoryListVCH.currentCategoryID = currentCategoryID
+		vc.categoryListVCH.term = term
+		
+	}
+	
+	private func prepareEditNameSegue (for segue: UIStoryboardSegue) {
+		singleLineInputVC = segue.destination as? SingleLineInputVC
+		singleLineInputVC.textInputVCH.fieldTitle = "TERM NAME"
+		singleLineInputVC.textInputVCH.initialText = term.name
+		singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+		singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
+		singleLineInputVC.textInputVCH.minLength = 1
+		singleLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermName
+		singleLineInputVC.textInputVCH.propertyReference = .name
+		
+		singleLineInputVC.delegate = self
+	}
+	
+	private func prepareEditDefinitionSegue (for segue: UIStoryboardSegue) {
+		multiLineInputVC = segue.destination as? MultiLineInputVC
+		multiLineInputVC.textInputVCH.fieldTitle = "DEFINITION"
+		multiLineInputVC.textInputVCH.initialText = term.definition
+		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
+		multiLineInputVC.textInputVCH.minLength = 0
+		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermDefinition
+		multiLineInputVC.textInputVCH.propertyReference = .definition
+		multiLineInputVC.delegate = self
+	}
+	
+	private func prepareEditExampleSegue (for segue: UIStoryboardSegue) {
+		multiLineInputVC = segue.destination as? MultiLineInputVC
+		multiLineInputVC.textInputVCH.fieldTitle = "EXAMPLE"
+		multiLineInputVC.textInputVCH.initialText = term.example
+		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
+		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
+		multiLineInputVC.textInputVCH.minLength = 0
+		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermExample
+		multiLineInputVC.textInputVCH.propertyReference = .example
+		multiLineInputVC.delegate = self
+	}
+	
+	private func prepareEditMyNotesSegue (for segue: UIStoryboardSegue) {
+		multiLineInputVC = segue.destination as? MultiLineInputVC
+		multiLineInputVC.textInputVCH.fieldTitle = "MY NOTES"
+		multiLineInputVC.textInputVCH.initialText = term.myNotes
+		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ? ."
+		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/?.-\n\t"
+		multiLineInputVC.textInputVCH.minLength = 0
+		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthMyNotes
+		multiLineInputVC.textInputVCH.propertyReference = .myNotes
+		multiLineInputVC.delegate = self
 	}
 	
 }

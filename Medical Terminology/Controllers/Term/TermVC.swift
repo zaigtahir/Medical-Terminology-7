@@ -49,8 +49,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	private let tu = TextUtilities()
 	
 	// keeping these vc as a class varialbe so I can dismiss them through protocol functions
-	private var singleLineInputVC : SingleLineInputVC!
-	private var multiLineInputVC : MultiLineInputVC!
 	
 	override func viewDidLoad() {
 		
@@ -194,100 +192,9 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
-		switch segue.identifier {
-		
-		case myConstants.segueAssignCategory:
-			prepareAssignCategorySegue(for: segue)
-			
-		case myConstants.segueSingleLineInput:
-			
-			prepareEditNameSegue(for: segue)
-			
-		case myConstants.segueMultiLineInput:
-			
-			switch termVCH.propertyReference  {
-			
-			case .definition:
-				
-				prepareEditDefinitionSegue(for: segue)
-				
-			case .example:
-				
-				prepareEditExampleSegue(for: segue)
-				
-			case .myNotes:
-				
-				prepareEditMyNotesSegue(for: segue)
-				
-			default:
-				print("fatal error, no segue identifier found in prepare TermVC")
-			}
-			
-		default:
-			print("fatal error, no segue identifier found in prepare TermVC")
-			
-		}
+		termVCH.prepare(for: segue, sender: sender)
 	}
 	
-	private func prepareAssignCategorySegue (for segue: UIStoryboardSegue) {
-		
-		let nc = segue.destination as! UINavigationController
-		let vc = nc.topViewController as! CategoryListVC
-		
-		vc.categoryListVCH.categoryListMode = .assignCategory
-		vc.categoryListVCH.currentCategoryID = termVCH.currentCategoryID
-		vc.categoryListVCH.term = termVCH.term
-		
-	}
-	
-	private func prepareEditNameSegue (for segue: UIStoryboardSegue) {
-		singleLineInputVC = segue.destination as? SingleLineInputVC
-		singleLineInputVC.textInputVCH.fieldTitle = "TERM NAME"
-		singleLineInputVC.textInputVCH.initialText = termVCH.term.name
-		singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-		singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
-		singleLineInputVC.textInputVCH.minLength = 1
-		singleLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermName
-		singleLineInputVC.textInputVCH.propertyReference = .name
-		
-		singleLineInputVC.delegate = termVCH
-	}
-	
-	private func prepareEditDefinitionSegue (for segue: UIStoryboardSegue) {
-		multiLineInputVC = segue.destination as? MultiLineInputVC
-		multiLineInputVC.textInputVCH.fieldTitle = "DEFINITION"
-		multiLineInputVC.textInputVCH.initialText = termVCH.term.definition
-		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
-		multiLineInputVC.textInputVCH.minLength = 0
-		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermDefinition
-		multiLineInputVC.textInputVCH.propertyReference = .definition
-		multiLineInputVC.delegate = termVCH
-	}
-	
-	private func prepareEditExampleSegue (for segue: UIStoryboardSegue) {
-		multiLineInputVC = segue.destination as? MultiLineInputVC
-		multiLineInputVC.textInputVCH.fieldTitle = "EXAMPLE"
-		multiLineInputVC.textInputVCH.initialText = termVCH.term.example
-		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
-		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
-		multiLineInputVC.textInputVCH.minLength = 0
-		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthTermExample
-		multiLineInputVC.textInputVCH.propertyReference = .example
-		multiLineInputVC.delegate = termVCH
-	}
-	
-	private func prepareEditMyNotesSegue (for segue: UIStoryboardSegue) {
-		multiLineInputVC = segue.destination as? MultiLineInputVC
-		multiLineInputVC.textInputVCH.fieldTitle = "MY NOTES"
-		multiLineInputVC.textInputVCH.initialText = termVCH.term.myNotes
-		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ? ."
-		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/?.-\n\t"
-		multiLineInputVC.textInputVCH.minLength = 0
-		multiLineInputVC.textInputVCH.maxLength = myConstants.maxLengthMyNotes
-		multiLineInputVC.textInputVCH.propertyReference = .myNotes
-		multiLineInputVC.delegate = termVCH
-	}
 	
 	
 	// MARK: - TermAudioDelegate functions
@@ -325,11 +232,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		self.present(ac, animated: true, completion: .none)
 		
-	}
-	
-	func shouldDismissTextInputVC() {
-		multiLineInputVC?.navigationController?.popViewController(animated: true)
-		singleLineInputVC?.navigationController?.popViewController(animated: true)
 	}
 	
 	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
