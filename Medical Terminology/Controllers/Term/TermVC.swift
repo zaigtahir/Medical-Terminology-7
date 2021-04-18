@@ -275,11 +275,11 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in
 			self.tc.deleteTermPN(termID: self.termVCH.term.termID)
-			self.navigationController?.popViewController(animated: true)
+			self.navigationController?.dismiss(animated: true, completion: nil)
 		}
 		
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-			self.navigationController?.popViewController(animated: true)
+			return
 		}
 		
 		ac.addAction(cancel)
