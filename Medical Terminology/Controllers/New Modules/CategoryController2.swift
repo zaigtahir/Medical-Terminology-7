@@ -219,7 +219,6 @@ class CategoryController2 {
 		return c
 	}
 	
-	
 	func categoryNameIsUnique (name: String, notIncludingCategoryID: Int) -> Bool {
 		let query = "SELECT COUNT (*) FROM \(categories) WHERE name LIKE '\(name)' AND categoryID != \(notIncludingCategoryID)"
 		

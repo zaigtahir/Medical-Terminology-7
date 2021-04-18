@@ -38,7 +38,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 
 	// MARK: - segue functions
 	
-	private func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+	func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
 		switch segue.identifier {
 		

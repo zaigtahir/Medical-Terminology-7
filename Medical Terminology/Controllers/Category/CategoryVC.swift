@@ -174,6 +174,6 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		self.navigationController?.popViewController(animated: true)
 	}
 	
-	
-	
+	@IBAction func deleteCategoryButtonAction(_ sender: Any) {
+	}
 }
