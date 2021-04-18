@@ -1045,7 +1045,6 @@
                                         </state>
                                         <connections>
                                             <action selector="deleteButton:" destination="48e-e9-509" eventType="touchUpInside" id="BhZ-D4-6fl"/>
-                                            <segue destination="oNP-J9-FH6" kind="show" id="jsv-jY-grH"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2792,7 +2791,7 @@
                                 </state>
                                 <connections>
                                     <action selector="deleteButton:" destination="48e-e9-509" eventType="touchUpInside" id="qnO-zO-BMP"/>
-                                    <segue destination="oNP-J9-FH6" kind="show" id="nJZ-LA-KfX"/>
+                                    <action selector="deleteCategoryButtonAction:" destination="BPm-yE-Jpz" eventType="touchUpInside" id="XtT-Po-wvK"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Jni-da-sg3">
@@ -3349,27 +3348,10 @@
             </objects>
             <point key="canvasLocation" x="16428" y="-2528"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="nu2-nu-hfe">
-            <objects>
-                <viewController id="oNP-J9-FH6" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UEl-OC-JZ5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="0AQ-gf-BpI"/>
-                        <color key="backgroundColor" systemColor="systemYellowColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="YXF-D3-lfV"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P9N-bq-RuC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="16428" y="-1397"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jsv-jY-grH"/>
-        <segue reference="i1H-T2-eqP"/>
-        <segue reference="MkZ-Rk-3Eg"/>
+        <segue reference="FY8-JO-v3w"/>
+        <segue reference="RQg-Yy-Rkk"/>
         <segue reference="HWU-Cd-rtW"/>
         <segue reference="UJA-hr-35q"/>
     </inferredMetricsTieBreakers>
@@ -3454,9 +3436,6 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>

@@ -30,6 +30,8 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	var categoryVCH = CategoryVCH()
 	
+	let cc = CategoryController2()
+	
 	private let tu = TextUtilities()
 	
 	// keeping a class reference so I can dismiss it in another function
@@ -175,5 +177,21 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	}
 	
 	@IBAction func deleteCategoryButtonAction(_ sender: Any) {
+		
+		let ac = UIAlertController(title: "Delete Category?", message: "Are you sure you want to delete this category? Just FYI: When you delete a category, no terms will be deleted", preferredStyle: .alert)
+		
+		let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in
+			self.cc.deleteCategoryPN(categoryID: self.categoryVCH.category.categoryID)
+			self.navigationController?.popViewController(animated: true)
+		}
+		
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+			self.navigationController?.popViewController(animated: true)
+		}
+		
+		ac.addAction(cancel)
+		ac.addAction(delete)
+		present(ac, animated: true, completion: nil)
+
 	}
 }
