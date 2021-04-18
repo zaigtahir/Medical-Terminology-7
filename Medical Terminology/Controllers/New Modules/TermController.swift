@@ -224,6 +224,18 @@ class TermController {
 		
 	}
 	
+	func deleteTermPN (termID: Int) {
+		// delete from the term table. The term deletion does not need to PN
+		let query1 = "DELETE FROM \(terms) WHERE termID = \(termID)"
+		let _ = myDB.executeStatements(query1)
+		
+		// unassign from assignedCategories and PN
+		
+		let ids = self.getTermCategoryIDs(termID: termID)
+		for id in ids {
+			cc.unassignCategoryPN(termID: termID, categoryID: id)
+		}
+	}
 	
 	// MARK: - Non search text queries
 	

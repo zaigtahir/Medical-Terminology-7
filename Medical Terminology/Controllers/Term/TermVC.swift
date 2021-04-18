@@ -269,5 +269,23 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		termVCH.propertyReference  = .myNotes
 		performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
 	}
+	@IBAction func deleteTermButtonAction(_ sender: Any) {
+		
+		let ac = UIAlertController(title: "Delete This Term?", message: "Are you sure you want to delete this term from ALL categories?", preferredStyle: .alert)
+		
+		let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in
+			self.tc.deleteTermPN(termID: self.termVCH.term.termID)
+			self.navigationController?.popViewController(animated: true)
+		}
+		
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+			self.navigationController?.popViewController(animated: true)
+		}
+		
+		ac.addAction(cancel)
+		ac.addAction(delete)
+		present(ac, animated: true, completion: nil)
+		
+	}
 	
 }
