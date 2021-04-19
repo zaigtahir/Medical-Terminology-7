@@ -17,7 +17,7 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-gM-IpN">
@@ -222,7 +222,7 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
@@ -542,7 +542,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashcardVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TVx-7Q-M6g">
@@ -708,9 +708,34 @@
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcA-n9-9fv" customClass="ZUIToggleButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
+                                                            <rect key="frame" x="20" y="285" width="348" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="50" id="lGF-He-52w"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="tintColor" name="color text"/>
+                                                            <state key="normal" title="  Got it">
+                                                                <color key="titleColor" name="color text"/>
+                                                                <imageReference key="image" image="square" catalog="system" symbolScale="medium"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                                    <color key="value" name="color correct"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="offTintColor">
+                                                                    <color key="value" name="color text"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="checkmark.square.fill" catalog="system"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="gotItButtonAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="oxN-BL-kUM"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="jcA-n9-9fv" secondAttribute="bottom" id="7RD-WG-mRw"/>
                                                         <constraint firstAttribute="trailing" secondItem="Zby-jd-SQv" secondAttribute="trailing" constant="20" id="894-bf-Xsb"/>
                                                         <constraint firstItem="I8W-7c-jGz" firstAttribute="top" secondItem="Zby-jd-SQv" secondAttribute="bottom" constant="20" id="9oe-Mf-sjs"/>
                                                         <constraint firstItem="ikh-n0-mc6" firstAttribute="leading" secondItem="Zby-jd-SQv" secondAttribute="leading" id="CO5-dR-Bqs"/>
@@ -719,12 +744,14 @@
                                                         <constraint firstAttribute="trailing" secondItem="I8W-7c-jGz" secondAttribute="trailing" constant="20" id="Ko3-4r-OTd"/>
                                                         <constraint firstItem="Yem-cz-hUk" firstAttribute="top" secondItem="MeS-GM-bM1" secondAttribute="bottom" constant="30" id="Mph-Fc-U3f"/>
                                                         <constraint firstItem="Yem-cz-hUk" firstAttribute="leading" secondItem="neh-we-HIS" secondAttribute="leading" constant="20" id="PDN-7j-aTY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="jcA-n9-9fv" secondAttribute="trailing" constant="20" id="RA0-b8-ciZ"/>
                                                         <constraint firstItem="ikh-n0-mc6" firstAttribute="centerY" secondItem="Zby-jd-SQv" secondAttribute="centerY" id="TJs-PG-Dsw"/>
                                                         <constraint firstItem="MeS-GM-bM1" firstAttribute="top" secondItem="neh-we-HIS" secondAttribute="top" constant="20" id="Ybm-V2-smx"/>
                                                         <constraint firstItem="I8W-7c-jGz" firstAttribute="leading" secondItem="Yem-cz-hUk" secondAttribute="leading" id="ai4-Zp-qbs"/>
                                                         <constraint firstItem="Jqo-T0-MQp" firstAttribute="centerY" secondItem="Yem-cz-hUk" secondAttribute="centerY" id="fuR-ml-76j"/>
                                                         <constraint firstAttribute="trailing" secondItem="ikh-n0-mc6" secondAttribute="trailing" constant="20" id="pge-Sy-8io"/>
                                                         <constraint firstItem="Zby-jd-SQv" firstAttribute="leading" secondItem="Yem-cz-hUk" secondAttribute="leading" id="sJJ-oF-tjV"/>
+                                                        <constraint firstItem="jcA-n9-9fv" firstAttribute="leading" secondItem="neh-we-HIS" secondAttribute="leading" constant="20" id="uhw-d5-qx8"/>
                                                         <constraint firstItem="MeS-GM-bM1" firstAttribute="leading" secondItem="neh-we-HIS" secondAttribute="leading" constant="20" id="uqn-oo-FCR"/>
                                                         <constraint firstItem="Zby-jd-SQv" firstAttribute="top" secondItem="Yem-cz-hUk" secondAttribute="bottom" constant="50" id="wMC-3F-Xhf"/>
                                                         <constraint firstItem="tty-EJ-bzH" firstAttribute="top" secondItem="neh-we-HIS" secondAttribute="top" constant="20" id="yWn-ym-hhb"/>
@@ -745,6 +772,7 @@
                                             <outlet property="exampleLabel" destination="I8W-7c-jGz" id="f7P-3c-roq"/>
                                             <outlet property="favoriteButton" destination="Tqe-i7-fIi" id="iqf-Up-OcE"/>
                                             <outlet property="flashCardCounter" destination="MeS-GM-bM1" id="6L0-5c-3GA"/>
+                                            <outlet property="gotItButton" destination="jcA-n9-9fv" id="6u8-f7-LPd"/>
                                             <outlet property="playAudioButton" destination="hMy-Hv-Jif" id="Ho0-hX-xay"/>
                                             <outlet property="showHiddenDefinitionButton" destination="ikh-n0-mc6" id="c3N-4p-4Ll"/>
                                             <outlet property="showHiddenTermButton" destination="Jqo-T0-MQp" id="Ire-Y7-d03"/>
@@ -926,7 +954,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashcardOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -1288,7 +1316,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -1389,7 +1417,7 @@
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="TermListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="100" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tGH-PG-Amh" propertyAccessControl="none">
@@ -1669,7 +1697,7 @@
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-vJ-agb">
@@ -1878,7 +1906,7 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
@@ -2216,7 +2244,7 @@
             <objects>
                 <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -2470,7 +2498,7 @@
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
@@ -3362,6 +3390,7 @@
         <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.right.circle.fill" catalog="system" width="128" height="121"/>
         <image name="check circle filled" width="24" height="24"/>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>
@@ -3382,6 +3411,7 @@
         <image name="settings zt" width="24" height="24"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="speaker.fill" catalog="system" width="128" height="128"/>
+        <image name="square" catalog="system" width="128" height="114"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="124"/>
         <image name="text.bubble" catalog="system" width="128" height="110"/>
         <image name="trash" catalog="system" width="121" height="128"/>

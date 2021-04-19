@@ -196,15 +196,17 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	func pressedFavoriteButton(termID: Int) {
 		// when the user clicks the heart button, it toggles locally, but need to change the value in the database
-		
-		print("in vch userPressedFavoriteButton")
-		
+	
 		let favoriteStatus = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: termID)
 		tc.setFavoriteStatusPN(categoryID: currentCategoryID, termID: termID, isFavorite: !favoriteStatus)
 		
 		// Note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed so that all the components of this program can react.
 		// The VCH will listen for that and tell the home view to refresh it's current cell. This is redundant for this case where the user changed the value of the term favorite status on the flash card itself. However, it will be relavent to react to when the user changes this term's favorite status on an other part of the program.
-		
+
+	}
+	
+	func pressedGotItButton(termID: Int) {
+		print("in vch userPressedGotItButton")
 	}
 	
 	// MARK: - Scroll delegate protocol

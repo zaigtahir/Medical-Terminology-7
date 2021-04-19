@@ -11,6 +11,7 @@ import AVFoundation
 
 protocol FlashcardCellDelegate: AnyObject {
     func pressedFavoriteButton(termID: Int)
+	func pressedGotItButton(termID: Int)
 }
 
 class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDelegate {
@@ -24,7 +25,8 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDeleg
     @IBOutlet weak var favoriteButton: ZUIToggleButton!	//my custom button! :)
     @IBOutlet weak var flashCardCounter: UILabel!
     @IBOutlet weak var playAudioButton: UIButton!
-
+	@IBOutlet weak var gotItButton: ZUIToggleButton!
+	
 	private var term: 	Term!
 	
 	private let tc = TermController()
@@ -120,4 +122,8 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDeleg
     @IBAction func playAudioAction(_ sender: Any) {
 		term.playAudio()
     }
+	@IBAction func gotItButtonAction(_ sender: Any) {
+		gotItButton.isOn.toggle()
+		delegate?.pressedGotItButton(termID: term.termID)
+	}
 }

@@ -27,7 +27,8 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	
 	@IBOutlet weak var emptyListLabel: UILabel!
 	@IBOutlet weak var emptyListImage: UIImageView!
-
+	@IBOutlet weak var gotItButton: ZUIToggleButton!
+	
 	
 	//button listing the category name
 	
@@ -210,6 +211,11 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	
 	@IBAction func nextButtonAction(_ sender: Any) {
 		scrollController.scrollNext(collectionView: collectionView)
+	}
+	@IBAction func gotItButtonAction(_ sender: ZUIToggleButton) {
+		
+		sender.isOn.toggle()
+		
 	}
 	
 }
