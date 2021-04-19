@@ -18,13 +18,16 @@ class ZUIToggleButton: UIButton {
 	// custom fields to show on the IB
 	@IBInspectable var onTintColor: UIColor?
 	@IBInspectable var offTintColor: UIColor?
+	@IBInspectable var onImage: UIImage?
 	
 	private var iIsOn = false
-	private var onImage : UIImage!
+	
+	// off image is the image selected in the IB
+	private var offImage : UIImage?
 	
 	override func awakeFromNib() {
 		
-		onImage = self.image(for: .normal)
+		offImage = self.image(for: .normal)
 		self.tintColor = offTintColor
 	}
 	
@@ -32,8 +35,21 @@ class ZUIToggleButton: UIButton {
 		set {
 			iIsOn = newValue
 			
-			self.tintColor = iIsOn ? onTintColor : offTintColor
-			self.setImage(onImage, for: .normal)
+			if iIsOn {
+				self.tintColor = onTintColor
+				if let onImageIsPresent = onImage {
+					if let offImageIsPresent = offImage {
+						
+						let symbolConfiguration = offImageIsPresent.symbolConfiguration!
+						let scaledOnImage = onImageIsPresent.applyingSymbolConfiguration(symbolConfiguration)
+						self.setImage(scaledOnImage, for: .normal)
+					}
+				}
+				
+			} else {
+				self.tintColor =  offTintColor
+				self.setImage(offImage, for: .normal)
+			}
 		}
 		
 		get {

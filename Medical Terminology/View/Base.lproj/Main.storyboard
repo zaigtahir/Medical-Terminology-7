@@ -700,6 +700,7 @@
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="offTintColor">
                                                                             <color key="value" name="color text"/>
                                                                         </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="heart.fill" catalog="system"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="favoriteButtonAction:" destination="mbN-TJ-Qhj" eventType="touchUpInside" id="EGP-R1-iS5"/>
@@ -3353,8 +3354,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="FY8-JO-v3w"/>
         <segue reference="RQg-Yy-Rkk"/>
-        <segue reference="HWU-Cd-rtW"/>
-        <segue reference="UJA-hr-35q"/>
+        <segue reference="Nhy-Yr-H6x"/>
+        <segue reference="Sbm-EN-3iq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
