@@ -61,7 +61,8 @@ class TermController {
 	}
 	
 	func setFavoriteStatusPN (categoryID: Int, termID: Int, isFavorite: Bool) {
-		let query = "UPDATE \(myConstants.dbTableAssignedCategories) SET isFavorite = \( isFavorite ? 1 : 0 ) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		let query = "UPDATE \(assignedCategories) SET isFavorite = \( isFavorite ? 1 : 0 ) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		_ = myDB.executeStatements(query)
 		
 		// fire off notification that a terms information changed
@@ -135,6 +136,26 @@ class TermController {
 		
 		
 		return ids
+		
+	}
+	
+	func getFlashcardLearnesStatus (categoryID: Int, termID: Int) -> FlashCardLearnStatus {
+		let query = "SELECT learnedFlashcard FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			let status = Int(resultSet.int(forColumnIndex: 0))
+			return status == 1 ?  FlashCardLearnStatus.learned : FlashCardLearnStatus.learning
+		} else {
+			print ("fatal error getting resultSet in getLearnedFlashcardStatus, returning learning")
+			return FlashCardLearnStatus.learning
+		}
+	}
+	
+	func setLearnedFlashcard (categoryID: Int, termID: Int, learnedStatus: FlashCardLearnStatus) {
+		
+		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = \(learnedStatus.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		myDB.executeStatements(query)
 		
 	}
 

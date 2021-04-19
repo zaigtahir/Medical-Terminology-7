@@ -22,8 +22,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
 	
-	
-	
 	weak var delegate: FlashcardHomeDelegate?
 	
 	// controllers
@@ -184,8 +182,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let term = tc.getTerm(termID: termIDs[indexPath.row])
 		let countText = "Flashcard: \(indexPath.row + 1) of \(termIDs.count)"
 		let isFavorite = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: term.termID)
+		let fcLearnStatus = tc.getFlashcardLearnesStatus(categoryID: currentCategoryID, termID: term.termID)
 		
-		cell.configure(term: term, fcvMode: viewMode, isFavorite: isFavorite, counter: countText)
+		cell.configure(term: term, fcvMode: viewMode, isFavorite: isFavorite, flashcardLearnStatus: fcLearnStatus, counter: countText)
 		
 		cell.delegate = self
 		
@@ -206,7 +205,17 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	func pressedGotItButton(termID: Int) {
-		print("in vch userPressedGotItButton")
+		// the got it button changes state locally, so just need to update the db here
+		let fcLearnedStatus = tc.getFlashcardLearnesStatus(categoryID: currentCategoryID, termID: termID)
+		
+		var newStatus = fcLearnedStatus
+		if newStatus == .learned {
+			newStatus = .learning
+		} else {
+			newStatus = .learned
+		}
+				
+		tc.setLearnedFlashcard(categoryID: currentCategoryID, termID: termID, learnedStatus: newStatus)
 	}
 	
 	// MARK: - Scroll delegate protocol
