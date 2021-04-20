@@ -21,6 +21,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	@IBOutlet weak var sliderOutlet: UISlider!
 	
+	@IBOutlet weak var learnedStatusSwitch: UISegmentedControl!
 	@IBOutlet weak var previousButton: UIButton!
 	@IBOutlet weak var randomButton: UIButton!
 	@IBOutlet weak var nextButton: UIButton!
@@ -52,10 +53,9 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		
 		collectionView.dataSource = flashCardVCH
 		collectionView.delegate = scrollController
-		
-		// Do any additional setup after loading the view.
-		
-		sliderOutlet.isContinuous  = true    //output info while sliding
+	
+		//output info while sliding
+		sliderOutlet.isContinuous  = true
 		sliderOutlet.minimumValue = 1
 		
 		//initial buttton states
@@ -98,6 +98,13 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		
 		sliderOutlet.maximumValue = Float(flashCardVCH.termIDs.count - 1)
 		sliderOutlet.value = Float (scrollController.getCellIndex(collectionView: collectionView))
+		
+		let learningCount = flashCardVCH.getFcLearningCount()
+		let learnedCount = flashCardVCH.getFcLearnedCount()
+		
+		// set up the titles for the learned status switch
+		learnedStatusSwitch.setTitle("Learning \(learningCount)", forSegmentAt: 0)
+		learnedStatusSwitch.setTitle("Learned \(learnedCount)", forSegmentAt: 1)
 		
 		updateButtons()
 		
@@ -212,10 +219,16 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	@IBAction func nextButtonAction(_ sender: Any) {
 		scrollController.scrollNext(collectionView: collectionView)
 	}
-	@IBAction func gotItButtonAction(_ sender: ZUIToggleButton) {
+
+	@IBAction func learnedStatusSwitchAction(_ sender: UISegmentedControl) {
+		if sender.selectedSegmentIndex == 0 {
+			flashCardVCH.learnedStatus = false
+		} else {
+			flashCardVCH.learnedStatus = true
+		}
 		
-		sender.isOn.toggle()
-		
+		flashCardVCH.updateData()
+		updateDisplay()
+		collectionView.reloadData()
 	}
-	
 }

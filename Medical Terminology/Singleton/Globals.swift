@@ -24,11 +24,6 @@ enum FlashcardViewMode {
     case definition
 }
 
-enum FlashCardLearnStatus: Int {
-	case learning = 0
-	case learned = 1
-}
-
 enum QuestionsType {
     case term
     case definition

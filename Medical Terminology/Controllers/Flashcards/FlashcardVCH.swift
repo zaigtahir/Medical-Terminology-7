@@ -22,6 +22,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : FlashcardViewMode = .both
 	
+	// which tab to show: learning vs learned
+	var learnedStatus = false
+	
 	weak var delegate: FlashcardHomeDelegate?
 	
 	// controllers
@@ -146,7 +149,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	*/
 	func updateData () {
 		
-		termIDs = tc.getTermIDs(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: true)
+		termIDs = tc.getTermIDs(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: learnedStatus, orderByName: true)
 	}
 	
 	/**
@@ -156,6 +159,17 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		updateData()
 		delegate?.shouldRefreshCollectionView()
 		delegate?.shouldUpdateDisplay()
+	}
+	
+	func getFcLearnedCount () -> Int {
+		
+		return tc.getCount(categoryID: currentCategoryID, isFavorite: showFavoritesOnly ? true : .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: true)
+	}
+	
+	
+	func getFcLearningCount () -> Int {
+		return tc.getCount(categoryID: currentCategoryID, isFavorite: showFavoritesOnly ? true : .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: false)
+		
 	}
 	
 	// MARK: - count functions
@@ -182,9 +196,10 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let term = tc.getTerm(termID: termIDs[indexPath.row])
 		let countText = "Flashcard: \(indexPath.row + 1) of \(termIDs.count)"
 		let isFavorite = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: term.termID)
-		let fcLearnStatus = tc.getFlashcardLearnesStatus(categoryID: currentCategoryID, termID: term.termID)
 		
-		cell.configure(term: term, fcvMode: viewMode, isFavorite: isFavorite, flashcardLearnStatus: fcLearnStatus, counter: countText)
+		let fcls = tc.getLearnedFlashcard(categoryID: currentCategoryID, termID: term.termID)
+		
+		cell.configure(term: term, fcvMode: viewMode, isFavorite: isFavorite, learnedFlashcard: fcls , counter: countText)
 		
 		cell.delegate = self
 		
@@ -195,27 +210,22 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	func pressedFavoriteButton(termID: Int) {
 		// when the user clicks the heart button, it toggles locally, but need to change the value in the database
-	
+		
 		let favoriteStatus = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: termID)
 		tc.setFavoriteStatusPN(categoryID: currentCategoryID, termID: termID, isFavorite: !favoriteStatus)
 		
 		// Note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed so that all the components of this program can react.
 		// The VCH will listen for that and tell the home view to refresh it's current cell. This is redundant for this case where the user changed the value of the term favorite status on the flash card itself. However, it will be relavent to react to when the user changes this term's favorite status on an other part of the program.
-
+		
 	}
 	
 	func pressedGotItButton(termID: Int) {
 		// the got it button changes state locally, so just need to update the db here
-		let fcLearnedStatus = tc.getFlashcardLearnesStatus(categoryID: currentCategoryID, termID: termID)
+		let fcls = !tc.getLearnedFlashcard(categoryID: currentCategoryID, termID: termID)
 		
-		var newStatus = fcLearnedStatus
-		if newStatus == .learned {
-			newStatus = .learning
-		} else {
-			newStatus = .learned
-		}
-				
-		tc.setLearnedFlashcard(categoryID: currentCategoryID, termID: termID, learnedStatus: newStatus)
+		tc.setLearnedFlashcard(categoryID: currentCategoryID, termID: termID, learnedStatus: fcls)
+		
+		updateData()
 	}
 	
 	// MARK: - Scroll delegate protocol

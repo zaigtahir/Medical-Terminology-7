@@ -36,7 +36,7 @@ class TermController {
 	
 	func getTerm (termID: Int) -> Term {
 		
-		let query = "SELECT * FROM \(myConstants.dbTableTerms) WHERE termID = \(termID)"
+		let query = "SELECT * FROM \(terms) WHERE termID = \(termID)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
@@ -139,21 +139,27 @@ class TermController {
 		
 	}
 	
-	func getFlashcardLearnesStatus (categoryID: Int, termID: Int) -> FlashCardLearnStatus {
+	func getLearnedFlashcard (categoryID: Int, termID: Int) -> Bool {
 		let query = "SELECT learnedFlashcard FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
 			let status = Int(resultSet.int(forColumnIndex: 0))
-			return status == 1 ?  FlashCardLearnStatus.learned : FlashCardLearnStatus.learning
+			return status == 1 ?  true : false
 		} else {
-			print ("fatal error getting resultSet in getLearnedFlashcardStatus, returning learning")
-			return FlashCardLearnStatus.learning
+			print ("fatal error getting resultSet in getLearnedFlashcardStatus, returning false")
+			return false
 		}
 	}
 	
-	func setLearnedFlashcard (categoryID: Int, termID: Int, learnedStatus: FlashCardLearnStatus) {
+	func setLearnedFlashcard (categoryID: Int, termID: Int, learnedStatus: Bool) {
 		
-		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = \(learnedStatus.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		var ls = 0
+		if learnedStatus {
+			ls = 1
+		}
+		
+		
+		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = \(ls) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		
 		myDB.executeStatements(query)
 		
@@ -410,7 +416,7 @@ class TermController {
 	
 	private func learnedFlashcardString (learned: Bool?) -> String {
 		guard let l = learned else {return ""}
-		return l ? "AND learnedFlashcard = 1" : ""
+		return l ? "AND learnedFlashcard = 1" : "AND learnedFlashcard  =  0"
 	}
 	
 	private func nameContainsString (search: String? ) -> String {

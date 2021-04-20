@@ -34,7 +34,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDeleg
 	
     weak var delegate: FlashcardCellDelegate?
 	
-	func configure (term: Term, fcvMode: FlashcardViewMode, isFavorite: Bool, flashcardLearnStatus: FlashCardLearnStatus,  counter: String) {
+	func configure (term: Term, fcvMode: FlashcardViewMode, isFavorite: Bool, learnedFlashcard: Bool,  counter: String) {
 		
 		self.term = term
 		termLabel.text = term.name
@@ -49,11 +49,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDeleg
 		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
 		playAudioButton.isEnabled = term.isAudioFilePresent()
 		
-		if flashcardLearnStatus == FlashCardLearnStatus.learning {
-			gotItButton.isOn = false
-		} else {
-			gotItButton.isOn = true
-		}
+		gotItButton.isOn = learnedFlashcard
 		
 		switch fcvMode {
 		
