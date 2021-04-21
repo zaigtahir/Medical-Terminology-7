@@ -226,6 +226,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		tc.setLearnedFlashcard(categoryID: currentCategoryID, termID: termID, learnedStatus: fcls)
 		
 		updateData()
+		delegate?.shouldUpdateDisplay()
 	}
 	
 	// MARK: - Scroll delegate protocol
