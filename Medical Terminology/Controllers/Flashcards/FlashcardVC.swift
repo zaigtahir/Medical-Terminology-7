@@ -67,8 +67,6 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		nextButton.layer.cornerRadius = myConstants.button_cornerRadius
 		randomButton.layer.cornerRadius = myConstants.button_cornerRadius
 		
-		emptyListLabel.text = myConstants.noFavoritesAvailableText
-		
 		updateDisplay()
 	}
 	

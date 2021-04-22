@@ -284,7 +284,7 @@ class TermController {
 		let query = ("\(selectStatement) \(whereStatement)")
 		
 		print("getTermIDs query: \(query)")
-		
+	
 		var ids = [Int]()
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -293,6 +293,10 @@ class TermController {
 				ids.append(id)
 			}
 		}
+		
+		
+		print("result count =  : \(ids.count)")
+		
 		return ids
 	}
 	

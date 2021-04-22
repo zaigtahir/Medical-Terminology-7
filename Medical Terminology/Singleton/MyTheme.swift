@@ -92,12 +92,13 @@ class MyTheme{
     let imageCorrect = UIImage(named: "check circle filled")
     let imageIncorrect = UIImage(named: "cross circle filled")
     
-	// MARK: view controller header images, show on top when adding / editing / deleting
+	// MARK: view controller header images, show on top when adding
 	let imageHeaderAdd = UIImage.init(systemName: "wand.and.stars")
-	let imageHeaderEdit = UIImage.init(systemName: "pencil.circle")
-	let imageHeaderDelete = UIImage.init(systemName: "hand.raised")
 	
-    //use next three speaker images to make animation
+	let imageDone = UIImage.init(systemName: "face.smiling")
+	let imageInfo = UIImage.init(systemName: "info.circle")
+    
+	//use next three speaker images to make animation
 	let imageSpeaker = UIImage.init(systemName: "speaker.fill")
     let imageSpeakerPlaying = UIImage(systemName: "speaker.wave.2.fill")
 
