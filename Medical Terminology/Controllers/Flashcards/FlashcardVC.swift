@@ -73,13 +73,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 	func updateDisplay () {
 		
 		let favoriteCount = flashCardVCH.getFavoriteTermsCount()
-		
-		if favoriteCount == 0 && flashCardVCH.showFavoritesOnly {
-			collectionView.isHidden = true
-		} else {
-			collectionView.isHidden = false
-		}
-		
+	
 		showFavoritesOnlyButton.isOn = flashCardVCH.showFavoritesOnly
 		
 		favoritesCountLabel.text = "\(favoriteCount)"
@@ -187,7 +181,6 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		flashCardVCH.showFavoritesOnly = !flashCardVCH.showFavoritesOnly
 		flashCardVCH.updateData()
 		collectionView.reloadData()
-		
 		updateDisplay()
 	}
 	

@@ -195,8 +195,10 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		if termIDs.count == 0 {
 			print("termIDs count = 0, sending back NoFlashCardCell")
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noFlashcardCell", for: indexPath) as! NoFlashCardCell
-			return configureNoFlashCardCell(cell: cell)
+			let noFC = collectionView.dequeueReusableCell(withReuseIdentifier: "noFlashcardCell", for: indexPath) as! NoFlashCardCell
+			configureNoFlashCardCell(cell: noFC)
+			
+			return noFC
 		}
 		
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashCardCell", for: indexPath) as! FlashcardCell
@@ -215,19 +217,18 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		return cell
 	}
 	
-	
-	func configureNoFlashCardCell (cell: NoFlashCardCell) -> NoFlashCardCell {
+	func configureNoFlashCardCell (cell: NoFlashCardCell) {
 				
 		// if no terms available in this category
 		
 		let termCount = cc.getCountOfTerms(categoryID: currentCategoryID)
+		
 		if termCount == 0 {
-			cell.headingLabel.text = "No Terms To Show"
+			cell.headingLabel.text = "No Terms To Show."
 			cell.subheadingLabel.text = "There are no terms in this category. When you add terms to this category, they will show here."
 			cell.redoButton.isHidden = true
 			cell.headerIcon.image = myTheme.imageInfo!
-			
-			return cell
+			return
 		}
 		
 		// if showFavoritesOnly == true and there are no favorites in this category
@@ -236,61 +237,55 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		if showFavoritesOnly && favoriteCount == 0 {
 			
-			cell.headingLabel.text = "No Favorite Terms To Show"
+			cell.headingLabel.text = "No Favorite Terms To Show."
 			cell.subheadingLabel.text = "There are no favorite terms in this category. When you choose some terms to be favorites, they will show here."
 			cell.redoButton.isHidden = true
 			cell.headerIcon.image = myTheme.imageInfo!
-			
-			return cell
-			
+			return
 		}
 		
-		return cell
+		switch learnedStatus {
 		
-		
+		case false:
+			// learnING tab
+			if showFavoritesOnly {
+				// show favorites only, you learned all favorite terms
+				cell.headingLabel.text = "You learned all favorite terms in this category!"
+				cell.subheadingLabel.text = "You can relearn all the terms again by pressing the redo button."
+				cell.redoButton.isHidden = false
+				cell.headerIcon.image = myTheme.imageDone!
+				return
+				
+			} else {
+				// show all, learned all terms
+				cell.headingLabel.text = "You learned all terms in this category!"
+				cell.subheadingLabel.text = "You can relearn all the terms again by pressing the redo button."
+				cell.redoButton.isHidden = false
+				cell.headerIcon.image = myTheme.imageDone!
+				return
+				
+			}
+		case true:
+			// learnED tab
+			if showFavoritesOnly {
+				// show favorites only, you have not learned any favorite terms yet
+				cell.headingLabel.text = "You have not learned any favorite terms in this category yet."
+				cell.subheadingLabel.text = "When you learn some favoite terms, they will show here."
+				cell.redoButton.isHidden = true
+				cell.headerIcon.image = myTheme.imageInfo!
+				return
+				
+			} else {
+				// show all, no have not learned any terms yet
+				cell.headingLabel.text = "You have not learned any terms in this category yet."
+				cell.subheadingLabel.text = "When you learn some terms, they will show here."
+				cell.redoButton.isHidden = true
+				cell.headerIcon.image = myTheme.imageInfo!
+				return
+			}
+		}
 	}
-	
-	func getNoTermInfo () -> (headerIcon: UIImage, heading: String, subheading: String, hideRedoButton: Bool ){
-		
-		let heading = "test heading"
-		let subheading = "test subheading"
-		let hideRedoButton = true
-		let headerIcon = myTheme.imageInfo!
-		
-		let termCount = cc.getCountOfTerms(categoryID: currentCategoryID)
-		
-		// no terms available in this category
-		if termCount == 0 {
-			let heading = "No Terms To Show"
-			let subheading = "There are no terms in this category. When you add terms to this category, they will show here."
-			let hideRedoButton = true
-			let headerIcon = myTheme.imageInfo!
-			
-			return (headerIcon, heading, subheading, hideRedoButton)
-		}
-		
-		// no favorite terms in this category
-		let favoriteCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
-		
-		if showFavoritesOnly == true && favoriteCount == 0 {
-			let heading = "No Favorite Terms To Show"
-			let subheading = "There are no favorite terms in this category. If you make some terms favorite in this category, they will show here.."
-			let hideRedoButton = true
-			let headerIcon = myTheme.imageInfo!
-			
-			return (headerIcon, heading, subheading, hideRedoButton)
-		}
-		
-		
-		return (headerIcon, heading, subheading, hideRedoButton)
-	}
-	
-	
-	
-	
-	
-	
-	
+
 	
 	// MARK: - Cell delegate protocol
 	
