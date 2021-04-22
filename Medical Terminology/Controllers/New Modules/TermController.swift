@@ -164,6 +164,15 @@ class TermController {
 		myDB.executeStatements(query)
 		
 	}
+	
+	/**
+	Will reset all learnedFlashcard status to 0 (false)
+	*/
+	func resetLearnedFlashcards (categoryID: Int) {
+		
+		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = 0 WHERE categoryID = \(categoryID)"
+		myDB.executeStatements(query)
+	}
 
 	/**
 	Not including TermID is used to filter out the current term name. The user just might want to change the letter CaSE. In that case, i still want to save that change. So This query will look for duplicates of any other row.
@@ -209,6 +218,7 @@ class TermController {
 		return addedTermID
 		
 	}
+
 	
 	// MARK: - term update functions
 	

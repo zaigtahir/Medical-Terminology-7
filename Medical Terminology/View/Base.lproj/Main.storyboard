@@ -799,6 +799,9 @@
                                                                 <color key="titleColor" name="color main"/>
                                                                 <imageReference key="image" image="arrow.counterclockwise" catalog="system" symbolScale="small"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="redoButtonAction:" destination="1VE-GN-9V0" eventType="touchUpInside" id="7i6-fH-RwZ"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>

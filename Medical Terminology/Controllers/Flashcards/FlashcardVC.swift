@@ -222,4 +222,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		updateDisplay()
 		collectionView.reloadData()
 	}
+	@IBAction func redoButtonAction(_ sender: Any) {
+		flashCardVCH.relearnFlashcards()
+	}
 }
