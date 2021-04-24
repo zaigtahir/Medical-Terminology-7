@@ -24,6 +24,7 @@ class Term: NSObject, AVAudioPlayerDelegate {
 	var audioFile: String = ""
 	var isStandard: Bool = false
 	var audioPlayer = AVAudioPlayer()
+	var favoriteForCategory = false
 
 	/// initialize with the values when need  when using the TermVC and CategoryListVC
 	var assignedCategories = [Int]()

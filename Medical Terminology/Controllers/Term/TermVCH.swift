@@ -19,7 +19,6 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	
 	/// Everything will be based on this term. If this termID = -1, this will be considered to be a NEW term that is not saved yet
 	var term : Term!
-	var newTermFavoriteStatus = false
 	var currentCategoryID : Int!
 	var propertyReference : PropertyReference!
 	var delegate: TermVCHDelegate?
@@ -60,6 +59,8 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		if term.termID != -1 {
 			term = tc.getTerm(termID: term.termID)
 			term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
+			
+			term.favoriteForCategory = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: term.termID)
 		}
 	}
 	
@@ -67,7 +68,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		let newTermID = tc.saveTerm(term: term)
 		
 		// if this is favorite, make it favorite for each catetory
-		if newTermFavoriteStatus {
+		if term.favoriteForCategory {
 			for c in term.assignedCategories {
 				tc.setFavoriteStatusPN(categoryID: c, termID: newTermID, isFavorite: true)
 			}

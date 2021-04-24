@@ -87,6 +87,16 @@ class TermController {
 		}
 	}
 	
+	/**
+	toggles the favorite status and returns the new status
+	*/
+	func toggleFavoriteStatusPN (categoryID: Int, termID: Int) -> Bool {
+		let favStatus = getFavoriteStatus(categoryID: categoryID, termID: termID)
+		setFavoriteStatusPN(categoryID: categoryID, termID: termID, isFavorite: !favStatus)
+		return !favStatus
+		
+	}
+	
 	func getTermCategoryIDs ( termID: Int) -> [Int] {
 		
 		var ids = [Int]()

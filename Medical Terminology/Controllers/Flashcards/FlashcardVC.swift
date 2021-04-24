@@ -134,6 +134,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			vc.categoryListVCH.currentCategoryID = flashCardVCH.currentCategoryID
 			
 		case myConstants.segueTerm:
+			
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! TermVC
 			
@@ -142,7 +143,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			let termID  = flashCardVCH.termIDs[cellIndex]
 			
 			let term = tc.getTerm(termID: termID)
-			term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
+		//	term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
 			vc.termVCH.term = term
 			vc.termVCH.currentCategoryID = flashCardVCH.currentCategoryID
 			

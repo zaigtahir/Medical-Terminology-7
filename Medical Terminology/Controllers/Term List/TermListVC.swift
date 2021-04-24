@@ -65,7 +65,6 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	}
 	
 	func shouldReloadCellAt(indexPath: IndexPath) {
-		print("in TermListVC reloadCellAt delegate function")
 		//tableView.reloadData()
 		tableView.reloadRows(at: [indexPath], with: .fade)
 		
@@ -97,7 +96,6 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			
 		case myConstants.segueTerm:
 			
-			
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! TermVC
 			
@@ -108,6 +106,9 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			case .view:
 				let term = tc.getTerm(termID: termListVCH.termIDForSegue)
 				vc.termVCH.term = term
+				
+				// add categories, favorite status
+			//	term.assignedCategories = //tc.getTermCategoryIDs(termID: term.termID)
 				
 			case .add:
 				

@@ -84,9 +84,12 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		// MARK: update buttons and titles
 		
 		
+		// Aduio button
 		playAudioButton.isEnabled = termVCH.term.isAudioFilePresent()
 		
-		
+		// Favorite button
+		favoriteButton.isOn = termVCH.term.favoriteForCategory
+				
 		if termVCH.term.isStandard {
 			// term is standard
 			self.title = "Term Details"
@@ -240,12 +243,11 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		if termVCH.term.termID == -1 {
 			
-			termVCH.newTermFavoriteStatus.toggle()
+			termVCH.term.favoriteForCategory.toggle()
 			
 		} else {
 			
-			let favoriteState  = tc.getFavoriteStatus(categoryID: termVCH.currentCategoryID, termID: termVCH.term.termID)
-			tc.setFavoriteStatusPN(categoryID: termVCH.currentCategoryID, termID: termVCH.term.termID, isFavorite: !favoriteState)
+			let _ = tc.toggleFavoriteStatusPN(categoryID: termVCH.currentCategoryID, termID: termVCH.term.termID)
 		}
 	}
 	
