@@ -28,10 +28,7 @@ class TermsList {
 	*/
 	
 	func makeList (categoryID: Int, showFavoritesOnly: Bool?, containsText: String?) {
-		
-		print ("making terms List")
-		
-		
+			
 		// clear any current values from the termIDsList and count
 		count = 0
 		termIDsList = [[Int]] ()
@@ -83,6 +80,28 @@ class TermsList {
 			}
 		}
 		return nil
+	}
+	
+	func removeIndex (indexPath: IndexPath) {
+		// if this indexPath exists, then remove it
+
+		let ids = termIDsList[indexPath.section]
+		
+		if ids.count == 0 {
+			return
+		}
+		
+		if indexPath.row >= ids.count {
+			return
+		}
+		
+		if indexPath.row == ids.count - 1 {
+			//requesting to remove the last item
+			termIDsList[indexPath.section].removeLast()
+		} else {
+			termIDsList[indexPath.section].remove(at: indexPath.row)
+		}
+		
 	}
 
 }

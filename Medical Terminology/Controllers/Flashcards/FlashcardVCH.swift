@@ -87,18 +87,32 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	@objc func setFavoriteStatusN (notification: Notification) {
-		
+	
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			
-			// if this term id exists in termIDs, need to reload that term from the database and then reload just that term in the collection
-			if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
-				
-				delegate?.shouldReloadCellAtIndex(termIDIndex: termIDIndex)
+			switch showFavoritesOnly {
+			
+			case true:
+				// seeing favorites only, and a term may have been added or removed from this list so need to reload the whole list
+				updateData()
+				delegate?.shouldRefreshCollectionView()
 				delegate?.shouldUpdateDisplay()
+				
+			case false:
+				// if this term id exists in termIDs, need to reload that term from the database and then reload just that term in the collection
+				
+				if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
+					delegate?.shouldReloadCellAtIndex(termIDIndex: termIDIndex)
+					
+					delegate?.shouldUpdateDisplay()
+				}
 			}
 		}
 	}
+	
+	
+	// MARK: ADD notification for term information changed (different than favorite status changed)
 	
 	@objc func assignCategoryN (notification : Notification) {
 		if let data = notification.userInfo as? [String : Int] {

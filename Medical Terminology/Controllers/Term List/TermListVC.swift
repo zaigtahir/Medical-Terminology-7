@@ -10,6 +10,7 @@ import UIKit
 import SQLite3
 
 class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
+
 	
 	//will use ListTC as the table datasource
 	//use this VC to use as the table delegate as lots of actions happen based on selection including segue
@@ -64,11 +65,16 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		updateDisplay()
 	}
 	
-	func shouldReloadCellAt(indexPath: IndexPath) {
+	func shouldReloadRowAt(indexPath: IndexPath) {
 		//tableView.reloadData()
 		tableView.reloadRows(at: [indexPath], with: .fade)
 		
 	}
+	
+	func shouldRemoveRowAt(indexPath: IndexPath) {
+		tableView.deleteRows(at: [indexPath], with: .automatic)
+	}
+	
 	
 	func shouldClearSearchText () {
 		searchBar.text = ""

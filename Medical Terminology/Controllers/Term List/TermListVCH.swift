@@ -20,7 +20,8 @@ protocol TermListVCHDelegate: AnyObject {
 	
 	func shouldReloadTable()
 	func shouldUpdateDisplay()
-	func shouldReloadCellAt (indexPath: IndexPath)
+	func shouldReloadRowAt (indexPath: IndexPath)
+	func shouldRemoveRowAt (indexPath: IndexPath)
 	func shouldClearSearchText()
 	func shouldSegueToTermVC()
 }
@@ -32,7 +33,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	var currentCategoryID = 1 			// default starting off category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
-	
 	
 	var searchText : String?
 	
@@ -115,14 +115,42 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			
 			// if this term id exists in termIDs, need to reload that term from the database and then reload just that term cell in the table
 			
-			if let _ = termsList.findIndexOf(termID: affectedTermID) {
+			switch showFavoritesOnly {
+			
+			case true:
+				// showing favorites only
 				
-				// updating just the row causes some misalignment issues unless I use an animation of .fade, but then the row has a slight faid flicker animation which I don't want
-				// don't have to reload the data, as the termsList will only contain termIDs. When the cell refreshes, it will get the new term information from the database
+				let favoriteStatus = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: affectedTermID)
 				
-				delegate?.shouldReloadTable()
-				delegate?.shouldUpdateDisplay()
+				switch favoriteStatus {
+				
+				case true:
+				// term is made favorite, need to reload all data and update the display
+					updateData()
+					delegate?.shouldReloadTable()
+					delegate?.shouldUpdateDisplay()
+				
+				case false:
+				// term was made unfavorite, need to remove just that data from the model, and animate the removal of the cell in the table
+					if let indexPath = termsList.findIndexOf(termID: affectedTermID) {
+						
+						termsList.removeIndex(indexPath: indexPath)
+						delegate?.shouldRemoveRowAt(indexPath: indexPath)
+						delegate?.shouldUpdateDisplay()
+					}
+				}
+				
+			case false:
+			
+				if let _ = termsList.findIndexOf(termID: affectedTermID) {
+					// updating just the row causes some misalignment issues unless I use an animation of .fade, but then the row has a slight faid flicker animation which I don't want
+					// don't have to reload the data, as the termsList will only contain termIDs. When the cell refreshes, it will get the new term information from the database
+					
+					delegate?.shouldReloadTable()
+					delegate?.shouldUpdateDisplay()
+				}
 			}
+			
 		}
 		
 	}
