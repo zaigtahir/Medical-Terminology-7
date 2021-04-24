@@ -106,9 +106,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			case .view:
 				let term = tc.getTerm(termID: termListVCH.termIDForSegue)
 				vc.termVCH.term = term
-				
-				// add categories, favorite status
-			//	term.assignedCategories = //tc.getTermCategoryIDs(termID: term.termID)
+				vc.termVCH.updateData()
 				
 			case .add:
 				
