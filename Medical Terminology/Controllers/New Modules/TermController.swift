@@ -237,7 +237,7 @@ class TermController {
 		myDB.executeStatements(query)
 		
 		// post notification
-		let nName = Notification.Name(myKeys.changeTermInfoKey)
+		let nName = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
 	}
 	
@@ -246,7 +246,7 @@ class TermController {
 		myDB.executeStatements(query)
 		
 		// post notification
-		let nName = Notification.Name(myKeys.changeTermInfoKey)
+		let nName = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
 	}
 	
@@ -256,7 +256,7 @@ class TermController {
 		myDB.executeStatements(query)
 		
 		// post notification
-		let nName = Notification.Name(myKeys.changeTermInfoKey)
+		let nName = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
 	}
 	
@@ -266,7 +266,7 @@ class TermController {
 		myDB.executeStatements(query)
 		
 		// post notification
-		let nName = Notification.Name(myKeys.changeTermInfoKey)
+		let nName = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
 		
 	}

@@ -69,6 +69,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let nameCCN = Notification.Name(myKeys.changeCategoryNameKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(changeCategoryNameN(notification:)), name: nameCCN, object: nil)
 		
+		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
+		
 	}
 	
 	deinit {
@@ -134,6 +137,20 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	
 	// MARK: ADD notification for term information changed (different than favorite status changed)
+	
+	@objc func termInformationChangedN (notification: Notification) {
+	
+		print ("got term informtion changed notification in flashcardVCH")
+		if let data = notification.userInfo as? [String: Int] {
+			let affectedTermID = data["termID"]!
+			if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
+				delegate?.shouldReloadCellAtIndex(termIDIndex: termIDIndex)
+				delegate?.shouldUpdateDisplay()
+			}
+
+		}
+		
+	}
 	
 	@objc func assignCategoryN (notification : Notification) {
 		if let data = notification.userInfo as? [String : Int] {
