@@ -11,6 +11,7 @@
 import UIKit
 
 class FlashcardVC: UIViewController, FlashcardHomeDelegate {
+
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
@@ -176,6 +177,10 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		
 		let indexPath = IndexPath(row: termIDIndex, section: 0)
 		collectionView.reloadItems(at: [indexPath])
+	}
+	
+	func shouldRemoveCellAt(indexPath: IndexPath) {
+		collectionView.deleteItems(at: [indexPath])
 	}
 
 	@IBAction func showFavoritesOnlyButtonAction(_ sender: ZUIToggleButton) {

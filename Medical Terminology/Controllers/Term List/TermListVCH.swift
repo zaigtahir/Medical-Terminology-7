@@ -108,8 +108,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	@objc func setFavoriteStatusN (notification: Notification) {
 		
-		print("got setFavoriteStatusN in TermListVCH")
-		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			
@@ -125,7 +123,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 				switch favoriteStatus {
 				
 				case true:
-				// term is made favorite, need to reload all data and update the display
+				// term is made favorite from elsewhere in the program, need to reload all data and update the display
 					updateData()
 					delegate?.shouldReloadTable()
 					delegate?.shouldUpdateDisplay()

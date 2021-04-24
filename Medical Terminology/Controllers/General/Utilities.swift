@@ -57,5 +57,25 @@ class Utilities {
         dIC.saveLearnedDefinition(itemID: 14, learnedState: false)
     }
     
-    
+	func removeIndex (index: Int, array: [Int]) -> [Int]{
+		
+		var newArray = array
+		
+		if array.count == 0 {
+			return newArray
+		}
+		
+		if index >= array.count {
+			return newArray
+		}
+		
+		if index == array.count - 1 {
+			newArray.removeLast()
+			return newArray
+		} else {
+			newArray.remove(at: index)
+			return newArray
+		}
+	
+	}
 }

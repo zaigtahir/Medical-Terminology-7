@@ -13,6 +13,7 @@ protocol FlashcardHomeDelegate: AnyObject {
 	func shouldRefreshCollectionView()	// reload all the data
 	func shouldRefreshCurrentCell()
 	func shouldReloadCellAtIndex (termIDIndex: Int)
+	func shouldRemoveCellAt(indexPath: IndexPath)
 }
 
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
@@ -30,6 +31,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// controllers
 	let tc = TermController()
 	let cc = CategoryController2()
+	let utilities = Utilities()
 	
 	var termIDs = [Int]()	// list to show
 	
@@ -87,7 +89,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	@objc func setFavoriteStatusN (notification: Notification) {
-	
+		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			
@@ -95,16 +97,35 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			
 			case true:
 				// seeing favorites only, and a term may have been added or removed from this list so need to reload the whole list
-				updateData()
-				delegate?.shouldRefreshCollectionView()
-				delegate?.shouldUpdateDisplay()
+				
+				let favoriteStatus = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: affectedTermID)
+				
+				switch favoriteStatus {
+				case true:
+					// term is made favorite from elsewhere in the program, need to reload all data and update the display
+					updateData()
+					delegate?.shouldRefreshCollectionView()
+					delegate?.shouldUpdateDisplay()
+					
+				case false:
+					// term was made unfavorite, need to remove just that data from the model, and animate the removal of the cell in the table
+					
+					if let firstIndex = termIDs.firstIndex(of: affectedTermID) {
+						termIDs = utilities.removeIndex(index: firstIndex, array: termIDs)
+						
+						delegate?.shouldRemoveCellAt (indexPath: IndexPath(row: firstIndex, section: 0))
+						
+						delegate?.shouldUpdateDisplay()
+					}
+					
+				}
+				
 				
 			case false:
 				// if this term id exists in termIDs, need to reload that term from the database and then reload just that term in the collection
 				
 				if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
 					delegate?.shouldReloadCellAtIndex(termIDIndex: termIDIndex)
-					
 					delegate?.shouldUpdateDisplay()
 				}
 			}
@@ -236,7 +257,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	func configureNoFlashCardCell (cell: NoFlashCardCell) {
-				
+		
 		// if no terms available in this category
 		
 		let termCount = cc.getCountOfTerms(categoryID: currentCategoryID)
@@ -303,7 +324,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			}
 		}
 	}
-
+	
 	
 	// MARK: - Cell delegate protocol
 	
@@ -311,7 +332,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// when the user clicks the heart button, it toggles locally, but need to change the value in the database
 		
 		let _ = tc.toggleFavoriteStatusPN(categoryID: currentCategoryID, termID: termID)
-	
+		
 		// Note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed so that all the components of this program can react.
 		// The VCH will listen for that and tell the home view to refresh it's current cell. This is redundant for this case where the user changed the value of the term favorite status on the flash card itself. However, it will be relavent to react to when the user changes this term's favorite status on an other part of the program.
 		
