@@ -107,6 +107,8 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			
 			//there will be only one data here, the categoryID
 			currentCategoryID = data ["categoryID"]!
+			
+			delegate?.shouldClearSearchText()
 			updateDataAndDisplay()
 		}
 	}
@@ -190,12 +192,10 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	@objc func unassignCategoryN (notification : Notification){
 		
 		print ("termListVCH got unassignedCategoryN")
+		
 		if let data = notification.userInfo as? [String : Int] {
-			
 			let categoryID = data["categoryID"]!
-			
 			if categoryID == currentCategoryID {
-				
 				updateDataAndDisplay()
 			}
 		}
@@ -204,8 +204,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	@objc func deleteCategoryN (notification: Notification){
 		
-		print("termListVCH got deleteCategoryN")
-		
 		// if the current category is deleted, then change the current category to 1 (All Terms) and reload the data
 		if let data = notification.userInfo as? [String: Int] {
 			
@@ -213,6 +211,8 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			if deletedCategoryID == currentCategoryID {
 				
 				currentCategoryID = myConstants.dbCategoryAllTermsID
+				
+				delegate?.shouldClearSearchText()
 				updateDataAndDisplay()
 			}
 		}
@@ -258,8 +258,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	func updateDataAndDisplay () {
 		
 		updateData()
-		
-		delegate?.shouldClearSearchText()
 		delegate?.shouldReloadTable()
 		delegate?.shouldUpdateDisplay()
 		

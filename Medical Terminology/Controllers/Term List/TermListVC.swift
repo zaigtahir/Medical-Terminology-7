@@ -77,6 +77,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	
 	func shouldClearSearchText () {
+		termListVCH.searchText = ""
 		searchBar.text = ""
 	}
 	

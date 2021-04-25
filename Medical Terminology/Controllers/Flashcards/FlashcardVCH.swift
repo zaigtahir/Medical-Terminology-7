@@ -141,6 +141,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	@objc func termInformationChangedN (notification: Notification) {
 	
 		print ("got term informtion changed notification in flashcardVCH")
+		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
@@ -162,6 +163,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	@objc func unassignCategoryN (notification : Notification){
+		
+		print("fcVCH got unassignCategoryN")
+		
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]!
 			if categoryID == currentCategoryID {
