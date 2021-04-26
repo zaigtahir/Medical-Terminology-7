@@ -48,6 +48,8 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	let tc = TermController()
 	
+	let cc = CategoryController2()
+	
 	let tu = TextUtilities()
 	
 	override init() {
@@ -88,8 +90,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
 		
 	}
-	
-	
 	
 	deinit {
 		// remove observer (s)
@@ -296,6 +296,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		
 		if termsList.getCount() == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "noTermsCell", for: indexPath) as? NoTermsCell
+			configureNoTermCell(cell: cell!)
 			
 			return cell!
 		}
@@ -313,6 +314,36 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		return termCell!
 	}
 	
+	private func configureNoTermCell (cell: NoTermsCell) {
+		// if no terms available in this category
+		
+		let termCount = cc.getCountOfTerms(categoryID: currentCategoryID)
+		
+		if termCount == 0 {
+			cell.headingLabel.text = "No Terms To Show."
+			cell.subheadingLabel.text = "There are no terms in this category. When you add terms to this category, they will show here."
+			return
+		}
+		
+		// if showFavoritesOnly == true and there are no favorites in this category
+		
+		let favoriteCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		
+		if showFavoritesOnly && favoriteCount == 0 {
+			
+			cell.headingLabel.text = "No Favorite Terms To Show."
+			cell.subheadingLabel.text = "There are no favorite terms in this category. When you choose some terms to be favorites, they will show here."
+			return
+		}
+		
+		// if here the search text is leading to no matches
+		
+		cell.headingLabel.text = "No Matching Terms."
+		cell.subheadingLabel.text = "There are no terms that match your search."
+		
+		
+	}
+	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		// will need to determine the termID then tell the termListVC to perform the seque to the termVC
 		let termID = termsList.getTermID(indexPath: indexPath)
@@ -327,8 +358,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		} else {
 			return nil
 		}
-		
-		
 	}
 	
 	
@@ -343,3 +372,4 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		// after the save method broadcasts the notification, this VCH will instruct the homeVC to update it's cell
 	}
 }
+
