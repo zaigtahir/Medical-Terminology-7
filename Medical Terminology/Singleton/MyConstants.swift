@@ -40,7 +40,14 @@ class MyConstants {
     let appEmail = "support@theappgalaxy.com"
     let appTitle = "Practical Medical Terminology"
     
-    let noFavoritesAvailableText = "There are no favorites available to show"
+	
+	// no terms messages
+	let noTermsHeading = "No Terms To Show"
+	let noTermsSubheading = "There are no terms in this category. When you add terms to this category, they will show here."
+	let noFavoriteTermsHeading = "No Favorite Terms To Show"
+	let noFavoriteTermsSubheading = "There are no favorite terms in this category. When you choose some terms to be favorites, they will show here."
+
+	
 	
 	// segues
 	let segueFlashcardOptions = "segueFlashCardOptions"

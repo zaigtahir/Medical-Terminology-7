@@ -27,6 +27,8 @@ class LearningHomeVC: UIViewController {
 	private let utilities = Utilities()
 	var progressBar: CircularBar!
 	
+	
+	
 	//button colors
 	let enabledButtonColor = myTheme.colorQuizButton
 	

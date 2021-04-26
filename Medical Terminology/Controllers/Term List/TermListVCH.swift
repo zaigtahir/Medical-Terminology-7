@@ -320,8 +320,8 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		let termCount = cc.getCountOfTerms(categoryID: currentCategoryID)
 		
 		if termCount == 0 {
-			cell.headingLabel.text = "No Terms To Show."
-			cell.subheadingLabel.text = "There are no terms in this category. When you add terms to this category, they will show here."
+			cell.headingLabel.text = myConstants.noTermsHeading
+			cell.subheadingLabel.text = myConstants.noTermsSubheading
 			return
 		}
 		
@@ -330,9 +330,8 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		let favoriteCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 		
 		if showFavoritesOnly && favoriteCount == 0 {
-			
-			cell.headingLabel.text = "No Favorite Terms To Show."
-			cell.subheadingLabel.text = "There are no favorite terms in this category. When you choose some terms to be favorites, they will show here."
+			cell.headingLabel.text = myConstants.noFavoriteTermsHeading
+			cell.subheadingLabel.text = myConstants.noFavoriteTermsSubheading
 			return
 		}
 		
