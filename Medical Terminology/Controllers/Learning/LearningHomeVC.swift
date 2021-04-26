@@ -11,8 +11,11 @@ import UIKit
 class LearningHomeVC: UIViewController {
 	
 	// from quizHome
-	@IBOutlet weak var favoritesLabel: UILabel!
-	@IBOutlet weak var favoritesSwitch: UISwitch!
+	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
+	
+	@IBOutlet weak var favoritesCountLabel: UILabel!
+	@IBOutlet weak var categorySelectButton: UIButton!
+	@IBOutlet weak var categoryNameLabel: UIButton!
 	@IBOutlet weak var percentLabel: UILabel!
 	@IBOutlet weak var circleBarView: UIView!
 	@IBOutlet weak var redoButton: UIButton!
@@ -27,8 +30,6 @@ class LearningHomeVC: UIViewController {
 	private let utilities = Utilities()
 	var progressBar: CircularBar!
 	
-	
-	
 	//button colors
 	let enabledButtonColor = myTheme.colorQuizButton
 	
@@ -41,6 +42,11 @@ class LearningHomeVC: UIViewController {
 		seeCurrentSetButton.layer.cornerRadius = myConstants.button_cornerRadius
 		
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
+		
+		favoritesSwitch.isOn = learningHomeVCH.showFavoritesOnly
+		updateDisplay()
+		
+		
 	}
 	
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -48,21 +54,61 @@ class LearningHomeVC: UIViewController {
 		updateDisplay()
 	}
 	
-	override func viewWillAppear(_ animated: Bool) {
-		favoritesSwitch.isOn = learningHomeVCH.isFavoriteMode
-		updateDisplay()
-	}
+	
 	
 	private func updateDisplay () {
 		
-		let favoritesCount = dIC.getCount(favoriteState: 1)
+		learningHomeVCH.updateCounts()
 		
-		favoritesSwitch.isOn = learningHomeVCH.isFavoriteMode
+		favoritesSwitch.isOn = learningHomeVCH.showFavoritesOnly
+		favoritesLabel.text = "\(learningHomeVCH.favoriteTermsCount)"
 		
-		favoritesLabel.text = "\(favoritesCount)"
-		messageLabel.text = learningHomeVCH.getMessageText()
+		// no terms available
+		if learningHomeVCH.totalTermsCount == 0 {
+			
+			return
+		}
 		
-		if learningHomeVCH.isFavoriteMode && favoritesCount == 0 {
+		// no favorite terms available
+		if learningHomeVCH.showFavoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
+			
+			return
+		}
+		
+	
+		
+		// some terms available
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		messageLabel.text = "need to configure"
+		
+		if learningHomeVCH.showFavoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
 			
 			//isFavorite = true, but the user has not selected any favorites
 			circleBarView.isHidden = true
@@ -71,6 +117,7 @@ class LearningHomeVC: UIViewController {
 			redoButton.isHidden = true
 			newSetButton.isEnabled = false
 			return
+			
 		} else {
 			circleBarView.isHidden = false
 			percentLabel.isHidden = false
@@ -78,8 +125,6 @@ class LearningHomeVC: UIViewController {
 			messageLabel.isHidden = false
 			heartImage.isHidden = true
 		}
-		
-		let counts = learningHomeVCH.getCounts()
 		
 		
 		let foregroundColor = myTheme.colorLhPbForeground?.cgColor
@@ -89,20 +134,21 @@ class LearningHomeVC: UIViewController {
 		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!
 								  , lineWidth: myTheme.progressBarWidth)
 		
-		progressBar.setStrokeEnd(partialCount: counts.learnedTerms, totalCount: counts.totalTerms)
+		progressBar.setStrokeEnd(partialCount: learningHomeVCH.learnedTermsCount, totalCount: learningHomeVCH.totalTermsCount)
 		
-		let percentText = utilities.getPercentage(number: counts.learnedTerms, numberTotal: counts.totalTerms)
+		let percentText = utilities.getPercentage(number: learningHomeVCH.learnedTermsCount, numberTotal: learningHomeVCH.totalTermsCount)
 		
 		percentLabel.text = "\(percentText)% DONE"
-		messageLabel.text = learningHomeVCH.getMessageText()
 		
-		if counts.learnedTerms == 0 {
+		messageLabel.text = "configure this text also"
+		
+		if learningHomeVCH.learnedTermsCount == 0 {
 			redoButton.isEnabled = false
 		} else {
 			redoButton.isEnabled = true
 		}
 		
-		if counts.availableToLearn > 0 {
+		if learningHomeVCH.totalTermsCount - learningHomeVCH.learnedTermsCount > 0 {
 			newSetButton.isEnabled = true
 		} else {
 			newSetButton.isEnabled = false
@@ -132,7 +178,7 @@ class LearningHomeVC: UIViewController {
 		if segue.identifier == "segueToLearningHomeOptions" {
 			let vc = segue.destination as! LearningHomeOptionsVC
 			vc.delegate = learningHomeVCH   //assigning the VCH to the options as it's delegate
-			vc.isFavoriteMode = learningHomeVCH.isFavoriteMode
+			vc.isFavoriteMode = learningHomeVCH.showFavoritesOnly
 			vc.numberOfTerms = learningHomeVCH.numberOfTerms
 		}
 	}
@@ -161,7 +207,7 @@ class LearningHomeVC: UIViewController {
 	}
 	
 	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
-		learningHomeVCH.isFavoriteMode = sender.isOn
+		learningHomeVCH.showFavoritesOnly = sender.isOn
 		updateDisplay()
 	}
 	

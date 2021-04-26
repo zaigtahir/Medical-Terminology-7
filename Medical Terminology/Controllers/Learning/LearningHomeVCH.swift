@@ -21,10 +21,11 @@ class LearningHomeVCH: LearningOptionsUpdated  {
 	var tc = TermController()
    
 	// counts, use updateCounts to update these values
-	var learned = 0
-	var total = 0
+	var learnedTermsCount = 0
+	var totalTermsCount = 0
+	var favoriteTermsCount = 0
 
-	func updateCounts () -> (learnedTerms: Int, availableToLearn: Int, totalTerms: Int) {
+	func updateCounts () {
 		
 		// configure isFavorite variable
 		var isFavorite : Bool?
@@ -34,68 +35,11 @@ class LearningHomeVCH: LearningOptionsUpdated  {
 		
 		// learned terms are terms where both the term and the definitions is learned
 		
-		learned = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .none, learned: true, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		learnedTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .none, learned: true, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 		
-		total = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
-				
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/**
-	 Will return counts based on favorite mode and questions type
-	 */
-	func getCounts () -> (learnedTerms: Int, availableToLearn: Int, totalTerms: Int) {
-		
-		// configure isFavorite variable
-		var isFavorite : Bool?
-			if showFavoritesOnly {
-				isFavorite = true
-		}
-		
-		// learned terms are terms where both the term and the definitions is learned
-		
-		let learned = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .none, learned: true, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
-		
-		let total = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
-				
-		return (learnedTerms: learned, availableToLearn: total - learned, totalTerms: total)
-		
-	}
-	
-	func getMessageText () -> String {
-		
-		let counts = getCounts()
-		
-		if isFavoriteMode && dIC.getCount(favoriteState: 1) == 0 {
-			return myConstants.noFavoritesAvailableText
-		}
-		
-		var favoriteText = ""
-		if isFavoriteMode {
-			favoriteText = " Favorite"
-		}
-		
-		var messageLabel: String
-		
-		if counts.availableToLearn == 0 {
-			messageLabel = "You have learned\nall \(counts.totalTerms)\(favoriteText) terms"
-		} else {
-			messageLabel = "You have learned\n\(counts.learnedTerms) of \(counts.totalTerms)\(favoriteText) terms"
-		}
-		
-		return messageLabel
+		totalTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+			
+		favoriteTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 	}
 	
 	func getNewLearningSet () -> LearningSet {
@@ -117,27 +61,32 @@ class LearningHomeVCH: LearningOptionsUpdated  {
 	}
 
 	func restartOver () {
+		print("code to start over")
+		/*
 		//clear the learned terms based on favorites filter
 		if isFavoriteMode {
 			dIC.clearLearnedItems(favoriteState: 1)
 		} else {
 			dIC.clearLearnedItems(favoriteState: -1)
-		}
+		}*/
 		
 	}
 	
 	//MARK: - Delegate functions
 	
 	func learningOptionsUpdated(isFavoriteMode: Bool, numberOfTerms: Int) {
+		print("code options delegate function in learningHomeVCH")
+		
+		/*
 		self.isFavoriteMode = isFavoriteMode
-		self.numberOfTerms = numberOfTerms
+		self.numberOfTerms = numberOfTerms*/
 	}
 	
 }
 
 
 
-
+/*
 class LearningHomeVCH2: LearningOptionsUpdated  {
     
     private var learningSet: LearningSet!
@@ -233,3 +182,4 @@ class LearningHomeVCH2: LearningOptionsUpdated  {
     }
     
 }
+*/

@@ -77,7 +77,7 @@ class QuizHomeVCH: QuizOptionsUpdated {
         let counts = getCounts()
         
         if isFavoriteMode && dIC.getCount(favoriteState: 1) == 0 {
-            return myConstants.noFavoritesAvailableText
+            return "code no favorite message in quizHomeVCH"
         }
         
         var favoriteText = ""
