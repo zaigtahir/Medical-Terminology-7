@@ -126,7 +126,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 			vc.viewMode = flashCardVCH.viewMode
 			vc.delegate = flashCardVCH
 			
-		case myConstants.segueSelectCatetory:
+		case myConstants.segueSelectCategory:
 			
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC
@@ -185,7 +185,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 
 	@IBAction func showFavoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
 		
-		flashCardVCH.showFavoritesOnly = !flashCardVCH.showFavoritesOnly
+		flashCardVCH.showFavoritesOnly.toggle()
 		flashCardVCH.updateData()
 		collectionView.reloadData()
 		updateDisplay()

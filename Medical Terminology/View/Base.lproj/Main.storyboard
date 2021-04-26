@@ -35,14 +35,6 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="225" height="225"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_gray_64" translatesAutoresizingMaskIntoConstraints="NO" id="kam-W3-NrU">
-                                                <rect key="frame" x="48.333333333333329" y="48.666666666666686" width="127.99999999999999" height="128"/>
-                                                <color key="tintColor" name="color favorite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="128" id="2HZ-6C-bWD"/>
-                                                    <constraint firstAttribute="width" constant="128" id="Efh-6F-6nd"/>
-                                                </constraints>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100% DONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="x56-Yu-36A">
                                                 <rect key="frame" x="40.666666666666671" y="97.666666666666657" width="143.33333333333331" height="30"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -59,9 +51,7 @@
                                             <constraint firstAttribute="width" constant="225" id="RWA-xs-3wo"/>
                                             <constraint firstAttribute="height" constant="225" id="VUy-zN-g9X"/>
                                             <constraint firstAttribute="bottom" secondItem="DY6-UI-g2y" secondAttribute="bottom" id="Zfq-Kl-y9V"/>
-                                            <constraint firstItem="kam-W3-NrU" firstAttribute="centerX" secondItem="Sej-mL-Xqx" secondAttribute="centerX" id="aPX-93-Ofe"/>
                                             <constraint firstItem="x56-Yu-36A" firstAttribute="centerY" secondItem="Sej-mL-Xqx" secondAttribute="centerY" id="sXb-Qr-fBz"/>
-                                            <constraint firstItem="kam-W3-NrU" firstAttribute="centerY" secondItem="Sej-mL-Xqx" secondAttribute="centerY" id="xdA-Dz-uEC"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99e-kk-4SA">
@@ -127,8 +117,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i03-6k-vUa">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuL-Xo-BE5">
-                                        <rect key="frame" x="20" y="20" width="285" height="35"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuL-Xo-BE5">
+                                        <rect key="frame" x="23" y="20" width="285" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="285" id="4rN-oa-Mii"/>
                                         </constraints>
@@ -137,6 +127,10 @@
                                         <state key="normal" image="square.stack.3d.up.fill" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="categorySelectButtonAction:" destination="asc-Xo-Hni" eventType="touchUpInside" id="a6T-N9-flr"/>
+                                            <segue destination="Ruo-Ko-dgu" kind="presentation" identifier="segueSelectCategory" id="CR6-Yx-sOP"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vZ-zE-mGu">
                                         <rect key="frame" x="50" y="20" width="255" height="17"/>
@@ -173,6 +167,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="ShowFavoritesOnlyButtonAction:" destination="wde-Jg-jwX" eventType="touchUpInside" id="nVX-2d-SWJ"/>
+                                            <action selector="showFavoritesOnlyButton:" destination="asc-Xo-Hni" eventType="touchUpInside" id="9IB-LZ-YOM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -218,11 +213,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="categoryNameLabel" destination="vuL-Xo-BE5" id="f86-k5-QgI"/>
+                        <outlet property="categoryNameLabel" destination="4vZ-zE-mGu" id="wQg-Id-OJe"/>
                         <outlet property="categorySelectButton" destination="vuL-Xo-BE5" id="K7O-mG-Uqs"/>
                         <outlet property="circleBarView" destination="DY6-UI-g2y" id="q6i-rk-ap7"/>
                         <outlet property="favoritesCountLabel" destination="xMe-dh-EXE" id="GFP-KX-6cl"/>
-                        <outlet property="heartImage" destination="kam-W3-NrU" id="Zm5-mz-O9X"/>
                         <outlet property="messageLabel" destination="SvM-81-gwv" id="Scc-5x-7NX"/>
                         <outlet property="newSetButton" destination="nAx-y7-ZCc" id="Ex7-HT-ZwP"/>
                         <outlet property="optionsButton" destination="rrB-mk-u4H" id="pnE-4n-geV"/>
@@ -3010,7 +3004,7 @@
                                                     <rect key="frame" x="20" y="1" width="18" height="48.666666666666671"/>
                                                     <color key="tintColor" name="color text"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="bct-0U-yPX"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="sLA-wW-5Ij"/>
                                                         <constraint firstAttribute="width" constant="18" id="yBE-lS-zkl"/>
                                                     </constraints>
                                                 </imageView>
@@ -3032,7 +3026,6 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N57-Od-FJs">
                                                     <rect key="frame" x="364" y="0.0" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="bhO-1v-fbd"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="eai-JH-3kc"/>
                                                         <constraint firstAttribute="width" constant="50" id="jJh-pQ-Bzi"/>
                                                     </constraints>
@@ -3078,7 +3071,7 @@
                                                     <rect key="frame" x="20" y="1" width="18" height="48.666666666666671"/>
                                                     <color key="tintColor" name="color correct"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="gdh-gX-qca"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="MlX-Yp-u76"/>
                                                         <constraint firstAttribute="width" constant="18" id="na3-ns-Ckj"/>
                                                     </constraints>
                                                 </imageView>

@@ -92,7 +92,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		
 		switch segue.identifier {
 		
-		case myConstants.segueSelectCatetory:
+		case myConstants.segueSelectCategory:
 			
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC

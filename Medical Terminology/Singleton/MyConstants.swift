@@ -51,13 +51,15 @@ class MyConstants {
 	
 	// segues
 	let segueFlashcardOptions = "segueFlashCardOptions"
-	let segueSelectCatetory = "segueSelectCategory"
+	let segueSelectCategory = "segueSelectCategory"
 	let segueAssignCategory = "segueAssignCategory"
 	let segueCategory = "segueCategory"
 	let segueValidationVC = "segueValidationVC"
 	let segueTerm = "segueTerm"
 	let segueSingleLineInput = "segueSingleLineInput"
 	let segueMultiLineInput = "segueMultiLineInput"
+	let segueLearningSet = "segueToLearningSet"
+	let segueLearningOptions = "segueToLearningHomeOptions"
 	
     // question feedback remarks
     let feedbackNotAnswered = "Select An Answer"

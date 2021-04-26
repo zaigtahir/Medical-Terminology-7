@@ -20,12 +20,12 @@ class LearningHomeVCH: LearningOptionsUpdated  {
 	var startNewSet = true
 	var tc = TermController()
    
-	// counts, use updateCounts to update these values
+	// counts, use updateData to update these values
 	var learnedTermsCount = 0
 	var totalTermsCount = 0
 	var favoriteTermsCount = 0
 
-	func updateCounts () {
+	func updateData () {
 		
 		// configure isFavorite variable
 		var isFavorite : Bool?

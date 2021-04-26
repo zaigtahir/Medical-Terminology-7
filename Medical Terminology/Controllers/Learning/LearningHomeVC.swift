@@ -12,41 +12,34 @@ class LearningHomeVC: UIViewController {
 	
 	// from quizHome
 	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
-	
 	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var categorySelectButton: UIButton!
-	@IBOutlet weak var categoryNameLabel: UIButton!
+	@IBOutlet weak var categoryNameLabel: UILabel!
 	@IBOutlet weak var percentLabel: UILabel!
 	@IBOutlet weak var circleBarView: UIView!
 	@IBOutlet weak var redoButton: UIButton!
 	@IBOutlet weak var newSetButton: UIButton!
 	@IBOutlet weak var seeCurrentSetButton: UIButton!
 	@IBOutlet weak var messageLabel: UILabel!
-	@IBOutlet weak var heartImage: UIImageView!
 	@IBOutlet weak var optionsButton: UIBarButtonItem!
 	
 	let learningHomeVCH = LearningHomeVCH()
+	
 	private let dIC = DItemController()
 	private let utilities = Utilities()
 	var progressBar: CircularBar!
 	
+	private let cc = CategoryController2()
+
 	//button colors
 	let enabledButtonColor = myTheme.colorQuizButton
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		favoritesSwitch.layer.cornerRadius = 16
-		favoritesSwitch.onTintColor = myTheme.colorFavorite
-		
-		newSetButton.layer.cornerRadius = myConstants.button_cornerRadius
-		seeCurrentSetButton.layer.cornerRadius = myConstants.button_cornerRadius
 		
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
 		
-		favoritesSwitch.isOn = learningHomeVCH.showFavoritesOnly
 		updateDisplay()
-		
-		
 	}
 	
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -54,14 +47,25 @@ class LearningHomeVC: UIViewController {
 		updateDisplay()
 	}
 	
-	
-	
 	private func updateDisplay () {
 		
-		learningHomeVCH.updateCounts()
+		learningHomeVCH.updateData()
 		
-		favoritesSwitch.isOn = learningHomeVCH.showFavoritesOnly
-		favoritesLabel.text = "\(learningHomeVCH.favoriteTermsCount)"
+		showFavoritesOnlyButton.isOn = learningHomeVCH.showFavoritesOnly
+		
+		favoritesCountLabel.text = "\(learningHomeVCH.favoriteTermsCount)"
+		
+		let c = cc.getCategory(categoryID: learningHomeVCH.currentCategoryID)
+				
+		categoryNameLabel.text = c.name
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		// no terms available
 		if learningHomeVCH.totalTermsCount == 0 {
@@ -113,7 +117,6 @@ class LearningHomeVC: UIViewController {
 			//isFavorite = true, but the user has not selected any favorites
 			circleBarView.isHidden = true
 			percentLabel.isHidden = true
-			heartImage.isHidden = false
 			redoButton.isHidden = true
 			newSetButton.isEnabled = false
 			return
@@ -121,9 +124,7 @@ class LearningHomeVC: UIViewController {
 		} else {
 			circleBarView.isHidden = false
 			percentLabel.isHidden = false
-			heartImage.isHidden = true
 			messageLabel.isHidden = false
-			heartImage.isHidden = true
 		}
 		
 		
@@ -164,7 +165,10 @@ class LearningHomeVC: UIViewController {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
-		if segue.identifier == "segueToLearningSet" {
+		switch segue.identifier {
+		
+		case myConstants.segueLearningSet:
+			
 			let vc = segue.destination as! LearnSetVC
 			
 			if learningHomeVCH.startNewSet {
@@ -173,14 +177,26 @@ class LearningHomeVC: UIViewController {
 			} else {
 				vc.learnSetVCH.learningSet = learningHomeVCH.getLearningSet()
 			}
-		}
-		
-		if segue.identifier == "segueToLearningHomeOptions" {
+		case myConstants.segueLearningOptions:
+			
 			let vc = segue.destination as! LearningHomeOptionsVC
 			vc.delegate = learningHomeVCH   //assigning the VCH to the options as it's delegate
 			vc.isFavoriteMode = learningHomeVCH.showFavoritesOnly
 			vc.numberOfTerms = learningHomeVCH.numberOfTerms
+		
+		case myConstants.segueSelectCategory:
+			
+			let nc = segue.destination as! UINavigationController
+			let vc = nc.topViewController as! CategoryListVC
+			
+			vc.categoryListVCH.categoryListMode = .selectCategory
+			vc.categoryListVCH.currentCategoryID = learningHomeVCH.currentCategoryID
+			
+			
+		default:
+			print("Fatal error got an unexpected segue in LearningHomeVC")
 		}
+		
 	}
 	
 	func confirmRestart () {
@@ -206,8 +222,9 @@ class LearningHomeVC: UIViewController {
 		confirmRestart()
 	}
 	
-	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
-		learningHomeVCH.showFavoritesOnly = sender.isOn
+	@IBAction func showFavoritesOnlyButton(_ sender: ZUIToggleButton) {
+		learningHomeVCH.showFavoritesOnly.toggle()
+		learningHomeVCH.updateData()
 		updateDisplay()
 	}
 	
@@ -227,5 +244,9 @@ class LearningHomeVC: UIViewController {
 		learningHomeVCH.startNewSet = false
 		performSegue(withIdentifier: "segueToLearningSet", sender: nil)
 	}
+	
+	@IBAction func categorySelectButtonAction(_ sender: Any) {
+	}
+	
 	
 }
