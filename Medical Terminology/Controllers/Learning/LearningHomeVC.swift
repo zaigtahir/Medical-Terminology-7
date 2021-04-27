@@ -22,10 +22,11 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 	@IBOutlet weak var seeCurrentSetButton: UIButton!
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var optionsButton: UIBarButtonItem!
+	@IBOutlet weak var mainStack: UIStackView!
+	@IBOutlet weak var noTermsView: UIView!
 	
 	let learningHomeVCH = LearningHomeVCH()
 	
-	private let dIC = DItemController()
 	private let utilities = Utilities()
 	var progressBar: CircularBar!
 	
@@ -36,7 +37,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
 		
 		learningHomeVCH.delegate = self
@@ -61,17 +62,23 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		
 		// no terms available
 		if learningHomeVCH.totalTermsCount == 0 {
-			print("LHVCno terms available, need to code")
+			mainStack.isHidden = true
+			noTermsView.isHidden = false
+			
 			return
 		}
 		
 		// no favorite terms available
 		if learningHomeVCH.showFavoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
-			print ("LHVC no terms available, need to code")
+			mainStack.isHidden = true
+			noTermsView.isHidden = false
+		
 			return
 		}
 	
 		// some terms available
+		mainStack.isHidden = false
+		noTermsView.isHidden = true
 		
 		if learningHomeVCH.showFavoritesOnly {
 			messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) favorite terms."

@@ -18,15 +18,49 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDD-Bd-4z9" userLabel="view holding pb and heart">
-                                <rect key="frame" x="20" y="89" width="374" height="409"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghU-kH-rnv">
+                                <rect key="frame" x="20" y="175" width="374" height="212.33333333333337"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SdY-8j-sUG">
+                                        <rect key="frame" x="155" y="21" width="64" height="62.666666666666671"/>
+                                        <color key="tintColor" name="color main"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="1Un-iv-wYw"/>
+                                            <constraint firstAttribute="height" constant="64" id="wkr-cL-9v1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Lpc-lN-Pt3">
+                                        <rect key="frame" x="146.33333333333334" y="134" width="81.666666666666657" height="58.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heading" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drb-FR-Pjg">
+                                                <rect key="frame" x="6.6666666666666572" y="0.0" width="68.333333333333329" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" name="color text"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subheading" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bb-LM-ux5">
+                                                <rect key="frame" x="0.0" y="40.333333333333314" width="81.666666666666671" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" name="color text"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="SdY-8j-sUG" firstAttribute="centerX" secondItem="ghU-kH-rnv" secondAttribute="centerX" id="02G-Rd-0Mi"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lpc-lN-Pt3" secondAttribute="bottom" constant="20" id="7bl-UW-S8p"/>
+                                    <constraint firstItem="Lpc-lN-Pt3" firstAttribute="centerX" secondItem="ghU-kH-rnv" secondAttribute="centerX" id="OkK-GV-t1n"/>
+                                    <constraint firstItem="SdY-8j-sUG" firstAttribute="top" secondItem="ghU-kH-rnv" secondAttribute="top" constant="20" id="YPx-Zl-R4v"/>
+                                    <constraint firstItem="Lpc-lN-Pt3" firstAttribute="top" secondItem="SdY-8j-sUG" secondAttribute="bottom" constant="50" id="rxX-4a-97L"/>
+                                </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OGS-Dp-0Jb">
-                                <rect key="frame" x="94.666666666666686" y="125.66666666666666" width="225" height="335.66666666666674"/>
+                                <rect key="frame" x="94.666666666666686" y="125.00000000000003" width="225" height="335.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sej-mL-Xqx">
                                         <rect key="frame" x="0.0" y="0.0" width="225" height="225"/>
@@ -36,7 +70,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100% DONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="x56-Yu-36A">
-                                                <rect key="frame" x="40.666666666666671" y="97.666666666666657" width="143.33333333333331" height="30"/>
+                                                <rect key="frame" x="40.666666666666671" y="97.666666666666686" width="143.33333333333331" height="30"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <color key="textColor" name="color text button"/>
                                                 <nil key="highlightedColor"/>
@@ -190,18 +224,17 @@
                         <viewLayoutGuide key="safeArea" id="91G-zc-LjC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="OGS-Dp-0Jb" firstAttribute="centerX" secondItem="QDD-Bd-4z9" secondAttribute="centerX" id="6Ev-G6-DbV"/>
+                            <constraint firstItem="91G-zc-LjC" firstAttribute="trailing" secondItem="ghU-kH-rnv" secondAttribute="trailing" constant="20" id="1Uy-Kd-gbb"/>
                             <constraint firstItem="cAZ-fF-Nec" firstAttribute="leading" secondItem="91G-zc-LjC" secondAttribute="leading" constant="30" id="CIq-VV-8yu"/>
                             <constraint firstItem="i03-6k-vUa" firstAttribute="trailing" secondItem="91G-zc-LjC" secondAttribute="trailing" id="Hb8-iG-qke"/>
-                            <constraint firstItem="cAZ-fF-Nec" firstAttribute="top" secondItem="QDD-Bd-4z9" secondAttribute="bottom" constant="5" id="JTR-ji-vJt"/>
                             <constraint firstItem="91G-zc-LjC" firstAttribute="trailing" secondItem="cAZ-fF-Nec" secondAttribute="trailing" constant="30" id="KXg-Bf-qcq"/>
-                            <constraint firstItem="QDD-Bd-4z9" firstAttribute="leading" secondItem="91G-zc-LjC" secondAttribute="leading" constant="20" id="MKl-lQ-gxi"/>
+                            <constraint firstItem="ghU-kH-rnv" firstAttribute="leading" secondItem="91G-zc-LjC" secondAttribute="leading" constant="20" id="NDn-zM-7Kc"/>
                             <constraint firstItem="i03-6k-vUa" firstAttribute="top" secondItem="91G-zc-LjC" secondAttribute="top" id="afc-1o-VoW"/>
                             <constraint firstItem="91G-zc-LjC" firstAttribute="bottom" secondItem="cAZ-fF-Nec" secondAttribute="bottom" constant="20" id="e6T-Zx-ACQ"/>
-                            <constraint firstItem="QDD-Bd-4z9" firstAttribute="top" secondItem="i03-6k-vUa" secondAttribute="bottom" constant="14" id="fuB-Bp-b6E"/>
-                            <constraint firstItem="91G-zc-LjC" firstAttribute="trailing" secondItem="QDD-Bd-4z9" secondAttribute="trailing" constant="20" id="hYi-io-Ty8"/>
-                            <constraint firstItem="OGS-Dp-0Jb" firstAttribute="centerY" secondItem="QDD-Bd-4z9" secondAttribute="centerY" id="kbf-8F-XP8"/>
+                            <constraint firstItem="OGS-Dp-0Jb" firstAttribute="centerX" secondItem="91G-zc-LjC" secondAttribute="centerX" id="jRb-Kw-iwQ"/>
                             <constraint firstItem="i03-6k-vUa" firstAttribute="leading" secondItem="91G-zc-LjC" secondAttribute="leading" id="kxG-m1-IIL"/>
+                            <constraint firstItem="OGS-Dp-0Jb" firstAttribute="top" secondItem="i03-6k-vUa" secondAttribute="bottom" constant="50" id="skD-fU-UhI"/>
+                            <constraint firstItem="ghU-kH-rnv" firstAttribute="top" secondItem="i03-6k-vUa" secondAttribute="bottom" constant="100" id="som-Ru-lAd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Learning Home" id="9qd-CL-wLh">
@@ -217,8 +250,10 @@
                         <outlet property="categorySelectButton" destination="vuL-Xo-BE5" id="K7O-mG-Uqs"/>
                         <outlet property="circleBarView" destination="DY6-UI-g2y" id="q6i-rk-ap7"/>
                         <outlet property="favoritesCountLabel" destination="xMe-dh-EXE" id="GFP-KX-6cl"/>
+                        <outlet property="mainStack" destination="OGS-Dp-0Jb" id="Ipg-ZG-jHp"/>
                         <outlet property="messageLabel" destination="SvM-81-gwv" id="Scc-5x-7NX"/>
                         <outlet property="newSetButton" destination="nAx-y7-ZCc" id="Ex7-HT-ZwP"/>
+                        <outlet property="noTermsView" destination="ghU-kH-rnv" id="Hek-tA-f8y"/>
                         <outlet property="optionsButton" destination="rrB-mk-u4H" id="pnE-4n-geV"/>
                         <outlet property="percentLabel" destination="x56-Yu-36A" id="Wmw-Cu-Mhe"/>
                         <outlet property="redoButton" destination="99e-kk-4SA" id="sO6-os-8mz"/>
@@ -237,7 +272,7 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
@@ -557,7 +592,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashcardVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="707"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TVx-7Q-M6g">
@@ -1010,7 +1045,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashcardOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -1372,7 +1407,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -1473,7 +1508,7 @@
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="TermListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="907"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="100" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tGH-PG-Amh" propertyAccessControl="none">
@@ -1779,7 +1814,7 @@
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="QuizHome" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-vJ-agb">
@@ -1988,7 +2023,7 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
@@ -2326,7 +2361,7 @@
             <objects>
                 <viewController title="New Quiz Options" id="wjV-cy-SAI" customClass="QuizOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -2580,7 +2615,7 @@
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
@@ -2841,7 +2876,7 @@
             <objects>
                 <viewController id="BPm-yE-Jpz" customClass="CategoryVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gj2-ba-kJw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaY-Vt-qaJ">
@@ -2986,7 +3021,7 @@
             <objects>
                 <viewController id="KTC-23-wdb" customClass="CategoryListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V6Z-tH-Ath">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W5i-R0-UWj">
@@ -3218,7 +3253,7 @@
             <objects>
                 <viewController id="cUP-dB-hs5" customClass="SingleLineInputVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BXp-3V-bGL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pNg-qk-fZp">
@@ -3343,7 +3378,7 @@
             <objects>
                 <viewController id="6nL-Ki-amP" customClass="MultiLineInputVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yHD-dP-8yh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bcU-rO-jpc">
@@ -3468,7 +3503,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="FY8-JO-v3w"/>
         <segue reference="RQg-Yy-Rkk"/>
-        <segue reference="HWU-Cd-rtW"/>
+        <segue reference="Nhy-Yr-H6x"/>
         <segue reference="CR6-Yx-sOP"/>
     </inferredMetricsTieBreakers>
     <resources>
