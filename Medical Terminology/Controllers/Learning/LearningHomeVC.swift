@@ -8,8 +8,8 @@
 
 import UIKit
 
-class LearningHomeVC: UIViewController {
-	
+class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
+
 	// from quizHome
 	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
@@ -39,6 +39,8 @@ class LearningHomeVC: UIViewController {
 		
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
 		
+		learningHomeVCH.delegate = self
+		learningHomeVCH.updateData()
 		updateDisplay()
 	}
 	
@@ -49,68 +51,44 @@ class LearningHomeVC: UIViewController {
 	
 	private func updateDisplay () {
 		
-		learningHomeVCH.updateData()
-		
 		showFavoritesOnlyButton.isOn = learningHomeVCH.showFavoritesOnly
 		
 		favoritesCountLabel.text = "\(learningHomeVCH.favoriteTermsCount)"
 		
 		let c = cc.getCategory(categoryID: learningHomeVCH.currentCategoryID)
 				
-		categoryNameLabel.text = c.name
-		
-		
-		
-		
-		
-		
-		
-		
+		categoryNameLabel.text = "\(c.name) (\(cc.getCountOfTerms(categoryID: c.categoryID)))"
 		
 		// no terms available
 		if learningHomeVCH.totalTermsCount == 0 {
-			
+			print("LHVCno terms available, need to code")
 			return
 		}
 		
 		// no favorite terms available
 		if learningHomeVCH.showFavoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
-			
+			print ("LHVC no terms available, need to code")
 			return
 		}
+	
+		// some terms available
+		
+		if learningHomeVCH.showFavoritesOnly {
+			messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) favorite terms."
+			print ("here")
+			
+		} else {
+			messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) terms."
+			print ("here")
+		}
+		
 		
 	
 		
-		// some terms available
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		messageLabel.text = "need to configure"
+		/*
 		
 		if learningHomeVCH.showFavoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
 			
@@ -126,7 +104,7 @@ class LearningHomeVC: UIViewController {
 			percentLabel.isHidden = false
 			messageLabel.isHidden = false
 		}
-		
+		*/
 		
 		let foregroundColor = myTheme.colorLhPbForeground?.cgColor
 		let backgroundColor = myTheme.colorLhPbBackground?.cgColor
@@ -141,7 +119,11 @@ class LearningHomeVC: UIViewController {
 		
 		percentLabel.text = "\(percentText)% DONE"
 		
-		messageLabel.text = "configure this text also"
+		
+		
+		
+		
+		
 		
 		if learningHomeVCH.learnedTermsCount == 0 {
 			redoButton.isEnabled = false
@@ -215,6 +197,12 @@ class LearningHomeVC: UIViewController {
 	
 	func restartNow() {
 		learningHomeVCH.restartOver()
+		updateDisplay()
+	}
+	
+	// MARK: - LearningHomeVCHDelegate
+	
+	func shouldUpdateDisplay() {
 		updateDisplay()
 	}
 	
