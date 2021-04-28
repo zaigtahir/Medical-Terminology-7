@@ -18,12 +18,17 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 	@IBOutlet weak var percentLabel: UILabel!
 	@IBOutlet weak var circleBarView: UIView!
 	@IBOutlet weak var redoButton: UIButton!
-	@IBOutlet weak var newSetButton: UIButton!
-	@IBOutlet weak var seeCurrentSetButton: UIButton!
+	@IBOutlet weak var newSetButton: ZUIRoundedButton!
+	@IBOutlet weak var seeCurrentSetButton: ZUIRoundedButton!
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var optionsButton: UIBarButtonItem!
-	@IBOutlet weak var mainStack: UIStackView!
-	@IBOutlet weak var noTermsView: UIView!
+
+	@IBOutlet weak var itemsAvailableComponentStack: UIStackView!
+	
+	// no items present components
+	@IBOutlet weak var itemsNotAvailableComponentStack: UIStackView!
+	@IBOutlet weak var headingLabel: UILabel!
+	@IBOutlet weak var subheadingLabel: UILabel!
 	
 	let learningHomeVCH = LearningHomeVCH()
 	
@@ -42,6 +47,9 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		
 		learningHomeVCH.delegate = self
 		learningHomeVCH.updateData()
+		
+		percentLabel.textColor = myTheme.colorButtonText
+		
 		updateDisplay()
 	}
 	
@@ -58,27 +66,41 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		
 		let c = cc.getCategory(categoryID: learningHomeVCH.currentCategoryID)
 				
-		categoryNameLabel.text = "\(c.name) (\(cc.getCountOfTerms(categoryID: c.categoryID)))"
+		categoryNameLabel.text = "\(c.name) (\(learningHomeVCH.categoryTermCount))"
 		
-		// no terms available
-		if learningHomeVCH.totalTermsCount == 0 {
-			mainStack.isHidden = true
-			noTermsView.isHidden = false
+		if learningHomeVCH.categoryTermCount == 0 {
+			// no terms available in this category
+			percentLabel.isHidden = true
+			redoButton.isHidden = true
+			headingLabel.isHidden = false
+			subheadingLabel.isHidden = false
+			messageLabel.isHidden = true
 			
+			headingLabel.text = myConstants.noTermsHeading
+			subheadingLabel.text = myConstants.noTermsSubheading
 			return
 		}
 		
 		// no favorite terms available
 		if learningHomeVCH.showFavoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
-			mainStack.isHidden = true
-			noTermsView.isHidden = false
+			percentLabel.isHidden = true
+			redoButton.isHidden = true
+			headingLabel.isHidden = false
+			subheadingLabel.isHidden = false
+			messageLabel.isHidden = true
+			
+			headingLabel.text = myConstants.noFavoriteTermsHeading
+			subheadingLabel.text = myConstants.noFavoriteTermsSubheading
 		
 			return
 		}
 	
 		// some terms available
-		mainStack.isHidden = false
-		noTermsView.isHidden = true
+		percentLabel.isHidden = false
+		redoButton.isHidden = false
+		headingLabel.isHidden = true
+		subheadingLabel.isHidden = true
+		messageLabel.isHidden = false
 		
 		if learningHomeVCH.showFavoritesOnly {
 			messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) favorite terms."
@@ -89,29 +111,6 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			print ("here")
 		}
 		
-		
-	
-		
-		
-		
-		
-		/*
-		
-		if learningHomeVCH.showFavoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
-			
-			//isFavorite = true, but the user has not selected any favorites
-			circleBarView.isHidden = true
-			percentLabel.isHidden = true
-			redoButton.isHidden = true
-			newSetButton.isEnabled = false
-			return
-			
-		} else {
-			circleBarView.isHidden = false
-			percentLabel.isHidden = false
-			messageLabel.isHidden = false
-		}
-		*/
 		
 		let foregroundColor = myTheme.colorLhPbForeground?.cgColor
 		let backgroundColor = myTheme.colorLhPbBackground?.cgColor
@@ -125,11 +124,6 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		let percentText = utilities.getPercentage(number: learningHomeVCH.learnedTermsCount, numberTotal: learningHomeVCH.totalTermsCount)
 		
 		percentLabel.text = "\(percentText)% DONE"
-		
-		
-		
-		
-		
 		
 		
 		if learningHomeVCH.learnedTermsCount == 0 {
@@ -147,9 +141,6 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		//enable state of see current set
 		seeCurrentSetButton.isEnabled = learningHomeVCH.isLearningSetAvailable()
 		
-		for b in [seeCurrentSetButton, newSetButton] {
-			myTheme.formatButtonState(button: b!, enabledColor: enabledButtonColor!)
-		}
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

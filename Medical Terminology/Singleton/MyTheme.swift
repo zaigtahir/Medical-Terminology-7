@@ -27,6 +27,7 @@ class MyTheme{
 	let colorButtonEnabledBackground = (UIColor.secondaryLabel)			// use for color of header icons, and image buttons
 	let colorButtonDisabledTint = (UIColor.systemGray2)
 	let colorButtonEnabledTint = UIColor(named: "color text button")
+	let colorButtonText = UIColor(named: "color text button")
 	
 	let colorAddButton = UIColor(named: "color main")
 	let colorSaveButton = UIColor(named: "color main")

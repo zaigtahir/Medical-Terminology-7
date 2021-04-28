@@ -22,12 +22,14 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 	
 	///used to determine if to create a new set or keep current set when going from learning home to learning set
 	var startNewSet = true
-	var tc = TermController()
+	let tc = TermController()
+	let cc = CategoryController2()
    
 	// counts, use updateData to update these values
 	var learnedTermsCount = 0
 	var totalTermsCount = 0
 	var favoriteTermsCount = 0
+	var categoryTermCount = 0
 	
 	weak var delegate : LearningHomeVCHDelegate?
 	
@@ -159,6 +161,8 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 		}
 		
 		// learned terms are terms where both the term and the definitions is learned
+		
+		categoryTermCount = cc.getCountOfTerms(categoryID: currentCategoryID)
 		
 		learnedTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .none, learned: true, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 		
