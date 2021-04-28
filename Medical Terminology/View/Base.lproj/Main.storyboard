@@ -32,14 +32,14 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title=" Start A New Learning Set ">
-                                            <color key="titleColor" name="color button disabled"/>
+                                            <color key="titleColor" name="color text button"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="enabledBackgroundColor">
                                                 <color key="value" name="color main"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="disabledBackgroundColor">
-                                                <color key="value" systemColor="systemGray6Color"/>
+                                                <color key="value" systemColor="systemGray5Color"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -61,7 +61,7 @@
                                                 <color key="value" name="color main"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="disabledBackgroundColor">
-                                                <color key="value" systemColor="systemGray6Color"/>
+                                                <color key="value" systemColor="systemGray5Color"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -3533,9 +3533,6 @@
         <image name="square" catalog="system" width="128" height="114"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="124"/>
         <image name="trash" catalog="system" width="121" height="128"/>
-        <namedColor name="color button disabled">
-            <color red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="color card background">
             <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

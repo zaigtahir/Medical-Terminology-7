@@ -78,6 +78,8 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			
 			headingLabel.text = myConstants.noTermsHeading
 			subheadingLabel.text = myConstants.noTermsSubheading
+			
+			updateButtons()
 			return
 		}
 		
@@ -91,7 +93,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			
 			headingLabel.text = myConstants.noFavoriteTermsHeading
 			subheadingLabel.text = myConstants.noFavoriteTermsSubheading
-		
+			updateButtons()
 			return
 		}
 	
@@ -132,6 +134,11 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			redoButton.isEnabled = true
 		}
 		
+		updateButtons()
+	}
+	
+	private func updateButtons() {
+		
 		if learningHomeVCH.totalTermsCount - learningHomeVCH.learnedTermsCount > 0 {
 			newSetButton.isEnabled = true
 		} else {
@@ -140,7 +147,6 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		
 		//enable state of see current set
 		seeCurrentSetButton.isEnabled = learningHomeVCH.isLearningSetAvailable()
-		
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
