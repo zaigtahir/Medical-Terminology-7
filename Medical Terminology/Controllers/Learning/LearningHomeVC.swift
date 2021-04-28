@@ -22,11 +22,6 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 	@IBOutlet weak var seeCurrentSetButton: ZUIRoundedButton!
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var optionsButton: UIBarButtonItem!
-
-	@IBOutlet weak var itemsAvailableComponentStack: UIStackView!
-	
-	// no items present components
-	@IBOutlet weak var itemsNotAvailableComponentStack: UIStackView!
 	@IBOutlet weak var headingLabel: UILabel!
 	@IBOutlet weak var subheadingLabel: UILabel!
 	

@@ -245,8 +245,6 @@
                         <outlet property="circleBarView" destination="DY6-UI-g2y" id="q6i-rk-ap7"/>
                         <outlet property="favoritesCountLabel" destination="xMe-dh-EXE" id="GFP-KX-6cl"/>
                         <outlet property="headingLabel" destination="drb-FR-Pjg" id="XqY-kg-JpK"/>
-                        <outlet property="itemsAvailableComponentStack" destination="UZd-Al-HGD" id="q9Y-5O-Pe0"/>
-                        <outlet property="itemsNotAvailableComponentStack" destination="Lpc-lN-Pt3" id="5Fw-Wh-iQK"/>
                         <outlet property="messageLabel" destination="SvM-81-gwv" id="Scc-5x-7NX"/>
                         <outlet property="newSetButton" destination="nAx-y7-ZCc" id="Ex7-HT-ZwP"/>
                         <outlet property="optionsButton" destination="rrB-mk-u4H" id="pnE-4n-geV"/>
@@ -2031,6 +2029,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryNameLabel" destination="hiz-Vo-2XJ" id="hCG-Li-uhX"/>
+                        <outlet property="categorySelectButton" destination="AA3-gS-EUq" id="srh-lz-xhr"/>
+                        <outlet property="circleBarView" destination="KUI-Wq-zRh" id="cet-f9-hYG"/>
+                        <outlet property="favoritesCountLabel" destination="Wxn-7f-nce" id="XtI-94-zS3"/>
+                        <outlet property="headingLabel" destination="6nW-Oc-4rF" id="0mv-MT-HmP"/>
+                        <outlet property="messageLabel" destination="fPw-9j-czT" id="3hu-ml-Osq"/>
+                        <outlet property="newSetButton" destination="lfZ-wZ-m8y" id="OFb-e1-aWI"/>
+                        <outlet property="optionsButton" destination="vYL-j9-0XG" id="HBo-E5-tmq"/>
+                        <outlet property="percentLabel" destination="twa-Tc-7Ss" id="Zi6-LN-7Er"/>
+                        <outlet property="redoButton" destination="Xor-1T-oTW" id="3Os-9K-FZg"/>
+                        <outlet property="seeCurrentSetButton" destination="ePm-wZ-q9X" id="2a2-KX-ZvT"/>
+                        <outlet property="showFavoritesOnlyButton" destination="9Qe-Ao-xpW" id="YOk-VO-LLY"/>
+                        <outlet property="subheadingLabel" destination="j2A-3v-o3w" id="T5E-wU-h2D"/>
                         <segue destination="YaF-0P-3vu" kind="show" identifier="segueToQuiz" id="3Dc-nx-60j"/>
                         <segue destination="wjV-cy-SAI" kind="show" identifier="segueQuizOptions" id="sjG-d7-bhl"/>
                     </connections>

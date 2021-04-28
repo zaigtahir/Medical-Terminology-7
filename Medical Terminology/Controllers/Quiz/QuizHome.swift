@@ -15,30 +15,21 @@ class QuizHome: UIViewController {
 	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var categorySelectButton: UIButton!
+	@IBOutlet weak var categoryNameLabel: UILabel!
+	@IBOutlet weak var percentLabel: UILabel!
+	@IBOutlet weak var circleBarView: UIView!
+	@IBOutlet weak var redoButton: UIButton!
+	@IBOutlet weak var newSetButton: ZUIRoundedButton!
+	@IBOutlet weak var seeCurrentSetButton: ZUIRoundedButton!
+	@IBOutlet weak var messageLabel: UILabel!
+	@IBOutlet weak var optionsButton: UIBarButtonItem!
+	@IBOutlet weak var headingLabel: UILabel!
+	@IBOutlet weak var subheadingLabel: UILabel!
+	
+
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-    @IBOutlet weak var favoritesLabel: UILabel!
-    @IBOutlet weak var favoritesSwitch: UISwitch!
-    @IBOutlet weak var percentLabel: UILabel!
-    @IBOutlet weak var circleBarView: UIView!
-    @IBOutlet weak var newQuizButton: UIButton!
-    @IBOutlet weak var currentQuizButton: UIButton!
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var redoButton: UIButton!
-    @IBOutlet weak var heartImage: UIImageView!
-    
     let quizHomeVCH = QuizHomeVCH()
     let dIC = DItemController()
     let utilities = Utilities()
