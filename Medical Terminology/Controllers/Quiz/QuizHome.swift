@@ -12,6 +12,23 @@ import UIKit
 
 class QuizHome: UIViewController {
 
+	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
+	@IBOutlet weak var favoritesCountLabel: UILabel!
+	@IBOutlet weak var categorySelectButton: UIButton!
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
     @IBOutlet weak var favoritesLabel: UILabel!
     @IBOutlet weak var favoritesSwitch: UISwitch!
     @IBOutlet weak var percentLabel: UILabel!
