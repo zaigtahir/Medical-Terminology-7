@@ -9,18 +9,104 @@
 import Foundation
 import UIKit
 
-class QuizHomeVCH: QuizOptionsUpdated {
+protocol QuizHomeVCHDelegate: AnyObject {
+	func shouldUpdateDisplay()
+}
+
+
+class QuizHomeVCH: NSObject, QuizOptionsUpdated {
     
-    private var quizSet: QuizSet!   //initialize for first time when user presses the "Start New Set"
-    private let dIC = DItemController()
-    
+    private var quizSet: QuizSet!
+	var currentCategoryID = 1
+	var showFavoritesOnly = false
+
+
     var isFavoriteMode  = false
     var numberOfQuestions = 10
     var questionsType : QuestionsType = .random
     var startNewQuiz: Bool = true    //will be used for segue
     
-    init () {
-    }
+	let tc = TermController()
+	let cc = CategoryController2()
+
+	var favoriteTermsCount = 0
+	var categoryTermsCount = 0
+	
+	// after filtering for favorites and question type
+	
+	var answeredCorrectCount = 0	//
+	var totalQuestionsAvailableCount = 0  	// based on showFavoriteOnly mode
+	
+	override init() {
+		super.init()
+		
+	}
+	
+	func updateData () {
+		
+		// configure isFavorite variable
+		var isFavorite : Bool?
+			if showFavoritesOnly {
+				isFavorite = true
+		}
+		
+
+		favoriteTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+	
+		categoryTermsCount = cc.getCountOfTerms(categoryID: currentCategoryID)
+	
+		switch questionsType {
+		
+		case .random:
+			// looking at all data
+		
+			
+		case .term:
+		case .definition:
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		let answeredTerm = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .correct, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		
+		let answeredDefinition = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .correct, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		
+		answeredCorrectCount = answeredTerm + answeredDefinition
+		
+		if showFavoritesOnly {
+			totalQuestionsCount = favoriteTermsCount * 2
+		} else {
+			totalQuestionsCount = categoryTermsCount * 2
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
     /**
      Will return counts based on favorite mode and questions typea
      */

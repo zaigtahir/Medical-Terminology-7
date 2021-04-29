@@ -26,30 +26,24 @@ class QuizHome: UIViewController {
 	@IBOutlet weak var headingLabel: UILabel!
 	@IBOutlet weak var subheadingLabel: UILabel!
 	
-
-	
-	
-	
     let quizHomeVCH = QuizHomeVCH()
-    let dIC = DItemController()
     let utilities = Utilities()
     var progressBar: CircularBar!
-        
-    //button colors
-    let enabledButtonColor = myTheme.colorQuizButton
 
+	private let cc = CategoryController2()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        favoritesSwitch.layer.cornerRadius = 16
-        favoritesSwitch.clipsToBounds = true
-        favoritesSwitch.onTintColor = myTheme.colorFavorite
-    
-        
-        newQuizButton.layer.cornerRadius = myConstants.button_cornerRadius
-        currentQuizButton.layer.cornerRadius = myConstants.button_cornerRadius
-        
+	
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
+		
+		quizHomeVCH.delegate = self
+		quizHomeVCH.updateData()
+		
+		percentLabel.textColor = myTheme.colorButtonText
+		
+		updateDisplay()
+		
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

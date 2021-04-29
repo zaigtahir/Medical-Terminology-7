@@ -10,7 +10,6 @@ import UIKit
 
 class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 
-	// from quizHome
 	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var categorySelectButton: UIButton!
@@ -26,15 +25,11 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 	@IBOutlet weak var subheadingLabel: UILabel!
 	
 	let learningHomeVCH = LearningHomeVCH()
-	
-	private let utilities = Utilities()
+	let utilities = Utilities()
 	var progressBar: CircularBar!
 	
 	private let cc = CategoryController2()
 
-	//button colors
-	let enabledButtonColor = myTheme.colorQuizButton
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -61,9 +56,9 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		
 		let c = cc.getCategory(categoryID: learningHomeVCH.currentCategoryID)
 				
-		categoryNameLabel.text = "\(c.name) (\(learningHomeVCH.categoryTermCount))"
+		categoryNameLabel.text = "\(c.name) (\(learningHomeVCH.categoryTermsCount))"
 		
-		if learningHomeVCH.categoryTermCount == 0 {
+		if learningHomeVCH.categoryTermsCount == 0 {
 			// no terms available in this category
 			percentLabel.isHidden = true
 			redoButton.isHidden = true

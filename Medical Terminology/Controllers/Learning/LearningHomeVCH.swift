@@ -21,16 +21,16 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 	var numberOfTerms = 5
 	
 	///used to determine if to create a new set or keep current set when going from learning home to learning set
-	var startNewSet = true
+	var startNewSet = true	//will be used for segue
 	let tc = TermController()
 	let cc = CategoryController2()
    
 	// counts, use updateData to update these values
-	var learnedTermsCount = 0
-	var totalTermsCount = 0
 	var favoriteTermsCount = 0
-	var categoryTermCount = 0
-	
+	var categoryTermsCount = 0
+	var learnedTermsCount = 0
+	var totalTermsCount = 0		// based on showFavoritesOnly mode
+
 	weak var delegate : LearningHomeVCHDelegate?
 	
 	override init() {
@@ -162,13 +162,18 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 		
 		// learned terms are terms where both the term and the definitions is learned
 		
-		categoryTermCount = cc.getCountOfTerms(categoryID: currentCategoryID)
+		categoryTermsCount = cc.getCountOfTerms(categoryID: currentCategoryID)
+		
+		favoriteTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 		
 		learnedTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .none, learned: true, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 		
-		totalTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		if showFavoritesOnly {
+			totalTermsCount = favoriteTermsCount
+		} else {
+			totalTermsCount = categoryTermsCount
+		}
 			
-		favoriteTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 	}
 	
 	func getNewLearningSet () -> LearningSet {
