@@ -36,6 +36,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
 		
 		learningHomeVCH.delegate = self
+		
 		learningHomeVCH.updateData()
 		
 		percentLabel.textColor = myTheme.colorButtonText

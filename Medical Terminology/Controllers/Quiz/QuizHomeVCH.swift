@@ -29,13 +29,15 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 	let tc = TermController()
 	let cc = CategoryController2()
 
-	var favoriteTermsCount = 0
-	var categoryTermsCount = 0
+	var favoriteTermsCount = 20
+	var categoryTermsCount = 100
 	
 	// after filtering for favorites and question type
 	
-	var answeredCorrectCount = 0	//
-	var totalQuestionsAvailableCount = 0  	// based on showFavoriteOnly mode
+	var answeredCorrectCount = 20	//
+	var totalQuestionsAvailableCount = 200  	// based on showFavoriteOnly mode
+	
+	weak var delegate: QuizHomeVCHDelegate?
 	
 	override init() {
 		super.init()
@@ -49,56 +51,8 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 			if showFavoritesOnly {
 				isFavorite = true
 		}
-		
-
-		favoriteTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 	
-		categoryTermsCount = cc.getCountOfTerms(categoryID: currentCategoryID)
-	
-		switch questionsType {
-		
-		case .random:
-			// looking at all data
-		
-			
-		case .term:
-		case .definition:
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		let answeredTerm = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .correct, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
-		
-		let answeredDefinition = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .correct, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
-		
-		answeredCorrectCount = answeredTerm + answeredDefinition
-		
-		if showFavoritesOnly {
-			totalQuestionsCount = favoriteTermsCount * 2
-		} else {
-			totalQuestionsCount = categoryTermsCount * 2
-		}
+		print("updating data, update counts")
 		
 	}
 	
@@ -106,6 +60,8 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 	
 	
 	
+	
+	/*
 	
     /**
      Will return counts based on favorite mode and questions typea
@@ -157,9 +113,15 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
         return (answeredCorrectlyLocal, availableToAnswerLocal, totalQuestionsLocal)
         
     }
+	
+	*/
     
     func getMessageText () -> String {
         
+		
+		return "To code message text"
+		
+		/*
         let counts = getCounts()
         
         if isFavoriteMode && dIC.getCount(favoriteState: 1) == 0 {
@@ -195,6 +157,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
         }
         
         return messageLabel
+*/
     }
     
     func isQuizSetAvailable () -> Bool {
@@ -226,7 +189,9 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
     
     func restartOver () {
         //clear the answered items specific to the filter items
-        dIC.clearAnsweredItems(isFavorite: isFavoriteMode, questionsType: questionsType)
+		
+		print("code restart over quiz")
+      //  dIC.clearAnsweredItems(isFavorite: isFavoriteMode, questionsType: questionsType)
         
         //clear the quiz
          quizSet = nil

@@ -10,8 +10,8 @@
 
 import UIKit
 
-class QuizHome: UIViewController {
-
+class QuizHome: UIViewController, QuizHomeVCHDelegate {
+	
 	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var categorySelectButton: UIButton!
@@ -24,164 +24,185 @@ class QuizHome: UIViewController {
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var optionsButton: UIBarButtonItem!
 	@IBOutlet weak var headingLabel: UILabel!
-	@IBOutlet weak var subheadingLabel: UILabel!
 	
-    let quizHomeVCH = QuizHomeVCH()
-    let utilities = Utilities()
-    var progressBar: CircularBar!
-
+	let quizHomeVCH = QuizHomeVCH()
+	let utilities = Utilities()
+	var progressBar: CircularBar!
+	
 	private let cc = CategoryController2()
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-	
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
 		
 		quizHomeVCH.delegate = self
+		
 		quizHomeVCH.updateData()
 		
 		percentLabel.textColor = myTheme.colorButtonText
 		
 		updateDisplay()
 		
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        //redraw the progress bar
-        updateDisplay()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        favoritesSwitch.isOn = quizHomeVCH.isFavoriteMode
-        updateDisplay()
-    }
-    
-    func updateDisplay () {
-        
-        let favoritesCount = dIC.getCount(favoriteState: 1)
-        
-        favoritesSwitch.isOn = quizHomeVCH.isFavoriteMode
-        
-        favoritesLabel.text = "\(favoritesCount)"
-        
-        if quizHomeVCH.isFavoriteMode && favoritesCount == 0 {
-            
-            //isFavorite = true, but the user has not selected any favorites
-            circleBarView.isHidden = true
-            percentLabel.isHidden = true
-            heartImage.isHidden = false
-            redoButton.isHidden = true
-            messageLabel.text = quizHomeVCH.getMessageText()
-            newQuizButton.isEnabled = false
-            
-            return
-        }
-        
-        let counts = quizHomeVCH.getCounts()
-        circleBarView.isHidden = false
-        percentLabel.isHidden = false
-        heartImage.isHidden = true
-        redoButton.isEnabled = true
-        
-      let foregroundColor = myTheme.colorPbQuizForeground?.cgColor
-      let backgroundColor = myTheme.colorPbQuizBackground?.cgColor
-      let fillColor =  myTheme.colorPbQuizFillcolor?.cgColor
-              
-      progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!
-        , lineWidth: myTheme.progressBarWidth)
-        
-        progressBar.setStrokeEnd(partialCount: counts.answeredCorrectly, totalCount: (counts.availableToAnswer + counts.answeredCorrectly) )
-        heartImage.isHidden = true
-        
-        let percentText = utilities.getPercentage(number: counts.answeredCorrectly, numberTotal: (counts.answeredCorrectly + counts.availableToAnswer))
-        
-        percentLabel.text = "\(percentText)% DONE"
-        messageLabel.text = quizHomeVCH.getMessageText()
-        
-        if counts.answeredCorrectly > 0 {
-            redoButton.isEnabled = true
-        } else {
-            redoButton.isEnabled = false
-        }
-        
-        if counts.availableToAnswer > 0 {
-            newQuizButton.isEnabled = true
-        } else {
-            newQuizButton.isEnabled = false
-        }
-        
-        //state of see current quiz button
-        currentQuizButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
-
-        for b in [newQuizButton, currentQuizButton] {
-			myTheme.formatButtonState(button: b!, enabledColor: enabledButtonColor!)
-        }
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "segueToQuiz" {
-            let vc = segue.destination as! QuizSetVC
-                        
-            if quizHomeVCH.startNewQuiz {
-                vc.quizSetVCH.quizSet = quizHomeVCH.getNewQuizSet()
-            } else {
-                vc.quizSetVCH.quizSet = quizHomeVCH.getQuizSet()
-            }
-        }
-        
-        if segue.identifier == "segueQuizOptions" {
-            let vc = segue.destination as! QuizOptionsVC
-            vc.delegate = quizHomeVCH
-            vc.questionsType = quizHomeVCH.questionsType
-            vc.numberOfQuestions = quizHomeVCH.numberOfQuestions
-            vc.isFavoriteMode = quizHomeVCH.isFavoriteMode
-        }
-    }
-        
-    @IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
-        quizHomeVCH.isFavoriteMode = sender.isOn
-        updateDisplay()
-    }
-        
-    func confirmRestart () {
-        
-        let alert = UIAlertController(title: "Redo Quiz Questions", message: "Are you sure you want to clear the answers to these questions and redo them?", preferredStyle: .actionSheet)
-        
-        let yesAction = UIAlertAction(title: "Yes", style: .default, handler: {
-            action in self.restartNow()})
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        
-        alert.addAction(yesAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func restartNow() {
-        quizHomeVCH.restartOver()
-        updateDisplay()
-    }
-    
-    @IBAction func optionsButtonAction(_ sender: Any) {
-        performSegue(withIdentifier: "segueQuizOptions", sender: nil)
-    }
-    
-    @IBAction func redoButtonAction(_ sender: Any) {
-        confirmRestart()
-    }
-    
-    @IBAction func newQuizButtonAction(_ sender: UIButton) {
-        quizHomeVCH.startNewQuiz = true
-        performSegue(withIdentifier: "segueToQuiz", sender: nil)
-    }
-    
-    @IBAction func currentQuizButtonAction(_ sender: Any) {
-        //will manually segue
-        quizHomeVCH.startNewQuiz  = false
-        performSegue(withIdentifier: "segueToQuiz", sender: nil)
-    }
-
-    
+	}
+	
+	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+		//redraw the progress bar
+		updateDisplay()
+	}
+	
+	private func updateDisplay () {
+		
+		showFavoritesOnlyButton.isOn = quizHomeVCH.isFavoriteMode
+		
+		favoritesCountLabel.text = "\(quizHomeVCH.favoriteTermsCount)"
+		
+		let c = cc.getCategory(categoryID: quizHomeVCH.currentCategoryID)
+		
+		categoryNameLabel.text = "\(c.name) (\(quizHomeVCH.categoryTermsCount))"
+		
+		if quizHomeVCH.categoryTermsCount == 0 {
+			// no terms available in this category
+			
+			percentLabel.isHidden = true
+			redoButton.isHidden = true
+			headingLabel.isHidden = false
+			messageLabel.isHidden = true
+			
+			headingLabel.text = myConstants.noTermsHeading
+			messageLabel.text = myConstants.noTermsSubheading
+			
+			updateButtons()
+			return
+		}
+		
+		// no favorite terms available
+		if quizHomeVCH.showFavoritesOnly && quizHomeVCH.favoriteTermsCount == 0 {
+			percentLabel.isHidden = true
+			redoButton.isHidden = true
+			headingLabel.isHidden = false
+			messageLabel.isHidden = true
+			
+			headingLabel.text = myConstants.noFavoriteTermsHeading
+			messageLabel.text = myConstants.noFavoriteTermsSubheading
+			updateButtons()
+			return
+		}
+		
+		// some terms available
+		percentLabel.isHidden = false
+		redoButton.isHidden = false
+		headingLabel.isHidden = true
+		messageLabel.isHidden = false
+		
+		messageLabel.text = "some terms are available, need to code this message"
+		
+		let foregroundColor = myTheme.colorPbQuizForeground?.cgColor
+		let backgroundColor = myTheme.colorPbQuizBackground?.cgColor
+		let fillColor =  myTheme.colorPbQuizFillcolor?.cgColor
+		
+		
+		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!, lineWidth: myTheme.progressBarWidth)
+		
+		progressBar.setStrokeEnd(partialCount: quizHomeVCH.answeredCorrectCount, totalCount: quizHomeVCH.totalQuestionsAvailableCount)
+		
+		let percentText = utilities.getPercentage(number: quizHomeVCH.answeredCorrectCount, numberTotal: quizHomeVCH.totalQuestionsAvailableCount)
+		
+		percentLabel.text = "\(percentText)% DONE"
+		
+		
+		if quizHomeVCH.answeredCorrectCount == 0 {
+			redoButton.isEnabled = false
+		} else {
+			redoButton.isEnabled = true
+		}
+		
+		updateButtons()
+	
+	}
+	
+	private func updateButtons () {
+		print ("code update buttons")
+		
+		//state of see current quiz button
+		//currentQuizButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
+	}
+	
+	
+	override func viewWillAppear(_ animated: Bool) {
+		
+		updateDisplay()
+	}
+	
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
+		if segue.identifier == "segueToQuiz" {
+			let vc = segue.destination as! QuizSetVC
+			
+			if quizHomeVCH.startNewQuiz {
+				vc.quizSetVCH.quizSet = quizHomeVCH.getNewQuizSet()
+			} else {
+				vc.quizSetVCH.quizSet = quizHomeVCH.getQuizSet()
+			}
+		}
+		
+		if segue.identifier == "segueQuizOptions" {
+			let vc = segue.destination as! QuizOptionsVC
+			vc.delegate = quizHomeVCH
+			vc.questionsType = quizHomeVCH.questionsType
+			vc.numberOfQuestions = quizHomeVCH.numberOfQuestions
+			vc.isFavoriteMode = quizHomeVCH.isFavoriteMode
+		}
+	}
+	
+	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
+		quizHomeVCH.isFavoriteMode = sender.isOn
+		updateDisplay()
+	}
+	
+	func confirmRestart () {
+		
+		let alert = UIAlertController(title: "Redo Quiz Questions", message: "Are you sure you want to clear the answers to these questions and redo them?", preferredStyle: .actionSheet)
+		
+		let yesAction = UIAlertAction(title: "Yes", style: .default, handler: {
+										action in self.restartNow()})
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+		
+		alert.addAction(yesAction)
+		alert.addAction(cancelAction)
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func restartNow() {
+		quizHomeVCH.restartOver()
+		updateDisplay()
+	}
+	
+	// MARK: - QuizHomeVCHDelegate functions
+	func shouldUpdateDisplay() {
+		updateDisplay()
+	}
+	
+	@IBAction func optionsButtonAction(_ sender: Any) {
+		performSegue(withIdentifier: "segueQuizOptions", sender: nil)
+	}
+	
+	@IBAction func redoButtonAction(_ sender: Any) {
+		confirmRestart()
+	}
+	
+	@IBAction func newQuizButtonAction(_ sender: UIButton) {
+		quizHomeVCH.startNewQuiz = true
+		performSegue(withIdentifier: "segueToQuiz", sender: nil)
+	}
+	
+	@IBAction func currentQuizButtonAction(_ sender: Any) {
+		//will manually segue
+		quizHomeVCH.startNewQuiz  = false
+		performSegue(withIdentifier: "segueToQuiz", sender: nil)
+	}
+	
+	
 }
