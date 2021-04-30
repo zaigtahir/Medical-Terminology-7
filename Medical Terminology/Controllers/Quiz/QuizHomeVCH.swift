@@ -30,12 +30,12 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 	let cc = CategoryController2()
 
 	var favoriteTermsCount = 0
-	var categoryTermsCount = 20
+	var categoryTermsCount = 0
 	
 	// after filtering for favorites and question type
 	
-	var answeredCorrectCount = 20	//
-	var totalQuestionsAvailableCount = 200  	// based on showFavoriteOnly mode
+	var answeredCorrectCount = 0
+	var totalQuestionsCount = 0
 	
 	weak var delegate: QuizHomeVCHDelegate?
 	
@@ -51,114 +51,34 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 			if showFavoritesOnly {
 				isFavorite = true
 		}
+		
+		categoryTermsCount = cc.getCountOfTerms(categoryID: currentCategoryID)
+		
+		favoriteTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 	
-		print("updating data, update counts")
+		
+		if showFavoritesOnly {
+			totalQuestionsCount = favoriteTermsCount * 2
+		} else {
+			totalQuestionsCount = categoryTermsCount * 2
+		}
+		
+		let answeredTermCorrectCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .correct, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		
+		let answeredDefinitionCorrectCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .correct, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		
+		
+		switch questionsType {
+		
+		case .definition:
+			answeredCorrectCount = answeredDefinitionCorrectCount
+		case .term:
+			answeredCorrectCount = answeredTermCorrectCount
+		case .random:
+			answeredCorrectCount = answeredTermCorrectCount + answeredDefinitionCorrectCount
+		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	/*
-	
-    /**
-     Will return counts based on favorite mode and questions typea
-     */
-    func getCounts () -> (answeredCorrectly: Int, availableToAnswer: Int, totalQuestions: Int) {
-        
-        let totalItems = dIC.getCount(favoriteState: -1)
-        let totalFavoriteItems = dIC.getCount(favoriteState: 1)
-        
-        var favoriteState = -1
-        if isFavoriteMode {
-            favoriteState = 1
-        }
-        
-        var answeredCorrectlyLocal = -1
-        var availableToAnswerLocal = -1
-        var totalQuestionsLocal = -1
-        
-        switch questionsType {
-            
-        case .random:
-            answeredCorrectlyLocal = dIC.getTermsAnsweredCorrectlyCount(favoriteState: favoriteState) + dIC.getDefinitionsAnsweredCorrectly(favoriteState: favoriteState)
-            
-            if isFavoriteMode {
-                totalQuestionsLocal = totalFavoriteItems * 2
-            } else {
-                totalQuestionsLocal = totalItems *  2
-            }
-            
-        case .term:
-            answeredCorrectlyLocal = dIC.getTermsAnsweredCorrectlyCount(favoriteState: favoriteState)
-            if isFavoriteMode {
-                totalQuestionsLocal = totalFavoriteItems
-            } else {
-                totalQuestionsLocal = totalItems
-            }
-            
-        default:
-            answeredCorrectlyLocal = dIC.getDefinitionsAnsweredCorrectly(favoriteState: favoriteState)
-            if isFavoriteMode {
-                totalQuestionsLocal = totalFavoriteItems
-            } else {
-                totalQuestionsLocal = totalItems
-            }
-        }
-        
-        availableToAnswerLocal = totalQuestionsLocal - answeredCorrectlyLocal
-        
-        return (answeredCorrectlyLocal, availableToAnswerLocal, totalQuestionsLocal)
-        
-    }
-	
-	*/
-    
-    func getMessageText () -> String {
-        
-		
-		return "To code message text"
-		
-		/*
-        let counts = getCounts()
-        
-        if isFavoriteMode && dIC.getCount(favoriteState: 1) == 0 {
-            return "code no favorite message in quizHomeVCH"
-        }
-        
-        var favoriteText = ""
-        if isFavoriteMode {
-            favoriteText = " Favorite"
-        }
-        
-        var questionTypeText = ""
-        
-        switch questionsType {
-            
-        case .random:
-            questionTypeText = ""
-            
-        case .term:
-            
-            questionTypeText = " Terms-Only"
-            
-        default:
-            questionTypeText = " Definitions-Only"
-        }
-        
-        var messageLabel: String
-        
-        if counts.availableToAnswer == 0 {
-            messageLabel = "You have correctly answered\nall \(counts.totalQuestions)\(favoriteText)\(questionTypeText) questions"
-        } else {
-            messageLabel = "You have correctly answered\n\(counts.answeredCorrectly) of \(counts.totalQuestions)\(favoriteText)\(questionTypeText) questions"
-        }
-        
-        return messageLabel
-*/
-    }
     
     func isQuizSetAvailable () -> Bool {
         // test to see if the quiz exists

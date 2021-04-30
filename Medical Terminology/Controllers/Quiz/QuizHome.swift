@@ -18,6 +18,7 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	@IBOutlet weak var percentLabel: UILabel!
 	@IBOutlet weak var circleBarView: UIView!
+	@IBOutlet weak var infoIcon: UILabel!
 	@IBOutlet weak var redoButton: UIButton!
 	@IBOutlet weak var newSetButton: ZUIRoundedButton!
 	@IBOutlet weak var seeCurrentSetButton: ZUIRoundedButton!
@@ -61,87 +62,82 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 		
 		categoryNameLabel.text = "\(c.name) (\(quizHomeVCH.categoryTermsCount))"
 		
+		
+		let foregroundColor = myTheme.colorPbQuizForeground?.cgColor
+		let backgroundColor = myTheme.colorPbQuizBackground?.cgColor
+		var fillColor : CGColor
+		
+		
 		if quizHomeVCH.categoryTermsCount == 0 {
-			// no terms available in this category
 			
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
+			infoIcon.isHidden = false
 			headingLabel.isHidden = false
-			messageLabel.isHidden = true
+			messageLabel.isHidden = false
 			
 			headingLabel.text = myConstants.noTermsHeading
 			messageLabel.text = myConstants.noTermsSubheading
 			
-			formatProgressBar()
-			updateButtons()
-			return
-		}
-		
-		// no favorite terms available
-		if quizHomeVCH.showFavoritesOnly && quizHomeVCH.favoriteTermsCount == 0 {
+			fillColor =  UIColor.systemBackground.cgColor
+			
+		} else if (quizHomeVCH.showFavoritesOnly && quizHomeVCH.favoriteTermsCount == 0) {
+			
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
+			infoIcon.isHidden = false
 			headingLabel.isHidden = false
-			messageLabel.isHidden = true
+			messageLabel.isHidden = false
 			
 			headingLabel.text = myConstants.noFavoriteTermsHeading
 			messageLabel.text = myConstants.noFavoriteTermsSubheading
 			
-			formatProgressBar()
-			updateButtons()
-			return
+			fillColor =  UIColor.systemBackground.cgColor
+			
+		} else {
+			
+			// some terms available
+			percentLabel.isHidden = false
+			redoButton.isHidden = false
+			infoIcon.isHidden = true
+			headingLabel.isHidden = true
+			messageLabel.isHidden = false
+			
+			messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsCount) available questions"
+			
+			fillColor =  myTheme.colorPbQuizFillcolor!.cgColor
 		}
 		
-
+		// format the progress bar
+		let percentText = utilities.getPercentage(number: quizHomeVCH.answeredCorrectCount, numberTotal: quizHomeVCH.totalQuestionsCount)
 		
-		// some terms available
-		percentLabel.isHidden = false
-		redoButton.isHidden = false
-		headingLabel.isHidden = true
-		messageLabel.isHidden = false
+		percentLabel.text = "\(percentText)%"
 		
-		messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsAvailableCount) available questions"
-		formatProgressBar()
-		updateButtons()
-	
+		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor, lineWidth: myTheme.progressBarWidth)
+		
+		progressBar.setStrokeEnd(partialCount: quizHomeVCH.answeredCorrectCount, totalCount: quizHomeVCH.totalQuestionsCount)
+		
 	}
 	
-	private func formatProgressBar () {
-		
-		let foregroundColor = myTheme.colorPbQuizForeground?.cgColor
-		let backgroundColor = myTheme.colorPbQuizBackground?.cgColor
-		let fillColor =  myTheme.colorPbQuizFillcolor?.cgColor
-		
-		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!, lineWidth: myTheme.progressBarWidth)
-		
-		progressBar.setStrokeEnd(partialCount: quizHomeVCH.answeredCorrectCount, totalCount: quizHomeVCH.totalQuestionsAvailableCount)
-		
-		let percentText = utilities.getPercentage(number: quizHomeVCH.answeredCorrectCount, numberTotal: quizHomeVCH.totalQuestionsAvailableCount)
-		
-		percentLabel.text = "\(percentText)% DONE"
-	}
 	
 	private func updateButtons () {
 		print ("to complete code update buttons")
 		/*
 		if quizHomeVCH.answeredCorrectCount == 0 {
-			redoButton.isEnabled = false
+		redoButton.isEnabled = false
 		} else {
-			redoButton.isEnabled = true
+		redoButton.isEnabled = true
 		}
 		
 		//state of see current quiz button
 		//currentQuizButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
-
-*/
+		
+		*/
 	}
-	
 	
 	override func viewWillAppear(_ animated: Bool) {
-		
 		updateDisplay()
 	}
-	
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		

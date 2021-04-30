@@ -21,7 +21,12 @@ class Utilities {
     
     func getPercentage (number: Int, numberTotal: Int) -> String {
         
+		if numberTotal == 0 {
+			return "0"
+		}
+		
         let percent = Float(number)/Float(numberTotal) * 100
+		
         if percent < 1 || (percent > 99 && percent < 100) {
             return String(format: "%.1f", percent) //formats to zero decimal place
         } else   {
