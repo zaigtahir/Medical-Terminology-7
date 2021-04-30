@@ -29,8 +29,8 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 	let tc = TermController()
 	let cc = CategoryController2()
 
-	var favoriteTermsCount = 20
-	var categoryTermsCount = 100
+	var favoriteTermsCount = 0
+	var categoryTermsCount = 20
 	
 	// after filtering for favorites and question type
 	

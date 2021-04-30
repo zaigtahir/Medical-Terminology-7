@@ -72,6 +72,7 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 			headingLabel.text = myConstants.noTermsHeading
 			messageLabel.text = myConstants.noTermsSubheading
 			
+			formatProgressBar()
 			updateButtons()
 			return
 		}
@@ -85,9 +86,13 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 			
 			headingLabel.text = myConstants.noFavoriteTermsHeading
 			messageLabel.text = myConstants.noFavoriteTermsSubheading
+			
+			formatProgressBar()
 			updateButtons()
 			return
 		}
+		
+
 		
 		// some terms available
 		percentLabel.isHidden = false
@@ -95,12 +100,19 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 		headingLabel.isHidden = true
 		messageLabel.isHidden = false
 		
-		messageLabel.text = "some terms are available, need to code this message"
+		return
+		
+		messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsAvailableCount) available questions"
+		formatProgressBar()
+		updateButtons()
+	
+	}
+	
+	private func formatProgressBar () {
 		
 		let foregroundColor = myTheme.colorPbQuizForeground?.cgColor
 		let backgroundColor = myTheme.colorPbQuizBackground?.cgColor
 		let fillColor =  myTheme.colorPbQuizFillcolor?.cgColor
-		
 		
 		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!, lineWidth: myTheme.progressBarWidth)
 		
@@ -109,23 +121,21 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 		let percentText = utilities.getPercentage(number: quizHomeVCH.answeredCorrectCount, numberTotal: quizHomeVCH.totalQuestionsAvailableCount)
 		
 		percentLabel.text = "\(percentText)% DONE"
-		
-		
+	}
+	
+	private func updateButtons () {
+		print ("to complete code update buttons")
+		/*
 		if quizHomeVCH.answeredCorrectCount == 0 {
 			redoButton.isEnabled = false
 		} else {
 			redoButton.isEnabled = true
 		}
 		
-		updateButtons()
-	
-	}
-	
-	private func updateButtons () {
-		print ("code update buttons")
-		
 		//state of see current quiz button
 		//currentQuizButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
+
+*/
 	}
 	
 	
@@ -154,11 +164,6 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 			vc.numberOfQuestions = quizHomeVCH.numberOfQuestions
 			vc.isFavoriteMode = quizHomeVCH.isFavoriteMode
 		}
-	}
-	
-	@IBAction func favoritesSwitchChanged(_ sender: UISwitch) {
-		quizHomeVCH.isFavoriteMode = sender.isOn
-		updateDisplay()
 	}
 	
 	func confirmRestart () {
