@@ -100,8 +100,6 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 		headingLabel.isHidden = true
 		messageLabel.isHidden = false
 		
-		return
-		
 		messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsAvailableCount) available questions"
 		formatProgressBar()
 		updateButtons()
