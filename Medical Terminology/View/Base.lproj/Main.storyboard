@@ -1889,6 +1889,9 @@
                                     <segment title="Terms"/>
                                     <segment title="Definitions"/>
                                 </segments>
+                                <connections>
+                                    <action selector="termComponentSelector:" destination="Kng-lT-ZvC" eventType="valueChanged" id="eZy-05-HV7"/>
+                                </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KUI-Wq-zRh">
                                 <rect key="frame" x="119.66666666666669" y="156" width="175" height="175"/>

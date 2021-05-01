@@ -20,8 +20,6 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 	var currentCategoryID = 1
 	var showFavoritesOnly = false
 
-
-    var isFavoriteMode  = false
     var numberOfQuestions = 10
     var questionsType : TermComponent = .both
     var startNewQuiz: Bool = true    //will be used for segue
@@ -98,7 +96,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
         
         //create a quiz based on the variables that can be changed through options
         var favoriteState = -1
-        if isFavoriteMode {
+        if showFavoritesOnly {
             favoriteState = 1
         }
     
@@ -125,6 +123,5 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
         //update settings
         self.numberOfQuestions = numberOfQuestions
         self.questionsType = questionsTypes
-        self.isFavoriteMode = isFavoriteMode
     }
 }

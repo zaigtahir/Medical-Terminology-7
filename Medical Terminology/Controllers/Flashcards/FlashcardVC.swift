@@ -222,4 +222,5 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 	@IBAction func redoButtonAction(_ sender: Any) {
 		flashCardVCH.relearnFlashcards()
 	}
+
 }

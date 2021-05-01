@@ -54,7 +54,7 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 	
 	private func updateDisplay () {
 		
-		showFavoritesOnlyButton.isOn = quizHomeVCH.isFavoriteMode
+		showFavoritesOnlyButton.isOn = quizHomeVCH.showFavoritesOnly
 		
 		favoritesCountLabel.text = "\(quizHomeVCH.favoriteTermsCount)"
 		
@@ -132,7 +132,6 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 				
 			case .both:
 				messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsCount) available questions"
-				
 			}
 		
 		}
@@ -169,7 +168,7 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 			vc.delegate = quizHomeVCH
 			vc.questionsType = quizHomeVCH.questionsType
 			vc.numberOfQuestions = quizHomeVCH.numberOfQuestions
-			vc.isFavoriteMode = quizHomeVCH.isFavoriteMode
+			vc.isFavoriteMode = quizHomeVCH.showFavoritesOnly
 		}
 	}
 	
@@ -216,5 +215,11 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 		performSegue(withIdentifier: "segueToQuiz", sender: nil)
 	}
 	
+	
+	@IBAction func termComponentSelector(_ sender: UISegmentedControl) {
+		quizHomeVCH.questionsType = TermComponent.init(rawValue: sender.selectedSegmentIndex)!
+		quizHomeVCH.updateData()
+		updateDisplay()
+	}
 	
 }
