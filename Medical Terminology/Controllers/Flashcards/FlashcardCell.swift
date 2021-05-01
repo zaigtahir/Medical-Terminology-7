@@ -34,7 +34,7 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDeleg
 	
     weak var delegate: FlashcardCellDelegate?
 	
-	func configure (term: Term, fcvMode: FlashcardViewMode, isFavorite: Bool, learnedFlashcard: Bool,  counter: String) {
+	func configure (term: Term, fcvMode: TermComponent, isFavorite: Bool, learnedFlashcard: Bool,  counter: String) {
 		
 		self.term = term
 		termLabel.text = term.name

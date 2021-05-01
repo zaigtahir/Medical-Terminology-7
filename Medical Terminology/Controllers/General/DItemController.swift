@@ -391,11 +391,11 @@ class DItemController {
     
     //MARK: QUIZ QUESTION related functions
     
-    func clearAnsweredItems (isFavorite: Bool, questionsType: QuestionsType) {
+    func clearAnsweredItems (isFavorite: Bool, questionsType: TermComponent) {
         var query: String
         
         switch questionsType {
-        case .random:
+        case .both:
             if isFavorite {
                 query = "UPDATE dictionary SET answeredTerm = 0, answeredDefinition = 0 WHERE (isFavorite = 1 AND itemID > 0)"
             } else {

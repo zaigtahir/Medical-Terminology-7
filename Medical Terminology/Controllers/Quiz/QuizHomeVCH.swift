@@ -23,7 +23,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 
     var isFavoriteMode  = false
     var numberOfQuestions = 10
-    var questionsType : QuestionsType = .random
+    var questionsType : TermComponent = .both
     var startNewQuiz: Bool = true    //will be used for segue
     
 	let tc = TermController()
@@ -74,7 +74,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 			answeredCorrectCount = answeredDefinitionCorrectCount
 		case .term:
 			answeredCorrectCount = answeredTermCorrectCount
-		case .random:
+		case .both:
 			answeredCorrectCount = answeredTermCorrectCount + answeredDefinitionCorrectCount
 		}
 		
@@ -121,7 +121,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 
     //MARK: - Delegate functions
     
-    func quizOptionsUpdate(numberOfQuestions: Int, questionsTypes: QuestionsType, isFavoriteMode: Bool) {
+    func quizOptionsUpdate(numberOfQuestions: Int, questionsTypes: TermComponent, isFavoriteMode: Bool) {
         //update settings
         self.numberOfQuestions = numberOfQuestions
         self.questionsType = questionsTypes

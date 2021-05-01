@@ -130,7 +130,7 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 			case .term:
 				messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsCount) available term questions"
 				
-			case .random:
+			case .both:
 				messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsCount) available questions"
 				
 			}

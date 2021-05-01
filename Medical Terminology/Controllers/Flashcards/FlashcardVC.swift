@@ -10,29 +10,19 @@
 
 import UIKit
 
-class FlashcardVC: UIViewController, FlashcardHomeDelegate {
+class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
-	
 	@IBOutlet weak var categorySelectButton: UIButton!
-	
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	@IBOutlet weak var sliderOutlet: UISlider!
-	
 	@IBOutlet weak var learnedStatusSwitch: UISegmentedControl!
 	@IBOutlet weak var previousButton: UIButton!
 	@IBOutlet weak var randomButton: UIButton!
 	@IBOutlet weak var nextButton: UIButton!
-	
-	@IBOutlet weak var emptyListLabel: UILabel!
-	@IBOutlet weak var emptyListImage: UIImageView!
-	@IBOutlet weak var gotItButton: ZUIToggleButton!
-	
-	
-	//button listing the category name
 	
 	var utilities = Utilities()
 	
@@ -47,7 +37,6 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		super.viewDidLoad()
 		
 		flashCardVCH.delegate = self
-		
 		scrollController.delegate = flashCardVCH
 		scrollController.sideMargin = myConstants.layout_sideMargin
 		scrollController.topBottomMargin = myConstants.layout_topBottomMargin
@@ -229,6 +218,7 @@ class FlashcardVC: UIViewController, FlashcardHomeDelegate {
 		updateDisplay()
 		collectionView.reloadData()
 	}
+	
 	@IBAction func redoButtonAction(_ sender: Any) {
 		flashCardVCH.relearnFlashcards()
 	}

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FlashcardHomeDelegate: AnyObject {
+protocol FlashcardVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()		// update state of other controls on the flashcard home screen
 	func shouldRefreshCollectionView()	// reload all the data
 	func shouldRefreshCurrentCell()
@@ -21,12 +21,12 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// holds state of the view
 	var currentCategoryID = 1 			// default starting off category
 	var showFavoritesOnly = false		// this is different than saying isFavorite = false
-	var viewMode : FlashcardViewMode = .both
+	var viewMode : TermComponent = .both
 	
 	// which tab to show: learning vs learned
 	var learnedStatus = false
 	
-	weak var delegate: FlashcardHomeDelegate?
+	weak var delegate: FlashcardVCHDelegate?
 	
 	// controllers
 	let tc = TermController()
@@ -379,7 +379,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	// MARK: -Flashcard options delegate
-	func flashCardViewModeChanged(fcvMode: FlashcardViewMode) {
+	func flashCardViewModeChanged(fcvMode: TermComponent) {
 		self.viewMode = fcvMode
 		delegate?.shouldRefreshCurrentCell()
 	}

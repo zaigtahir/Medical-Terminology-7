@@ -9,7 +9,7 @@
 import UIKit
 
 protocol QuizOptionsUpdated: AnyObject {
-    func quizOptionsUpdate (numberOfQuestions: Int, questionsTypes: QuestionsType, isFavoriteMode: Bool)
+    func quizOptionsUpdate (numberOfQuestions: Int, questionsTypes: TermComponent, isFavoriteMode: Bool)
 }
 
 
@@ -22,7 +22,7 @@ class QuizOptionsVC: UIViewController {
     @IBOutlet weak var favoriteSelector: UISegmentedControl!
     
     var numberOfQuestions = 10
-    var questionsType : QuestionsType = .random
+    var questionsType : TermComponent = .both
     var isFavoriteMode = false
     
     weak var delegate : QuizOptionsUpdated?
@@ -42,7 +42,7 @@ class QuizOptionsVC: UIViewController {
         }
         
         switch questionsType {
-        case .random:
+        case .both:
             questionsTypeSelector.selectedSegmentIndex = 0
         case .term:
             questionsTypeSelector.selectedSegmentIndex = 1
@@ -77,7 +77,7 @@ class QuizOptionsVC: UIViewController {
         
         switch sender.selectedSegmentIndex {
         case 0:
-            questionsType = .random
+            questionsType = .both
             
         case 1:
             questionsType = .term

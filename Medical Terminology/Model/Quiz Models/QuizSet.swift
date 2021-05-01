@@ -26,7 +26,7 @@ class QuizSet: QuizBase {
     
     private let questionController = QuestionController()
     
-    init (numberOfQuestions: Int, favoriteState: Int, questionTypes: QuestionsType) {
+    init (numberOfQuestions: Int, favoriteState: Int, questionTypes: TermComponent) {
         
         // will create a quizSet set with the numberOfQuestions if available
         
@@ -51,7 +51,7 @@ class QuizSet: QuizBase {
         
         switch questionTypes {
         
-        case .random:
+        case .both:
             fullQuery = """
             SELECT * FROM
             (

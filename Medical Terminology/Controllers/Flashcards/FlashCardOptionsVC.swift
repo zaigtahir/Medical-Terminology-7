@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FlashcardOptionsDelegate: AnyObject {
-    func flashCardViewModeChanged (fcvMode: FlashcardViewMode)
+    func flashCardViewModeChanged (fcvMode: TermComponent)
 }
 
 
@@ -18,7 +18,7 @@ class FlashcardOptionsVC: UIViewController {
     @IBOutlet weak var showSegmentedControl: UISegmentedControl!
     
     //class variables with default values
-    var viewMode: FlashcardViewMode = .both          //flash card view mode
+    var viewMode: TermComponent = .both          //flash card view mode
     
     var delegate: FlashcardOptionsDelegate?
 
@@ -47,6 +47,7 @@ class FlashcardOptionsVC: UIViewController {
         }
         
         delegate?.flashCardViewModeChanged(fcvMode: viewMode)
+		self.dismiss(animated: true, completion: nil)
     }
     
 }

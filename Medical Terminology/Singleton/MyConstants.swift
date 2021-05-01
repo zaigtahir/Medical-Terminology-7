@@ -50,7 +50,7 @@ class MyConstants {
 	
 	
 	// segues
-	let segueFlashcardOptions = "segueFlashCardOptions"
+	let segueFlashcardOptions = "segueFlashcardOptions"
 	let segueSelectCategory = "segueSelectCategory"
 	let segueAssignCategory = "segueAssignCategory"
 	let segueCategory = "segueCategory"

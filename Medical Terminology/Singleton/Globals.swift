@@ -18,16 +18,10 @@ let myTheme = MyTheme ()
 let myConstants = MyConstants ()
 let myKeys = MyKeys()
 
-enum FlashcardViewMode {
-    case both
-    case term
-    case definition
-}
-
-enum QuestionsType {
-    case term
-    case definition
-    case random
+enum TermComponent: Int {
+	case both = 0
+	case term = 1
+	case definition = 2
 }
 
 enum QuizStatus {

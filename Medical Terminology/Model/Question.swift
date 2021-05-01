@@ -14,7 +14,7 @@ class Question {
     //blank questionText
     var questionText: String = ""
     var answers = [Answer]()
-    var questionType : QuestionsType = .term
+    var questionType : TermComponent = .term
     var itemID = 0
     
     var learnedTermForItem = false
