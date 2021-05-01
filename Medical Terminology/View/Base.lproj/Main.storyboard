@@ -1864,6 +1864,7 @@
                                         <connections>
                                             <action selector="ShowFavoritesOnlyButtonAction:" destination="wde-Jg-jwX" eventType="touchUpInside" id="qH8-K0-IkQ"/>
                                             <action selector="showFavoritesOnlyButton:" destination="asc-Xo-Hni" eventType="touchUpInside" id="vFN-2h-bIb"/>
+                                            <action selector="showFavoritesOnlyButtonAction:" destination="Kng-lT-ZvC" eventType="touchUpInside" id="CV3-Z5-nVQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2343,7 +2344,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pyO-3L-i6i">
                                 <rect key="frame" x="20" y="573" width="374" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4j-nY-tm7">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4j-nY-tm7" customClass="ZUIRoundedButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
                                         <color key="backgroundColor" name="color main"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2355,7 +2356,7 @@
                                             <action selector="movePreviousButtonAction:" destination="YaF-0P-3vu" eventType="touchUpInside" id="Jak-Pq-T9w"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXL-by-nbQ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXL-by-nbQ" customClass="ZUIRoundedButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="197" y="0.0" width="177" height="50"/>
                                         <color key="backgroundColor" name="color main"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

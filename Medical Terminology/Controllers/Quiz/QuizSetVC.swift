@@ -10,8 +10,8 @@ import UIKit
 
 class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegate, ScrollControllerDelegate, QuizDoneCVCellDelegate {
     
-    @IBOutlet weak var previousButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var previousButton: ZUIRoundedButton!
+    @IBOutlet weak var nextButton: ZUIRoundedButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     
@@ -19,9 +19,7 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
     let quizSetVCH = QuizSetVCH()
     let utilities = Utilities()
     
-    //button colors
-    let enabledButtonColor = myTheme.colorQuizButton
-    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -119,10 +117,6 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         //update the status of the buttons
         previousButton.isEnabled =  scrollDelegate.isPreviouButtonEnabled(collectionView: collectionView)
         nextButton.isEnabled =  scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
-        
-        for b in [previousButton, nextButton] {
-			myTheme.formatButtonState(button: b!, enabledColor: enabledButtonColor!)
-        }
     }
     
     func CVCellDragging(cellIndex: Int) {

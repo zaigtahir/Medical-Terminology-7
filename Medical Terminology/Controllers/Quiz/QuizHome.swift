@@ -215,6 +215,11 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 		performSegue(withIdentifier: "segueToQuiz", sender: nil)
 	}
 	
+	@IBAction func showFavoritesOnlyButtonAction(_ sender: Any) {
+		quizHomeVCH.showFavoritesOnly.toggle()
+		quizHomeVCH.updateData()
+		updateDisplay()
+	}
 	
 	@IBAction func termComponentSelector(_ sender: UISegmentedControl) {
 		quizHomeVCH.questionsType = TermComponent.init(rawValue: sender.selectedSegmentIndex)!
