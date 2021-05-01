@@ -81,6 +81,10 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 			
 			fillColor =  UIColor.systemBackground.cgColor
 			
+			newSetButton.isEnabled = false
+			seeCurrentSetButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
+	
+			
 		} else if (quizHomeVCH.showFavoritesOnly && quizHomeVCH.favoriteTermsCount == 0) {
 			
 			percentLabel.isHidden = true
@@ -94,45 +98,54 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 			
 			fillColor =  UIColor.systemBackground.cgColor
 			
+			newSetButton.isEnabled = false
+			seeCurrentSetButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
+			
 		} else {
 			
 			// some terms available
 			percentLabel.isHidden = false
-			redoButton.isHidden = false
+			
+			if quizHomeVCH.answeredCorrectCount > 0 {
+				redoButton.isHidden = false
+			} else {
+				redoButton.isHidden = true
+			}
+			
 			infoIcon.isHidden = true
 			headingLabel.isHidden = true
 			messageLabel.isHidden = false
 			
-			messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsCount) available questions"
+			newSetButton.isEnabled = true
+			seeCurrentSetButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
 			
 			fillColor =  myTheme.colorPbQuizFillcolor!.cgColor
+		
+			// message text
+			switch quizHomeVCH.questionsType {
+			
+			case .definition:
+				messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsCount) available definition questions"
+				
+			case .term:
+				messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsCount) available term questions"
+				
+			case .random:
+				messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsCount) available questions"
+				
+			}
+		
 		}
 		
 		// format the progress bar
 		let percentText = utilities.getPercentage(number: quizHomeVCH.answeredCorrectCount, numberTotal: quizHomeVCH.totalQuestionsCount)
 		
-		percentLabel.text = "\(percentText)%"
+		percentLabel.text = "\(percentText)% Done"
 		
 		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor, lineWidth: myTheme.progressBarWidth)
 		
 		progressBar.setStrokeEnd(partialCount: quizHomeVCH.answeredCorrectCount, totalCount: quizHomeVCH.totalQuestionsCount)
 		
-	}
-	
-	
-	private func updateButtons () {
-		print ("to complete code update buttons")
-		/*
-		if quizHomeVCH.answeredCorrectCount == 0 {
-		redoButton.isEnabled = false
-		} else {
-		redoButton.isEnabled = true
-		}
-		
-		//state of see current quiz button
-		//currentQuizButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
-		
-		*/
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
