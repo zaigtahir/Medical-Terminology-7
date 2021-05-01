@@ -229,7 +229,6 @@ class TermController {
 		
 	}
 
-	
 	// MARK: - term update functions
 	
 	func updateTermNamePN (termID: Int, name: String) {
@@ -288,7 +287,7 @@ class TermController {
 	
 	// MARK: - Non search text queries
 	
-	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?) -> [Int]{
+	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?, limitTo: Int?) -> [Int] {
 		
 		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
@@ -301,7 +300,8 @@ class TermController {
 												  learnedTerm: learnedTerm,
 												  learnedDefinition: learnedDefinition,
 												  learnedFlashcard: learnedFlashcard,
-												  orderByName: orderByName)
+												  orderByName: orderByName,
+												  limitTo: limitTo)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
@@ -337,7 +337,8 @@ class TermController {
 												 learnedTerm: learnedTerm,
 												 learnedDefinition: learnedDefinition,
 												 learnedFlashcard: learnedFlashcard,
-												 orderByName: .none)
+												 orderByName: .none,
+												 limitTo: .none)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
@@ -352,7 +353,7 @@ class TermController {
 		
 	}
 	
-	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?) -> String {
+	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?, limitTo: Int?) -> String {
 		
 		let showOnlyFavoritesString = self.showOnlyFavoritesString(show: showOnlyFavorites)
 		let favoriteString = self.favorteString(isFavorite: isFavorite)
@@ -363,10 +364,11 @@ class TermController {
 		let answeredDefinitionString = self.answeredDefinitionString(state: answeredDefinition)
 		let learnedFlashcardString = self.learnedFlashcardString(learned: learnedFlashcard)
 		let orderByNameString = self.orderByNameString(toOrder: orderByName)
+		let limitToString = self.limitToString(limit: limitTo)
 		
 		// need to add ORDER BY
 		
-		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(orderByNameString)"
+		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(orderByNameString) \(limitToString)"
 		
 		return whereStatement
 	}
@@ -465,6 +467,11 @@ class TermController {
 	private func orderByNameString (toOrder: Bool?) -> String {
 		guard let _ = toOrder else {return ""}
 		return "ORDER BY LOWER (noHyphenInName)"
+	}
+	
+	private func limitToString (limit: Int?) -> String {
+		guard let _ = limit else {return ""}
+		return "LIMIT \(limit!)"
 	}
 	
 }
