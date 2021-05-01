@@ -149,7 +149,7 @@ class TermController {
 		
 	}
 	
-	func getLearnedFlashcard (categoryID: Int, termID: Int) -> Bool {
+	func flashcardIsLearned (categoryID: Int, termID: Int) -> Bool {
 		let query = "SELECT learnedFlashcard FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()

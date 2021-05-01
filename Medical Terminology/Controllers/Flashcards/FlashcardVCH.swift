@@ -268,7 +268,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let countText = "Flashcard: \(indexPath.row + 1) of \(termIDs.count)"
 		let isFavorite = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: term.termID)
 		
-		let fcls = tc.getLearnedFlashcard(categoryID: currentCategoryID, termID: term.termID)
+		let fcls = tc.flashcardIsLearned(categoryID: currentCategoryID, termID: term.termID)
 		
 		cell.configure(term: term, fcvMode: viewMode, isFavorite: isFavorite, learnedFlashcard: fcls , counter: countText)
 		
@@ -360,7 +360,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	func pressedGotItButton(termID: Int) {
 		// the got it button changes state locally, so just need to update the db here
-		let fcls = !tc.getLearnedFlashcard(categoryID: currentCategoryID, termID: termID)
+		let fcls = !tc.flashcardIsLearned(categoryID: currentCategoryID, termID: termID)
 		
 		tc.setLearnedFlashcard(categoryID: currentCategoryID, termID: termID, learnedStatus: fcls)
 		

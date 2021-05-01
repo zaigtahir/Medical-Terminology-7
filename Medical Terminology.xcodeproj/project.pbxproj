@@ -74,6 +74,7 @@
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
 		9983980F25F05B6B00CC0354 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9983980E25F05B6B00CC0354 /* StoreKit.framework */; };
 		998398E325F6AB3C00CC0354 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998398E225F6AB3C00CC0354 /* Category.swift */; };
+		99937ACA263E0FFA001E4D4B /* FlashcardDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937AC9263E0FFA001E4D4B /* FlashcardDataController.swift */; };
 		99A722D5261E7846001DEDBD /* SingleLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */; };
 		99A722DC261F5693001DEDBD /* ZUIRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */; };
 		99A723042620D036001DEDBD /* MultiLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A723032620D036001DEDBD /* MultiLineInputVC.swift */; };
@@ -172,6 +173,7 @@
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9983980E25F05B6B00CC0354 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		998398E225F6AB3C00CC0354 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		99937AC9263E0FFA001E4D4B /* FlashcardDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardDataController.swift; sourceTree = "<group>"; };
 		99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineInputVC.swift; sourceTree = "<group>"; };
 		99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZUIRoundedButton.swift; sourceTree = "<group>"; };
 		99A723032620D036001DEDBD /* MultiLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineInputVC.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				992E79DE260A43C700C19D49 /* TermController.swift */,
 				992E79E7260B834200C19D49 /* Category2.swift */,
 				992E79FC260FBA3100C19D49 /* CategoryController2.swift */,
+				99937AC9263E0FFA001E4D4B /* FlashcardDataController.swift */,
 			);
 			path = "New Modules";
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				99D55E4A25FF2F17003ABE0B /* CategoryController.swift in Sources */,
 				5ABE7221226CB25F005B83C4 /* Utilities.swift in Sources */,
 				99D55E2F25FC7921003ABE0B /* DItemController2.swift in Sources */,
+				99937ACA263E0FFA001E4D4B /* FlashcardDataController.swift in Sources */,
 				5A4F855022B310F80016621C /* AnswerTCell.swift in Sources */,
 				5A03478C22D39D0900749EBC /* FMDatabaseQueue.m in Sources */,
 				5A37F87A22E74B18008A5FA5 /* ScrollController.swift in Sources */,
