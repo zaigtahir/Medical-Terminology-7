@@ -149,43 +149,9 @@ class TermController {
 		
 	}
 	
-	func flashcardIsLearned (categoryID: Int, termID: Int) -> Bool {
-		let query = "SELECT learnedFlashcard FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			resultSet.next()
-			let status = Int(resultSet.int(forColumnIndex: 0))
-			return status == 1 ?  true : false
-		} else {
-			print ("fatal error getting resultSet in getLearnedFlashcardStatus, returning false")
-			return false
-		}
-	}
-	
-	func setLearnedFlashcard (categoryID: Int, termID: Int, learnedStatus: Bool) {
-		
-		var ls = 0
-		if learnedStatus {
-			ls = 1
-		}
-		
-		
-		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = \(ls) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		
-		myDB.executeStatements(query)
-		
-	}
-	
 	/**
-	Will reset all learnedFlashcard status to 0 (false)
-	*/
-	func resetLearnedFlashcards (categoryID: Int) {
-		
-		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = 0 WHERE categoryID = \(categoryID)"
-		myDB.executeStatements(query)
-	}
-
-	/**
-	Not including TermID is used to filter out the current term name. The user just might want to change the letter CaSE. In that case, i still want to save that change. So This query will look for duplicates of any other row.
+	Not including TermID is used to filter out the current term name. The user just might want to change the letter CaSE
+	In that case, i still want to save that change. So This query will look for duplicates of any other row.
 	*/
 	func termNameIsUnique (name: String, notIncludingTermID: Int) -> Bool {
 		let query = "SELECT COUNT (*) FROM \(terms) WHERE name LIKE '\(name)' AND termID != \(notIncludingTermID)"
@@ -285,6 +251,9 @@ class TermController {
 	
 	}
 	
+	// MAR: - Flashcard learn, learning, answered functions
+	
+	
 	// MARK: - Non search text queries
 	
 	func getTermIDs (categoryID: Int, showFavoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?, limitTo: Int?) -> [Int] {
@@ -300,8 +269,7 @@ class TermController {
 												  learnedTerm: learnedTerm,
 												  learnedDefinition: learnedDefinition,
 												  learnedFlashcard: learnedFlashcard,
-												  orderByName: orderByName,
-												  limitTo: limitTo)
+												  orderByName: orderByName)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
@@ -337,8 +305,7 @@ class TermController {
 												 learnedTerm: learnedTerm,
 												 learnedDefinition: learnedDefinition,
 												 learnedFlashcard: learnedFlashcard,
-												 orderByName: .none,
-												 limitTo: .none)
+												 orderByName: .none)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
@@ -353,7 +320,7 @@ class TermController {
 		
 	}
 	
-	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?, limitTo: Int?) -> String {
+	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?) -> String {
 		
 		let showOnlyFavoritesString = self.showOnlyFavoritesString(show: showOnlyFavorites)
 		let favoriteString = self.favorteString(isFavorite: isFavorite)
@@ -364,17 +331,84 @@ class TermController {
 		let answeredDefinitionString = self.answeredDefinitionString(state: answeredDefinition)
 		let learnedFlashcardString = self.learnedFlashcardString(learned: learnedFlashcard)
 		let orderByNameString = self.orderByNameString(toOrder: orderByName)
-		let limitToString = self.limitToString(limit: limitTo)
 		
 		// need to add ORDER BY
 		
-		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(orderByNameString) \(limitToString)"
+		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(orderByNameString)"
 		
 		return whereStatement
 	}
 	
 	
 	// MARK: - Search text queries
+	
+	// Flash card
+	func flashcardIsLearned (categoryID: Int, termID: Int) -> Bool {
+		let query = "SELECT learnedFlashcard FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			let status = Int(resultSet.int(forColumnIndex: 0))
+			return status == 1 ?  true : false
+		} else {
+			print ("fatal error getting resultSet in getLearnedFlashcardStatus, returning false")
+			return false
+		}
+	}
+	
+	func setLearnedFlashcard (categoryID: Int, termID: Int, learnedStatus: Bool) {
+		
+		var ls = 0
+		if learnedStatus {
+			ls = 1
+		}
+		
+		
+		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = \(ls) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		myDB.executeStatements(query)
+		
+	}
+	
+	/**
+	Will reset all learnedFlashcard status to 0 (false)
+	*/
+	func resetLearnedFlashcards (categoryID: Int) {
+		
+		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = 0 WHERE categoryID = \(categoryID)"
+		myDB.executeStatements(query)
+	}
+
+	// Learned state
+	func setLearnedTerm (categoryID: Int, termID: Int, learned: Bool) {
+		
+	}
+	
+	func setLearnedDefinition  (categoryID: Int, termID: Int, learned: Bool) {
+	}
+	
+	// Answered state
+	func setAnsweredTerm (categoryID: Int, termID: Int, answeredState: AnsweredState) {
+		
+	}
+	
+	func setAnsweredDefinition (categoryID: Int, termID: Int, answeredState: AnsweredState) {
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	Return list of termIDs.
@@ -467,11 +501,6 @@ class TermController {
 	private func orderByNameString (toOrder: Bool?) -> String {
 		guard let _ = toOrder else {return ""}
 		return "ORDER BY LOWER (noHyphenInName)"
-	}
-	
-	private func limitToString (limit: Int?) -> String {
-		guard let _ = limit else {return ""}
-		return "LIMIT \(limit!)"
 	}
 	
 }

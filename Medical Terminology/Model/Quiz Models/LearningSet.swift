@@ -82,6 +82,18 @@ class LearningSet: QuizBase {
         
         questionController.selectAnswer(question: question, answerIndex: answerIndex)
         
+		if question.isCorrect() {
+			
+			if question.questionType == .term {
+				
+				question.learnedTermForItem = true
+				
+			} else {
+				
+				question.learnedDefinitionForItem = true
+			}
+		}
+		
         //save learned state
         questionController.saveLearnedStatus(question: question)
         
@@ -98,7 +110,6 @@ class LearningSet: QuizBase {
         moveQuestion()
         
     }
-    
     
     func resetLearningSet () {
         
