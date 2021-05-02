@@ -339,77 +339,8 @@ class TermController {
 		return whereStatement
 	}
 	
-	
-	// MARK: - Search text queries
-	
-	// Flash card
-	func flashcardIsLearned (categoryID: Int, termID: Int) -> Bool {
-		let query = "SELECT learnedFlashcard FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			resultSet.next()
-			let status = Int(resultSet.int(forColumnIndex: 0))
-			return status == 1 ?  true : false
-		} else {
-			print ("fatal error getting resultSet in getLearnedFlashcardStatus, returning false")
-			return false
-		}
-	}
-	
-	func setLearnedFlashcard (categoryID: Int, termID: Int, learnedStatus: Bool) {
-		
-		var ls = 0
-		if learnedStatus {
-			ls = 1
-		}
-		
-		
-		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = \(ls) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		
-		myDB.executeStatements(query)
-		
-	}
-	
-	/**
-	Will reset all learnedFlashcard status to 0 (false)
-	*/
-	func resetLearnedFlashcards (categoryID: Int) {
-		
-		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = 0 WHERE categoryID = \(categoryID)"
-		myDB.executeStatements(query)
-	}
 
-	// Learned state
-	func setLearnedTerm (categoryID: Int, termID: Int, learned: Bool) {
-		
-	}
-	
-	func setLearnedDefinition  (categoryID: Int, termID: Int, learned: Bool) {
-	}
-	
-	// Answered state
-	func setAnsweredTerm (categoryID: Int, termID: Int, answeredState: AnsweredState) {
-		
-	}
-	
-	func setAnsweredDefinition (categoryID: Int, termID: Int, answeredState: AnsweredState) {
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// MARK: -Search Query
 	/**
 	Return list of termIDs.
 	use nameStartsWith with nameContains OR containsText and loop through the alphabet to make an alphabetic list
@@ -438,6 +369,93 @@ class TermController {
 		return ids
 	}
 	
+	
+	// MARK: - term status queries
+	
+	// Flash card
+	func flashcardIsLearned (categoryID: Int, termID: Int) -> Bool {
+		let query = "SELECT learnedFlashcard FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			let status = Int(resultSet.int(forColumnIndex: 0))
+			return status == 1 ?  true : false
+		} else {
+			print ("fatal error getting resultSet in getLearnedFlashcardStatus, returning false")
+			return false
+		}
+	}
+	
+	func setLearnedFlashcard (categoryID: Int, termID: Int, learnedStatus: Bool) {
+		
+		var ls = 0
+		if learnedStatus {
+			ls = 1
+		}
+		
+		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = \(ls) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		myDB.executeStatements(query)
+		
+	}
+	
+	/// Will reset all learnedFlashcard status to 0 (false)
+	func resetLearnedFlashcards (categoryID: Int) {
+		
+		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = 0 WHERE categoryID = \(categoryID)"
+		myDB.executeStatements(query)
+	}
+
+	// Learned state
+	func setLearnedTerm (categoryID: Int, termID: Int, learned: Bool) {
+		
+		var lt = 0
+		if learned {
+			lt = 1
+		}
+		
+		let query = "UPDATE \(assignedCategories) SET learnedTerm = \(lt) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		myDB.executeStatements(query)
+		
+	}
+	
+	func termIsLearned (categoryID: Int, termID: Int) -> Bool {
+		// add code
+		return true
+	}
+	
+	func setLearnedDefinition  (categoryID: Int, termID: Int, learned: Bool) {
+		
+		var ld = 0
+		if learned {
+			ld = 1
+		}
+		
+		let query = "UPDATE \(assignedCategories) SET learnedTerm = \(ld) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		myDB.executeStatements(query)
+		
+	}
+	
+	func definitionIsLearned (categoryID: Int, termID: Int) -> Bool {
+		// add code
+		return true
+	}
+	
+	// Answered state
+	func setAnsweredTerm (categoryID: Int, termID: Int, answeredState: AnsweredState) {
+		
+		let query = "UPDATE \(assignedCategories) SET aswererdTerm = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		myDB.executeStatements(query)
+	}
+	
+	func setAnsweredDefinition (categoryID: Int, termID: Int, answeredState: AnsweredState) {
+		let query = "UPDATE \(assignedCategories) SET aswererdDefinition = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		myDB.executeStatements(query)
+	}
+
 	
 	// MARK: -WHERE string components
 	

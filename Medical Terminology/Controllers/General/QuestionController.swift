@@ -76,15 +76,10 @@ class QuestionController2 {
 		let r = Int.random(in: 0...1)
 		
 		if (r == 0) {
-			
 			return makeDefinitionQuestion(termID: termID, randomizeAnswers: randomizeAnswers)
-			
 		} else {
-			
 			return makeTermQuestion (termID: termID, randomizeAnswers: randomizeAnswers)
-			
 		}
-		
 		
 	}
 	
@@ -154,80 +149,70 @@ class QuestionController2 {
 		question.selectAnswerIndex(answerIndex: answerIndex)
 	}
 	
-	func saveLearnedStatus (question: Question2) {
+	func saveLearnedStatus (categoryID: Int, question: Question2) {
 		
 		if question.questionType == .term
+		
 		{
-			
-			dIC.saveLearnedTerm(itemID: question.itemID, learnedState: question.learnedTermForItem)
+			tc.setLearnedTerm (categoryID: categoryID, termID: question.termID, learned: question.learnedTermForItem)
 			
 		} else {
 			
-			dIC.saveLearnedDefinition(itemID: question.itemID, learnedState: question.learnedDefinitionForItem)
+			tc.setLearnedDefinition(categoryID: categoryID, termID: question.termID, learned: question.learnedDefinitionForItem)
 			
 		}
 		
 	}
 	
-	func saveAnsweredStatus (question: Question) {
-		
-		//answeredTerm: 0 = not answered, 1 = WRONG, 2 = CORRECT
-		//answeredDefinition: 0 = not answered, 1 = WRONG, 2 = CORRECT
-		
-		if question.questionType == .term {
+	func saveAnsweredStatus (categoryID: Int, question: Question2) {
 			
-			var answerTermState = 0
+		switch question.questionType {
+		case .term:
+			
+			var answeredTermState = AnsweredState.unanswered
 			
 			if question.isAnswered() {
-				
 				if question.isCorrect() {
-					
-					answerTermState = 2
-					
+					answeredTermState = .correct
 				} else {
-					
-					answerTermState = 1
-					
+					answeredTermState = .incorrect
 				}
 			}
 			
+			tc.setAnsweredTerm(categoryID: categoryID, termID: question.termID, answeredState: answeredTermState)
 			
-			dIC.saveAnsweredTerm(itemID: question.itemID, answerState: answerTermState)
+		case .definition:
 			
-		} else {
-			
-			var answerDefinitionState = 0
+			var answeredDefinitionState = AnsweredState.unanswered
 			
 			if question.isAnswered() {
-				
 				if question.isCorrect() {
-					
-					answerDefinitionState = 2
-					
+					answeredDefinitionState = .correct
 				} else {
-					
-					answerDefinitionState = 1
-					
+					answeredDefinitionState = .incorrect
 				}
 			}
 			
-			dIC.saveAnsweredDefinition(itemID: question.itemID, answerState: answerDefinitionState)
+			tc.setAnsweredDefinition(categoryID: categoryID, termID: question.termID, answeredState: answeredDefinitionState)
 			
+		case .both:
+			// won't ever be called
+			print("fatal error don't expect questiontype = both in question controller saveAsnsweredStatus")
+			return
 		}
 	}
 	
-	func isLearned (question: Question) -> Bool {
+	func isLearned (categoryID: Int, question: Question2) -> Bool {
 		//will return true if both learned term and learned defintion are true
 		
-		let item = dIC.getDItem(itemID: question.itemID)
+		let termIsLearned = tc.termIsLearned(categoryID: categoryID, termID: question.termID)
+		let definitionIsLearned = tc.definitionIsLearned(categoryID: categoryID, termID: question.termID)
 		
-		return item.learnedDefinition && item.learnedTerm
-		
+		return termIsLearned && definitionIsLearned
 		
 	}
 
 }
-
 
 class QuestionController {
     

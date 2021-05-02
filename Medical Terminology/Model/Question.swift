@@ -16,7 +16,6 @@ class Question2 {
 	var answers = [Answer]()
 	var questionType : TermComponent = .term
 	var termID = 0
-	
 	var learnedTermForItem = false
 	var learnedDefinitionForItem = false
 	var showAnswer = false
