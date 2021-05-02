@@ -74,6 +74,7 @@
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
 		9983980F25F05B6B00CC0354 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9983980E25F05B6B00CC0354 /* StoreKit.framework */; };
 		998398E325F6AB3C00CC0354 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998398E225F6AB3C00CC0354 /* Category.swift */; };
+		99937ACE263EDAA2001E4D4B /* QuestionController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937ACD263EDAA2001E4D4B /* QuestionController2.swift */; };
 		99A722D5261E7846001DEDBD /* SingleLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */; };
 		99A722DC261F5693001DEDBD /* ZUIRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */; };
 		99A723042620D036001DEDBD /* MultiLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A723032620D036001DEDBD /* MultiLineInputVC.swift */; };
@@ -172,6 +173,7 @@
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9983980E25F05B6B00CC0354 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		998398E225F6AB3C00CC0354 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		99937ACD263EDAA2001E4D4B /* QuestionController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionController2.swift; path = "Medical Terminology/Controllers/New Modules/QuestionController2.swift"; sourceTree = SOURCE_ROOT; };
 		99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineInputVC.swift; sourceTree = "<group>"; };
 		99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZUIRoundedButton.swift; sourceTree = "<group>"; };
 		99A723032620D036001DEDBD /* MultiLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineInputVC.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 				5A886373218E82330013FC8B /* DItemController.swift */,
 				99D55E2E25FC7921003ABE0B /* DItemController2.swift */,
+				99937ACD263EDAA2001E4D4B /* QuestionController2.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				99D55E1225F7EF92003ABE0B /* CategoryListVCH.swift in Sources */,
 				99D76AE926181C560062CCD4 /* ZUIToggleButton.swift in Sources */,
 				992E79DF260A43C700C19D49 /* Term.swift in Sources */,
+				99937ACE263EDAA2001E4D4B /* QuestionController2.swift in Sources */,
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
 				5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */,
 				992F87042630B3EC00591CF9 /* NoFlashCardCell.swift in Sources */,
