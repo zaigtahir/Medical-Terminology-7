@@ -448,6 +448,13 @@ class TermController {
 		return true
 	}
 	
+	func resetLearned(categoryID: Int, termIDs: [Int]) {
+		for termID in termIDs {
+			setLearnedTerm(categoryID: categoryID, termID: termID, learned: false)
+			setLearnedDefinition(categoryID: categoryID, termID: termID, learned: false)
+		}
+	}
+	
 	// Answered state
 	func setAnsweredTerm (categoryID: Int, termID: Int, answeredState: AnsweredState) {
 		

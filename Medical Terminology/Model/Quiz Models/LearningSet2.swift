@@ -10,42 +10,38 @@ import Foundation
 
 //  Class to extend QuizBase to make a LearningSet
 
-class LearningSet2: QuizBase {
+class LearningSet2: QuizBase2 {
 	
-	//private let dIC = DItemController()
-	
-	//private let itemIDs: [Int]  //to save the original itemIDs for resetting the learned items when resetting the quiz
-	
-	
-	private let tc = TermController()
-	
-	private let termIDs : [Int]	 //to save the original termIDs for resetting the learned items when resetting the quiz
-	
+	/// to save the original termIDs for resetting the learned items when resetting the quiz
+	private let termIDs : [Int]
+	private var currentCategoryID = 0
 	private let qc = QuestionController2()
+	private let tc = TermController()
 	
 	init (categoryID: Int, numberOfTerms: Int, favoritesOnly: Bool) {
 		
 		// will create a learning set with the numberOfTerms if available
-		// It will select terms that are not learned yet (BOTH learnedTerm AND learnedDescription DO NOT EQUAL 1)
+		
+		currentCategoryID = categoryID
 		
 		termIDs = tc.getTermIDs(categoryID: categoryID, favoritesOnly: favoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: false, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: false, randomOrder: true, limitTo: numberOfTerms)
 
 		
-		//need to clear all learnedTerm and learnedQuestion from the items in the db
-		dIC.clearLearnedItems(itemIDs: itemIDs)
+		// need to clear all learnedTerm and learnedQuestion from the items in the db
+		tc.resetLearned(categoryID: categoryID, termIDs: termIDs)
 		
-		var questions = [Question]()
+		var questions = [Question2]()
 		
-		for itemID in itemIDs {
-			questions.append(questionController.makeTermQuestion(itemID: itemID, randomizeAnswers: true))
-			questions.append(questionController.makeDefinitionQuestion(itemID: itemID, randomizeAnswers: true))
+		for termID in termIDs {
+			questions.append(qc.makeTermQuestion(termID: termID, randomizeAnswers: true))
+			questions.append(qc.makeDefinitionQuestion(termID: termID, randomizeAnswers: true))
 		}
 		
 		questions.shuffle()
 		
 		super.init(originalQuestions: questions)
 	}
-	
+
 	/**
 	 Put a fresh copy of the question into the queue see it again
 	 will clear db for the itemID
@@ -58,13 +54,14 @@ class LearningSet2: QuizBase {
 		if question.questionType == .term {
 			if question.learnedTermForItem == true {
 				//set to false in db
-				dIC.saveLearnedTerm(itemID: question.itemID, learnedState: false)
+				tc.setLearnedTerm(categoryID: currentCategoryID, termID: question.termID, learned: false)
+				
 			}
 		} else {
 			//it is definition type question
 			if question.learnedDefinitionForItem == true {
 				//set to false in db
-				dIC.saveLearnedDefinition(itemID: question.itemID, learnedState: false)
+				tc.setLearnedDefinition(categoryID: currentCategoryID, termID: question.termID, learned: false)
 			}
 		}
 		
@@ -81,7 +78,7 @@ class LearningSet2: QuizBase {
 		
 		let question = activeQuestions[questionIndex]
 		
-		questionController.selectAnswer(question: question, answerIndex: answerIndex)
+		qc.selectAnswer(question: question, answerIndex: answerIndex)
 		
 		if question.isCorrect() {
 			
@@ -96,9 +93,10 @@ class LearningSet2: QuizBase {
 		}
 		
 		//save learned state
-		questionController.saveLearnedStatus(question: question)
+		qc.saveLearnedStatus(categoryID: currentCategoryID, question: question)
 		
 		//add feedback remarks
+
 		addFeedbackRemarks(question: question)
 		
 		//requeue the question if the answer is wrong
@@ -115,7 +113,7 @@ class LearningSet2: QuizBase {
 	func resetLearningSet () {
 		
 		//reset any learned values in the DB
-		dIC.clearLearnedItems(itemIDs: itemIDs)
+		tc.resetLearned(categoryID: currentCategoryID, termIDs: termIDs)
 		
 		//reload the set with the original questions
 		reset()

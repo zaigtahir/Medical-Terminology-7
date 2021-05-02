@@ -147,7 +147,7 @@ class QuizBase2 {
 		return correct
 	}
 	
-	func addFeedbackRemarks (question: Question) {
+	func addFeedbackRemarks (question: Question2) {
 		//will add feedback to question based on answered/right/wrong status
 		
 		if question.isAnswered() {
