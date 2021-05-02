@@ -20,7 +20,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// holds state of the view
 	var currentCategoryID = 1 			// default starting off category
-	var showFavoritesOnly = false		// this is different than saying isFavorite = false
+	var favoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : TermComponent = .both
 	
 	// which tab to show: learning vs learned
@@ -96,7 +96,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			
-			switch showFavoritesOnly {
+			switch favoritesOnly {
 			
 			case true:
 				// seeing favorites only, and a term may have been added or removed from this list so need to reload the whole list
@@ -205,7 +205,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	*/
 	func updateData () {
 		
-		termIDs = tc.getTermIDs(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: learnedStatus, orderByName: true, limitTo: 50)
+		termIDs = tc.getTermIDs(categoryID: currentCategoryID, favoritesOnly: favoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: learnedStatus, orderByName: true, randomOrder: .none, limitTo: 50)
 	}
 	
 	/**
@@ -219,11 +219,11 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	func getFcLearnedCount () -> Int {
 		
-		return tc.getCount(categoryID: currentCategoryID, isFavorite: showFavoritesOnly ? true : .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: true)
+		return tc.getCount(categoryID: currentCategoryID, isFavorite: favoritesOnly ? true : .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: true)
 	}
 	
 	func getFcLearningCount () -> Int {
-		return tc.getCount(categoryID: currentCategoryID, isFavorite: showFavoritesOnly ? true : .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: false)
+		return tc.getCount(categoryID: currentCategoryID, isFavorite: favoritesOnly ? true : .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: false)
 		
 	}
 	
@@ -291,11 +291,11 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			return
 		}
 		
-		// if showFavoritesOnly == true and there are no favorites in this category
+		// if favoritesOnly == true and there are no favorites in this category
 		
 		let favoriteCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 		
-		if showFavoritesOnly && favoriteCount == 0 {
+		if favoritesOnly && favoriteCount == 0 {
 			cell.headingLabel.text = myConstants.noFavoriteTermsHeading
 			cell.subheadingLabel.text = myConstants.noFavoriteTermsSubheading
 			cell.redoButton.isHidden = true
@@ -307,7 +307,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		case false:
 			// learnING tab
-			if showFavoritesOnly {
+			if favoritesOnly {
 				// show favorites only, you learned all favorite terms
 				cell.headingLabel.text = "You learned all favorite terms in this category!"
 				cell.subheadingLabel.text = "You can relearn all the terms again by pressing the redo button."
@@ -326,7 +326,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			}
 		case true:
 			// learnED tab
-			if showFavoritesOnly {
+			if favoritesOnly {
 				// show favorites only, you have not learned any favorite terms yet
 				cell.headingLabel.text = "You have not learned any favorite terms in this category yet."
 				cell.subheadingLabel.text = "When you learn some favoite terms, they will show here."

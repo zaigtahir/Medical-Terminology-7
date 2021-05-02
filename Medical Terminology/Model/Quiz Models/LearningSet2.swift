@@ -23,12 +23,13 @@ class LearningSet2: QuizBase {
 	
 	private let qc = QuestionController2()
 	
-	init (categoryID: Int, numberOfTerms: Int, isFavorite: Bool) {
+	init (categoryID: Int, numberOfTerms: Int, favoritesOnly: Bool) {
 		
 		// will create a learning set with the numberOfTerms if available
 		// It will select terms that are not learned yet (BOTH learnedTerm AND learnedDescription DO NOT EQUAL 1)
 		
-		itemIDs = dIC.getItemIDs(favoriteState: favoriteState, learnedState: 0, orderBy: 2, limit: numberOfTerms)
+		termIDs = tc.getTermIDs(categoryID: categoryID, favoritesOnly: favoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: false, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: false, randomOrder: true, limitTo: numberOfTerms)
+
 		
 		//need to clear all learnedTerm and learnedQuestion from the items in the db
 		dIC.clearLearnedItems(itemIDs: itemIDs)

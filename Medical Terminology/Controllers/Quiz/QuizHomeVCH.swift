@@ -18,7 +18,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
     
     private var quizSet: QuizSet!
 	var currentCategoryID = 1
-	var showFavoritesOnly = false
+	var favoritesOnly = false
 
     var numberOfQuestions = 10
     var questionsType : TermComponent = .both
@@ -46,7 +46,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 		
 		// configure isFavorite variable
 		var isFavorite : Bool?
-			if showFavoritesOnly {
+			if favoritesOnly {
 				isFavorite = true
 		}
 		
@@ -55,7 +55,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 		favoriteTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 	
 		
-		if showFavoritesOnly {
+		if favoritesOnly {
 			totalQuestionsCount = favoriteTermsCount * 2
 		} else {
 			totalQuestionsCount = categoryTermsCount * 2
@@ -96,7 +96,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
         
         //create a quiz based on the variables that can be changed through options
         var favoriteState = -1
-        if showFavoritesOnly {
+        if favoritesOnly {
             favoriteState = 1
         }
     

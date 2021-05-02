@@ -10,7 +10,7 @@ import UIKit
 
 class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 
-	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
+	@IBOutlet weak var favoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var categorySelectButton: UIButton!
 	@IBOutlet weak var categoryNameLabel: UILabel!
@@ -51,7 +51,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 	
 	private func updateDisplay () {
 		
-		showFavoritesOnlyButton.isOn = learningHomeVCH.showFavoritesOnly
+		favoritesOnlyButton.isOn = learningHomeVCH.favoritesOnly
 		
 		favoritesCountLabel.text = "\(learningHomeVCH.favoriteTermsCount)"
 		
@@ -75,7 +75,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		}
 		
 		// no favorite terms available
-		if learningHomeVCH.showFavoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
+		if learningHomeVCH.favoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
 			headingLabel.isHidden = false
@@ -95,7 +95,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		subheadingLabel.isHidden = true
 		messageLabel.isHidden = false
 		
-		if learningHomeVCH.showFavoritesOnly {
+		if learningHomeVCH.favoritesOnly {
 			messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) favorite terms."
 			print ("here")
 			
@@ -158,7 +158,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			
 			let vc = segue.destination as! LearningHomeOptionsVC
 			vc.delegate = learningHomeVCH   //assigning the VCH to the options as it's delegate
-			vc.isFavoriteMode = learningHomeVCH.showFavoritesOnly
+			vc.isFavoriteMode = learningHomeVCH.favoritesOnly
 			vc.numberOfTerms = learningHomeVCH.numberOfTerms
 		
 		case myConstants.segueSelectCategory:
@@ -205,8 +205,8 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		confirmRestart()
 	}
 	
-	@IBAction func showFavoritesOnlyButton(_ sender: ZUIToggleButton) {
-		learningHomeVCH.showFavoritesOnly.toggle()
+	@IBAction func favoritesOnlyButton(_ sender: ZUIToggleButton) {
+		learningHomeVCH.favoritesOnly.toggle()
 		learningHomeVCH.updateData()
 		updateDisplay()
 	}

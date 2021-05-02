@@ -27,7 +27,7 @@ class TermsList {
 	If containsText = some value, then will wake an alphabetial list of term names or the definition that contains that value
 	*/
 	
-	func makeList (categoryID: Int, showFavoritesOnly: Bool?, containsText: String?) {
+	func makeList (categoryID: Int, favoritesOnly: Bool?, containsText: String?) {
 			
 		// clear any current values from the termIDsList and count
 		count = 0
@@ -36,7 +36,7 @@ class TermsList {
 		for s in sectionNames {
 			
 			var isFavorite: Bool?
-			if showFavoritesOnly == true {
+			if favoritesOnly == true {
 				isFavorite = true
 			}
 			

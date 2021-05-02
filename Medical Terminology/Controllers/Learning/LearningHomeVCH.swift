@@ -17,7 +17,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 	private var learningSet: LearningSet!
 	
 	var currentCategoryID = 1
-	var showFavoritesOnly = false
+	var favoritesOnly = false
 	var numberOfTerms = 5
 	
 	///used to determine if to create a new set or keep current set when going from learning home to learning set
@@ -29,7 +29,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 	var favoriteTermsCount = 0
 	var categoryTermsCount = 0
 	var learnedTermsCount = 0
-	var totalTermsCount = 0		// based on showFavoritesOnly mode
+	var totalTermsCount = 0		// based on favoritesOnly mode
 
 	weak var delegate : LearningHomeVCHDelegate?
 	
@@ -156,7 +156,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 		
 		// configure isFavorite variable
 		var isFavorite : Bool?
-			if showFavoritesOnly {
+			if favoritesOnly {
 				isFavorite = true
 		}
 		
@@ -168,7 +168,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 		
 		learnedTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .none, learned: true, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 		
-		if showFavoritesOnly {
+		if favoritesOnly {
 			totalTermsCount = favoriteTermsCount
 		} else {
 			totalTermsCount = categoryTermsCount

@@ -15,7 +15,7 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
-	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
+	@IBOutlet weak var favoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var categorySelectButton: UIButton!
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	@IBOutlet weak var sliderOutlet: UISlider!
@@ -64,7 +64,7 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		
 		let favoriteCount = flashCardVCH.getFavoriteTermsCount()
 	
-		showFavoritesOnlyButton.isOn = flashCardVCH.showFavoritesOnly
+		favoritesOnlyButton.isOn = flashCardVCH.favoritesOnly
 		
 		favoritesCountLabel.text = "\(favoriteCount)"
 		
@@ -172,9 +172,9 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		collectionView.deleteItems(at: [indexPath])
 	}
 
-	@IBAction func showFavoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
+	@IBAction func favoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
 		
-		flashCardVCH.showFavoritesOnly.toggle()
+		flashCardVCH.favoritesOnly.toggle()
 		flashCardVCH.updateData()
 		collectionView.reloadData()
 		updateDisplay()

@@ -18,7 +18,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var searchBar: UISearchBar!
-	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
+	@IBOutlet weak var favoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	@IBOutlet weak var categorySelectButton: UIButton!
 	
@@ -37,7 +37,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		
 		searchBar.delegate = self
 		
-		showFavoritesOnlyButton.isOn = termListVCH.showFavoritesOnly
+		favoritesOnlyButton.isOn = termListVCH.favoritesOnly
 		updateDisplay()
 	}
 	
@@ -51,7 +51,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		
 		favoritesCountLabel.text = String (termListVCH.getFavoriteTermsCount())
 		
-		showFavoritesOnlyButton.isOn = termListVCH.showFavoritesOnly
+		favoritesOnlyButton.isOn = termListVCH.favoritesOnly
 
 	}
 	
@@ -162,9 +162,9 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		updateDisplay()
 	}
 	
-	@IBAction func ShowFavoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
+	@IBAction func favoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
 
-		termListVCH.showFavoritesOnly.toggle()
+		termListVCH.favoritesOnly.toggle()
 		termListVCH.updateData ()
 		tableView.reloadData()
 		updateDisplay()

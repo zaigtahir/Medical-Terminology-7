@@ -12,7 +12,7 @@ import UIKit
 
 class QuizHome: UIViewController, QuizHomeVCHDelegate {
 	
-	@IBOutlet weak var showFavoritesOnlyButton: ZUIToggleButton!
+	@IBOutlet weak var favoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var categorySelectButton: UIButton!
 	@IBOutlet weak var categoryNameLabel: UILabel!
@@ -54,7 +54,7 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 	
 	private func updateDisplay () {
 		
-		showFavoritesOnlyButton.isOn = quizHomeVCH.showFavoritesOnly
+		favoritesOnlyButton.isOn = quizHomeVCH.favoritesOnly
 		
 		favoritesCountLabel.text = "\(quizHomeVCH.favoriteTermsCount)"
 		
@@ -85,7 +85,7 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 			seeCurrentSetButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
 	
 			
-		} else if (quizHomeVCH.showFavoritesOnly && quizHomeVCH.favoriteTermsCount == 0) {
+		} else if (quizHomeVCH.favoritesOnly && quizHomeVCH.favoriteTermsCount == 0) {
 			
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
@@ -168,7 +168,7 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 			vc.delegate = quizHomeVCH
 			vc.questionsType = quizHomeVCH.questionsType
 			vc.numberOfQuestions = quizHomeVCH.numberOfQuestions
-			vc.isFavoriteMode = quizHomeVCH.showFavoritesOnly
+			vc.isFavoriteMode = quizHomeVCH.favoritesOnly
 		}
 	}
 	
@@ -215,8 +215,8 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 		performSegue(withIdentifier: "segueToQuiz", sender: nil)
 	}
 	
-	@IBAction func showFavoritesOnlyButtonAction(_ sender: Any) {
-		quizHomeVCH.showFavoritesOnly.toggle()
+	@IBAction func favoritesOnlyButtonAction(_ sender: Any) {
+		quizHomeVCH.favoritesOnly.toggle()
 		quizHomeVCH.updateData()
 		updateDisplay()
 	}

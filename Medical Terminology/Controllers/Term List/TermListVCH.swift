@@ -32,7 +32,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 {
 	
 	var currentCategoryID = 1 			// default starting off category
-	var showFavoritesOnly = false		// this is different than saying isFavorite = false
+	var favoritesOnly = false		// this is different than saying isFavorite = false
 	
 	var searchText : String?
 	
@@ -120,7 +120,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			
 			// if this term id exists in termIDs, need to reload that term from the database and then reload just that term cell in the table
 			
-			switch showFavoritesOnly {
+			switch favoritesOnly {
 			
 			case true:
 				// showing favorites only
@@ -244,10 +244,10 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			
 			let cleanText = tu.removeLeadingTrailingSpaces(string: nonCleanText)
 			
-			self.termsList.makeList(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, containsText: cleanText)
+			self.termsList.makeList(categoryID: currentCategoryID, favoritesOnly: favoritesOnly, containsText: cleanText)
 			
 		} else {
-			termsList.makeList(categoryID: currentCategoryID, showFavoritesOnly: showFavoritesOnly, containsText: .none)
+			termsList.makeList(categoryID: currentCategoryID, favoritesOnly: favoritesOnly, containsText: .none)
 		}
 		
 	}
@@ -325,11 +325,11 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			return
 		}
 		
-		// if showFavoritesOnly == true and there are no favorites in this category
+		// if favoritesOnly == true and there are no favorites in this category
 		
 		let favoriteCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 		
-		if showFavoritesOnly && favoriteCount == 0 {
+		if favoritesOnly && favoriteCount == 0 {
 			cell.headingLabel.text = myConstants.noFavoriteTermsHeading
 			cell.subheadingLabel.text = myConstants.noFavoriteTermsSubheading
 			return
