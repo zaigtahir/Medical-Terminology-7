@@ -24,7 +24,9 @@ class LearningSet2: QuizBase2 {
 		
 		currentCategoryID = categoryID
 		
-		termIDs = tc.getTermIDs(categoryID: categoryID, favoritesOnly: favoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: false, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: false, randomOrder: true, limitTo: numberOfTerms)
+		print ("LearningSet2 init getting termIDs")
+		
+		termIDs = tc.getTermIDs(categoryID: categoryID, favoritesOnly: favoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: false, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: .none, randomOrder: true, limitTo: numberOfTerms)
 
 		
 		// need to clear all learnedTerm and learnedQuestion from the items in the db

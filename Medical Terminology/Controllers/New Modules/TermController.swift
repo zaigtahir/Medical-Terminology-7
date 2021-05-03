@@ -335,12 +335,12 @@ class TermController {
 		let answeredDefinitionString = self.answeredDefinitionString(state: answeredDefinition)
 		let learnedFlashcardString = self.learnedFlashcardString(learned: learnedFlashcard)
 		let orderByNameString = self.orderByNameString(toOrder: orderByName)
-		let limitToString = self.limitToString(limit: limitTo)
 		let randomOrderString = self.randomOrderString(toOrderRandom: randomOrder)
+		let limitToString = self.limitToString(limit: limitTo)
 		
 		// need to add ORDER BY
 		
-		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(orderByNameString) \(limitToString) \(randomOrderString)"
+		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(orderByNameString) \(randomOrderString) \(limitToString) "
 		
 		return whereStatement
 	}

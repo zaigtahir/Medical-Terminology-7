@@ -14,7 +14,7 @@ protocol LearningHomeVCHDelegate: AnyObject {
 
 class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 	
-	private var learningSet: LearningSet!
+	private var learningSet: LearningSet2!
 	
 	var currentCategoryID = 1
 	var favoritesOnly = false
@@ -176,12 +176,12 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 			
 	}
 	
-	func getNewLearningSet () -> LearningSet {
-		learningSet = LearningSet(numberOfTerms: numberOfTerms, isFavorite: false)
+	func getNewLearningSet () -> LearningSet2 {
+		learningSet = LearningSet2(categoryID: currentCategoryID, numberOfTerms: numberOfTerms, favoritesOnly: favoritesOnly)
 		return learningSet
 	}
 
-	func getLearningSet () -> LearningSet {
+	func getLearningSet () -> LearningSet2 {
 		return learningSet
 	}
 	

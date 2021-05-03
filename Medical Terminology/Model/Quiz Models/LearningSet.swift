@@ -10,7 +10,7 @@ import Foundation
 
 //  Class to extend QuizBase to make a LearningSet
 
-class LearningSet: QuizBase {
+class LearningSetBK: QuizBase {
     
     private let dIC = DItemController()
     
