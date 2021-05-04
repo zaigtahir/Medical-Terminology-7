@@ -434,6 +434,14 @@ class TermController {
 		
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	// MARK: -Search Query
 	/**
 	Return list of termIDs.
@@ -548,20 +556,6 @@ class TermController {
 			setLearnedTerm(categoryID: categoryID, termID: termID, learned: false)
 			setLearnedDefinition(categoryID: categoryID, termID: termID, learned: false)
 		}
-	}
-	
-	// Answered state
-	func setAnsweredTerm (categoryID: Int, termID: Int, answeredState: AnsweredState) {
-		
-		let query = "UPDATE \(assignedCategories) SET answeredTerm = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		
-		myDB.executeStatements(query)
-	}
-	
-	func setAnsweredDefinition (categoryID: Int, termID: Int, answeredState: AnsweredState) {
-		let query = "UPDATE \(assignedCategories) SET answeredDefinition = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		
-		myDB.executeStatements(query)
 	}
 	
 	

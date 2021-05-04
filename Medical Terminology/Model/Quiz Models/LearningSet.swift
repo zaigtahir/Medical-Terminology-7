@@ -17,7 +17,7 @@ class LearningSet: QuizBase {
 	/// to save the original termIDs for resetting the learned items when resetting the quiz
 	private let termIDs : [Int]
 	private var currentCategoryID = 0
-	private let qc = QuestionController2()
+	private let qc = TestBaseController()
 	private let tc = TermController()
 	
 	init (categoryID: Int, numberOfTerms: Int, favoritesOnly: Bool) {
