@@ -8,8 +8,11 @@
 
 import Foundation
 
-class TestBaseController {
-	
+/**
+This class will handle items related to getting and saving items related to questions, quiz and learning set
+*/
+
+class QuestionController2 {
 	// MARK: shorter table names to make things easier
 	let terms = myConstants.dbTableTerms
 	
