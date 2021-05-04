@@ -9,7 +9,7 @@
 
 import UIKit
 
-class QuizHome: UIViewController, QuizHomeVCHDelegate {
+class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 	
 	@IBOutlet weak var favoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
@@ -37,8 +37,6 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
 		
 		quizHomeVCH.delegate = self
-		
-		quizHomeVCH.updateData()
 		
 		percentLabel.textColor = myTheme.colorButtonText
 		
@@ -152,7 +150,17 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
-		if segue.identifier == "segueToQuiz" {
+		switch segue.identifier {
+		case myConstants.segueSelectCategory:
+			
+			let nc = segue.destination as! UINavigationController
+			let vc = nc.topViewController as! CategoryListVC
+			
+			vc.categoryListVCH.categoryListMode = .selectCategory
+			vc.categoryListVCH.currentCategoryID = quizHomeVCH.currentCategoryID
+			
+		case myConstants.segueToQuiz:
+			
 			let vc = segue.destination as! QuizSetVC
 			
 			if quizHomeVCH.startNewQuiz {
@@ -160,15 +168,19 @@ class QuizHome: UIViewController, QuizHomeVCHDelegate {
 			} else {
 				vc.quizSetVCH.quizSet = quizHomeVCH.getQuizSet()
 			}
-		}
-		
-		if segue.identifier == "segueQuizOptions" {
+			
+		case myConstants.segueQuizOptions:
+			
 			let vc = segue.destination as! QuizOptionsVC
 			vc.delegate = quizHomeVCH
 			vc.questionsType = quizHomeVCH.questionsType
 			vc.numberOfQuestions = quizHomeVCH.numberOfQuestions
 			vc.isFavoriteMode = quizHomeVCH.favoritesOnly
+			
+		default:
+			print("fatal error no matching segue in quizHomeVC prepare function")
 		}
+		
 	}
 	
 	func confirmRestart () {

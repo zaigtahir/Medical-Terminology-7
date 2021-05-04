@@ -12,7 +12,6 @@ import UIKit
 
 class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 
-	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var favoritesOnlyButton: ZUIToggleButton!

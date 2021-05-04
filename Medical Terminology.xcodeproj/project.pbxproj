@@ -85,7 +85,7 @@
 		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
 		99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */; };
 		99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */; };
-		99D55E0525F6C7CA003ABE0B /* QuizHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0425F6C7CA003ABE0B /* QuizHome.swift */; };
+		99D55E0525F6C7CA003ABE0B /* QuizHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0425F6C7CA003ABE0B /* QuizHomeVC.swift */; };
 		99D55E0A25F6DAD8003ABE0B /* CategoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0925F6DAD8003ABE0B /* CategoryListVC.swift */; };
 		99D55E1225F7EF92003ABE0B /* CategoryListVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1125F7EF92003ABE0B /* CategoryListVCH.swift */; };
 		99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E1625F967AA003ABE0B /* CategoryCell.swift */; };
@@ -186,7 +186,7 @@
 		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
 		99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtilities.swift; sourceTree = "<group>"; };
 		99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCVCell.swift; sourceTree = "<group>"; };
-		99D55E0425F6C7CA003ABE0B /* QuizHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizHome.swift; sourceTree = "<group>"; };
+		99D55E0425F6C7CA003ABE0B /* QuizHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizHomeVC.swift; sourceTree = "<group>"; };
 		99D55E0925F6DAD8003ABE0B /* CategoryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListVC.swift; sourceTree = "<group>"; };
 		99D55E1125F7EF92003ABE0B /* CategoryListVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListVCH.swift; sourceTree = "<group>"; };
 		99D55E1625F967AA003ABE0B /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -311,7 +311,7 @@
 				5A2A58DC22F8C35200434910 /* QuizSetVC.swift */,
 				99D55E0125F6C7B7003ABE0B /* QuizCVCell.swift */,
 				5A2A58DA22EF7F1400434910 /* QuizHomeVCH.swift */,
-				99D55E0425F6C7CA003ABE0B /* QuizHome.swift */,
+				99D55E0425F6C7CA003ABE0B /* QuizHomeVC.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -403,7 +403,6 @@
 				99D76AFE261969880062CCD4 /* Term */,
 				992B56A2261382BF000457AA /* Validation */,
 				992B566A2610E8CC000457AA /* Category */,
-				992E79DC260A43C700C19D49 /* New Modules */,
 				998398E025F6AAAF00CC0354 /* Category List */,
 				5A2A58E322F8DEA500434910 /* Flashcards */,
 				5A2A58E422F8DEC900434910 /* Term List */,
@@ -457,13 +456,6 @@
 				992B56A3261382BF000457AA /* ValidationVC.swift */,
 			);
 			path = Validation;
-			sourceTree = "<group>";
-		};
-		992E79DC260A43C700C19D49 /* New Modules */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Modules";
 			sourceTree = "<group>";
 		};
 		9950D3DD245E72C10052574A /* WelcomeScreen */ = {
@@ -668,7 +660,7 @@
 				5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */,
 				9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */,
 				5A4471652284EE85008E3107 /* TermCell.swift in Sources */,
-				99D55E0525F6C7CA003ABE0B /* QuizHome.swift in Sources */,
+				99D55E0525F6C7CA003ABE0B /* QuizHomeVC.swift in Sources */,
 				99D55E892601A01A003ABE0B /* UserCategoryController.swift in Sources */,
 				5A15062A22557E7C00717AB8 /* Answer.swift in Sources */,
 				99D76AD22617909A0062CCD4 /* NoTermsCell.swift in Sources */,

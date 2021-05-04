@@ -43,6 +43,117 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 	override init() {
 		super.init()
 		
+		updateData()
+		
+		/*
+		Notification keys this controller will need to respond to
+		
+		currentCategoryChangedKey
+		setFavoriteStatusKey
+		assignCategoryKey
+		unassignCategoryKey
+		deleteCategoryKey
+		changeCategoryNameKey
+		*/
+		
+		let nameCCCN = Notification.Name(myKeys.currentCategoryChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryChangedN(notification:)), name: nameCCCN, object: nil)
+		
+		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
+		
+		let nameACK = Notification.Name(myKeys.assignCategoryKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(assignCategoryN(notification:)), name: nameACK, object: nil)
+		
+		let nameUCK = Notification.Name(myKeys.unassignCategoryKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(unassignCategoryN(notification:)), name: nameUCK, object: nil)
+		
+		let nameDCK = Notification.Name(myKeys.deleteCategoryKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN (notification:)), name: nameDCK, object: nil)
+		
+		let nameCCN = Notification.Name(myKeys.changeCategoryNameKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(changeCategoryNameN(notification:)), name: nameCCN, object: nil)
+		
+		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
+		
+	}
+	
+	deinit {
+		// remove observer (s)
+		NotificationCenter.default.removeObserver(self)
+	}
+	
+	// MARK: - notification functions
+	
+	@objc func currentCategoryChangedN (notification : Notification) {
+		
+		if let data = notification.userInfo as? [String : Int] {
+			
+			//there will be only one data here, the categoryID
+			currentCategoryID = data["categoryID"]!
+			updateData()
+			delegate?.shouldUpdateDisplay()
+		}
+	}
+	
+	@objc func setFavoriteStatusN (notification: Notification) {
+		
+		// an item changed it's favorite status, will need to update the counts
+		updateData()
+		delegate?.shouldUpdateDisplay()
+	}
+	
+	@objc func termInformationChangedN (notification: Notification) {
+		
+		// term information does not show on quizHome, so nothing do to here
+		
+	}
+	
+	@objc func assignCategoryN (notification : Notification) {
+		if let data = notification.userInfo as? [String : Int] {
+			let categoryID = data["categoryID"]!
+			if categoryID == currentCategoryID {
+				updateData()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}
+	
+	@objc func unassignCategoryN (notification : Notification){
+		
+		if let data = notification.userInfo as? [String : Int] {
+			let categoryID = data["categoryID"]!
+			if categoryID == currentCategoryID {
+				updateData()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}
+	
+	@objc func deleteCategoryN (notification: Notification){
+		// if the current category is deleted, then change the current category to 1 (All Terms) and reload the data
+		if let data = notification.userInfo as? [String: Int] {
+			
+			let deletedCategoryID = data["categoryID"]
+			if deletedCategoryID == currentCategoryID {
+				currentCategoryID = myConstants.dbCategoryAllTermsID
+				updateData()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}
+	
+	@objc func changeCategoryNameN (notification: Notification) {
+		// if this is the current category, reload the category and then refresh the display
+		
+		if let data = notification.userInfo as? [String : Int] {
+			let changedCategoryID = data["categoryID"]
+			if changedCategoryID == currentCategoryID {
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+		
 	}
 	
 	func updateData () {

@@ -135,9 +135,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
-	
-	// MARK: ADD notification for term information changed (different than favorite status changed)
-	
 	@objc func termInformationChangedN (notification: Notification) {
 	
 		print ("got term informtion changed notification in flashcardVCH")
