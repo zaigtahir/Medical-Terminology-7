@@ -214,15 +214,42 @@ class QuestionController2 {
 		}
 	}
 	
-	private func setAnsweredTerm (categoryID: Int, termID: Int, answeredState: AnsweredState) {
+	func setAnsweredTerm (categoryID: Int, termID: Int, answeredState: AnsweredState) {
 		
-		let query = "UPDATE \(assignedCategories) SET answeredTerm = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		let query = "UPDATE \(assignedCategories) SET answeredTerm = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID)"
 		
 		myDB.executeStatements(query)
 	}
 	
-	private func setAnsweredDefinition (categoryID: Int, termID: Int, answeredState: AnsweredState) {
-		let query = "UPDATE \(assignedCategories) SET answeredDefinition = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+	func setAnsweredDefinition (categoryID: Int, termID: Int, answeredState: AnsweredState) {
+		let query = "UPDATE \(assignedCategories) SET answeredDefinition = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID)"
+		
+		myDB.executeStatements(query)
+	}
+	
+	func resetAnswers (categoryID: Int, termIDs: [Int]) {
+		for termID in termIDs {
+			setAnsweredTerm(categoryID: categoryID, termID: termID, answeredState: .unanswered)
+			setAnsweredDefinition(categoryID: categoryID, termID: termID, answeredState: .unanswered)
+		}
+	}
+	
+	func resetAnswers (categoryID: Int, questionType: TermComponent) {
+		
+		var query: String
+		
+		switch questionType {
+		
+		case .term:
+			query = "UPDATE \(assignedCategories) SET answeredTerm = \(AnsweredState.unanswered.rawValue) WHERE categoryID = \(categoryID)"
+			
+		case .definition:
+			query = "UPDATE \(assignedCategories) SET answeredDefinition = \(AnsweredState.unanswered.rawValue) WHERE categoryID = \(categoryID)"
+			
+		case .both:
+			query = "UPDATE \(assignedCategories) SET answeredTerm = \(AnsweredState.unanswered.rawValue), answeredDefinition = \(AnsweredState.unanswered.rawValue) WHERE categoryID = \(categoryID)"
+			
+		}
 		
 		myDB.executeStatements(query)
 	}
@@ -239,7 +266,7 @@ class QuestionController2 {
 		case .both:
 			return tc.getCount2(categoryID: categoryID, favoritesOnly: favoriteOnly) * 2
 		}
-
+		
 	}
 	
 	func getCorrectQuestionsCount  (categoryID: Int, questionType: TermComponent, favoriteOnly: Bool) -> Int {

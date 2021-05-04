@@ -151,6 +151,7 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
 		switch segue.identifier {
+		
 		case myConstants.segueSelectCategory:
 			
 			let nc = segue.destination as! UINavigationController
@@ -162,6 +163,8 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 		case myConstants.segueToQuiz:
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! QuizSetVC
+			
+			vc.delegate = quizHomeVCH
 			
 			if quizHomeVCH.startNewQuiz {
 				vc.quizSetVCH.quizSet = quizHomeVCH.getNewQuizSet()

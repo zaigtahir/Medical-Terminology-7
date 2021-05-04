@@ -22,8 +22,10 @@ class QuizSet: TestBase {
 		
 		// for now just test out term questions
 		var questions = [Question2]()
+		currentCategoryID = categoryID
 		
 		switch questionsTypes {
+		
 		case .term:
 			questions = qc.getAvilableTermQuestions(categoryID: currentCategoryID, numberOfQuestions: 2, favoriteOnly: favoritesOnly)
 			
@@ -99,12 +101,13 @@ class QuizSet: TestBase {
 	
 	func resetQuizSet () {
 		
-		print ("code resetQuizSet in QuizSet1")
+		print ("to code resetQuizSet in QuizSet")
+		/*
+		qc.resetAnswers(categoryID: currentCategoryID, termIDs: termIDs
+		)
 		
-		//dIC.clearAnsweredItems(itemIDs: itemIDs)
-		
-		//reset()
-		
+		reset()
+		*/
 	}
 	
 	

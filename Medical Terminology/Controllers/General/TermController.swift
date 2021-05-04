@@ -350,8 +350,6 @@ class TermController {
 	
 	
 	
-	
-	
 	// does getTermIDs2 need all these options?
 	func getTermIDs2 (categoryID: Int, favoritesOnly: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> [Int] {
 		
@@ -464,14 +462,7 @@ class TermController {
 		}
 		return ids
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	// MARK: - term status queries
 	

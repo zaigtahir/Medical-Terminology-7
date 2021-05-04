@@ -15,8 +15,8 @@ protocol QuizHomeVCHDelegate: AnyObject {
 
 // as a note: when the user changes a category, will need to reset the current quiz
 
-class QuizHomeVCH: NSObject, QuizOptionsUpdated {
-    
+class QuizHomeVCH: NSObject, QuizOptionsUpdated, QuizSetVCDelegate {
+
     private var quizSet: QuizSet!
 	
 	var currentCategoryID = 1
@@ -199,22 +199,31 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
     }
     
     func restartOver () {
-        //clear the answered items specific to the filter items
 		
-		print("code restart over quiz")
-      //  dIC.clearAnsweredItems(isFavorite: isFavoriteMode, questionsType: questionsType)
-        
+		// MARK: make restart over function
+		
+		qc.resetAnswers(categoryID: currentCategoryID, questionType: questionsType)
+	
         //clear the quiz
-         quizSet = nil
+		quizSet = nil
         
-        
+		updateData()
+		
+		delegate?.shouldUpdateDisplay()
+
     }
 
     //MARK: - Delegate functions
-    
     func quizOptionsUpdate(numberOfQuestions: Int, questionsTypes: TermComponent, isFavoriteMode: Bool) {
         //update settings
         self.numberOfQuestions = numberOfQuestions
         self.questionsType = questionsTypes
     }
+	
+	// MARK: QuizSetVCDelegate
+	func doneButtonPressed() {
+		updateData()
+		delegate?.shouldUpdateDisplay()
+	}
+	
 }

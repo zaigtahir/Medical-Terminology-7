@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol QuizSetVCDelegate: AnyObject {
+	func doneButtonPressed()
+}
+
 class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegate, ScrollControllerDelegate, QuizDoneCVCellDelegate {
     
     @IBOutlet weak var previousButton: ZUIRoundedButton!
@@ -19,8 +23,9 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
     var scrollDelegate = ScrollController()
     let quizSetVCH = QuizSetVCH()
     let utilities = Utilities()
+	
+	weak var delegate : QuizSetVCDelegate?
     
-
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -153,6 +158,7 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
     @IBAction func optionsButtonAction(_ sender: UIBarButtonItem) {
         showOptionsMenu()
     }
+	
 	@IBAction func doneButtonAction(_ sender: Any) {
 		self.dismiss(animated: true, completion: nil)
 	}
