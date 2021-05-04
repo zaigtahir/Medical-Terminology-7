@@ -15,9 +15,12 @@ class QuestionController2 {
 	
 	let tc = TermController()
 	
+	// MARK: shorter table names to make things easier
+	let assignedCategories = myConstants.dbTableAssignedCategories
+	
 	/// question is term, answers are definitions which do not include the definition in the term
 	func makeTermQuestion (termID: Int, randomizeAnswers: Bool) -> Question2 {
-
+		
 		let term = tc.getTerm(termID: termID)
 		let question = Question2 ()
 		
@@ -101,7 +104,7 @@ class QuestionController2 {
 	
 	/// return three random terms from the complete list not to include term stated
 	private func get3TermAnswers(notIncluding: String) -> [String] {
-	
+		
 		var termNames = [String]()
 		
 		let query = "SELECT DISTINCT name, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) WHERE name != '\(notIncluding)' AND noHyphenInName != '\(notIncluding)' ORDER BY RANDOM () LIMIT 3"
@@ -137,11 +140,9 @@ class QuestionController2 {
 			}
 		}
 		
-	
+		
 		return definitions
 	}
-	
-	// MARK: - WHY do i just have updating learned status here????? this probably belongs in the LEARNING SET
 	
 	func selectAnswer (question: Question2, answerIndex: Int) {
 		question.selectAnswerIndex(answerIndex: answerIndex)
@@ -163,7 +164,7 @@ class QuestionController2 {
 	}
 	
 	func saveAnsweredStatus (categoryID: Int, question: Question2) {
-			
+		
 		switch question.questionType {
 		case .term:
 			
@@ -209,5 +210,91 @@ class QuestionController2 {
 		return termIsLearned && definitionIsLearned
 		
 	}
-
+	
+	
+	
+	// MARK: - quiz questions
+	
+	/// return array of ids where answeredTerm = unanswered OR incorrect
+	func getAvilableTermQuestions (categoryID: Int, numberOfTerms: Int, favoriteOnly: Bool) -> [Question2] {
+		
+		var questions = [Question2]()
+		
+		var favoriteString = ""
+		if favoriteOnly {
+			favoriteString = " AND isFavorite = 1"
+		}
+		
+		
+		let query = """
+			SELECT termID FROM \(assignedCategories)
+			WHERE termAnswered != \(AnsweredState.correct.rawValue) \(favoriteString)
+			ORDER BY RANDOM ()
+			LIMIT \(numberOfTerms)
+			"""
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let termID = Int(resultSet.int(forColumnIndex: 0))
+				let q = makeTermQuestion(termID: termID, randomizeAnswers: true)
+				questions.append(q)
+			}
+		}
+		
+		return questions
+		
+	}
+	
+	/// return array of ids where answeredDefinition = unanswered OR incorrect
+	func getAvailableDefinitionQuestions (categoryID: Int, numberOfTerms: Int, favoriteOnly: Bool) -> [Question2]  {
+		
+		var questions = [Question2]()
+		
+		var favoriteString = ""
+		if favoriteOnly {
+			favoriteString = " AND isFavorite = 1"
+		}
+		
+		
+		let query = """
+			SELECT termID FROM \(assignedCategories)
+			WHERE definitionAnswered != \(AnsweredState.correct.rawValue) \(favoriteString)
+			ORDER BY RANDOM ()
+			LIMIT \(numberOfTerms)
+			"""
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let termID = Int(resultSet.int(forColumnIndex: 0))
+				let q = makeDefinitionQuestion(termID: termID, randomizeAnswers: true)
+				questions.append(q)
+			}
+		}
+		
+		return questions
+	}
+	
+	/// return array of ids where (answeredTerm = unanswered OR incorrect) OR (answeredDefinition = unanswered OR incorrect)
+	private func getAvailableQuestions (categoryID: Int, numberOfTerms: Int, favoriteOnly: Bool)  {
+		
+		var favoriteString = ""
+		if favoriteOnly {
+			favoriteString = " AND isFavorite = 1"
+		}
+		
+		let query = """
+		SELECT * FROM
+		(
+		SELECT itemID, 1 as type from dictionary  WHERE answeredTerm != \(AnsweredState.correct.rawValue) \(favoriteString) ORDER BY RANDOM ()
+		UNION
+		SELECT itemID, 2 as type from dictionary  WHERE answeredDefinition != \(AnsweredState.correct.rawValue) \(favoriteString) ORDER BY RANDOM ()
+		)
+		ORDER BY RANDOM()
+		LIMIT \(numberOfTerms)
+		"""
+		
+		
+		
+	}
+	
 }

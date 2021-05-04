@@ -345,7 +345,7 @@ class TermController {
 		return whereStatement
 	}
 	
-
+	
 	// MARK: -Search Query
 	/**
 	Return list of termIDs.
@@ -472,77 +472,77 @@ class TermController {
 	
 	// MARK: -WHERE string components
 	
-	private func favorteString (isFavorite: Bool?) -> String {
+	func favorteString (isFavorite: Bool?) -> String {
 		guard let f = isFavorite else { return "" }
 		return f ? "AND isfavorite = 1" : "AND isfavorite = 0"
 	}
 	
-	private func learnedString (learned: Bool?) -> String {
+	func learnedString (learned: Bool?) -> String {
 		guard let l = learned else { return "" }
 		return l ? "AND (learnedTerm = 1 AND learnedDefinition = 1)" : "AND (learnedTerm = 0 OR learnedDefinition = 0)"
 	}
 	
-	private func learnedTermString (learnedTerm: Bool?) -> String {
+	func learnedTermString (learnedTerm: Bool?) -> String {
 		guard let lt = learnedTerm else { return ""}
 		return lt ? "AND learnedTerm = 1" : "AND learnedTerm = 0"
 	}
 	
-	private func learnedDefinitionString (learnedDefinition: Bool?) -> String {
+	func learnedDefinitionString (learnedDefinition: Bool?) -> String {
 		guard let ld = learnedDefinition else { return ""}
 		return ld ? "AND learnedDefinition = 1" : "AND learnedDefinition = 0"
 	}
 	
-	private func answeredTermString (state: AnsweredState?) -> String {
+	func answeredTermString (state: AnsweredState?) -> String {
 		guard let s = state else { return "" }
 		return "AND answeredTerm = \(s.rawValue)"
 	}
 	
-	private func answeredDefinitionString (state: AnsweredState?) -> String {
+	func answeredDefinitionString (state: AnsweredState?) -> String {
 		guard let s = state else { return "" }
 		return "AND answeredDefinition = \(s.rawValue)"
 	}
 	
-	private func showOnlyFavoritesString (show: Bool?) -> String {
+	func showOnlyFavoritesString (show: Bool?) -> String {
 		guard let s = show else { return "" }
 		return s ? "AND isFavorite = 1" : ""
 	}
 	
-	private func learnedFlashcardString (learned: Bool?) -> String {
+	func learnedFlashcardString (learned: Bool?) -> String {
 		guard let l = learned else {return ""}
 		return l ? "AND learnedFlashcard = 1" : "AND learnedFlashcard  =  0"
 	}
 	
-	private func nameContainsString (search: String? ) -> String {
+	func nameContainsString (search: String? ) -> String {
 		guard let s = search else {return ""}
 		return "AND name LIKE '%\(s)%' "
 	}
 	
-	private func containsTextString (search: String?) -> String {
+	func containsTextString (search: String?) -> String {
 		guard let s = search else {return ""}
 		return "AND ((name LIKE '%\(s)%') OR (definition LIKE '%\(s)%')) "
 	}
 	
-	private func nameStartsWithString (search: String? ) -> String {
+	func nameStartsWithString (search: String? ) -> String {
 		guard let s = search else {return ""}
 		return "AND (name LIKE '\(s)%' OR name LIKE '-\(s)%')"
 	}
 	
 	// this is ONLY added for getTermID as that is the only SELECT that will make this virtual column for ordering
 	
-	private func orderByNameString (toOrder: Bool?) -> String {
+	func orderByNameString (toOrder: Bool?) -> String {
 		guard let _ = toOrder else {return ""}
 		return "ORDER BY LOWER (noHyphenInName)"
 	}
 	
-	private func randomOrderString (toOrderRandom: Bool?) -> String {
+	func randomOrderString (toOrderRandom: Bool?) -> String {
 		guard let _ = toOrderRandom else {return ""}
 		return "ORDER BY RANDOM ()"
 	}
 	
-	private func limitToString (limit: Int?) -> String {
+	func limitToString (limit: Int?) -> String {
 		guard let _ = limit else {return ""}
 		return "LIMIT \(limit!)"
 	}
-	
+
 }
 
