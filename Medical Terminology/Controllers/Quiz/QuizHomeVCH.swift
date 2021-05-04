@@ -13,6 +13,7 @@ protocol QuizHomeVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
 }
 
+// as a note: when the user changes a category, will need to reset the current quiz
 
 class QuizHomeVCH: NSObject, QuizOptionsUpdated {
     
@@ -90,7 +91,13 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 		
 		if let data = notification.userInfo as? [String : Int] {
 			
-			//there will be only one data here, the categoryID
+			// clear the quiz set
+			if quizSet != nil {
+				quizSet = nil
+			}
+			
+			
+			// there will be only one data here, the categoryID
 			currentCategoryID = data["categoryID"]!
 			updateData()
 			delegate?.shouldUpdateDisplay()
