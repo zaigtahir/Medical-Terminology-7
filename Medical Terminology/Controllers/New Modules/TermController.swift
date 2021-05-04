@@ -182,11 +182,11 @@ class TermController {
 		// saving a custom term with secondCategory = 2 and isStandard value is redundant, but makes for smoother programming
 		
 		let query  = "INSERT INTO \(terms) (name, definition, example, myNotes, isStandard, secondCategoryID) VALUES ('\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2)"
-				
+		
 		myDB.executeStatements(query)
-	
+		
 		let addedTermID = Int(myDB.lastInsertRowId)
-			
+		
 		for c in term.assignedCategories {
 			cc.assignCategoryPN(termID: addedTermID, categoryID: c)
 		}
@@ -194,7 +194,7 @@ class TermController {
 		return addedTermID
 		
 	}
-
+	
 	// MARK: - term update functions
 	
 	func updateTermNamePN (termID: Int, name: String) {
@@ -248,7 +248,7 @@ class TermController {
 		// delete from the term table. The term deletion does not need to PN
 		let query1 = "DELETE FROM \(terms) WHERE termID = \(termID)"
 		let _ = myDB.executeStatements(query1)
-	
+		
 	}
 	
 	// MAR: - Flashcard learn, learning, answered functions
@@ -276,7 +276,7 @@ class TermController {
 		let query = ("\(selectStatement) \(whereStatement)")
 		
 		print("getTermIDs query: \(query)")
-	
+		
 		var ids = [Int]()
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -345,6 +345,94 @@ class TermController {
 		return whereStatement
 	}
 	
+	// MARK: - New versions
+
+	
+	
+	
+	
+	
+	// does getTermIDs2 need all these options?
+	func getTermIDs2 (categoryID: Int, favoritesOnly: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> [Int] {
+		
+		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
+		
+		let whereStatement = self.whereStatement2 (categoryID: categoryID,
+												  showOnlyFavorites: favoritesOnly,
+												  isFavorite: .none,
+												  orderByName: orderByName,
+												  randomOrder: randomOrder,
+												  limitTo: limitTo)
+		
+		let query = ("\(selectStatement) \(whereStatement)")
+		
+		print("getTermIDs2 query: \(query)")
+		
+		var ids = [Int]()
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+			}
+		}
+		
+		
+		print("result count =  : \(ids.count)")
+		
+		return ids
+	}
+	
+	private func whereStatement2 (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> String {
+		
+		let showOnlyFavoritesString = self.showOnlyFavoritesString(show: showOnlyFavorites)
+		let favoriteString = self.favorteString(isFavorite: isFavorite)
+		let orderByNameString = self.orderByNameString(toOrder: orderByName)
+		let randomOrderString = self.randomOrderString(toOrderRandom: randomOrder)
+		let limitToString = self.limitToString(limit: limitTo)
+		
+		// need to add ORDER BY
+		
+		let whereStatement = """
+		WHERE \(assignedCategories).categoryID = \(categoryID)
+		\(favoriteString)
+		\(showOnlyFavoritesString)
+		\(orderByNameString)
+		\(randomOrderString)
+		\(limitToString)
+		"""
+		
+		return whereStatement
+	}
+	
+	func getCount2 (categoryID: Int, favoritesOnly: Bool) -> Int {
+		
+		// will remove leading hypen for count purposes
+				
+		var favoriteString = ""
+		
+		if favoritesOnly {
+			favoriteString = " AND isFavorite = 1"
+		}
+		
+		let query = """
+			SELECT COUNT (*) FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			WHERE catetoryID = \(categoryID)
+			\(favoriteString)
+			"""
+	
+		var count = 0
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			count = Int (resultSet.int(forColumnIndex: 0))
+		}
+		
+		return count
+		
+	}
 	
 	// MARK: -Search Query
 	/**
@@ -374,6 +462,13 @@ class TermController {
 		}
 		return ids
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	// MARK: - term status queries
@@ -410,7 +505,7 @@ class TermController {
 		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = 0 WHERE categoryID = \(categoryID)"
 		myDB.executeStatements(query)
 	}
-
+	
 	// Learned state
 	func setLearnedTerm (categoryID: Int, termID: Int, learned: Bool) {
 		
@@ -468,7 +563,7 @@ class TermController {
 		
 		myDB.executeStatements(query)
 	}
-
+	
 	
 	// MARK: -WHERE string components
 	
@@ -543,6 +638,6 @@ class TermController {
 		guard let _ = limit else {return ""}
 		return "LIMIT \(limit!)"
 	}
-
+	
 }
 

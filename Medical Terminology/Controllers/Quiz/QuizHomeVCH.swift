@@ -17,11 +17,12 @@ protocol QuizHomeVCHDelegate: AnyObject {
 class QuizHomeVCH: NSObject, QuizOptionsUpdated {
     
     private var quizSet: QuizSet!
+	
 	var currentCategoryID = 1
 	var favoritesOnly = false
-
     var numberOfQuestions = 10
     var questionsType : TermComponent = .both
+	
     var startNewQuiz: Bool = true    //will be used for segue
     
 	let tc = TermController()
@@ -54,13 +55,6 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 		
 		favoriteTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 	
-		
-		if favoritesOnly {
-			totalQuestionsCount = favoriteTermsCount * 2
-		} else {
-			totalQuestionsCount = categoryTermsCount * 2
-		}
-		
 		let answeredTermCorrectCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .correct, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
 		
 		let answeredDefinitionCorrectCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .correct, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
@@ -95,11 +89,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
     func getNewQuizSet () -> QuizSet {
         
         //create a quiz based on the variables that can be changed through options
-        var favoriteState = -1
-        if favoritesOnly {
-            favoriteState = 1
-        }
-    
+       
 		quizSet = QuizSet(categoryID: currentCategoryID, numberOfQuestions: numberOfQuestions, favoritesOnly: favoritesOnly, questionsTypes: questionsType)
         
         return quizSet

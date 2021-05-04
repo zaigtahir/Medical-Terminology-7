@@ -46,7 +46,7 @@ class QuestionController2 {
 	}
 	
 	/// question is definition, anwers are terms which do not include the term name
-	 func makeDefinitionQuestion (termID: Int, randomizeAnswers: Bool) -> Question2 {
+	func makeDefinitionQuestion (termID: Int, randomizeAnswers: Bool) -> Question2 {
 		
 		let term = tc.getTerm(termID: termID)
 		
@@ -211,6 +211,67 @@ class QuestionController2 {
 		
 	}
 	
+	// MARK: - counts
+	
+	func getTotalQuestionsCount (categoryID: Int, questionType: TermComponent, favoriteOnly: Bool) -> Int {
+		
+		switch questionType {
+		
+		case .term, .definition:
+			return tc.getCount2(categoryID: categoryID, favoritesOnly: favoriteOnly)
+			
+		case .both:
+			return tc.getCount2(categoryID: categoryID, favoritesOnly: favoriteOnly) * 2
+		}
+
+	}
+	
+	func getCorrectQuestionsCount  (categoryID: Int, questionType: TermComponent, favoriteOnly: Bool) -> Int {
+		
+		var favoriteString = ""
+		if favoriteOnly {
+			favoriteString = " AND isFavorite = 1"
+		}
+		
+		var query : String
+		
+		switch questionType {
+		
+		case .term:
+			query = """
+				SELECT COUNT (*) termID FROM \(assignedCategories)
+				WHERE answeredTerm = \(AnsweredState.correct.rawValue)
+				\(favoriteString)
+				"""
+		case .definition:
+			query = """
+				SELECT COUNT (*) termID FROM \(assignedCategories)
+				WHERE answeredDefinition = \(AnsweredState.correct.rawValue)
+				\(favoriteString)
+				"""
+		case .both:
+			query = """
+				SELECT COUNT (*) termID FROM \(assignedCategories)
+				WHERE answeredTerm = \(AnsweredState.correct.rawValue)
+				OR answeredDefinition = \(AnsweredState.correct.rawValue)
+				\(favoriteString)
+				"""
+		}
+		
+		var count = 0
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			count = Int (resultSet.int(forColumnIndex: 0))
+		} else {
+			print("fatal error making result set in getQuestionsAvailableCount")
+		}
+		
+		return count
+		
+		
+	}
+	
 	// MARK: - quiz questions
 	
 	/// return array of ids where answeredTerm = unanswered OR incorrect
@@ -273,12 +334,12 @@ class QuestionController2 {
 	}
 	
 	/// return array of ids where (answeredTerm = unanswered OR incorrect) OR (answeredDefinition = unanswered OR incorrect)
-	func getAvailableQuestions (categoryID: Int, numberOfQuestions: Int, favoriteOnly: Bool) -> [Question2]  {
+	func getAvailableQuestions (categoryID: Int, numberOfQuestions: Int, favoritesOnly: Bool) -> [Question2]  {
 		
 		var questions = [Question2]()
 		
 		var favoriteString = ""
-		if favoriteOnly {
+		if favoritesOnly {
 			favoriteString = " AND isFavorite = 1"
 		}
 		
@@ -308,7 +369,7 @@ class QuestionController2 {
 				} else {
 					q = makeDefinitionQuestion(termID: termID, randomizeAnswers: true)
 				}
-			
+				
 				questions.append(q)
 			}
 		}
