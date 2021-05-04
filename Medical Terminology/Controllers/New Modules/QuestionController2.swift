@@ -216,13 +216,13 @@ class QuestionController2 {
 	
 	func setAnsweredTerm (categoryID: Int, termID: Int, answeredState: AnsweredState) {
 		
-		let query = "UPDATE \(assignedCategories) SET answeredTerm = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID)"
+		let query = "UPDATE \(assignedCategories) SET answeredTerm = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		
 		myDB.executeStatements(query)
 	}
 	
 	func setAnsweredDefinition (categoryID: Int, termID: Int, answeredState: AnsweredState) {
-		let query = "UPDATE \(assignedCategories) SET answeredDefinition = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID)"
+		let query = "UPDATE \(assignedCategories) SET answeredDefinition = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		
 		myDB.executeStatements(query)
 	}
@@ -330,7 +330,7 @@ class QuestionController2 {
 		
 		let query = """
 			SELECT termID FROM \(assignedCategories)
-			WHERE answeredTerm != \(AnsweredState.correct.rawValue) \(favoriteString)
+			WHERE categoryID = \(categoryID) AND answeredTerm != \(AnsweredState.correct.rawValue) \(favoriteString)
 			ORDER BY RANDOM ()
 			LIMIT \(numberOfQuestions)
 			"""
@@ -360,7 +360,7 @@ class QuestionController2 {
 		
 		let query = """
 			SELECT termID FROM \(assignedCategories)
-			WHERE answeredDefinition != \(AnsweredState.correct.rawValue) \(favoriteString)
+			WHERE categoryID = \(categoryID) AND answeredDefinition != \(AnsweredState.correct.rawValue) \(favoriteString)
 			ORDER BY RANDOM ()
 			LIMIT \(numberOfQuestions)
 			"""
@@ -389,9 +389,9 @@ class QuestionController2 {
 		let query = """
 		SELECT * FROM
 		(
-		SELECT termID, 1 as type from \(assignedCategories)  WHERE answeredTerm != \(AnsweredState.correct.rawValue) \(favoriteString)
+		SELECT termID, 1 as type from \(assignedCategories)  WHERE categoryID = \(categoryID) AND  answeredTerm != \(AnsweredState.correct.rawValue) \(favoriteString)
 		UNION
-		SELECT termID, 2 as type from \(assignedCategories)  WHERE answeredDefinition != \(AnsweredState.correct.rawValue) \(favoriteString)
+		SELECT termID, 2 as type from \(assignedCategories)  WHERE categoryID = \(categoryID) AND  answeredDefinition != \(AnsweredState.correct.rawValue) \(favoriteString)
 		)
 		ORDER BY RANDOM()
 		LIMIT \(numberOfQuestions)

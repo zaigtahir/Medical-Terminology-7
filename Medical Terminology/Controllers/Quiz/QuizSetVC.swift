@@ -160,6 +160,7 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
     }
 	
 	@IBAction func doneButtonAction(_ sender: Any) {
+		delegate?.doneButtonPressed()
 		self.dismiss(animated: true, completion: nil)
 	}
 	
