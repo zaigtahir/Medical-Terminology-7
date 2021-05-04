@@ -10,7 +10,7 @@ import UIKit
 
 class LearningSetVCH {
     
-    var learningSet: LearningSet2!   //configure with configure function in when setting up segue
+    var learningSet: LearningSet!   //configure with configure function in when setting up segue
     
     func getProgressLabelText () -> String {
         

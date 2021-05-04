@@ -8,7 +8,7 @@
 
 import Foundation
 
-class QuizSet2: TestBase {
+class QuizSet: TestBase {
 	
 	/// to save the original termIDs for resetting the learned items when resetting the quiz
 	private let termIDs = [Int]()

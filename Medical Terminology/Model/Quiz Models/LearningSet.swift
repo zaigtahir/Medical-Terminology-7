@@ -1,5 +1,5 @@
 //
-//  LearningSet2.swift
+//  LearningSet.swift
 //  Medical Terminology
 //
 //  Created by Zaigham Tahir on 5/2/21.
@@ -10,7 +10,7 @@ import Foundation
 
 //  Class to extend QuizBase to make a LearningSet
 
-class LearningSet2: QuizBase2 {
+class LearningSet: QuizBase {
 	
 	/// to save the original termIDs for resetting the learned items when resetting the quiz
 	private let termIDs : [Int]
@@ -24,7 +24,7 @@ class LearningSet2: QuizBase2 {
 		
 		currentCategoryID = categoryID
 		
-		print ("LearningSet2 init getting termIDs")
+		print ("LearningSet init getting termIDs")
 		
 		termIDs = tc.getTermIDs(categoryID: categoryID, favoritesOnly: favoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: false, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: .none, randomOrder: true, limitTo: numberOfTerms)
 
