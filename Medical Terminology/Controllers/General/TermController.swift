@@ -436,12 +436,6 @@ class TermController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
 	// MARK: -Search Query
 	/**
 	Return list of termIDs.
@@ -481,7 +475,7 @@ class TermController {
 	
 	// MARK: - term status queries
 	
-	// Flash card
+	// MARK: -Move to flash card controller
 	func flashcardIsLearned (categoryID: Int, termID: Int) -> Bool {
 		let query = "SELECT learnedFlashcard FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -514,7 +508,7 @@ class TermController {
 		myDB.executeStatements(query)
 	}
 	
-	// Learned state
+	// MARK: - move to question controller
 	func setLearnedTerm (categoryID: Int, termID: Int, learned: Bool) {
 		
 		var lt = 0
