@@ -458,13 +458,13 @@ class TermController {
 	// Answered state
 	func setAnsweredTerm (categoryID: Int, termID: Int, answeredState: AnsweredState) {
 		
-		let query = "UPDATE \(assignedCategories) SET aswererdTerm = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		let query = "UPDATE \(assignedCategories) SET answeredTerm = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		
 		myDB.executeStatements(query)
 	}
 	
 	func setAnsweredDefinition (categoryID: Int, termID: Int, answeredState: AnsweredState) {
-		let query = "UPDATE \(assignedCategories) SET aswererdDefinition = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		let query = "UPDATE \(assignedCategories) SET answeredDefinition = \(answeredState.rawValue) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		
 		myDB.executeStatements(query)
 	}

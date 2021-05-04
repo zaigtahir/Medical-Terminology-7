@@ -10,6 +10,8 @@ import Foundation
 
 //  Class to extend QuizBase to make a LearningSet
 
+// MARK: change to use TestBase
+
 class LearningSet: QuizBase {
 	
 	/// to save the original termIDs for resetting the learned items when resetting the quiz

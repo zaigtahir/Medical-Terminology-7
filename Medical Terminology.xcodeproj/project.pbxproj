@@ -237,21 +237,21 @@
 		5A15062722557B4600717AB8 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				992B56802612870C000457AA /* TextUtilities.swift */,
 				994175DD245A38A900E281DB /* AudioFileController.swift */,
 				99D55E4925FF2F17003ABE0B /* CategoryController.swift */,
-				99D55E882601A01A003ABE0B /* UserCategoryController.swift */,
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
-				99D55E4C25FF5A03003ABE0B /* Tests.swift */,
 				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
-				99D55E5725FF685C003ABE0B /* DItemController3.swift */,
-				5AF85733228F26A1008929D5 /* FlashCardController.swift */,
-				994175E1245B5BAE00E281DB /* SettingsController.swift */,
-				5AC448B422BC072C004B47C1 /* QuestionController.swift */,
-				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 				5A886373218E82330013FC8B /* DItemController.swift */,
 				99D55E2E25FC7921003ABE0B /* DItemController2.swift */,
+				99D55E5725FF685C003ABE0B /* DItemController3.swift */,
+				5AF85733228F26A1008929D5 /* FlashCardController.swift */,
+				5AC448B422BC072C004B47C1 /* QuestionController.swift */,
 				99937ACD263EDAA2001E4D4B /* QuestionController2.swift */,
+				994175E1245B5BAE00E281DB /* SettingsController.swift */,
+				99D55E4C25FF5A03003ABE0B /* Tests.swift */,
+				992B56802612870C000457AA /* TextUtilities.swift */,
+				99D55E882601A01A003ABE0B /* UserCategoryController.swift */,
+				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -423,9 +423,9 @@
 				5A189C3E217123B900929AB8 /* DItem.swift */,
 				5A6F31C921A7032E00E6477E /* DList.swift */,
 				5A1506242255796C00717AB8 /* Question.swift */,
+				99937AD3263F24FB001E4D4B /* Question2.swift */,
 				5A15062922557E7C00717AB8 /* Answer.swift */,
 				998398E225F6AB3C00CC0354 /* Category.swift */,
-				99937AD3263F24FB001E4D4B /* Question2.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

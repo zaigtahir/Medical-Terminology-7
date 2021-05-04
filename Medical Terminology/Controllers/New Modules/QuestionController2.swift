@@ -46,7 +46,7 @@ class QuestionController2 {
 	}
 	
 	/// question is definition, anwers are terms which do not include the term name
-	func makeDefinitionQuestion (termID: Int, randomizeAnswers: Bool) -> Question2 {
+	 func makeDefinitionQuestion (termID: Int, randomizeAnswers: Bool) -> Question2 {
 		
 		let term = tc.getTerm(termID: termID)
 		
@@ -107,7 +107,7 @@ class QuestionController2 {
 		
 		var termNames = [String]()
 		
-		let query = "SELECT DISTINCT name, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) WHERE name != '\(notIncluding)' AND noHyphenInName != '\(notIncluding)' ORDER BY RANDOM () LIMIT 3"
+		let query = "SELECT DISTINCT name, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) WHERE name != '\(notIncluding)' AND noHyphenInName != \"\(notIncluding)\" ORDER BY RANDOM () LIMIT 3"
 		
 		print("question controller get3TermAnswers query: \(query)")
 		
@@ -128,7 +128,7 @@ class QuestionController2 {
 		
 		var definitions = [String]()
 		
-		let query = "SELECT DISTINCT definition FROM \(terms) WHERE definition != '\(notIncluding)' ORDER BY RANDOM () LIMIT 3"
+		let query = "SELECT DISTINCT definition FROM \(terms) WHERE definition != \"\(notIncluding)\" ORDER BY RANDOM () LIMIT 3"
 		
 		print("question controller get3DefinitionAnswers query: \(query)")
 		
@@ -211,12 +211,10 @@ class QuestionController2 {
 		
 	}
 	
-	
-	
 	// MARK: - quiz questions
 	
 	/// return array of ids where answeredTerm = unanswered OR incorrect
-	func getAvilableTermQuestions (categoryID: Int, numberOfTerms: Int, favoriteOnly: Bool) -> [Question2] {
+	func getAvilableTermQuestions (categoryID: Int, numberOfQuestions: Int, favoriteOnly: Bool) -> [Question2] {
 		
 		var questions = [Question2]()
 		
@@ -228,9 +226,9 @@ class QuestionController2 {
 		
 		let query = """
 			SELECT termID FROM \(assignedCategories)
-			WHERE termAnswered != \(AnsweredState.correct.rawValue) \(favoriteString)
+			WHERE answeredTerm != \(AnsweredState.correct.rawValue) \(favoriteString)
 			ORDER BY RANDOM ()
-			LIMIT \(numberOfTerms)
+			LIMIT \(numberOfQuestions)
 			"""
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -246,7 +244,7 @@ class QuestionController2 {
 	}
 	
 	/// return array of ids where answeredDefinition = unanswered OR incorrect
-	func getAvailableDefinitionQuestions (categoryID: Int, numberOfTerms: Int, favoriteOnly: Bool) -> [Question2]  {
+	func getAvailableDefinitionQuestions (categoryID: Int, numberOfQuestions: Int, favoriteOnly: Bool) -> [Question2]  {
 		
 		var questions = [Question2]()
 		
@@ -258,9 +256,9 @@ class QuestionController2 {
 		
 		let query = """
 			SELECT termID FROM \(assignedCategories)
-			WHERE definitionAnswered != \(AnsweredState.correct.rawValue) \(favoriteString)
+			WHERE answeredDefinition != \(AnsweredState.correct.rawValue) \(favoriteString)
 			ORDER BY RANDOM ()
-			LIMIT \(numberOfTerms)
+			LIMIT \(numberOfQuestions)
 			"""
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -275,7 +273,9 @@ class QuestionController2 {
 	}
 	
 	/// return array of ids where (answeredTerm = unanswered OR incorrect) OR (answeredDefinition = unanswered OR incorrect)
-	private func getAvailableQuestions (categoryID: Int, numberOfTerms: Int, favoriteOnly: Bool)  {
+	func getAvailableQuestions (categoryID: Int, numberOfTerms: Int, favoriteOnly: Bool) -> [Question2]  {
+		
+		var questions = [Question2]()
 		
 		var favoriteString = ""
 		if favoriteOnly {
@@ -293,8 +293,24 @@ class QuestionController2 {
 		LIMIT \(numberOfTerms)
 		"""
 		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			
+			while resultSet.next() {
+				let termID = Int(resultSet.int(forColumnIndex: 0))
+				let type = Int(resultSet.int(forColumnIndex: 1))
+				
+				var q : Question2
+				
+				if type == 1 {
+					q = makeTermQuestion(termID: termID, randomizeAnswers: true)
+				} else {
+					q = makeDefinitionQuestion(termID: termID, randomizeAnswers: true)
+				}
+			
+				questions.append(q)
+			}
+		}
 		
-		
+		return questions
 	}
-	
 }

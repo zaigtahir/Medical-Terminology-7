@@ -8,12 +8,11 @@
 
 import Foundation
 
+// MARK : Learning set uses this will need to change learning set to use TestBase then delete this
 class QuizBase {
 	
 	var activeQuestions = [Question2]()
-	
 	var masterList = [Question2]()
-	
 	var originalQuestions = [Question2]()
 	
 	init (originalQuestions: [Question2]) {
@@ -54,7 +53,7 @@ class QuizBase {
 		
 	}
 	
-	/*
+	/**
 	 Create a copy of the question and
 	 clear the answer and learning status data in this local object (does not affect the db)
 	 Then move the question in interval into the master list. if the interval is too long then move
@@ -98,7 +97,7 @@ class QuizBase {
 		return activeQuestions[index]
 	}
 	
-	/*
+	/**
 	 return total questions in the active and master list - 1 (-1 for done card)
 	 */
 	func getTotalQuestionCount () -> Int {

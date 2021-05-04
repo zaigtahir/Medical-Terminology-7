@@ -16,12 +16,6 @@ class QuizSet: TestBase {
 	private let qc = QuestionController2()
 	private let tc = TermController()
 	
-	// to use when making questions
-	private struct QuestionInfo {
-		let itemID: Int
-		let type: Int   //1 term type   //2 definition type
-	}
-
 	init (categoryID: Int, numberOfQuestions: Int, favoritesOnly: Bool, questionsTypes: TermComponent) {
 		// will create a quizset with the numberOfQuesteions if available
 		// will only select questions that are not answered or answered incorrectly
@@ -29,8 +23,16 @@ class QuizSet: TestBase {
 		// for now just test out term questions
 		var questions = [Question2]()
 		
-		questions.append(qc.makeSampleQuestion())
-		questions.append(qc.makeSampleQuestion())
+		switch questionsTypes {
+		case .term:
+			questions = qc.getAvilableTermQuestions(categoryID: currentCategoryID, numberOfQuestions: 2, favoriteOnly: favoritesOnly)
+			
+		case .definition:
+			questions = qc.getAvailableDefinitionQuestions(categoryID: currentCategoryID, numberOfQuestions: 2, favoriteOnly: favoritesOnly)
+			
+		case .both:
+			questions = qc.getAvailableQuestions(categoryID: currentCategoryID, numberOfTerms: numberOfQuestions, favoriteOnly: favoritesOnly)
+		}
 		
 		super.init(originalQuestions: questions)
 	}
