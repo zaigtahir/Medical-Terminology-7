@@ -1945,7 +1945,7 @@
                                             <constraint firstAttribute="height" constant="50" id="L3E-ZG-h59"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title=" Start A New Learning Set ">
+                                        <state key="normal" title=" Start A New Quiz ">
                                             <color key="titleColor" name="color text button"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1968,7 +1968,7 @@
                                             <constraint firstAttribute="height" constant="50" id="QCP-eK-het"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title=" See Current Set ">
+                                        <state key="normal" title=" See Current Quiz">
                                             <color key="titleColor" name="color text button"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>

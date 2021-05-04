@@ -273,7 +273,7 @@ class QuestionController2 {
 	}
 	
 	/// return array of ids where (answeredTerm = unanswered OR incorrect) OR (answeredDefinition = unanswered OR incorrect)
-	func getAvailableQuestions (categoryID: Int, numberOfTerms: Int, favoriteOnly: Bool) -> [Question2]  {
+	func getAvailableQuestions (categoryID: Int, numberOfQuestions: Int, favoriteOnly: Bool) -> [Question2]  {
 		
 		var questions = [Question2]()
 		
@@ -285,13 +285,15 @@ class QuestionController2 {
 		let query = """
 		SELECT * FROM
 		(
-		SELECT itemID, 1 as type from dictionary  WHERE answeredTerm != \(AnsweredState.correct.rawValue) \(favoriteString) ORDER BY RANDOM ()
+		SELECT termID, 1 as type from \(assignedCategories)  WHERE answeredTerm != \(AnsweredState.correct.rawValue) \(favoriteString)
 		UNION
-		SELECT itemID, 2 as type from dictionary  WHERE answeredDefinition != \(AnsweredState.correct.rawValue) \(favoriteString) ORDER BY RANDOM ()
+		SELECT termID, 2 as type from \(assignedCategories)  WHERE answeredDefinition != \(AnsweredState.correct.rawValue) \(favoriteString)
 		)
 		ORDER BY RANDOM()
-		LIMIT \(numberOfTerms)
+		LIMIT \(numberOfQuestions)
 		"""
+		
+		print("getAvailableQuestions query: \(query)")
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			

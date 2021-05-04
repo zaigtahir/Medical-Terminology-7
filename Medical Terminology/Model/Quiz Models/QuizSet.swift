@@ -31,7 +31,7 @@ class QuizSet: TestBase {
 			questions = qc.getAvailableDefinitionQuestions(categoryID: currentCategoryID, numberOfQuestions: 2, favoriteOnly: favoritesOnly)
 			
 		case .both:
-			questions = qc.getAvailableQuestions(categoryID: currentCategoryID, numberOfTerms: numberOfQuestions, favoriteOnly: favoritesOnly)
+			questions = qc.getAvailableQuestions(categoryID: currentCategoryID, numberOfQuestions: numberOfQuestions, favoriteOnly: favoritesOnly)
 		}
 		
 		super.init(originalQuestions: questions)
