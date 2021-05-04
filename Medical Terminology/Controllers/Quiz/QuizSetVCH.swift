@@ -10,7 +10,7 @@ import UIKit
 
 class QuizSetVCH {
     
-    var quizSet: QuizSet!      //set this in seque
+    var quizSet: QuizSet2!      //set this in seque
    
     /**
      Will return true if the collection view is displaying the last card (summary)

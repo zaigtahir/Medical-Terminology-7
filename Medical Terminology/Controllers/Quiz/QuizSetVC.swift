@@ -63,9 +63,10 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         }
     }
     
-    //MARK: delegate functions
+    //MARK: - delegate functions
     func selectedAnswer(questionIndex: Int, answerIndex: Int) {
-        //if this is answered already, don't do anything
+        		
+		//if this is answered already, don't do anything
         let question  = quizSetVCH.quizSet.getQuestion(index: questionIndex)
         if question.isAnswered() {
             //don't do anything
@@ -84,6 +85,7 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         collectionView.layoutIfNeeded()
         
         updateDisplay()
+
     }
     
     func showAnswer(questionIndex: Int, showAnswer: Bool) {

@@ -16,7 +16,7 @@ protocol QuizHomeVCHDelegate: AnyObject {
 
 class QuizHomeVCH: NSObject, QuizOptionsUpdated {
     
-    private var quizSet: QuizSet!
+    private var quizSet: QuizSet2!
 	var currentCategoryID = 1
 	var favoritesOnly = false
 
@@ -88,11 +88,11 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
         }
     }
     
-    func getQuizSet () -> QuizSet {
+    func getQuizSet () -> QuizSet2 {
         return quizSet
     }
     
-    func getNewQuizSet () -> QuizSet {
+    func getNewQuizSet () -> QuizSet2 {
         
         //create a quiz based on the variables that can be changed through options
         var favoriteState = -1
@@ -100,7 +100,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
             favoriteState = 1
         }
     
-        quizSet = QuizSet(numberOfQuestions: numberOfQuestions, favoriteState: favoriteState, questionTypes: questionsType)
+		quizSet = QuizSet2(categoryID: currentCategoryID, numberOfQuestions: numberOfQuestions, favoritesOnly: favoritesOnly, questionsTypes: questionsType)
         
         return quizSet
     }

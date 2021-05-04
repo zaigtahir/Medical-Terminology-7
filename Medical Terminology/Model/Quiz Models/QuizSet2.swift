@@ -22,7 +22,7 @@ class QuizSet2: TestBase {
 		let type: Int   //1 term type   //2 definition type
 	}
 
-	init (categoryID: Int, numberOfQuestions: Int, favoritesOnly: Bool, questionTypes: TermComponent) {
+	init (categoryID: Int, numberOfQuestions: Int, favoritesOnly: Bool, questionsTypes: TermComponent) {
 		// will create a quizset with the numberOfQuesteions if available
 		// will only select questions that are not answered or answered incorrectly
 		

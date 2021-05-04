@@ -24,9 +24,6 @@
 		5A2A58DD22F8C35200434910 /* QuizSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58DC22F8C35200434910 /* QuizSetVC.swift */; };
 		5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58DE22F8CE8100434910 /* QuizSetVCH.swift */; };
 		5A2A58EE22FBC24900434910 /* QuizOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58ED22FBC24900434910 /* QuizOptionsVC.swift */; };
-		5A2A58F022FCA3AE00434910 /* QuizBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58EF22FCA3AE00434910 /* QuizBase.swift */; };
-		5A2A58F322FCA5F200434910 /* QuizSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58F222FCA5F200434910 /* QuizSet.swift */; };
-		5A2A58F522FCA64900434910 /* LearningSetBK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A58F422FCA64900434910 /* LearningSetBK.swift */; };
 		5A367D2E22EA683F003A7E4B /* LearningHomeOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D2D22EA683F003A7E4B /* LearningHomeOptionsVC.swift */; };
 		5A367D3422EF513F003A7E4B /* CircularBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A367D3322EF513F003A7E4B /* CircularBar.swift */; };
 		5A37F87A22E74B18008A5FA5 /* ScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37F87922E74B18008A5FA5 /* ScrollController.swift */; };
@@ -128,9 +125,6 @@
 		5A2A58DC22F8C35200434910 /* QuizSetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSetVC.swift; sourceTree = "<group>"; };
 		5A2A58DE22F8CE8100434910 /* QuizSetVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSetVCH.swift; sourceTree = "<group>"; };
 		5A2A58ED22FBC24900434910 /* QuizOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizOptionsVC.swift; sourceTree = "<group>"; };
-		5A2A58EF22FCA3AE00434910 /* QuizBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBase.swift; sourceTree = "<group>"; };
-		5A2A58F222FCA5F200434910 /* QuizSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSet.swift; sourceTree = "<group>"; };
-		5A2A58F422FCA64900434910 /* LearningSetBK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningSetBK.swift; sourceTree = "<group>"; };
 		5A367D2D22EA683F003A7E4B /* LearningHomeOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeOptionsVC.swift; sourceTree = "<group>"; };
 		5A367D3322EF513F003A7E4B /* CircularBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBar.swift; sourceTree = "<group>"; };
 		5A37F87922E74B18008A5FA5 /* ScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollController.swift; sourceTree = "<group>"; };
@@ -363,11 +357,8 @@
 		5A2A58F122FCA4F400434910 /* Quiz Models */ = {
 			isa = PBXGroup;
 			children = (
-				5A2A58EF22FCA3AE00434910 /* QuizBase.swift */,
 				99937AE12640E4A1001E4D4B /* TestBase.swift */,
 				99937AD0263F23E8001E4D4B /* QuizBase2.swift */,
-				5A2A58F222FCA5F200434910 /* QuizSet.swift */,
-				5A2A58F422FCA64900434910 /* LearningSetBK.swift */,
 				99937AD6263F25C7001E4D4B /* LearningSet2.swift */,
 				99937ADA263F79A7001E4D4B /* QuizSet2.swift */,
 			);
@@ -607,7 +598,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */,
-				5A2A58F022FCA3AE00434910 /* QuizBase.swift in Sources */,
 				5A367D2E22EA683F003A7E4B /* LearningHomeOptionsVC.swift in Sources */,
 				99937ADB263F79A7001E4D4B /* QuizSet2.swift in Sources */,
 				5AC448B522BC072C004B47C1 /* QuestionController.swift in Sources */,
@@ -652,8 +642,6 @@
 				5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */,
 				99937AE22640E4A1001E4D4B /* TestBase.swift in Sources */,
 				5A6F31CA21A7032E00E6477E /* DList.swift in Sources */,
-				5A2A58F322FCA5F200434910 /* QuizSet.swift in Sources */,
-				5A2A58F522FCA64900434910 /* LearningSetBK.swift in Sources */,
 				99D55E0225F6C7B7003ABE0B /* QuizCVCell.swift in Sources */,
 				99D55E4A25FF2F17003ABE0B /* CategoryController.swift in Sources */,
 				5ABE7221226CB25F005B83C4 /* Utilities.swift in Sources */,
