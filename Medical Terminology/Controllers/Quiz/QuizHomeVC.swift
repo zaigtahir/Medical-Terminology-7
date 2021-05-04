@@ -160,8 +160,8 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 			vc.categoryListVCH.currentCategoryID = quizHomeVCH.currentCategoryID
 			
 		case myConstants.segueToQuiz:
-			
-			let vc = segue.destination as! QuizSetVC
+			let nc = segue.destination as! UINavigationController
+			let vc = nc.topViewController as! QuizSetVC
 			
 			if quizHomeVCH.startNewQuiz {
 				vc.quizSetVCH.quizSet = quizHomeVCH.getNewQuizSet()

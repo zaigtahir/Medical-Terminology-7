@@ -14,7 +14,8 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
     @IBOutlet weak var nextButton: ZUIRoundedButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var optionsButton: UIBarButtonItem!
-    
+	@IBOutlet weak var doneButton: UIBarButtonItem!
+	
     var scrollDelegate = ScrollController()
     let quizSetVCH = QuizSetVCH()
     let utilities = Utilities()
@@ -152,7 +153,10 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
     @IBAction func optionsButtonAction(_ sender: UIBarButtonItem) {
         showOptionsMenu()
     }
-    
+	@IBAction func doneButtonAction(_ sender: Any) {
+		self.dismiss(animated: true, completion: nil)
+	}
+	
 }
 
 
