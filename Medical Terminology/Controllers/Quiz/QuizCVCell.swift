@@ -77,13 +77,7 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
             }
             
         } else {
-            print ("update code for question is not answered in QuizCVCell")
-            //question is not answered
-       //     let item = dIC.getDItem(itemID: question.itemID)
-			
-			
-       //     question.learnedDefinitionForItem = item.learnedDefinition
-      //      question.learnedTermForItem = item.learnedTerm
+ 
             resultView.backgroundColor = myTheme.colorQsNotAnswered
             cellView.layer.borderColor = myTheme.colorQsNotAnswered?.cgColor
             showAnswerLabel.isHidden = true
