@@ -25,11 +25,11 @@ class DItemController3 {
 	
 	let userCC = UserCategoryController()
 
-	func getCount (catetoryID: Int, isFavorite: Bool?) -> Int{
+	func getCount (categoryID: Int, isFavorite: Bool?) -> Int{
 		
-		let whereQ = whereQuery(categoryID: catetoryID, showOnlyFavorites: .none, isFavorite: isFavorite , answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none)
+		let whereQ = whereQuery(categoryID: categoryID, showOnlyFavorites: .none, isFavorite: isFavorite , answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none)
 		
-		let query = "SELECT COUNT (*) FROM \(tableString(categoryID: catetoryID)) \(whereQ)"
+		let query = "SELECT COUNT (*) FROM \(tableString(categoryID: categoryID)) \(whereQ)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()

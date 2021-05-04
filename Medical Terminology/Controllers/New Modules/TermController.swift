@@ -419,7 +419,7 @@ class TermController {
 			SELECT COUNT (*) FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
-			WHERE catetoryID = \(categoryID)
+			WHERE categoryID = \(categoryID)
 			\(favoriteString)
 			"""
 	

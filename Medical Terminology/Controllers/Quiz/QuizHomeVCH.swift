@@ -27,7 +27,9 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
     
 	let tc = TermController()
 	let cc = CategoryController2()
+	let qc = QuestionController2()
 
+	// counts of items
 	var favoriteTermsCount = 0
 	var categoryTermsCount = 0
 	
@@ -45,30 +47,13 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated {
 	
 	func updateData () {
 		
-		// configure isFavorite variable
-		var isFavorite : Bool?
-			if favoritesOnly {
-				isFavorite = true
-		}
+		categoryTermsCount = tc.getCount2(categoryID: currentCategoryID, favoritesOnly: false)
 		
-		categoryTermsCount = cc.getCountOfTerms(categoryID: currentCategoryID)
+		favoriteTermsCount = tc.getCount2(categoryID: currentCategoryID, favoritesOnly: true)
 		
-		favoriteTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
-	
-		let answeredTermCorrectCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .correct, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		answeredCorrectCount = qc.getCorrectQuestionsCount(categoryID: currentCategoryID, questionType: questionsType, favoriteOnly: favoritesOnly)
 		
-		let answeredDefinitionCorrectCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .correct, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
-		
-		
-		switch questionsType {
-		
-		case .definition:
-			answeredCorrectCount = answeredDefinitionCorrectCount
-		case .term:
-			answeredCorrectCount = answeredTermCorrectCount
-		case .both:
-			answeredCorrectCount = answeredTermCorrectCount + answeredDefinitionCorrectCount
-		}
+		totalQuestionsCount = qc.getTotalQuestionsCount(categoryID: currentCategoryID, questionType: questionsType, favoriteOnly: favoritesOnly)
 		
 	}
     
