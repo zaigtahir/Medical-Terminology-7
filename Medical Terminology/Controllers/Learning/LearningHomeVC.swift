@@ -146,7 +146,8 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		
 		case myConstants.segueLearningSet:
 			
-			let vc = segue.destination as! LearnSetVC
+			let nc = segue.destination as! UINavigationController
+			let vc = nc.topViewController as! LearnSetVC
 			
 			if learningHomeVCH.startNewSet {
 				vc.learnSetVCH.learningSet = learningHomeVCH.getNewLearningSet()

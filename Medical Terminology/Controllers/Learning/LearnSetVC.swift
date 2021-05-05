@@ -14,7 +14,8 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControlle
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+	@IBOutlet weak var doneButton: UIBarButtonItem!
+	
     var scrollDelegate = ScrollController()
     let utilities = Utilities()
     let learnSetVCH = LearningSetVCH()
@@ -189,4 +190,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControlle
         
     }
     
+	@IBAction func doneButtonAction(_ sender: Any) {
+		self.dismiss(animated: true, completion: nil)
+	}
 }
