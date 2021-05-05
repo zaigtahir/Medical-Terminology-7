@@ -464,8 +464,6 @@ class TermController {
 	}
 
 	
-	// MARK: - term status queries
-	
 	// MARK: -Move to flash card controller
 	func flashcardIsLearned (categoryID: Int, termID: Int) -> Bool {
 		let query = "SELECT learnedFlashcard FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
@@ -498,51 +496,6 @@ class TermController {
 		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = 0 WHERE categoryID = \(categoryID)"
 		myDB.executeStatements(query)
 	}
-	
-	// MARK: - move to question controller
-	func setLearnedTerm (categoryID: Int, termID: Int, learned: Bool) {
-		
-		var lt = 0
-		if learned {
-			lt = 1
-		}
-		
-		let query = "UPDATE \(assignedCategories) SET learnedTerm = \(lt) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		
-		myDB.executeStatements(query)
-		
-	}
-	
-	func termIsLearned (categoryID: Int, termID: Int) -> Bool {
-		// add code
-		return true
-	}
-	
-	func setLearnedDefinition  (categoryID: Int, termID: Int, learned: Bool) {
-		
-		var ld = 0
-		if learned {
-			ld = 1
-		}
-		
-		let query = "UPDATE \(assignedCategories) SET learnedTerm = \(ld) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		
-		myDB.executeStatements(query)
-		
-	}
-	
-	func definitionIsLearned (categoryID: Int, termID: Int) -> Bool {
-		// add code
-		return true
-	}
-	
-	func resetLearned(categoryID: Int, termIDs: [Int]) {
-		for termID in termIDs {
-			setLearnedTerm(categoryID: categoryID, termID: termID, learned: false)
-			setLearnedDefinition(categoryID: categoryID, termID: termID, learned: false)
-		}
-	}
-	
 	
 	// MARK: -WHERE string components
 	

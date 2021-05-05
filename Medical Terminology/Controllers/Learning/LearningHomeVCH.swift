@@ -81,9 +81,12 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 	
 	@objc func currentCategoryChangedN (notification : Notification) {
 		
-		print("learningHomeVCH currentCategoryChangedN")
-		
 		if let data = notification.userInfo as? [String : Int] {
+			
+			// clear the learning set
+			if learningSet != nil {
+				learningSet = nil
+			}
 			
 			//there will be only one data here, the categoryID
 			currentCategoryID = data["categoryID"]!

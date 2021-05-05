@@ -151,14 +151,64 @@ class QuestionController2 {
 		question.selectAnswerIndex(answerIndex: answerIndex)
 	}
 	
-	func isLearned (categoryID: Int, question: Question2) -> Bool {
+	func isLearned (categoryID: Int, termID: Int) -> Bool {
 		//will return true if both learned term and learned defintion are true
 		
-		let termIsLearned = tc.termIsLearned(categoryID: categoryID, termID: question.termID)
-		let definitionIsLearned = tc.definitionIsLearned(categoryID: categoryID, termID: question.termID)
+		let query = """
+					SELECT COUNT (*) FROM \(assignedCategories)
+					WHERE categoryID = \(categoryID)
+					AND termID = \(termID)
+					AND learnedTerm = 1
+					AND learnedDefinition = 1
+					"""
 		
-		return termIsLearned && definitionIsLearned
+		if let resultSet =  myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			
+			if Int(resultSet.int(forColumnIndex: 0)) == 0 {
+				return false
+			} else {
+				return true
+			}
+		} else {
+			print ("fatal error making result set in isLearned QuestionController, returning false")
+			return false
+		}
+	}
+	
+	
+	// MARK: - move to question controller
+	func setLearnedTerm (categoryID: Int, termID: Int, learned: Bool) {
 		
+		var lt = 0
+		if learned {
+			lt = 1
+		}
+		
+		let query = "UPDATE \(assignedCategories) SET learnedTerm = \(lt) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		myDB.executeStatements(query)
+		
+	}
+	
+	func setLearnedDefinition  (categoryID: Int, termID: Int, learned: Bool) {
+		
+		var ld = 0
+		if learned {
+			ld = 1
+		}
+		
+		let query = "UPDATE \(assignedCategories) SET learnedTerm = \(ld) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		myDB.executeStatements(query)
+		
+	}
+	
+	func resetLearned(categoryID: Int, termIDs: [Int]) {
+		for termID in termIDs {
+			setLearnedTerm(categoryID: categoryID, termID: termID, learned: false)
+			setLearnedDefinition(categoryID: categoryID, termID: termID, learned: false)
+		}
 	}
 	
 	func saveLearnedStatus (categoryID: Int, question: Question2) {
@@ -166,11 +216,11 @@ class QuestionController2 {
 		if question.questionType == .term
 		
 		{
-			tc.setLearnedTerm (categoryID: categoryID, termID: question.termID, learned: question.learnedTermForItem)
+			setLearnedTerm (categoryID: categoryID, termID: question.termID, learned: question.learnedTermForItem)
 			
 		} else {
 			
-			tc.setLearnedDefinition(categoryID: categoryID, termID: question.termID, learned: question.learnedDefinitionForItem)
+			setLearnedDefinition(categoryID: categoryID, termID: question.termID, learned: question.learnedDefinitionForItem)
 			
 		}
 		

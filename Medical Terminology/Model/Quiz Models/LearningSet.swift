@@ -30,9 +30,9 @@ class LearningSet: QuizBase {
 		
 		termIDs = tc.getTermIDs(categoryID: categoryID, favoritesOnly: favoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: false, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: .none, randomOrder: true, limitTo: numberOfTerms)
 
-		
 		// need to clear all learnedTerm and learnedQuestion from the items in the db
-		tc.resetLearned(categoryID: categoryID, termIDs: termIDs)
+		
+		qc.resetLearned(categoryID: categoryID, termIDs: termIDs)
 		
 		var questions = [Question2]()
 		
@@ -58,14 +58,14 @@ class LearningSet: QuizBase {
 		if question.questionType == .term {
 			if question.learnedTermForItem == true {
 				//set to false in db
-				tc.setLearnedTerm(categoryID: currentCategoryID, termID: question.termID, learned: false)
+				qc.setLearnedTerm(categoryID: currentCategoryID, termID: question.termID, learned: false)
 				
 			}
 		} else {
 			//it is definition type question
 			if question.learnedDefinitionForItem == true {
 				//set to false in db
-				tc.setLearnedDefinition(categoryID: currentCategoryID, termID: question.termID, learned: false)
+				qc.setLearnedDefinition(categoryID: currentCategoryID, termID: question.termID, learned: false)
 			}
 		}
 		
@@ -117,7 +117,7 @@ class LearningSet: QuizBase {
 	func resetLearningSet () {
 		
 		//reset any learned values in the DB
-		tc.resetLearned(categoryID: currentCategoryID, termIDs: termIDs)
+		qc.resetLearned(categoryID: currentCategoryID, termIDs: termIDs)
 		
 		//reload the set with the original questions
 		reset()
