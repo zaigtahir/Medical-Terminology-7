@@ -34,8 +34,6 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
     private var totalQuestions: Int!
     private var questionIndex: Int! //this the index of the question in the quiz, used to identify the question in the quiz for the delegate function
     
-    let dIC = DItemController()
-    
     weak var delegate: QuizCVCellDelegate?
     
     override func awakeFromNib() {

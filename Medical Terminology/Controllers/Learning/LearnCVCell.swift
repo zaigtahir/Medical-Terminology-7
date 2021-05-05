@@ -42,7 +42,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
     //initally set to totalQuestions, then
     private var totalQuestions = 0
     
-    let dIC = DItemController()
     weak var delegate: LearnCVCellDelegate?
     
     override func awakeFromNib() {

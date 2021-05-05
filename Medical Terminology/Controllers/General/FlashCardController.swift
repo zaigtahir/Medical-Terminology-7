@@ -16,16 +16,14 @@ import Foundation
 
 //TODO: need to think about refreshing favorites list from the DB as a card may be unfavorited in another view
 
-class FlashCardController {
+class FlashCardControllerAAA {
     
     private var fullList = DList ()
     private var favoriteList = DList ()
     private var lists = [DList] ()
     
     private var currentListIndex = myConstants.listType_Full
-    
-    private var dIC = DItemController()
-    
+
     init() {
 
         lists.append(fullList)      //appended as index = 0 which will match the shared constant

@@ -34,33 +34,6 @@ class Utilities {
         }
     }
     
-    func makeSampleDBEntries () {
-        
-        let dIC = DItemController()
-        
-        dIC.saveAnsweredTerm(itemID: 2, answerState: 2)
-        dIC.saveAnsweredTerm(itemID: 3, answerState: 2)
-        dIC.saveAnsweredTerm(itemID: 4, answerState: 2)
-        
-        dIC.saveFavorite(itemID: 4, isFavorite: true)
-        dIC.saveFavorite(itemID: 5, isFavorite: true)
-        dIC.saveFavorite(itemID: 11, isFavorite: true)
-        
-        dIC.saveAnsweredDefinition(itemID: 3, answerState: 2)
-        dIC.saveAnsweredDefinition(itemID: 4, answerState: 2)
-        
-        dIC.saveLearnedTerm(itemID: 10, learnedState: true)
-        dIC.saveLearnedTerm(itemID: 11, learnedState: true)
-        dIC.saveLearnedTerm(itemID: 12, learnedState: true)
-        dIC.saveLearnedTerm(itemID: 13, learnedState: true)
-        dIC.saveLearnedTerm(itemID: 14, learnedState: true)
-        dIC.saveLearnedTerm(itemID: 15, learnedState: true)
-        
-        dIC.saveLearnedDefinition(itemID: 11, learnedState: true)
-        dIC.saveLearnedDefinition(itemID: 12, learnedState: true)
-        dIC.saveLearnedDefinition(itemID: 13, learnedState: true)
-        dIC.saveLearnedDefinition(itemID: 14, learnedState: false)
-    }
     
 	func removeIndex (index: Int, array: [Int]) -> [Int]{
 		

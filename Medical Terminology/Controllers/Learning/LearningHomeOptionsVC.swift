@@ -22,8 +22,6 @@ class LearningHomeOptionsVC: UIViewController {
     @IBOutlet weak var maximumSelector: UISegmentedControl!
     @IBOutlet weak var favoriteControl: UISegmentedControl!
     
-    private let dIC = DItemController()
-    
     //number of terms for the learning set, can change with options
     // load this via the segue call
     
