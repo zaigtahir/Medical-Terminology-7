@@ -348,8 +348,6 @@ class TermController {
 	// MARK: - New versions
 
 	
-	
-	
 	// does getTermIDs2 need all these options?
 	func getTermIDs2 (categoryID: Int, favoritesOnly: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> [Int] {
 		
@@ -464,38 +462,7 @@ class TermController {
 	}
 
 	
-	// MARK: -Move to flash card controller
-	func flashcardIsLearned (categoryID: Int, termID: Int) -> Bool {
-		let query = "SELECT learnedFlashcard FROM \(assignedCategories) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			resultSet.next()
-			let status = Int(resultSet.int(forColumnIndex: 0))
-			return status == 1 ?  true : false
-		} else {
-			print ("fatal error getting resultSet in getLearnedFlashcardStatus, returning false")
-			return false
-		}
-	}
 	
-	func setLearnedFlashcard (categoryID: Int, termID: Int, learnedStatus: Bool) {
-		
-		var ls = 0
-		if learnedStatus {
-			ls = 1
-		}
-		
-		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = \(ls) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		
-		myDB.executeStatements(query)
-		
-	}
-	
-	/// Will reset all learnedFlashcard status to 0 (false)
-	func resetLearnedFlashcards (categoryID: Int) {
-		
-		let query = "UPDATE \(assignedCategories) SET learnedFlashcard = 0 WHERE categoryID = \(categoryID)"
-		myDB.executeStatements(query)
-	}
 	
 	// MARK: -WHERE string components
 	

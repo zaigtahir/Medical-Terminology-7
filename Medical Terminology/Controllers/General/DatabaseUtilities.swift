@@ -76,6 +76,11 @@ class DatabaseUtilities  {
         // need to open the current database to use so I can copy the presistent information from it
         useCurrentDatabase()
         
+		print("to code migrateDatabase in DatabaseUtilities")
+		
+		
+		/*
+		
         let dIC = DItemController()
         let dItemsToMigrate = dIC.getDItemsMigrate()
         
@@ -92,6 +97,9 @@ class DatabaseUtilities  {
             dIC.saveDItemsMigrate(dItems: dItemsToMigrate)
             settingsC.updateVersionNumber()
         }
+
+		*/
+
     }
     
     private func useCurrentDatabase () {

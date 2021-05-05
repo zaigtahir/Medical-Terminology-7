@@ -36,7 +36,6 @@
 		5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FF784241207D50036480D /* MyAudioPlayer.swift */; };
 		5A67C14B231071D900BAA2A0 /* QuizDoneCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67C14A231071D900BAA2A0 /* QuizDoneCVCell.swift */; };
 		5A67C14D231077FA00BAA2A0 /* LearnDoneCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67C14C231077FA00BAA2A0 /* LearnDoneCVCell.swift */; };
-		5A6F31B7219C776000E6477E /* DItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F31B6219C776000E6477E /* DItemVC.swift */; };
 		5A6F31CA21A7032E00E6477E /* DList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F31C921A7032E00E6477E /* DList.swift */; };
 		5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78911223428AFA00F7EC48 /* InfoVC.swift */; };
 		5A88633F217226180013FC8B /* Medical Terminology.db in Resources */ = {isa = PBXBuildFile; fileRef = 5A88633D217226180013FC8B /* Medical Terminology.db */; };
@@ -46,7 +45,6 @@
 		5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC0C56E22D6AB77009965F1 /* LearningHomeVC.swift */; };
 		5AC0C57322D6C83C009965F1 /* LearningHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC0C57222D6C83C009965F1 /* LearningHomeVCH.swift */; };
 		5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD725E5225E4E2F007CED84 /* MyTheme.swift */; };
-		5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85733228F26A1008929D5 /* FlashCardController.swift */; };
 		5AF85739228F2C27008929D5 /* FlashcardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashcardCell.swift */; };
 		991AC59F262693DF00E52062 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC59E262693DF00E52062 /* CategoryVC.swift */; };
 		991AC5A7262755E300E52062 /* CategoryVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC5A6262755E300E52062 /* CategoryVCH.swift */; };
@@ -76,6 +74,7 @@
 		99937AD7263F25C7001E4D4B /* LearningSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937AD6263F25C7001E4D4B /* LearningSet.swift */; };
 		99937ADB263F79A7001E4D4B /* QuizSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937ADA263F79A7001E4D4B /* QuizSet.swift */; };
 		99937AE22640E4A1001E4D4B /* TestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937AE12640E4A1001E4D4B /* TestBase.swift */; };
+		99937AFF26425D9F001E4D4B /* FlashcardController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937AFE26425D9F001E4D4B /* FlashcardController2.swift */; };
 		99A722D5261E7846001DEDBD /* SingleLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */; };
 		99A722DC261F5693001DEDBD /* ZUIRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */; };
 		99A723042620D036001DEDBD /* MultiLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A723032620D036001DEDBD /* MultiLineInputVC.swift */; };
@@ -133,7 +132,6 @@
 		5A5FF784241207D50036480D /* MyAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAudioPlayer.swift; sourceTree = "<group>"; };
 		5A67C14A231071D900BAA2A0 /* QuizDoneCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDoneCVCell.swift; sourceTree = "<group>"; };
 		5A67C14C231077FA00BAA2A0 /* LearnDoneCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDoneCVCell.swift; sourceTree = "<group>"; };
-		5A6F31B6219C776000E6477E /* DItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DItemVC.swift; sourceTree = "<group>"; };
 		5A6F31C921A7032E00E6477E /* DList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DList.swift; sourceTree = "<group>"; };
 		5A78911223428AFA00F7EC48 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
 		5A88633D217226180013FC8B /* Medical Terminology.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Medical Terminology.db"; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 		5AC0C56E22D6AB77009965F1 /* LearningHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeVC.swift; sourceTree = "<group>"; };
 		5AC0C57222D6C83C009965F1 /* LearningHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeVCH.swift; sourceTree = "<group>"; };
 		5AD725E5225E4E2F007CED84 /* MyTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTheme.swift; sourceTree = "<group>"; };
-		5AF85733228F26A1008929D5 /* FlashCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardController.swift; sourceTree = "<group>"; };
 		5AF85738228F2C27008929D5 /* FlashcardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardCell.swift; sourceTree = "<group>"; };
 		991AC59E262693DF00E52062 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		991AC5A6262755E300E52062 /* CategoryVCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryVCH.swift; sourceTree = "<group>"; };
@@ -173,6 +170,7 @@
 		99937AD6263F25C7001E4D4B /* LearningSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningSet.swift; sourceTree = "<group>"; };
 		99937ADA263F79A7001E4D4B /* QuizSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSet.swift; sourceTree = "<group>"; };
 		99937AE12640E4A1001E4D4B /* TestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBase.swift; sourceTree = "<group>"; };
+		99937AFE26425D9F001E4D4B /* FlashcardController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardController2.swift; sourceTree = "<group>"; };
 		99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineInputVC.swift; sourceTree = "<group>"; };
 		99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZUIRoundedButton.swift; sourceTree = "<group>"; };
 		99A723032620D036001DEDBD /* MultiLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineInputVC.swift; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
 				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
 				5A886373218E82330013FC8B /* DItemController.swift */,
-				5AF85733228F26A1008929D5 /* FlashCardController.swift */,
 				99937ACD263EDAA2001E4D4B /* QuestionController2.swift */,
 				994175E1245B5BAE00E281DB /* SettingsController.swift */,
 				992E79DE260A43C700C19D49 /* TermController.swift */,
@@ -242,6 +239,7 @@
 				992B56802612870C000457AA /* TextUtilities.swift */,
 				99D55E882601A01A003ABE0B /* UserCategoryController.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
+				99937AFE26425D9F001E4D4B /* FlashcardController2.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -336,7 +334,6 @@
 			children = (
 				99D76AC42616C9CE0062CCD4 /* TermsList.swift */,
 				99D76AD12617909A0062CCD4 /* NoTermsCell.swift */,
-				5A6F31B6219C776000E6477E /* DItemVC.swift */,
 				5A4471642284EE85008E3107 /* TermCell.swift */,
 				5A4471542281C655008E3107 /* TermListVCH.swift */,
 				5A88634D218560030013FC8B /* TermListVC.swift */,
@@ -589,7 +586,6 @@
 				992E79D4260A2ADD00C19D49 /* FlashcardVC.swift in Sources */,
 				5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */,
 				5A03479022D39D0900749EBC /* FMDatabaseAdditions.m in Sources */,
-				5AF85734228F26A1008929D5 /* FlashCardController.swift in Sources */,
 				5A2A58DB22EF7F1400434910 /* QuizHomeVCH.swift in Sources */,
 				99A7230A2621EEAB001DEDBD /* TextInputVCH.swift in Sources */,
 				5A03479622D3EE7500749EBC /* Globals.swift in Sources */,
@@ -633,6 +629,7 @@
 				99937ACE263EDAA2001E4D4B /* QuestionController2.swift in Sources */,
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
 				5A2A58DF22F8CE8100434910 /* QuizSetVCH.swift in Sources */,
+				99937AFF26425D9F001E4D4B /* FlashcardController2.swift in Sources */,
 				992F87042630B3EC00591CF9 /* NoFlashCardCell.swift in Sources */,
 				5A886374218E82330013FC8B /* DItemController.swift in Sources */,
 				5A67C14D231077FA00BAA2A0 /* LearnDoneCVCell.swift in Sources */,
@@ -654,7 +651,6 @@
 				99937AD7263F25C7001E4D4B /* LearningSet.swift in Sources */,
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
 				5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */,
-				5A6F31B7219C776000E6477E /* DItemVC.swift in Sources */,
 				5AF85739228F2C27008929D5 /* FlashcardCell.swift in Sources */,
 				998398E325F6AB3C00CC0354 /* Category.swift in Sources */,
 				99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */,

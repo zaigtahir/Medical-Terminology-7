@@ -253,7 +253,7 @@
                         <outlet property="percentLabel" destination="XdD-qB-MYr" id="KEu-vC-T9t"/>
                         <outlet property="redoButton" destination="rBC-mM-eSS" id="jPB-gM-VvV"/>
                         <outlet property="seeCurrentSetButton" destination="VUo-on-nOO" id="70e-9A-dWd"/>
-                        <segue destination="JHh-Fp-SNL" kind="modal" identifier="segueToLearningSet" modalPresentationStyle="fullScreen" id="u3G-qD-Ibk"/>
+                        <segue destination="JHh-Fp-SNL" kind="presentation" identifier="segueToLearningSet" modalPresentationStyle="fullScreen" id="u3G-qD-Ibk"/>
                         <segue destination="Lyr-cB-l21" kind="show" identifier="segueToLearningHomeOptions" id="4Ah-zW-ngF"/>
                     </connections>
                 </viewController>

@@ -214,16 +214,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		delegate?.shouldUpdateDisplay()
 	}
 	
-	func getFcLearnedCount () -> Int {
-		
-		return tc.getCount(categoryID: currentCategoryID, isFavorite: favoritesOnly ? true : .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: true)
-	}
-	
-	func getFcLearningCount () -> Int {
-		return tc.getCount(categoryID: currentCategoryID, isFavorite: favoritesOnly ? true : .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: false)
-		
-	}
-	
 	func relearnFlashcards () {
 		tc.resetLearnedFlashcards(categoryID: currentCategoryID)
 		updateDataAndDisplay()
