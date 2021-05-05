@@ -29,6 +29,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	weak var delegate: FlashcardVCHDelegate?
 	
 	// controllers
+	let fc = FlashcardController()
 	let tc = TermController()
 	let cc = CategoryController2()
 	let utilities = Utilities()
@@ -197,12 +198,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// MARK: - update data functions
 	
-	/**
-	Will update just the termIDs array
-	*/
 	func updateData () {
 		
-		termIDs = tc.getTermIDs(categoryID: currentCategoryID, favoritesOnly: favoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: learnedStatus, orderByName: true, randomOrder: .none, limitTo: 50)
+		termIDs = fc.getFlashcardTermIDs(categoryID: currentCategoryID, favoritesOnly: favoritesOnly, learnedStatus: learnedStatus)
 	}
 	
 	/**
@@ -215,7 +213,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	func relearnFlashcards () {
-		tc.resetLearnedFlashcards(categoryID: currentCategoryID)
+		fc.resetLearnedFlashcards(categoryID: currentCategoryID)
 		updateDataAndDisplay()
 	}
 	
@@ -255,7 +253,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let countText = "Flashcard: \(indexPath.row + 1) of \(termIDs.count)"
 		let isFavorite = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: term.termID)
 		
-		let fcls = tc.flashcardIsLearned(categoryID: currentCategoryID, termID: term.termID)
+		let fcls = fc.flashcardIsLearned(categoryID: currentCategoryID, termID: term.termID)
 		
 		cell.configure(term: term, fcvMode: viewMode, isFavorite: isFavorite, learnedFlashcard: fcls , counter: countText)
 		
@@ -347,9 +345,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	func pressedGotItButton(termID: Int) {
 		// the got it button changes state locally, so just need to update the db here
-		let fcls = !tc.flashcardIsLearned(categoryID: currentCategoryID, termID: termID)
+		let fcls = !fc.flashcardIsLearned(categoryID: currentCategoryID, termID: termID)
 		
-		tc.setLearnedFlashcard(categoryID: currentCategoryID, termID: termID, learnedStatus: fcls)
+		fc.setLearnedFlashcard(categoryID: currentCategoryID, termID: termID, learnedStatus: fcls)
 		
 		updateData()
 		delegate?.shouldUpdateDisplay()

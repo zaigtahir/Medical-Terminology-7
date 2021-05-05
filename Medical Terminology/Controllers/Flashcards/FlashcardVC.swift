@@ -30,6 +30,7 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 	
 	let cc = CategoryController2()
 	let tc = TermController()
+	let fc = FlashcardController()
 	
 	override func viewDidLoad() {
 		
@@ -80,8 +81,9 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		sliderOutlet.maximumValue = Float(flashCardVCH.termIDs.count - 1)
 		sliderOutlet.value = Float (scrollController.getCellIndex(collectionView: collectionView))
 		
-		let learningCount = flashCardVCH.getFcLearningCount()
-		let learnedCount = flashCardVCH.getFcLearnedCount()
+		let learningCount = fc.getFlashcardCount(categoryID: flashCardVCH.currentCategoryID, favoritesOnly: flashCardVCH.favoritesOnly, learnedStatus: false)
+		
+		let learnedCount = fc.getFlashcardCount(categoryID: flashCardVCH.currentCategoryID, favoritesOnly: flashCardVCH.favoritesOnly, learnedStatus: true)
 		
 		// set up the titles for the learned status switch
 		learnedStatusSwitch.setTitle("Learning \(learningCount)", forSegmentAt: 0)

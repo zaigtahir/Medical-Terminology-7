@@ -11,9 +11,7 @@ import Foundation
 class FlashcardController {
 	
 	// MARK: shorter table names to make things easier
-	let terms = myConstants.dbTableTerms
 	let assignedCategories = myConstants.dbTableAssignedCategories
-	let categories = myConstants.dbTableCategories2
 	
 	func getFlashcardTermIDs (categoryID: Int, favoritesOnly: Bool, learnedStatus: Bool) -> [Int] {
 		
@@ -36,8 +34,6 @@ class FlashcardController {
 		\(favoriteString)
 		"""
 		
-		print("flashcardController getFlashcardTermIDs query: \(query)")
-		
 		var ids = [Int]()
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -46,8 +42,6 @@ class FlashcardController {
 				ids.append(id)
 			}
 		}
-		
-		print("result count =  : \(ids.count)")
 		
 		return ids
 
