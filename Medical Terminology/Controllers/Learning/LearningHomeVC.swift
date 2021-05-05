@@ -9,13 +9,14 @@
 import UIKit
 
 class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
-
+	
 	@IBOutlet weak var favoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
 	@IBOutlet weak var categorySelectButton: UIButton!
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	@IBOutlet weak var percentLabel: UILabel!
 	@IBOutlet weak var circleBarView: UIView!
+	@IBOutlet weak var infoIcon: UILabel!
 	@IBOutlet weak var redoButton: UIButton!
 	@IBOutlet weak var newSetButton: ZUIRoundedButton!
 	@IBOutlet weak var seeCurrentSetButton: ZUIRoundedButton!
@@ -28,10 +29,10 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 	var progressBar: CircularBar!
 	
 	private let cc = CategoryController2()
-
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+		
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
 		
 		learningHomeVCH.delegate = self
@@ -55,51 +56,66 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		favoritesCountLabel.text = "\(learningHomeVCH.favoriteTermsCount)"
 		
 		let c = cc.getCategory(categoryID: learningHomeVCH.currentCategoryID)
-				
+		
 		categoryNameLabel.text = "\(c.name) (\(learningHomeVCH.categoryTermsCount))"
+		
+		let foregroundColor = myTheme.colorLhPbForeground?.cgColor
+		let backgroundColor = myTheme.colorLhPbBackground?.cgColor
+		let fillColor : CGColor
 		
 		if learningHomeVCH.categoryTermsCount == 0 {
 			// no terms available in this category
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
+			infoIcon.isHidden = false
 			headingLabel.isHidden = false
+			
 			headingLabel.text = myConstants.noTermsHeading
 			messageLabel.text = myConstants.noTermsSubheading
 			
-			updateButtons()
-			return
-		}
-		
-		// no favorite terms available
-		if learningHomeVCH.favoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
+			fillColor = UIColor.systemBackground.cgColor
+			
+			newSetButton.isEnabled = false
+			seeCurrentSetButton.isEnabled = learningHomeVCH.isLearningSetAvailable()
+			
+			
+		} else if learningHomeVCH.favoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
+			
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
+			infoIcon.isHidden = false
 			headingLabel.isHidden = false
+			
 			headingLabel.text = myConstants.noFavoriteTermsHeading
 			messageLabel.text = myConstants.noFavoriteTermsSubheading
-			updateButtons()
-			return
-		}
-	
-		// some terms available
-		percentLabel.isHidden = false
-		redoButton.isHidden = false
-		headingLabel.isHidden = true
-		if learningHomeVCH.favoritesOnly {
-			messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) favorite terms."
-			print ("here")
+			
+			fillColor = UIColor.systemBackground.cgColor
+			
+			newSetButton.isEnabled = false
+			seeCurrentSetButton.isEnabled = learningHomeVCH.isLearningSetAvailable()
 			
 		} else {
-			messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) terms."
-			print ("here")
+			
+			// some terms available
+			percentLabel.isHidden = false
+			redoButton.isHidden = false
+			headingLabel.isHidden = true
+			infoIcon.isHidden = true
+			
+			if learningHomeVCH.favoritesOnly {
+				messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) favorite terms."
+				
+			} else {
+				messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) terms."
+			}
+			
+			fillColor = myTheme.colorLhPbFill!.cgColor
+			
+			newSetButton.isEnabled = false
+			seeCurrentSetButton.isEnabled = learningHomeVCH.isLearningSetAvailable()
 		}
 		
-		
-		let foregroundColor = myTheme.colorLhPbForeground?.cgColor
-		let backgroundColor = myTheme.colorLhPbBackground?.cgColor
-		let fillColor =  myTheme.colorLhPbFill?.cgColor
-		
-		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!
+		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor
 								  , lineWidth: myTheme.progressBarWidth)
 		
 		progressBar.setStrokeEnd(partialCount: learningHomeVCH.learnedTermsCount, totalCount: learningHomeVCH.totalTermsCount)
@@ -151,7 +167,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			vc.delegate = learningHomeVCH   //assigning the VCH to the options as it's delegate
 			vc.isFavoriteMode = learningHomeVCH.favoritesOnly
 			vc.numberOfTerms = learningHomeVCH.numberOfTerms
-		
+			
 		case myConstants.segueSelectCategory:
 			
 			let nc = segue.destination as! UINavigationController
