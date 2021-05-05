@@ -22,7 +22,6 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var optionsButton: UIBarButtonItem!
 	@IBOutlet weak var headingLabel: UILabel!
-	@IBOutlet weak var subheadingLabel: UILabel!
 	
 	let learningHomeVCH = LearningHomeVCH()
 	let utilities = Utilities()
@@ -64,11 +63,8 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
 			headingLabel.isHidden = false
-			subheadingLabel.isHidden = false
-			messageLabel.isHidden = true
-			
 			headingLabel.text = myConstants.noTermsHeading
-			subheadingLabel.text = myConstants.noTermsSubheading
+			messageLabel.text = myConstants.noTermsSubheading
 			
 			updateButtons()
 			return
@@ -79,11 +75,8 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
 			headingLabel.isHidden = false
-			subheadingLabel.isHidden = false
-			messageLabel.isHidden = true
-			
 			headingLabel.text = myConstants.noFavoriteTermsHeading
-			subheadingLabel.text = myConstants.noFavoriteTermsSubheading
+			messageLabel.text = myConstants.noFavoriteTermsSubheading
 			updateButtons()
 			return
 		}
@@ -92,9 +85,6 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		percentLabel.isHidden = false
 		redoButton.isHidden = false
 		headingLabel.isHidden = true
-		subheadingLabel.isHidden = true
-		messageLabel.isHidden = false
-		
 		if learningHomeVCH.favoritesOnly {
 			messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) favorite terms."
 			print ("here")
