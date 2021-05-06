@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: change to use TestBase
 
-class LearningSet: QuizBase {
+class LearningSet: TestBase {
 	
 	/// to save the original termIDs for resetting the learned items when resetting the quiz
 	private let termIDs : [Int]
@@ -28,7 +28,8 @@ class LearningSet: QuizBase {
 		
 		print ("LearningSet init getting termIDs")
 		
-		termIDs = tc.getTermIDs(categoryID: categoryID, favoritesOnly: favoritesOnly, isFavorite: .none, answeredTerm: .none, answeredDefinition: .none, learned: false, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none, orderByName: .none, randomOrder: true, limitTo: numberOfTerms)
+		
+		termIDs = qc.getTermIDsAvailableToLearn(categoryID: categoryID, numberOfTerms: numberOfTerms, favoritesOnly: favoritesOnly)
 
 		// need to clear all learnedTerm and learnedQuestion from the items in the db
 		

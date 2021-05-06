@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol LearnSetVCDelegate: AnyObject {
+	func doneButtonPressed()
+}
+
 class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControllerDelegate, LearnCVCellDelegate, LearnDoneCVCellDelegate {
     
     @IBOutlet weak var optionsButton: UIBarButtonItem!
@@ -19,6 +23,8 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControlle
     var scrollDelegate = ScrollController()
     let utilities = Utilities()
     let learnSetVCH = LearningSetVCH()
+	
+	weak var delegate : LearnSetVCDelegate?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -191,6 +197,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControlle
     }
     
 	@IBAction func doneButtonAction(_ sender: Any) {
+		delegate?.doneButtonPressed()
 		self.dismiss(animated: true, completion: nil)
 	}
 }

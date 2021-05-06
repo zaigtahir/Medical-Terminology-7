@@ -256,43 +256,7 @@ class TermController {
 	
 	// MARK: - Non search text queries
 	
-	func getTermIDs (categoryID: Int, favoritesOnly: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> [Int] {
-		
-		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
-		
-		let whereStatement = self.whereStatement (categoryID: categoryID,
-												  showOnlyFavorites: favoritesOnly,
-												  isFavorite: isFavorite,
-												  answeredTerm: answeredTerm,
-												  answeredDefinition: answeredDefinition,
-												  learned: learned,
-												  learnedTerm: learnedTerm,
-												  learnedDefinition: learnedDefinition,
-												  learnedFlashcard: learnedFlashcard,
-												  orderByName: orderByName,
-												  randomOrder: randomOrder,
-												  limitTo: limitTo)
-		
-		let query = ("\(selectStatement) \(whereStatement)")
-		
-		print("getTermIDs query: \(query)")
-		
-		var ids = [Int]()
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			while resultSet.next() {
-				let id = Int(resultSet.int(forColumnIndex: 0))
-				ids.append(id)
-			}
-		}
-		
-		
-		print("result count =  : \(ids.count)")
-		
-		return ids
-	}
-	
-	func getCount (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) -> Int {
+	func getCount222 (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) -> Int {
 		
 		// will remove leading hypen for count purposes
 		
@@ -461,8 +425,6 @@ class TermController {
 		return ids
 	}
 
-	
-	
 	
 	// MARK: -WHERE string components
 	

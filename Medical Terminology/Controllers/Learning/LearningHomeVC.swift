@@ -98,7 +98,13 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			
 			// some terms available
 			percentLabel.isHidden = false
-			redoButton.isHidden = false
+			
+			if learningHomeVCH.learnedTermsCount > 0 {
+				redoButton.isHidden = false
+			} else {
+				redoButton.isHidden = true
+			}
+			
 			headingLabel.isHidden = true
 			infoIcon.isHidden = true
 			
@@ -155,8 +161,11 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! LearnSetVC
 			
+			vc.delegate = learningHomeVCH
+			
 			if learningHomeVCH.startNewSet {
 				vc.learnSetVCH.learningSet = learningHomeVCH.getNewLearningSet()
+				
 				
 			} else {
 				vc.learnSetVCH.learningSet = learningHomeVCH.getLearningSet()

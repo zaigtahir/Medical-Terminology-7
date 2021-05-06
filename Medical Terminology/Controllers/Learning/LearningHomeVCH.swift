@@ -12,8 +12,8 @@ protocol LearningHomeVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
 }
 
-class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
-	
+class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
+
 	private var learningSet: LearningSet!
 	
 	var currentCategoryID = 1
@@ -24,6 +24,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 	var startNewSet = true	//will be used for segue
 	let tc = TermController()
 	let cc = CategoryController2()
+	let qc = QuestionController2()
    
 	// counts, use updateData to update these values
 	var favoriteTermsCount = 0
@@ -157,19 +158,16 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 	
 	func updateData () {
 		
-		// configure isFavorite variable
-		var isFavorite : Bool?
-			if favoritesOnly {
-				isFavorite = true
-		}
+		print("in updateData learningHomeVCH")
 		
 		// learned terms are terms where both the term and the definitions is learned
 		
 		categoryTermsCount = cc.getCountOfTerms(categoryID: currentCategoryID)
 		
-		favoriteTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: true, answeredTerm: .none, answeredDefinition: .none, learned: .none, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		favoriteTermsCount = tc.getCount2(categoryID: currentCategoryID, favoritesOnly: true)
 		
-		learnedTermsCount = tc.getCount(categoryID: currentCategoryID, isFavorite: isFavorite, answeredTerm: .none, answeredDefinition: .none, learned: true, learnedTerm: .none, learnedDefinition: .none, learnedFlashcard: .none)
+		// add to question controller
+		learnedTermsCount = qc.getLearnedTermsCount(categoryID: currentCategoryID, favoritesOnly: favoritesOnly)
 		
 		if favoritesOnly {
 			totalTermsCount = favoriteTermsCount
@@ -199,14 +197,14 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 
 	func restartOver () {
 		
-		print("code to start over")
-		/*
-		//clear the learned terms based on favorites filter
-		if isFavoriteMode {
-			dIC.clearLearnedItems(favoriteState: 1)
-		} else {
-			dIC.clearLearnedItems(favoriteState: -1)
-		}*/
+		qc.resetLearned(categoryID: currentCategoryID)
+		
+		// clear the learningSet
+		learningSet = nil
+		
+		updateData()
+		
+		delegate?.shouldUpdateDisplay()
 		
 	}
 	
@@ -218,5 +216,11 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated  {
 		/*
 		self.isFavoriteMode = isFavoriteMode
 		self.numberOfTerms = numberOfTerms*/
+	}
+	
+	// MARK: - LearnSetVCDelegate
+	func doneButtonPressed() {
+		updateData()
+		delegate?.shouldUpdateDisplay()
 	}
 }

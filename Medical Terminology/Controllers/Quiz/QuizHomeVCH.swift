@@ -199,8 +199,6 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated, QuizSetVCDelegate {
     
     func restartOver () {
 		
-		// MARK: make restart over function
-		
 		qc.resetAnswers(categoryID: currentCategoryID, questionType: questionsType)
 	
         //clear the quiz

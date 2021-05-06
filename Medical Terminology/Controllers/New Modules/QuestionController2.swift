@@ -151,6 +151,8 @@ class QuestionController2 {
 		question.selectAnswerIndex(answerIndex: answerIndex)
 	}
 	
+	// MARK: - learning related functions
+	
 	func isLearned (categoryID: Int, termID: Int) -> Bool {
 		//will return true if both learned term and learned defintion are true
 		
@@ -176,8 +178,6 @@ class QuestionController2 {
 		}
 	}
 	
-	
-	// MARK: - move to question controller
 	func setLearnedTerm (categoryID: Int, termID: Int, learned: Bool) {
 		
 		var lt = 0
@@ -186,6 +186,8 @@ class QuestionController2 {
 		}
 		
 		let query = "UPDATE \(assignedCategories) SET learnedTerm = \(lt) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		print ("setLearnedTerm query: \(query)")
 		
 		myDB.executeStatements(query)
 		
@@ -198,17 +200,32 @@ class QuestionController2 {
 			ld = 1
 		}
 		
-		let query = "UPDATE \(assignedCategories) SET learnedTerm = \(ld) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		let query = "UPDATE \(assignedCategories) SET learnedDefinition = \(ld) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
+		
+		print("setLearnedDefinition query: \(query)")
 		
 		myDB.executeStatements(query)
 		
 	}
 	
+	/**
+	reset all these terms in this category
+	*/
 	func resetLearned(categoryID: Int, termIDs: [Int]) {
 		for termID in termIDs {
 			setLearnedTerm(categoryID: categoryID, termID: termID, learned: false)
 			setLearnedDefinition(categoryID: categoryID, termID: termID, learned: false)
 		}
+	}
+	
+	/**
+	reset all learned in this category
+	*/
+	func resetLearned(categoryID: Int) {
+		
+		let query = "UPDATE \(assignedCategories) SET learnedTerm = \(AnsweredState.unanswered.rawValue), learnedDefinition = \(AnsweredState.unanswered.rawValue) WHERE categoryID = \(categoryID)"
+		
+		myDB.executeStatements(query)
 	}
 	
 	func saveLearnedStatus (categoryID: Int, question: Question2) {
@@ -225,6 +242,68 @@ class QuestionController2 {
 		}
 		
 	}
+	
+	func getTermIDsAvailableToLearn (categoryID: Int, numberOfTerms: Int, favoritesOnly: Bool) -> [Int] {
+		// These are term where learnedTerm && learnedDefinition != true
+		
+		var favoriteString = ""
+		if favoritesOnly {
+			favoriteString = " AND isFavorite = 1"
+		}
+		
+		let query = """
+		SELECT termID from \(assignedCategories)
+		WHERE categoryID  = \(categoryID)
+		\(favoriteString)
+		AND (learnedTerm = 0 OR learnedDefinition = 0)
+		ORDER BY RANDOM ()
+		LIMIT \(numberOfTerms)
+		"""
+		
+		print("getTermIDsAvailableToLearn in qc: \(query)")
+		
+		var ids = [Int]()
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+			}
+		}
+		
+		return ids
+		
+	}
+	
+	func getLearnedTermsCount (categoryID: Int, favoritesOnly: Bool) -> Int {
+		
+		var favoriteString = ""
+		if favoritesOnly {
+			favoriteString = " AND isFavorite = 1"
+		}
+		
+		let query = """
+		SELECT COUNT (*) FROM \(assignedCategories)
+		WHERE categoryID = \(categoryID)
+		AND (learnedTerm = 1 AND learnedDefinition = 1)
+		\(favoriteString)
+		"""
+		
+		print("getLearnedTermsCount in qc query: \(query)")
+		
+		var count = 0
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			count = Int (resultSet.int(forColumnIndex: 0))
+		} else {
+			print("fatal error making result set in getQuestionsAvailableCount")
+		}
+		
+		return count
+	}
+	
+	// MARK: - quiz related functions
 	
 	func saveAnsweredStatus (categoryID: Int, question: Question2) {
 		
@@ -303,69 +382,6 @@ class QuestionController2 {
 		
 		myDB.executeStatements(query)
 	}
-	
-	// MARK: - counts
-	
-	func getTotalQuestionsCount (categoryID: Int, questionType: TermComponent, favoriteOnly: Bool) -> Int {
-		
-		switch questionType {
-		
-		case .term, .definition:
-			return tc.getCount2(categoryID: categoryID, favoritesOnly: favoriteOnly)
-			
-		case .both:
-			return tc.getCount2(categoryID: categoryID, favoritesOnly: favoriteOnly) * 2
-		}
-		
-	}
-	
-	func getCorrectQuestionsCount  (categoryID: Int, questionType: TermComponent, favoriteOnly: Bool) -> Int {
-		
-		var favoriteString = ""
-		if favoriteOnly {
-			favoriteString = " AND isFavorite = 1"
-		}
-		
-		var query : String
-		
-		switch questionType {
-		
-		case .term:
-			query = """
-				SELECT COUNT (*) termID FROM \(assignedCategories)
-				WHERE answeredTerm = \(AnsweredState.correct.rawValue)
-				\(favoriteString)
-				"""
-		case .definition:
-			query = """
-				SELECT COUNT (*) termID FROM \(assignedCategories)
-				WHERE answeredDefinition = \(AnsweredState.correct.rawValue)
-				\(favoriteString)
-				"""
-		case .both:
-			query = """
-				SELECT COUNT (*) termID FROM \(assignedCategories)
-				WHERE answeredTerm = \(AnsweredState.correct.rawValue)
-				OR answeredDefinition = \(AnsweredState.correct.rawValue)
-				\(favoriteString)
-				"""
-		}
-		
-		var count = 0
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			resultSet.next()
-			count = Int (resultSet.int(forColumnIndex: 0))
-		} else {
-			print("fatal error making result set in getQuestionsAvailableCount")
-		}
-		
-		return count
-		
-		
-	}
-	
-	// MARK: - quiz questions
 	
 	/// return array of ids where answeredTerm = unanswered OR incorrect
 	func getAvilableTermQuestions (categoryID: Int, numberOfQuestions: Int, favoriteOnly: Bool) -> [Question2] {
@@ -469,4 +485,66 @@ class QuestionController2 {
 		
 		return questions
 	}
+	
+	// MARK: - counts
+	
+	func getTotalQuestionsCount (categoryID: Int, questionType: TermComponent, favoriteOnly: Bool) -> Int {
+		
+		switch questionType {
+		
+		case .term, .definition:
+			return tc.getCount2(categoryID: categoryID, favoritesOnly: favoriteOnly)
+			
+		case .both:
+			return tc.getCount2(categoryID: categoryID, favoritesOnly: favoriteOnly) * 2
+		}
+		
+	}
+	
+	func getCorrectQuestionsCount  (categoryID: Int, questionType: TermComponent, favoriteOnly: Bool) -> Int {
+		
+		var favoriteString = ""
+		if favoriteOnly {
+			favoriteString = " AND isFavorite = 1"
+		}
+		
+		var query : String
+		
+		switch questionType {
+		
+		case .term:
+			query = """
+				SELECT COUNT (*) termID FROM \(assignedCategories)
+				WHERE answeredTerm = \(AnsweredState.correct.rawValue)
+				\(favoriteString)
+				"""
+		case .definition:
+			query = """
+				SELECT COUNT (*) termID FROM \(assignedCategories)
+				WHERE answeredDefinition = \(AnsweredState.correct.rawValue)
+				\(favoriteString)
+				"""
+		case .both:
+			query = """
+				SELECT COUNT (*) termID FROM \(assignedCategories)
+				WHERE answeredTerm = \(AnsweredState.correct.rawValue)
+				OR answeredDefinition = \(AnsweredState.correct.rawValue)
+				\(favoriteString)
+				"""
+		}
+		
+		var count = 0
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			count = Int (resultSet.int(forColumnIndex: 0))
+		} else {
+			print("fatal error making result set in getQuestionsAvailableCount")
+		}
+		
+		return count
+		
+		
+	}
+
 }

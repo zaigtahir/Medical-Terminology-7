@@ -71,7 +71,6 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 			redoButton.isHidden = true
 			infoIcon.isHidden = false
 			headingLabel.isHidden = false
-			messageLabel.isHidden = false
 			
 			headingLabel.text = myConstants.noTermsHeading
 			messageLabel.text = myConstants.noTermsSubheading
@@ -88,7 +87,6 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 			redoButton.isHidden = true
 			infoIcon.isHidden = false
 			headingLabel.isHidden = false
-			messageLabel.isHidden = false
 			
 			headingLabel.text = myConstants.noFavoriteTermsHeading
 			messageLabel.text = myConstants.noFavoriteTermsSubheading
@@ -111,7 +109,6 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 			
 			infoIcon.isHidden = true
 			headingLabel.isHidden = true
-			messageLabel.isHidden = false
 			
 			newSetButton.isEnabled = true
 			seeCurrentSetButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
