@@ -532,8 +532,6 @@ class QuestionController2 {
 		}
 		
 		return count
-		
-		
 	}
 
 }
