@@ -12,7 +12,7 @@ import Foundation
 This class will handle items related to getting and saving items related to questions, quiz and learning set
 */
 
-class QuestionController2 {
+class QuestionController {
 	// MARK: shorter table names to make things easier
 	let terms = myConstants.dbTableTerms
 	

@@ -27,7 +27,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated, QuizSetVCDelegate {
     
 	let tc = TermController()
 	let cc = CategoryController2()
-	let qc = QuestionController2()
+	let qc = QuestionController()
 
 	// counts of items
 	var favoriteTermsCount = 0

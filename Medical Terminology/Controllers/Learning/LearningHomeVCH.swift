@@ -24,7 +24,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	var startNewSet = true	//will be used for segue
 	let tc = TermController()
 	let cc = CategoryController2()
-	let qc = QuestionController2()
+	let qc = QuestionController()
    
 	// counts, use updateData to update these values
 	var favoriteTermsCount = 0
