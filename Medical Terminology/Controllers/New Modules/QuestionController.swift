@@ -22,10 +22,10 @@ class QuestionController {
 	let assignedCategories = myConstants.dbTableAssignedCategories
 	
 	/// question is term, answers are definitions which do not include the definition in the term
-	func makeTermQuestion (termID: Int, randomizeAnswers: Bool) -> Question2 {
+	func makeTermQuestion (termID: Int, randomizeAnswers: Bool) -> Question {
 		
 		let term = tc.getTerm(termID: termID)
-		let question = Question2 ()
+		let question = Question ()
 		
 		question.questionType = .term
 		question.termID = term.termID
@@ -49,11 +49,11 @@ class QuestionController {
 	}
 	
 	/// question is definition, anwers are terms which do not include the term name
-	func makeDefinitionQuestion (termID: Int, randomizeAnswers: Bool) -> Question2 {
+	func makeDefinitionQuestion (termID: Int, randomizeAnswers: Bool) -> Question {
 		
 		let term = tc.getTerm(termID: termID)
 		
-		let question = Question2 ()
+		let question = Question ()
 		question.questionType = .definition
 		question.termID = term.termID
 		question.questionText = term.definition
@@ -75,7 +75,7 @@ class QuestionController {
 		return question
 	}
 	
-	func makeRandomTypeQuestion (termID: Int, randomizeAnswers: Bool) -> Question2 {
+	func makeRandomTypeQuestion (termID: Int, randomizeAnswers: Bool) -> Question {
 		
 		let r = Int.random(in: 0...1)
 		
@@ -87,8 +87,8 @@ class QuestionController {
 		
 	}
 	
-	func makeSampleQuestion () -> Question2 {
-		let question = Question2()
+	func makeSampleQuestion () -> Question {
+		let question = Question()
 		question.termID = 0
 		
 		question.questionText = "This is sample question text"
@@ -147,7 +147,7 @@ class QuestionController {
 		return definitions
 	}
 	
-	func selectAnswer (question: Question2, answerIndex: Int) {
+	func selectAnswer (question: Question, answerIndex: Int) {
 		question.selectAnswerIndex(answerIndex: answerIndex)
 	}
 	
@@ -178,7 +178,7 @@ class QuestionController {
 		}
 	}
 	
-	func saveLearnedStatus (categoryID: Int, question: Question2) {
+	func saveLearnedStatus (categoryID: Int, question: Question) {
 		
 		if question.questionType == .term
 		
@@ -298,7 +298,7 @@ class QuestionController {
 	
 	// MARK: - quiz related functions
 	
-	func saveAnsweredStatus (categoryID: Int, question: Question2) {
+	func saveAnsweredStatus (categoryID: Int, question: Question) {
 		
 		switch question.questionType {
 		case .term:
@@ -377,9 +377,9 @@ class QuestionController {
 	}
 	
 	/// return array of ids where answeredTerm = unanswered OR incorrect
-	func getAvilableTermQuestions (categoryID: Int, numberOfQuestions: Int, favoriteOnly: Bool) -> [Question2] {
+	func getAvilableTermQuestions (categoryID: Int, numberOfQuestions: Int, favoriteOnly: Bool) -> [Question] {
 		
-		var questions = [Question2]()
+		var questions = [Question]()
 		
 		var favoriteString = ""
 		if favoriteOnly {
@@ -405,9 +405,9 @@ class QuestionController {
 	}
 	
 	/// return array of ids where answeredDefinition = unanswered OR incorrect
-	func getAvailableDefinitionQuestions (categoryID: Int, numberOfQuestions: Int, favoriteOnly: Bool) -> [Question2]  {
+	func getAvailableDefinitionQuestions (categoryID: Int, numberOfQuestions: Int, favoriteOnly: Bool) -> [Question]  {
 		
-		var questions = [Question2]()
+		var questions = [Question]()
 		
 		var favoriteString = ""
 		if favoriteOnly {
@@ -434,9 +434,9 @@ class QuestionController {
 	}
 	
 	/// return array of ids where (answeredTerm = unanswered OR incorrect) OR (answeredDefinition = unanswered OR incorrect)
-	func getAvailableQuestions (categoryID: Int, numberOfQuestions: Int, favoritesOnly: Bool) -> [Question2]  {
+	func getAvailableQuestions (categoryID: Int, numberOfQuestions: Int, favoritesOnly: Bool) -> [Question]  {
 		
-		var questions = [Question2]()
+		var questions = [Question]()
 		
 		var favoriteString = ""
 		if favoritesOnly {
@@ -460,7 +460,7 @@ class QuestionController {
 				let termID = Int(resultSet.int(forColumnIndex: 0))
 				let type = Int(resultSet.int(forColumnIndex: 1))
 				
-				var q : Question2
+				var q : Question
 				
 				if type == 1 {
 					q = makeTermQuestion(termID: termID, randomizeAnswers: true)

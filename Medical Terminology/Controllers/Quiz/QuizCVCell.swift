@@ -29,7 +29,7 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var question: Question2! //the question to show
+    private var question: Question! //the question to show
     private var showAnswer = false
     private var totalQuestions: Int!
     private var questionIndex: Int! //this the index of the question in the quiz, used to identify the question in the quiz for the delegate function
@@ -49,7 +49,7 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         
     }
     
-    func configure (question: Question2, questionIndex: Int, totalQuestions: Int) {
+    func configure (question: Question, questionIndex: Int, totalQuestions: Int) {
         self.questionIndex = questionIndex
         self.question = question
         self.totalQuestions = totalQuestions

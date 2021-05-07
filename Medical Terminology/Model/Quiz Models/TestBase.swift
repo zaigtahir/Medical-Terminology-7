@@ -10,19 +10,19 @@ import Foundation
 
 class TestBase {
 	
-	var activeQuestions = [Question2]()
+	var activeQuestions = [Question]()
 	
-	var masterList = [Question2]()
+	var masterList = [Question]()
 	
-	var originalQuestions = [Question2]()
+	var originalQuestions = [Question]()
 	
-	init (originalQuestions: [Question2]) {
+	init (originalQuestions: [Question]) {
 		
 		//keep original question untouched and for use to reset the quiz
 		
 		self.originalQuestions = originalQuestions
 		
-		self.originalQuestions.append(Question2())   //append a place holder to use as the last/summary screen
+		self.originalQuestions.append(Question())   //append a place holder to use as the last/summary screen
 		
 		self.masterList = getCopyOfQuestions(questions: self.originalQuestions)
 		
@@ -30,9 +30,9 @@ class TestBase {
 		
 	}
 	
-	private func getCopyOfQuestions (questions: [Question2]) -> [Question2] {
+	private func getCopyOfQuestions (questions: [Question]) -> [Question] {
 		
-		var questionsCopy = [Question2]()
+		var questionsCopy = [Question]()
 		
 		for q in questions {
 			
@@ -75,7 +75,7 @@ class TestBase {
 			activeQuestions.append(questionCopy)    //append the question
 			
 			// now ADD a BLANK question to the master list
-			masterList.append(Question2())
+			masterList.append(Question())
 			
 		} else {
 			// get the max index this can be inserted into in the masterList
@@ -93,7 +93,7 @@ class TestBase {
 		
 	}
 	
-	func getQuestion (index: Int) -> Question2 {
+	func getQuestion (index: Int) -> Question {
 		
 		return activeQuestions[index]
 	}
@@ -119,7 +119,7 @@ class TestBase {
 		//list = 0 master
 		//list = 1 activeQuestions
 		
-		var questionList = [Question2]()
+		var questionList = [Question]()
 		
 		if list == 0 {
 			questionList = masterList
@@ -147,7 +147,7 @@ class TestBase {
 		return correct
 	}
 	
-	func addFeedbackRemarks (question: Question2) {
+	func addFeedbackRemarks (question: Question) {
 		//will add feedback to question based on answered/right/wrong status
 		
 		if question.isAnswered() {
@@ -185,7 +185,7 @@ class TestBase {
 		
 		//remember to clear learned or answered terms in the appropriate subclass
 		masterList = getCopyOfQuestions(questions: originalQuestions)
-		activeQuestions = [Question2]()
+		activeQuestions = [Question]()
 		moveQuestion()
 	}
 	

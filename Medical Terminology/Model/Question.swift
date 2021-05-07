@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Question2 {
+class Question {
 	//blank questionText
 	var questionText: String = ""
 	var answers = [Answer]()
@@ -119,9 +119,9 @@ class Question2 {
 		
 	}
 	
-	func getCopy () -> Question2 {
+	func getCopy () -> Question {
 		
-		let question = Question2 ()
+		let question = Question ()
 		
 		question.questionText = self.questionText
 		question.answers = self.answers

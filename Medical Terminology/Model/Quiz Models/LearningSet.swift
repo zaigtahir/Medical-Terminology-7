@@ -35,7 +35,7 @@ class LearningSet: TestBase {
 		
 		qc.resetLearned(categoryID: categoryID, termIDs: termIDs)
 		
-		var questions = [Question2]()
+		var questions = [Question]()
 		
 		for termID in termIDs {
 			questions.append(qc.makeTermQuestion(termID: termID, randomizeAnswers: true))

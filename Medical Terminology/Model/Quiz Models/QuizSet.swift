@@ -21,7 +21,7 @@ class QuizSet: TestBase {
 		// will only select questions that are not answered or answered incorrectly
 		
 		// for now just test out term questions
-		var questions = [Question2]()
+		var questions = [Question]()
 		currentCategoryID = categoryID
 		
 		switch questionsTypes {
