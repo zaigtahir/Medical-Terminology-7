@@ -13,7 +13,6 @@
 		5A03478F22D39D0900749EBC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03478A22D39D0900749EBC /* FMDatabasePool.m */; };
 		5A03479022D39D0900749EBC /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03478B22D39D0900749EBC /* FMDatabaseAdditions.m */; };
 		5A03479622D3EE7500749EBC /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A03479522D3EE7500749EBC /* Globals.swift */; };
-		5A1506252255796C00717AB8 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1506242255796C00717AB8 /* Question.swift */; };
 		5A15062A22557E7C00717AB8 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A15062922557E7C00717AB8 /* Answer.swift */; };
 		5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A189C2C216D8E8400929AB8 /* AppDelegate.swift */; };
 		5A189C32216D8E8400929AB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A189C30216D8E8400929AB8 /* Main.storyboard */; };
@@ -109,7 +108,6 @@
 		5A03478A22D39D0900749EBC /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
 		5A03478B22D39D0900749EBC /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
 		5A03479522D3EE7500749EBC /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
-		5A1506242255796C00717AB8 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		5A15062922557E7C00717AB8 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		5A189C29216D8E8400929AB8 /* Practical Medical Terminology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Practical Medical Terminology.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A189C2C216D8E8400929AB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -409,7 +407,6 @@
 				5A2A58F122FCA4F400434910 /* Quiz Models */,
 				5A189C3E217123B900929AB8 /* DItem.swift */,
 				5A6F31C921A7032E00E6477E /* DList.swift */,
-				5A1506242255796C00717AB8 /* Question.swift */,
 				99937AD3263F24FB001E4D4B /* Question2.swift */,
 				5A15062922557E7C00717AB8 /* Answer.swift */,
 				998398E225F6AB3C00CC0354 /* Category.swift */,
@@ -610,7 +607,6 @@
 				992B56A4261382BF000457AA /* ValidationVC.swift in Sources */,
 				992E79E0260A43C700C19D49 /* TermController.swift in Sources */,
 				99D55E0A25F6DAD8003ABE0B /* CategoryListVC.swift in Sources */,
-				5A1506252255796C00717AB8 /* Question.swift in Sources */,
 				99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */,
 				99D55E4D25FF5A03003ABE0B /* Tests.swift in Sources */,
 				5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */,
