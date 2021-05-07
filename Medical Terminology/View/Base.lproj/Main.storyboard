@@ -266,11 +266,11 @@
             <objects>
                 <viewController id="jnX-w5-48g" customClass="LearnSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0J-5h-kGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-fD-D2Q">
-                                <rect key="frame" x="0.0" y="64" width="414" height="582"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="846"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SJO-0c-at0">
                                     <size key="itemSize" width="391" height="365"/>
@@ -471,34 +471,32 @@
                                                     <rect key="frame" x="8" y="8" width="375" height="349"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Are Done!" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtJ-gC-BHA">
-                                                            <rect key="frame" x="56.666666666666657" y="45" width="261.66666666666674" height="48"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                                            <rect key="frame" x="121.33333333333336" y="45" width="132.66666666666663" height="24"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <color key="textColor" name="color main"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You learned all the terms" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFl-Gd-8Ak">
-                                                            <rect key="frame" x="93.333333333333329" y="122.99999999999999" width="188.33333333333337" height="20.333333333333329"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" name="color heading"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvb-FO-TBm">
-                                                            <rect key="frame" x="99.666666666666686" y="203.33333333333334" width="176" height="33"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvb-FO-TBm">
+                                                            <rect key="frame" x="94" y="269" width="176" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="Redo This Learning Set"/>
                                                             <connections>
                                                                 <action selector="restartButtonAction:" destination="w8C-AU-PtX" eventType="touchUpInside" id="5ZE-7l-vgo"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You learned all the terms" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFl-Gd-8Ak">
+                                                            <rect key="frame" x="94" y="222" width="188.33333333333337" height="20.333333333333329"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" name="color heading"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
                                                     <constraints>
                                                         <constraint firstItem="vvb-FO-TBm" firstAttribute="centerX" secondItem="9IY-Pl-LGD" secondAttribute="centerX" id="A1y-3o-HE3"/>
-                                                        <constraint firstItem="yFl-Gd-8Ak" firstAttribute="top" secondItem="DtJ-gC-BHA" secondAttribute="bottom" constant="30" id="BBf-oK-lIz"/>
                                                         <constraint firstItem="DtJ-gC-BHA" firstAttribute="centerX" secondItem="9IY-Pl-LGD" secondAttribute="centerX" id="CXH-uM-Ijh"/>
-                                                        <constraint firstItem="vvb-FO-TBm" firstAttribute="top" secondItem="yFl-Gd-8Ak" secondAttribute="bottom" constant="60" id="HdF-Bn-X1x"/>
                                                         <constraint firstItem="DtJ-gC-BHA" firstAttribute="top" secondItem="9IY-Pl-LGD" secondAttribute="top" constant="45.000000000000114" id="IwZ-q2-6vs"/>
-                                                        <constraint firstItem="yFl-Gd-8Ak" firstAttribute="centerX" secondItem="9IY-Pl-LGD" secondAttribute="centerX" id="xKs-pU-45y"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -517,7 +515,7 @@
                                 </cells>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ceq-Fd-5Rd">
-                                <rect key="frame" x="20" y="666" width="374" height="50"/>
+                                <rect key="frame" x="20" y="930" width="374" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FmB-yr-9cb">
                                         <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
@@ -575,6 +573,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="collectionView" destination="2Oe-fD-D2Q" id="Ggv-Hs-yGs"/>
                         <outlet property="doneButton" destination="0kf-qH-V2b" id="KKP-2x-n6m"/>
@@ -2079,11 +2078,11 @@
             <objects>
                 <viewController id="YaF-0P-3vu" customClass="QuizSetVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAQ-id-WCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-GH-r3h">
-                                <rect key="frame" x="0.0" y="74" width="414" height="572"/>
+                                <rect key="frame" x="0.0" y="74" width="414" height="836"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7jP-1n-X93">
                                     <size key="itemSize" width="391" height="365"/>
@@ -2262,46 +2261,49 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="391" height="365"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Are Done! Your grade:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oto-Pn-p7t">
-                                                            <rect key="frame" x="95.333333333333329" y="24" width="200.33333333333337" height="20.333333333333329"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="73.000000000000014" y="24" width="245.33333333333337" height="24"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradeCircle" translatesAutoresizingMaskIntoConstraints="NO" id="06b-mX-1EB">
-                                                            <rect key="frame" x="120.66666666666669" y="67.333333333333314" width="150" height="150"/>
-                                                            <color key="tintColor" name="color main"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="06b-mX-1EB">
+                                                            <rect key="frame" x="108" y="71.999999999999986" width="175" height="173.66666666666669"/>
+                                                            <color key="tintColor" systemColor="systemGray2Color"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="175" id="MOC-DJ-4nB"/>
+                                                                <constraint firstAttribute="height" constant="175" id="qyF-AR-Jow"/>
+                                                            </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrO-GG-ccQ">
-                                                            <rect key="frame" x="162" y="85.666666666666657" width="67.333333333333314" height="113.66666666666666"/>
+                                                            <rect key="frame" x="162" y="101.66666666666666" width="67.333333333333314" height="113.66666666666666"/>
                                                             <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="100"/>
-                                                            <color key="textColor" name="color text button"/>
+                                                            <color key="textColor" name="color text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPq-11-7fQ">
-                                                            <rect key="frame" x="20" y="222.33333333333337" width="351" height="137.66666666666663"/>
+                                                            <rect key="frame" x="20" y="251" width="351" height="109"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="kV9-4f-zn3">
-                                                                    <rect key="frame" x="0.0" y="17.000000000000007" width="351" height="103.66666666666669"/>
+                                                                    <rect key="frame" x="0.0" y="11.333333333333314" width="351" height="86.666666666666671"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You got 2 of 8 (or 58%) correct" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaM-4q-Vfi">
-                                                                            <rect key="frame" x="56.333333333333329" y="0.0" width="238.33333333333337" height="20.333333333333332"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <rect key="frame" x="68.333333333333329" y="0.0" width="214.66666666666669" height="18"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                             <color key="textColor" name="color text"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scroll back to review your answers" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9r-yz-4lR">
-                                                                            <rect key="frame" x="44.333333333333343" y="35.333333333333343" width="262.33333333333326" height="20.333333333333329"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <rect key="frame" x="57.333333333333329" y="33" width="236.66666666666669" height="18"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                             <color key="textColor" name="color text"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dww-Lm-sOc">
-                                                                            <rect key="frame" x="103.66666666666669" y="70.666666666666657" width="144" height="33"/>
-                                                                            <color key="backgroundColor" name="color main"/>
-                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                                            <color key="tintColor" name="color text button"/>
-                                                                            <state key="normal" title=" Retake This Quiz ">
-                                                                                <color key="titleColor" name="color text button"/>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dww-Lm-sOc">
+                                                                            <rect key="frame" x="98.333333333333329" y="66" width="154.66666666666669" height="20.666666666666671"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                            <color key="tintColor" name="color main"/>
+                                                                            <state key="normal" title="  Retake This Quiz  " image="arrow.counterclockwise" catalog="system">
+                                                                                <color key="titleColor" name="color main"/>
                                                                             </state>
                                                                             <connections>
                                                                                 <action selector="retakeButtonAction:" destination="BvV-LN-pm0" eventType="touchUpInside" id="cQZ-n5-lFe"/>
@@ -2349,7 +2351,7 @@
                                 </cells>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pyO-3L-i6i">
-                                <rect key="frame" x="20" y="666" width="374" height="50"/>
+                                <rect key="frame" x="20" y="930" width="374" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4j-nY-tm7" customClass="ZUIRoundedButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
@@ -2422,6 +2424,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="collectionView" destination="HPm-GH-r3h" id="6Rb-q9-g8v"/>
                         <outlet property="doneButton" destination="aKW-Gg-Wjp" id="lG2-8V-GsI"/>
@@ -2432,7 +2435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WY-tp-sia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8354" y="1990"/>
+            <point key="canvasLocation" x="8971" y="779"/>
         </scene>
         <!--New Quiz Options-->
         <scene sceneID="2Qg-kS-haR">
@@ -3633,7 +3636,6 @@
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="flashcard3" width="25" height="25"/>
-        <image name="gradeCircle" width="150" height="150"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="info" width="30" height="30"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
@@ -3695,6 +3697,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

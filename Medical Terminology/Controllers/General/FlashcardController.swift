@@ -12,6 +12,8 @@ class FlashcardController {
 	
 	// MARK: shorter table names to make things easier
 	let assignedCategories = myConstants.dbTableAssignedCategories
+	let terms = myConstants.dbTableTerms
+	
 	
 	func getFlashcardTermIDs (categoryID: Int, favoritesOnly: Bool, learnedStatus: Bool) -> [Int] {
 		
@@ -27,12 +29,24 @@ class FlashcardController {
 			learnedString = " AND learnedFlashcard = 1 "
 		}
 		
-		let query =  """
+		let queryBK =  """
 		SELECT termID FROM \(assignedCategories)
 		WHERE categoryID = \(categoryID)
 		\(learnedString)
 		\(favoriteString)
 		"""
+		
+		
+		let query = """
+					SELECT \(terms).termID,
+					REPLACE (name, '-' , '') AS noHyphenInName
+					FROM \(terms)
+					JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID
+					WHERE categoryID = \(categoryID)
+					\(learnedString)
+					\(favoriteString)
+					ORDER BY LOWER (noHyphenInName
+					"""
 		
 		var ids = [Int]()
 		
