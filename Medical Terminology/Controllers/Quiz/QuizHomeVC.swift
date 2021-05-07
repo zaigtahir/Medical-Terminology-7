@@ -38,8 +38,6 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 		
 		quizHomeVCH.delegate = self
 		
-		percentLabel.textColor = myTheme.colorButtonText
-		
 		updateDisplay()
 		
 	}
@@ -62,7 +60,7 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 		
 		let foregroundColor = myTheme.colorPbQuizForeground?.cgColor
 		let backgroundColor = myTheme.colorPbQuizBackground?.cgColor
-		var fillColor : CGColor
+		let fillColor = UIColor.systemBackground.cgColor
 		
 		
 		if quizHomeVCH.categoryTermsCount == 0 {
@@ -74,8 +72,6 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 			
 			headingLabel.text = myConstants.noTermsHeading
 			messageLabel.text = myConstants.noTermsSubheading
-			
-			fillColor =  UIColor.systemBackground.cgColor
 			
 			newSetButton.isEnabled = false
 			seeCurrentSetButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
@@ -90,8 +86,6 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 			
 			headingLabel.text = myConstants.noFavoriteTermsHeading
 			messageLabel.text = myConstants.noFavoriteTermsSubheading
-			
-			fillColor =  UIColor.systemBackground.cgColor
 			
 			newSetButton.isEnabled = false
 			seeCurrentSetButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
@@ -113,8 +107,6 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 			newSetButton.isEnabled = true
 			seeCurrentSetButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
 			
-			fillColor =  myTheme.colorPbQuizFillcolor!.cgColor
-		
 			// message text
 			switch quizHomeVCH.questionsType {
 			

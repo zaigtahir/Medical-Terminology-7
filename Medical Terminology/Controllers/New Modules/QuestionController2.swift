@@ -178,6 +178,20 @@ class QuestionController2 {
 		}
 	}
 	
+	func saveLearnedStatus (categoryID: Int, question: Question2) {
+		
+		if question.questionType == .term
+		
+		{
+			setLearnedTerm (categoryID: categoryID, termID: question.termID, learned: question.learnedTermForItem)
+			
+		} else {
+			
+			setLearnedDefinition(categoryID: categoryID, termID: question.termID, learned: question.learnedDefinitionForItem)
+		}
+		
+	}
+	
 	func setLearnedTerm (categoryID: Int, termID: Int, learned: Bool) {
 		
 		var lt = 0
@@ -186,8 +200,6 @@ class QuestionController2 {
 		}
 		
 		let query = "UPDATE \(assignedCategories) SET learnedTerm = \(lt) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
-		
-		print ("setLearnedTerm query: \(query)")
 		
 		myDB.executeStatements(query)
 		
@@ -227,22 +239,7 @@ class QuestionController2 {
 		
 		myDB.executeStatements(query)
 	}
-	
-	func saveLearnedStatus (categoryID: Int, question: Question2) {
 		
-		if question.questionType == .term
-		
-		{
-			setLearnedTerm (categoryID: categoryID, termID: question.termID, learned: question.learnedTermForItem)
-			
-		} else {
-			
-			setLearnedDefinition(categoryID: categoryID, termID: question.termID, learned: question.learnedDefinitionForItem)
-			
-		}
-		
-	}
-	
 	func getTermIDsAvailableToLearn (categoryID: Int, numberOfTerms: Int, favoritesOnly: Bool) -> [Int] {
 		// These are term where learnedTerm && learnedDefinition != true
 		
@@ -259,8 +256,6 @@ class QuestionController2 {
 		ORDER BY RANDOM ()
 		LIMIT \(numberOfTerms)
 		"""
-		
-		print("getTermIDsAvailableToLearn in qc: \(query)")
 		
 		var ids = [Int]()
 		
@@ -288,9 +283,7 @@ class QuestionController2 {
 		AND (learnedTerm = 1 AND learnedDefinition = 1)
 		\(favoriteString)
 		"""
-		
-		print("getLearnedTermsCount in qc query: \(query)")
-		
+	
 		var count = 0
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -408,9 +401,7 @@ class QuestionController2 {
 				questions.append(q)
 			}
 		}
-		
 		return questions
-		
 	}
 	
 	/// return array of ids where answeredDefinition = unanswered OR incorrect
@@ -462,8 +453,6 @@ class QuestionController2 {
 		ORDER BY RANDOM()
 		LIMIT \(numberOfQuestions)
 		"""
-		
-		print("getAvailableQuestions query: \(query)")
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			

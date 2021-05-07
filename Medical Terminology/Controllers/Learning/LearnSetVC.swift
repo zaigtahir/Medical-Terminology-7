@@ -106,10 +106,6 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControlle
         //update the status of the buttons
         previousButton.isEnabled =  scrollDelegate.isPreviouButtonEnabled(collectionView: collectionView)
         nextButton.isEnabled =  scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
-        
-        for b in [previousButton, nextButton] {
-			myTheme.formatButtonState(button: b!, enabledColor: myTheme.colorLhButton!)
-        }
     }
         
     func showOptionsMenu () {

@@ -36,10 +36,8 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
 		
 		learningHomeVCH.delegate = self
-		
+	
 		learningHomeVCH.updateData()
-		
-		percentLabel.textColor = myTheme.colorButtonText
 		
 		updateDisplay()
 	}
@@ -61,7 +59,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		
 		let foregroundColor = myTheme.colorLhPbForeground?.cgColor
 		let backgroundColor = myTheme.colorLhPbBackground?.cgColor
-		let fillColor : CGColor
+		let fillColor = UIColor.systemBackground.cgColor
 		
 		if learningHomeVCH.categoryTermsCount == 0 {
 			// no terms available in this category
@@ -72,8 +70,6 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			
 			headingLabel.text = myConstants.noTermsHeading
 			messageLabel.text = myConstants.noTermsSubheading
-			
-			fillColor = UIColor.systemBackground.cgColor
 			
 			newSetButton.isEnabled = false
 			seeCurrentSetButton.isEnabled = learningHomeVCH.isLearningSetAvailable()
@@ -88,8 +84,6 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			
 			headingLabel.text = myConstants.noFavoriteTermsHeading
 			messageLabel.text = myConstants.noFavoriteTermsSubheading
-			
-			fillColor = UIColor.systemBackground.cgColor
 			
 			newSetButton.isEnabled = false
 			seeCurrentSetButton.isEnabled = learningHomeVCH.isLearningSetAvailable()
@@ -114,9 +108,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			} else {
 				messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) terms."
 			}
-			
-			fillColor = myTheme.colorLhPbFill!.cgColor
-			
+		
 			newSetButton.isEnabled = false
 			seeCurrentSetButton.isEnabled = learningHomeVCH.isLearningSetAvailable()
 		}

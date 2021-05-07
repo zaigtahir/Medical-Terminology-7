@@ -57,20 +57,16 @@ class MyTheme{
     //MARK: Learning home
     let colorLhPbForeground = UIColor(named: "color main 2")
     let colorLhPbBackground = UIColor(named: "color pb background")
-    let colorLhPbFill = UIColor(named: "color main 2")
-    
-    let colorLhButton = UIColor(named: "color main")
-    
+    let colorLhPbFill = UIColor.systemBackground
+
     //MARK: Learning set
     let colorLsNotAnswered = UIColor(named: "color main 2")
     
     //MARK: Quiz home
-    let colorQuizButton = UIColor(named: "color main")
-    
     //colors of quiz set home
     let colorPbQuizForeground = UIColor(named: "color main")
     let colorPbQuizBackground = UIColor(named: "color pb background")
-    let colorPbQuizFillcolor = UIColor(named: "color main")
+	let colorPbQuizFillcolor = UIColor.systemBackground
     
     //MARK: Quiz set colors
     let colorQsNotAnswered = UIColor(named: "color main")
