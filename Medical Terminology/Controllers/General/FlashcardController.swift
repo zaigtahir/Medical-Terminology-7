@@ -29,14 +29,6 @@ class FlashcardController {
 			learnedString = " AND learnedFlashcard = 1 "
 		}
 		
-		let queryBK =  """
-		SELECT termID FROM \(assignedCategories)
-		WHERE categoryID = \(categoryID)
-		\(learnedString)
-		\(favoriteString)
-		"""
-		
-		
 		let query = """
 					SELECT \(terms).termID,
 					REPLACE (name, '-' , '') AS noHyphenInName
@@ -45,7 +37,7 @@ class FlashcardController {
 					WHERE categoryID = \(categoryID)
 					\(learnedString)
 					\(favoriteString)
-					ORDER BY LOWER (noHyphenInName
+					ORDER BY LOWER (noHyphenInName)
 					"""
 		
 		var ids = [Int]()
