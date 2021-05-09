@@ -18,7 +18,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	// if catetory id = -1, you are adding a new catetory
 	
-	var category : Category2!
+	var category : Category!
 	
 	weak var delegate: CategoryVCHDelegate?
 
@@ -26,7 +26,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	private var multiLineInputVC : MultiLineInputVC!
 	
-	private let cc = CategoryController2()
+	private let cc = CategoryController()
 	
 	init () {
 		

@@ -16,7 +16,7 @@ All controllers that are affected by that can respond to it
 protocol CategoryListVCHDelegate: AnyObject {
 	
 	func shouldReloadTable ()
-	func shouldSegueToPreexistingCategory (category: Category2)
+	func shouldSegueToPreexistingCategory (category: Category)
 	func shouldSegueToNewCategory ()
 }
 
@@ -42,12 +42,12 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	let sectionStandard = 1
 	
 	// controllers
-	let cc = CategoryController2()
+	let cc = CategoryController()
 	let tc = TermController()
 	
 	// categories
-	var standardCategories = [Category2]()
-	var customCategories = [Category2]()
+	var standardCategories = [Category]()
+	var customCategories = [Category]()
 	
 	weak var delegate : CategoryListVCHDelegate?
 	
@@ -174,7 +174,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		}
 		
 		// derive the category from the row selection
-		var rowCategory: Category2
+		var rowCategory: Category
 		
 		if indexPath.section == sectionStandard {
 			rowCategory = standardCategories[indexPath.row]
@@ -206,7 +206,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 	}
 	
-	private func formatAssignCell (cell: CategoryCell, rowCategory: Category2) {
+	private func formatAssignCell (cell: CategoryCell, rowCategory: Category) {
 		
 		/*
 		need to figure out if the cell will be active or look disabled
@@ -259,10 +259,10 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 	}
 	
-	private func getRowCategory (indexPath: IndexPath) -> Category2 {
+	private func getRowCategory (indexPath: IndexPath) -> Category {
 		
 		// determine which category the row contains
-		var rowCategory: Category2
+		var rowCategory: Category
 		
 		if indexPath.section == sectionStandard {
 			rowCategory = standardCategories[indexPath.row]
@@ -291,7 +291,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		delegate?.shouldReloadTable()
 	}
 	
-	private func selectedAssignRow (didSelectRowAt indexPath: IndexPath, category: Category2) {
+	private func selectedAssignRow (didSelectRowAt indexPath: IndexPath, category: Category) {
 		
 		if term.termID == -1 {
 			
@@ -309,7 +309,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	
 	// MARK: - CategoryCellDelegate
-	func shouldSegueToCategory(category: Category2) {
+	func shouldSegueToCategory(category: Category) {
 		
 		delegate?.shouldSegueToPreexistingCategory(category: category)
 	}

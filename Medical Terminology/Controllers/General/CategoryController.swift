@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CategoryController2 {
+class CategoryController {
 	
 	// to make the table name shorter and convenient
 	let categories =  myConstants.dbTableCategories2
@@ -16,7 +16,7 @@ class CategoryController2 {
 	
 	// controllers
 	
-	func getCategory (categoryID: Int) -> Category2 {
+	func getCategory (categoryID: Int) -> Category {
 		
 		let query = "SELECT * from \(categories) WHERE categoryID = \(categoryID)"
 		
@@ -25,12 +25,12 @@ class CategoryController2 {
 				return fillCategory(resultSet: resultSet)
 			} else {
 				print("fatal error did not find category with id = \(categoryID) in getCategory. Returning empty category")
-				return Category2()
+				return Category()
 			}
 			
 		} else {
 			print("Fatal error getting the result set in getCategories function")
-			return Category2()
+			return Category()
 		}
 		
 	}
@@ -56,10 +56,10 @@ class CategoryController2 {
 	/*
 	return all categories ordered by displayOrder
 	*/
-	func getCategories (categoryType: CategoryType) -> [Category2] {
+	func getCategories (categoryType: CategoryType) -> [Category] {
 		
 		var query: String
-		var cs = [Category2]()
+		var cs = [Category]()
 		
 		if categoryType == .custom {
 			query = "SELECT * from \(categories) WHERE isStandard = \(categoryType.rawValue) ORDER BY displayOrder"
@@ -184,7 +184,7 @@ class CategoryController2 {
 		
 	}
 	
-	func addCategoryPN (category: Category2) {
+	func addCategoryPN (category: Category) {
 		
 		// the new category will be added with custom catetory display order = 1, so need to increment all custom category display order by 1
 		
@@ -201,14 +201,14 @@ class CategoryController2 {
 		
 	}
 	
-	private func fillCategory (resultSet: FMResultSet) -> Category2 {
+	private func fillCategory (resultSet: FMResultSet) -> Category {
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))
 		let name = resultSet.string(forColumn: "name") ?? ""
 		let description = resultSet.string(forColumn: "description") ?? ""
 		let displayOrder = Int(resultSet.int(forColumn: "displayOrder"))
 		let isStandard = Int(resultSet.int(forColumn: "isStandard"))
 		
-		let c = Category2 (categoryID: categoryID,
+		let c = Category (categoryID: categoryID,
 						   name: name,
 						   description: description,
 						   displayOrder: displayOrder,

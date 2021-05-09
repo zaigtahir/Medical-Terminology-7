@@ -32,7 +32,7 @@ class TermController {
 	let assignedCategories = myConstants.dbTableAssignedCategories
 	let categories = myConstants.dbTableCategories2
 	
-	let cc = CategoryController2()
+	let cc = CategoryController()
 	
 	func getTerm (termID: Int) -> Term {
 		

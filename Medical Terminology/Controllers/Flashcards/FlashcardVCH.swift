@@ -31,7 +31,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// controllers
 	let fc = FlashcardController()
 	let tc = TermController()
-	let cc = CategoryController2()
+	let cc = CategoryController()
 	let utilities = Utilities()
 	
 	var termIDs = [Int]()	// list to show
@@ -302,8 +302,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 				
 			} else {
 				// show all, learned all terms
-				cell.headingLabel.text = "You learned all terms in this category!"
-				cell.subheadingLabel.text = "You can relearn all the terms again by pressing the redo button."
+				cell.headingLabel.text = "You are done!"
+				cell.subheadingLabel.text = "You learned all the terms in this cateogory."
 				cell.redoButton.isHidden = false
 				cell.headerIcon.image = myTheme.imageDone!
 				return

@@ -25,7 +25,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	
 	// controllers
 	private let tc = TermController()
-	private let cc = CategoryController2()
+	private let cc = CategoryController()
 	
 	private var singleLineInputVC : SingleLineInputVC!
 	private var multiLineInputVC : MultiLineInputVC!

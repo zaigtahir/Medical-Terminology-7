@@ -23,7 +23,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	@IBOutlet weak var categorySelectButton: UIButton!
 	
 	let termListVCH = TermListVCH()
-	let cc = CategoryController2()
+	let cc = CategoryController()
 	let tc = TermController()
 	let tu = TextUtilities()
 	

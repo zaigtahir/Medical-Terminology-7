@@ -30,7 +30,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	var categoryVCH = CategoryVCH()
 	
-	let cc = CategoryController2()
+	let cc = CategoryController()
 	
 	private let tu = TextUtilities()
 	

@@ -24,7 +24,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	let categoryListVCH = CategoryListVCH()
 	
 	// used just to pass info from performSegue to prepare for segue
-	private var segueCategory: Category2!
+	private var segueCategory: Category!
 	
 	override func viewDidLoad() {
 		
@@ -69,7 +69,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		tableView.reloadData()
 	}
 	
-	func shouldSegueToPreexistingCategory(category: Category2) {
+	func shouldSegueToPreexistingCategory(category: Category) {
 		
 		self.segueCategory = category
 		
@@ -78,7 +78,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	
 	func shouldSegueToNewCategory() {
 		// new empty category will have id = -1
-		self.segueCategory = Category2()
+		self.segueCategory = Category()
 		
 		performSegue(withIdentifier: myConstants.segueCategory, sender: self)
 	}

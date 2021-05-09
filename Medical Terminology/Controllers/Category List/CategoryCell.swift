@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CategoryCellDelegate: AnyObject {
-	func shouldSegueToCategory (category: Category2)
+	func shouldSegueToCategory (category: Category)
 }
 
 class CategoryCell: UITableViewCell {
@@ -23,7 +23,7 @@ class CategoryCell: UITableViewCell {
 	
 	// itialize this with the rowCategory value so that I can use it in the delegate function
 	
-	private var category: Category2!
+	private var category: Category!
 	
 	weak var delegate : CategoryCellDelegate?
 	
@@ -32,7 +32,7 @@ class CategoryCell: UITableViewCell {
 		// Initialization code
 	}
 	
-	func formatCellSelectCategory (rowCategory: Category2, currentCategory: Int, isSelectable: Bool ) {
+	func formatCellSelectCategory (rowCategory: Category, currentCategory: Int, isSelectable: Bool ) {
 		nameLabel.text  = rowCategory.name
 		countLabel.text = String (rowCategory.count)
 		self.isSelectable = isSelectable
@@ -51,7 +51,7 @@ class CategoryCell: UITableViewCell {
 		
 	}
 	
-	func formatCellAssignCategory (rowCategory: Category2, currentCategoryID: Int, assignedCategoryIDsForTerm ids: [Int], isSelectable: Bool ) {
+	func formatCellAssignCategory (rowCategory: Category, currentCategoryID: Int, assignedCategoryIDsForTerm ids: [Int], isSelectable: Bool ) {
 		
 		nameLabel.text  = rowCategory.name
 		nameLabel.textColor = myTheme.colorText

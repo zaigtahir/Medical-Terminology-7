@@ -26,7 +26,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated, QuizSetVCDelegate {
     var startNewQuiz: Bool = true    //will be used for segue
     
 	let tc = TermController()
-	let cc = CategoryController2()
+	let cc = CategoryController()
 	let qc = QuestionController()
 
 	// counts of items

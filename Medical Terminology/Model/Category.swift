@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Category2 {
+class Category {
 	
 	var categoryID = -1
 	var name = ""

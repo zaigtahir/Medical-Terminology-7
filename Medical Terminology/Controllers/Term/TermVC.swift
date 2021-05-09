@@ -45,7 +45,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	// controllers
 	private let tc = TermController()
-	private let cc = CategoryController2()
+	private let cc = CategoryController()
 	private let tu = TextUtilities()
 	
 	// keeping these vc as a class varialbe so I can dismiss them through protocol functions

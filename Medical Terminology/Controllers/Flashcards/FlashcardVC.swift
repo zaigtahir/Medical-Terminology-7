@@ -28,7 +28,7 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 	let scrollController = ScrollController()
 	let flashCardVCH = FlashcardVCH()
 	
-	let cc = CategoryController2()
+	let cc = CategoryController()
 	let tc = TermController()
 	let fc = FlashcardController()
 	

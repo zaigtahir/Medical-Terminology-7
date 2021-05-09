@@ -48,7 +48,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	let tc = TermController()
 	
-	let cc = CategoryController2()
+	let cc = CategoryController()
 	
 	let tu = TextUtilities()
 	

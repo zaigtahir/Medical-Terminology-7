@@ -28,7 +28,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 	let utilities = Utilities()
 	var progressBar: CircularBar!
 	
-	private let cc = CategoryController2()
+	private let cc = CategoryController()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
