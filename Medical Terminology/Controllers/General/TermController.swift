@@ -197,7 +197,7 @@ class TermController {
 	will assign catetory All Terms, My Terms and any other that are in term.assignedTerms
 	Wil return the termID of the added term
 	*/
-	func saveTerm (term: Term) -> Int {
+	func saveNewTerm (term: Term) -> Int {
 		
 		// saving a custom term with secondCategory = 2 and isStandard value is redundant, but makes for smoother programming
 		
@@ -217,6 +217,10 @@ class TermController {
 		
 		for c in term.assignedCategories {
 			cc.assignCategoryPN(termID: addedTermID, categoryID: c)
+		}
+		
+		if isDevelopmentMode {
+			print ("termController saveNewTerm, created new term with ID: \(addedTermID)")
 		}
 		
 		return addedTermID
@@ -279,8 +283,29 @@ class TermController {
 		
 	}
 	
-	// MAR: - Flashcard learn, learning, answered functions
+	// MARK: - setting up database functions
 	
+	/**
+	Will return an array of categores: 1, secondCategoryID, thirdCategoryID from the Terms table for STANDARD TERMS ONLY
+	*/
+	func getTermInstallationCategories () {
+		var ids = [Int]()
+		
+		let query = "SELECT termID, secondCategoryID, thirdCategoryID FROM \(terms) WHERE termID < \(myConstants.dbCustomTermStartingID)"
+		
+		if let rs = myDB.executeQuery(query, withArgumentsIn: []) {
+			rs.next()
+			
+			
+			
+			
+			
+		} else {
+			print ("fatal error making rs in getTermInstallationCategories, returning empty [Int]")
+			return ids
+		}
+	
+	}
 	
 	// MARK: - Non search text queries
 	
@@ -338,7 +363,6 @@ class TermController {
 	}
 	
 	// MARK: - New versions
-	
 	
 	// does getTermIDs2 need all these options?
 	func getTermIDs2 (categoryID: Int, favoritesOnly: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> [Int] {
@@ -421,7 +445,6 @@ class TermController {
 		return count
 		
 	}
-	
 	
 	
 	// MARK: -Search Query
@@ -527,6 +550,7 @@ class TermController {
 		guard let _ = limit else {return ""}
 		return "LIMIT \(limit!)"
 	}
+	
 	
 }
 

@@ -21,7 +21,8 @@ class DatabaseUtilities  {
             if isDevelopmentMode {
                 print("new install: copy over the database into the directory")
             }
-            if setupNewDatabase() {
+            
+			if setupNewDatabase() {
                 //update version settings only if no problems
                 if isDevelopmentMode {
                     print("new database is successfully setup, now will update the version in directory")
@@ -65,6 +66,7 @@ class DatabaseUtilities  {
         
         myDB = FMDatabase(path: dbURL.absoluteString)
         myDB.open()
+		
         return true
     }
     
@@ -101,29 +103,7 @@ class DatabaseUtilities  {
 		*/
 
     }
-    
-	private func addTermsToAllTerms () {
-		
-	}
-	
-	private func addTermsToSecondCategory () {
-		
-	}
-	
-	private func addTermsToThirdCategory () {
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    	
     private func useCurrentDatabase () {
         let dbURL = getDirectoryFileURL(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension)
 	
@@ -183,6 +163,4 @@ class DatabaseUtilities  {
         let url = documentDirectoryURL.appendingPathComponent("\(fileName).\(fileExtension)")
         return url
     }
-    
-    
 }

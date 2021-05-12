@@ -65,7 +65,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	}
 	
 	func saveTerm () {
-		let newTermID = tc.saveTerm(term: term)
+		let newTermID = tc.saveNewTerm(term: term)
 		
 		// if this is favorite, make it favorite for each catetory
 		if term.favoriteForCategory {
