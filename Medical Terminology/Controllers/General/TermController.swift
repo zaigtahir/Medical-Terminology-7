@@ -34,6 +34,26 @@ class TermController {
 	
 	let cc = CategoryController()
 	
+	func termExists (termID: Int) -> Bool {
+		let query = "SELECT COUNT (*) FROM \(terms) WHERE termID = \(termID)"
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			
+			let count = Int (resultSet.int(forColumnIndex: 0))
+			if count > 0 {
+				return true
+			} else {
+				return false
+			}
+			
+		} else {
+			print("fatal error could not make result set, return false")
+			return false
+		}
+		
+	}
+	
 	func getTerm (termID: Int) -> Term {
 		
 		let query = "SELECT * FROM \(terms) WHERE termID = \(termID)"
@@ -181,8 +201,16 @@ class TermController {
 		
 		// saving a custom term with secondCategory = 2 and isStandard value is redundant, but makes for smoother programming
 		
-		let query  = "INSERT INTO \(terms) (name, definition, example, myNotes, isStandard, secondCategoryID) VALUES ('\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2)"
+		// if a term does not already exist with id = dbCustomTermStartingID = 100000, then use that as the first id. After that the mysql will automatically assign higher IDs
+	
+		var query: String
 		
+		if termExists(termID: myConstants.dbCustomTermStartingID) {
+			query  = "INSERT INTO \(terms) (name, definition, example, myNotes, isStandard, secondCategoryID) VALUES ('\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2)"
+		} else {
+			query  = "INSERT INTO \(terms) (termID, name, definition, example, myNotes, isStandard, secondCategoryID) VALUES (\(myConstants.dbCustomTermStartingID), '\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2)"
+		}
+	
 		myDB.executeStatements(query)
 		
 		let addedTermID = Int(myDB.lastInsertRowId)
@@ -310,7 +338,7 @@ class TermController {
 	}
 	
 	// MARK: - New versions
-
+	
 	
 	// does getTermIDs2 need all these options?
 	func getTermIDs2 (categoryID: Int, favoritesOnly: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> [Int] {
@@ -318,11 +346,11 @@ class TermController {
 		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
 		
 		let whereStatement = self.whereStatement2 (categoryID: categoryID,
-												  showOnlyFavorites: favoritesOnly,
-												  isFavorite: .none,
-												  orderByName: orderByName,
-												  randomOrder: randomOrder,
-												  limitTo: limitTo)
+												   showOnlyFavorites: favoritesOnly,
+												   isFavorite: .none,
+												   orderByName: orderByName,
+												   randomOrder: randomOrder,
+												   limitTo: limitTo)
 		
 		let query = ("\(selectStatement) \(whereStatement)")
 		
@@ -368,7 +396,7 @@ class TermController {
 	func getCount2 (categoryID: Int, favoritesOnly: Bool) -> Int {
 		
 		// will remove leading hypen for count purposes
-				
+		
 		var favoriteString = ""
 		
 		if favoritesOnly {
@@ -382,7 +410,7 @@ class TermController {
 			WHERE categoryID = \(categoryID)
 			\(favoriteString)
 			"""
-	
+		
 		var count = 0
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -424,7 +452,7 @@ class TermController {
 		}
 		return ids
 	}
-
+	
 	
 	// MARK: -WHERE string components
 	

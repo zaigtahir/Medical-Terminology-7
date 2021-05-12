@@ -102,6 +102,28 @@ class DatabaseUtilities  {
 
     }
     
+	private func addTermsToAllTerms () {
+		
+	}
+	
+	private func addTermsToSecondCategory () {
+		
+	}
+	
+	private func addTermsToThirdCategory () {
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
     private func useCurrentDatabase () {
         let dbURL = getDirectoryFileURL(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension)
 	

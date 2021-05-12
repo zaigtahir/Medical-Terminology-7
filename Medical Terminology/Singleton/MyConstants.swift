@@ -28,7 +28,9 @@ class MyConstants {
 
 	let dbTableCatetories = "categories"
 	
-	let dbCustomTermStartingID = 100000 // plan to remove
+	let dbCustomTermStartingID = 100000
+	
+	
 	let dbCustomCategoryStartingID = 1000 // plan to remove
 
 	let audioFolder = "Audio"       //the subfolder in bundle that will hold the audio files
