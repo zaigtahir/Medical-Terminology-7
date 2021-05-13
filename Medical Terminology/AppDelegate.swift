@@ -18,38 +18,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let dbUtilities = DatabaseUtilities()
-        let sController = SettingsController()
+        let sc = SettingsController()
         
-        //set global variable isProductionMode
-        let pm = Bundle.main.infoDictionary?["isDevelopmentMode"] as? Bool
-        if pm == nil || pm == false {
-            isDevelopmentMode = false
-        } else {
-            isDevelopmentMode = true
-        }
-      
-        if isDevelopmentMode {
-            print("in development mode")
-        } else {
-            print("not in development mode")
-        }
-        
-        if isDevelopmentMode {
+		if sc.isDevelopmentMode() {
             print("Versions before database evaluation")
-            print(sController.getBundleVersion())
-            print(sController.getUserDefaultsVersion())
+            print(sc.getBundleVersion())
+            print(sc.getUserDefaultsVersion())
         }
         
-        if sController.getBundleVersion() != sController.getUserDefaultsVersion() {
-            sController.setShowWelcomeScreen(showWelcomeScreen: true)
+        if sc.getBundleVersion() != sc.getUserDefaultsVersion() {
+            sc.setShowWelcomeScreen(showWelcomeScreen: true)
         }
         
         dbUtilities.setupDatabase()
         
-        if isDevelopmentMode {
+		if sc.isDevelopmentMode() {
             print("Versions after database is setup")
-            print(sController.getBundleVersion())
-            print(sController.getUserDefaultsVersion())
+            print(sc.getBundleVersion())
+            print(sc.getUserDefaultsVersion())
         }
 			
         /*
@@ -65,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 
         // Determine and set the start screen
-        if sController.getShowWelcomeScreen() == false {
+        if sc.getShowWelcomeScreen() == false {
             
             // selecting if to start at the welcome screen or flashcardhomeVC
             

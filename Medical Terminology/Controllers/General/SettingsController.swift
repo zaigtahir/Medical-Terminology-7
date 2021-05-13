@@ -13,6 +13,16 @@ class SettingsController {
     
     let userDefaults = UserDefaults.standard
     
+	func isDevelopmentMode () -> Bool {
+		
+		let pm = Bundle.main.infoDictionary?["isDevelopmentMode"] as? Bool
+		if pm == nil || pm == false {
+			return false
+		} else {
+			return true
+		}
+	}
+	
     func setShowWelcomeScreen (showWelcomeScreen: Bool) {
         let userDefaults = UserDefaults()
         userDefaults.set(showWelcomeScreen, forKey: myKeys.showWelcomeScreen)

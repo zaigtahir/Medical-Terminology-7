@@ -30,9 +30,10 @@ class TermController {
 	// MARK: shorter table names to make things easier
 	let terms = myConstants.dbTableTerms
 	let assignedCategories = myConstants.dbTableAssignedCategories
-	let categories = myConstants.dbTableCategories2
+	let categories = myConstants.dbTableCategories
 	
 	let cc = CategoryController()
+	let sc = SettingsController()
 	
 	func termExists (termID: Int) -> Bool {
 		let query = "SELECT COUNT (*) FROM \(terms) WHERE termID = \(termID)"
@@ -202,7 +203,7 @@ class TermController {
 		// saving a custom term with secondCategory = 2 and isStandard value is redundant, but makes for smoother programming
 		
 		// if a term does not already exist with id = dbCustomTermStartingID = 100000, then use that as the first id. After that the mysql will automatically assign higher IDs
-	
+		
 		var query: String
 		
 		if termExists(termID: myConstants.dbCustomTermStartingID) {
@@ -210,7 +211,7 @@ class TermController {
 		} else {
 			query  = "INSERT INTO \(terms) (termID, name, definition, example, myNotes, isStandard, secondCategoryID) VALUES (\(myConstants.dbCustomTermStartingID), '\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2)"
 		}
-	
+		
 		myDB.executeStatements(query)
 		
 		let addedTermID = Int(myDB.lastInsertRowId)
@@ -219,7 +220,7 @@ class TermController {
 			cc.assignCategoryPN(termID: addedTermID, categoryID: c)
 		}
 		
-		if isDevelopmentMode {
+		if sc.isDevelopmentMode() {
 			print ("termController saveNewTerm, created new term with ID: \(addedTermID)")
 		}
 		
@@ -283,29 +284,6 @@ class TermController {
 		
 	}
 	
-	// MARK: - setting up database functions
-	
-	/**
-	Will return an array of categores: 1, secondCategoryID, thirdCategoryID from the Terms table for STANDARD TERMS ONLY
-	*/
-	func getTermInstallationCategories () {
-		var ids = [Int]()
-		
-		let query = "SELECT termID, secondCategoryID, thirdCategoryID FROM \(terms) WHERE termID < \(myConstants.dbCustomTermStartingID)"
-		
-		if let rs = myDB.executeQuery(query, withArgumentsIn: []) {
-			rs.next()
-			
-			
-			
-			
-			
-		} else {
-			print ("fatal error making rs in getTermInstallationCategories, returning empty [Int]")
-			return ids
-		}
-	
-	}
 	
 	// MARK: - Non search text queries
 	

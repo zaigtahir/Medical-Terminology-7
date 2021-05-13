@@ -11,7 +11,7 @@ import Foundation
 class CategoryController {
 	
 	// to make the table name shorter and convenient
-	let categories =  myConstants.dbTableCategories2
+	let categories =  myConstants.dbTableCategories
 	let assignedCategories = myConstants.dbTableAssignedCategories
 	
 	// controllers
@@ -247,11 +247,11 @@ class CategoryController {
 		// return true on success
 		// return false on not successful
 		
-		let moveQuery = "UPDATE \(myConstants.dbTableCategories2) SET displayOrder = displayOrder + 1 WHERE isStandard = 0"
+		let moveQuery = "UPDATE \(myConstants.dbTableCategories) SET displayOrder = displayOrder + 1 WHERE isStandard = 0"
 		
 		let _ = myDB.executeStatements(moveQuery)
 		
-		let addQuery = "INSERT INTO \(myConstants.dbTableCategories2) (name, description, isStandard, displayOrder) VALUES ('\(categoryName)', 'initial description', 0, 1)"
+		let addQuery = "INSERT INTO \(myConstants.dbTableCategories) (name, description, isStandard, displayOrder) VALUES ('\(categoryName)', 'initial description', 0, 1)"
 		
 		let _ = myDB.executeStatements(addQuery)
 		

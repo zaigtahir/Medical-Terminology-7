@@ -12,8 +12,6 @@ import Foundation
 
 var myDB : FMDatabase!          // serve as the global database object
 
-var isDevelopmentMode = false   // set in the app delegate based on te pList setting
-
 let myTheme = MyTheme ()
 let myConstants = MyConstants ()
 let myKeys = MyKeys()
