@@ -32,7 +32,7 @@ class DatabaseUtilities  {
 				print("new install: copy over the database into the directory")
 			}
 			
-			if setupNewDatabase() {
+			if installDatabase() {
 				//update version settings only if no problems
 				if sc.isDevelopmentMode() {
 					print("new database is successfully setup, now will update the version in directory")
@@ -41,11 +41,8 @@ class DatabaseUtilities  {
 				sc.updateVersionNumber()
 				
 			}
-		
-			return
-		}
-		
-		if sc.getBundleVersion() == sc.getUserDefaultsVersion() {
+			
+		} else if sc.getBundleVersion() == sc.getUserDefaultsVersion() {
 			// use current database
 			if sc.isDevelopmentMode() {
 				print("normal run: no changes to database")
@@ -65,13 +62,17 @@ class DatabaseUtilities  {
 		
 	}
 	
-	private func setupNewDatabase () -> Bool {
-		// will copy the db from the bundle to the directory and open the database
+	/**
+	Will close the db if open
+	Will delete the db file from the directory
+	Will copy the db file from the bundle to the directory
+	Will insert rows in assignedCategories table to assign categories to each term (1, secondCategoryID, thirdCategoryID)
+	*/
+	private func installDatabase () -> Bool {
 		
 		guard let dbURL = copyFile(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension) else {
 			//error copying the db
 			print("FATAL error was an error copying the db to directory")
-			
 			//MARK: to do setup a graceful exit/notice to user
 			return false
 		}
@@ -84,54 +85,95 @@ class DatabaseUtilities  {
 		myDB = FMDatabase(path: dbURL.absoluteString)
 		myDB.open()
 		
-		
 		// Install terms to assigned categories
 		let termArrays = getTermInstallationCategories()
 		
-		
 		installTermsToAssignCategories(termCategoryArray: termArrays)
-	
+		
 		return true
 	}
 	
 	private func migrateDatabase () {
-		// Idea is to transfer the learned and answered settings from the current DB to the new DB
-		// then delete the current DB and use the new DB as the default
 		
-		// my DItemController works on the global database so first lets create a list of id's and associated
-		// need to open the current database to use so I can copy the presistent information from it
+		// MARK: Make backup of the data I will need to migrate in resultSets
 		
+		// custom terms
+		var query = "SELECT * FROM \(terms) WHERE termID >= \(myConstants.dbCustomTermStartingID)"
+		let rsCustomTerms = myDB.executeQuery(query, withArgumentsIn: [])
 		
-		print("to code migrateDatabase in DatabaseUtilities")
+		// custom categories
+		query = "SELECT * FROM \(categories) WHERE categoryID >= \(myConstants.dbCustomCategoryStartingID)"
+		let rsCustomCategories = myDB.executeQuery(query, withArgumentsIn: [])
 		
-		useCurrentDatabase()
+		// assigned categories custom term AND category
+		query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
+		let rsACBoth = myDB.executeQuery(query, withArgumentsIn: [])
 		
+		// assigned categories custom term only
+		query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID < \(myConstants.dbCustomCategoryStartingID))"
+		let rsACTerms = myDB.executeQuery(query, withArgumentsIn: [])
 		
+		// assigned category custom category only
+		query = "SELECT * FROM \(assignedCategories) WHERE (termID < \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
+		let rsACCategories = myDB.executeQuery(query, withArgumentsIn: [])
 		
-		
-		
-		/*
-		
-		let dIC = DItemController()
-		let dItemsToMigrate = dIC.getDItemsMigrate()
-		
+		// MARK: close the database
 		myDB.close()
 		
-		// delete the current database file
-		let dbFileURL = getDirectoryFileURL(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension)
-		_ = deleteDirectoryFileAtURL(fileURL: dbFileURL)
+		// MARK: Install the database
+		installDatabase()
 		
-		// copy the db file from bundle to make new db
-		if setupNewDatabase() {
 		
-		//migrate the data
-		dIC.saveDItemsMigrate(dItems: dItemsToMigrate)
-		settingsC.updateVersionNumber()
-		}
-		
-		*/
+		print("working on migrate db class")
+		useCurrentDatabase()
 		
 	}
+	
+	private func addTerms (resultSet: FMResultSet) {
+		// add terms from this rs to the terms table
+		while resultSet.next() {
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private func useCurrentDatabase () {
 		let dbURL = getDirectoryFileURL(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension)
@@ -155,7 +197,7 @@ class DatabaseUtilities  {
 		var ids = [[Int]]()
 		
 		let query = "SELECT termID, secondCategoryID, thirdCategoryID FROM \(terms) WHERE termID < \(myConstants.dbCustomTermStartingID)"
-				
+		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			while resultSet.next() {
 				let termID = Int(resultSet.int(forColumnIndex: 0))
@@ -163,6 +205,9 @@ class DatabaseUtilities  {
 				let thirdCategoryID = Int(resultSet.int(forColumnIndex: 2))
 				
 				let termCategoryIDs = [termID, secondCategoryID, thirdCategoryID]
+				
+				print("got from term table termID: \(termID ), \(secondCategoryID), \(thirdCategoryID)")
+				
 				ids.append(termCategoryIDs)
 			}
 			
@@ -177,12 +222,17 @@ class DatabaseUtilities  {
 	Will return ARRAY of [termID, secondCategoryID, thirdCategoryID] and add each item to the assigned array
 	*/
 	func installTermsToAssignCategories (termCategoryArray: [[Int]]) {
-	
+		
 		for s in termCategoryArray {
+			
+			print("adding to assigned categories termID: \(s[0] ), \(s[1]), \(s[2])")
+			
+			
+			
 			// add to term to categoryID 1
 			let query = "INSERT INTO \(assignedCategories) (termID, categoryID) VALUES ('\(s[0] )', 1)"
 			myDB.executeStatements(query)
-		
+			
 			if s[1] != 0 {
 				let query = "INSERT INTO \(assignedCategories) (termID, categoryID) VALUES ('\(s[0] )', \(s[1]))"
 				myDB.executeStatements(query)
@@ -194,16 +244,6 @@ class DatabaseUtilities  {
 			}
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	private func copyFile (fileName: String, fileExtension: String) -> URL?{
 		
