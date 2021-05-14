@@ -206,16 +206,18 @@ class TermController {
 	*/
 	func saveNewTerm (term: Term) -> Int {
 		
-		// saving a custom term with secondCategory = 2 and isStandard value is redundant, but makes for smoother programming
-		
-		// if a term does not already exist with id = dbCustomTermStartingID = 100000, then use that as the first id. After that the mysql will automatically assign higher IDs
-		
 		var query: String
 		
 		if termExists(termID: myConstants.dbCustomTermStartingID) {
-			query  = "INSERT INTO \(terms) (name, definition, example, myNotes, isStandard, secondCategoryID, thirdCategoryID) VALUES ('\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2, \(term.thirdCategoryID))"
+			query = """
+					INSERT INTO \(terms) (name, definition, example, myNotes, isStandard, secondCategoryID, thirdCategoryID)
+					VALUES ("\(term.name)", "\(term.definition)", "\(term.example)", "\(term.myNotes)", 0, 2, \(term.thirdCategoryID))
+					"""
 		} else {
-			query  = "INSERT INTO \(terms) (termID, name, definition, example, myNotes, isStandard, secondCategoryID) VALUES (\(myConstants.dbCustomTermStartingID), '\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2, \(term.thirdCategoryID))"
+			query  = """
+					INSERT INTO \(terms) (termID, name, definition, example, myNotes, isStandard, secondCategoryID, thirdCategoryID)
+					VALUES (\(myConstants.dbCustomTermStartingID), "\(term.name)", "\(term.definition)", "\(term.example)", "\(term.myNotes)", 0, 2, \(term.thirdCategoryID))
+					"""
 		}
 		
 		myDB.executeStatements(query)
@@ -233,6 +235,29 @@ class TermController {
 		return addedTermID
 		
 	}
+	
+	/**
+	Save a term to the db, use when migrating custom terms
+	*/
+	func saveTermForMigration (term: Term) {
+		let query = """
+				INSERT INTO \(terms) (termID, name, definition, example, myNotes, isStandard, secondCategoryID, thirdCategoryID)
+				VALUES ("\(term.termID)",\(term.name)", "\(term.definition)", "\(term.example)", "\(term.myNotes)",
+						"\(term.myNotes)", \(term.secondCategoryID), \(term.thirdCategoryID))
+				"""
+		myDB.executeStatements(query)
+		
+		let addedTermID = Int(myDB.lastInsertRowId)
+		
+		if sc.isDevelopmentMode() {
+			print ("termController saveNewTermForMigration, saved term with ID: \(addedTermID)")
+		}
+	}
+	
+	
+
+	
+	
 	
 	// MARK: - term update functions
 	

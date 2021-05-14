@@ -121,14 +121,26 @@ class DatabaseUtilities  {
 		myDB.close()
 		
 		// MARK: Install the database
-		installDatabase()
+		_ = installDatabase()
+		
+		// MARK: add back any custom terms saved in the resultSet
+		if let rs = rsCustomTerms {
+			addTerms(resultSet: rs)
+		}
 		
 		
-		print("working on migrate db class")
+		
+		
+		
+		
+		
 		useCurrentDatabase()
 		
 	}
 	
+	/**
+	add terms from this resultSet to the db using the termController.saveTermForMigration function
+	*/
 	private func addTerms (resultSet: FMResultSet) {
 		// add terms from this rs to the terms table
 		
@@ -137,8 +149,9 @@ class DatabaseUtilities  {
 			terms.append(tc.getTermFromResultSet(resultSet: resultSet))
 		}
 		
-		
-		
+		for term in terms {
+			tc.saveTermForMigration(term: term)
+		}
 		
 	}
 	
