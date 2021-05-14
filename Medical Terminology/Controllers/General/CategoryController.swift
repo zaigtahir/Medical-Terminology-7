@@ -15,6 +15,7 @@ class CategoryController {
 	let assignedCategories = myConstants.dbTableAssignedCategories
 	
 	// controllers
+	let sc = SettingsController()
 	
 	func getCategory (categoryID: Int) -> Category {
 		
@@ -22,7 +23,7 @@ class CategoryController {
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: [categoryID]) {
 			if resultSet.next() {
-				return fillCategory(resultSet: resultSet)
+				return getCategoryFromResultSet(resultSet: resultSet)
 			} else {
 				print("fatal error did not find category with id = \(categoryID) in getCategory. Returning empty category")
 				return Category()
@@ -69,7 +70,7 @@ class CategoryController {
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			while resultSet.next() {
-				let c = fillCategory(resultSet: resultSet)
+				let c = getCategoryFromResultSet(resultSet: resultSet)
 				cs.append(c)
 			}
 			return cs
@@ -184,35 +185,20 @@ class CategoryController {
 		
 	}
 	
-	func addCategoryPN (category: Category) {
-		
-		// the new category will be added with custom catetory display order = 1, so need to increment all custom category display order by 1
-		
-		let query = "UPDATE \(categories) SET displayOrder = displayOrder  + 1 WHERE isStandard = 0"
-		
-		myDB.executeStatements(query)
-		
-		let queryInsert = "INSERT INTO \(categories) (name, description, displayOrder, isStandard) VALUES ('\(category.name)', '\(category.description)', 1, 0)"
-		
-		myDB.executeStatements(queryInsert)
-		
-		let nName = Notification.Name(myKeys.addCategoryKey)
-		NotificationCenter.default.post(name: nName, object: self, userInfo: nil)
-		
-	}
-	
-	private func fillCategory (resultSet: FMResultSet) -> Category {
+	func getCategoryFromResultSet (resultSet: FMResultSet) -> Category {
 		let categoryID = Int(resultSet.int(forColumn: "categoryID"))
 		let name = resultSet.string(forColumn: "name") ?? ""
 		let description = resultSet.string(forColumn: "description") ?? ""
 		let displayOrder = Int(resultSet.int(forColumn: "displayOrder"))
 		let isStandard = Int(resultSet.int(forColumn: "isStandard"))
+		let division = Int(resultSet.int(forColumn: "division"))
 		
 		let c = Category (categoryID: categoryID,
 						   name: name,
 						   description: description,
 						   displayOrder: displayOrder,
 						   isStandard: isStandard == 1 ? true : false,
+						   division: division,
 						   count: 0		// will need to update this when the program needs
 		)
 		
@@ -238,30 +224,88 @@ class CategoryController {
 		}
 	}
 	
+	/**
+	Adds this category to the db exactly as it including the categoryID
+	*/
+	func saveCategoryForMigration (category: Category) {
+		
+		if sc.isDevelopmentMode() {
+			print("In saveCategoryForMigration function")
+		}
+		
+		let query = 	"""
+						INSERT INTO \(myConstants.dbTableCategories) (categoryID, name, description, isStandard, displayOrder)
+						VALUES (\(category.categoryID) "\(category.name)", "\(category.description)", \(category.isStandard), \(category.displayOrder), \(category.division))
+						"""
+		
+		myDB.executeStatements(query)
+		
+		let addedCategoryID = Int(myDB.lastInsertRowId)
+		
+		if sc.isDevelopmentMode() {
+			print ("saved category for migration with ID: \(addedCategoryID)")
+		}
+		
+	}
+	
+	func categoryExists (categoryID: Int) -> Bool {
+		let query = "SELECT COUNT (*) FROM \(categories) WHERE termID = \(categoryID)"
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			
+			let count = Int (resultSet.int(forColumnIndex: 0))
+			if count > 0 {
+				return true
+			} else {
+				return false
+			}
+			
+		} else {
+			print("fatal error could not make result set, return false")
+			return false
+		}
+	}
+
+	
 	// MARK: - Functions that send off program wide notifications
 	
-	func addCategoryPN (categoryName: String) {
-		// if duplicate name do not add it
+	/**
+	the new category will be added with custom category display order = 1, so need to increment all custom category display order by 1
+	*/
+	func addCategoryPN (category: Category) {
 		// always add with display order = 1
 		// shift display order of other custom categories up by 1 to make room
+		// if no custom category exists, add with id = myConstants.dbCustomCategoryStartingID
 		// return true on success
 		// return false on not successful
 		
-		let moveQuery = "UPDATE \(myConstants.dbTableCategories) SET displayOrder = displayOrder + 1 WHERE isStandard = 0"
+		let query = "UPDATE \(categories) SET displayOrder = displayOrder  + 1 WHERE isStandard = 0"
 		
-		let _ = myDB.executeStatements(moveQuery)
+		myDB.executeStatements(query)
 		
-		let addQuery = "INSERT INTO \(myConstants.dbTableCategories) (name, description, isStandard, displayOrder) VALUES ('\(categoryName)', 'initial description', 0, 1)"
+		var queryInsert : String
 		
-		let _ = myDB.executeStatements(addQuery)
+		if categoryExists(categoryID: myConstants.dbCustomCategoryStartingID) {
+			
+			queryInsert = 	"""
+							INSERT INTO \(categories) (name, description, displayOrder, isStandard, division)
+							VALUES ("\(category.name)", "\(category.description)", 1, 0, \(myConstants.dbCustomCategoryDivision)
+							"""
+		} else {
+			queryInsert = 	"""
+							INSERT INTO \(categories) (categoryID, name, description, displayOrder, isStandard, division)
+							VALUES (\(myConstants.dbCustomCategoryStartingID) "\(category.name)", "\(category.description)", 1, 0, \(myConstants.dbCustomCategoryDivision)
+							"""
+		}
 		
-		// need to shoot off categoryAddedNotification
-		// the only item that will need to respond to it is the categoryListVCH so it can refresh the categoryListCV list
+		myDB.executeStatements(queryInsert)
 		
-		let name = Notification.Name(myKeys.addCategoryKey)
-		NotificationCenter.default.post(name: name, object: self, userInfo: nil)
+		let nName = Notification.Name(myKeys.addCategoryKey)
+		NotificationCenter.default.post(name: nName, object: self, userInfo: nil)
+		
 	}
-	
+
 	func deleteCategoryPN (categoryID: Int) {
 		// will delete this category from the category table, and also remove all assignments from the assigned category
 		

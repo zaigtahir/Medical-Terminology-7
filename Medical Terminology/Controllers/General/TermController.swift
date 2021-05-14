@@ -254,11 +254,6 @@ class TermController {
 		}
 	}
 	
-	
-
-	
-	
-	
 	// MARK: - term update functions
 	
 	func updateTermNamePN (termID: Int, name: String) {

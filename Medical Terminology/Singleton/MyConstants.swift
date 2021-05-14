@@ -20,18 +20,17 @@ class MyConstants {
 	let dbTableCategories = "categories"
 	let dbTableMainSectionCategories = "mainSectionCategories"
 	
+	// to remove after ditem stuff removed
 	let dbTableMain = "dictionary"
 	let dbTableUser = "assignCategories"
 	
 	let dbCategoryAllTermsID = 1
 	let dbCategoryMyTermsID = 2
-
-	let dbTableCatetories = "categories"
 	
-	let dbCustomTermStartingID = 100000
+	let dbCustomTermStartingID = 1000000
+	let dbCustomCategoryStartingID = 1000000
 	
-	
-	let dbCustomCategoryStartingID = 1000 // plan to remove
+	let dbCustomCategoryDivision = 1000		//the division number to assign to custom categories
 
 	let audioFolder = "Audio"       //the subfolder in bundle that will hold the audio files
 	

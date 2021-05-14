@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 // MARK: DO THESE NEED TO BE GLOBAL?
 
 class DatabaseUtilities  {
@@ -17,6 +15,7 @@ class DatabaseUtilities  {
 	let fileManager = FileManager()
 	let sc = SettingsController()
 	let tc = TermController()
+	let cc = CategoryController()
 	
 	// MARK: shorter table names to make things easier
 	let terms = myConstants.dbTableTerms
@@ -94,6 +93,14 @@ class DatabaseUtilities  {
 	}
 	
 	private func migrateDatabase () {
+	
+		print("building the migrateDatabase function. for now just using useCurrentDatabase() ")
+		useCurrentDatabase()
+		
+		return
+		
+		
+		
 		
 		// MARK: Make backup of the data I will need to migrate in resultSets
 		
@@ -124,22 +131,20 @@ class DatabaseUtilities  {
 		_ = installDatabase()
 		
 		// MARK: add back any custom terms saved in the resultSet
-		if let rs = rsCustomTerms {
-			addTerms(resultSet: rs)
+		if let rsct = rsCustomTerms {
+			addTerms(resultSet: rsct)
+		}
+		
+		if let rscc = rsCustomCategories {
+			addCategories(resultSet: rscc)
 		}
 		
 		
 		
-		
-		
-		
-		
-		useCurrentDatabase()
-		
 	}
 	
 	/**
-	add terms from this resultSet to the db using the termController.saveTermForMigration function
+	add terms from this resultSet to the db using the TermController.saveTermForMigration function
 	*/
 	private func addTerms (resultSet: FMResultSet) {
 		// add terms from this rs to the terms table
@@ -155,44 +160,23 @@ class DatabaseUtilities  {
 		
 	}
 	
+	/**
+	add categories from this resultSet to the db using the CategoryController.saveCategoryForMigration function
+	*/
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	private func addCategories (resultSet: FMResultSet) {
+		// add category from this rs to the category table
+		
+		var categories = [Category]()
+		while resultSet.next() {
+			categories.append(cc.getCategoryFromResultSet(resultSet: resultSet))
+		}
+		
+		for category in categories {
+			cc.saveCategoryForMigration(category: category)
+		}
+
+	}
 	
 	private func useCurrentDatabase () {
 		let dbURL = getDirectoryFileURL(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension)
