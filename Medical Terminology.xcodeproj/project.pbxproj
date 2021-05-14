@@ -74,6 +74,7 @@
 		99937AE22640E4A1001E4D4B /* TestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937AE12640E4A1001E4D4B /* TestBase.swift */; };
 		99937AFF26425D9F001E4D4B /* FlashcardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937AFE26425D9F001E4D4B /* FlashcardController.swift */; };
 		99937B0E264DFFF4001E4D4B /* MigrateDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937B0D264DFFF4001E4D4B /* MigrateDB.swift */; };
+		99937B11264EA49F001E4D4B /* AssignedCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937B10264EA49F001E4D4B /* AssignedCategory.swift */; };
 		99A722D5261E7846001DEDBD /* SingleLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */; };
 		99A722DC261F5693001DEDBD /* ZUIRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */; };
 		99A723042620D036001DEDBD /* MultiLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A723032620D036001DEDBD /* MultiLineInputVC.swift */; };
@@ -169,6 +170,7 @@
 		99937AE12640E4A1001E4D4B /* TestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBase.swift; sourceTree = "<group>"; };
 		99937AFE26425D9F001E4D4B /* FlashcardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardController.swift; sourceTree = "<group>"; };
 		99937B0D264DFFF4001E4D4B /* MigrateDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrateDB.swift; sourceTree = "<group>"; };
+		99937B10264EA49F001E4D4B /* AssignedCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedCategory.swift; sourceTree = "<group>"; };
 		99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineInputVC.swift; sourceTree = "<group>"; };
 		99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZUIRoundedButton.swift; sourceTree = "<group>"; };
 		99A723032620D036001DEDBD /* MultiLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineInputVC.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				992E79E7260B834200C19D49 /* Category.swift */,
+				99937B10264EA49F001E4D4B /* AssignedCategory.swift */,
 				992E79DD260A43C700C19D49 /* Term.swift */,
 				5A2A58F122FCA4F400434910 /* Quiz Models */,
 				5A189C3E217123B900929AB8 /* DItem.swift */,
@@ -648,6 +651,7 @@
 				99937AD7263F25C7001E4D4B /* LearningSet.swift in Sources */,
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
 				5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */,
+				99937B11264EA49F001E4D4B /* AssignedCategory.swift in Sources */,
 				5AF85739228F2C27008929D5 /* FlashcardCell.swift in Sources */,
 				99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */,
 			);

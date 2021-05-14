@@ -335,6 +335,8 @@ class CategoryController {
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : categoryID])
 	}
 	
+	
+	// MARK: move to different controller
 	func assignCategoryPN (termID: Int, categoryID: Int) {
 		let query = "INSERT INTO \(assignedCategories) ('termID', 'categoryID') VALUES (\(termID), \(categoryID))"
 		myDB.executeStatements(query)
