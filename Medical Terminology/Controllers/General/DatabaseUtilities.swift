@@ -131,9 +131,15 @@ class DatabaseUtilities  {
 	
 	private func addTerms (resultSet: FMResultSet) {
 		// add terms from this rs to the terms table
+		
+		var terms = [Term]()
 		while resultSet.next() {
-			
+			terms.append(tc.getTermFromResultSet(resultSet: resultSet))
 		}
+		
+		
+		
+		
 	}
 	
 	

@@ -62,23 +62,29 @@ class TermController {
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
 			
-			let termID = Int(resultSet.int(forColumn: "termID"))
-			let name = resultSet.string(forColumn: "name") ?? ""
-			let definition = resultSet.string(forColumn: "definition")  ?? ""
-			let example = resultSet.string(forColumn: "example")  ?? ""
-			let myNotes = resultSet.string(forColumn: "myNotes") ?? ""
-			let secondCategoryID = Int(resultSet.int(forColumn: "secondCategoryID"))
-			let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
-			let s = Int(resultSet.int(forColumn: "isStandard"))
-			
-			let term = Term(termID: termID, name: name, definition: definition, example: example, myNotes: myNotes, secondCategoryID: secondCategoryID, audioFile: audioFile, isStandard: s == 1)
-			
-			return term
+			return getTermFromResultSet(resultSet: resultSet)
 			
 		} else {
 			print("fatal error could not make result set or get term in getTerm")
 			return Term()
 		}
+	}
+	
+	func getTermFromResultSet(resultSet: FMResultSet) -> Term {
+		
+		let termID = Int(resultSet.int(forColumn: "termID"))
+		let name = resultSet.string(forColumn: "name") ?? ""
+		let definition = resultSet.string(forColumn: "definition")  ?? ""
+		let example = resultSet.string(forColumn: "example")  ?? ""
+		let myNotes = resultSet.string(forColumn: "myNotes") ?? ""
+		let secondCategoryID = Int(resultSet.int(forColumn: "secondCategoryID"))
+		let thirdCategoryID = Int(resultSet.int(forColumn: "thirdCategoryID"))
+		let audioFile = resultSet.string(forColumn: "audioFile")  ?? ""
+		let s = Int(resultSet.int(forColumn: "isStandard"))
+		
+		let term = Term(termID: termID, name: name, definition: definition, example: example, myNotes: myNotes, secondCategoryID: secondCategoryID, thirdCategoryID: thirdCategoryID, audioFile: audioFile, isStandard: s == 1)
+		
+		return term
 	}
 	
 	func setFavoriteStatusPN (categoryID: Int, termID: Int, isFavorite: Bool) {
@@ -207,9 +213,9 @@ class TermController {
 		var query: String
 		
 		if termExists(termID: myConstants.dbCustomTermStartingID) {
-			query  = "INSERT INTO \(terms) (name, definition, example, myNotes, isStandard, secondCategoryID) VALUES ('\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2)"
+			query  = "INSERT INTO \(terms) (name, definition, example, myNotes, isStandard, secondCategoryID, thirdCategoryID) VALUES ('\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2, \(term.thirdCategoryID))"
 		} else {
-			query  = "INSERT INTO \(terms) (termID, name, definition, example, myNotes, isStandard, secondCategoryID) VALUES (\(myConstants.dbCustomTermStartingID), '\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2)"
+			query  = "INSERT INTO \(terms) (termID, name, definition, example, myNotes, isStandard, secondCategoryID) VALUES (\(myConstants.dbCustomTermStartingID), '\(term.name)', '\(term.definition)', '\(term.example)', '\(term.myNotes)', 0, 2, \(term.thirdCategoryID))"
 		}
 		
 		myDB.executeStatements(query)

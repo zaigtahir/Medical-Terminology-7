@@ -21,6 +21,7 @@ class Term: NSObject, AVAudioPlayerDelegate {
 	var example: String = ""
 	var myNotes: String = ""
 	var secondCategoryID : Int = -1
+	var thirdCategoryID : Int = -1
 	var audioFile: String = ""
 	var isStandard: Bool = false
 	var audioPlayer = AVAudioPlayer()
@@ -35,7 +36,7 @@ class Term: NSObject, AVAudioPlayerDelegate {
 		super.init()
 	}
 	
-	convenience init(termID: Int, name: String, definition: String, example: String, myNotes: String, secondCategoryID: Int, audioFile: String, isStandard: Bool) {
+	convenience init(termID: Int, name: String, definition: String, example: String, myNotes: String, secondCategoryID: Int, thirdCategoryID: Int, audioFile: String, isStandard: Bool) {
 		
 		self.init()
 		self.termID = termID
@@ -44,6 +45,7 @@ class Term: NSObject, AVAudioPlayerDelegate {
 		self.example = example
 		self.myNotes = myNotes
 		self.secondCategoryID = secondCategoryID
+		self.thirdCategoryID = thirdCategoryID
 		self.audioFile = audioFile
 		self.isStandard = isStandard
 	}
