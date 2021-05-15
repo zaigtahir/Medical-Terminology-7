@@ -75,6 +75,7 @@
 		99937AFF26425D9F001E4D4B /* FlashcardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937AFE26425D9F001E4D4B /* FlashcardController.swift */; };
 		99937B0E264DFFF4001E4D4B /* MigrateDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937B0D264DFFF4001E4D4B /* MigrateDB.swift */; };
 		99937B11264EA49F001E4D4B /* AssignedCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937B10264EA49F001E4D4B /* AssignedCategory.swift */; };
+		99937B14264EA578001E4D4B /* AssignedCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99937B13264EA578001E4D4B /* AssignedCategoryController.swift */; };
 		99A722D5261E7846001DEDBD /* SingleLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */; };
 		99A722DC261F5693001DEDBD /* ZUIRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */; };
 		99A723042620D036001DEDBD /* MultiLineInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A723032620D036001DEDBD /* MultiLineInputVC.swift */; };
@@ -171,6 +172,7 @@
 		99937AFE26425D9F001E4D4B /* FlashcardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardController.swift; sourceTree = "<group>"; };
 		99937B0D264DFFF4001E4D4B /* MigrateDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrateDB.swift; sourceTree = "<group>"; };
 		99937B10264EA49F001E4D4B /* AssignedCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedCategory.swift; sourceTree = "<group>"; };
+		99937B13264EA578001E4D4B /* AssignedCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedCategoryController.swift; sourceTree = "<group>"; };
 		99A722D4261E7846001DEDBD /* SingleLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineInputVC.swift; sourceTree = "<group>"; };
 		99A722DB261F5693001DEDBD /* ZUIRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZUIRoundedButton.swift; sourceTree = "<group>"; };
 		99A723032620D036001DEDBD /* MultiLineInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineInputVC.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				994175DD245A38A900E281DB /* AudioFileController.swift */,
 				992E79FC260FBA3100C19D49 /* CategoryController.swift */,
+				99937B13264EA578001E4D4B /* AssignedCategoryController.swift */,
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
 				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
 				5A886373218E82330013FC8B /* DItemController.swift */,
@@ -645,6 +648,7 @@
 				99D55E892601A01A003ABE0B /* UserCategoryController.swift in Sources */,
 				5A15062A22557E7C00717AB8 /* Answer.swift in Sources */,
 				99D76AD22617909A0062CCD4 /* NoTermsCell.swift in Sources */,
+				99937B14264EA578001E4D4B /* AssignedCategoryController.swift in Sources */,
 				99937AD4263F24FB001E4D4B /* Question.swift in Sources */,
 				9960A04826027EC4003F4994 /* NoCategoriesCell.swift in Sources */,
 				99A723192623A445001DEDBD /* TermVCH.swift in Sources */,
