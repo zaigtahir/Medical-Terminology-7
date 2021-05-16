@@ -15,75 +15,55 @@ class MigrateDB {
 	let assignedCategories = myConstants.dbTableAssignedCategories
 	let categories = myConstants.dbTableCategories
 	
+	// MARK: controllers
 	let sc = SettingsController()
+	let du = DatabaseUtilities()
 	
+	// MARK: RecordSet variables
+	var rsCustomTerms : FMResultSet?
+	var rsCustomCategories : FMResultSet?
+	var rsACBoth : FMResultSet?
+	var rsACTerms : FMResultSet?
+	var rsACCategories : FMResultSet?
 	
-	func migrateDatabase () {
-	
-		if sc.isDevelopmentMode() {
-			print("migrateDatabase function")
-		}
-		// get resultSetCustomTerms of all custom terms
-		// get resultSetCustomCategories of all custom categories
-		// get resultSet for assignedCategoriesBothCustom		 	where term = custom AND category = custom
-		// get resultSet for assignedCategoriesCustomTermOnly		where term = custom AND catetory = not custom
-		// get resultSet for assignedCategoriesCustomCategoryOnly	where term = not cusotm AND category = custom
-		// close db
-		// delete the db file
+	init () {
 		
-		// setup new db... all terms, categories and assignCategory entries will be made for the standard terms and standard categories
-		
-		// insert custom terms in Terms
-		// insert custom categories in Categories
-		// insert additional assignedCategories for custom terms and custom categories
-		
-		let rsCustomTerms  = resultSetCustomTerms()
-		let rsCustomCategories = resultSetCustomCategories()
-		let rsACBothCustom = resultSetAssignedCategoriesBothCustom()
-		let rsACTermsCustom = resultSetAssignedCategoriesTermsCustom()
-		let rsACCategoriesCustom = resultSetAssignedCategoriesCategoriesCustom()
-		
-		if sc.isDevelopmentMode() {
-			print("migrateDatabase: made backup resultSets")
-			print("migrateDatabase: closing and deleting the original db")
-		}
-		
+		makeBackupRecordSets()
 		myDB.close()
+		_ = du.installDatabase()
 		
 		
 		
+		
+		
+		
+		
 	}
 	
-	// MARK: - migrate resultSets
-	private func resultSetCustomTerms () -> FMResultSet? {
-		let query = "SELECT * FROM \(terms) WHERE termID >= \(myConstants.dbCustomTermStartingID)"
-		let resultSet = myDB.executeQuery(query, withArgumentsIn: [])
-		return resultSet
+	private func makeBackupRecordSets() {
+		// custom terms
+		var query = "SELECT * FROM \(terms) WHERE termID >= \(myConstants.dbCustomTermStartingID)"
+		rsCustomTerms = myDB.executeQuery(query, withArgumentsIn: [])
+		
+		// custom categories
+		query = "SELECT * FROM \(categories) WHERE categoryID >= \(myConstants.dbCustomCategoryStartingID)"
+		rsCustomCategories = myDB.executeQuery(query, withArgumentsIn: [])
+		
+		// assigned categories custom term AND category
+		query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
+		rsACBoth = myDB.executeQuery(query, withArgumentsIn: [])
+		
+		// assigned categories custom term only
+		query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID < \(myConstants.dbCustomCategoryStartingID))"
+		rsACTerms = myDB.executeQuery(query, withArgumentsIn: [])
+		
+		// assigned category custom category only
+		query = "SELECT * FROM \(assignedCategories) WHERE (termID < \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
+		rsACCategories = myDB.executeQuery(query, withArgumentsIn: [])
 	}
 	
-	private func resultSetCustomCategories () -> FMResultSet?  {
-		let query = "SELECT * FROM \(categories) WHERE categoryID >= \(myConstants.dbCustomCategoryStartingID)"
-		let resultSet = myDB.executeQuery(query, withArgumentsIn: [])
-		return resultSet
-	}
 	
-	private func resultSetAssignedCategoriesBothCustom () -> FMResultSet? {
-		let query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
-		let resultSet = myDB.executeQuery(query, withArgumentsIn: [])
-		return resultSet
-	}
 	
-	private func resultSetAssignedCategoriesTermsCustom ()  -> FMResultSet?  {
-		let query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID < \(myConstants.dbCustomCategoryStartingID))"
-		let resultSet = myDB.executeQuery(query, withArgumentsIn: [])
-		return resultSet
-	}
-	
-	private func resultSetAssignedCategoriesCategoriesCustom ()  -> FMResultSet?  {
-		let query = "SELECT * FROM \(assignedCategories) WHERE (termID < \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
-		let resultSet = myDB.executeQuery(query, withArgumentsIn: [])
-		return resultSet
-	}
 	
 	
 }

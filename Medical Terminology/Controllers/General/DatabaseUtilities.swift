@@ -16,12 +16,14 @@ class DatabaseUtilities  {
 	let sc = SettingsController()
 	let tc = TermController()
 	let cc = CategoryController()
+	let ac = AssignedCategoryController()
 	
 	// MARK: shorter table names to make things easier
 	let terms = myConstants.dbTableTerms
 	let assignedCategories = myConstants.dbTableAssignedCategories
 	let categories = myConstants.dbTableCategories
 	
+	// MARK: -install database functions
 	func setupDatabase () {
 		//will look at the versions and copy, migrate or use the existing database
 		
@@ -54,7 +56,7 @@ class DatabaseUtilities  {
 				print("update: need to migrate the database")
 			}
 			
-			migrateDatabase()
+			migrateDb()
 			
 			//MARK: check no error migrating the db before updating the version
 		}
@@ -67,132 +69,9 @@ class DatabaseUtilities  {
 	Will copy the db file from the bundle to the directory
 	Will insert rows in assignedCategories table to assign categories to each term (1, secondCategoryID, thirdCategoryID)
 	*/
-	private func installDatabase () -> Bool {
-		
-		guard let dbURL = copyFile(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension) else {
-			//error copying the db
-			print("FATAL error was an error copying the db to directory")
-			//MARK: to do setup a graceful exit/notice to user
-			return false
-		}
-		
-		if sc.isDevelopmentMode() {
-			print("in setupNewDatabase")
-			print ("dbURL = \(dbURL)")
-		}
-		
-		myDB = FMDatabase(path: dbURL.absoluteString)
-		myDB.open()
-		
-		// Install terms to assigned categories
-		let termArrays = getTermInstallationCategories()
-		
-		installTermsToAssignCategories(termCategoryArray: termArrays)
-		
-		return true
-	}
-	
-	private func migrateDatabase () {
-	
-		print("building the migrateDatabase function. for now just using useCurrentDatabase() ")
-		useCurrentDatabase()
-		
-		return
-		
-		
-		
-		
-		// MARK: Make backup of the data I will need to migrate in resultSets
-		
-		// custom terms
-		var query = "SELECT * FROM \(terms) WHERE termID >= \(myConstants.dbCustomTermStartingID)"
-		let rsCustomTerms = myDB.executeQuery(query, withArgumentsIn: [])
-		
-		// custom categories
-		query = "SELECT * FROM \(categories) WHERE categoryID >= \(myConstants.dbCustomCategoryStartingID)"
-		let rsCustomCategories = myDB.executeQuery(query, withArgumentsIn: [])
-		
-		// assigned categories custom term AND category
-		query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
-		let rsACBoth = myDB.executeQuery(query, withArgumentsIn: [])
-		
-		// assigned categories custom term only
-		query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID < \(myConstants.dbCustomCategoryStartingID))"
-		let rsACTerms = myDB.executeQuery(query, withArgumentsIn: [])
-		
-		// assigned category custom category only
-		query = "SELECT * FROM \(assignedCategories) WHERE (termID < \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
-		let rsACCategories = myDB.executeQuery(query, withArgumentsIn: [])
-		
-		// MARK: close the database
-		myDB.close()
-		
-		// MARK: Install the database
-		_ = installDatabase()
-		
-		// MARK: add back any custom terms saved in the resultSet
-		if let rsct = rsCustomTerms {
-			addTerms(resultSet: rsct)
-		}
-		
-		if let rscc = rsCustomCategories {
-			addCategories(resultSet: rscc)
-		}
-		
-		
-		
-	}
+	func installDatabase () -> Bool {
 	
 	/**
-	add terms from this resultSet to the db using the TermController.saveTermForMigration function
-	*/
-	private func addTerms (resultSet: FMResultSet) {
-		// add terms from this rs to the terms table
-		
-		var terms = [Term]()
-		while resultSet.next() {
-			terms.append(tc.getTermFromResultSet(resultSet: resultSet))
-		}
-		
-		for term in terms {
-			tc.saveTermForMigration(term: term)
-		}
-		
-	}
-	
-	/**
-	add categories from this resultSet to the db using the CategoryController.saveCategoryForMigration function
-	*/
-	
-	private func addCategories (resultSet: FMResultSet) {
-		// add category from this rs to the category table
-		
-		var categories = [Category]()
-		while resultSet.next() {
-			categories.append(cc.getCategoryFromResultSet(resultSet: resultSet))
-		}
-		
-		for category in categories {
-			cc.saveCategoryForMigration(category: category)
-		}
-
-	}
-	
-	private func useCurrentDatabase () {
-		let dbURL = getDirectoryFileURL(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension)
-		
-		if sc.isDevelopmentMode() {
-			print("current db path: \(dbURL.absoluteString)")
-		}
-		
-		myDB = FMDatabase(path: dbURL.absoluteString)
-		myDB.open()
-	}
-	
-	// MARK: - setting up database functions
-	
-	/**
-	Will return an array of categores: 1, secondCategoryID, thirdCategoryID from the Terms table for STANDARD TERMS ONLY
 	Will return ARRAY of [termID, secondCategoryID, thirdCategoryID]
 	*/
 	func getTermInstallationCategories () -> [[Int]]{
@@ -222,7 +101,8 @@ class DatabaseUtilities  {
 	}
 	
 	/**
-	Will return ARRAY of [termID, secondCategoryID, thirdCategoryID] and add each item to the assigned array
+	Will use an array of  [termID, secondCategoryID, thirdCategoryID]
+	add category = 1 and the other 2 category IDs to each termID  in the assignedCategories table
 	*/
 	func installTermsToAssignCategories (termCategoryArray: [[Int]]) {
 		
@@ -247,6 +127,143 @@ class DatabaseUtilities  {
 			}
 		}
 	}
+	
+	guard let dbURL = copyFile(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension) else {
+		//error copying the db
+		print("FATAL error was an error copying the db to directory")
+		//MARK: to do setup a graceful exit/notice to user
+		return false
+	}
+	
+	if sc.isDevelopmentMode() {
+		print("in setupNewDatabase")
+		print ("dbURL = \(dbURL)")
+	}
+	
+	myDB = FMDatabase(path: dbURL.absoluteString)
+	myDB.open()
+	
+	// Install terms to assigned categories
+	let termArrays = getTermInstallationCategories()
+	
+	installTermsToAssignCategories(termCategoryArray: termArrays)
+	
+	return true
+}
+	
+	private func migrateDb () {
+		/*
+		Restore custom terms
+		Restore custom categories
+		Restore assignedCategories for custom terms and categories, keeping in mind that a standard category or standard term may not exist
+		in the updated database. In that case, no assignedCategory entry is made
+		*/
+		
+		if sc.isDevelopmentMode() {
+			print("In migrateDB function")
+		}
+		
+		// variables for back up of custom data
+		var customTerms = [Term] ()
+		var customCategories = [Category] ()
+		var assignedCategoriesCustomBoth = [AssignedCategory] ()
+		var assignedCategoriesCustomTerms = [AssignedCategory] ()
+		var assigneeCategoresCustomCategory = [AssignedCategory] ()
+		
+		func backupCustomData () {
+			// custom terms
+			var query = "SELECT * FROM \(terms) WHERE termID >= \(myConstants.dbCustomTermStartingID)"
+			if let rsCustomTerms = myDB.executeQuery(query, withArgumentsIn: []) {
+				while rsCustomTerms.next() {
+					customTerms.append(tc.getTermFromResultSet(resultSet: rsCustomTerms))
+				}
+			}
+			
+			// custom categories
+			query = "SELECT * FROM \(categories) WHERE categoryID >= \(myConstants.dbCustomCategoryStartingID)"
+			if let rsCustomCategories = myDB.executeQuery(query, withArgumentsIn: []) {
+				while rsCustomCategories.next() {
+					customCategories.append(cc.getCategoryFromResultSet(resultSet: rsCustomCategories))
+				}
+			}
+			
+			// assigned categories custom term AND category
+			query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
+			if let rsACBoth = myDB.executeQuery(query, withArgumentsIn: []) {
+				while rsACBoth.next() {
+					assignedCategoriesCustomBoth.append(ac.getAssignedCategoryFromResultSet(resultSet: rsACBoth))
+				}
+			}
+			
+			// assigned categories custom term only
+			query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID < \(myConstants.dbCustomCategoryStartingID))"
+			if let rsACTerms = myDB.executeQuery(query, withArgumentsIn: []) {
+				while rsACTerms.next(){
+					assignedCategoriesCustomTerms.append(ac.getAssignedCategoryFromResultSet(resultSet: rsACTerms))
+				}
+			}
+			
+			// assigned category custom category only
+			query = "SELECT * FROM \(assignedCategories) WHERE (termID < \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
+			if let rsACCategories = myDB.executeQuery(query, withArgumentsIn: []) {
+				while rsACCategories.next(){
+					assigneeCategoresCustomCategory.append(ac.getAssignedCategoryFromResultSet(resultSet: rsACCategories))
+				}
+			}
+		}
+		
+		func restoreCustomData () {
+			
+			for term in customTerms {
+				tc.saveTermForMigration(term: term)
+			}
+			
+			for category in customCategories {
+				cc.saveCategoryForMigration(category: category)
+			}
+			
+			for acBoth in assignedCategoriesCustomBoth {
+				ac.saveAssignedCategoryForMigration(assignedCategory: acBoth)
+			}
+			
+			for acTerm in assignedCategoriesCustomTerms {
+				if cc.categoryExists(categoryID: acTerm.categoryID) {
+					ac.saveAssignedCategoryForMigration(assignedCategory: acTerm)
+				}
+			}
+			
+			for acCategory in assigneeCategoresCustomCategory {
+				if tc.termExists(termID: acCategory.termID) {
+					ac.saveAssignedCategoryForMigration(assignedCategory: acCategory)
+				}
+			}
+			
+		}
+		
+		useCurrentDatabase()
+		
+		backupCustomData()
+		
+		myDB.close()
+		
+		let dbInstalled = installDatabase()
+		
+		restoreCustomData()
+		
+	}
+
+	private func useCurrentDatabase () {
+		let dbURL = getDirectoryFileURL(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension)
+		
+		if sc.isDevelopmentMode() {
+			print("current db path: \(dbURL.absoluteString)")
+		}
+		
+		myDB = FMDatabase(path: dbURL.absoluteString)
+		myDB.open()
+	}
+	
+	// MARK: - file functions
 	
 	private func copyFile (fileName: String, fileExtension: String) -> URL?{
 		
