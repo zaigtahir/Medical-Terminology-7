@@ -171,6 +171,11 @@ class DatabaseUtilities  {
 		var assigneeCategoresCustomCategory = [AssignedCategory] ()
 		
 		func backupCustomData () {
+			
+			if sc.isDevelopmentMode() {
+				print("in backup custom data")
+			}
+			
 			// custom terms
 			var query = "SELECT * FROM \(terms) WHERE termID >= \(myConstants.dbCustomTermStartingID)"
 			if let rsCustomTerms = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -213,6 +218,10 @@ class DatabaseUtilities  {
 		}
 		
 		func restoreCustomData () {
+			
+			if sc.isDevelopmentMode() {
+				print("in restore custom data")
+			}
 			
 			for term in customTerms {
 				tc.saveTermForMigration(term: term)
