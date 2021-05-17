@@ -87,9 +87,7 @@ class DatabaseUtilities  {
 				let thirdCategoryID = Int(resultSet.int(forColumnIndex: 2))
 				
 				let termCategoryIDs = [termID, secondCategoryID, thirdCategoryID]
-				
-				print("got from term table termID: \(termID ), \(secondCategoryID), \(thirdCategoryID)")
-				
+	
 				ids.append(termCategoryIDs)
 			}
 			
@@ -104,13 +102,13 @@ class DatabaseUtilities  {
 	Will use an array of  [termID, secondCategoryID, thirdCategoryID]
 	add category = 1 and the other 2 category IDs to each termID  in the assignedCategories table
 	*/
-	func installTermsToAssignCategories (termCategoryArray: [[Int]]) {
+	func installTermsToAssignedCategories (termCategoryArray: [[Int]]) {
+	
+		if sc.isDevelopmentMode(){
+			print("in - installTermsToAssignedCategories")
+		}
 		
 		for s in termCategoryArray {
-			
-			print("adding to assigned categories termID: \(s[0] ), \(s[1]), \(s[2])")
-			
-			
 			
 			// add to term to categoryID 1
 			let query = "INSERT INTO \(assignedCategories) (termID, categoryID) VALUES ('\(s[0] )', 1)"
@@ -146,7 +144,7 @@ class DatabaseUtilities  {
 	// Install terms to assigned categories
 	let termArrays = getTermInstallationCategories()
 	
-	installTermsToAssignCategories(termCategoryArray: termArrays)
+	installTermsToAssignedCategories(termCategoryArray: termArrays)
 	
 	return true
 }
@@ -224,24 +222,48 @@ class DatabaseUtilities  {
 			}
 			
 			for term in customTerms {
+				if sc.isDevelopmentMode(){
+					print("in - for term in customTerms")
+					
+				}
 				tc.saveTermForMigration(term: term)
 			}
 			
 			for category in customCategories {
+				
+				if sc.isDevelopmentMode(){
+					print("in - category in customCategories")
+				}
+				
 				cc.saveCategoryForMigration(category: category)
 			}
 			
 			for acBoth in assignedCategoriesCustomBoth {
+				
+				if sc.isDevelopmentMode(){
+					print("in - for acBoth in assignedCategoriesCustomBoth")
+				}
+				
 				ac.saveAssignedCategoryForMigration(assignedCategory: acBoth)
 			}
 			
 			for acTerm in assignedCategoriesCustomTerms {
+				
+				if sc.isDevelopmentMode(){
+					print("in - assignedCategoriesCustomTerms")
+				}
+				
 				if cc.categoryExists(categoryID: acTerm.categoryID) {
 					ac.saveAssignedCategoryForMigration(assignedCategory: acTerm)
 				}
 			}
 			
 			for acCategory in assigneeCategoresCustomCategory {
+				
+				if sc.isDevelopmentMode(){
+					print("in - assigneeCategoresCustomCategory")
+				}
+				
 				if tc.termExists(termID: acCategory.termID) {
 					ac.saveAssignedCategoryForMigration(assignedCategory: acCategory)
 				}
@@ -255,9 +277,11 @@ class DatabaseUtilities  {
 		
 		myDB.close()
 		
-		let dbInstalled = installDatabase()
+		let _ = installDatabase()
 		
 		restoreCustomData()
+		
+		sc.updateVersionNumber()
 		
 	}
 

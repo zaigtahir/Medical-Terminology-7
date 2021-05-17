@@ -10,6 +10,8 @@ import Foundation
 
 class AssignedCategoryController {
 	
+	let sc = SettingsController()
+	
 	// to make the table name shorter and convenient
 	let categories =  myConstants.dbTableCategories
 	let assignedCategories = myConstants.dbTableAssignedCategories
@@ -23,10 +25,17 @@ class AssignedCategoryController {
 
 					VALUES (\(ac.termID), \(ac.categoryID), \(ac.isFavorite),
 					\(ac.learnedTerm), \(ac.learnedDefinition),
-					\(ac.answeredTerm), \(ac.answeredDefinition), \(ac.learnedFlashcard)
+					\(ac.answeredTerm), \(ac.answeredDefinition), \(ac.learnedFlashcard))
 					"""
 		
+		if sc.isDevelopmentMode() {
+			print("in saveAssignedCategoryForMigration")
+			print("query = \(query)")
+		}
+		
+		
 		myDB.executeStatements(query)
+		
 		
 	}
 	

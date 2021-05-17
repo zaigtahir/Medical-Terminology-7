@@ -234,8 +234,8 @@ class CategoryController {
 		}
 		
 		let query = 	"""
-						INSERT INTO \(myConstants.dbTableCategories) (categoryID, name, description, isStandard, displayOrder)
-						VALUES (\(category.categoryID) "\(category.name)", "\(category.description)", \(category.isStandard), \(category.displayOrder), \(category.division))
+						INSERT INTO \(myConstants.dbTableCategories) (categoryID, name, description, isStandard, displayOrder, division)
+						VALUES (\(category.categoryID), "\(category.name)", "\(category.description)", \(category.isStandard), \(category.displayOrder), \(category.division))
 						"""
 		
 		myDB.executeStatements(query)
@@ -249,7 +249,7 @@ class CategoryController {
 	}
 	
 	func categoryExists (categoryID: Int) -> Bool {
-		let query = "SELECT COUNT (*) FROM \(categories) WHERE termID = \(categoryID)"
+		let query = "SELECT COUNT (*) FROM \(categories) WHERE categoryID = \(categoryID)"
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
@@ -262,7 +262,7 @@ class CategoryController {
 			}
 			
 		} else {
-			print("fatal error could not make result set, return false")
+			print("categoryExists: fatal error could not make result set, return false")
 			return false
 		}
 	}
@@ -290,12 +290,12 @@ class CategoryController {
 			
 			queryInsert = 	"""
 							INSERT INTO \(categories) (name, description, displayOrder, isStandard, division)
-							VALUES ("\(category.name)", "\(category.description)", 1, 0, \(myConstants.dbCustomCategoryDivision)
+							VALUES ("\(category.name)", "\(category.description)", 1, 0, \(myConstants.dbCustomCategoryDivision))
 							"""
 		} else {
 			queryInsert = 	"""
 							INSERT INTO \(categories) (categoryID, name, description, displayOrder, isStandard, division)
-							VALUES (\(myConstants.dbCustomCategoryStartingID) "\(category.name)", "\(category.description)", 1, 0, \(myConstants.dbCustomCategoryDivision)
+							VALUES (\(myConstants.dbCustomCategoryStartingID), "\(category.name)", "\(category.description)", 1, 0, \(myConstants.dbCustomCategoryDivision))
 							"""
 		}
 		

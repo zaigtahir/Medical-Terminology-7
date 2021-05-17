@@ -49,7 +49,7 @@ class TermController {
 			}
 			
 		} else {
-			print("fatal error could not make result set, return false")
+			print("termExists: fatal error could not make result set, return false")
 			return false
 		}
 		
@@ -242,7 +242,7 @@ class TermController {
 	func saveTermForMigration (term: Term) {
 		let query = """
 				INSERT INTO \(terms) (termID, name, definition, example, myNotes, isStandard, secondCategoryID, thirdCategoryID)
-				VALUES ("\(term.termID)",\(term.name)", "\(term.definition)", "\(term.example)", "\(term.myNotes)",
+				VALUES ("\(term.termID)", "\(term.name)", "\(term.definition)", "\(term.example)", "\(term.myNotes)",
 						"\(term.myNotes)", \(term.secondCategoryID), \(term.thirdCategoryID))
 				"""
 		myDB.executeStatements(query)
