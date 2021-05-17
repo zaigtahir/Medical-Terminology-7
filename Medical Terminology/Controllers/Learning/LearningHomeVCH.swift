@@ -158,8 +158,6 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	
 	func updateData () {
 		
-		print("in updateData learningHomeVCH")
-		
 		// learned terms are terms where both the term and the definitions is learned
 		
 		categoryTermsCount = cc.getCountOfTerms(categoryID: currentCategoryID)

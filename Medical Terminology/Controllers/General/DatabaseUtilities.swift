@@ -157,6 +157,11 @@ class DatabaseUtilities  {
 		in the updated database. In that case, no assignedCategory entry is made
 		*/
 		
+		/*
+		TEST: have a custom term assigned to a standard category. On update, remove that standard category
+		the program should name an entry in assignedCategories for that term/category combo
+		*/
+		
 		if sc.isDevelopmentMode() {
 			print("In migrateDB function")
 		}
@@ -222,19 +227,11 @@ class DatabaseUtilities  {
 			}
 			
 			for term in customTerms {
-				if sc.isDevelopmentMode(){
-					print("in - for term in customTerms")
-					
-				}
 				tc.saveTermForMigration(term: term)
 			}
 			
 			for category in customCategories {
-				
-				if sc.isDevelopmentMode(){
-					print("in - category in customCategories")
-				}
-				
+		
 				cc.saveCategoryForMigration(category: category)
 			}
 			
@@ -286,6 +283,11 @@ class DatabaseUtilities  {
 	}
 
 	private func useCurrentDatabase () {
+		
+		if sc.isDevelopmentMode(){
+			print("in useCurrentDatabase()")
+		}
+		
 		let dbURL = getDirectoryFileURL(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension)
 		
 		if sc.isDevelopmentMode() {
