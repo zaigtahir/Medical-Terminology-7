@@ -70,84 +70,84 @@ class DatabaseUtilities  {
 	Will insert rows in assignedCategories table to assign categories to each term (1, secondCategoryID, thirdCategoryID)
 	*/
 	func installDatabase () -> Bool {
-	
-	/**
-	Will return ARRAY of [termID, secondCategoryID, thirdCategoryID]
-	*/
-	func getTermInstallationCategories () -> [[Int]]{
 		
-		var ids = [[Int]]()
-		
-		let query = "SELECT termID, secondCategoryID, thirdCategoryID FROM \(terms) WHERE termID < \(myConstants.dbCustomTermStartingID)"
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			while resultSet.next() {
-				let termID = Int(resultSet.int(forColumnIndex: 0))
-				let secondCategoryID = Int(resultSet.int(forColumnIndex: 1))
-				let thirdCategoryID = Int(resultSet.int(forColumnIndex: 2))
+		/**
+		Will return ARRAY of [termID, secondCategoryID, thirdCategoryID]
+		*/
+		func getTermInstallationCategories () -> [[Int]]{
+			
+			var ids = [[Int]]()
+			
+			let query = "SELECT termID, secondCategoryID, thirdCategoryID FROM \(terms) WHERE termID < \(myConstants.dbCustomTermStartingID)"
+			
+			if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+				while resultSet.next() {
+					let termID = Int(resultSet.int(forColumnIndex: 0))
+					let secondCategoryID = Int(resultSet.int(forColumnIndex: 1))
+					let thirdCategoryID = Int(resultSet.int(forColumnIndex: 2))
+					
+					let termCategoryIDs = [termID, secondCategoryID, thirdCategoryID]
+					
+					ids.append(termCategoryIDs)
+				}
 				
-				let termCategoryIDs = [termID, secondCategoryID, thirdCategoryID]
-	
-				ids.append(termCategoryIDs)
+			} else {
+				print ("fatal error making rs in getTermInstallationCategories, returning empty [Int]")
 			}
 			
-		} else {
-			print ("fatal error making rs in getTermInstallationCategories, returning empty [Int]")
+			return ids
 		}
 		
-		return ids
-	}
-	
-	/**
-	Will use an array of  [termID, secondCategoryID, thirdCategoryID]
-	add category = 1 and the other 2 category IDs to each termID  in the assignedCategories table
-	*/
-	func installTermsToAssignedCategories (termCategoryArray: [[Int]]) {
-	
-		if sc.isDevelopmentMode(){
-			print("in - installTermsToAssignedCategories")
+		/**
+		Will use an array of  [termID, secondCategoryID, thirdCategoryID]
+		add category = 1 and the other 2 category IDs to each termID  in the assignedCategories table
+		*/
+		func installTermsToAssignedCategories (termCategoryArray: [[Int]]) {
+			
+			if sc.isDevelopmentMode(){
+				print("in - installTermsToAssignedCategories")
+			}
+			
+			for s in termCategoryArray {
+				
+				// add to term to categoryID 1
+				let query = "INSERT INTO \(assignedCategories) (termID, categoryID) VALUES ('\(s[0] )', 1)"
+				myDB.executeStatements(query)
+				
+				if s[1] != 0 {
+					let query = "INSERT INTO \(assignedCategories) (termID, categoryID) VALUES ('\(s[0] )', \(s[1]))"
+					myDB.executeStatements(query)
+				}
+				
+				if s[2] != 0 {
+					let query = "INSERT INTO \(assignedCategories) (termID, categoryID) VALUES ('\(s[0] )', \(s[2]))"
+					myDB.executeStatements(query)
+				}
+			}
 		}
 		
-		for s in termCategoryArray {
-			
-			// add to term to categoryID 1
-			let query = "INSERT INTO \(assignedCategories) (termID, categoryID) VALUES ('\(s[0] )', 1)"
-			myDB.executeStatements(query)
-			
-			if s[1] != 0 {
-				let query = "INSERT INTO \(assignedCategories) (termID, categoryID) VALUES ('\(s[0] )', \(s[1]))"
-				myDB.executeStatements(query)
-			}
-			
-			if s[2] != 0 {
-				let query = "INSERT INTO \(assignedCategories) (termID, categoryID) VALUES ('\(s[0] )', \(s[2]))"
-				myDB.executeStatements(query)
-			}
+		guard let dbURL = copyFile(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension) else {
+			//error copying the db
+			print("FATAL error was an error copying the db to directory")
+			//MARK: to do setup a graceful exit/notice to user
+			return false
 		}
+		
+		if sc.isDevelopmentMode() {
+			print("in setupNewDatabase")
+			print ("dbURL = \(dbURL)")
+		}
+		
+		myDB = FMDatabase(path: dbURL.absoluteString)
+		myDB.open()
+		
+		// Install terms to assigned categories
+		let termArrays = getTermInstallationCategories()
+		
+		installTermsToAssignedCategories(termCategoryArray: termArrays)
+		
+		return true
 	}
-	
-	guard let dbURL = copyFile(fileName: myConstants.dbFilename, fileExtension: myConstants.dbFileExtension) else {
-		//error copying the db
-		print("FATAL error was an error copying the db to directory")
-		//MARK: to do setup a graceful exit/notice to user
-		return false
-	}
-	
-	if sc.isDevelopmentMode() {
-		print("in setupNewDatabase")
-		print ("dbURL = \(dbURL)")
-	}
-	
-	myDB = FMDatabase(path: dbURL.absoluteString)
-	myDB.open()
-	
-	// Install terms to assigned categories
-	let termArrays = getTermInstallationCategories()
-	
-	installTermsToAssignedCategories(termCategoryArray: termArrays)
-	
-	return true
-}
 	
 	private func migrateDb () {
 		/*
@@ -155,11 +155,6 @@ class DatabaseUtilities  {
 		Restore custom categories
 		Restore assignedCategories for custom terms and categories, keeping in mind that a standard category or standard term may not exist
 		in the updated database. In that case, no assignedCategory entry is made
-		*/
-		
-		/*
-		TEST: have a custom term assigned to a standard category. On update, remove that standard category
-		the program should name an entry in assignedCategories for that term/category combo
 		*/
 		
 		if sc.isDevelopmentMode() {
@@ -170,11 +165,11 @@ class DatabaseUtilities  {
 		var customTerms = [Term] ()
 		var customCategories = [Category] ()
 		var assignedCategoriesCustom = [AssignedCategory]()
-			
+		
 		func backupCustomData () {
 			
 			if sc.isDevelopmentMode() {
-				print("in backup custom data")
+				print("in backupCustomData")
 			}
 			
 			// custom terms
@@ -206,7 +201,7 @@ class DatabaseUtilities  {
 		func restoreCustomData () {
 			
 			if sc.isDevelopmentMode() {
-				print("in restore custom data")
+				print("restoreCustomData")
 			}
 			
 			for term in customTerms {
@@ -220,11 +215,6 @@ class DatabaseUtilities  {
 			// restore the assigned category as long as BOTH the termID and the categoryID exist
 			for assignedCategory in assignedCategoriesCustom {
 				if tc.termExists(termID: assignedCategory.termID) && cc.categoryExists(categoryID: assignedCategory.categoryID) {
-					
-					if sc.isDevelopmentMode(){
-						print("in restoreCustomData restoring an assignedCategory with termID = \(assignedCategory.termID) , categoryID = \(assignedCategory.categoryID)")
-					}
-					
 					ac.saveAssignedCategoryForMigration(assignedCategory: assignedCategory)
 				}
 				
@@ -245,7 +235,7 @@ class DatabaseUtilities  {
 		sc.updateVersionNumber()
 		
 	}
-
+	
 	private func useCurrentDatabase () {
 		
 		if sc.isDevelopmentMode(){

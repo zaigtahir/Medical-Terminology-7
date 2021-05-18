@@ -28,12 +28,6 @@ class AssignedCategoryController {
 					\(ac.answeredTerm), \(ac.answeredDefinition), \(ac.learnedFlashcard))
 					"""
 		
-		if sc.isDevelopmentMode() {
-			print("in saveAssignedCategoryForMigration")
-			print("query = \(query)")
-		}
-		
-		
 		myDB.executeStatements(query)
 		
 		
