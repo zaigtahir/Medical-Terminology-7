@@ -169,10 +169,8 @@ class DatabaseUtilities  {
 		// variables for back up of custom data
 		var customTerms = [Term] ()
 		var customCategories = [Category] ()
-		var assignedCategoriesCustomBoth = [AssignedCategory] ()
-		var assignedCategoriesCustomTerms = [AssignedCategory] ()
-		var assigneeCategoresCustomCategory = [AssignedCategory] ()
-		
+		var assignedCategoriesCustom = [AssignedCategory]()
+			
 		func backupCustomData () {
 			
 			if sc.isDevelopmentMode() {
@@ -195,27 +193,12 @@ class DatabaseUtilities  {
 				}
 			}
 			
-			// assigned categories custom term AND category
-			query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
-			if let rsACBoth = myDB.executeQuery(query, withArgumentsIn: []) {
-				while rsACBoth.next() {
-					assignedCategoriesCustomBoth.append(ac.getAssignedCategoryFromResultSet(resultSet: rsACBoth))
-				}
-			}
+			// assignedCategories with either or both are custom items
+			query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) OR categoryID >= \(myConstants.dbCustomCategoryStartingID))"
 			
-			// assigned categories custom term only
-			query = "SELECT * FROM \(assignedCategories) WHERE (termID >= \(myConstants.dbCustomTermStartingID) AND categoryID < \(myConstants.dbCustomCategoryStartingID))"
-			if let rsACTerms = myDB.executeQuery(query, withArgumentsIn: []) {
-				while rsACTerms.next(){
-					assignedCategoriesCustomTerms.append(ac.getAssignedCategoryFromResultSet(resultSet: rsACTerms))
-				}
-			}
-			
-			// assigned category custom category only
-			query = "SELECT * FROM \(assignedCategories) WHERE (termID < \(myConstants.dbCustomTermStartingID) AND categoryID >= \(myConstants.dbCustomCategoryStartingID))"
-			if let rsACCategories = myDB.executeQuery(query, withArgumentsIn: []) {
-				while rsACCategories.next(){
-					assigneeCategoresCustomCategory.append(ac.getAssignedCategoryFromResultSet(resultSet: rsACCategories))
+			if let rsACCustom = myDB.executeQuery(query, withArgumentsIn: []){
+				while rsACCustom.next() {
+					assignedCategoriesCustom.append(ac.getAssignedCategoryFromResultSet(resultSet: rsACCustom))
 				}
 			}
 		}
@@ -231,39 +214,20 @@ class DatabaseUtilities  {
 			}
 			
 			for category in customCategories {
-		
 				cc.saveCategoryForMigration(category: category)
 			}
 			
-			for acBoth in assignedCategoriesCustomBoth {
-				
-				if sc.isDevelopmentMode(){
-					print("in - for acBoth in assignedCategoriesCustomBoth")
+			// restore the assigned category as long as BOTH the termID and the categoryID exist
+			for assignedCategory in assignedCategoriesCustom {
+				if tc.termExists(termID: assignedCategory.termID) && cc.categoryExists(categoryID: assignedCategory.categoryID) {
+					
+					if sc.isDevelopmentMode(){
+						print("in restoreCustomData restoring an assignedCategory with termID = \(assignedCategory.termID) , categoryID = \(assignedCategory.categoryID)")
+					}
+					
+					ac.saveAssignedCategoryForMigration(assignedCategory: assignedCategory)
 				}
 				
-				ac.saveAssignedCategoryForMigration(assignedCategory: acBoth)
-			}
-			
-			for acTerm in assignedCategoriesCustomTerms {
-				
-				if sc.isDevelopmentMode(){
-					print("in - assignedCategoriesCustomTerms")
-				}
-				
-				if cc.categoryExists(categoryID: acTerm.categoryID) {
-					ac.saveAssignedCategoryForMigration(assignedCategory: acTerm)
-				}
-			}
-			
-			for acCategory in assigneeCategoresCustomCategory {
-				
-				if sc.isDevelopmentMode(){
-					print("in - assigneeCategoresCustomCategory")
-				}
-				
-				if tc.termExists(termID: acCategory.termID) {
-					ac.saveAssignedCategoryForMigration(assignedCategory: acCategory)
-				}
 			}
 			
 		}
