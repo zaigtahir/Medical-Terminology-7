@@ -45,13 +45,13 @@ class AudioFileController {
         
         let audioFilesNamesInDB = getAudioFileNamesFromDB()
         
-        print("Checking audio files present in DB but missing in Bundle")
+        print("Checking files present in DB but the cooresponding mp3 audiofile in the bundle")
         
         //see if each audio file in db has matching file.mp3 in the bundle
         for file in audioFilesNamesInDB {
             
             if Bundle.main.url(forResource: "\(myConstants.audioFolder)/\(file)", withExtension: "mp3") == nil {
-                print("\(myConstants.audioFolder)/\(file).mp3 is in DB, missing in Bundle")
+                print("\(myConstants.audioFolder)/\(file) is in the DB, but the audiofile is missing")
             }
         }
         
@@ -73,7 +73,7 @@ class AudioFileController {
                 let fileName = String(item.dropLast(4))
                 if audioFilesNamesInDB.contains(fileName) == false {
                     //the db does not contain this!
-                    print("\(fileName).mp3 is present in Bundle, missing in DB")
+                    print("\(fileName).mp3 is present in Bundle, missing in Database")
                 }
                 
             }
