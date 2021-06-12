@@ -13,8 +13,8 @@
 
 import UIKit
 
-protocol AnswerSelected {
-	func answerSelected()
+protocol AnswerTCellDelegate {
+	func selectedAnswerTCell()
 }
 
 class AnswerTCell: UITableViewCell {

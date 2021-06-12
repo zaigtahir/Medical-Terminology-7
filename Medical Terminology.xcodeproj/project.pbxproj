@@ -55,7 +55,6 @@
 		992E79EB260C413D00C19D49 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79EA260C413D00C19D49 /* AddCell.swift */; };
 		992E79FD260FBA3100C19D49 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79FC260FBA3100C19D49 /* CategoryController.swift */; };
 		992F87042630B3EC00591CF9 /* NoFlashCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992F87032630B3EC00591CF9 /* NoFlashCardCell.swift */; };
-		992F87072634814500591CF9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992F87062634814500591CF9 /* Extensions.swift */; };
 		994175DE245A38A900E281DB /* AudioFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175DD245A38A900E281DB /* AudioFileController.swift */; };
 		994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E1245B5BAE00E281DB /* SettingsController.swift */; };
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
@@ -149,7 +148,6 @@
 		992E79EA260C413D00C19D49 /* AddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
 		992E79FC260FBA3100C19D49 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		992F87032630B3EC00591CF9 /* NoFlashCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFlashCardCell.swift; sourceTree = "<group>"; };
-		992F87062634814500591CF9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = "Medical Terminology/Controllers/General/Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		994175DD245A38A900E281DB /* AudioFileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileController.swift; sourceTree = "<group>"; };
 		994175E1245B5BAE00E281DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
@@ -319,7 +317,6 @@
 				992E79CF260A2ADD00C19D49 /* FlashCardOptionsVC.swift */,
 				5AF85738228F2C27008929D5 /* FlashcardCell.swift */,
 				992E79D0260A2ADD00C19D49 /* FlashcardVCH.swift */,
-				992F87062634814500591CF9 /* Extensions.swift */,
 				992E79D1260A2ADD00C19D49 /* FlashcardVC.swift */,
 				992F87032630B3EC00591CF9 /* NoFlashCardCell.swift */,
 			);
@@ -627,7 +624,6 @@
 				992E79E8260B834200C19D49 /* Category.swift in Sources */,
 				99D76B01261969AA0062CCD4 /* TermVC.swift in Sources */,
 				99A722DC261F5693001DEDBD /* ZUIRoundedButton.swift in Sources */,
-				992F87072634814500591CF9 /* Extensions.swift in Sources */,
 				5A2A58EE22FBC24900434910 /* QuizOptionsVC.swift in Sources */,
 				5AC0C56F22D6AB77009965F1 /* LearningHomeVC.swift in Sources */,
 				9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */,

@@ -12,8 +12,9 @@ protocol LearnSetVCDelegate: AnyObject {
 	func doneButtonPressed()
 }
 
-class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControllerDelegate, LearnCVCellDelegate, LearnDoneCVCellDelegate {
-    
+class LearnSetVC: UIViewController, LearningSetVCHDelegate {
+	
+
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -31,8 +32,8 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControlle
         
         scrollDelegate.topBottomMargin  = myConstants.layout_topBottomMargin
         scrollDelegate.sideMargin = myConstants.layout_sideMargin
-        scrollDelegate.delegate = self
-        collectionView.dataSource = self
+        scrollDelegate.delegate = learnSetVCH
+		collectionView.dataSource = learnSetVCH
         collectionView.delegate = scrollDelegate
         
         nextButton.layer.cornerRadius  = myConstants.button_cornerRadius
@@ -42,46 +43,7 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControlle
         
     }
     
-    
-    //datasource function
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let numItems =  learnSetVCH.learningSet.getActiveQuestionsCount()
-        return numItems
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //need to figure out a better way to know when im at the summary card
-        
-        if learnSetVCH.isAtSummary(indexPath: indexPath) {
-            //need to show the summary cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "learnDoneCell", for: indexPath) as! LearnDoneCVCell
-            cell.delegate = self
-            return cell
-        } else {
-            
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "learnCell", for: indexPath) as! LearnCVCell
-            cell.delegate = self
-            
-            let question = learnSetVCH.learningSet.getQuestion(index: indexPath.row)
-            let quizStatus = learnSetVCH.learningSet.getQuizStatus()
-            
-            cell.configure(question: question, questionIndex: indexPath.row, totalQuestions: learnSetVCH.learningSet.getTotalQuestionCount(), quizStatus: quizStatus)
-            
-            return cell
-        }
-    }
-    
-    func questionIndexChanged(questionIndex: Int, lastIndex: Int) {
-        //delegate function from the collection view delegate, this is when the collection view is moved
-        //just need to update the navigation buttons
-        
-        updateNavigationButtons()
-        
-    }
-    
     func updateDisplay() {
-        //collectionView.reloadData() removed from here, do in the functions that need it only so it does not repeat after those functions
 
         updateNavigationButtons()
         
@@ -91,15 +53,6 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControlle
         } else {
             optionsButton.isEnabled = true
         }
-    }
-    
-    //scroll delegates
-    func CVCellChanged(cellIndex: Int) {
-        updateNavigationButtons()
-    }
-    
-    func CVCellDragging(cellIndex: Int) {
-        //TODO: add code as needed
     }
     
     func updateNavigationButtons () {
@@ -124,61 +77,27 @@ class LearnSetVC: UIViewController,  UICollectionViewDataSource, ScrollControlle
         updateDisplay()
         
     }
-    
-    //MARK:- delegate function from LearnCVCell delegate, this is when the user selects an answer
-    func selectedAnswer(questionIndex: Int, answerIndex: Int) {
-        //if this is answered already, don't do anything
-        let question  = learnSetVCH.learningSet.getQuestion(index: questionIndex)
-        if question.isAnswered() {
-            //don't do anything
-            return
-        }
-        
-        learnSetVCH.learningSet.selectAnswerToQuestion(questionIndex: questionIndex, answerIndex: answerIndex)
-        
-        // will add more questions to the datasource
-        collectionView.reloadData()
-        
-        // need to do this as it makes layout changes for the additional questions.
-        // I use the layout for calculating what I need in the scroll delegate so they layout needs to be done right away
-        
-        collectionView.layoutIfNeeded()
-        
-        updateDisplay()
-    }
-    
-    func showAgain(questionIndex: Int) {
-        print("user pressed the show again button")
-        
-        learnSetVCH.learningSet.activeQuestions[questionIndex].showAgain = true
-        
-        learnSetVCH.learningSet.requeueQuestion(questionIndex: questionIndex)
-        
-        collectionView.reloadData()
-        
-        // need to do this as it makes layout changes for the additional questions.
-        // I use the layout for calculating what I need in the scroll delegate so they layout needs to be done right away
-        
-        collectionView.layoutIfNeeded()
-        
-        updateDisplay()
-    }
-    
-    func showAnswer(questionIndex: Int, showAnswer: Bool) {
-        // just update the question information here to be used
-        // when the user changes the cards
-        // in the cell, the action will just toggle the
-        // view locally
-        
-        learnSetVCH.learningSet.activeQuestions[questionIndex].showAnswer = showAnswer
-    }
-    
-    //end of delegate functions from LearnCVCell
-    
-    func retartButtonPressed() {
-        restartLearningSet()
-    }
-    
+	
+	//MARK: - delegate functions for LearningSetVCHDelegate
+	func shouldUpdateDisplay() {
+		updateDisplay()
+	}
+	
+	func shouldUpdateData() {
+		// will add more questions to the datasource
+		collectionView.reloadData()
+		
+		// need to do this as it makes layout changes for the additional questions.
+		// I use the layout for calculating what I need in the scroll delegate so they layout needs to be done right away
+		
+		collectionView.layoutIfNeeded()
+	}
+	
+	func shouldRestartSet() {
+		restartLearningSet()
+	}
+	// END of delegate functions
+	
     @IBAction func optionsButtonAction(_ sender: UIBarButtonItem) {
         showOptionsMenu()
     }
