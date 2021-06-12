@@ -13,13 +13,17 @@
 
 import UIKit
 
+protocol AnswerSelected {
+	func answerSelected()
+}
+
 class AnswerTCell: UITableViewCell {
 
     @IBOutlet weak var answerImage: UIImageView!
     @IBOutlet weak var answerNumberLabel: UILabel!
     @IBOutlet weak var answerText: UILabel!
-    @IBOutlet weak var resultView: UIView!
-
+	@IBOutlet weak var selectAnswerButton: UIButton!
+	
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,5 +34,9 @@ class AnswerTCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+	
+	@IBAction func selectAnswerButtonAction(_ sender: UIButton) {
+		print ("code for answer selected")
+	}
+	
 }
