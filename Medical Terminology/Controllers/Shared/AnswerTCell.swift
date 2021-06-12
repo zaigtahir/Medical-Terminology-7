@@ -13,8 +13,8 @@
 
 import UIKit
 
-protocol AnswerTCellDelegate {
-	func selectedAnswerTCell()
+protocol AnswerTCellDelegate: AnyObject {
+	func selectedAnswerRow(rowNumber: Int)
 }
 
 class AnswerTCell: UITableViewCell {
@@ -23,6 +23,11 @@ class AnswerTCell: UITableViewCell {
     @IBOutlet weak var answerNumberLabel: UILabel!
     @IBOutlet weak var answerText: UILabel!
 	@IBOutlet weak var selectAnswerButton: UIButton!
+	
+	weak var delegate : AnswerTCellDelegate?
+	
+	// initialize when making this row
+	var rowNumber : Int!
 	
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,7 +41,9 @@ class AnswerTCell: UITableViewCell {
     }
 	
 	@IBAction func selectAnswerButtonAction(_ sender: UIButton) {
-		print ("code for answer selected")
+		delegate?.selectedAnswerRow(rowNumber: self.rowNumber)
+		
+		print ("triggered delegate function: AnswerTCell: AnswerTCellDelegate: selectedAnswerRow")
 	}
 	
 }
