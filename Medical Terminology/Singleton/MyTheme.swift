@@ -86,8 +86,8 @@ class MyTheme{
 	let imageRowCurrentCategoryNotSelected = UIImage.init(systemName: "circle")
 	
     // MARK: images
-    let imageCorrect = UIImage(named: "check circle filled")
-    let imageIncorrect = UIImage(named: "cross circle filled")
+    let imageCorrect = UIImage.init(systemName: "checkmark.circle.fill")
+    let imageIncorrect = UIImage.init(systemName: "xmark.circle.fill")
     
 	// MARK: view controller header images, show on top when adding
 	let imageHeaderAdd = UIImage.init(systemName: "wand.and.stars")

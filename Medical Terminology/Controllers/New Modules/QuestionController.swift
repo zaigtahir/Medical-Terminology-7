@@ -111,9 +111,7 @@ class QuestionController {
 		var termNames = [String]()
 		
 		let query = "SELECT DISTINCT name, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) WHERE name != \"\(notIncluding)\" AND noHyphenInName != \"\(notIncluding)\" ORDER BY RANDOM () LIMIT 3"
-		
-		print("question controller get3TermAnswers query: \(query)")
-		
+	
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			
 			while resultSet.next() {
