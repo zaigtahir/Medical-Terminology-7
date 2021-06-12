@@ -13,6 +13,11 @@ import UIKit
 class AudioFileController {
     
     var audioPlayer: AVAudioPlayer?
+	
+	// MARK: shorter table names to make things easier
+	let terms = myConstants.dbTableTerms
+	let assignedCategories = myConstants.dbTableAssignedCategories
+	let categories = myConstants.dbTableCategories
     
     func getAudioFileNamesFromDB () -> [String] {
         //will return an array of audio file names from the database
@@ -22,7 +27,7 @@ class AudioFileController {
         
         //null strings in database will become an empty string in the string variables here
         
-        let query = "SELECT audioFile FROM dictionary WHERE itemID >= 0"
+        let query = "SELECT audioFile FROM \(terms) WHERE termID >= 0"
         
         var fileNames = [String]()
         
@@ -45,19 +50,19 @@ class AudioFileController {
         
         let audioFilesNamesInDB = getAudioFileNamesFromDB()
         
-        print("Checking files present in DB but the cooresponding mp3 audiofile in the bundle")
+        print("Checking files present in DB but missing the cooresponding mp3 audiofile in the Audio folder")
         
         //see if each audio file in db has matching file.mp3 in the bundle
         for file in audioFilesNamesInDB {
             
             if Bundle.main.url(forResource: "\(myConstants.audioFolder)/\(file)", withExtension: "mp3") == nil {
-                print("\(myConstants.audioFolder)/\(file) is in the DB, but the audiofile is missing")
+                print("\(myConstants.audioFolder)/\(file) is in the DB, but the audiofile is missing in the Audio folder")
             }
         }
         
         //see if each mp3 file in the bundle has a matching file in the db
         
-        print("Checking audio files present in Bundle but missing in DB")
+        print("Checking audio files present in the Audio folder but missing in DB")
         
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
@@ -73,7 +78,7 @@ class AudioFileController {
                 let fileName = String(item.dropLast(4))
                 if audioFilesNamesInDB.contains(fileName) == false {
                     //the db does not contain this!
-                    print("\(fileName).mp3 is present in Bundle, missing in Database")
+                    print("\(fileName).mp3 is present in Audio folder, but missing in Database")
                 }
                 
             }

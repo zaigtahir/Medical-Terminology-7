@@ -214,8 +214,6 @@ class QuestionController {
 		
 		let query = "UPDATE \(assignedCategories) SET learnedDefinition = \(ld) WHERE (termID = \(termID) AND categoryID = \(categoryID))"
 		
-		print("setLearnedDefinition query: \(query)")
-		
 		myDB.executeStatements(query)
 		
 	}
