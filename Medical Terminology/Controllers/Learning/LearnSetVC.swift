@@ -35,6 +35,8 @@ class LearnSetVC: UIViewController, LearningSetVCHDelegate {
         scrollDelegate.delegate = learnSetVCH
 		collectionView.dataSource = learnSetVCH
         collectionView.delegate = scrollDelegate
+		
+		learnSetVCH.delegate = self
         
         nextButton.layer.cornerRadius  = myConstants.button_cornerRadius
         previousButton.layer.cornerRadius = myConstants.button_cornerRadius

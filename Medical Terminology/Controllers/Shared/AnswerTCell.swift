@@ -43,8 +43,6 @@ class AnswerTCell: UITableViewCell {
 	@IBAction func selectAnswerButtonAction(_ sender: UIButton) {
 		
 		delegate?.selectedAnswerRow(rowNumber: self.rowNumber)
-		
-		print ("triggered delegate function: AnswerTCell: AnswerTCellDelegate: selectedAnswerRow")
 	}
 	
 }

@@ -122,6 +122,8 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDeleg
         cell.answerNumberLabel.text = "\(indexPath.row + 1)."
         
         cell.answerText.text = question.answers[indexPath.row].answerText
+		
+		cell.selectAnswerButton.setTitle("  \(indexPath.row + 1)", for: .normal)
         
 		cell.rowNumber = indexPath.row
 		
@@ -139,10 +141,20 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDeleg
         case 1:
             cell.answerImage.image = myTheme.imageCorrect
             cell.answerImage.tintColor = myTheme.colorCorrect
+			
+			cell.selectAnswerButton.setImage(myTheme.imageCorrect, for: .normal)
+			cell.selectAnswerButton.tintColor = myTheme.colorCorrect
+			
+			
+			
             
         case 2:
             cell.answerImage.image = myTheme.imageIncorrect
             cell.answerImage.tintColor = myTheme.colorIncorrect
+			
+			cell.selectAnswerButton.setImage(myTheme.imageIncorrect, for: .normal)
+			cell.selectAnswerButton.tintColor = myTheme.colorIncorrect
+			
             
         case 3:
             
@@ -153,16 +165,29 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDeleg
             if question.showAnswer || showAnswerSwitch.isOn {
                 cell.answerImage.image = myTheme.imageCorrect
                 cell.answerImage.tintColor = myTheme.colorCorrect
+				
+				cell.selectAnswerButton.setImage(myTheme.imageCorrect, for: .normal)
+				cell.selectAnswerButton.tintColor = myTheme.colorCorrect
+				
                 
             } else {
                 cell.answerImage.image = nil
+				
+				cell.selectAnswerButton.setImage(myTheme.imageRowNotSelected, for: .normal)
+				cell.selectAnswerButton.tintColor = myTheme.colorText
             }
             
         case 4:
             cell.answerImage.image = nil
+			
+			cell.selectAnswerButton.setImage(myTheme.imageRowNotSelected, for: .normal)
+			cell.selectAnswerButton.tintColor = myTheme.colorText
             
         default:
             cell.answerImage.image = nil
+			
+			cell.selectAnswerButton.setImage(myTheme.imageRowNotSelected, for: .normal)
+			cell.selectAnswerButton.tintColor = myTheme.colorText
         }
         
         return cell
