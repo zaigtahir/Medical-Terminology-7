@@ -132,9 +132,7 @@ class QuestionController {
 		var definitions = [String]()
 		
 		let query = "SELECT DISTINCT definition FROM \(terms) WHERE definition != \"\(notIncluding)\" ORDER BY RANDOM () LIMIT 3"
-		
-		print("question controller get3DefinitionAnswers query: \(query)")
-		
+	
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			
 			while resultSet.next() {

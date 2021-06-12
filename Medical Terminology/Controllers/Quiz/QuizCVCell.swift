@@ -97,9 +97,7 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "answerCell", for: indexPath) as! AnswerTCell
-        
-        cell.answerNumberLabel.text = "\(indexPath.row + 1)."
-        
+                
         cell.answerText.text = question.answers[indexPath.row].answerText
         
         // getAnswerStatus:
@@ -111,30 +109,40 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         
         switch question.getAnswerStatus(answerIndex: indexPath.row) {
             
-        case 1:
-            cell.answerImage.image = myTheme.imageCorrect
-            cell.answerImage.tintColor = myTheme.colorCorrect
-            
-        case 2:
-            cell.answerImage.image = myTheme.imageIncorrect
-            cell.answerImage.tintColor = myTheme.colorIncorrect
-        case 3:
-            
-            if showAnswerSwitch.isOn {
-                cell.answerImage.image = myTheme.imageCorrect
-                cell.answerImage.tintColor = myTheme.colorCorrect
-            } else {
-                cell.answerImage.image = nil
-            }
-            
-        case 4:
-            cell.answerImage.image = nil
-            
-        default:
-            cell.answerImage.image = nil
-        }
-        
-        return cell
+		case 1:
+			cell.selectAnswerButton.setImage(myTheme.imageCorrect, for: .normal)
+			cell.selectAnswerButton.tintColor = myTheme.colorCorrect
+	
+		case 2:
+			cell.selectAnswerButton.setImage(myTheme.imageIncorrect, for: .normal)
+			cell.selectAnswerButton.tintColor = myTheme.colorIncorrect
+			
+			
+		case 3:
+			//this test will allow the table to be updated to
+			//show the result based on local change to the
+			//switch or from the question.showAnswer field when the user scrolls to this card
+			
+			if question.showAnswer || showAnswerSwitch.isOn {
+				cell.selectAnswerButton.setImage(myTheme.imageCorrect, for: .normal)
+				cell.selectAnswerButton.tintColor = myTheme.colorCorrect
+				
+				
+			} else {
+				cell.selectAnswerButton.setImage(myTheme.imageRowNotSelected, for: .normal)
+				cell.selectAnswerButton.tintColor = myTheme.colorText
+			}
+			
+		case 4:
+			cell.selectAnswerButton.setImage(myTheme.imageRowNotSelected, for: .normal)
+			cell.selectAnswerButton.tintColor = myTheme.colorText
+			
+		default:
+			cell.selectAnswerButton.setImage(myTheme.imageRowNotSelected, for: .normal)
+			cell.selectAnswerButton.tintColor = myTheme.colorText
+		}
+		
+		return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

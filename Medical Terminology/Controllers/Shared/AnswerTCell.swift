@@ -19,8 +19,6 @@ protocol AnswerTCellDelegate: AnyObject {
 
 class AnswerTCell: UITableViewCell {
 
-    @IBOutlet weak var answerImage: UIImageView!
-    @IBOutlet weak var answerNumberLabel: UILabel!
     @IBOutlet weak var answerText: UILabel!
 	@IBOutlet weak var selectAnswerButton: UIButton!
 	
