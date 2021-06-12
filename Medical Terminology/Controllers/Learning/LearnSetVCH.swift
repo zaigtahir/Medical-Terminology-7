@@ -15,7 +15,7 @@ protocol LearningSetVCHDelegate: AnyObject {
 }
 
 class LearningSetVCH: NSObject, UICollectionViewDataSource, ScrollControllerDelegate, LearnCVCellDelegate, LearnDoneCVCellDelegate {
-	
+
 	// configure with configure function in when setting up segue
     var learningSet: LearningSet!
 	
@@ -118,7 +118,7 @@ class LearningSetVCH: NSObject, UICollectionViewDataSource, ScrollControllerDele
 	func CVCellDragging(cellIndex: Int) {
 		//won't do anything here, but the function is here to satisfy the protocol
 	}
-	
+
 }
 
 

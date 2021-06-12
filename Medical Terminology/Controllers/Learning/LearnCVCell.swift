@@ -19,9 +19,8 @@ protocol LearnCVCellDelegate: AnyObject {
     func showAnswer(questionIndex: Int, showAnswer: Bool)
 }
 
-class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
-    
-    
+class LearnCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDelegate {
+	
     //will need to fill itself with all the data on creation
     
     @IBOutlet weak var cellView: UIView!
@@ -52,8 +51,6 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         cellView.layer.borderWidth = 1
         cellView.clipsToBounds = true
         tableView.dataSource = self
-        tableView.delegate = self
-        
     }
     
     func configure (question: Question, questionIndex: Int, totalQuestions: Int, quizStatus: QuizStatus) {
@@ -126,6 +123,10 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         
         cell.answerText.text = question.answers[indexPath.row].answerText
         
+		cell.rowNumber = indexPath.row
+		
+		cell.delegate = self
+		
         // getAnswerStatus:
         // 0 = question is not answered
         // 1 = answer is selected and is correct
@@ -168,10 +169,11 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDeleg
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.selectedAnswer(questionIndex: questionIndex, answerIndex: indexPath.row)
-    }
-    
+	//MARK: - delegate function for AnswerTCell
+	func selectedAnswerRow(rowNumber: Int) {
+		delegate?.selectedAnswer(questionIndex: questionIndex, answerIndex: rowNumber)
+	}
+
     @IBAction func showAnswerSwitchAction(_ sender: UISwitch) {
         // shoot off delegate function so that the question is
         // updated in the learningSet
