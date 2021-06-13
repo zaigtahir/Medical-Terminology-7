@@ -165,9 +165,9 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		case myConstants.segueLearningOptions:
 			
 			let vc = segue.destination as! LearningHomeOptionsVC
-			vc.delegate = learningHomeVCH   //assigning the VCH to the options as it's delegate
-			vc.isFavoriteMode = learningHomeVCH.favoritesOnly
-			vc.numberOfTerms = learningHomeVCH.numberOfTerms
+			//assigning the VCH to the options as it's delegate
+			vc.delegate = learningHomeVCH
+			vc.numberOfQuestions = learningHomeVCH.numberOfQuestions
 			
 		case myConstants.segueSelectCategory:
 			

@@ -1415,73 +1415,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
-                                <rect key="frame" x="20" y="50" width="374" height="324"/>
+                                <rect key="frame" x="20" y="50" width="374" height="149.66666666666666"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Wh1-IK-0P0">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="68"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Fo0-ty-0e1">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="149.66666666666666"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Learning Set Options" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvX-bZ-51n">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="textColor" name="color heading"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These options are used when you start new learning set. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7E-gp-dKr">
-                                                <rect key="frame" x="0.0" y="32" width="374" height="36"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" name="color text"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="njL-1N-mly">
-                                        <rect key="frame" x="0.0" y="108" width="374" height="57"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Types" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCC-II-RZ2">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of questions for a new set" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAs-YR-8vN">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="textColor" name="color text"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5kJ-pb-OfS">
-                                                <rect key="frame" x="0.0" y="26" width="374" height="32"/>
-                                                <segments>
-                                                    <segment title="All"/>
-                                                    <segment title="Favorite Only"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="favoriteControlAction:" destination="Lyr-cB-l21" eventType="valueChanged" id="tTd-fc-6h3"/>
-                                                    <action selector="favoriteSelectorChanged:" destination="wjV-cy-SAI" eventType="valueChanged" id="nyk-9o-a57"/>
-                                                    <action selector="maximumQuestionsSelectorChanged:" destination="wjV-cy-SAI" eventType="valueChanged" id="uki-Dq-tNI"/>
-                                                </connections>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fo0-ty-0e1">
-                                        <rect key="frame" x="0.0" y="205" width="374" height="119"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Number Of Terms " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAs-YR-8vN">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="textColor" name="color text"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For each term you will see 2 questions. So if you select 10 terms, you will have 20 questions on the learning set" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXH-Ac-HWR">
-                                                <rect key="frame" x="0.0" y="26" width="374" height="54"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The maximum number of questions to see on your learning set" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXH-Ac-HWR">
+                                                <rect key="frame" x="0.0" y="48" width="374" height="40.666666666666657"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="color text"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ela-mt-9aB">
-                                                <rect key="frame" x="0.0" y="88" width="374" height="32"/>
+                                                <rect key="frame" x="0.0" y="118.66666666666666" width="374" height="32"/>
                                                 <segments>
-                                                    <segment title="5"/>
                                                     <segment title="10"/>
-                                                    <segment title="25"/>
+                                                    <segment title="20"/>
                                                     <segment title="50"/>
+                                                    <segment title="100"/>
                                                 </segments>
                                                 <connections>
-                                                    <action selector="numberOfTermsSelectorChanged:" destination="Lyr-cB-l21" eventType="valueChanged" id="sVl-Y1-1Em"/>
+                                                    <action selector="numberOfQuestionsSelectorAction:" destination="Lyr-cB-l21" eventType="valueChanged" id="yYg-pj-GYY"/>
                                                 </connections>
                                             </segmentedControl>
                                         </subviews>
@@ -1499,8 +1459,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="NHJ-6O-E72"/>
                     <connections>
-                        <outlet property="favoriteControl" destination="5kJ-pb-OfS" id="Js3-0k-P2Y"/>
-                        <outlet property="maximumSelector" destination="Ela-mt-9aB" id="6ya-u1-pAf"/>
+                        <outlet property="maximumSelector" destination="Ela-mt-9aB" id="3sC-Xp-P4v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXD-Rr-G3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2413,71 +2372,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
-                                <rect key="frame" x="20" y="50" width="374" height="341"/>
+                                <rect key="frame" x="20" y="49.999999999999986" width="374" height="163.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MUX-oF-kGh">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="66.666666666666671"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Quiz Options" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAb-BF-NVz">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of questions for a new quiz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAb-BF-NVz">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="textColor" name="color heading"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These options are used when you start a new quiz" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMQ-ld-7c5">
-                                                <rect key="frame" x="0.0" y="32" width="374" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The maximum number of questions for a new quiz." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMQ-ld-7c5">
+                                                <rect key="frame" x="0.0" y="25.999999999999996" width="374" height="40.666666666666657"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="color text"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q7X-0c-b72">
-                                        <rect key="frame" x="0.0" y="90" width="374" height="57"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Types" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDX-g4-HgC">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="textColor" name="color text"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g3f-Qh-qp0">
-                                                <rect key="frame" x="0.0" y="26" width="374" height="32"/>
-                                                <segments>
-                                                    <segment title="All"/>
-                                                    <segment title="Favorite Only"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="favoriteSelectorChanged:" destination="wjV-cy-SAI" eventType="valueChanged" id="kOy-Cg-cFu"/>
-                                                    <action selector="maximumQuestionsSelectorChanged:" destination="wjV-cy-SAI" eventType="valueChanged" id="Cuc-Fl-bua"/>
-                                                </connections>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Abk-75-8Le">
-                                        <rect key="frame" x="0.0" y="187" width="374" height="57"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Types" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywi-Fd-BqN">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="textColor" name="color text"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M3q-KC-3iB">
-                                                <rect key="frame" x="0.0" y="26" width="374" height="32"/>
-                                                <segments>
-                                                    <segment title="All"/>
-                                                    <segment title="Terms"/>
-                                                    <segment title="Definitions"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="questionsTypeSelectorChanged:" destination="wjV-cy-SAI" eventType="valueChanged" id="kb2-eX-CWq"/>
-                                                </connections>
-                                            </segmentedControl>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1m1-CQ-FyV">
-                                        <rect key="frame" x="0.0" y="284" width="374" height="57"/>
+                                        <rect key="frame" x="0.0" y="106.66666666666666" width="374" height="57"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum number of questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z63-ct-ujd">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
@@ -2511,13 +2426,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XGP-wB-Ehn"/>
-                    <connections>
-                        <outlet property="favoriteSelector" destination="g3f-Qh-qp0" id="ukA-HN-XZa"/>
-                        <outlet property="maximumSelector" destination="g3f-Qh-qp0" id="kdc-jr-KIY"/>
-                        <outlet property="maxiumLabel" destination="FDX-g4-HgC" id="4qr-sP-QEq"/>
-                        <outlet property="questionsTypeLabel" destination="ywi-Fd-BqN" id="hPr-Ui-1JT"/>
-                        <outlet property="questionsTypeSelector" destination="M3q-KC-3iB" id="ekC-Nr-D3h"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dP0-k4-IFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

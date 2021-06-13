@@ -13,12 +13,12 @@ protocol LearningHomeVCHDelegate: AnyObject {
 }
 
 class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
-
+	
 	private var learningSet: LearningSet!
 	
 	var currentCategoryID = 1
 	var favoritesOnly = false
-	var numberOfTerms = 5
+	var numberOfQuestions = 10
 	
 	///used to determine if to create a new set or keep current set when going from learning home to learning set
 	var startNewSet = true	//will be used for segue
@@ -176,7 +176,10 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	}
 	
 	func getNewLearningSet () -> LearningSet {
-		learningSet = LearningSet(categoryID: currentCategoryID, numberOfTerms: numberOfTerms, favoritesOnly: favoritesOnly)
+		
+		// note number of questions/2 = number of terms which the function needs
+		
+		learningSet = LearningSet(categoryID: currentCategoryID, numberOfTerms: numberOfQuestions/2, favoritesOnly: favoritesOnly)
 		return learningSet
 	}
 
@@ -207,14 +210,10 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	}
 	
 	//MARK: - Delegate functions
-	
-	func learningOptionsUpdated(isFavoriteMode: Bool, numberOfTerms: Int) {
-		print("code options delegate function in learningHomeVCH")
-		
-		/*
-		self.isFavoriteMode = isFavoriteMode
-		self.numberOfTerms = numberOfTerms*/
+	func learningOptionsUpdated(numberOfQuestions: Int) {
+		self.numberOfQuestions = numberOfQuestions
 	}
+	
 	
 	// MARK: - LearnSetVCDelegate
 	func doneButtonPressed() {

@@ -9,18 +9,16 @@
 import UIKit
 
 protocol LearningOptionsUpdated: AnyObject {
-    func learningOptionsUpdated (isFavoriteMode: Bool, numberOfTerms: Int)
+    func learningOptionsUpdated ( numberOfQuestions: Int)
 }
 
 class LearningHomeOptionsVC: UIViewController {
     
     //load this via the segue call
-    var isFavoriteMode  = false
-    var numberOfTerms = 5 // choices will be 5, 10, 25, 50 terms
+    var numberOfQuestions = 10 // choices will be 10, 20, 50, 100 questions
     weak var delegate: LearningOptionsUpdated?
     
     @IBOutlet weak var maximumSelector: UISegmentedControl!
-    @IBOutlet weak var favoriteControl: UISegmentedControl!
     
     //number of terms for the learning set, can change with options
     // load this via the segue call
@@ -29,52 +27,40 @@ class LearningHomeOptionsVC: UIViewController {
         
         super.viewDidLoad()
         
-        switch numberOfTerms {
+        switch numberOfQuestions {
             
-        case 10:
+        case 20:
             maximumSelector.selectedSegmentIndex = 1
-        case 25:
-            maximumSelector.selectedSegmentIndex = 2
         case 50:
+            maximumSelector.selectedSegmentIndex = 2
+        case 100:
             maximumSelector.selectedSegmentIndex = 3
         default:
             maximumSelector.selectedSegmentIndex = 0
             
         }
-        
-        if isFavoriteMode {
-            favoriteControl.selectedSegmentIndex = 1
-        } else {
-            favoriteControl.selectedSegmentIndex = 0
-        }
     }
     
-    @IBAction func favoriteControlAction(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            isFavoriteMode = false
-        } else {
-            isFavoriteMode = true
-        }
-    }
     
-    @IBAction func numberOfTermsSelectorChanged(_ sender: UISegmentedControl) {
-        
-        switch sender.selectedSegmentIndex {
-        case 1:
-            numberOfTerms = 10
-        case 2:
-            numberOfTerms = 25
-        case 3:
-            numberOfTerms = 50
-        default:
-            numberOfTerms = 5
-        }
-        
-    }
+	
+	@IBAction func numberOfQuestionsSelectorAction(_ sender: UISegmentedControl) {
+		
+		switch sender.selectedSegmentIndex {
+		case 1:
+			numberOfQuestions = 20
+		case 2:
+			numberOfQuestions = 50
+		case 3:
+			numberOfQuestions = 100
+		default:
+			numberOfQuestions = 10
+		}
+	}
+	
     
     override func viewWillDisappear(_ animated: Bool) {
                 
-        delegate?.learningOptionsUpdated(isFavoriteMode: isFavoriteMode, numberOfTerms: numberOfTerms)
+        delegate?.learningOptionsUpdated( numberOfQuestions: numberOfQuestions)
     
     }
     
