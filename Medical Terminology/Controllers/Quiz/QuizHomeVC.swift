@@ -19,8 +19,8 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 	@IBOutlet weak var circleBarView: UIView!
 	@IBOutlet weak var infoIcon: UILabel!
 	@IBOutlet weak var redoButton: UIButton!
-	@IBOutlet weak var newSetButton: ZUIRoundedButton!
-	@IBOutlet weak var seeCurrentSetButton: ZUIRoundedButton!
+	@IBOutlet weak var newSetButton: UIButton!
+	@IBOutlet weak var seeCurrentSetButton: UIButton!
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var optionsButton: UIBarButtonItem!
 	@IBOutlet weak var headingLabel: UILabel!
