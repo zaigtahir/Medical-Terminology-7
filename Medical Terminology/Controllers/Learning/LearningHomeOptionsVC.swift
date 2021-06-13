@@ -41,8 +41,6 @@ class LearningHomeOptionsVC: UIViewController {
         }
     }
     
-    
-	
 	@IBAction func numberOfQuestionsSelectorAction(_ sender: UISegmentedControl) {
 		
 		switch sender.selectedSegmentIndex {
@@ -56,13 +54,11 @@ class LearningHomeOptionsVC: UIViewController {
 			numberOfQuestions = 10
 		}
 	}
-	
-    
+
     override func viewWillDisappear(_ animated: Bool) {
                 
         delegate?.learningOptionsUpdated( numberOfQuestions: numberOfQuestions)
     
     }
-    
     
 }
