@@ -96,7 +96,6 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	@objc func changeCategoryNameN (notification: Notification) {
 		// refresh the lists and table
-		print("categoryListVCH got changeCategoryNameN")
 		fillCategoryLists()
 		delegate?.shouldReloadTable()
 		
@@ -104,7 +103,6 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	@objc func deleteCategoryN (notification: Notification) {
 		// a category was deleted
-		print("categoryListVCH got deleteCategoryN")
 		// if the current category was deleted, then load up All Terms category
 		if let data = notification.userInfo as? [String : Int] {
 			if data["categoryID"] == currentCategoryID {
@@ -133,7 +131,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		// remove the All Terms and My Terms row if this is in the assign mode
 		
 		if categoryListMode == .assignCategory {
-			print("removing first 2 standards in fillCategoryLissts as im in assign mode")
+			//removing first 2 standards in fillCategoryLissts as im in assign mode
 			standardCategories.remove(at: 0)
 			standardCategories.remove(at: 0)
 		}

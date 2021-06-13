@@ -38,18 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(sc.getUserDefaultsVersion())
         }
 			
-       
 		if sc.isDevelopmentMode() {
             // check and see if there is a resource present for each audiofile name listed in the database
             print("In AppDelegate checking if each audiofile name in the database has a matching audiofile in the resource bundle")
             let aFC = AudioFileController()
             aFC.checkAudioFiles()
             print("Audio file check done! if there were any missing they would be listed before this ending line.")
-
         }
  		
-		
-
         // Determine and set the start screen
         if sc.getShowWelcomeScreen() == false {
             
@@ -63,12 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window?.rootViewController = tabController
             
-            /*
-             let navigationController = UINavigationController.init(rootViewController: viewController)
-             self.window?.rootViewController = navigationController
-             
-             self.window?.makeKeyAndVisible()
-             */
         }
         
         return true
