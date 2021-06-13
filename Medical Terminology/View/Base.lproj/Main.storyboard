@@ -2142,7 +2142,7 @@
                                                             <rect key="frame" x="20" y="141" width="351" height="205"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <prototypes>
-                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="answerCell" rowHeight="89" id="0N5-MF-huK" customClass="AnswerTCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
+                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="quizAnswerCell" rowHeight="89" id="0N5-MF-huK" customClass="AnswerTCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="28" width="351" height="89"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0N5-MF-huK" id="3d3-Uz-iIj">
@@ -2155,7 +2155,7 @@
                                                                                 <color key="textColor" name="color text"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsi-Wg-YWf">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsi-Wg-YWf">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="24"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="50" id="5XD-mh-Hbp"/>
@@ -2165,6 +2165,9 @@
                                                                                 <state key="normal" title="  1:" image="circle" catalog="system">
                                                                                     <color key="titleColor" name="color text"/>
                                                                                 </state>
+                                                                                <connections>
+                                                                                    <action selector="selectAnswerButtonAction:" destination="0N5-MF-huK" eventType="touchUpInside" id="AAp-N3-PAE"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2178,6 +2181,10 @@
                                                                         </constraints>
                                                                     </tableViewCellContentView>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <connections>
+                                                                        <outlet property="answerText" destination="cqS-SZ-e5R" id="nnK-Ir-0hT"/>
+                                                                        <outlet property="selectAnswerButton" destination="hsi-Wg-YWf" id="Oqz-lR-5aH"/>
+                                                                    </connections>
                                                                 </tableViewCell>
                                                             </prototypes>
                                                         </tableView>
