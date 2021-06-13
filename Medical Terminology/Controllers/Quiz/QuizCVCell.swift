@@ -17,8 +17,8 @@ protocol QuizCVCellDelegate: AnyObject {
     func showAnswer(questionIndex: Int, showAnswer: Bool)
 }
 
-class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
-    
+class QuizCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDelegate {
+	
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var questionCounter: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
@@ -45,8 +45,6 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         cellView.clipsToBounds = true
         
         tableView.dataSource = self
-        tableView.delegate = self
-        
     }
     
     func configure (question: Question, questionIndex: Int, totalQuestions: Int) {
@@ -100,6 +98,12 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
                 
         cell.answerText.text = question.answers[indexPath.row].answerText
         
+		cell.selectAnswerButton.setTitle("  \(indexPath.row + 1)", for: .normal)
+		
+		cell.rowNumber = indexPath.row
+		
+		cell.delegate = self
+		
         // getAnswerStatus:
         // 0 = question is not answered
         // 1 = answer is selected and is correct
@@ -145,11 +149,10 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
 		return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        delegate?.selectedAnswer(questionIndex: questionIndex, answerIndex: indexPath.row)
-        
-    }
+	//MARK: - delegate function for AnswerTCell
+	func selectedAnswerRow(rowNumber: Int) {
+		delegate?.selectedAnswer(questionIndex: questionIndex, answerIndex: rowNumber)
+	}
     
     @IBAction func showAnswerSwitchAction(_ sender: UISwitch) {
         // trigger delegate function so that you can update the show answer setting

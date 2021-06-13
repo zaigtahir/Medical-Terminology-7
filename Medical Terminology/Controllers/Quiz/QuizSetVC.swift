@@ -12,8 +12,8 @@ protocol QuizSetVCDelegate: AnyObject {
 	func doneButtonPressed()
 }
 
-class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegate, ScrollControllerDelegate, QuizDoneCVCellDelegate {
-    
+class QuizSetVC: UIViewController, QuizSetVCHDelegate {
+	
     @IBOutlet weak var previousButton: ZUIRoundedButton!
     @IBOutlet weak var nextButton: ZUIRoundedButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -32,76 +32,18 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         
         scrollDelegate.topBottomMargin  = myConstants.layout_topBottomMargin
         scrollDelegate.sideMargin = myConstants.layout_sideMargin
-        scrollDelegate.delegate = self
+        scrollDelegate.delegate = quizSetVCH
         
-        collectionView.dataSource = self
+        collectionView.dataSource = quizSetVCH
         collectionView.delegate = scrollDelegate
+		
+		quizSetVCH.delegate = self
         
         nextButton.layer.cornerRadius  = myConstants.button_cornerRadius
         previousButton.layer.cornerRadius = myConstants.button_cornerRadius
         
         updateDisplay()
         
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return quizSetVCH.quizSet.getActiveQuestionsCount()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if quizSetVCH.isAtSummary(indexPath: indexPath)  {
-            //need to show the summary cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quizDoneCell", for: indexPath) as! QuizDoneCVCell
-            
-            cell.gradeLabel.text = quizSetVCH.quizSet.getLetterGrade()
-            cell.resultsLabel.text = quizSetVCH.quizSet.getResultsSummary()
-            cell.delegate = self
-            return cell
-            
-        } else {
-            
-            let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "quizCell", for: indexPath) as! QuizCVCell
-            let question = quizSetVCH.quizSet.getQuestion(index: indexPath.row)
-            cell.configure(question: question, questionIndex: indexPath.row, totalQuestions: quizSetVCH.quizSet.getTotalQuestionCount())
-            cell.delegate = self
-            return cell
-        }
-    }
-    
-    //MARK: - delegate functions
-    func selectedAnswer(questionIndex: Int, answerIndex: Int) {
-        		
-		//if this is answered already, don't do anything
-        let question  = quizSetVCH.quizSet.getQuestion(index: questionIndex)
-        if question.isAnswered() {
-            //don't do anything
-            return
-        }
-        
-        quizSetVCH.quizSet.selectAnswerToQuestion(questionIndex: questionIndex, answerIndex: answerIndex)
-        quizSetVCH.quizSet.addFeedbackRemarks(question: question)
-        
-        // will add more questions to the datasource
-        collectionView.reloadData()
-        
-        // need to do this as it makes layout changes for the additional questions.
-        // I use the layout for calculating what I need in the scroll delegate so they layout needs to be done right away
-        
-        collectionView.layoutIfNeeded()
-        
-        updateDisplay()
-
-    }
-    
-    func showAnswer(questionIndex: Int, showAnswer: Bool) {
-        quizSetVCH.quizSet.activeQuestions[questionIndex].showAnswer = showAnswer
-    }
-    
-    //end delegate functions
-    
-    func retartButtonPressed() {
-        restartQuiz()
     }
     
     func updateDisplay () {
@@ -117,20 +59,12 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         updateNavigationButtons()
     }
     
-    func CVCellChanged(cellIndex: Int) {
-        updateNavigationButtons()
-    }
-    
     func updateNavigationButtons () {
         //update the status of the buttons
         previousButton.isEnabled =  scrollDelegate.isPreviouButtonEnabled(collectionView: collectionView)
         nextButton.isEnabled =  scrollDelegate.isNextButtonEnabled(collectionView: collectionView)
     }
-    
-    func CVCellDragging(cellIndex: Int) {
-        //do nothing
-    }
-    
+
     func showOptionsMenu() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let restartQuiz = UIAlertAction(title: "Restart This Quiz", style: .default, handler: {action in self.restartQuiz()})
@@ -147,6 +81,27 @@ class QuizSetVC: UIViewController, UICollectionViewDataSource, QuizCVCellDelegat
         updateDisplay()
     }
     
+	//MARK: - delegate functions for QuizSetVCHDelegate
+	func shouldUpdateDisplay() {
+		updateDisplay()
+	}
+	
+	func shouldUpdateData() {
+		// will add more questions to the datasource
+		collectionView.reloadData()
+		
+		// need to do this as it makes layout changes for the additional questions.
+		// I use the layout for calculating what I need in the scroll delegate so they layout needs to be done right away
+		
+		collectionView.layoutIfNeeded()
+	}
+	
+	func shouldRestartQuiz() {
+		restartQuiz()
+	}
+	// END of delegate functions
+	
+	
     @IBAction func movePreviousButtonAction(_ sender: Any) {
         scrollDelegate.scrollPrevious(collectionView: collectionView)
     }

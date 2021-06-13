@@ -14,7 +14,6 @@ protocol LearnSetVCDelegate: AnyObject {
 
 class LearnSetVC: UIViewController, LearningSetVCHDelegate {
 	
-
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
