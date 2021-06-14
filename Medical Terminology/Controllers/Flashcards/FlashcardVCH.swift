@@ -14,6 +14,7 @@ protocol FlashcardVCHDelegate: AnyObject {
 	func shouldRefreshCurrentCell()
 	func shouldReloadCellAtIndex (termIDIndex: Int)
 	func shouldRemoveCellAt(indexPath: IndexPath)
+	func shouldRemoveCurrentCell()
 }
 
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
@@ -346,7 +347,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		fc.setLearnedFlashcard(categoryID: currentCategoryID, termID: termID, learnedStatus: fcls)
 		
 		updateData()
-		delegate?.shouldRefreshCollectionView()
+		delegate?.shouldRemoveCurrentCell()
+	//	delegate?.shouldRefreshCollectionView()
 		delegate?.shouldUpdateDisplay()
 	}
 	

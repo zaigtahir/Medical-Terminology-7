@@ -106,7 +106,6 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		}
 	}
 	
-	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
 		switch segue.identifier {
@@ -146,7 +145,6 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		
 	}
 	
-
 	// MARK: Delegate functions for FlashcardVCHDelegate
 	
 	func shouldUpdateDisplay() {
@@ -163,12 +161,19 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		collectionView.reloadItems(at: [IndexPath(row: cellIndex, section: 0)])
 	}
 	
+	func shouldRemoveCurrentCell() {
+		let cellIndex  = scrollController.getCellIndex(collectionView: collectionView)
+		let indexPath = IndexPath(row: cellIndex, section: 0)
+		collectionView.deleteItems(at: [indexPath])
+	}
+	
 	func shouldReloadCellAtIndex (termIDIndex: Int) {
 		
 		let indexPath = IndexPath(row: termIDIndex, section: 0)
 		collectionView.reloadItems(at: [indexPath])
 	}
 	
+	// MARK: don't think i use this.. probably remove
 	func shouldRemoveCellAt(indexPath: IndexPath) {
 		collectionView.deleteItems(at: [indexPath])
 	}
