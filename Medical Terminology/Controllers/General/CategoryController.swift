@@ -229,10 +229,6 @@ class CategoryController {
 	*/
 	func saveCategoryForMigration (category: Category) {
 		
-		if sc.isDevelopmentMode() {
-			print("In saveCategoryForMigration function")
-		}
-		
 		let query = 	"""
 						INSERT INTO \(myConstants.dbTableCategories) (categoryID, name, description, isStandard, displayOrder, division)
 						VALUES (\(category.categoryID), "\(category.name)", "\(category.description)", \(category.isStandard), \(category.displayOrder), \(category.division))

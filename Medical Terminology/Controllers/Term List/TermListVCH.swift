@@ -162,7 +162,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	@objc func termInformationChangedN (notification: Notification) {
 		
-		print ("got term informtion changed notification in termslistvch")
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			
@@ -179,7 +178,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	}
 	
 	@objc func assignCategoryN (notification : Notification) {
-		print("got assignCategoryN in termListVCH")
+		
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]!
 			if categoryID == currentCategoryID {
@@ -190,8 +189,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	}
 	
 	@objc func unassignCategoryN (notification : Notification){
-		
-		print ("termListVCH got unassignedCategoryN")
 		
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]!
@@ -219,7 +216,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	}
 	
 	@objc func changeCategoryNameN (notification: Notification) {
-		print("termListVCH got changeCategoryN")
+		
 		// if this is the current category, reload the category and then refresh the display
 		
 		if let data = notification.userInfo as? [String : Int] {

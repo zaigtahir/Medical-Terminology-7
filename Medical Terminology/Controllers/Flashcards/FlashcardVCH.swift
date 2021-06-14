@@ -138,8 +138,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	@objc func termInformationChangedN (notification: Notification) {
 	
-		print ("got term informtion changed notification in flashcardVCH")
-		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
@@ -161,8 +159,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	@objc func unassignCategoryN (notification : Notification){
-		
-		print("fcVCH got unassignCategoryN")
 		
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]!
@@ -239,7 +235,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		if termIDs.count == 0 {
-			print("termIDs count = 0, sending back NoFlashCardCell")
+			
 			let noFC = collectionView.dequeueReusableCell(withReuseIdentifier: "noFlashcardCell", for: indexPath) as! NoFlashCardCell
 			configureNoFlashCardCell(cell: noFC)
 			
@@ -350,6 +346,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		fc.setLearnedFlashcard(categoryID: currentCategoryID, termID: termID, learnedStatus: fcls)
 		
 		updateData()
+		delegate?.shouldRefreshCollectionView()
 		delegate?.shouldUpdateDisplay()
 	}
 	

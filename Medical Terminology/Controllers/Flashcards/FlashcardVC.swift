@@ -216,8 +216,8 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		}
 		
 		flashCardVCH.updateData()
-		updateDisplay()
 		collectionView.reloadData()
+		updateDisplay()
 	}
 	
 	@IBAction func redoButtonAction(_ sender: Any) {
