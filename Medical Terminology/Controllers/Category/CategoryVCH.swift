@@ -11,7 +11,7 @@ import UIKit
 
 protocol CategoryVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
-	func duplicateCatetoryName()
+	func shouldAlertDuplicateCategoryName()
 }
 
 class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
@@ -94,7 +94,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		
 		if !cc.categoryNameIsUnique(name: cleanString, notIncludingCategoryID: category.categoryID) {
 			// this is a duplicate category name
-			delegate?.duplicateCatetoryName()
+			delegate?.shouldAlertDuplicateCategoryName()
 			return
 		}
 		

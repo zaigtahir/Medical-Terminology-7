@@ -85,6 +85,11 @@ class MyTheme{
 	let imageRowNotSelected = UIImage.init(systemName: "circle")
 	let imageRowCurrentCategoryNotSelected = UIImage.init(systemName: "circle")
 	
+	// images for when you are assigning categories to terms. This allows multiple selection, so using squares to indicate that
+	let imageRowSelectedAssign = UIImage.init(systemName: "square.fill")
+	let imageRowNotSelectedAssign = UIImage.init(systemName: "square")
+	let imageRowCurrentCategoryNotSelectedAssign = UIImage.init(systemName: "square")
+	
     // MARK: images
     let imageCorrect = UIImage.init(systemName: "checkmark.circle.fill")
     let imageIncorrect = UIImage.init(systemName: "xmark.circle.fill")

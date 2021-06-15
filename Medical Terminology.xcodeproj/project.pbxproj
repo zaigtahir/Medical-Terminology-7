@@ -787,14 +787,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = K33TSXFU97;
 				INFOPLIST_FILE = "Medical Terminology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.53;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
 				PRODUCT_NAME = "Practical Medical Terminology";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
@@ -810,14 +810,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = K33TSXFU97;
 				INFOPLIST_FILE = "Medical Terminology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.53;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
 				PRODUCT_NAME = "Practical Medical Terminology";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";

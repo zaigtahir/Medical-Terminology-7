@@ -61,16 +61,16 @@ class CategoryCell: UITableViewCell {
 		
 		if ids.contains(rowCategory.categoryID) {
 			// the term is assigned this category
-			selectImage.image = myTheme.imageRowSelected
+			selectImage.image = myTheme.imageRowSelectedAssign
 			selectImage.tintColor = myTheme.colorMain
 			
 		} else {
 			// not assigned to this category, but if this is the current category, use a different not selected icon
 			if rowCategory.categoryID == currentCategoryID {
-				selectImage.image = myTheme.imageRowCurrentCategoryNotSelected
+				selectImage.image = myTheme.imageRowCurrentCategoryNotSelectedAssign
 				
 			} else {
-				selectImage.image = myTheme.imageRowNotSelected
+				selectImage.image = myTheme.imageRowNotSelectedAssign
 			}
 			
 			selectImage.tintColor = myTheme.colorText

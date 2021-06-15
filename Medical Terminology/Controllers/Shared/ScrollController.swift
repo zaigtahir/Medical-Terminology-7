@@ -140,14 +140,14 @@ class ScrollController: NSObject, UICollectionViewDelegate, UICollectionViewDele
     func isPreviouButtonEnabled (collectionView: UICollectionView) -> Bool {
         
         let cellCount = collectionView.numberOfItems(inSection: 0)
-        
-        if cellCount == 0 {
+		
+        if cellCount <= 1 {
             
             return false
         }
         
         let cellIndex = getCellIndex(collectionView: collectionView)
-        
+		
         if cellIndex == 0 {
             
             return false
@@ -162,7 +162,7 @@ class ScrollController: NSObject, UICollectionViewDelegate, UICollectionViewDele
         
         let cellCount = collectionView.numberOfItems(inSection: 0)
         
-        if cellCount > 2 {
+        if cellCount >= 2 {
             
             return true
             

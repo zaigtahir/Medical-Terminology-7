@@ -19,6 +19,7 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	@IBOutlet weak var sliderOutlet: UISlider!
 	@IBOutlet weak var learnedStatusSwitch: UISegmentedControl!
+	@IBOutlet weak var relearnAllButton: UIButton!
 	@IBOutlet weak var previousButton: UIButton!
 	@IBOutlet weak var randomButton: UIButton!
 	@IBOutlet weak var nextButton: UIButton!
@@ -88,6 +89,13 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		// set up the titles for the learned status switch
 		learnedStatusSwitch.setTitle("Learning \(learningCount)", forSegmentAt: 0)
 		learnedStatusSwitch.setTitle("Learned \(learnedCount)", forSegmentAt: 1)
+		
+		// update relearnAll button
+		if learnedCount == 0 {
+			relearnAllButton.isEnabled = false
+		} else {
+			relearnAllButton.isEnabled = true
+		}
 		
 		updateButtons()
 		
@@ -223,6 +231,10 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		flashCardVCH.updateData()
 		collectionView.reloadData()
 		updateDisplay()
+	}
+	
+	@IBAction func relearnAllButtonAction(_ sender: Any) {
+		flashCardVCH.relearnFlashcards()
 	}
 	
 	@IBAction func redoButtonAction(_ sender: Any) {

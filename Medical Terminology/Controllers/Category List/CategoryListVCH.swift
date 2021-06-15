@@ -18,6 +18,7 @@ protocol CategoryListVCHDelegate: AnyObject {
 	func shouldReloadTable ()
 	func shouldSegueToPreexistingCategory (category: Category)
 	func shouldSegueToNewCategory ()
+	func shouldDismissCategoryMenu ()
 }
 
 class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate {
@@ -250,11 +251,15 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		let rowCategory = getRowCategory(indexPath: indexPath)
 		
 		if categoryListMode == .selectCategory {
+			// selected a category to view, dismiss the menu after that selections
 			self.selectedSelectRowPN(didSelectRowAt: indexPath, categoryID: rowCategory.categoryID)
+			delegate?.shouldDismissCategoryMenu()
+			
 		} else {
+			// notification happens later
 			self.selectedAssignRow(didSelectRowAt: indexPath, category: rowCategory)
+			
 		}
-		
 	}
 	
 	private func getRowCategory (indexPath: IndexPath) -> Category {
@@ -292,13 +297,12 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	private func selectedAssignRow (didSelectRowAt indexPath: IndexPath, category: Category) {
 		
 		if term.termID == -1 {
-			
 			cc.toggleCategoriesNewTermPN(term: term, categoryID: category.categoryID)
-			
 			delegate?.shouldReloadTable()
 			
 		} else {
 			
+			// notification happens later depending on the category selection and the one being viewed
 			cc.toggleCategories(term: term, categoryID: category.categoryID)
 			updateData()
 			delegate?.shouldReloadTable()

@@ -57,8 +57,11 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		updateDisplay()
 	}
 	
-	func duplicateCatetoryName() {
-		print ("hey this is a duplicate category  name")
+	func shouldAlertDuplicateCategoryName() {
+		let ac = UIAlertController(title: "Duplicate Name", message: "This category name already exists, please try a different category name", preferredStyle: .alert)
+		let ok = UIAlertAction(title: "OK", style: .default, handler: .none)
+		ac.addAction(ok)
+		present(ac, animated: true, completion: nil)
 	}
 	
 	// MARK: - updateDisplay

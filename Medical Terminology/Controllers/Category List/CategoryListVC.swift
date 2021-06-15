@@ -83,6 +83,11 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		performSegue(withIdentifier: myConstants.segueCategory, sender: self)
 	}
 	
+	func shouldDismissCategoryMenu() {
+		self.dismiss(animated: true, completion: nil)
+	}
+	
+	
 	
 	// MARK: - prepare segue
 	
