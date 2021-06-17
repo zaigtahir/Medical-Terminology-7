@@ -17,7 +17,7 @@ class QuizSetVC: UIViewController, QuizSetVCHDelegate {
     @IBOutlet weak var previousButton: ZUIRoundedButton!
     @IBOutlet weak var nextButton: ZUIRoundedButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var optionsButton: UIBarButtonItem!
+    @IBOutlet weak var restartButton: UIBarButtonItem!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
 	
     var scrollDelegate = ScrollController()
@@ -49,9 +49,9 @@ class QuizSetVC: UIViewController, QuizSetVCHDelegate {
     func updateDisplay () {
         //configure options button
         if quizSetVCH.quizSet.getQuizStatus() == .notStarted {
-            optionsButton.isEnabled = false
+			restartButton.isEnabled = false
         } else {
-            optionsButton.isEnabled = true
+			restartButton.isEnabled = true
         }
         
         //update counter
@@ -110,7 +110,7 @@ class QuizSetVC: UIViewController, QuizSetVCHDelegate {
         scrollDelegate.scrollNext(collectionView: collectionView)
     }
     
-    @IBAction func optionsButtonAction(_ sender: UIBarButtonItem) {
+    @IBAction func restartButtonAction(_ sender: UIBarButtonItem) {
         showOptionsMenu()
     }
 	

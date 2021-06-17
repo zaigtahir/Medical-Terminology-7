@@ -101,13 +101,11 @@ class QuizSet: TestBase {
 	
 	func resetQuizSet () {
 		
-		print ("to code resetQuizSet in QuizSet")
-		/*
 		qc.resetAnswers(categoryID: currentCategoryID, termIDs: termIDs
 		)
-		
+		//reload the set with the original questions
 		reset()
-		*/
+
 	}
 	
 	

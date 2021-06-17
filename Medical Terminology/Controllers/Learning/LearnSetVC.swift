@@ -14,7 +14,7 @@ protocol LearnSetVCDelegate: AnyObject {
 
 class LearnSetVC: UIViewController, LearningSetVCHDelegate {
 	
-    @IBOutlet weak var optionsButton: UIBarButtonItem!
+    @IBOutlet weak var restartButton: UIBarButtonItem!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -50,9 +50,9 @@ class LearnSetVC: UIViewController, LearningSetVCHDelegate {
         
         //configure options button
         if learnSetVCH.learningSet.getQuizStatus() == .notStarted {
-            optionsButton.isEnabled = false
+            restartButton.isEnabled = false
         } else {
-            optionsButton.isEnabled = true
+            restartButton.isEnabled = true
         }
     }
     
@@ -99,7 +99,7 @@ class LearnSetVC: UIViewController, LearningSetVCHDelegate {
 	}
 	// END of delegate functions
 	
-    @IBAction func optionsButtonAction(_ sender: UIBarButtonItem) {
+    @IBAction func restartButtonAction(_ sender: UIBarButtonItem) {
         showOptionsMenu()
     }
     
