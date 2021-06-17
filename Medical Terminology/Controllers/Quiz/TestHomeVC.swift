@@ -38,6 +38,8 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 		
 		testHomeVCH.delegate = self
 		
+		percentLabel.textColor = myTheme.colorButtonText
+		
 		updateDisplay()
 		
 	}
@@ -56,12 +58,6 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 		let c = cc.getCategory(categoryID: testHomeVCH.currentCategoryID)
 		
 		categoryNameLabel.text = "\(c.name) (\(testHomeVCH.categoryTermsCount))"
-		
-		
-		let foregroundColor = myTheme.colorPbTestForeground?.cgColor
-		let backgroundColor = myTheme.colorPbTestBackground?.cgColor
-		let fillColor = UIColor.systemBackground.cgColor
-		
 		
 		if testHomeVCH.categoryTermsCount == 0 {
 			
@@ -123,11 +119,15 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 		}
 		
 		// format the progress bar
+		let foregroundColor = myTheme.colorPbTestForeground?.cgColor
+		let backgroundColor = myTheme.colorPbTestBackground?.cgColor
+		let fillColor = myTheme.colorPbTestFillcolor?.cgColor
+		
 		let percentText = utilities.getPercentage(number: testHomeVCH.answeredCorrectCount, numberTotal: testHomeVCH.totalQuestionsCount)
 		
 		percentLabel.text = "\(percentText)% Done"
 		
-		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor, lineWidth: myTheme.progressBarWidth)
+		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!, lineWidth: myTheme.progressBarWidth)
 		
 		progressBar.setStrokeEnd(partialCount: testHomeVCH.answeredCorrectCount, totalCount: testHomeVCH.totalQuestionsCount)
 		

@@ -35,6 +35,8 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
 		
+		percentLabel.textColor = myTheme.colorButtonText
+		
 		learningHomeVCH.delegate = self
 	
 		learningHomeVCH.updateData()
@@ -56,10 +58,6 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		let c = cc.getCategory(categoryID: learningHomeVCH.currentCategoryID)
 		
 		categoryNameLabel.text = "\(c.name) (\(learningHomeVCH.categoryTermsCount))"
-		
-		let foregroundColor = myTheme.colorLhPbForeground?.cgColor
-		let backgroundColor = myTheme.colorLhPbBackground?.cgColor
-		let fillColor = UIColor.systemBackground.cgColor
 		
 		if learningHomeVCH.categoryTermsCount == 0 {
 			// no terms available in this category
@@ -113,7 +111,11 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			seeCurrentSetButton.isEnabled = learningHomeVCH.isLearningSetAvailable()
 		}
 		
-		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor
+		let foregroundColor = myTheme.colorLhPbForeground?.cgColor
+		let backgroundColor = myTheme.colorLhPbBackground?.cgColor
+		let fillColor = myTheme.colorLhPbFill?.cgColor
+		
+		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!
 								  , lineWidth: myTheme.progressBarWidth)
 		
 		progressBar.setStrokeEnd(partialCount: learningHomeVCH.learnedTermsCount, totalCount: learningHomeVCH.totalTermsCount)

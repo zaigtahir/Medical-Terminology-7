@@ -68,7 +68,7 @@ class MyTheme{
     //colors of test set home
     let colorPbTestForeground = UIColor(named: "color main")
     let colorPbTestBackground = UIColor(named: "color pb background")
-	let colorPbTestFillcolor = UIColor.systemBackground
+	let colorPbTestFillcolor = UIColor(named: "color main")
     
     //MARK: Test set colors
     let colorQsNotAnswered = UIColor(named: "color main")
