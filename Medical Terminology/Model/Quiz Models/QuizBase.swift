@@ -1,5 +1,5 @@
 //
-//  QuizBase.swift
+//  TestBase.swift
 //  Medical Terminology
 //
 //  Created by Zaigham Tahir on 5/2/21.
@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK : Learning set uses this will need to change learning set to use TestBase then delete this
-class QuizBase {
+class TestBase {
 	
 	var activeQuestions = [Question]()
 	var masterList = [Question]()
@@ -17,7 +17,7 @@ class QuizBase {
 	
 	init (originalQuestions: [Question]) {
 		
-		//keep original question untouched and for use to reset the quiz
+		//keep original question untouched and for use to reset the test
 		
 		self.originalQuestions = originalQuestions
 		
@@ -162,10 +162,10 @@ class QuizBase {
 		}
 	}
 	
-	func getQuizStatus () -> QuizStatus {
+	func getTestStatus () -> TestStatus {
 		
 		if !activeQuestions[0].isAnswered() {
-			//first question is not answered, so quiz ia not started
+			//first question is not answered, so test ia not started
 			return .notStarted
 		}
 		

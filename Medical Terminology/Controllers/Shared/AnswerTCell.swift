@@ -7,7 +7,7 @@
 //
 
 /**
- Used for the table cell that shows the answers to questions for the quiz or learning set
+ Used for the table cell that shows the answers to questions for the test or learning set
  */
 
 

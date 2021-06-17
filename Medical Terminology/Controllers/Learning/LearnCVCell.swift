@@ -34,7 +34,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDeleg
     @IBOutlet weak var showAnswerLabel: UILabel!
     @IBOutlet weak var showAnswerSwitch: UISwitch!
     
-    //this the index of the question in the quiz, used to identify the question in the quiz for the delegate function. It is set by the LearnSetVCH when forming this cell with the configure function
+    //this the index of the question in the test, used to identify the question in the test for the delegate function. It is set by the LearnSetVCH when forming this cell with the configure function
     
     private var questionIndex = 0     //index of the question in the learningSet
     private var question: Question!     //the question to show
@@ -53,7 +53,7 @@ class LearnCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDeleg
         tableView.dataSource = self
     }
     
-    func configure (question: Question, questionIndex: Int, totalQuestions: Int, quizStatus: QuizStatus) {
+    func configure (question: Question, questionIndex: Int, totalQuestions: Int, testStatus: TestStatus) {
         
         showAgainButton.isHidden = true
         willShowAgainButton.isHidden = true

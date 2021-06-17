@@ -22,7 +22,7 @@ enum TermComponent: Int {
 	case definition = 2
 }
 
-enum QuizStatus {
+enum TestStatus {
     case notStarted
     case inProgress
     case done
@@ -50,7 +50,7 @@ enum CategoryEditMode {
 	case delete
 }
 
-// use to assign and check answeredTerm and answeredDefinition, and also for quiz answers and learning module
+// use to assign and check answeredTerm and answeredDefinition, and also for test answers and learning module
 
 enum AnsweredState: Int {
 	case unanswered = 0

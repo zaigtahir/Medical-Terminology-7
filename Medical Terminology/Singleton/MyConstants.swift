@@ -61,8 +61,8 @@ class MyConstants {
 	let segueMultiLineInput = "segueMultiLineInput"
 	let segueLearningSet = "segueToLearningSet"
 	let segueLearningOptions = "segueToLearningHomeOptions"
-	let segueToQuiz = "segueToQuiz"
-	let segueQuizOptions = "segueQuizOptions"
+	let segueToTest = "segueToTest"
+	let segueTestOptions = "segueTestOptions"
 	
     // question feedback remarks
     let feedbackNotAnswered = "Select An Answer"

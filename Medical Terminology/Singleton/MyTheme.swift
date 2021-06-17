@@ -57,18 +57,20 @@ class MyTheme{
     //MARK: Learning home
     let colorLhPbForeground = UIColor(named: "color main 2")
     let colorLhPbBackground = UIColor(named: "color pb background")
-    let colorLhPbFill = UIColor.systemBackground
-
+    //let colorLhPbFill = UIColor.systemBackground
+	let colorLhPbFill = UIColor(named: "color main 2")
+	
+	
     //MARK: Learning set
     let colorLsNotAnswered = UIColor(named: "color main 2")
     
-    //MARK: Quiz home
-    //colors of quiz set home
-    let colorPbQuizForeground = UIColor(named: "color main")
-    let colorPbQuizBackground = UIColor(named: "color pb background")
-	let colorPbQuizFillcolor = UIColor.systemBackground
+    //MARK: Test home
+    //colors of test set home
+    let colorPbTestForeground = UIColor(named: "color main")
+    let colorPbTestBackground = UIColor(named: "color pb background")
+	let colorPbTestFillcolor = UIColor.systemBackground
     
-    //MARK: Quiz set colors
+    //MARK: Test set colors
     let colorQsNotAnswered = UIColor(named: "color main")
     	
 	//MARK: Category List controller row swipe action colors

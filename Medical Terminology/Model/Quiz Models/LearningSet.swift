@@ -8,13 +8,13 @@
 
 import Foundation
 
-//  Class to extend QuizBase to make a LearningSet
+//  Class to extend TestBase to make a LearningSet
 
 // MARK: change to use TestBase
 
-class LearningSet: TestBase {
+class LearningSet: QiuzTestBase {
 	
-	/// to save the original termIDs for resetting the learned items when resetting the quiz
+	/// to save the original termIDs for resetting the learned items when resetting the test
 	private let termIDs : [Int]
 	private var currentCategoryID = 0
 	private let qc = QuestionController()
@@ -70,7 +70,7 @@ class LearningSet: TestBase {
 			}
 		}
 		
-		//now requeue the question using the QuizBase
+		//now requeue the question using the TestBase
 		self.requeueQuestion(questionIndex: questionIndex)
 		
 	}

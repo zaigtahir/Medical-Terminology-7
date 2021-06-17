@@ -54,9 +54,9 @@ class LearningSetVCH: NSObject, UICollectionViewDataSource, ScrollControllerDele
 			cell.delegate = self
 			
 			let question = learningSet.getQuestion(index: indexPath.row)
-			let quizStatus = learningSet.getQuizStatus()
+			let testStatus = learningSet.getTestStatus()
 			
-			cell.configure(question: question, questionIndex: indexPath.row, totalQuestions: learningSet.getTotalQuestionCount(), quizStatus: quizStatus)
+			cell.configure(question: question, questionIndex: indexPath.row, totalQuestions: learningSet.getTotalQuestionCount(), testStatus: testStatus)
 			
 			return cell
 		}

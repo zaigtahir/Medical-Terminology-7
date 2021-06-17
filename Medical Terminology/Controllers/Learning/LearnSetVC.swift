@@ -49,7 +49,7 @@ class LearnSetVC: UIViewController, LearningSetVCHDelegate {
         updateNavigationButtons()
         
         //configure options button
-        if learnSetVCH.learningSet.getQuizStatus() == .notStarted {
+        if learnSetVCH.learningSet.getTestStatus() == .notStarted {
             restartButton.isEnabled = false
         } else {
             restartButton.isEnabled = true

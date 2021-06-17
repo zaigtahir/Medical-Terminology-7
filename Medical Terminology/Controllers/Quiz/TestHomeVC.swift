@@ -1,5 +1,5 @@
 //
-//  QuizHome.swift
+//  TestHome.swift
 //  Medical Terminology
 //
 //  Created by Zaigham Tahir on 7/29/19.
@@ -9,7 +9,7 @@
 
 import UIKit
 
-class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
+class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 	
 	@IBOutlet weak var favoritesOnlyButton: ZUIToggleButton!
 	@IBOutlet weak var favoritesCountLabel: UILabel!
@@ -25,7 +25,7 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 	@IBOutlet weak var optionsButton: UIBarButtonItem!
 	@IBOutlet weak var headingLabel: UILabel!
 	
-	let quizHomeVCH = QuizHomeVCH()
+	let testHomeVCH = TestHomeVCH()
 	let utilities = Utilities()
 	var progressBar: CircularBar!
 	
@@ -36,7 +36,7 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 		
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
 		
-		quizHomeVCH.delegate = self
+		testHomeVCH.delegate = self
 		
 		updateDisplay()
 		
@@ -49,21 +49,21 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 	
 	private func updateDisplay () {
 		
-		favoritesOnlyButton.isOn = quizHomeVCH.favoritesOnly
+		favoritesOnlyButton.isOn = testHomeVCH.favoritesOnly
 		
-		favoritesCountLabel.text = "\(quizHomeVCH.favoriteTermsCount)"
+		favoritesCountLabel.text = "\(testHomeVCH.favoriteTermsCount)"
 		
-		let c = cc.getCategory(categoryID: quizHomeVCH.currentCategoryID)
+		let c = cc.getCategory(categoryID: testHomeVCH.currentCategoryID)
 		
-		categoryNameLabel.text = "\(c.name) (\(quizHomeVCH.categoryTermsCount))"
+		categoryNameLabel.text = "\(c.name) (\(testHomeVCH.categoryTermsCount))"
 		
 		
-		let foregroundColor = myTheme.colorPbQuizForeground?.cgColor
-		let backgroundColor = myTheme.colorPbQuizBackground?.cgColor
+		let foregroundColor = myTheme.colorPbTestForeground?.cgColor
+		let backgroundColor = myTheme.colorPbTestBackground?.cgColor
 		let fillColor = UIColor.systemBackground.cgColor
 		
 		
-		if quizHomeVCH.categoryTermsCount == 0 {
+		if testHomeVCH.categoryTermsCount == 0 {
 			
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
@@ -74,10 +74,10 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 			messageLabel.text = myConstants.noTermsSubheading
 			
 			newSetButton.isEnabled = false
-			seeCurrentSetButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
+			seeCurrentSetButton.isEnabled = testHomeVCH.isTestSetAvailable()
 	
 			
-		} else if (quizHomeVCH.favoritesOnly && quizHomeVCH.favoriteTermsCount == 0) {
+		} else if (testHomeVCH.favoritesOnly && testHomeVCH.favoriteTermsCount == 0) {
 			
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
@@ -88,14 +88,14 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 			messageLabel.text = myConstants.noFavoriteTermsSubheading
 			
 			newSetButton.isEnabled = false
-			seeCurrentSetButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
+			seeCurrentSetButton.isEnabled = testHomeVCH.isTestSetAvailable()
 			
 		} else {
 			
 			// some terms available
 			percentLabel.isHidden = false
 			
-			if quizHomeVCH.answeredCorrectCount > 0 {
+			if testHomeVCH.answeredCorrectCount > 0 {
 				redoButton.isHidden = false
 			} else {
 				redoButton.isHidden = true
@@ -105,31 +105,31 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 			headingLabel.isHidden = true
 			
 			newSetButton.isEnabled = true
-			seeCurrentSetButton.isEnabled = quizHomeVCH.isQuizSetAvailable()
+			seeCurrentSetButton.isEnabled = testHomeVCH.isTestSetAvailable()
 			
 			// message text
-			switch quizHomeVCH.questionsType {
+			switch testHomeVCH.questionsType {
 			
 			case .definition:
-				messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsCount) available definition questions"
+				messageLabel.text = "You correctly answered \(testHomeVCH.answeredCorrectCount) out of \(testHomeVCH.totalQuestionsCount) available definition questions"
 				
 			case .term:
-				messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsCount) available term questions"
+				messageLabel.text = "You correctly answered \(testHomeVCH.answeredCorrectCount) out of \(testHomeVCH.totalQuestionsCount) available term questions"
 				
 			case .both:
-				messageLabel.text = "You correctly answered \(quizHomeVCH.answeredCorrectCount) out of \(quizHomeVCH.totalQuestionsCount) available questions"
+				messageLabel.text = "You correctly answered \(testHomeVCH.answeredCorrectCount) out of \(testHomeVCH.totalQuestionsCount) available questions"
 			}
 		
 		}
 		
 		// format the progress bar
-		let percentText = utilities.getPercentage(number: quizHomeVCH.answeredCorrectCount, numberTotal: quizHomeVCH.totalQuestionsCount)
+		let percentText = utilities.getPercentage(number: testHomeVCH.answeredCorrectCount, numberTotal: testHomeVCH.totalQuestionsCount)
 		
 		percentLabel.text = "\(percentText)% Done"
 		
 		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor, lineWidth: myTheme.progressBarWidth)
 		
-		progressBar.setStrokeEnd(partialCount: quizHomeVCH.answeredCorrectCount, totalCount: quizHomeVCH.totalQuestionsCount)
+		progressBar.setStrokeEnd(partialCount: testHomeVCH.answeredCorrectCount, totalCount: testHomeVCH.totalQuestionsCount)
 		
 	}
 	
@@ -147,37 +147,37 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 			let vc = nc.topViewController as! CategoryListVC
 			
 			vc.categoryListVCH.categoryListMode = .selectCategory
-			vc.categoryListVCH.currentCategoryID = quizHomeVCH.currentCategoryID
+			vc.categoryListVCH.currentCategoryID = testHomeVCH.currentCategoryID
 			
-		case myConstants.segueToQuiz:
+		case myConstants.segueToTest:
 			let nc = segue.destination as! UINavigationController
-			let vc = nc.topViewController as! QuizSetVC
+			let vc = nc.topViewController as! TestSetVC
 			
-			vc.delegate = quizHomeVCH
+			vc.delegate = testHomeVCH
 			
-			if quizHomeVCH.startNewQuiz {
-				vc.quizSetVCH.quizSet = quizHomeVCH.getNewQuizSet()
+			if testHomeVCH.startNewTest {
+				vc.testSetVCH.testSet = testHomeVCH.getNewTestSet()
 			} else {
-				vc.quizSetVCH.quizSet = quizHomeVCH.getQuizSet()
+				vc.testSetVCH.testSet = testHomeVCH.getTestSet()
 			}
 			
-		case myConstants.segueQuizOptions:
+		case myConstants.segueTestOptions:
 			
-			let vc = segue.destination as! QuizOptionsVC
-			vc.delegate = quizHomeVCH
-			vc.questionsType = quizHomeVCH.questionsType
-			vc.numberOfQuestions = quizHomeVCH.numberOfQuestions
-			vc.isFavoriteMode = quizHomeVCH.favoritesOnly
+			let vc = segue.destination as! TestOptionsVC
+			vc.delegate = testHomeVCH
+			vc.questionsType = testHomeVCH.questionsType
+			vc.numberOfQuestions = testHomeVCH.numberOfQuestions
+			vc.isFavoriteMode = testHomeVCH.favoritesOnly
 			
 		default:
-			print("fatal error no matching segue in quizHomeVC prepare function")
+			print("fatal error no matching segue in testHomeVC prepare function")
 		}
 		
 	}
 	
 	func confirmRestart () {
 		
-		let alert = UIAlertController(title: "Redo Quiz Questions", message: "Are you sure you want to clear the answers to these questions and redo them?", preferredStyle: .actionSheet)
+		let alert = UIAlertController(title: "Redo Test Questions", message: "Are you sure you want to clear the answers to these questions and redo them?", preferredStyle: .actionSheet)
 		
 		let yesAction = UIAlertAction(title: "Yes", style: .default, handler: {
 										action in self.restartNow()})
@@ -190,43 +190,43 @@ class QuizHomeVC: UIViewController, QuizHomeVCHDelegate {
 	}
 	
 	func restartNow() {
-		quizHomeVCH.restartOver()
+		testHomeVCH.restartOver()
 		updateDisplay()
 	}
 	
-	// MARK: - QuizHomeVCHDelegate functions
+	// MARK: - TestHomeVCHDelegate functions
 	func shouldUpdateDisplay() {
 		updateDisplay()
 	}
 	
 	@IBAction func optionsButtonAction(_ sender: Any) {
-		performSegue(withIdentifier: "segueQuizOptions", sender: nil)
+		performSegue(withIdentifier: "segueTestOptions", sender: nil)
 	}
 	
 	@IBAction func redoButtonAction(_ sender: Any) {
 		confirmRestart()
 	}
 	
-	@IBAction func newQuizButtonAction(_ sender: UIButton) {
-		quizHomeVCH.startNewQuiz = true
-		performSegue(withIdentifier: "segueToQuiz", sender: nil)
+	@IBAction func newTestButtonAction(_ sender: UIButton) {
+		testHomeVCH.startNewTest = true
+		performSegue(withIdentifier: "segueToTest", sender: nil)
 	}
 	
-	@IBAction func currentQuizButtonAction(_ sender: Any) {
+	@IBAction func currentTestButtonAction(_ sender: Any) {
 		//will manually segue
-		quizHomeVCH.startNewQuiz  = false
-		performSegue(withIdentifier: "segueToQuiz", sender: nil)
+		testHomeVCH.startNewTest  = false
+		performSegue(withIdentifier: "segueToTest", sender: nil)
 	}
 	
 	@IBAction func favoritesOnlyButtonAction(_ sender: Any) {
-		quizHomeVCH.favoritesOnly.toggle()
-		quizHomeVCH.updateData()
+		testHomeVCH.favoritesOnly.toggle()
+		testHomeVCH.updateData()
 		updateDisplay()
 	}
 	
 	@IBAction func termComponentSelector(_ sender: UISegmentedControl) {
-		quizHomeVCH.questionsType = TermComponent.init(rawValue: sender.selectedSegmentIndex)!
-		quizHomeVCH.updateData()
+		testHomeVCH.questionsType = TermComponent.init(rawValue: sender.selectedSegmentIndex)!
+		testHomeVCH.updateData()
 		updateDisplay()
 	}
 	

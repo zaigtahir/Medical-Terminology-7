@@ -1,5 +1,5 @@
 //
-//  QuizSet2.swift
+//  TestSet2.swift
 //  Medical Terminology
 //
 //  Created by Zaigham Tahir on 5/2/21.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-class QuizSet: TestBase {
+class TestSet: QiuzTestBase {
 	
-	/// to save the original termIDs for resetting the learned items when resetting the quiz
+	/// to save the original termIDs for resetting the learned items when resetting the test
 	private let termIDs = [Int]()
 	private var currentCategoryID = 0
 	private let qc = QuestionController()
 	private let tc = TermController()
 	
 	init (categoryID: Int, numberOfQuestions: Int, favoritesOnly: Bool, questionsTypes: TermComponent) {
-		// will create a quizset with the numberOfQuesteions if available
+		// will create a testset with the numberOfQuesteions if available
 		// will only select questions that are not answered or answered incorrectly
 		
 		// for now just test out term questions
@@ -99,7 +99,7 @@ class QuizSet: TestBase {
 		
 	}
 	
-	func resetQuizSet () {
+	func resetTestSet () {
 		
 		qc.resetAnswers(categoryID: currentCategoryID, termIDs: termIDs
 		)

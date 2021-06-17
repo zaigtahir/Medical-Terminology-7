@@ -1,5 +1,5 @@
 //
-//  QuizOptionsViewController.swift
+//  TestOptionsViewController.swift
 //  Medical Terminology
 //
 //  Created by Zaigham Tahir on 4/10/19.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol QuizOptionsUpdated: AnyObject {
-    func quizOptionsUpdate (numberOfQuestions: Int, questionsTypes: TermComponent, isFavoriteMode: Bool)
+protocol TestOptionsUpdated: AnyObject {
+    func testOptionsUpdate (numberOfQuestions: Int, questionsTypes: TermComponent, isFavoriteMode: Bool)
 }
 
 
-class QuizOptionsVC: UIViewController {
+class TestOptionsVC: UIViewController {
     
     @IBOutlet weak var maxiumLabel: UILabel!
     @IBOutlet weak var maximumSelector: UISegmentedControl!
@@ -25,7 +25,7 @@ class QuizOptionsVC: UIViewController {
     var questionsType : TermComponent = .both
     var isFavoriteMode = false
     
-    weak var delegate : QuizOptionsUpdated?
+    weak var delegate : TestOptionsUpdated?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +89,7 @@ class QuizOptionsVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         
-        delegate?.quizOptionsUpdate(numberOfQuestions: numberOfQuestions, questionsTypes: questionsType, isFavoriteMode: isFavoriteMode)
+        delegate?.testOptionsUpdate(numberOfQuestions: numberOfQuestions, questionsTypes: questionsType, isFavoriteMode: isFavoriteMode)
         
     }
     

@@ -1,5 +1,5 @@
 //
-//  QuizHomeVCH.swift
+//  TestHomeVCH.swift
 //  Medical Terminology
 //
 //  Created by Zaigham Tahir on 7/29/19.
@@ -8,22 +8,22 @@
 
 import Foundation
 
-protocol QuizHomeVCHDelegate: AnyObject {
+protocol TestHomeVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
 }
 
-// as a note: when the user changes a category, will need to reset the current quiz
+// as a note: when the user changes a category, will need to reset the current test
 
-class QuizHomeVCH: NSObject, QuizOptionsUpdated, QuizSetVCDelegate {
+class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 
-    private var quizSet: QuizSet!
+    private var testSet: TestSet!
 	
 	var currentCategoryID = 1
 	var favoritesOnly = false
     var numberOfQuestions = 10
     var questionsType : TermComponent = .both
 	
-    var startNewQuiz: Bool = true    //will be used for segue
+    var startNewTest: Bool = true    //will be used for segue
     
 	let tc = TermController()
 	let cc = CategoryController()
@@ -38,7 +38,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated, QuizSetVCDelegate {
 	var answeredCorrectCount = 0
 	var totalQuestionsCount = 0
 	
-	weak var delegate: QuizHomeVCHDelegate?
+	weak var delegate: TestHomeVCHDelegate?
 	
 	override init() {
 		super.init()
@@ -90,9 +90,9 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated, QuizSetVCDelegate {
 		
 		if let data = notification.userInfo as? [String : Int] {
 			
-			// clear the quiz set
-			if quizSet != nil {
-				quizSet = nil
+			// clear the test set
+			if testSet != nil {
+				testSet = nil
 			}
 			
 			
@@ -112,7 +112,7 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated, QuizSetVCDelegate {
 	
 	@objc func termInformationChangedN (notification: Notification) {
 		
-		// term information does not show on quizHome, so nothing do to here
+		// term information does not show on testHome, so nothing do to here
 		
 	}
 	
@@ -174,35 +174,35 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated, QuizSetVCDelegate {
 		
 	}
     
-    func isQuizSetAvailable () -> Bool {
-        // test to see if the quiz exists
+    func isTestSetAvailable () -> Bool {
+        // test to see if the test exists
         // can use to set the enabled state of the See current set button
-        if let _ = quizSet {
+        if let _ = testSet {
             return true
         } else {
             return false
         }
     }
     
-    func getQuizSet () -> QuizSet {
-        return quizSet
+    func getTestSet () -> TestSet {
+        return testSet
     }
     
-    func getNewQuizSet () -> QuizSet {
+    func getNewTestSet () -> TestSet {
         
-        //create a quiz based on the variables that can be changed through options
+        //create a test based on the variables that can be changed through options
        
-		quizSet = QuizSet(categoryID: currentCategoryID, numberOfQuestions: numberOfQuestions, favoritesOnly: favoritesOnly, questionsTypes: questionsType)
+		testSet = TestSet(categoryID: currentCategoryID, numberOfQuestions: numberOfQuestions, favoritesOnly: favoritesOnly, questionsTypes: questionsType)
         
-        return quizSet
+        return testSet
     }
     
     func restartOver () {
 		
 		qc.resetAnswers(categoryID: currentCategoryID, questionType: questionsType)
 	
-        //clear the quiz
-		quizSet = nil
+        //clear the test
+		testSet = nil
         
 		updateData()
 		
@@ -211,13 +211,13 @@ class QuizHomeVCH: NSObject, QuizOptionsUpdated, QuizSetVCDelegate {
     }
 
     //MARK: - Delegate functions
-    func quizOptionsUpdate(numberOfQuestions: Int, questionsTypes: TermComponent, isFavoriteMode: Bool) {
+    func testOptionsUpdate(numberOfQuestions: Int, questionsTypes: TermComponent, isFavoriteMode: Bool) {
         //update settings
         self.numberOfQuestions = numberOfQuestions
         self.questionsType = questionsTypes
     }
 	
-	// MARK: QuizSetVCDelegate
+	// MARK: TestSetVCDelegate
 	func doneButtonPressed() {
 		updateData()
 		delegate?.shouldUpdateDisplay()

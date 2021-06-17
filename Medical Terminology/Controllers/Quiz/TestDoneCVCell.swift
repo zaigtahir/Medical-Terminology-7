@@ -1,5 +1,5 @@
 //
-//  QuizDoneCellCollectionViewCell.swift
+//  TestDoneCellCollectionViewCell.swift
 //  Medical Terminology
 //
 //  Created by Zaigham Tahir on 8/23/19.
@@ -8,20 +8,20 @@
 
 import UIKit
 
-//delegate function. Fire off when the user presses the reset quiz button
+//delegate function. Fire off when the user presses the reset test button
 
-protocol QuizDoneCVCellDelegate: AnyObject {
+protocol TestDoneCVCellDelegate: AnyObject {
     func retartButtonPressed ()  //trigger when the user presses the restart button
 }
 
-class QuizDoneCVCell: UICollectionViewCell {
+class TestDoneCVCell: UICollectionViewCell {
     
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var gradeLabel: UILabel!
     @IBOutlet weak var resultsLabel: UILabel!
     @IBOutlet weak var retakeButton: UIButton!
     
-    weak var delegate: QuizDoneCVCellDelegate?
+    weak var delegate: TestDoneCVCellDelegate?
     
     override func awakeFromNib() {
         

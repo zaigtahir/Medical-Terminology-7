@@ -1,5 +1,5 @@
 //
-//  QuizCVCell.swift
+//  TestCVCell.swift
 //  Medical Terminology
 //
 //  Created by Zaigham Tahir on 8/5/19.
@@ -11,13 +11,13 @@ import UIKit
 
 //note make this similar to LearnCVCell
 
-protocol QuizCVCellDelegate: AnyObject {
+protocol TestCVCellDelegate: AnyObject {
 	
 	func selectedAnswer(questionIndex: Int, answerIndex: Int)
 	func showAnswer(questionIndex: Int, showAnswer: Bool)
 }
 
-class QuizCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDelegate {
+class TestCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDelegate {
 	
 	@IBOutlet weak var cellView: UIView!
 	@IBOutlet weak var questionCounter: UILabel!
@@ -32,9 +32,9 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDelega
 	private var question: Question! //the question to show
 	private var showAnswer = false
 	private var totalQuestions: Int!
-	private var questionIndex: Int! //this the index of the question in the quiz, used to identify the question in the quiz for the delegate function
+	private var questionIndex: Int! //this the index of the question in the test, used to identify the question in the test for the delegate function
 	
-	weak var delegate: QuizCVCellDelegate?
+	weak var delegate: TestCVCellDelegate?
 	
 	override func awakeFromNib() {
 		
@@ -95,7 +95,7 @@ class QuizCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDelega
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCell(withIdentifier: "quizAnswerCell", for: indexPath) as! AnswerTCell
+		let cell = tableView.dequeueReusableCell(withIdentifier: "testAnswerCell", for: indexPath) as! AnswerTCell
 		
 		cell.answerText.text = "hello"
 		

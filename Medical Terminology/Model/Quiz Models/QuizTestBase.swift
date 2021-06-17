@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TestBase {
+class QiuzTestBase {
 	
 	var activeQuestions = [Question]()
 	
@@ -18,7 +18,7 @@ class TestBase {
 	
 	init (originalQuestions: [Question]) {
 		
-		//keep original question untouched and for use to reset the quiz
+		//keep original question untouched and for use to reset the test
 		
 		self.originalQuestions = originalQuestions
 		
@@ -163,10 +163,10 @@ class TestBase {
 		}
 	}
 	
-	func getQuizStatus () -> QuizStatus {
+	func getTestStatus () -> TestStatus {
 		
 		if !activeQuestions[0].isAnswered() {
-			//first question is not answered, so quiz ia not started
+			//first question is not answered, so test ia not started
 			return .notStarted
 		}
 		

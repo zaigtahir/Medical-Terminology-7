@@ -9,7 +9,7 @@
 import Foundation
 
 /**
-This class will handle items related to getting and saving items related to questions, quiz and learning set
+This class will handle items related to getting and saving items related to questions, test and learning set
 */
 
 class QuestionController {
@@ -290,7 +290,7 @@ class QuestionController {
 		return count
 	}
 	
-	// MARK: - quiz related functions
+	// MARK: - test related functions
 	
 	func saveAnsweredStatus (categoryID: Int, question: Question) {
 		

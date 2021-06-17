@@ -8,7 +8,7 @@
 
 import UIKit
 
-//delegate function. Fire off when the user presses the reset quiz button
+//delegate function. Fire off when the user presses the reset test button
 
 protocol LearnDoneCVCellDelegate: AnyObject {
     

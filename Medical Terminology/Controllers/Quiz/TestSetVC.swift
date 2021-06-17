@@ -1,5 +1,5 @@
 //
-//  QuizSetVC.swift
+//  TestSetVC.swift
 //  Medical Terminology
 //
 //  Created by Zaigham Tahir on 8/5/19.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol QuizSetVCDelegate: AnyObject {
+protocol TestSetVCDelegate: AnyObject {
 	func doneButtonPressed()
 }
 
-class QuizSetVC: UIViewController, QuizSetVCHDelegate {
+class TestSetVC: UIViewController, TestSetVCHDelegate {
 	
     @IBOutlet weak var previousButton: ZUIRoundedButton!
     @IBOutlet weak var nextButton: ZUIRoundedButton!
@@ -21,10 +21,10 @@ class QuizSetVC: UIViewController, QuizSetVCHDelegate {
 	@IBOutlet weak var doneButton: UIBarButtonItem!
 	
     var scrollDelegate = ScrollController()
-    let quizSetVCH = QuizSetVCH()
+    let testSetVCH = TestSetVCH()
     let utilities = Utilities()
 	
-	weak var delegate : QuizSetVCDelegate?
+	weak var delegate : TestSetVCDelegate?
     
     override func viewDidLoad() {
         
@@ -32,12 +32,12 @@ class QuizSetVC: UIViewController, QuizSetVCHDelegate {
         
         scrollDelegate.topBottomMargin  = myConstants.layout_topBottomMargin
         scrollDelegate.sideMargin = myConstants.layout_sideMargin
-        scrollDelegate.delegate = quizSetVCH
+        scrollDelegate.delegate = testSetVCH
         
-        collectionView.dataSource = quizSetVCH
+        collectionView.dataSource = testSetVCH
         collectionView.delegate = scrollDelegate
 		
-		quizSetVCH.delegate = self
+		testSetVCH.delegate = self
         
         nextButton.layer.cornerRadius  = myConstants.button_cornerRadius
         previousButton.layer.cornerRadius = myConstants.button_cornerRadius
@@ -48,7 +48,7 @@ class QuizSetVC: UIViewController, QuizSetVCHDelegate {
     
     func updateDisplay () {
         //configure options button
-        if quizSetVCH.quizSet.getQuizStatus() == .notStarted {
+        if testSetVCH.testSet.getTestStatus() == .notStarted {
 			restartButton.isEnabled = false
         } else {
 			restartButton.isEnabled = true
@@ -67,21 +67,21 @@ class QuizSetVC: UIViewController, QuizSetVCHDelegate {
 
     func showOptionsMenu() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let restartQuiz = UIAlertAction(title: "Restart This Quiz", style: .default, handler: {action in self.restartQuiz()})
+        let restartTest = UIAlertAction(title: "Restart This Test", style: .default, handler: {action in self.restartTest()})
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(restartQuiz)
+        alertController.addAction(restartTest)
         alertController.addAction(cancel)
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func restartQuiz() {
-        quizSetVCH.quizSet.resetQuizSet()
+    func restartTest() {
+        testSetVCH.testSet.resetTestSet()
         scrollDelegate.scrollToTop(collectionView: collectionView)
         collectionView.reloadData()
         updateDisplay()
     }
     
-	//MARK: - delegate functions for QuizSetVCHDelegate
+	//MARK: - delegate functions for TestSetVCHDelegate
 	func shouldUpdateDisplay() {
 		updateDisplay()
 	}
@@ -96,8 +96,8 @@ class QuizSetVC: UIViewController, QuizSetVCHDelegate {
 		collectionView.layoutIfNeeded()
 	}
 	
-	func shouldRestartQuiz() {
-		restartQuiz()
+	func shouldRestartTest() {
+		restartTest()
 	}
 	// END of delegate functions
 	
