@@ -46,7 +46,6 @@
 		991AC5A7262755E300E52062 /* CategoryVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC5A6262755E300E52062 /* CategoryVCH.swift */; };
 		99273BC0267CAB6800FD3C0D /* Term2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99273BBF267CAB6800FD3C0D /* Term2.swift */; };
 		99273BC3267CAC6700FD3C0D /* AssignedCategory2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99273BC2267CAC6700FD3C0D /* AssignedCategory2.swift */; };
-		99273BC6267CAE2A00FD3C0D /* TermController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99273BC5267CAE2A00FD3C0D /* TermController2.swift */; };
 		992B56812612870C000457AA /* TextUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56802612870C000457AA /* TextUtilities.swift */; };
 		992B56A4261382BF000457AA /* ValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56A3261382BF000457AA /* ValidationVC.swift */; };
 		992E79D2260A2ADD00C19D49 /* FlashCardOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79CF260A2ADD00C19D49 /* FlashCardOptionsVC.swift */; };
@@ -141,7 +140,6 @@
 		991AC5A6262755E300E52062 /* CategoryVCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryVCH.swift; sourceTree = "<group>"; };
 		99273BBF267CAB6800FD3C0D /* Term2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term2.swift; sourceTree = "<group>"; };
 		99273BC2267CAC6700FD3C0D /* AssignedCategory2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedCategory2.swift; sourceTree = "<group>"; };
-		99273BC5267CAE2A00FD3C0D /* TermController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermController2.swift; sourceTree = "<group>"; };
 		99273BC8267CB55800FD3C0D /* Medical Terminology Term Based.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Medical Terminology Term Based.db"; sourceTree = "<group>"; };
 		992B56802612870C000457AA /* TextUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtilities.swift; sourceTree = "<group>"; };
 		992B56A3261382BF000457AA /* ValidationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationVC.swift; sourceTree = "<group>"; };
@@ -239,7 +237,6 @@
 				992B56802612870C000457AA /* TextUtilities.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 				99937B0D264DFFF4001E4D4B /* MigrateDB.swift */,
-				99273BC5267CAE2A00FD3C0D /* TermController2.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -609,7 +606,6 @@
 				992E79E0260A43C700C19D49 /* TermController.swift in Sources */,
 				99D55E0A25F6DAD8003ABE0B /* CategoryListVC.swift in Sources */,
 				99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */,
-				99273BC6267CAE2A00FD3C0D /* TermController2.swift in Sources */,
 				99D55E4D25FF5A03003ABE0B /* Tests.swift in Sources */,
 				5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */,
 				99937AE22640E4A1001E4D4B /* QuizTestBase.swift in Sources */,
