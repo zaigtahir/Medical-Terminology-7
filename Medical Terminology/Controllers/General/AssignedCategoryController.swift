@@ -33,6 +33,7 @@ class AssignedCategoryController {
 		
 	}
 	
+	// MARK: OMG there i no learnedAnswer
 	func getAssignedCategoryFromResultSet (resultSet rs: FMResultSet) -> AssignedCategory {
 		
 		let ac = AssignedCategory()

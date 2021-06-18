@@ -12,7 +12,7 @@ import UIKit
 class MyConstants {
 	
 	// database related names
-	let dbFilename = "Medical Terminology"
+	let dbFilename = "Medical Terminology Term Based"
 	let dbFileExtension = "db"
 	
 	let dbTableTerms = "terms"
