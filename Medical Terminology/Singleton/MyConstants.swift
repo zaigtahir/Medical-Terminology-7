@@ -18,11 +18,6 @@ class MyConstants {
 	let dbTableTerms = "terms"
 	let dbTableAssignedCategories = "assignedCategories"
 	let dbTableCategories = "categories"
-	let dbTableMainSectionCategories = "mainSectionCategories"
-	
-	// to remove after ditem stuff removed
-	let dbTableMain = "dictionary"
-	let dbTableUser = "assignCategories"
 	
 	let dbCategoryAllTermsID = 1
 	let dbCategoryMyTermsID = 2
