@@ -62,6 +62,7 @@
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
 		9959B73525EE85A700262CC3 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = 9959B73425EE85A700262CC3 /* Audio */; };
 		995F3EED267CC77A004CB13C /* TermControllerTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995F3EEC267CC77A004CB13C /* TermControllerTB.swift */; };
+		995FC3FE267D0D7400AA57E6 /* Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995FC3FD267D0D7400AA57E6 /* Queries.swift */; };
 		9960A04826027EC4003F4994 /* NoCategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960A04726027EC4003F4994 /* NoCategoriesCell.swift */; };
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
 		9983980F25F05B6B00CC0354 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9983980E25F05B6B00CC0354 /* StoreKit.framework */; };
@@ -158,6 +159,7 @@
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
 		9959B73425EE85A700262CC3 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Audio; sourceTree = "<group>"; };
 		995F3EEC267CC77A004CB13C /* TermControllerTB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermControllerTB.swift; sourceTree = "<group>"; };
+		995FC3FD267D0D7400AA57E6 /* Queries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queries.swift; sourceTree = "<group>"; };
 		9960A04726027EC4003F4994 /* NoCategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCategoriesCell.swift; sourceTree = "<group>"; };
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9983980E25F05B6B00CC0354 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -240,6 +242,7 @@
 				992B56802612870C000457AA /* TextUtilities.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 				99937B0D264DFFF4001E4D4B /* MigrateDB.swift */,
+				995FC3FD267D0D7400AA57E6 /* Queries.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				99937B14264EA578001E4D4B /* AssignedCategoryController.swift in Sources */,
 				99937AD4263F24FB001E4D4B /* Question.swift in Sources */,
 				9960A04826027EC4003F4994 /* NoCategoriesCell.swift in Sources */,
+				995FC3FE267D0D7400AA57E6 /* Queries.swift in Sources */,
 				99A723192623A445001DEDBD /* TermVCH.swift in Sources */,
 				99937AD7263F25C7001E4D4B /* LearningSet.swift in Sources */,
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,

@@ -39,6 +39,7 @@ class TermController2 {
 	
 	let cc = CategoryController()
 	let sc = SettingsController()
+	let queries = Queries()
 	
 	func termExists (termID: Int) -> Bool {
 		let query = "SELECT COUNT (*) FROM \(terms) WHERE termID = \(termID)"
@@ -402,104 +403,23 @@ class TermController2 {
 	
 	// MARK: - search functions, need to use an array of categoryIDs
 	
-	func getTermIDs (categoryID: [Int], favoritesOnly: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> [Int] {
+	func getTermIDs (categoryIDs: [Int], favoritesOnly: Bool?, orderByName: Bool?, limitTo: Int?) -> [Int] {
 		
-		return [Int]()
+		let selectStatement = """
+			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+		"""
 		
-	}
-	
-	func getTermIDs (categoryID: [Int], isFavorite: Bool?, nameStartsWith: String, nameContains: String?, containsText: String?) -> [Int] {
+		let whereStatement = """
+			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+			\(queries.showOnlyFavoritesString(show: favoritesOnly))
+			\(queries.orderByNameString(toOrder: orderByName))
+			\(queries.limitToString(limit: limitTo))
+		"""
 		
-		return [Int]()
-	}
-	
-	func getTermCount (categoryID: [Int], favoritesOnly: Bool) -> Int {
-		
-		return 10101
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// MARK: - Non search text queries
-	
-	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> String {
-		
-		let showOnlyFavoritesString = self.showOnlyFavoritesString(show: showOnlyFavorites)
-		let favoriteString = self.favorteString(isFavorite: isFavorite)
-		let learnedString = self.learnedString(learned: learned)
-		let learnedTermString = self.learnedTermString(learnedTerm: learnedTerm)
-		let learnedDefinitionString = self.learnedDefinitionString(learnedDefinition: learnedDefinition)
-		let answeredTermString = self.answeredTermString(state: answeredTerm)
-		let answeredDefinitionString = self.answeredDefinitionString(state: answeredDefinition)
-		let learnedFlashcardString = self.learnedFlashcardString(learned: learnedFlashcard)
-		let orderByNameString = self.orderByNameString(toOrder: orderByName)
-		let randomOrderString = self.randomOrderString(toOrderRandom: randomOrder)
-		let limitToString = self.limitToString(limit: limitTo)
-		
-		// need to add ORDER BY
-		
-		let whereStatement = "WHERE \(assignedCategories).categoryID = \(categoryID) \(favoriteString) \(showOnlyFavoritesString) \(learnedString) \(learnedTermString) \(learnedDefinitionString) \(answeredTermString) \(answeredDefinitionString) \(learnedFlashcardString ) \(orderByNameString) \(randomOrderString) \(limitToString) "
-		
-		return whereStatement
-	}
-	
-	// MARK: - New versions
-	
-	// does getTermIDs2 need all these options?
-	func getTermIDs2 (categoryID: Int, favoritesOnly: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> [Int] {
-		
-		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
-		
-		let whereStatement = self.whereStatement2 (categoryID: categoryID,
-												   showOnlyFavorites: favoritesOnly,
-												   isFavorite: .none,
-												   orderByName: orderByName,
-												   randomOrder: randomOrder,
-												   limitTo: limitTo)
-		
-		let query = ("\(selectStatement) \(whereStatement)")
-		
-		print("getTermIDs2 query: \(query)")
+		let query = selectStatement.appending(whereStatement)
 		
 		var ids = [Int]()
 		
@@ -510,38 +430,60 @@ class TermController2 {
 			}
 		}
 		
+		if sc.isDevelopmentMode() {
+			print("getTermIDs2 query: \(query)")
+			print("result count =  : \(ids.count)")
+		}
 		
-		print("result count =  : \(ids.count)")
+		return ids
 		
+	}
+	
+	/**
+	Return list of termIDs.
+	use nameStartsWith with nameContains OR containsText and loop through the alphabet to make an alphabetic list
+	containsText searches terms and definitions
+	*/
+	func getTermIDs (categoryIDs: [Int], isFavorite: Bool?, nameStartsWith: String, nameContains: String?, containsText: String?) -> [Int] {
+		
+		var definitionString = ""
+		
+		if containsText != nil {
+			definitionString = ", definition"
+		}
+		
+		let selectStatement = """
+			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+			\(definitionString)
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			"""
+		
+		let whereStatement = """
+			WHERE categoryID = \(queries.categoryString(categoryIDs: categoryIDs))
+			\(queries.favorteString(isFavorite: isFavorite))
+			\(queries.nameStartsWithString(search: nameStartsWith))
+			\(queries.nameContainsString(search: nameContains))
+			\(queries.containsTextString(search: containsText))
+			\(queries.orderByNameString(toOrder: true))
+			"""
+		
+		let query = selectStatement.appending(whereStatement)
+		
+		var ids = [Int]()
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+			}
+		}
 		return ids
 	}
 	
-	private func whereStatement2 (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> String {
-		
-		let showOnlyFavoritesString = self.showOnlyFavoritesString(show: showOnlyFavorites)
-		let favoriteString = self.favorteString(isFavorite: isFavorite)
-		let orderByNameString = self.orderByNameString(toOrder: orderByName)
-		let randomOrderString = self.randomOrderString(toOrderRandom: randomOrder)
-		let limitToString = self.limitToString(limit: limitTo)
-		
-		// need to add ORDER BY
-		
-		let whereStatement = """
-		WHERE \(assignedCategories).categoryID = \(categoryID)
-		\(favoriteString)
-		\(showOnlyFavoritesString)
-		\(orderByNameString)
-		\(randomOrderString)
-		\(limitToString)
-		"""
-		
-		return whereStatement
-	}
-	
-	func getCount2 (categoryID: Int, favoritesOnly: Bool) -> Int {
-		
-		// will remove leading hypen for count purposes
-		
+	func getTermCount (categoryIDs: [Int], favoritesOnly: Bool) -> Int {
+				
 		var favoriteString = ""
 		
 		if favoritesOnly {
@@ -552,7 +494,7 @@ class TermController2 {
 			SELECT COUNT (*) FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
-			WHERE categoryID = \(categoryID)
+			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
 			\(favoriteString)
 			"""
 		
@@ -564,148 +506,8 @@ class TermController2 {
 		}
 		
 		return count
-		
 	}
-	
-	
-	// MARK: -Search Query
-	/**
-	Return list of termIDs.
-	use nameStartsWith with nameContains OR containsText and loop through the alphabet to make an alphabetic list
-	containsText searches terms and definitions
-	*/
-	func searchTermIDs (categoryID: Int, isFavorite: Bool?, nameStartsWith: String, nameContains: String?, containsText: String?) -> [Int] {
-		var definitionString = ""
-		if containsText != nil {
-			definitionString = ", definition"
-		}
-		
-		let selectStatement = "SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName \(definitionString) FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
-		
-		let whereStatement = "WHERE categoryID = \(categoryID) \(favorteString(isFavorite: isFavorite)) \(nameStartsWithString(search: nameStartsWith)) \(nameContainsString(search: nameContains)) \(containsTextString(search: containsText)) \(orderByNameString(toOrder: true))"
-		
-		let query = ("\(selectStatement) \(whereStatement)" )
-		
-		var ids = [Int]()
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			while resultSet.next() {
-				let id = Int(resultSet.int(forColumnIndex: 0))
-				ids.append(id)
-			}
-		}
-		return ids
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// MARK: -WHERE string components
-	
-	func favorteString (isFavorite: Bool?) -> String {
-		guard let f = isFavorite else { return "" }
-		return f ? "AND isfavorite = 1" : "AND isfavorite = 0"
-	}
-	
-	func learnedString (learned: Bool?) -> String {
-		guard let l = learned else { return "" }
-		return l ? "AND (learnedTerm = 1 AND learnedDefinition = 1)" : "AND (learnedTerm = 0 OR learnedDefinition = 0)"
-	}
-	
-	func learnedTermString (learnedTerm: Bool?) -> String {
-		guard let lt = learnedTerm else { return ""}
-		return lt ? "AND learnedTerm = 1" : "AND learnedTerm = 0"
-	}
-	
-	func learnedDefinitionString (learnedDefinition: Bool?) -> String {
-		guard let ld = learnedDefinition else { return ""}
-		return ld ? "AND learnedDefinition = 1" : "AND learnedDefinition = 0"
-	}
-	
-	func answeredTermString (state: AnsweredState?) -> String {
-		guard let s = state else { return "" }
-		return "AND answeredTerm = \(s.rawValue)"
-	}
-	
-	func answeredDefinitionString (state: AnsweredState?) -> String {
-		guard let s = state else { return "" }
-		return "AND answeredDefinition = \(s.rawValue)"
-	}
-	
-	func showOnlyFavoritesString (show: Bool?) -> String {
-		guard let s = show else { return "" }
-		return s ? "AND isFavorite = 1" : ""
-	}
-	
-	func learnedFlashcardString (learned: Bool?) -> String {
-		guard let l = learned else {return ""}
-		return l ? "AND learnedFlashcard = 1" : "AND learnedFlashcard  =  0"
-	}
-	
-	func nameContainsString (search: String? ) -> String {
-		guard let s = search else {return ""}
-		return "AND name LIKE '%\(s)%' "
-	}
-	
-	func containsTextString (search: String?) -> String {
-		guard let s = search else {return ""}
-		return "AND ((name LIKE '%\(s)%') OR (definition LIKE '%\(s)%')) "
-	}
-	
-	func nameStartsWithString (search: String? ) -> String {
-		guard let s = search else {return ""}
-		return "AND (name LIKE '\(s)%' OR name LIKE '-\(s)%')"
-	}
-	
-	// this is ONLY added for getTermID as that is the only SELECT that will make this virtual column for ordering
-	
-	func orderByNameString (toOrder: Bool?) -> String {
-		guard let _ = toOrder else {return ""}
-		return "ORDER BY LOWER (noHyphenInName)"
-	}
-	
-	func randomOrderString (toOrderRandom: Bool?) -> String {
-		guard let _ = toOrderRandom else {return ""}
-		return "ORDER BY RANDOM ()"
-	}
-	
-	func limitToString (limit: Int?) -> String {
-		guard let _ = limit else {return ""}
-		return "LIMIT \(limit!)"
-	}
-	
-	
+
 }
 
 
