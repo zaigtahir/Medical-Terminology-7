@@ -190,8 +190,6 @@ class TermController2 {
 		
 	}
 	
-	//adding text
-	
 	/**
 	Not including TermID is used to filter out the current term name. The user just might want to change the letter CaSE
 	In that case, i still want to save that change. So This query will look for duplicates of any other row.
@@ -345,75 +343,6 @@ class TermController2 {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// MARK: - category flow
-
-
-
-	
-	/**
-	Save a term to the db, use when migrating custom terms
-	*/
-	func saveTermForMigration (term: Term) {
-		let query = """
-				INSERT INTO \(terms) (termID, name, definition, example, myNotes, isStandard, secondCategoryID, thirdCategoryID)
-				VALUES ("\(term.termID)", "\(term.name)", "\(term.definition)", "\(term.example)", "\(term.myNotes)",
-						"\(term.myNotes)", \(term.secondCategoryID), \(term.thirdCategoryID))
-				"""
-		myDB.executeStatements(query)
-		
-		let addedTermID = Int(myDB.lastInsertRowId)
-		
-		if sc.isDevelopmentMode() {
-			print ("termController saveNewTermForMigration, saved term with ID: \(addedTermID)")
-		}
-	}
-	
 	// MARK: - term update functions
 	
 	func updateTermNamePN (termID: Int, name: String) {
@@ -471,39 +400,67 @@ class TermController2 {
 	}
 	
 	
-	// MARK: - Non search text queries
+	// MARK: - search functions, need to use an array of categoryIDs
 	
-	func getCount222 (categoryID: Int, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?) -> Int {
+	func getTermIDs (categoryID: [Int], favoritesOnly: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> [Int] {
 		
-		// will remove leading hypen for count purposes
-		
-		let selectStatement = "SELECT COUNT (*) FROM \(terms) JOIN \(assignedCategories) ON \(terms).termID = \(assignedCategories).termID "
-		
-		let whereStatement = self.whereStatement(categoryID: categoryID,
-												 showOnlyFavorites: .none,
-												 isFavorite: isFavorite,
-												 answeredTerm: answeredTerm,
-												 answeredDefinition: answeredDefinition,
-												 learned: learned,
-												 learnedTerm: learnedTerm,
-												 learnedDefinition: learnedDefinition,
-												 learnedFlashcard: learnedFlashcard,
-												 orderByName: .none,
-												 randomOrder: .none,
-												 limitTo: .none)
-		
-		let query = ("\(selectStatement) \(whereStatement)")
-		
-		var count = 0
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			resultSet.next()
-			count = Int (resultSet.int(forColumnIndex: 0))
-		}
-		
-		return count
+		return [Int]()
 		
 	}
+	
+	func getTermIDs (categoryID: [Int], isFavorite: Bool?, nameStartsWith: String, nameContains: String?, containsText: String?) -> [Int] {
+		
+		return [Int]()
+	}
+	
+	func getTermCount (categoryID: [Int], favoritesOnly: Bool) -> Int {
+		
+		return 10101
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// MARK: - Non search text queries
 	
 	private func whereStatement (categoryID: Int, showOnlyFavorites: Bool?, isFavorite: Bool?, answeredTerm: AnsweredState?, answeredDefinition: AnsweredState?, learned: Bool?, learnedTerm: Bool?, learnedDefinition: Bool?, learnedFlashcard: Bool?, orderByName: Bool?, randomOrder: Bool?, limitTo: Int?) -> String {
 		
@@ -639,6 +596,39 @@ class TermController2 {
 		}
 		return ids
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	// MARK: -WHERE string components
