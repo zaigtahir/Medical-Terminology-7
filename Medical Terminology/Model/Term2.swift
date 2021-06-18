@@ -14,11 +14,6 @@ protocol TermAudioDelegate2: AnyObject {
 	func termAudioStoppedPlaying()
 }
 
-protocol TermAudioDelegate2BB: AnyObject {
-	func termAudioStartedPlaying()
-	func termAudioStoppedPlaying()
-}
-
 // trying to add a new commment
 
 class Term2: NSObject, AVAudioPlayerDelegate {
