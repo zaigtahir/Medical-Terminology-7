@@ -61,6 +61,7 @@
 		994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E1245B5BAE00E281DB /* SettingsController.swift */; };
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
 		9959B73525EE85A700262CC3 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = 9959B73425EE85A700262CC3 /* Audio */; };
+		995F3EED267CC77A004CB13C /* TermControllerTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995F3EEC267CC77A004CB13C /* TermControllerTB.swift */; };
 		9960A04826027EC4003F4994 /* NoCategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960A04726027EC4003F4994 /* NoCategoriesCell.swift */; };
 		9963C24E2475828D0096E348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9963C24D2475828B0096E348 /* Assets.xcassets */; };
 		9983980F25F05B6B00CC0354 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9983980E25F05B6B00CC0354 /* StoreKit.framework */; };
@@ -156,6 +157,7 @@
 		994175E1245B5BAE00E281DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
 		9959B73425EE85A700262CC3 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Audio; sourceTree = "<group>"; };
+		995F3EEC267CC77A004CB13C /* TermControllerTB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermControllerTB.swift; sourceTree = "<group>"; };
 		9960A04726027EC4003F4994 /* NoCategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCategoriesCell.swift; sourceTree = "<group>"; };
 		9963C24D2475828B0096E348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9983980E25F05B6B00CC0354 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -237,6 +239,7 @@
 				992B56802612870C000457AA /* TextUtilities.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 				99937B0D264DFFF4001E4D4B /* MigrateDB.swift */,
+				995F3EEC267CC77A004CB13C /* TermControllerTB.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				99D76AC52616C9CE0062CCD4 /* TermsList.swift in Sources */,
 				5A03478F22D39D0900749EBC /* FMDatabasePool.m in Sources */,
 				99A723042620D036001DEDBD /* MultiLineInputVC.swift in Sources */,
+				995F3EED267CC77A004CB13C /* TermControllerTB.swift in Sources */,
 				5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */,
 				5A67C14B231071D900BAA2A0 /* TestDoneCVCell.swift in Sources */,
 				991AC59F262693DF00E52062 /* CategoryVC.swift in Sources */,

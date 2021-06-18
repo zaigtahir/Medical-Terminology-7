@@ -19,6 +19,11 @@ class MyConstants {
 	let dbTableAssignedCategories = "assignedCategories"
 	let dbTableCategories = "categories"
 	
+	// term based
+	let dbTableTermsTB = "termsTB"
+	let dbTableAssignedCategoriesTB = "assignedCategoriesTB"
+	
+	
 	let dbCategoryAllTermsID = 1
 	let dbCategoryMyTermsID = 2
 	
