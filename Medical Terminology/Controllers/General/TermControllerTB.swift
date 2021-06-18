@@ -218,22 +218,65 @@ class TermController2 {
 	/**
 	will save the term to the database creating a new row in the terms table
 	will assign category All Terms, My Terms and any other that are in term.assignedCategories
+	will save the favorite status of the term, as all other status will be false/unanswered
+	If this is the first new term, it will create it at termID = dbCustomTermStartingID
 	Will return the termID of the added term
 	*/
-	func saveNewTerm (term: Term) -> Int {
+	func saveNewTerm (term: Term2) -> Int {
 		
 		var query: String
 		
 		if termExists(termID: myConstants.dbCustomTermStartingID) {
+			
 			query = """
-					INSERT INTO \(terms) (name, definition, example, myNotes, isStandard, secondCategoryID, thirdCategoryID)
-					VALUES ("\(term.name)", "\(term.definition)", "\(term.example)", "\(term.myNotes)", 0, 2, \(term.thirdCategoryID))
+					INSERT INTO \(terms)
+						(name,
+						definition,
+						example,
+						myNotes,
+						secondCategoryID,
+						thirdCategoryID),
+						audioFile,
+						isStandard,
+						isFavorite
+
+					VALUES	("\(term.name)",
+							"\(term.definition)",
+							"\(term.example)",
+							"\(term.myNotes)",
+							2,
+							\(term.thirdCategoryID))
+							"\(term.audioFile)",
+							0,
+							\(term.isFavorite ? 1: 0)
 					"""
 		} else {
-			query  = """
-					INSERT INTO \(terms) (termID, name, definition, example, myNotes, isStandard, secondCategoryID, thirdCategoryID)
-					VALUES (\(myConstants.dbCustomTermStartingID), "\(term.name)", "\(term.definition)", "\(term.example)", "\(term.myNotes)", 0, 2, \(term.thirdCategoryID))
+			
+			query = """
+					INSERT INTO \(terms)
+						(termID,
+						name,
+						definition,
+						example,
+						myNotes,
+						secondCategoryID,
+						thirdCategoryID),
+						audioFile,
+						isStandard,
+						isFavorite
+
+					VALUES	(\(myConstants.dbCustomTermStartingID),
+							"\(term.name)",
+							"\(term.definition)",
+							"\(term.example)",
+							"\(term.myNotes)",
+							2,
+							\(term.thirdCategoryID))
+							"\(term.audioFile)",
+							0,
+							\(term.isFavorite ? 1: 0)
 					"""
+
 		}
 		
 		myDB.executeStatements(query)
@@ -251,6 +294,67 @@ class TermController2 {
 		return addedTermID
 		
 	}
+	
+	/**
+	Save a term to the db, use when migrating custom terms
+	Copies everything including the termID
+	*/
+	func saveTermForMigration (term: Term2) {
+		let query = """
+				INSERT INTO \(terms)
+					(termID,
+					name,
+					definition,
+					example,
+					myNotes,
+					secondCategoryID,
+					thirdCategoryID),
+					audioFile,
+					isStandard,
+					isFavorite,
+					learnedTerm,
+					learnedDefinition,
+					answeredTerm,
+					answeredDefinition,
+					learnedFlashcard
+
+				VALUES	("\(term.termID)",
+						"\(term.name)",
+						"\(term.definition)",
+						"\(term.example)",
+						"\(term.myNotes)",
+						"\(term.myNotes)",
+						\(term.secondCategoryID),
+						\(term.thirdCategoryID))
+						"\(term.audioFile)",
+						\(term.isStandard ? 1: 0),
+						\(term.isFavorite ? 1: 0),
+						\(term.learnedTerm ? 1: 0),
+						\(term.learnedDefinition ? 1: 0),
+						\(term.answeredTerm),
+						\(term.answeredDefinition),
+						\(term.learnedFlashcard),
+				"""
+		myDB.executeStatements(query)
+		
+		let addedTermID = Int(myDB.lastInsertRowId)
+		
+		if sc.isDevelopmentMode() {
+			print ("termController saveNewTermForMigration, saved term with ID: \(addedTermID)")
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

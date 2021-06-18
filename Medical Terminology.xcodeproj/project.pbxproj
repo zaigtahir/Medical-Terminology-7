@@ -235,11 +235,11 @@
 				99937ACD263EDAA2001E4D4B /* QuestionController.swift */,
 				994175E1245B5BAE00E281DB /* SettingsController.swift */,
 				992E79DE260A43C700C19D49 /* TermController.swift */,
+				995F3EEC267CC77A004CB13C /* TermControllerTB.swift */,
 				99D55E4C25FF5A03003ABE0B /* Tests.swift */,
 				992B56802612870C000457AA /* TextUtilities.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 				99937B0D264DFFF4001E4D4B /* MigrateDB.swift */,
-				995F3EEC267CC77A004CB13C /* TermControllerTB.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
