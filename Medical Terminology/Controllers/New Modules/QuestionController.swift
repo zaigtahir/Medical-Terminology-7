@@ -284,7 +284,7 @@ class QuestionController {
 			resultSet.next()
 			count = Int (resultSet.int(forColumnIndex: 0))
 		} else {
-			print("fatal error making result set in getQuestionsAvailableCount")
+			print("fatal error making result set in getLearnedTermsCount")
 		}
 		
 		return count
@@ -522,7 +522,7 @@ class QuestionController {
 			resultSet.next()
 			count = Int (resultSet.int(forColumnIndex: 0))
 		} else {
-			print("fatal error making result set in getQuestionsAvailableCount")
+			print("fatal error making result set in getCorrectQuestionsCount")
 		}
 		
 		return count

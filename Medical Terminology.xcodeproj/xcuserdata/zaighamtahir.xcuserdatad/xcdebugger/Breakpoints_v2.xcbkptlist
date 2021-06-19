@@ -39,24 +39,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A700E1E8-8121-4F47-9CD7-CDCEBCCADF37"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Medical Terminology/Controllers/General/TermController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "getFavoriteStatus(categoryID:termID:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "67C9C3A0-8DD0-4847-AA78-191A478C66B5"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Medical Terminology/Controllers/Flashcards/FlashcardVC.swift"
@@ -66,6 +50,99 @@
             endingLineNumber = "151"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BE83FB59-D6DF-4C51-8D89-EF2D64D43714"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Medical Terminology/Controllers/Flashcards/FlashcardVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "FlashcardVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "BE83FB59-D6DF-4C51-8D89-EF2D64D43714 - 8ebae6b350ed651d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Practical_Medical_Terminology.FlashcardVC.__deallocating_deinit"
+                  moduleName = "Practical Medical Terminology"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zaighamtahir/Google%20Drive/Medical%20Terminology%207/Medical%20Terminology/Controllers/Flashcards/FlashcardVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "BE83FB59-D6DF-4C51-8D89-EF2D64D43714 - 921c8a9aab8b2e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Practical_Medical_Terminology.FlashcardVC.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Practical_Medical_Terminology.FlashcardVC"
+                  moduleName = "Practical Medical Terminology"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zaighamtahir/Google%20Drive/Medical%20Terminology%207/Medical%20Terminology/Controllers/Flashcards/FlashcardVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "BE83FB59-D6DF-4C51-8D89-EF2D64D43714 - fbc69e5718b31d10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Practical_Medical_Terminology.FlashcardVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Practical_Medical_Terminology.FlashcardVC"
+                  moduleName = "Practical Medical Terminology"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zaighamtahir/Google%20Drive/Medical%20Terminology%207/Medical%20Terminology/Controllers/Flashcards/FlashcardVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "558">
+               </Location>
+               <Location
+                  uuid = "BE83FB59-D6DF-4C51-8D89-EF2D64D43714 - ea05fcb962c90a54"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Practical_Medical_Terminology.FlashcardVC.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Practical_Medical_Terminology.FlashcardVC&gt;"
+                  moduleName = "Practical Medical Terminology"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zaighamtahir/Google%20Drive/Medical%20Terminology%207/Medical%20Terminology/Controllers/Flashcards/FlashcardVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "BE83FB59-D6DF-4C51-8D89-EF2D64D43714 - 502c44158b5c9d48"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Practical_Medical_Terminology.FlashcardVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Practical_Medical_Terminology.FlashcardVC&gt;"
+                  moduleName = "Practical Medical Terminology"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zaighamtahir/Google%20Drive/Medical%20Terminology%207/Medical%20Terminology/Controllers/Flashcards/FlashcardVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "499">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

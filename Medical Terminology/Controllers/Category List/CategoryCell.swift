@@ -40,13 +40,29 @@ class CategoryCell: UITableViewCell {
 		
 		if rowCategory.categoryID == currentCategory {
 			//selected category
-			selectImage.image = myTheme.imageRowSelected
-			selectImage.tintColor = myTheme.colorMain
-		
+			if rowCategory.categoryID == 1 {
+				//all terms category
+				selectImage.image = myTheme.imageRowSelected
+				selectImage.tintColor = myTheme.colorMain
+			} else {
+				//all other categories
+				selectImage.image = myTheme.imageRowSelectedAssign
+				selectImage.tintColor = myTheme.colorMain
+			}
+			
 		} else {
 			//category is not selected
-			selectImage.image = myTheme.imageRowNotSelected
-			selectImage.tintColor = myTheme.colorText
+			
+			if rowCategory.categoryID == 1 {
+				//all terms category
+				selectImage.image = myTheme.imageRowNotSelected
+				selectImage.tintColor = myTheme.colorText
+			} else {
+				selectImage.image = myTheme.imageRowNotSelectedAssign
+				selectImage.tintColor = myTheme.colorText
+			}
+			
+
 		}
 		
 	}

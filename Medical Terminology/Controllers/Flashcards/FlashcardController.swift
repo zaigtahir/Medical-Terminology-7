@@ -35,10 +35,6 @@ class FlashcardController {
 		
 		var ids = [Int]()
 		
-		if sc.isDevelopmentMode() {
-			print("getFlashcardTermIDs: query = \(query)")
-		}
-		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			while resultSet.next() {
 				let id = Int(resultSet.int(forColumnIndex: 0))
@@ -56,16 +52,13 @@ class FlashcardController {
 		SELECT COUNT (*) FROM
 		(SELECT DISTINCT \(assignedCategories).termID
 		FROM \(assignedCategories)
+		JOIN terms ON terms.termID  = \(assignedCategories).termID
 		WHERE
 		\(queries.categoryString(categoryIDs: categoryIDs))
 		\(queries.learnedFlashcardString(learned: learnedStatus))
 		\(queries.showFavoritesOnly(show: showFavoritesOnly)))
 		"""
-		
-		if sc.isDevelopmentMode() {
-			print("getFlashcardCount query: \(query)")
-		}
-		
+	
 		var count = 0
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {

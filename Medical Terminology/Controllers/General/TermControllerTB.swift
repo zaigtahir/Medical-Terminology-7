@@ -431,12 +431,7 @@ class TermControllerTB {
 				ids.append(id)
 			}
 		}
-		
-		if sc.isDevelopmentMode() {
-			print("getTermIDs2 query: \(query)")
-			print("result count =  : \(ids.count)")
-		}
-		
+	
 		return ids
 		
 	}
