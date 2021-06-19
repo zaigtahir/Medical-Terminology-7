@@ -20,7 +20,7 @@ protocol FlashcardVCHDelegate: AnyObject {
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
 	
 	// term based variables
-	var currentCategories = [13]
+	var currentCategories = [3, 4, 11, 17, 22]
 	
 	// holds state of the view
 	var currentCategoryID = 1 			// default starting off category

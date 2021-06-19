@@ -58,7 +58,7 @@ class FlashcardController {
 		FROM \(assignedCategories)
 		WHERE
 		\(queries.categoryString(categoryIDs: categoryIDs))
-		\(queries.learnedString(learned: learnedStatus))
+		\(queries.learnedFlashcardString(learned: learnedStatus))
 		\(queries.showFavoritesOnly(show: showFavoritesOnly)))
 		"""
 		
