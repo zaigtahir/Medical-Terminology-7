@@ -24,6 +24,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// holds state of the view
 	var currentCategoryID = 1 			// default starting off category
+	
+	
 	var favoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : TermComponent = .both
 	

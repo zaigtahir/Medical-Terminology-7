@@ -45,7 +45,6 @@
 		991AC59F262693DF00E52062 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC59E262693DF00E52062 /* CategoryVC.swift */; };
 		991AC5A7262755E300E52062 /* CategoryVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC5A6262755E300E52062 /* CategoryVCH.swift */; };
 		99273BC0267CAB6800FD3C0D /* Term2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99273BBF267CAB6800FD3C0D /* Term2.swift */; };
-		99273BC3267CAC6700FD3C0D /* AssignedCategory2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99273BC2267CAC6700FD3C0D /* AssignedCategory2.swift */; };
 		992B56812612870C000457AA /* TextUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56802612870C000457AA /* TextUtilities.swift */; };
 		992B56A4261382BF000457AA /* ValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56A3261382BF000457AA /* ValidationVC.swift */; };
 		992E79D2260A2ADD00C19D49 /* FlashCardOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79CF260A2ADD00C19D49 /* FlashCardOptionsVC.swift */; };
@@ -141,7 +140,6 @@
 		991AC59E262693DF00E52062 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		991AC5A6262755E300E52062 /* CategoryVCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryVCH.swift; sourceTree = "<group>"; };
 		99273BBF267CAB6800FD3C0D /* Term2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term2.swift; sourceTree = "<group>"; };
-		99273BC2267CAC6700FD3C0D /* AssignedCategory2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedCategory2.swift; sourceTree = "<group>"; };
 		992B56802612870C000457AA /* TextUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtilities.swift; sourceTree = "<group>"; };
 		992B56A3261382BF000457AA /* ValidationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationVC.swift; sourceTree = "<group>"; };
 		992E79CF260A2ADD00C19D49 /* FlashCardOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardOptionsVC.swift; sourceTree = "<group>"; };
@@ -412,7 +410,6 @@
 				99937AD3263F24FB001E4D4B /* Question.swift */,
 				5A15062922557E7C00717AB8 /* Answer.swift */,
 				99273BBF267CAB6800FD3C0D /* Term2.swift */,
-				99273BC2267CAC6700FD3C0D /* AssignedCategory2.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -648,7 +645,6 @@
 				99A723192623A445001DEDBD /* TermVCH.swift in Sources */,
 				99937AD7263F25C7001E4D4B /* LearningSet.swift in Sources */,
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
-				99273BC3267CAC6700FD3C0D /* AssignedCategory2.swift in Sources */,
 				5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */,
 				99937B11264EA49F001E4D4B /* AssignedCategory.swift in Sources */,
 				5AF85739228F2C27008929D5 /* FlashcardCell.swift in Sources */,

@@ -165,6 +165,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 		favoriteTermsCount = tc.getCount2(categoryID: currentCategoryID, favoritesOnly: true)
 		
 		// add to question controller
+		
 		learnedTermsCount = qc.getLearnedTermsCount(categoryID: currentCategoryID, favoritesOnly: favoritesOnly)
 		
 		if favoritesOnly {

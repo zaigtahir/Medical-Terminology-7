@@ -37,7 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(sc.getBundleVersion())
             print(sc.getUserDefaultsVersion())
         }
-			
+		
+		/*
 		if sc.isDevelopmentMode() {
             // check and see if there is a resource present for each audiofile name listed in the database
             print("In AppDelegate checking if each audiofile name in the database has a matching audiofile in the resource bundle")
@@ -45,7 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             aFC.checkAudioFiles()
             print("Audio file check done! if there were any missing they would be listed before this ending line.")
         }
- 		
+ 		*/
+		
         // Determine and set the start screen
         if sc.getShowWelcomeScreen() == false {
             

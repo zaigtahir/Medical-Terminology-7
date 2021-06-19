@@ -266,6 +266,11 @@ class QuestionController {
 	
 	func getLearnedTermsCount (categoryID: Int, favoritesOnly: Bool) -> Int {
 		
+		print("why am i in questionController: getLearnedTermsCount???? just returning 0" )
+		
+		return 0
+		
+		
 		var favoriteString = ""
 		if favoritesOnly {
 			favoriteString = " AND isFavorite = 1"
