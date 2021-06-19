@@ -99,7 +99,7 @@ class MyTheme{
 	// MARK: view controller header images, show on top when adding
 	let imageHeaderAdd = UIImage.init(systemName: "wand.and.stars")
 	
-	let imageDone = UIImage.init(systemName: "face.smiling")
+	let imageDone = UIImage.init(systemName: "star.fill")
 	let imageInfo = UIImage.init(systemName: "info.circle")
     
 	//use next three speaker images to make animation

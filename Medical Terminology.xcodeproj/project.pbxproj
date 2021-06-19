@@ -142,7 +142,6 @@
 		991AC5A6262755E300E52062 /* CategoryVCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryVCH.swift; sourceTree = "<group>"; };
 		99273BBF267CAB6800FD3C0D /* Term2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term2.swift; sourceTree = "<group>"; };
 		99273BC2267CAC6700FD3C0D /* AssignedCategory2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedCategory2.swift; sourceTree = "<group>"; };
-		99273BC8267CB55800FD3C0D /* Medical Terminology Term Based.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Medical Terminology Term Based.db"; sourceTree = "<group>"; };
 		992B56802612870C000457AA /* TextUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtilities.swift; sourceTree = "<group>"; };
 		992B56A3261382BF000457AA /* ValidationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationVC.swift; sourceTree = "<group>"; };
 		992E79CF260A2ADD00C19D49 /* FlashCardOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardOptionsVC.swift; sourceTree = "<group>"; };
@@ -233,7 +232,6 @@
 				99937B13264EA578001E4D4B /* AssignedCategoryController.swift */,
 				5A367D3322EF513F003A7E4B /* CircularBar.swift */,
 				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
-				99937AFE26425D9F001E4D4B /* FlashcardController.swift */,
 				99937ACD263EDAA2001E4D4B /* QuestionController.swift */,
 				994175E1245B5BAE00E281DB /* SettingsController.swift */,
 				992E79DE260A43C700C19D49 /* TermController.swift */,
@@ -250,7 +248,6 @@
 		5A15062822557B7500717AB8 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				99273BC8267CB55800FD3C0D /* Medical Terminology Term Based.db */,
 				5A88633D217226180013FC8B /* Medical Terminology.db */,
 			);
 			path = Database;
@@ -328,6 +325,7 @@
 				992E79D0260A2ADD00C19D49 /* FlashcardVCH.swift */,
 				992E79D1260A2ADD00C19D49 /* FlashcardVC.swift */,
 				992F87032630B3EC00591CF9 /* NoFlashCardCell.swift */,
+				99937AFE26425D9F001E4D4B /* FlashcardController.swift */,
 			);
 			path = Flashcards;
 			sourceTree = "<group>";
@@ -801,14 +799,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K33TSXFU97;
 				INFOPLIST_FILE = "Medical Terminology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.53;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
 				PRODUCT_NAME = "Practical Medical Terminology";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
@@ -824,14 +822,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K33TSXFU97;
 				INFOPLIST_FILE = "Medical Terminology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.53;
+				MARKETING_VERSION = 1.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
 				PRODUCT_NAME = "Practical Medical Terminology";

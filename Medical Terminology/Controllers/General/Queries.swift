@@ -20,7 +20,7 @@ class Queries {
 			return ""
 		}
 		
-		var str = "AND ("
+		var str = "("
 		
 		for i in 0...categoryIDs.count {
 			if i == 0 {
@@ -44,7 +44,7 @@ class Queries {
 		return f ? "AND isfavorite = 1" : "AND isfavorite = 0"
 	}
 	
-	func showOnlyFavoritesString (show: Bool?) -> String {
+	func showFavoritesOnly (show: Bool?) -> String {
 		guard let s = show else { return "" }
 		return s ? "AND isFavorite = 1" : ""
 	}
@@ -59,12 +59,6 @@ class Queries {
 			return "ORDER BY RANDOM ()"
 		}
 	}
-	
-	
-	
-	
-	
-	
 
 	func learnedString (learned: Bool?) -> String {
 		guard let l = learned else { return "" }

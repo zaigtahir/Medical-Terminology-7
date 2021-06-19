@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-protocol TermAudioDelegate2: AnyObject {
+protocol TermAudioDelegate: AnyObject {
 	func termAudioStartedPlaying()
 	func termAudioStoppedPlaying()
 }
@@ -38,7 +38,7 @@ class Term2: NSObject, AVAudioPlayerDelegate {
 	/// initialize with the values when need  when using the TermVC and CategoryListVC
 	var assignedCategories = [Int]()
 
-	weak var delegate: TermAudioDelegate2?
+	weak var delegate: TermAudioDelegate?
 	
 	override init () {
 		super.init()

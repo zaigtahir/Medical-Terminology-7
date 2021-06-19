@@ -30,8 +30,12 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 	let flashCardVCH = FlashcardVCH()
 	
 	let cc = CategoryController()
-	let tc = TermController()
+
 	let fc = FlashcardController()
+	
+	// the TB item to use
+	let tcTB = TermControllerTB()
+	
 	
 	override func viewDidLoad() {
 		
@@ -82,9 +86,11 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		sliderOutlet.maximumValue = Float(flashCardVCH.termIDs.count - 1)
 		sliderOutlet.value = Float (scrollController.getCellIndex(collectionView: collectionView))
 		
-		let learningCount = fc.getFlashcardCount(categoryID: flashCardVCH.currentCategoryID, favoritesOnly: flashCardVCH.favoritesOnly, learnedStatus: false)
 		
-		let learnedCount = fc.getFlashcardCount(categoryID: flashCardVCH.currentCategoryID, favoritesOnly: flashCardVCH.favoritesOnly, learnedStatus: true)
+		let learningCount = fc.getFlashcardCount(categoryIDs: flashCardVCH.currentCategories, showFavoritesOnly: flashCardVCH.favoritesOnly, learnedStatus: false)
+		
+		
+		let learnedCount = fc.getFlashcardCount(categoryIDs: flashCardVCH.currentCategories, showFavoritesOnly: flashCardVCH.favoritesOnly, learnedStatus: true)
 		
 		// set up the titles for the learned status switch
 		learnedStatusSwitch.setTitle("Learning \(learningCount)", forSegmentAt: 0)
@@ -140,9 +146,13 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 			let cellIndex = scrollController.getCellIndex(collectionView: collectionView)
 			let termID  = flashCardVCH.termIDs[cellIndex]
 			
-			let term = tc.getTerm(termID: termID)
+			let term = tcTB.getTerm(termID: termID)
 		
-			vc.termVCH.term = term
+			// MARK: - WILL crash
+			//vc.termVCH.term = term
+			
+
+					
 			vc.termVCH.currentCategoryID = flashCardVCH.currentCategoryID
 			vc.termVCH.updateData()
 			

@@ -9,10 +9,12 @@
 import Foundation
 import AVFoundation
 
+/* for now this protocol in Term2
 protocol TermAudioDelegate: AnyObject {
 	func termAudioStartedPlaying()
 	func termAudioStoppedPlaying()
 }
+*/
 
 class Term: NSObject, AVAudioPlayerDelegate {
 	var termID: Int = -1

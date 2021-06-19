@@ -29,11 +29,13 @@ WHERE assignCategories2.categoryID = 3
 // will use the expanded term colums data
 
 
-class TermController2 {
+// MARK: -TODO - have to modify query to get DISTINCT
+
+class TermControllerTB {
 	
 	// MARK: shorter table names to make things easier
-	let terms = myConstants.dbTableTermsTB
-	let assignedCategories = myConstants.dbTableAssignedCategoriesTB
+	let terms = myConstants.dbTableTerms
+	let assignedCategories = myConstants.dbTableAssignedCategories
 
 	let categories = myConstants.dbTableCategories
 	
@@ -406,7 +408,7 @@ class TermController2 {
 	func getTermIDs (categoryIDs: [Int], favoritesOnly: Bool?, orderByName: Bool?, limitTo: Int?) -> [Int] {
 		
 		let selectStatement = """
-			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+			SELECT DISTINCT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
 			FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
@@ -414,7 +416,7 @@ class TermController2 {
 		
 		let whereStatement = """
 			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-			\(queries.showOnlyFavoritesString(show: favoritesOnly))
+			\(queries.showFavoritesOnly(show: favoritesOnly))
 			\(queries.orderByNameString(toOrder: orderByName))
 			\(queries.limitToString(limit: limitTo))
 		"""
@@ -453,7 +455,7 @@ class TermController2 {
 		}
 		
 		let selectStatement = """
-			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+			SELECT DISTINCT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
 			\(definitionString)
 			FROM \(terms)
 			JOIN \(assignedCategories)
@@ -483,7 +485,10 @@ class TermController2 {
 	}
 	
 	func getTermCount (categoryIDs: [Int], favoritesOnly: Bool) -> Int {
-				
+		
+		
+		//select COUNT(*) column_name FROM (SELECT DISTINCT column_name);
+	
 		var favoriteString = ""
 		
 		if favoritesOnly {
@@ -491,11 +496,13 @@ class TermController2 {
 		}
 		
 		let query = """
-			SELECT COUNT (*) FROM \(terms)
+			SELECT COUNT (*) FROM
+			(SELECT DISTINCT \(assignedCategories).termID
+			FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
 			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-			\(favoriteString)
+			\(favoriteString))
 			"""
 		
 		var count = 0

@@ -12,17 +12,12 @@ import UIKit
 class MyConstants {
 	
 	// database related names
-	let dbFilename = "Medical Terminology Term Based"
+	let dbFilename = "Medical Terminology"
 	let dbFileExtension = "db"
 	
 	let dbTableTerms = "terms"
 	let dbTableAssignedCategories = "assignedCategories"
 	let dbTableCategories = "categories"
-	
-	// term based
-	let dbTableTermsTB = "termsTB"
-	let dbTableAssignedCategoriesTB = "assignedCategoriesTB"
-	
 	
 	let dbCategoryAllTermsID = 1
 	let dbCategoryMyTermsID = 2
@@ -48,8 +43,6 @@ class MyConstants {
 	let noFavoriteTermsHeading = "No Favorite Terms To Show"
 	let noFavoriteTermsSubheading = "There are no favorite terms in this category. When you choose some terms to be favorites, they will show here."
 
-	
-	
 	// segues
 	let segueFlashcardOptions = "segueFlashcardOptions"
 	let segueSelectCategory = "segueSelectCategory"
