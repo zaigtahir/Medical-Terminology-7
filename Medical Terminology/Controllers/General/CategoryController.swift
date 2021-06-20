@@ -103,7 +103,7 @@ class CategoryController {
 	/**
 	Update the categories just locally in the term, and nothing is saved to the DB. The categories are sorted.
 	*/
-	func toggleCategoriesNewTermPN (term: Term, categoryID: Int) {
+	func toggleCategoriesNewTermPN (term: Term2, categoryID: Int) {
 		
 		if term.assignedCategories.contains(categoryID) {
 			
@@ -142,7 +142,7 @@ class CategoryController {
 	/**
 	Use this to sort the categories in a new term as they are no retrived from the db in my ususual order
 	*/
-	func sortAssignedCategories (term: Term) {
+	func sortAssignedCategories (term: Term2) {
 		// will take a array of [categoryID] and sort them. the custom categores will be first based on their display order, then the standard categories after based on their display order
 		
 		

@@ -23,6 +23,162 @@ protocol CategoryListVCHDelegate: AnyObject {
 
 class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate {
 	
+	// MARK to remove
+	var currentCategoryID = 99
+	
+	// MARK: - seque properties
+	
+	var categoryListMode = CategoryListMode.selectCategory
+	
+	// Fill Initial categories when using selectCategory mode
+	// If using assignCategoryMode, the initialCategories will be set to term.assignedCategories
+	var initialCategories = [3,4,5]
+	
+	// Provide a term when Assigning Categories to a term
+	// When the term is new, termID = -1
+	// Have the term.assignedCategories filled before assigning the term via the seque. For a new term, termID = -1, and assign category 1 and 2 to the new
+	var term: Term2!
+	
+	
+	// MARK: - local variables
+
+	var finalCategories: [Int]!
+	
+	// use to refer to the section of the table
+	let sectionCustom = 0
+	let sectionStandard = 1
+	
+	// controllers
+	let cc = CategoryController()
+	let tc = TermController()
+	
+	// categories to use to fill tables
+	var standardCategories = [Category]()
+	var customCategories = [Category]()
+	
+	
+	override init () {
+		super.init()
+		
+		// initialize initialCategories and finalCategories
+		
+		if categoryListMode == .assignCategory {
+			// assign categories to a term
+			
+			
+			
+			
+			if term.termID == -1 {
+				initialCategories = [1,2]	// all terms and my terms
+			} else {
+				initialCategories = term.assignedCategories
+			}
+			
+			finalCategories = initialCategories
+			
+		} else {
+			// select categories to view
+			finalCategories = initialCategories
+		}
+		
+		updateData()
+	
+	}
+	
+	func updateData () {
+		standardCategories = cc.getCategories(categoryType: .standard)
+		
+		// remove the All Terms and My Terms row if this is in the assign mode
+		
+		if categoryListMode == .assignCategory {
+			//removing first 2 standards in fillCategoryLissts as im in assign mode
+			standardCategories.remove(at: 0)
+			standardCategories.remove(at: 0)
+		}
+		
+		customCategories = cc.getCategories(categoryType: .custom)
+	}
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 2
+	}
+	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		
+		if section == sectionCustom {
+			return "My Categories"
+		}
+		else {
+			return "Standard Categories"
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if section == sectionCustom {
+			return customCategories.count + 1
+		} else {
+			return standardCategories.count
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
+		// MARK: if this is the "add custom category row"
+		if indexPath.section == sectionCustom && indexPath.row == 0 {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "addCell", for: indexPath) as? AddCell
+			return cell!
+		}
+		
+		if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CategoryCell {
+			
+			var category : Category
+			
+			if indexPath.section == sectionCustom {
+				category = customCategories[indexPath.row]
+			} else {
+				category = standardCategories[indexPath.row]
+			}
+			
+			// attach term count
+			category.count = cc.getCountOfTerms(categoryID: category.categoryID)
+			
+			cell.nameLabel.text = category.name
+			cell.countLabel.text = String(category.count)
+			
+					
+			return cell
+		} else {
+			return UITableViewCell()
+		}
+		
+	}
+	
+	// MARK: - CategoryCellDelegate
+	func shouldSegueToCategory(category: Category) {
+		print("should segue")
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+
+
+
+/*
+class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate {
+	
 	/*
 	In the assign category mode:
 	If the term is a standard term, disable all the standard rows
@@ -318,3 +474,4 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 }
 
+*/

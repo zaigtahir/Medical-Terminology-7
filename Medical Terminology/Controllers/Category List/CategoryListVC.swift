@@ -25,7 +25,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	
 	// used just to pass info from performSegue to prepare for segue
 	private var segueCategory: Category!
-	
+		
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
@@ -34,9 +34,8 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		tableView.delegate = categoryListVCH
 		tableView.tableFooterView = UIView()
 		
-		categoryListVCH.delegate = self
+		//categoryListVCH.delegate = self
 		
-		categoryListVCH.fillCategoryLists()
 		
 		//set the title and header image
 		if categoryListVCH.categoryListMode == .selectCategory {
@@ -52,11 +51,6 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 			
 			termNameLabel.text = "For Term: \(categoryListVCH.term.name)"
 			
-			if categoryListVCH.term.isStandard {
-				termPredefinedButton.isHidden = false
-			} else {
-				termPredefinedButton.isHidden = true
-			}
 		}
 	}
 	

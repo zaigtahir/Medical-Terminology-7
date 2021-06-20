@@ -24,7 +24,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	let termListVCH = TermListVCH()
 	let cc = CategoryController()
-	let tc = TermController()
+	let tcTB = TermControllerTB()
 	let tu = TextUtilities()
 	
 	override func viewDidLoad() {
@@ -111,13 +111,13 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			switch termListVCH.termEditMode {
 			
 			case .view:
-				let term = tc.getTerm(termID: termListVCH.termIDForSegue)
+				let term = tcTB.getTerm(termID: termListVCH.termIDForSegue)
 				vc.termVCH.term = term
 				vc.termVCH.updateData()
 				
 			case .add:
 				
-				let newTerm = Term()
+				let newTerm = Term2()
 				newTerm.assignedCategories.append(myConstants.dbCategoryAllTermsID)
 				newTerm.assignedCategories.append(myConstants.dbCategoryMyTermsID)
 				if (termListVCH.currentCategoryID != myConstants.dbCategoryAllTermsID) && (termListVCH.currentCategoryID != myConstants.dbCategoryMyTermsID) {

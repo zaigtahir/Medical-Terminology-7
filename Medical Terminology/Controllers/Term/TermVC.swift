@@ -44,7 +44,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	let termVCH = TermVCH()
 	
 	// controllers
-	private let tc = TermController()
+	private let tcTB = TermControllerTB()
 	private let cc = CategoryController()
 	private let tu = TextUtilities()
 	
@@ -88,7 +88,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		playAudioButton.isEnabled = termVCH.term.isAudioFilePresent()
 		
 		// Favorite button
-		favoriteButton.isOn = termVCH.term.favoriteForCategory
+		favoriteButton.isOn = termVCH.term.isFavorite
 				
 		if termVCH.term.isStandard {
 			// term is standard
@@ -243,11 +243,10 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		if termVCH.term.termID == -1 {
 			
-			termVCH.term.favoriteForCategory.toggle()
+			termVCH.term.isFavorite.toggle()
 			
 		} else {
-			
-			let _ = tc.toggleFavoriteStatusPN(categoryID: termVCH.currentCategoryID, termID: termVCH.term.termID)
+			let _ = tcTB.toggleFavoriteStatusPN(termID: termVCH.term.termID)
 		}
 	}
 	
@@ -276,7 +275,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		let ac = UIAlertController(title: "Delete This Term?", message: "Are you sure you want to delete this term from ALL categories?", preferredStyle: .alert)
 		
 		let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in
-			self.tc.deleteTermPN(termID: self.termVCH.term.termID)
+			self.tcTB.deleteTermPN(termID: self.termVCH.term.termID)
 			self.navigationController?.dismiss(animated: true, completion: nil)
 		}
 		

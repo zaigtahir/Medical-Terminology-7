@@ -148,11 +148,8 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 			
 			let term = tcTB.getTerm(termID: termID)
 		
-			// MARK: - WILL crash
-			//vc.termVCH.term = term
+			vc.termVCH.term = term
 			
-
-					
 			vc.termVCH.currentCategoryID = flashCardVCH.currentCategoryID
 			vc.termVCH.updateData()
 			

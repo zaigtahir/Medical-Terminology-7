@@ -18,14 +18,15 @@ protocol TermVCHDelegate: AnyObject {
 class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	
 	/// Everything will be based on this term. If this termID = -1, this will be considered to be a NEW term that is not saved yet
-	var term : Term!
+	var term : Term2!
 	var currentCategoryID : Int!
 	var propertyReference : PropertyReference!
 	var delegate: TermVCHDelegate?
 	
 	// controllers
-	private let tc = TermController()
+	private let tcTB = TermControllerTB()
 	private let cc = CategoryController()
+	private let sc = SettingsController()
 	
 	private var singleLineInputVC : SingleLineInputVC!
 	private var multiLineInputVC : MultiLineInputVC!
@@ -57,23 +58,17 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		// If the termID = -1, I will be updating the term object locally so there is no updating needed
 		if term.termID != -1 {
-			term = tc.getTerm(termID: term.termID)
-			term.assignedCategories = tc.getTermCategoryIDs(termID: term.termID)
-			
-			term.favoriteForCategory = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: term.termID)
+			term = tcTB.getTerm(termID: term.termID)
+			term.assignedCategories = tcTB.getTermCategoryIDs(termID: term.termID)
+			term.isFavorite = tcTB.getFavoriteStatus(termID: term.termID)
 		}
 	}
 	
 	func saveTerm () {
-		let newTermID = tc.saveNewTerm(term: term)
-		
-		// if this is favorite, make it favorite for each catetory
-		if term.favoriteForCategory {
-			for c in term.assignedCategories {
-				tc.setFavoriteStatusPN(categoryID: c, termID: newTermID, isFavorite: true)
-			}
+		let newTermID = tcTB.saveNewTerm(term: term)
+		if sc.isDevelopmentMode() {
+			print("TermVCH: saveTerm, new termID = \(newTermID)")
 		}
-		
 	}
 	
 	// MARK: - notification functions
@@ -134,7 +129,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 			return
 		}
 		
-		if !tc.termNameIsUnique(name: cleanString, notIncludingTermID: term.termID) {
+		if !tcTB.termNameIsUnique(name: cleanString, notIncludingTermID: term.termID) {
 			// this is a duplicate term name!
 			delegate?.duplicateTermName()
 			return
@@ -144,7 +139,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		if term.termID != -1 {
 			// update the db
-			tc.updateTermNamePN(termID: term.termID, name: cleanString)
+			tcTB.updateTermNamePN(termID: term.termID, name: cleanString)
 		}
 		
 		updateData()
@@ -168,7 +163,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 			if term.termID == -1 {
 				term.definition = cleanString
 			} else {
-				tc.updateTermDefinitionPN(termID: term.termID, definition: cleanString)
+				tcTB.updateTermDefinitionPN(termID: term.termID, definition: cleanString)
 			}
 			
 		case .example:
@@ -181,7 +176,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 			if term.termID == -1 {
 				term.example = cleanString
 			} else {
-				tc.updateTermExamplePN (termID: term.termID, example: cleanString)
+				tcTB.updateTermExamplePN (termID: term.termID, example: cleanString)
 			}
 			
 			
@@ -195,7 +190,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 			if term.termID == -1 {
 				term.myNotes = cleanString
 			} else {
-				tc.updateTermMyNotesPN(termID: term.termID, myNotes: cleanString)
+				tcTB.updateTermMyNotesPN(termID: term.termID, myNotes: cleanString)
 				
 			}
 			
