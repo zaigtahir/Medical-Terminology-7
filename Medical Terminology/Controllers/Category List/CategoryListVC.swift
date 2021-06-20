@@ -18,6 +18,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var selectModeImage: UIImageView!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
+	@IBOutlet weak var cancelButton: UIBarButtonItem!
 	@IBOutlet weak var termNameLabel: UILabel!
 	@IBOutlet weak var totalCategoriesSelectedLabel: UILabel!
 	
@@ -57,7 +58,15 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	}
 	
 	func updateDisplay () {
-		totalCategoriesSelectedLabel.text =  "Total selected categories: \(categoryListVCH.selectedCategories.count)"
+		
+		if categoryListVCH.categoryListMode == .selectCategories {
+			
+			totalCategoriesSelectedLabel.text =  "Total selected categories: \(categoryListVCH.getTotalSelectedCategories())"
+		} else {
+			totalCategoriesSelectedLabel.text =  "Total assigned categories: \(categoryListVCH.getTotalSelectedCategories())"
+		}
+		
+		
 	}
 	// MARK: - categoryListVCHDelegate functions
 	
@@ -105,6 +114,9 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	}
 	
 	@IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
+		self.dismiss(animated: true, completion: nil)
+	}
+	@IBAction func cancelButtonAction(_ sender: Any) {
 		self.dismiss(animated: true, completion: nil)
 	}
 	

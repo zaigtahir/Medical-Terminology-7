@@ -83,7 +83,24 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		selectedCategories = initialCategories
 	}
 	
-	
+	func getTotalSelectedCategories () -> Int {
+		
+		if categoryListMode == .selectCategories {
+			// Select category mode
+			return selectedCategories.count
+			
+		} else {
+			// Assign category mode
+			// if standard term, subtract out for category 1 as the user will not see it any way on the UI
+			// if custom germ, stubtract out for category 1 and 2 as the user will not see it any way on the UI
+			if term.isStandard {
+				return selectedCategories.count - 1
+			} else {
+				return selectedCategories.count - 2
+			}
+		}
+		
+	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 2
