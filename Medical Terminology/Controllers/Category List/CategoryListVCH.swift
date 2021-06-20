@@ -114,7 +114,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			
 			// Fire off a notification of the category change!!
 			let name = Notification.Name(myKeys.currentCategoriesChangedKey)
-			NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : selectedCategories as Any])
+			NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : selectedCategories as Any])
 		}
 		
 	}

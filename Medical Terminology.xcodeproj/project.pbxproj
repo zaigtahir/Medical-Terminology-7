@@ -802,7 +802,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.75;
+				MARKETING_VERSION = 1.70;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
 				PRODUCT_NAME = "Practical Medical Terminology";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
@@ -825,7 +825,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.75;
+				MARKETING_VERSION = 1.70;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
 				PRODUCT_NAME = "Practical Medical Terminology";

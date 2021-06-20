@@ -69,17 +69,24 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		
 		let favoriteCount = flashCardVCH.getFavoriteTermsCount()
 	
-		favoritesOnlyButton.isOn = flashCardVCH.favoritesOnly
+		favoritesOnlyButton.isOn = flashCardVCH.showFavoritesOnly
 		
 		favoritesCountLabel.text = "\(favoriteCount)"
 		
-		let c = cc.getCategory(categoryID: flashCardVCH.currentCategoryID)
+		let totalTermsCount = tcTB.getTermCount(categoryIDs: flashCardVCH.currentCategories, favoritesOnly: flashCardVCH.showFavoritesOnly)
 		
-		c.count = cc.getCountOfTerms(categoryID: flashCardVCH.currentCategoryID)
+		if flashCardVCH.currentCategories.count == 1 {
+			
+			let c = cc.getCategory(categoryID: flashCardVCH.currentCategories[0])
+			
+			categoryNameLabel.text = "\(c.name) (\(totalTermsCount) terms)"
+			
+		} else {
+			
+			categoryNameLabel.text = "\(flashCardVCH.currentCategories.count) categories selected (\(totalTermsCount) terms)"
+		}
 		
-		let title = "  \(c.name) (\(flashCardVCH.getAllTermsCount()))"
 		
-		categoryNameLabel.text = title
 		//configure and position the slider
 		sliderOutlet.minimumValue = 0
 		
@@ -87,10 +94,10 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		sliderOutlet.value = Float (scrollController.getCellIndex(collectionView: collectionView))
 		
 		
-		let learningCount = fc.getFlashcardCount(categoryIDs: flashCardVCH.currentCategories, showFavoritesOnly: flashCardVCH.favoritesOnly, learnedStatus: false)
+		let learningCount = fc.getFlashcardCount(categoryIDs: flashCardVCH.currentCategories, showFavoritesOnly: flashCardVCH.showFavoritesOnly, learnedStatus: false)
 		
 		
-		let learnedCount = fc.getFlashcardCount(categoryIDs: flashCardVCH.currentCategories, showFavoritesOnly: flashCardVCH.favoritesOnly, learnedStatus: true)
+		let learnedCount = fc.getFlashcardCount(categoryIDs: flashCardVCH.currentCategories, showFavoritesOnly: flashCardVCH.showFavoritesOnly, learnedStatus: true)
 		
 		// set up the titles for the learned status switch
 		learnedStatusSwitch.setTitle("Learning \(learningCount)", forSegmentAt: 0)
@@ -193,7 +200,7 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 
 	@IBAction func favoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
 		
-		flashCardVCH.favoritesOnly.toggle()
+		flashCardVCH.showFavoritesOnly.toggle()
 		flashCardVCH.updateData()
 		collectionView.reloadData()
 		updateDisplay()

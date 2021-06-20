@@ -68,6 +68,10 @@ class CategoryController {
 			query = "SELECT * from \(categories) WHERE isStandard = \(categoryType.rawValue) ORDER BY displayOrder"
 		}
 		
+		
+		print("cc getCategories: query = \(query)")
+		
+		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			while resultSet.next() {
 				let c = getCategoryFromResultSet(resultSet: resultSet)

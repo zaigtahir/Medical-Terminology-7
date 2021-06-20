@@ -101,11 +101,22 @@ class FlashcardController {
 	*/
 	func resetLearnedFlashcards (categoryIDs: [Int]) {
 		
+		
 		let query = """
-			UPDATE \(terms)
-			SET learnedFlashcard = 0
+
+		UPDATE \(terms)
+		SET learnedFlashcard = 0
+		WHERE
+			(
+			SELECT DISTINCT \(terms).termID FROM \(terms)
+			JOIN \(assignedCategories) ON terms.termID  = \(assignedCategories).termID
+			WHERE
 			\(queries.categoryString(categoryIDs: categoryIDs))
+			)
 		"""
+		
+		
+		print("resetLearnedFlashcards query = \(query)")
 		
 		myDB.executeStatements(query)
 	}

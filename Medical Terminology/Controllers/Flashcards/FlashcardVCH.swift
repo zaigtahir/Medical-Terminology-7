@@ -20,13 +20,13 @@ protocol FlashcardVCHDelegate: AnyObject {
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
 	
 	// term based variables
-	var currentCategories = [3, 4, 11, 17, 22]
+	var currentCategories = [1]
 	
 	// holds state of the view
 	var currentCategoryID = 1 			// default starting off category
 	
 	
-	var favoritesOnly = false		// this is different than saying isFavorite = false
+	var showFavoritesOnly = false		// this is different than saying isFavorite = false
 	var viewMode : TermComponent = .both
 	
 	// which tab to show: learning vs learned
@@ -79,6 +79,15 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
 		
+		
+		
+		// MARK: term based categorIES changed
+		
+		let nameCCCNK = Notification.Name(myKeys.currentCategoriesChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoriesChangedN(notification:)), name: nameCCCNK, object: nil)
+		
+		
+		
 	}
 	
 	deinit {
@@ -87,6 +96,24 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	// MARK: - notification functions
+	
+	
+	
+	// CATEGORIES changed
+	@objc func currentCategoriesChangedN (notification : Notification) {
+		
+		if let data = notification.userInfo as? [String : [Int]] {
+			
+			//there will be only one data here, the categoryID
+			currentCategories = data["categoryIDs"]!
+			updateDataAndDisplay()
+			
+		}
+	}
+	
+	
+	
+	
 	
 	@objc func currentCategoryChangedN (notification : Notification) {
 		
@@ -103,7 +130,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			
-			switch favoritesOnly {
+			switch showFavoritesOnly {
 			
 			case true:
 				// seeing favorites only, and a term may have been added or removed from this list so need to reload the whole list
@@ -155,6 +182,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 	}
 	
+	
+	
 	@objc func assignCategoryN (notification : Notification) {
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]!
@@ -165,6 +194,17 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	@objc func unassignCategoryN (notification : Notification){
+		
+		if let data = notification.userInfo as? [String : Int] {
+			let categoryID = data["categoryID"]!
+			if categoryID == currentCategoryID {
+				updateDataAndDisplay()
+			}
+		}
+		
+	}
+	
+	@objc func CategoryN (notification : Notification){
 		
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]!
@@ -202,7 +242,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	func updateData () {
 	
-		termIDs = fc.getFlashcardTermIDs(categoryIDs: currentCategories, showFavoritesOnly: favoritesOnly, learnedStatus: learnedStatus)
+		termIDs = fc.getFlashcardTermIDs(categoryIDs: currentCategories, showFavoritesOnly: showFavoritesOnly, learnedStatus: learnedStatus)
 	}
 	
 	/**
@@ -283,7 +323,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		let favoriteCount = tcTB.getTermCount(categoryIDs: currentCategories, favoritesOnly: true)
 		
-		if favoritesOnly && favoriteCount == 0 {
+		if showFavoritesOnly && favoriteCount == 0 {
 			cell.headingLabel.text = myConstants.noFavoriteTermsHeading
 			cell.subheadingLabel.text = myConstants.noFavoriteTermsSubheading
 			cell.redoButton.isHidden = true
@@ -295,7 +335,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		case false:
 			// learnING tab
-			if favoritesOnly {
+			if showFavoritesOnly {
 				// show favorites only, you learned all favorite terms
 				cell.headingLabel.text = "You learned all favorite terms in this category!"
 				cell.subheadingLabel.text = "You can relearn all the terms again by pressing the redo button."
@@ -314,7 +354,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			}
 		case true:
 			// learnED tab
-			if favoritesOnly {
+			if showFavoritesOnly {
 				// show favorites only, you have not learned any favorite terms yet
 				cell.headingLabel.text = "You have not learned any favorite terms in this category yet."
 				cell.subheadingLabel.text = "When you learn some favoite terms, they will show here."
