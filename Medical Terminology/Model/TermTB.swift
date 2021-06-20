@@ -16,7 +16,7 @@ protocol TermAudioDelegate: AnyObject {
 
 // trying to add a new commment
 
-class Term2: NSObject, AVAudioPlayerDelegate {
+class TermTB: NSObject, AVAudioPlayerDelegate {
 	var termID: Int = -1
 	var name: String = ""
 	var definition: String = ""

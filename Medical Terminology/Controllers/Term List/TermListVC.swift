@@ -117,7 +117,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 				
 			case .add:
 				
-				let newTerm = Term2()
+				let newTerm = TermTB()
 				newTerm.assignedCategories.append(myConstants.dbCategoryAllTermsID)
 				newTerm.assignedCategories.append(myConstants.dbCategoryMyTermsID)
 				if (termListVCH.currentCategoryID != myConstants.dbCategoryAllTermsID) && (termListVCH.currentCategoryID != myConstants.dbCategoryMyTermsID) {

@@ -18,7 +18,7 @@ protocol TermVCHDelegate: AnyObject {
 class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	
 	/// Everything will be based on this term. If this termID = -1, this will be considered to be a NEW term that is not saved yet
-	var term : Term2!
+	var term : TermTB!
 	var currentCategoryID : Int!
 	var propertyReference : PropertyReference!
 	var delegate: TermVCHDelegate?

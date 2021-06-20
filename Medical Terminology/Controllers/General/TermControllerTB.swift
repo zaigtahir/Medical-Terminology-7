@@ -63,7 +63,7 @@ class TermControllerTB {
 		
 	}
 	
-	func getTerm (termID: Int) -> Term2 {
+	func getTerm (termID: Int) -> TermTB {
 		
 		let query = "SELECT * FROM \(terms) WHERE termID = \(termID)"
 		
@@ -74,13 +74,13 @@ class TermControllerTB {
 			
 		} else {
 			print("fatal error could not make result set or get term in getTerm")
-			return Term2()
+			return TermTB()
 		}
 	}
 	
-	func getTermFromResultSet(resultSet: FMResultSet) -> Term2 {
+	func getTermFromResultSet(resultSet: FMResultSet) -> TermTB {
 		
-		let term = Term2()
+		let term = TermTB()
 		
 		
 		term.termID = Int(resultSet.int(forColumn: "termID"))
@@ -223,7 +223,7 @@ class TermControllerTB {
 	If this is the first new term, it will create it at termID = dbCustomTermStartingID
 	Will return the termID of the added term
 	*/
-	func saveNewTerm (term: Term2) -> Int {
+	func saveNewTerm (term: TermTB) -> Int {
 		
 		var query: String
 		
@@ -300,7 +300,7 @@ class TermControllerTB {
 	Save a term to the db, use when migrating custom terms
 	Copies everything including the termID
 	*/
-	func saveTermForMigration (term: Term2) {
+	func saveTermForMigration (term: TermTB) {
 		let query = """
 				INSERT INTO \(terms)
 					(termID,

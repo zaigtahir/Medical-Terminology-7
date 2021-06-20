@@ -37,7 +37,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	// Provide a term when Assigning Categories to a term
 	// When the term is new, termID = -1
 	// Have the term.assignedCategories filled before assigning the term via the seque. For a new term, termID = -1, and assign category 1 and 2 to the new
-	var term: Term2!
+	var term: TermTB!
 	
 	
 	// MARK: - local variables

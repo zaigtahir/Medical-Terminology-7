@@ -27,14 +27,14 @@ class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDeleg
     @IBOutlet weak var playAudioButton: UIButton!
 	@IBOutlet weak var gotItButton: ZUIToggleButton!
 	
-	private var term: 	Term2!
+	private var term: 	TermTB!
 	
 	private let tc = TermController()
     private var utilities = Utilities()
 	
     weak var delegate: FlashcardCellDelegate?
 	
-	func configure (term: Term2, fcvMode: TermComponent, isFavorite: Bool, learnedFlashcard: Bool,  counter: String) {
+	func configure (term: TermTB, fcvMode: TermComponent, isFavorite: Bool, learnedFlashcard: Bool,  counter: String) {
 		
 		self.term = term
 		termLabel.text = term.name
