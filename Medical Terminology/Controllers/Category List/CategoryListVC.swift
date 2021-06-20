@@ -38,7 +38,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		
 		
 		//set the title and header image
-		if categoryListVCH.categoryListMode == .selectCategory {
+		if categoryListVCH.categoryListMode == .selectCategories {
 			self.title = "Category To View"
 			selectModeImage.isHidden = false
 			termNameLabel.isHidden = true

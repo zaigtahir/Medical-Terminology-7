@@ -134,9 +134,8 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC
 			
-			vc.categoryListVCH.categoryListMode = .selectCategory
-			vc.categoryListVCH.currentCategoryID = flashCardVCH.currentCategoryID
-			
+			vc.categoryListVCH.setupSelectCategoryMode(initialCategories: flashCardVCH.currentCategories)
+						
 		case myConstants.segueTerm:
 			
 			let nc = segue.destination as! UINavigationController

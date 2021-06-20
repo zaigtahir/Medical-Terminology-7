@@ -146,7 +146,7 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC
 			
-			vc.categoryListVCH.categoryListMode = .selectCategory
+			vc.categoryListVCH.categoryListMode = .selectCategories
 			vc.categoryListVCH.currentCategoryID = testHomeVCH.currentCategoryID
 			
 		case myConstants.segueToTest:

@@ -31,8 +31,8 @@ enum TestStatus {
 
 // use to display the category list view
 enum CategoryListMode {
-	case selectCategory
-	case assignCategory
+	case selectCategories
+	case assignCategories
 }
 
 // use to display the termVC

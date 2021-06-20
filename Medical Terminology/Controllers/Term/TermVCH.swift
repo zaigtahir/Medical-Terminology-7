@@ -252,9 +252,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		let nc = segue.destination as! UINavigationController
 		let vc = nc.topViewController as! CategoryListVC
 		
-		vc.categoryListVCH.categoryListMode = .assignCategory
-		vc.categoryListVCH.currentCategoryID = currentCategoryID
-		vc.categoryListVCH.term = term
+		vc.categoryListVCH.setupAssignCategoryMode(term: term)
 		
 	}
 	
