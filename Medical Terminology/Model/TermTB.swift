@@ -25,7 +25,9 @@ class TermTB: NSObject, AVAudioPlayerDelegate {
 	var secondCategoryID : Int = -1
 	var thirdCategoryID : Int = -1
 	var audioFile: String = ""
-	var audioPlayer = AVAudioPlayer()
+	
+	
+	var audioPlayer : AVAudioPlayer?
 	
 	var isStandard = false
 	var isFavorite = false
@@ -61,7 +63,6 @@ class TermTB: NSObject, AVAudioPlayerDelegate {
 		
 		let url = URL(fileURLWithPath: path)
 		print(url.absoluteURL)
-		//if this player is already playing, stop the play
 		
 		do {
 			try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
@@ -70,18 +71,17 @@ class TermTB: NSObject, AVAudioPlayerDelegate {
 			print("problem with AVAudioSession.sharedInstance")
 		 }
 		
-		if audioPlayer.isPlaying{
-			audioPlayer.stop()
-		}
+		//if audioPlayer?.isPlaying{
+		//	audioPlayer?.stop()
+		//}
 		
+
 		do {
-			
-			print("playing audio")
-			
+		
 			audioPlayer = try AVAudioPlayer(contentsOf: url)
-			audioPlayer.delegate = self
-			audioPlayer.prepareToPlay()
-			audioPlayer.play()
+			audioPlayer?.delegate = self
+			audioPlayer?.prepareToPlay()
+			audioPlayer?.play()
 			delegate?.termAudioStartedPlaying()
 			
 		} catch {
@@ -103,4 +103,5 @@ class TermTB: NSObject, AVAudioPlayerDelegate {
 	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
 		delegate?.termAudioStoppedPlaying()
 	}
+	
 }

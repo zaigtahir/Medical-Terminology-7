@@ -14,7 +14,7 @@ protocol FlashcardCellDelegate: AnyObject {
 	func pressedGotItButton(termID: Int)
 }
 
-class FlashcardCell: UICollectionViewCell, AVAudioPlayerDelegate, TermAudioDelegate {
+class FlashcardCell: UICollectionViewCell, TermAudioDelegate {
 	
     @IBOutlet weak var termLabel: UILabel!
     @IBOutlet weak var showHiddenTermButton: UIButton!
