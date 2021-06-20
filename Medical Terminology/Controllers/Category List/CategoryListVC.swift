@@ -35,7 +35,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		tableView.delegate = categoryListVCH
 		tableView.tableFooterView = UIView()
 		
-		//categoryListVCH.delegate = self
+		categoryListVCH.delegate = self
 		
 		
 		//set the title and header image
@@ -58,6 +58,8 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	}
 	
 	func updateDisplay () {
+		
+		print("updateDisplay in CategoryListVC")
 		
 		if categoryListVCH.categoryListMode == .selectCategories {
 			

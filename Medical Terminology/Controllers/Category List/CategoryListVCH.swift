@@ -52,11 +52,14 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	// controllers
 	let cc = CategoryController()
 	let tc = TermController()
+	let utilities = Utilities()
 	
-	// categories to use to fill tables
+	// categories to use to fill the category name and counts (not if it's selected or not selected. That is done using the selectedCategories [Int] array)
+	
 	var standardCategories = [Category]()
 	var customCategories = [Category]()
 	
+	weak var delegate: CategoryListVCHDelegate?
 	
 	override init () {
 		super.init()
@@ -163,6 +166,53 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		}
 		
 	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		// address the case if the user pressed the add category row
+		if indexPath.section == sectionCustom && indexPath.row == 0 {
+		delegate?.shouldSegueToNewCategory()
+		return
+		}
+		
+		var selectedCategory : Category
+		
+		// determine which category is selected
+		if indexPath.section == sectionCustom {
+			selectedCategory = customCategories[indexPath.row]
+		} else {
+			selectedCategory = standardCategories[indexPath.row]
+		}
+		
+		// if the user selected categoryID = 1, unselect everything else and refresh the table and display
+		if selectedCategory.categoryID == 1 {
+			selectedCategories = [1]
+			tableView.reloadData()
+			delegate?.shouldUpdateDisplay()
+			return
+		}
+		
+		// user clicked on something other than categoryID = 1
+		if selectedCategories == [1] {
+			selectedCategories = [Int]()
+		}
+		
+		if let categoryIDIndex = selectedCategories.firstIndex(of: selectedCategory.categoryID) {
+			// this categoryID is already selected, need to remove it from the selection
+			selectedCategories = utilities.removeIndex(index: categoryIDIndex, array: selectedCategories)
+			
+		} else {
+			// add it to the list
+			selectedCategories.append(selectedCategory.categoryID)
+		}
+	
+		tableView.reloadData()
+		delegate?.shouldUpdateDisplay()
+		
+	}
+	
+	
+	
 	
 	// MARK: - CategoryCellDelegate
 	func shouldSegueToCategory(category: Category) {
