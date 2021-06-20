@@ -87,7 +87,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	}
 	
 	func getTotalSelectedCategories () -> Int {
-		
+
 		if categoryListMode == .selectCategories {
 			// Select category mode
 			return selectedCategories.count
@@ -207,8 +207,9 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		}
 	
 		tableView.reloadData()
+	
 		delegate?.shouldUpdateDisplay()
-		
+	
 	}
 	
 	

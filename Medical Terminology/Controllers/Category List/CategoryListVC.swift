@@ -45,7 +45,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 			termNameLabel.isHidden = true
 			
 		} else {
-			self.title = "Assign Categories"
+			self.title = "Assign To Categories"
 			selectModeImage.isHidden = true
 			termNameLabel.isHidden = false
 			termNameLabel.text = "For Term: \(categoryListVCH.term.name)"
@@ -59,8 +59,6 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	
 	func updateDisplay () {
 		
-		print("updateDisplay in CategoryListVC")
-		
 		if categoryListVCH.categoryListMode == .selectCategories {
 			
 			totalCategoriesSelectedLabel.text =  "Total selected categories: \(categoryListVCH.getTotalSelectedCategories())"
@@ -68,7 +66,25 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 			totalCategoriesSelectedLabel.text =  "Total assigned categories: \(categoryListVCH.getTotalSelectedCategories())"
 		}
 		
-		
+		if categoryListVCH.categoryListMode == .selectCategories {
+			
+			if categoryListVCH.getTotalSelectedCategories() == 0 {
+				// no category selected
+				let ac = UIAlertController(title: "Select A Category", message: "Please select one or more  categories to view.", preferredStyle: .alert)
+				let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
+				
+				ac.addAction(okay)
+				
+				self.present(ac, animated: true, completion: nil)
+				
+				doneButton.isEnabled = false
+				
+			} else {
+				doneButton.isEnabled = true
+			}
+			
+		}
+	
 	}
 	// MARK: - categoryListVCHDelegate functions
 	
