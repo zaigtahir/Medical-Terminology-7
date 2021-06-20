@@ -28,6 +28,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	private let cc = CategoryController()
 	
+	
 	init () {
 		
 	}
@@ -35,7 +36,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	func saveCategory() {
 		let _ = cc.addCategoryPN (category: category)
 	}
-
+	
 	// MARK: - segue functions
 	
 	func prepare(for segue: UIStoryboardSegue, sender: Any?) {

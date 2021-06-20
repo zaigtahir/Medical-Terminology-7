@@ -18,7 +18,16 @@ class MyKeys {
 	let appPurchaseStatus = "appPurchaseStatus"
 	
 	
-	// MARK: - CategoryVCH notifications
+	// MARK: - CategoryVCH notifications for CATEGORIES
+	let currentCategoriesChangedKey = "com.theappgalaxy.currentCategoresChanged"
+	
+	
+	
+	
+	
+	
+	
+	// MARK: - CategoryVCH notifications (TO REMOVE)
 	let currentCategoryChangedKey = "com.theappgalaxy.currentCategoryChanged"
 	
 	// MARK: - Term Controller notifications

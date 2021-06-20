@@ -114,8 +114,6 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		self.dismiss(animated: true, completion: nil)
 	}
 	
-	
-	
 	// MARK: - prepare segue
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -132,8 +130,16 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	}
 	
 	@IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
+		
+		if categoryListVCH.categoryListMode == .selectCategories {
+			categoryListVCH.checkSelectedCategoriesPN ()
+		} else {
+			categoryListVCH.checkAssignedCategories()
+		}
+		
 		self.dismiss(animated: true, completion: nil)
 	}
+	
 	@IBAction func cancelButtonAction(_ sender: Any) {
 		self.dismiss(animated: true, completion: nil)
 	}

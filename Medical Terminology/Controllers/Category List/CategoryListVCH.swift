@@ -83,11 +83,12 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	func setupSelectCategoryMode (initialCategories: [Int]) {
 		categoryListMode = .selectCategories
+		self.initialCategories = initialCategories
 		selectedCategories = initialCategories
 	}
 	
 	func getTotalSelectedCategories () -> Int {
-
+		
 		if categoryListMode == .selectCategories {
 			// Select category mode
 			return selectedCategories.count
@@ -104,6 +105,29 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		}
 		
 	}
+	
+	// The categoryListVC calls this when the user presses the done button
+	
+	func checkSelectedCategoriesPN () {
+		// the categoryVC calls this when the user presses the done button
+		if !utilities.containSameElements(array1: initialCategories, array2: selectedCategories) {
+			
+			// Fire off a notification of the category change!!
+			let name = Notification.Name(myKeys.currentCategoriesChangedKey)
+			NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : selectedCategories as Any])
+		}
+		
+	}
+	
+	func checkAssignedCategories () {
+		if utilities.containSameElements(array1: initialCategories, array2: selectedCategories) {
+			print("checkAssignedCategories Assigned categories did NOT changed")
+		} else {
+			print("checkAssignedCategories Assigned categories DID not changed, need to code here")
+			
+		}
+	}
+	
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 2
@@ -171,8 +195,8 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 		// address the case if the user pressed the add category row
 		if indexPath.section == sectionCustom && indexPath.row == 0 {
-		delegate?.shouldSegueToNewCategory()
-		return
+			delegate?.shouldSegueToNewCategory()
+			return
 		}
 		
 		var selectedCategory : Category
@@ -205,13 +229,12 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			// add it to the list
 			selectedCategories.append(selectedCategory.categoryID)
 		}
-	
+		
 		tableView.reloadData()
-	
+		
 		delegate?.shouldUpdateDisplay()
-	
+		
 	}
-	
 	
 	
 	
@@ -219,7 +242,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	func shouldSegueToCategory(category: Category) {
 		print("should segue")
 	}
-
+	
 	
 }
 

@@ -34,7 +34,6 @@ class Utilities {
         }
     }
     
-    
 	func removeIndex (index: Int, array: [Int]) -> [Int]{
 		
 		var newArray = array
@@ -54,6 +53,14 @@ class Utilities {
 			newArray.remove(at: index)
 			return newArray
 		}
+	
+	}
+	
+	func containSameElements (array1 : [Int], array2 : [Int]) -> Bool {
+		
+		let a1 = array1.sorted()
+		let a2 = array2.sorted()
+		return a1 == a2
 	
 	}
 }
