@@ -17,10 +17,7 @@ class CategoryCell: UITableViewCell {
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var selectImage: UIImageView!
 	@IBOutlet weak var countLabel: UILabel!
-	
-	// hold the state of this cells isEnable so I can use it later in the didSelectRow method I just have a default value here, but when you format the cell, you will also end up setting this value
-	var  isSelectable = true
-	
+
 	// itialize this with the rowCategory value so that I can use it in the delegate function
 	
 	private var category: Category!
@@ -32,73 +29,54 @@ class CategoryCell: UITableViewCell {
 		// Initialization code
 	}
 	
-	func formatCellSelectCategory (rowCategory: Category, currentCategory: Int, isSelectable: Bool ) {
-		nameLabel.text  = rowCategory.name
-		countLabel.text = String (rowCategory.count)
-		self.isSelectable = isSelectable
-		self.category = rowCategory
+	
+	func formatCategoryCell (category: Category, selectedCategoryIDs: [Int], lockCategoryIDs: [Int]) {
 		
-		if rowCategory.categoryID == currentCategory {
-			//selected category
-			if rowCategory.categoryID == 1 {
-				//all terms category
-				selectImage.image = myTheme.imageRowSelected
-				selectImage.tintColor = myTheme.colorMain
+		self.category = category
+		nameLabel.text = category.name
+		countLabel.text = String (category.count)
+		
+		// set initial colors so if a locked-appearing cell is resused, the colors don't stay as the locked colors
+		selectImage.tintColor = myTheme.colorText
+		nameLabel?.textColor = myTheme.colorText
+		countLabel.textColor = myTheme.colorText
+		
+		
+		if category.categoryID == 1 {
+			// this is All Terms category
+			if selectedCategoryIDs.contains(category.categoryID) {
+				// All Terms is selected
+				selectImage.image = myTheme.imageCircleFill
+				selectImage.tintColor = myTheme.colorSelectedRowIndicator
 			} else {
-				//all other categories
-				selectImage.image = myTheme.imageRowSelectedAssign
-				selectImage.tintColor = myTheme.colorMain
+				// All Terms is not selected
+				selectImage.image = myTheme.imageCircle
+				selectImage.tintColor = myTheme.colorText
 			}
 			
 		} else {
-			//category is not selected
-			
-			if rowCategory.categoryID == 1 {
-				//all terms category
-				selectImage.image = myTheme.imageRowNotSelected
-				selectImage.tintColor = myTheme.colorText
+			// not category 1 = All Terms, this is another category
+			if selectedCategoryIDs.contains(category.categoryID) {
+				// All Terms is selected
+				selectImage.image = myTheme.imageSquareFill
+				selectImage.tintColor = myTheme.colorSelectedRowIndicator
 			} else {
-				selectImage.image = myTheme.imageRowNotSelectedAssign
+				// All Terms is not selected
+				selectImage.image = myTheme.imageSquare
 				selectImage.tintColor = myTheme.colorText
 			}
 			
-
+		}
+		
+		if lockCategoryIDs.contains(category.categoryID) {
+			// this category needs to appear locked
+			selectImage.tintColor = myTheme.colorLockedCategory
+			nameLabel?.textColor = myTheme.colorLockedCategory
+			countLabel.textColor = myTheme.colorLockedCategory
 		}
 		
 	}
 	
-	func formatCellAssignCategory (rowCategory: Category, currentCategoryID: Int, assignedCategoryIDsForTerm ids: [Int], isSelectable: Bool ) {
-		
-		nameLabel.text  = rowCategory.name
-		nameLabel.textColor = myTheme.colorText
-		countLabel.text = String (rowCategory.count)
-		countLabel.text = String (rowCategory.count)
-		self.isSelectable = isSelectable
-		
-		if ids.contains(rowCategory.categoryID) {
-			// the term is assigned this category
-			selectImage.image = myTheme.imageRowSelectedAssign
-			selectImage.tintColor = myTheme.colorMain
-			
-		} else {
-			// not assigned to this category, but if this is the current category, use a different not selected icon
-			if rowCategory.categoryID == currentCategoryID {
-				selectImage.image = myTheme.imageRowCurrentCategoryNotSelectedAssign
-				
-			} else {
-				selectImage.image = myTheme.imageRowNotSelectedAssign
-			}
-			
-			selectImage.tintColor = myTheme.colorText
-		}
-		
-		if isSelectable == false {
-			nameLabel.textColor = myTheme.colorUnavailableCatetory
-			selectImage.tintColor = myTheme.colorUnavailableCatetory
-			countLabel.text = String (rowCategory.count)
-		}
-		
-	}
 	
 	@IBAction func showDetailButtonAction(_ sender: UIButton) {
 		delegate?.shouldSegueToCategory(category: self.category)

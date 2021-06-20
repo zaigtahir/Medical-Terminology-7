@@ -3093,7 +3093,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W5i-R0-UWj">
-                                <rect key="frame" x="0.0" y="149.66666666666669" width="414" height="586.33333333333326"/>
+                                <rect key="frame" x="0.0" y="176.66666666666669" width="414" height="559.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="50" id="51Y-Dh-WQa" customClass="CategoryCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
@@ -3210,50 +3210,43 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.stack.3d.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NQR-x2-ieV">
-                                <rect key="frame" x="175" y="64.333333333333329" width="64" height="64"/>
+                                <rect key="frame" x="182" y="64.333333333333329" width="50" height="50"/>
                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="Omi-T1-fRi"/>
-                                    <constraint firstAttribute="width" constant="64" id="n8T-xL-Kqq"/>
+                                    <constraint firstAttribute="height" constant="50" id="Omi-T1-fRi"/>
+                                    <constraint firstAttribute="width" constant="50" id="n8T-xL-Kqq"/>
                                 </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Term: abdomen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="f70-gs-dsI">
-                                <rect key="frame" x="20" y="85.333333333333329" width="334" height="21.666666666666671"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Term: abdomen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="f70-gs-dsI">
+                                <rect key="frame" x="20" y="78.333333333333329" width="374" height="21.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1b7-0b-i0V">
-                                <rect key="frame" x="364" y="76" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Gtl-Zp-sgu"/>
-                                    <constraint firstAttribute="width" constant="40" id="oDs-M9-tPl"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="tintColor" name="color text"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="lock.circle.fill" catalog="system" symbolScale="large"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteCategoryButtonAction:" destination="toZ-gF-41h" eventType="touchUpInside" id="nsW-dq-2ow"/>
-                                    <action selector="termPredefinedButtonAction:" destination="KTC-23-wdb" eventType="touchUpInside" id="NvR-Wm-DIE"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Categories Selected: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjm-Sc-ntb">
+                                <rect key="frame" x="20" y="122.00000000000001" width="374" height="15.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AEv-m3-hCA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1b7-0b-i0V" firstAttribute="leading" secondItem="f70-gs-dsI" secondAttribute="trailing" constant="10" id="3IM-qy-ZoB"/>
                             <constraint firstItem="W5i-R0-UWj" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" id="3K4-jL-vc4"/>
+                            <constraint firstItem="rjm-Sc-ntb" firstAttribute="top" secondItem="f70-gs-dsI" secondAttribute="bottom" constant="22" id="Ehe-7S-ztg"/>
                             <constraint firstItem="NQR-x2-ieV" firstAttribute="centerX" secondItem="AEv-m3-hCA" secondAttribute="centerX" id="GOu-oh-wMp"/>
+                            <constraint firstItem="f70-gs-dsI" firstAttribute="centerX" secondItem="AEv-m3-hCA" secondAttribute="centerX" id="JOm-es-8Bm"/>
+                            <constraint firstItem="f70-gs-dsI" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" constant="20" id="Kfh-Fw-BAB"/>
                             <constraint firstItem="W5i-R0-UWj" firstAttribute="trailing" secondItem="AEv-m3-hCA" secondAttribute="trailing" id="U6K-01-wzi"/>
-                            <constraint firstItem="1b7-0b-i0V" firstAttribute="centerY" secondItem="f70-gs-dsI" secondAttribute="centerY" id="UDI-eC-aMo"/>
-                            <constraint firstItem="W5i-R0-UWj" firstAttribute="top" secondItem="NQR-x2-ieV" secondAttribute="bottom" constant="21.666666666666686" id="WQS-03-Qyk"/>
+                            <constraint firstItem="rjm-Sc-ntb" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" constant="20" id="UnI-CO-nSa"/>
                             <constraint firstItem="AEv-m3-hCA" firstAttribute="bottom" secondItem="W5i-R0-UWj" secondAttribute="bottom" id="XIG-nS-ZOo"/>
-                            <constraint firstItem="f70-gs-dsI" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" constant="20" id="d1B-R3-Abw"/>
+                            <constraint firstItem="AEv-m3-hCA" firstAttribute="trailing" secondItem="rjm-Sc-ntb" secondAttribute="trailing" constant="20" id="Y8j-hs-9tw"/>
+                            <constraint firstItem="W5i-R0-UWj" firstAttribute="top" secondItem="rjm-Sc-ntb" secondAttribute="bottom" constant="39" id="Zgj-xe-0sr"/>
                             <constraint firstItem="W5i-R0-UWj" firstAttribute="leading" secondItem="AEv-m3-hCA" secondAttribute="leading" id="eDf-P7-sAy"/>
-                            <constraint firstItem="AEv-m3-hCA" firstAttribute="trailing" secondItem="1b7-0b-i0V" secondAttribute="trailing" constant="10" id="gS7-O6-yRu"/>
+                            <constraint firstItem="rjm-Sc-ntb" firstAttribute="centerX" secondItem="AEv-m3-hCA" secondAttribute="centerX" id="osh-aY-Rxi"/>
+                            <constraint firstItem="AEv-m3-hCA" firstAttribute="trailing" secondItem="f70-gs-dsI" secondAttribute="trailing" constant="20" id="sPd-Jc-mhF"/>
                             <constraint firstItem="NQR-x2-ieV" firstAttribute="top" secondItem="AEv-m3-hCA" secondAttribute="top" constant="20" id="uPT-cg-sNG"/>
                             <constraint firstItem="f70-gs-dsI" firstAttribute="centerY" secondItem="NQR-x2-ieV" secondAttribute="centerY" id="y8r-dg-LAD"/>
                         </constraints>
@@ -3270,12 +3263,11 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         <outlet property="selectModeImage" destination="NQR-x2-ieV" id="bvu-8b-0Po"/>
                         <outlet property="tableView" destination="W5i-R0-UWj" id="BSB-tn-FcP"/>
                         <outlet property="termNameLabel" destination="f70-gs-dsI" id="ZJM-eE-dH7"/>
-                        <outlet property="termPredefinedButton" destination="1b7-0b-i0V" id="eLQ-Gu-2Lz"/>
+                        <outlet property="totalCategoriesSelectedLabel" destination="rjm-Sc-ntb" id="saE-W5-Yt7"/>
                         <segue destination="BPm-yE-Jpz" kind="show" identifier="segueCategory" id="3jL-2Z-AvX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0e-Et-7Ek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="toZ-gF-41h" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="12100.000000000002" y="-1397.2826086956522"/>
         </scene>
@@ -3694,7 +3686,6 @@ You will be asked to correctly match the term to it's definition, and also to ma
         <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="learn_book" width="25" height="25"/>
         <image name="list2" width="25" height="25"/>
-        <image name="lock.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>

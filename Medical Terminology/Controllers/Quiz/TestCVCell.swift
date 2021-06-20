@@ -136,16 +136,16 @@ class TestCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDelega
 				
 				
 			} else {
-				cell.selectAnswerButton.setImage(myTheme.imageRowNotSelected, for: .normal)
+				cell.selectAnswerButton.setImage(myTheme.imageCircle, for: .normal)
 				cell.selectAnswerButton.tintColor = myTheme.colorText
 			}
 			
 		case 4:
-			cell.selectAnswerButton.setImage(myTheme.imageRowNotSelected, for: .normal)
+			cell.selectAnswerButton.setImage(myTheme.imageCircle, for: .normal)
 			cell.selectAnswerButton.tintColor = myTheme.colorText
 			
 		default:
-			cell.selectAnswerButton.setImage(myTheme.imageRowNotSelected, for: .normal)
+			cell.selectAnswerButton.setImage(myTheme.imageCircle, for: .normal)
 			cell.selectAnswerButton.tintColor = myTheme.colorText
 		}
 		

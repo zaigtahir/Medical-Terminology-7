@@ -78,19 +78,15 @@ class MyTheme{
 	let colorEditButton = UIColor(named: "color main")
 	
 	let colorSelectedRowIndicator = UIColor(named: "color main")
-	let colorUnselectedRowIndecator = UIColor(named: "color text")
 	
-	let colorUnavailableCatetory = UIColor.systemGray4
+	let colorLockedCategory = UIColor.systemGray4
 	
 	// MARK: row selector images
-	let imageRowSelected = UIImage.init(systemName: "circle.fill")
-	let imageRowNotSelected = UIImage.init(systemName: "circle")
-	let imageRowCurrentCategoryNotSelected = UIImage.init(systemName: "circle")
 	
-	// images for multiple selection, so using squares to indicate that
-	let imageRowSelectedAssign = UIImage.init(systemName: "square.fill")
-	let imageRowNotSelectedAssign = UIImage.init(systemName: "square")
-	let imageRowCurrentCategoryNotSelectedAssign = UIImage.init(systemName: "square")
+	let imageCircle = UIImage.init(systemName: "circle")
+	let imageCircleFill = UIImage.init(systemName: "circle.fill")
+	let imageSquare = UIImage.init(systemName: "square")
+	let imageSquareFill = UIImage.init(systemName: "square.fill")
 	
     // MARK: images
     let imageCorrect = UIImage.init(systemName: "checkmark.circle.fill")

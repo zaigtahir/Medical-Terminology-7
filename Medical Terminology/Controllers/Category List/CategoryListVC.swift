@@ -19,7 +19,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	@IBOutlet weak var selectModeImage: UIImageView!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
 	@IBOutlet weak var termNameLabel: UILabel!
-	@IBOutlet weak var termPredefinedButton: UIButton!
+	@IBOutlet weak var totalCategoriesSelectedLabel: UILabel!
 	
 	let categoryListVCH = CategoryListVCH()
 	
@@ -39,28 +39,34 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		
 		//set the title and header image
 		if categoryListVCH.categoryListMode == .selectCategories {
-			self.title = "Category To View"
+			self.title = "Categories To View"
 			selectModeImage.isHidden = false
 			termNameLabel.isHidden = true
-			termPredefinedButton.isHidden = true
 			
 		} else {
 			self.title = "Assign Categories"
 			selectModeImage.isHidden = true
 			termNameLabel.isHidden = false
-			
 			termNameLabel.text = "For Term: \(categoryListVCH.term.name)"
 			
 		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
+		updateDisplay()
 	}
 	
+	func updateDisplay () {
+		totalCategoriesSelectedLabel.text =  "Total selected categories: \(categoryListVCH.selectedCategories.count)"
+	}
 	// MARK: - categoryListVCHDelegate functions
 	
 	func shouldReloadTable() {
 		tableView.reloadData()
+	}
+	
+	func shouldUpdateDisplay () {
+		updateDisplay()
 	}
 	
 	func shouldSegueToPreexistingCategory(category: Category) {
@@ -102,13 +108,4 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		self.dismiss(animated: true, completion: nil)
 	}
 	
-	@IBAction func termPredefinedButtonAction(_ sender: UIButton) {
-		let ac = UIAlertController(title: "Locked Term", message: "This is a predefined term, and you can't change it's standard categories. However, you can select any of the \"My Categories\"", preferredStyle: .alert)
-		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
-		
-		ac.addAction(okay)
-		
-		self.present(ac, animated: true, completion: nil)
-	}
-
 }

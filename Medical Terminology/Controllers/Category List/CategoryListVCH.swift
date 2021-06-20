@@ -16,6 +16,7 @@ All controllers that are affected by that can respond to it
 protocol CategoryListVCHDelegate: AnyObject {
 	
 	func shouldReloadTable ()
+	func shouldUpdateDisplay ()
 	func shouldSegueToPreexistingCategory (category: Category)
 	func shouldSegueToNewCategory ()
 	func shouldDismissCategoryMenu ()
@@ -127,9 +128,17 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			// attach term count
 			category.count = cc.getCountOfTerms(categoryID: category.categoryID)
 			
-			cell.nameLabel.text = category.name
-			cell.countLabel.text = String(category.count)
+			// setup lock categories if I am in the assign category mode
+			var categoriesToLock = [Int]()
 			
+			if categoryListMode == .assignCategories {
+				for c in term.assignedCategories {
+					categoriesToLock.append(c)
+				}
+			}
+			
+			
+			cell.formatCategoryCell(category: category, selectedCategoryIDs: selectedCategories, lockCategoryIDs: categoriesToLock)
 			
 			return cell
 		} else {
