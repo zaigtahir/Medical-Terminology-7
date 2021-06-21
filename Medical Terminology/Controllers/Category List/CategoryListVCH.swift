@@ -23,6 +23,7 @@ protocol CategoryListVCHDelegate: AnyObject {
 	func shouldSegueToPreexistingCategory (category: Category)
 	func shouldSegueToNewCategory ()
 	func shouldDismissCategoryMenu ()
+	func shouldShowAlertSelectedLockedCategory (categoryID: Int)
 }
 
 class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate {
@@ -78,10 +79,6 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		self.term = term
 		self.initialCategories = term.assignedCategories
 		selectedCategories = term.assignedCategories
-		
-		// remove the All Terms and My Terms row if this is in the assign mode
-		standardCategories.remove(at: 0)
-		standardCategories.remove(at: 0)
 	}
 	
 	func setupSelectCategoryMode (initialCategories: [Int]) {
@@ -178,8 +175,10 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			
 			// setup lock categories if I am in the assign category mode
 			var categoriesToLock = [Int]()
-			categoriesToLock.append(term.secondCategoryID)
-			categoriesToLock.append(term.thirdCategoryID)
+			if categoryListMode == .assignCategories {
+				categoriesToLock = [1, 2, term.secondCategoryID, term.thirdCategoryID]
+			}
+			
 			
 			cell.formatCategoryCell(category: category, selectedCategoryIDs: selectedCategories, lockCategoryIDs: categoriesToLock)
 			
@@ -202,13 +201,22 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 		// determine which category is selected
 		if indexPath.section == sectionCustom {
-			selectedCategory = customCategories[indexPath.row - 1]
+			selectedCategory = customCategories[indexPath.row]
 		} else {
 			selectedCategory = standardCategories[indexPath.row]
 		}
 		
+		// if in assign categories mode and the user clicked on a locked category, make no changes to the selection and
+		// the categoryVC should show an alert
 		
-		
+		if categoryListMode == .assignCategories {
+			let lockedCategories = [1, 2, term.secondCategoryID, term.thirdCategoryID]
+			if lockedCategories.contains(selectedCategory.categoryID) {
+				delegate?.shouldShowAlertSelectedLockedCategory(categoryID: selectedCategory.categoryID)
+				return
+			}
+		}
+	
 		
 		// if the user selected categoryID = 1, unselect everything else and refresh the table and display
 		if selectedCategory.categoryID == 1 {

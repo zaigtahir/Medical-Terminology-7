@@ -14,7 +14,7 @@
 import UIKit
 
 class CategoryListVC: UIViewController, CategoryListVCHDelegate {
-
+	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var selectModeImage: UIImageView!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
@@ -58,17 +58,19 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	}
 	
 	func updateDisplay () {
-		
+	
+
 		if categoryListVCH.categoryListMode == .selectCategories {
 			
-			totalCategoriesSelectedLabel.text =  "Total selected categories: \(categoryListVCH.getTotalSelectedCategories())"
+			totalCategoriesSelectedLabel.text =  "Total selected categories: \(categoryListVCH.selectedCategories.count)"
 		} else {
-			totalCategoriesSelectedLabel.text =  "Total assigned categories: \(categoryListVCH.getTotalSelectedCategories())"
+			totalCategoriesSelectedLabel.text =  "Total assigned categories: \(categoryListVCH.selectedCategories.count)"
 		}
 		
+		
 		if categoryListVCH.categoryListMode == .selectCategories {
 			
-			if categoryListVCH.getTotalSelectedCategories() == 0 {
+			if categoryListVCH.selectedCategories.count == 0 { 
 				// no category selected
 				let ac = UIAlertController(title: "Select A Category", message: "Please select one or more  categories to view.", preferredStyle: .alert)
 				let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -112,6 +114,25 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 	
 	func shouldDismissCategoryMenu() {
 		self.dismiss(animated: true, completion: nil)
+	}
+	
+	func shouldShowAlertSelectedLockedCategory(categoryID: Int) {
+		
+		var message : String
+		
+		switch categoryID {
+		case 1:
+			message = "The All Terms category is automatically assigned to all terms"
+		case 2:
+			message = "The My Terms category is automatically assigned to terms you create"
+		default:
+			message = "This category is automatically assigned to this term, and it cannot be unassigned"
+		}
+		
+		let ac = UIAlertController(title: "Locked Category", message: message, preferredStyle: .alert)
+		let okay = UIAlertAction(title: "OK", style: .default, handler: .none)
+		ac.addAction(okay)
+		self.present(ac, animated: true, completion: nil)
 	}
 	
 	// MARK: - prepare segue
