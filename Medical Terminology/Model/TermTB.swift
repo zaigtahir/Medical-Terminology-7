@@ -71,11 +71,15 @@ class TermTB: NSObject, AVAudioPlayerDelegate {
 			print("problem with AVAudioSession.sharedInstance")
 		 }
 		
-		//if audioPlayer?.isPlaying{
-		//	audioPlayer?.stop()
-		//}
+		if let ap = audioPlayer {
+			if ap.isPlaying {
+				ap.stop()
+				delegate?.termAudioStoppedPlaying()
+				return
+			}
+		}
 		
-
+		
 		do {
 		
 			audioPlayer = try AVAudioPlayer(contentsOf: url)

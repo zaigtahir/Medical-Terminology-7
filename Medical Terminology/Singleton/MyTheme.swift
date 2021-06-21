@@ -99,8 +99,8 @@ class MyTheme{
 	let imageInfo = UIImage.init(systemName: "info.circle")
     
 	//use next three speaker images to make animation
-	let imageSpeaker = UIImage.init(systemName: "speaker.fill")
-    let imageSpeakerPlaying = UIImage(systemName: "speaker.wave.2.fill")
+	let imageSpeaker = UIImage.init(systemName: "play.circle.fill")
+    let imageSpeakerPlaying = UIImage.init(systemName: "pause.circle.fill")
 
     //progress bar width
     let progressBarWidth = CGFloat(integerLiteral: 15)
