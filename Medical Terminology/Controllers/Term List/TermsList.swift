@@ -35,7 +35,7 @@ class TermsList {
 		
 		for s in sectionNames {
 			
-			let termIDs = tcTB.getTermIDs(categoryIDs: categoryIDs, showFavoritesOnly: showFavoritesOnly, nameStartsWith: s, nameContains: .none, containsText: .none)
+			let termIDs = tcTB.getTermIDs(categoryIDs: categoryIDs, showFavoritesOnly: showFavoritesOnly, nameStartsWith: s, nameContains: .none, containsText: containsText)
 			
 			
 			termIDsList.append(termIDs)

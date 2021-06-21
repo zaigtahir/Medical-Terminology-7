@@ -263,11 +263,11 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// MARK: - count functions
 	func getFavoriteTermsCount () -> Int {
 		//return the count of favorites or this catetory
-		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, favoritesOnly: true)
+		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: true)
 	}
 	
 	func getAllTermsCount () -> Int {
-		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, favoritesOnly: false)
+		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: false)
 	}
 	
 	// MARK: - CollectionViewDataSource Functions
@@ -322,7 +322,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		// if favoritesOnly == true and there are no favorites in this category
 		
-		let favoriteCount = tcTB.getTermCount(categoryIDs: currentCategoryIDs, favoritesOnly: true)
+		let favoriteCount = tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: true)
 		
 		if showFavoritesOnly && favoriteCount == 0 {
 			cell.headingLabel.text = myConstants.noFavoriteTermsHeading

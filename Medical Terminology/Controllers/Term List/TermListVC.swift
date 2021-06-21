@@ -43,15 +43,24 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	func updateDisplay () {
 				
-		let category = cc.getCategory(categoryID: termListVCH.currentCategoryID)
+		let favoriteCount = tcTB.getTermCount(categoryIDs: termListVCH.currentCategoryIDs, showFavoritesOnly: termListVCH.showFavoritesOnly)
 		
-		let count = termListVCH.getAllTermsCount()
-		
-		categoryNameLabel.text = ("\(category.name) (\(count))")
-		
-		favoritesCountLabel.text = String (termListVCH.getFavoriteTermsCount())
+		let totalTermsCount = tcTB.getTermCount(categoryIDs: termListVCH.currentCategoryIDs, showFavoritesOnly: false)
 		
 		favoritesOnlyButton.isOn = termListVCH.showFavoritesOnly
+		
+		favoritesCountLabel.text = String(favoriteCount)
+		
+		if termListVCH.currentCategoryIDs.count == 1 {
+			
+			let c = cc.getCategory(categoryID: termListVCH.currentCategoryIDs[0])
+			
+			categoryNameLabel.text = "\(c.name) (\(totalTermsCount) terms)"
+			
+		} else {
+			
+			categoryNameLabel.text = "\(termListVCH.currentCategoryIDs.count) categories selected (\(totalTermsCount) terms)"
+		}
 
 	}
 	
@@ -136,7 +145,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	// MARK: - Search bar functions and delegates
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		
+	
 		if searchBar.showsCancelButton == false {
 			searchBar.showsCancelButton = true
 		}

@@ -479,14 +479,14 @@ class TermControllerTB {
 		return ids
 	}
 	
-	func getTermCount (categoryIDs: [Int], favoritesOnly: Bool) -> Int {
+	func getTermCount (categoryIDs: [Int], showFavoritesOnly: Bool) -> Int {
 		
 		
 		//select COUNT(*) column_name FROM (SELECT DISTINCT column_name);
 	
 		var favoriteString = ""
 		
-		if favoritesOnly {
+		if showFavoritesOnly {
 			favoriteString = " AND isFavorite = 1"
 		}
 		

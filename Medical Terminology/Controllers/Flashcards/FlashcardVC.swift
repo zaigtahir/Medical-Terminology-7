@@ -73,7 +73,7 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		
 		favoritesCountLabel.text = "\(favoriteCount)"
 		
-		let totalTermsCount = tcTB.getTermCount(categoryIDs: flashCardVCH.currentCategoryIDs, favoritesOnly: flashCardVCH.showFavoritesOnly)
+		let totalTermsCount = tcTB.getTermCount(categoryIDs: flashCardVCH.currentCategoryIDs, showFavoritesOnly: flashCardVCH.showFavoritesOnly)
 		
 		if flashCardVCH.currentCategoryIDs.count == 1 {
 			
