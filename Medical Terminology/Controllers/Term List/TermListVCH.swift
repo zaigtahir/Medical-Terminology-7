@@ -112,7 +112,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	// MARK: - notification functions
 	
 	
-	
 	// CATEGORIES changed
 	@objc func currentCategoriesChangedN (notification : Notification) {
 		
@@ -267,6 +266,8 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			
 			self.termsList.makeList(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: .none)
 		}
+		
+		
 		
 	}
 	

@@ -456,8 +456,9 @@ class TermControllerTB {
 			ON \(terms).termID = \(assignedCategories).termID
 			"""
 		
+		// some space before WHERE is critical
 		let whereStatement = """
-			WHERE categoryID = \(queries.categoryString(categoryIDs: categoryIDs))
+				WHERE  \(queries.categoryString(categoryIDs: categoryIDs))
 			\(queries.showFavoritesOnly(show: showFavoritesOnly))
 			\(queries.nameStartsWithString(search: nameStartsWith))
 			\(queries.nameContainsString(search: nameContains))

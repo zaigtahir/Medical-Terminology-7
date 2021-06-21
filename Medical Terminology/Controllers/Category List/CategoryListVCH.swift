@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+//probably conflict between notifications when i change the cateogry
+
+
 /*
 Fires off a notification if a user changes the currentCategoryID
 All controllers that are affected by that can respond to it
