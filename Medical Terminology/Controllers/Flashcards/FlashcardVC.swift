@@ -73,17 +73,17 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		
 		favoritesCountLabel.text = "\(favoriteCount)"
 		
-		let totalTermsCount = tcTB.getTermCount(categoryIDs: flashCardVCH.currentCategories, favoritesOnly: flashCardVCH.showFavoritesOnly)
+		let totalTermsCount = tcTB.getTermCount(categoryIDs: flashCardVCH.currentCategoryIDs, favoritesOnly: flashCardVCH.showFavoritesOnly)
 		
-		if flashCardVCH.currentCategories.count == 1 {
+		if flashCardVCH.currentCategoryIDs.count == 1 {
 			
-			let c = cc.getCategory(categoryID: flashCardVCH.currentCategories[0])
+			let c = cc.getCategory(categoryID: flashCardVCH.currentCategoryIDs[0])
 			
 			categoryNameLabel.text = "\(c.name) (\(totalTermsCount) terms)"
 			
 		} else {
 			
-			categoryNameLabel.text = "\(flashCardVCH.currentCategories.count) categories selected (\(totalTermsCount) terms)"
+			categoryNameLabel.text = "\(flashCardVCH.currentCategoryIDs.count) categories selected (\(totalTermsCount) terms)"
 		}
 		
 		
@@ -94,10 +94,10 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		sliderOutlet.value = Float (scrollController.getCellIndex(collectionView: collectionView))
 		
 		
-		let learningCount = fc.getFlashcardCount(categoryIDs: flashCardVCH.currentCategories, showFavoritesOnly: flashCardVCH.showFavoritesOnly, learnedStatus: false)
+		let learningCount = fc.getFlashcardCount(categoryIDs: flashCardVCH.currentCategoryIDs, showFavoritesOnly: flashCardVCH.showFavoritesOnly, learnedStatus: false)
 		
 		
-		let learnedCount = fc.getFlashcardCount(categoryIDs: flashCardVCH.currentCategories, showFavoritesOnly: flashCardVCH.showFavoritesOnly, learnedStatus: true)
+		let learnedCount = fc.getFlashcardCount(categoryIDs: flashCardVCH.currentCategoryIDs, showFavoritesOnly: flashCardVCH.showFavoritesOnly, learnedStatus: true)
 		
 		// set up the titles for the learned status switch
 		learnedStatusSwitch.setTitle("Learning \(learningCount)", forSegmentAt: 0)
@@ -141,7 +141,7 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC
 			
-			vc.categoryListVCH.setupSelectCategoryMode(initialCategories: flashCardVCH.currentCategories)
+			vc.categoryListVCH.setupSelectCategoryMode(initialCategories: flashCardVCH.currentCategoryIDs)
 						
 		case myConstants.segueTerm:
 			

@@ -440,7 +440,7 @@ class TermControllerTB {
 	use nameStartsWith with nameContains OR containsText and loop through the alphabet to make an alphabetic list
 	containsText searches terms and definitions
 	*/
-	func getTermIDs (categoryIDs: [Int], isFavorite: Bool?, nameStartsWith: String, nameContains: String?, containsText: String?) -> [Int] {
+	func getTermIDs (categoryIDs: [Int], showFavoritesOnly: Bool, nameStartsWith: String, nameContains: String?, containsText: String?) -> [Int] {
 		
 		var definitionString = ""
 		
@@ -458,7 +458,7 @@ class TermControllerTB {
 		
 		let whereStatement = """
 			WHERE categoryID = \(queries.categoryString(categoryIDs: categoryIDs))
-			\(queries.favorteString(isFavorite: isFavorite))
+			\(queries.showFavoritesOnly(show: showFavoritesOnly))
 			\(queries.nameStartsWithString(search: nameStartsWith))
 			\(queries.nameContainsString(search: nameContains))
 			\(queries.containsTextString(search: containsText))

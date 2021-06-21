@@ -20,13 +20,18 @@ protocol FlashcardVCHDelegate: AnyObject {
 class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate, FlashcardOptionsDelegate,  ScrollControllerDelegate {
 	
 	// term based variables
-	var currentCategories = [1]
+	var currentCategoryIDs = [1]
 	
-	// holds state of the view
-	var currentCategoryID = 1 			// default starting off category
+	// TO REMOVE
+	var currentCategoryID = 1
+	
+	var showFavoritesOnly = false
 	
 	
-	var showFavoritesOnly = false		// this is different than saying isFavorite = false
+	
+	
+	// HAVE to figure out notifications for events
+	
 	var viewMode : TermComponent = .both
 	
 	// which tab to show: learning vs learned
@@ -58,8 +63,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		changeCategoryNameKey
 		*/
 		
-		let nameCCCN = Notification.Name(myKeys.currentCategoryChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryChangedN(notification:)), name: nameCCCN, object: nil)
 		
 		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
@@ -105,25 +108,13 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		if let data = notification.userInfo as? [String : [Int]] {
 			
 			//there will be only one data here, the categoryID
-			currentCategories = data["categoryIDs"]!
+			currentCategoryIDs = data["categoryIDs"]!
 			updateDataAndDisplay()
 			
 		}
 	}
 	
-	
-	
-	
-	
-	@objc func currentCategoryChangedN (notification : Notification) {
-		
-		if let data = notification.userInfo as? [String : Int] {
-			
-			//there will be only one data here, the categoryID
-			currentCategoryID = data["categoryID"]!
-			updateDataAndDisplay()
-		}
-	}
+
 	
 	@objc func setFavoriteStatusN (notification: Notification) {
 		
@@ -169,6 +160,17 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@objc func termInformationChangedN (notification: Notification) {
 	
 		if let data = notification.userInfo as? [String: Int] {
@@ -182,8 +184,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 	}
 	
-	
-	
+
 	@objc func assignCategoryN (notification : Notification) {
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]!
@@ -242,7 +243,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	func updateData () {
 	
-		termIDs = fc.getFlashcardTermIDs(categoryIDs: currentCategories, showFavoritesOnly: showFavoritesOnly, learnedStatus: learnedStatus)
+		termIDs = fc.getFlashcardTermIDs(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, learnedStatus: learnedStatus)
 	}
 	
 	/**
@@ -255,18 +256,18 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	func relearnFlashcards () {
-		fc.resetLearnedFlashcards(categoryIDs: currentCategories)
+		fc.resetLearnedFlashcards(categoryIDs: currentCategoryIDs)
 		updateDataAndDisplay()
 	}
 	
 	// MARK: - count functions
 	func getFavoriteTermsCount () -> Int {
 		//return the count of favorites or this catetory
-		return tcTB.getTermCount(categoryIDs: currentCategories, favoritesOnly: true)
+		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, favoritesOnly: true)
 	}
 	
 	func getAllTermsCount () -> Int {
-		return tcTB.getTermCount(categoryIDs: currentCategories, favoritesOnly: false)
+		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, favoritesOnly: false)
 	}
 	
 	// MARK: - CollectionViewDataSource Functions
@@ -321,7 +322,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		// if favoritesOnly == true and there are no favorites in this category
 		
-		let favoriteCount = tcTB.getTermCount(categoryIDs: currentCategories, favoritesOnly: true)
+		let favoriteCount = tcTB.getTermCount(categoryIDs: currentCategoryIDs, favoritesOnly: true)
 		
 		if showFavoritesOnly && favoriteCount == 0 {
 			cell.headingLabel.text = myConstants.noFavoriteTermsHeading

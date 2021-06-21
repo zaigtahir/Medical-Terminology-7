@@ -14,7 +14,7 @@ The list should be such that the termIDs are unique to that my implementation of
 */
 class TermsList {
 	
-	private let tc = TermController()
+	private let tcTB = TermControllerTB()
 	
 	private var sectionNames = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 	
@@ -27,20 +27,16 @@ class TermsList {
 	If containsText = some value, then will wake an alphabetial list of term names or the definition that contains that value
 	*/
 	
-	func makeList (categoryID: Int, favoritesOnly: Bool?, containsText: String?) {
-			
+	func makeList (categoryIDs: [Int], showFavoritesOnly: Bool, containsText: String?) {
+		
 		// clear any current values from the termIDsList and count
 		count = 0
 		termIDsList = [[Int]] ()
 		
 		for s in sectionNames {
 			
-			var isFavorite: Bool?
-			if favoritesOnly == true {
-				isFavorite = true
-			}
+			let termIDs = tcTB.getTermIDs(categoryIDs: categoryIDs, showFavoritesOnly: showFavoritesOnly, nameStartsWith: s, nameContains: s, containsText: .none)
 			
-			let termIDs = tc.searchTermIDs(categoryID: categoryID, isFavorite: isFavorite, nameStartsWith: s, nameContains: .none, containsText: containsText)
 			
 			termIDsList.append(termIDs)
 			

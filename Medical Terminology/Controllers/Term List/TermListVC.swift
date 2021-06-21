@@ -37,7 +37,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		
 		searchBar.delegate = self
 		
-		favoritesOnlyButton.isOn = termListVCH.favoritesOnly
+		favoritesOnlyButton.isOn = termListVCH.showFavoritesOnly
 		updateDisplay()
 	}
 	
@@ -51,7 +51,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		
 		favoritesCountLabel.text = String (termListVCH.getFavoriteTermsCount())
 		
-		favoritesOnlyButton.isOn = termListVCH.favoritesOnly
+		favoritesOnlyButton.isOn = termListVCH.showFavoritesOnly
 
 	}
 	
@@ -97,9 +97,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC
 			
-			vc.categoryListVCH.categoryListMode = .selectCategories
-			
-			vc.categoryListVCH.currentCategoryID = termListVCH.currentCategoryID
+			vc.categoryListVCH.setupSelectCategoryMode(initialCategories: termListVCH.currentCategoryIDs)
 			
 		case myConstants.segueTerm:
 			
@@ -164,7 +162,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	@IBAction func favoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
 
-		termListVCH.favoritesOnly.toggle()
+		termListVCH.showFavoritesOnly.toggle()
 		termListVCH.updateData ()
 		tableView.reloadData()
 		updateDisplay()

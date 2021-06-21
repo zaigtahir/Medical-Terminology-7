@@ -25,7 +25,7 @@ class TermCell: UITableViewCell, TermAudioDelegate {
     var indexPath : IndexPath!
     
 	// set up in segue. This will be a class variable so can use it for playing the audio
-	var term : Term!
+	var term : TermTB!
 	
    // let utilities = Utilities()
 	
@@ -40,18 +40,18 @@ class TermCell: UITableViewCell, TermAudioDelegate {
         // Initialization code
     }
     
-	func configure(term: Term, isFavorite: Bool, indexPath: IndexPath) {
-        self.term = term
-        self.indexPath = indexPath
+	func configure(term: TermTB, indexPath: IndexPath) {
+		self.term = term
+		self.indexPath = indexPath
 		termLabel.text = term.name
 		definitionLabel.text = term.definition
-		favoriteButton.isOn = isFavorite
+		favoriteButton.isOn = term.isFavorite
 		
 		// set non playing speaker
 		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
 		playAudioButton.isEnabled = term.isAudioFilePresent()
 
-    }
+	}
     
     //MARK: TermAudioDelegate
 	func termAudioStartedPlaying() {

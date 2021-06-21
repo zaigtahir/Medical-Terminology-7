@@ -31,8 +31,14 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 
 {
 	
-	var currentCategoryID = 1 			// default starting off category
-	var favoritesOnly = false		// this is different than saying isFavorite = false
+	// term based variables
+	var currentCategoryIDs = [1]
+	
+	// TO REMOVE
+	var currentCategoryID = 1
+	
+	var showFavoritesOnly = false
+	
 	
 	var searchText : String?
 	
@@ -46,7 +52,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	weak var delegate: TermListVCHDelegate?
 	
-	let tc = TermController()
+	let tcTB = TermControllerTB()
 	
 	let cc = CategoryController()
 	
@@ -67,9 +73,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		deleteCategoryKey
 		changeCategoryNameKey
 		*/
-		
-		let nameCCCN = Notification.Name(myKeys.currentCategoryChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryChangedN(notification:)), name: nameCCCN, object: nil)
+	
 		
 		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
@@ -89,6 +93,15 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
 		
+		
+		// MARK: term based categorIES changed
+		
+		let nameCCCNK = Notification.Name(myKeys.currentCategoriesChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoriesChangedN(notification:)), name: nameCCCNK, object: nil)
+		
+		
+		
+		
 	}
 	
 	deinit {
@@ -98,21 +111,21 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	// MARK: - notification functions
 	
-	@objc func currentCategoryChangedN (notification : Notification) {
+	
+	
+	// CATEGORIES changed
+	@objc func currentCategoriesChangedN (notification : Notification) {
 		
-		if let data = notification.userInfo as? [String : Int] {
-			
-			// clear any search text
-			delegate?.shouldClearSearchText()
+		if let data = notification.userInfo as? [String : [Int]] {
 			
 			//there will be only one data here, the categoryID
-			currentCategoryID = data ["categoryID"]!
-			
-			delegate?.shouldClearSearchText()
+			currentCategoryIDs = data["categoryIDs"]!
 			updateDataAndDisplay()
+			
 		}
 	}
-	
+		
+	// updated for CATEGORIES
 	@objc func setFavoriteStatusN (notification: Notification) {
 		
 		if let data = notification.userInfo as? [String: Int] {
@@ -120,14 +133,15 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			
 			// if this term id exists in termIDs, need to reload that term from the database and then reload just that term cell in the table
 			
-			switch favoritesOnly {
+			switch showFavoritesOnly {
 			
 			case true:
 				// showing favorites only
 				
-				let favoriteStatus = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: affectedTermID)
 				
-				switch favoriteStatus {
+				let affectedTerm = tcTB.getTerm(termID: affectedTermID)
+
+				switch affectedTerm.isFavorite {
 				
 				case true:
 					// term is made favorite from elsewhere in the program, need to reload all data and update the display
@@ -159,6 +173,11 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		}
 		
 	}
+	
+	
+	
+	
+	
 	
 	@objc func termInformationChangedN (notification: Notification) {
 		
@@ -241,10 +260,12 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			
 			let cleanText = tu.removeLeadingTrailingSpaces(string: nonCleanText)
 			
-			self.termsList.makeList(categoryID: currentCategoryID, favoritesOnly: favoritesOnly, containsText: cleanText)
+			self.termsList.makeList(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: cleanText)
+			
 			
 		} else {
-			termsList.makeList(categoryID: currentCategoryID, favoritesOnly: favoritesOnly, containsText: .none)
+			
+			self.termsList.makeList(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: .none)
 		}
 		
 	}
@@ -262,13 +283,12 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	// MARK: - count functions
 	func getFavoriteTermsCount () -> Int {
-		//return the count of favorites for this catetory
-
-		return tc.getCount2(categoryID: currentCategoryID, favoritesOnly: true)
+		//return the count of favorites or this catetory
+		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, favoritesOnly: true)
 	}
 	
 	func getAllTermsCount () -> Int {
-		return tc.getCount2(categoryID: currentCategoryID, favoritesOnly: false)
+		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, favoritesOnly: false)
 	}
 	
 	// MARK: - Table functions
@@ -303,10 +323,9 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		let termCell = tableView.dequeueReusableCell(withIdentifier: "termCell", for: indexPath) as? TermCell
 		
 		let termID = termsList.getTermID(indexPath: indexPath)
-		let term = tc.getTerm(termID: termID)
-		let isFavorite = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: termID)
+		let term = tcTB.getTerm(termID: termID)
 		
-		termCell!.configure(term: term, isFavorite: isFavorite, indexPath: indexPath)
+		termCell!.configure(term: term, indexPath: indexPath)
 		termCell?.delegate = self
 		
 		return termCell!
@@ -325,9 +344,9 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		
 		// if favoritesOnly == true and there are no favorites in this category
 		
-		let favoriteCount = tc.getCount2(categoryID: currentCategoryID, favoritesOnly: true)
+		let favoriteCount = tcTB.getTermCount(categoryIDs: currentCategoryIDs, favoritesOnly: true)
 		
-		if favoritesOnly && favoriteCount == 0 {
+		if showFavoritesOnly && favoriteCount == 0 {
 			cell.headingLabel.text = myConstants.noFavoriteTermsHeading
 			cell.subheadingLabel.text = myConstants.noFavoriteTermsSubheading
 			return
@@ -362,11 +381,39 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	func pressedFavoriteButton(termID: Int) {
 		
+		// when the user clicks the heart button, it toggles locally, but need to change the value in the database
+	
+		let _ = tcTB.toggleFavoriteStatusPN(termID: termID)
+		
+		// Note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed so that all the components of this program can react.
+		// The VCH will listen for that and tell the home view to refresh it's current cell. This is redundant for this case where the user changed the value of the term favorite status on the flash card itself. However, it will be relavent to react to when the user changes this term's favorite status on an other part of the program.
+		
+		
+		
+		
+		
+		
+		
+		/*
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		let isFavorite = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: termID)
 		
 		tc.setFavoriteStatusPN(categoryID: currentCategoryID, termID: termID, isFavorite: !isFavorite)
 		
 		// after the save method broadcasts the notification, this VCH will instruct the homeVC to update it's cell
+
+
+		*/
 	}
 }
 
