@@ -178,13 +178,8 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			
 			// setup lock categories if I am in the assign category mode
 			var categoriesToLock = [Int]()
-			
-			if categoryListMode == .assignCategories {
-				for c in term.assignedCategories {
-					categoriesToLock.append(c)
-				}
-			}
-			
+			categoriesToLock.append(term.secondCategoryID)
+			categoriesToLock.append(term.thirdCategoryID)
 			
 			cell.formatCategoryCell(category: category, selectedCategoryIDs: selectedCategories, lockCategoryIDs: categoriesToLock)
 			
@@ -211,6 +206,9 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		} else {
 			selectedCategory = standardCategories[indexPath.row]
 		}
+		
+		
+		
 		
 		// if the user selected categoryID = 1, unselect everything else and refresh the table and display
 		if selectedCategory.categoryID == 1 {
