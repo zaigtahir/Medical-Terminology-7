@@ -78,7 +78,7 @@ class FlashcardController {
 			let status = Int(resultSet.int(forColumnIndex: 0))
 			return status == 1 ?  true : false
 		} else {
-			print ("fatal error getting resultSet in getLearnedFlashcardStatus, returning false")
+			print ("fatal error getting resultSet in flashcardIsLearned, returning false")
 			return false
 		}
 	}

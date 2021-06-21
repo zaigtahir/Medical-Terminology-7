@@ -36,7 +36,6 @@ class TermControllerTB {
 	// MARK: shorter table names to make things easier
 	let terms = myConstants.dbTableTerms
 	let assignedCategories = myConstants.dbTableAssignedCategories
-
 	let categories = myConstants.dbTableCategories
 	
 	let cc = CategoryController()
