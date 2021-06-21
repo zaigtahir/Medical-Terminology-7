@@ -164,7 +164,8 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			var category : Category
 			
 			if indexPath.section == sectionCustom {
-				category = customCategories[indexPath.row]
+				// subtracting 1 to account for the "add category" row
+				category = customCategories[indexPath.row - 1]
 			} else {
 				category = standardCategories[indexPath.row]
 			}
@@ -203,7 +204,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 		// determine which category is selected
 		if indexPath.section == sectionCustom {
-			selectedCategory = customCategories[indexPath.row]
+			selectedCategory = customCategories[indexPath.row - 1]
 		} else {
 			selectedCategory = standardCategories[indexPath.row]
 		}
