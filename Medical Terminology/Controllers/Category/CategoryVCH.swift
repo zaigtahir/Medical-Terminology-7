@@ -14,6 +14,10 @@ protocol CategoryVCHDelegate: AnyObject {
 	func shouldAlertDuplicateCategoryName()
 }
 
+protocol NewCategoryDelegate: AnyObject {
+	func savedNewCategory()
+}
+
 class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	// if catetory id = -1, you are adding a new catetory
@@ -35,6 +39,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		
 	func saveCategory() {
 		let _ = cc.addCategoryPN (category: category)
+		
 	}
 	
 	// MARK: - segue functions

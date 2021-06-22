@@ -34,9 +34,6 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	private let tu = TextUtilities()
 	
-	// keeping a class reference so I can dismiss it in another function
-	
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		updateDisplay()
@@ -169,7 +166,9 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		
 		if categoryVCH.category.categoryID == -1 {
 			// this is a new category, save it
+			
 			categoryVCH.saveCategory()
+			
 		}
 		
 		self.navigationController?.popViewController(animated: true)

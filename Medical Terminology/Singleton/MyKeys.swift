@@ -27,6 +27,14 @@ class MyKeys {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	//REMOVE
 	// MARK: - CategoryVCH notifications (TO REMOVE)
 	let currentCategoryChangedKey = "com.theappgalaxy.currentCategoryChanged"
 	

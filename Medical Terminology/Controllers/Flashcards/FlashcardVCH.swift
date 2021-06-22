@@ -114,7 +114,21 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@objc func setFavoriteStatusN (notification: Notification) {
 		
@@ -160,17 +174,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@objc func termInformationChangedN (notification: Notification) {
 	
 		if let data = notification.userInfo as? [String: Int] {
@@ -184,7 +187,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 	}
 	
-
 	@objc func assignCategoryN (notification : Notification) {
 		if let data = notification.userInfo as? [String : Int] {
 			let categoryID = data["categoryID"]!
@@ -203,16 +205,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			}
 		}
 		
-	}
-	
-	@objc func CategoryN (notification : Notification){
-		
-		if let data = notification.userInfo as? [String : Int] {
-			let categoryID = data["categoryID"]!
-			if categoryID == currentCategoryID {
-				updateDataAndDisplay()
-			}
-		}
 	}
 	
 	@objc func deleteCategoryN (notification: Notification){
