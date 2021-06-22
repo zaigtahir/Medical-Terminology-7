@@ -55,12 +55,14 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		/*
 		Notification keys this controller will need to respond to
 		
-		currentCategoryChangedKey
+		currentCategoryIDsChangedKey
+		changeCategoryNameKey
+		deleteCategoryKey
+		
 		setFavoriteStatusKey
 		assignCategoryKey
 		unassignCategoryKey
-		deleteCategoryKey
-		changeCategoryNameKey
+		termInformationChangedKey
 		*/
 		
 		
@@ -86,8 +88,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		// MARK: term based categorIES changed
 		
-		let nameCCCNK = Notification.Name(myKeys.currentCategoriesChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoriesChangedN(notification:)), name: nameCCCNK, object: nil)
+		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryIDsChangedN(notification:)), name: nameCCCNK, object: nil)
 		
 		
 		
@@ -103,7 +105,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	
 	// CATEGORIES changed
-	@objc func currentCategoriesChangedN (notification : Notification) {
+	@objc func currentCategoryIDsChangedN (notification : Notification) {
 		
 		if let data = notification.userInfo as? [String : [Int]] {
 			

@@ -96,8 +96,8 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		
 		// MARK: term based categorIES changed
 		
-		let nameCCCNK = Notification.Name(myKeys.currentCategoriesChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoriesChangedN(notification:)), name: nameCCCNK, object: nil)
+		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryIDsChangedN(notification:)), name: nameCCCNK, object: nil)
 		
 		
 		

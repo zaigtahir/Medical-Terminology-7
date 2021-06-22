@@ -62,15 +62,15 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 
 		if categoryListVCH.categoryListMode == .selectCategories {
 			
-			totalCategoriesSelectedLabel.text =  "Total selected categories: \(categoryListVCH.selectedCategories.count)"
+			totalCategoriesSelectedLabel.text =  "Total selected categories: \(categoryListVCH.selectedCategoryIDs.count)"
 		} else {
-			totalCategoriesSelectedLabel.text =  "Total assigned categories: \(categoryListVCH.selectedCategories.count)"
+			totalCategoriesSelectedLabel.text =  "Total assigned categories: \(categoryListVCH.selectedCategoryIDs.count)"
 		}
 		
 		
 		if categoryListVCH.categoryListMode == .selectCategories {
 			
-			if categoryListVCH.selectedCategories.count == 0 { 
+			if categoryListVCH.selectedCategoryIDs.count == 0 { 
 				// no category selected
 				let ac = UIAlertController(title: "Select A Category", message: "Please select one or more  categories to view.", preferredStyle: .alert)
 				let okay = UIAlertAction(title: "OK", style: .default, handler: nil)

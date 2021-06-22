@@ -27,17 +27,21 @@ protocol CategoryListVCHDelegate: AnyObject {
 }
 
 class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate {
+		
 	
-	// MARK: TODO:  to remove
-	var currentCategoryID = 99
 	
-	// MARK: - TODO: these properties will need to be made private as I code the other sections
+	// REMOVE after modifying other parts of the program
+	var currentCategoryID =  -1
+	
+	
+	
+	// MARK: - TODO: these properties will need to be made PRIVATE as I code the other sections
 	
 	var categoryListMode = CategoryListMode.selectCategories
 	
 	// Fill Initial categories when using selectCategory mode
 	// If using assignCategoryMode, the initialCategories will be set to term.assignedCategories
-	var initialCategories = [3,4,5]
+	var initialCategoryIDs = [3,4,5]
 	
 	// Provide a term when Assigning Categories to a term
 	// When the term is new, termID = -1
@@ -47,7 +51,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	// MARK: - local variables
 	
-	var selectedCategories: [Int]!
+	var selectedCategoryIDs: [Int]!
 	
 	// use to refer to the section of the table
 	let sectionCustom = 0
@@ -125,30 +129,30 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	func setupAssignCategoryMode (term: TermTB) {
 		categoryListMode = .assignCategories
 		self.term = term
-		self.initialCategories = term.assignedCategories
-		selectedCategories = term.assignedCategories
+		self.initialCategoryIDs = term.assignedCategories
+		selectedCategoryIDs = term.assignedCategories
 	}
 	
 	func setupSelectCategoryMode (initialCategories: [Int]) {
 		categoryListMode = .selectCategories
-		self.initialCategories = initialCategories
-		selectedCategories = initialCategories
+		self.initialCategoryIDs = initialCategories
+		selectedCategoryIDs = initialCategories
 	}
 	
 	func getTotalSelectedCategories () -> Int {
 		
 		if categoryListMode == .selectCategories {
 			// Select category mode
-			return selectedCategories.count
+			return selectedCategoryIDs.count
 			
 		} else {
 			// Assign category mode
 			// if standard term, subtract out for category 1 as the user will not see it any way on the UI
 			// if custom germ, stubtract out for category 1 and 2 as the user will not see it any way on the UI
 			if term.isStandard {
-				return selectedCategories.count - 1
+				return selectedCategoryIDs.count - 1
 			} else {
-				return selectedCategories.count - 2
+				return selectedCategoryIDs.count - 2
 			}
 		}
 		
@@ -158,17 +162,18 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	func checkSelectedCategoriesPN () {
 		// the categoryVC calls this when the user presses the done button
-		if !utilities.containSameElements(array1: initialCategories, array2: selectedCategories) {
+		if !utilities.containSameElements(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
 			
 			// Fire off a notification of the category change!!
-			let name = Notification.Name(myKeys.currentCategoriesChangedKey)
-			NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : selectedCategories as Any])
+			let name = Notification.Name(myKeys.currentCategoryIDsChanged)
+			NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : selectedCategoryIDs as Any])
 		}
 		
 	}
 	
+	// MARK: TODO need to work on this for term assignments
 	func checkAssignedCategories () {
-		if utilities.containSameElements(array1: initialCategories, array2: selectedCategories) {
+		if utilities.containSameElements(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
 			print("checkAssignedCategories Assigned categories did NOT changed")
 		} else {
 			print("checkAssignedCategories Assigned categories DID not changed, need to code here")
@@ -227,7 +232,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			}
 			
 			
-			cell.formatCategoryCell(category: category, selectedCategoryIDs: selectedCategories, lockCategoryIDs: categoriesToLock)
+			cell.formatCategoryCell(category: category, selectedCategoryIDs: selectedCategoryIDs, lockCategoryIDs: categoriesToLock)
 			
 			cell.delegate = self
 			
@@ -269,24 +274,24 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 		// if the user selected categoryID = 1, unselect everything else and refresh the table and display
 		if selectedCategory.categoryID == 1 {
-			selectedCategories = [1]
+			selectedCategoryIDs = [1]
 			tableView.reloadData()
 			delegate?.shouldUpdateDisplay()
 			return
 		}
 		
 		// user clicked on something other than categoryID = 1
-		if selectedCategories == [1] {
-			selectedCategories = [Int]()
+		if selectedCategoryIDs == [1] {
+			selectedCategoryIDs = [Int]()
 		}
 		
-		if let categoryIDIndex = selectedCategories.firstIndex(of: selectedCategory.categoryID) {
+		if let categoryIDIndex = selectedCategoryIDs.firstIndex(of: selectedCategory.categoryID) {
 			// this categoryID is already selected, need to remove it from the selection
-			selectedCategories = utilities.removeIndex(index: categoryIDIndex, array: selectedCategories)
+			selectedCategoryIDs = utilities.removeIndex(index: categoryIDIndex, array: selectedCategoryIDs)
 			
 		} else {
 			// add it to the list
-			selectedCategories.append(selectedCategory.categoryID)
+			selectedCategoryIDs.append(selectedCategory.categoryID)
 		}
 		
 		tableView.reloadData()

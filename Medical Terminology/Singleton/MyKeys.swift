@@ -19,7 +19,7 @@ class MyKeys {
 	
 	
 	// MARK: - CategoryVCH notifications for CATEGORIES
-	let currentCategoriesChangedKey = "com.theappgalaxy.currentCategoresChanged"
+	let currentCategoryIDsChanged = "com.theappgalaxy.currentCategoresChanged"
 	
 	
 	
