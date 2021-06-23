@@ -60,7 +60,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	let tu = TextUtilities()
 	
 	let utilities = Utilities()
-
+	
 	override init() {
 		super.init()
 		
@@ -76,9 +76,9 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		deleteCategoryKey
 		changeCategoryNameKey
 		*/
-	
 		
-	
+		
+		
 		
 		let nameACK = Notification.Name(myKeys.assignCategoryKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(assignCategoryN(notification:)), name: nameACK, object: nil)
@@ -88,14 +88,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		
 		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
@@ -113,15 +105,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		
 		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
@@ -145,12 +128,13 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			
 		}
 	}
-		
-	// this notification is only sent if the changed category is part of currentCategoriesIDs
+	
 	@objc func categoryNameChangedN (notification: Notification) {
 		// if this is the current category, reload the category and then refresh the display
 		delegate?.shouldUpdateDisplay()
 	}
+	
+	// MARK: - Favorite notification function
 	
 	@objc func setFavoriteStatusN (notification: Notification) {
 		
@@ -198,26 +182,45 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		
 	}
 	
-	
-	
-	
+	// MARK: - Term notification functions
 	
 	@objc func termInformationChangedN (notification: Notification) {
 		
-		if let data = notification.userInfo as? [String: Int] {
-			let affectedTermID = data["termID"]!
-			
-			if let _ = termsList.findIndexOf(termID: affectedTermID) {
-				// updating just the row causes some misalignment issues unless I use an animation of .fade, but then the row has a slight faid flicker animation which I don't want
-				// don't have to reload the data, as the termsList will only contain termIDs. When the cell refreshes, it will get the new term information from the database
-				
-				delegate?.shouldReloadTable()
-				delegate?.shouldUpdateDisplay()
-			}
-			
-		}
+		/*
+		updating just the row causes some misalignment issues unless I use an animation of .fade, but then the row has a slight faid flicker animation which I don't want
+		don't have to reload the data as no termID will change, as the termsList will only contain termIDs. When the cell refreshes, it will get the new term information from the database
+		*/
+		
+		delegate?.shouldReloadTable()
+		delegate?.shouldUpdateDisplay()
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@objc func assignCategoryN (notification : Notification) {
 		
@@ -240,7 +243,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		}
 		
 	}
-
+	
 	
 	// MARK: - Update data function
 	
@@ -379,7 +382,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	func pressedFavoriteButton(termID: Int) {
 		
 		// when the user clicks the heart button, it toggles locally, but need to change the value in the database
-	
+		
 		let _ = tcTB.toggleFavoriteStatusPN(termID: termID)
 		
 		// Note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed so that all the components of this program can react.
@@ -408,8 +411,8 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		tc.setFavoriteStatusPN(categoryID: currentCategoryID, termID: termID, isFavorite: !isFavorite)
 		
 		// after the save method broadcasts the notification, this VCH will instruct the homeVC to update it's cell
-
-
+		
+		
 		*/
 	}
 }

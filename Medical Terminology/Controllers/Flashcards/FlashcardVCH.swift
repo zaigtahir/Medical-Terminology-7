@@ -100,7 +100,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// MARK: - Category notification functions
 
-	// Category notification
 	@objc func currentCategoryIDsChangedN (notification : Notification) {
 		
 		if let data = notification.userInfo as? [String : [Int]] {
@@ -117,20 +116,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		delegate?.shouldUpdateDisplay()
 	}
 	
+	// MARK: - Favorite notification function
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// Term notifications
 	@objc func setFavoriteStatusN (notification: Notification) {
 		
 		if let data = notification.userInfo as? [String: Int] {
@@ -175,6 +162,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
+	// MARK: - Term notification functions
+	
 	@objc func termInformationChangedN (notification: Notification) {
 	
 		if let data = notification.userInfo as? [String: Int] {
@@ -187,6 +176,29 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@objc func assignCategoryN (notification : Notification) {
 		if let data = notification.userInfo as? [String : Int] {
