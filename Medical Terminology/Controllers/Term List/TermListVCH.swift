@@ -87,18 +87,17 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		let nameDCK = Notification.Name(myKeys.categoryDeletedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedN (notification:)), name: nameDCK, object: nil)
 		
-		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
-		
 		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
-		
 		
 		// MARK: term based categorIES changed
 		
 		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChanged)
 		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryIDsChangedN(notification:)), name: nameCCCNK, object: nil)
 		
+		// This is sent only if there is this ONE category in currentCategoryIDs, and the name is changed
+		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
 		
 	}
 	
@@ -107,10 +106,8 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		NotificationCenter.default.removeObserver(self)
 	}
 	
-	// MARK: - notification functions
+	// MARK: - Category notification functions
 	
-	
-	// CATEGORIES changed
 	@objc func currentCategoryIDsChangedN (notification : Notification) {
 		
 		if let data = notification.userInfo as? [String : [Int]] {
@@ -122,6 +119,38 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		}
 	}
 		
+	@objc func categoryNameChangedN (notification: Notification) {
+		// if this is the current category, reload the category and then refresh the display
+		delegate?.shouldUpdateDisplay()
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// updated for CATEGORIES
 	@objc func setFavoriteStatusN (notification: Notification) {
 		
@@ -170,8 +199,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		}
 		
 	}
-	
-	
 	
 	
 	
@@ -230,19 +257,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			}
 		}
 	}
-	
-	@objc func categoryNameChangedN (notification: Notification) {
-		
-		// if this is the current category, reload the category and then refresh the display
-		
-		if let data = notification.userInfo as? [String : Int] {
-			let changedCategoryID = data["categoryID"]
-			if changedCategoryID == currentCategoryID {
-				delegate?.shouldUpdateDisplay()
-			}
-		}
-		
-	}
+
 	
 	// MARK: - Update data function
 	

@@ -309,9 +309,6 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	func categoryDeleted(categoryID: Int) {
 		
-		print("in CategoryListVCH categoryDeleted. deleted categoryID: \(categoryID)")
-		
-		
 		/*
 		if the initialCategoryIDs contains the deletedCategoryID:
 		Remove it
@@ -361,7 +358,12 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	}
 	
 	func categoryNameChanged(categoryID: Int) {
-		print("in CategoryListVCH categoryChanged")
+		// if this is the only currentCategoryIDs, send out a notice regarding name change
+		
+		
+		updateData()
+		delegate?.shouldReloadTable()
+		delegate?.shouldUpdateDisplay()
 	}
 	
 	func categoryAdded(catetoryID: Int) {

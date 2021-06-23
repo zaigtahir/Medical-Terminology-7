@@ -27,9 +27,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	var showFavoritesOnly = false
 	
-	
-	
-	
 	// HAVE to figure out notifications for events
 	
 	var viewMode : TermComponent = .both
@@ -74,15 +71,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		let nameUCK = Notification.Name(myKeys.unassignCategoryKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignCategoryN(notification:)), name: nameUCK, object: nil)
-		
 	
-		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
-		
-		
 		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
-		
 		
 		
 		// MARK: term based categorIES changed
@@ -90,6 +81,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChanged)
 		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryIDsChangedN(notification:)), name: nameCCCNK, object: nil)
 		
+		// This is sent only if there is this ONE category in currentCategoryIDs, and the name is changed
+		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
 		
 		
 	}
@@ -99,8 +93,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		NotificationCenter.default.removeObserver(self)
 	}
 	
-	// MARK: - notification functions
-	
+	// MARK: - Category notification functions
 
 	// Category notification
 	@objc func currentCategoryIDsChangedN (notification : Notification) {
@@ -116,15 +109,31 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 
 	@objc func categoryNameChangedN (notification: Notification) {
 		// if this is the current category, reload the category and then refresh the display
-		
-		if let data = notification.userInfo as? [String : Int] {
-			let changedCategoryID = data["categoryID"]
-			if changedCategoryID == currentCategoryID {
-				delegate?.shouldUpdateDisplay()
-			}
-		}
-		
+		delegate?.shouldUpdateDisplay()
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	// Term notifications
