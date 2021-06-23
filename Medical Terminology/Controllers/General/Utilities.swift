@@ -69,11 +69,25 @@ class Utilities {
 	
 	}
 	
-	func containSameElements (array1 : [Int], array2 : [Int]) -> Bool {
+	func areIdentical (array1 : [Int], array2 : [Int]) -> Bool {
 		
 		let a1 = array1.sorted()
 		let a2 = array2.sorted()
 		return a1 == a2
 	
+	}
+	
+	func containsElementFrom (mainArray: [Int], testArray: [Int]) -> Bool {
+		
+		// return true if mainArray contains at least ONE element from test array
+		
+		for ta in testArray {
+			if mainArray.contains(ta) {
+				return true
+			}
+		}
+		
+		return false
+		
 	}
 }

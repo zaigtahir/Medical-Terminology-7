@@ -52,12 +52,15 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	weak var delegate: TermListVCHDelegate?
 	
+	// controllers
 	let tcTB = TermControllerTB()
 	
 	let cc = CategoryController()
 	
 	let tu = TextUtilities()
 	
+	let utilities = Utilities()
+
 	override init() {
 		super.init()
 		
@@ -75,8 +78,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		*/
 	
 		
-		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
+	
 		
 		let nameACK = Notification.Name(myKeys.assignCategoryKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(assignCategoryN(notification:)), name: nameACK, object: nil)
@@ -84,13 +86,21 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		let nameUCK = Notification.Name(myKeys.unassignCategoryKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignCategoryN(notification:)), name: nameUCK, object: nil)
 		
-		let nameDCK = Notification.Name(myKeys.categoryDeletedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedN (notification:)), name: nameDCK, object: nil)
-		
 		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
 		
-		// MARK: term based categorIES changed
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// MARK: - Category notifications
 		
 		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChanged)
 		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryIDsChangedN(notification:)), name: nameCCCNK, object: nil)
@@ -98,6 +108,23 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		// This is sent only if there is this ONE category in currentCategoryIDs, and the name is changed
 		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
+		
+		// MARK: - Favorite status notification
+		
+		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 	
@@ -119,43 +146,17 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		}
 	}
 		
+	// this notification is only sent if the changed category is part of currentCategoriesIDs
 	@objc func categoryNameChangedN (notification: Notification) {
 		// if this is the current category, reload the category and then refresh the display
 		delegate?.shouldUpdateDisplay()
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// updated for CATEGORIES
 	@objc func setFavoriteStatusN (notification: Notification) {
 		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
+			let affectedTerm = tcTB.getTerm(termID: affectedTermID)
 			
 			// if this term id exists in termIDs, need to reload that term from the database and then reload just that term cell in the table
 			
@@ -164,9 +165,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			case true:
 				// showing favorites only
 				
-				
-				let affectedTerm = tcTB.getTerm(termID: affectedTermID)
-
 				switch affectedTerm.isFavorite {
 				
 				case true:
@@ -199,6 +197,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		}
 		
 	}
+	
 	
 	
 	
@@ -240,22 +239,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			}
 		}
 		
-	}
-	
-	@objc func categoryDeletedN (notification: Notification){
-		
-		// if the current category is deleted, then change the current category to 1 (All Terms) and reload the data
-		if let data = notification.userInfo as? [String: Int] {
-			
-			let deletedCategoryID = data["categoryID"]
-			if deletedCategoryID == currentCategoryID {
-				
-				currentCategoryID = myConstants.dbCategoryAllTermsID
-				
-				delegate?.shouldClearSearchText()
-				updateDataAndDisplay()
-			}
-		}
 	}
 
 	

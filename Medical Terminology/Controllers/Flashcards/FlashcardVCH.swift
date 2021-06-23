@@ -76,7 +76,12 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
 		
 		
-		// MARK: term based categorIES changed
+		
+		
+		
+		
+		
+		// MARK: - Category notifications
 		
 		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChanged)
 		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryIDsChangedN(notification:)), name: nameCCCNK, object: nil)
@@ -111,17 +116,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// if this is the current category, reload the category and then refresh the display
 		delegate?.shouldUpdateDisplay()
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

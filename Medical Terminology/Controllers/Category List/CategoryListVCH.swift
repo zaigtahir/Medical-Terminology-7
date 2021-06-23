@@ -161,7 +161,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	func checkSelectedCategoriesPN () {
 		// the categoryVC calls this when the user presses the done button
-		if !utilities.containSameElements(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
+		if !utilities.areIdentical(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
 			
 			// Fire off a notification of the category change!!
 			let name = Notification.Name(myKeys.currentCategoryIDsChanged)
@@ -173,7 +173,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	// MARK: TODO need to work on this for term assignments
 	func checkAssignedCategories () {
 		
-		if utilities.containSameElements(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
+		if utilities.areIdentical(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
 			print("checkAssignedCategories Assigned categories did NOT changed")
 		} else {
 			print("checkAssignedCategories Assigned categories DID not changed, need to code here")
