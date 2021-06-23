@@ -44,13 +44,22 @@ class MyKeys {
 	let assignCategoryKey = "com.theappgalaxy.termAssignedCategoryNotification"
 	
 	let unassignCategoryKey = "com.theappgalaxy.termUnassignedCategoryNotification"
+
+	
+	
+	
 	
 	// MARK: - Category controller notifications
-	let addCategoryKey = "com.theappgalaxy.categoryAddedNotification"
+	let categoryAddedKey = "com.theappgalaxy.categoryAddedNotification"
 	
-	let deleteCategoryKey = "com.theappgalaxy.categoryDeletedNotification"
+	let categoryDeletedKey = "com.theappgalaxy.categoryDeletedNotification"
 	
-	let changeCategoryNameKey = "com.theappgalaxy.categoryNameUpdatedNotification"
+	let categoryNameChangedKey = "com.theappgalaxy.categoryNameUpdatedNotification"
+	
+	
+	
+	
+	
 	
 	let termInformationChangedKey = "com.theappgalaxy.changeTermInfoNotification"
 }

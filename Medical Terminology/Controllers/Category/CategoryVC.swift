@@ -183,7 +183,8 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		let ac = UIAlertController(title: "Delete Category?", message: "Are you sure you want to delete this category? Just FYI: When you delete a category, no terms will be deleted", preferredStyle: .alert)
 		
 		let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in
-			self.cc.deleteCategoryPN(categoryID: self.categoryVCH.category.categoryID)
+			//self.cc.deleteCategoryPN(categoryID: self.categoryVCH.category.categoryID)
+			self.categoryVCH.deleteCategoryPN()
 			self.navigationController?.popViewController(animated: true)
 		}
 		

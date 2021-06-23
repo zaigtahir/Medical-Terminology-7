@@ -301,12 +301,12 @@ class CategoryController {
 		
 		myDB.executeStatements(queryInsert)
 		
-		let nName = Notification.Name(myKeys.addCategoryKey)
+		let nName = Notification.Name(myKeys.categoryAddedKey)
 		NotificationCenter.default.post(name: nName, object: self, userInfo: nil)
 		
 	}
 
-	func deleteCategoryPN (categoryID: Int) {
+	func deleteCategory (categoryID: Int) {
 		// will delete this category from the category table, and also remove all assignments from the assigned category
 		
 		let query1 = "DELETE FROM \(categories) WHERE categoryID = \(categoryID)"
@@ -315,8 +315,6 @@ class CategoryController {
 		let query2 = "DELETE FROM \(assignedCategories) WHERE categoryID = \(categoryID)"
 		let _ = myDB.executeStatements(query2)
 		
-		let name = Notification.Name(myKeys.deleteCategoryKey)
-		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID": categoryID])
 	}
 	
 	func updateCategoryDescription (categoryID: Int, description: String) {
@@ -330,7 +328,7 @@ class CategoryController {
 		let query = "UPDATE \(categories) SET name = '\(newName)' WHERE categoryID = \(categoryID)"
 		myDB.executeStatements(query)
 	
-		let name = Notification.Name(myKeys.changeCategoryNameKey)
+		let name = Notification.Name(myKeys.categoryNameChangedKey)
 		
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : categoryID])
 	}

@@ -145,6 +145,13 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 			let vc = segue.destination as? CategoryVC
 			vc?.categoryVCH.category = segueCategory
 			
+		
+		
+		
+		
+		//
+		// vc?.categoryVCH.currentCategoryIDs = categoryListVCH.curr
+			
 			
 			
 		default:

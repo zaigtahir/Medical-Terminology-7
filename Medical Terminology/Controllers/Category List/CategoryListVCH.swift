@@ -79,14 +79,14 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		changeCategoryNameKey
 		*/
 		
-		let nameACK = Notification.Name(myKeys.addCategoryKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(addCategoryN (notification:)), name: nameACK, object: nil)
+		let nameACK = Notification.Name(myKeys.categoryAddedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryAddedN (notification:)), name: nameACK, object: nil)
 		
-		let nameDCK = Notification.Name(myKeys.deleteCategoryKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(deleteCategoryN (notification:)), name: nameDCK, object: nil)
+		let nameDCK = Notification.Name(myKeys.categoryDeletedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedN (notification:)), name: nameDCK, object: nil)
 		
-		let nameCCN = Notification.Name(myKeys.changeCategoryNameKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(changeCategoryNameN(notification:)), name: nameCCN, object: nil)
+		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
 		
 		updateData()
 		
@@ -99,20 +99,20 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	// MARK: - notification functions
 	
-	@objc func addCategoryN (notification: Notification) {
+	@objc func categoryAddedN (notification: Notification) {
 		// refresh the data
 		updateData()
 		delegate?.shouldReloadTable()
 	}
 	
-	@objc func changeCategoryNameN (notification: Notification) {
+	@objc func categoryNameChangedN (notification: Notification) {
 		// refresh the lists and table
 		updateData()
 		delegate?.shouldReloadTable()
 		
 	}
 	
-	@objc func deleteCategoryN (notification: Notification) {
+	@objc func categoryDeletedN (notification: Notification) {
 		// refresh the lists and table
 		updateData()
 		delegate?.shouldReloadTable()

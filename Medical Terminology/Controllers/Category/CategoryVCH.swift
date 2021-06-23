@@ -20,9 +20,15 @@ protocol NewCategoryDelegate: AnyObject {
 
 class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
-	// if catetory id = -1, you are adding a new catetory
+	// MARK: -seque variables
 	
+	// if catetory id = -1, you are adding a new catetory
 	var category : Category!
+	
+	// need to set this so that I know what to do when deleting a category
+	var currentCategoryIDs : [Int]!
+	
+	// end segue variables
 	
 	weak var delegate: CategoryVCHDelegate?
 
@@ -32,13 +38,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	private let cc = CategoryController()
 	
-	
 	init () {
-		
-	}
-		
-	func saveCategory() {
-		let _ = cc.addCategoryPN (category: category)
 		
 	}
 	
@@ -90,6 +90,21 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		
 	}
 
+	func saveCategory() {
+		let _ = cc.addCategoryPN (category: category)
+		
+	}
+	
+	func deleteCategoryPN () {
+		
+		// delete the category
+		cc.deleteCategory(categoryID: category.categoryID)
+		
+		// will need to know what currentCategoryIDs are so that it can generate an appropriate notification
+		
+		
+	}
+	
 	// MARK: - delegate functions
 	func shouldUpdateSingleLineInfo(propertyReference: PropertyReference?, cleanString: String) {
 		
