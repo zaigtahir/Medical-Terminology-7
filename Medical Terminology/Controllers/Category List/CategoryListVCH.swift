@@ -26,10 +26,9 @@ protocol CategoryListVCHDelegate: AnyObject {
 	func shouldShowAlertSelectedLockedCategory (categoryID: Int)
 }
 
-class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate {
-		
+class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate, CategoryEditDelegate {
 	
-	
+
 	// REMOVE after modifying other parts of the program
 	var currentCategoryID =  -1
 	
@@ -173,6 +172,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	// MARK: TODO need to work on this for term assignments
 	func checkAssignedCategories () {
+		
 		if utilities.containSameElements(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
 			print("checkAssignedCategories Assigned categories did NOT changed")
 		} else {
@@ -255,7 +255,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 		// determine which category is selected
 		if indexPath.section == sectionCustom {
-			selectedCategory = customCategories[indexPath.row]
+			selectedCategory = customCategories[indexPath.row-1]
 		} else {
 			selectedCategory = standardCategories[indexPath.row]
 		}
@@ -303,6 +303,69 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	// MARK: - CategoryCellDelegate
 	func shouldSegueToCategory(category: Category) {
 		delegate?.shouldSegueToPreexistingCategory(category: category)
+	}
+	
+	// MARK: - CategoryEditDelegate
+	
+	func categoryDeleted(categoryID: Int) {
+		
+		print("in CategoryListVCH categoryDeleted. deleted categoryID: \(categoryID)")
+		
+		
+		/*
+		if the initialCategoryIDs contains the deletedCategoryID:
+		Remove it
+		If that leads to an empty initialCategoryIDs, set initialCategoryIDs = [1]
+		broadcast the notification: currentCategoryIDsChanged
+		currentCategoryIDsChangedKey
+		userInfo: [“categoryIDs” : initialCategoryIDs as Any]
+		Note: using the initiaCategoryIDs here as the user has not pressed save yet to I do not need to save any updates the user has made to the category selections. I’m sending out this notification as all the other VHC’s need to react to this change immediately.
+
+		if the selectedCategoryIDs contain the deletedCategoryID:
+		remove it
+		if that leads to an empty selectedCategoryIDs, set selectedCategoryIDs = [1]
+		refresh the CategoryListVC
+		*/
+		
+		if initialCategoryIDs.contains(categoryID) {
+			initialCategoryIDs = utilities.removeFirstValue(value: categoryID, array: initialCategoryIDs)
+			
+			if initialCategoryIDs.count == 0 {
+				// the user deleted the only currentCategoryIDs, so set the initialCategoryIDs to All Terms
+				initialCategoryIDs = [1]
+			}
+			
+			// send out notification of change in currentCategoryIDs
+			// Fire off a notification of the category change!!
+			
+			let name = Notification.Name(myKeys.currentCategoryIDsChanged)
+			NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : initialCategoryIDs as Any])
+		}
+		
+		if selectedCategoryIDs.contains(categoryID) {
+			
+			selectedCategoryIDs = utilities.removeFirstValue(value: categoryID, array: selectedCategoryIDs)
+			
+			if selectedCategoryIDs.count == 0 {
+				// the user deleted the only currentCategoryIDs, so set the initialCategoryIDs to All Terms
+				selectedCategoryIDs = [1]
+			}
+			
+			// don't have to shoot off currentCategoryIDsChanged as the category deleted is not part of currentCategoryIDs
+		}
+		
+		updateData()
+		delegate?.shouldReloadTable()
+		delegate?.shouldUpdateDisplay()
+		
+	}
+	
+	func categoryNameChanged(categoryID: Int) {
+		print("in CategoryListVCH categoryChanged")
+	}
+	
+	func categoryAdded(catetoryID: Int) {
+		print("in CategoryListVCH categoryAdded")
 	}
 	
 	

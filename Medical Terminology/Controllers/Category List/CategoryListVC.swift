@@ -144,15 +144,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		case myConstants.segueCategory:
 			let vc = segue.destination as? CategoryVC
 			vc?.categoryVCH.category = segueCategory
-			
-		
-		
-		
-		
-		//
-		// vc?.categoryVCH.currentCategoryIDs = categoryListVCH.curr
-			
-			
+			vc?.categoryVCH.delegateEdit = categoryListVCH
 			
 		default:
 			print ("fatal error did not find a matching segue in prepar funtion of categoryListVC")

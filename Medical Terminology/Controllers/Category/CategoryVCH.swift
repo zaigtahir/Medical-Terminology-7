@@ -14,6 +14,7 @@ protocol CategoryVCHDelegate: AnyObject {
 	func shouldAlertDuplicateCategoryName()
 }
 
+// this will be used by the CategoryListVCH
 protocol CategoryEditDelegate: AnyObject {
 	func categoryDeleted (categoryID: Int)
 	func categoryNameChanged (categoryID: Int)
@@ -34,7 +35,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	weak var delegate: CategoryVCHDelegate?
 	
-	weak var delegateEdit: CategoryEditDelegate
+	weak var delegateEdit: CategoryEditDelegate?
 
 	private var singleLineInputVC : SingleLineInputVC!
 	
@@ -104,8 +105,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		// delete the category
 		cc.deleteCategory(categoryID: category.categoryID)
 		
-		// will need to know what currentCategoryIDs are so that it can generate an appropriate notification
-		
+		delegateEdit?.categoryDeleted(categoryID: category.categoryID)
 		
 	}
 	

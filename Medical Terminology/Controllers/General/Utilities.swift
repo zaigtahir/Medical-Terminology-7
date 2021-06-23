@@ -34,6 +34,19 @@ class Utilities {
         }
     }
     
+	/**
+	Return an array with the first value removed. if the array does not contain the value, just return the original array
+	*/
+	func removeFirstValue (value: Int, array: [Int]) -> [Int] {
+		
+		if let i = array.firstIndex(of: value) {
+			return removeIndex(index: i, array: array)
+		} else {
+			return array
+		}
+		
+	}
+	
 	func removeIndex (index: Int, array: [Int]) -> [Int]{
 		
 		var newArray = array
