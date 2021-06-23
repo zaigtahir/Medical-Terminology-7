@@ -75,11 +75,10 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let nameUCK = Notification.Name(myKeys.unassignCategoryKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignCategoryN(notification:)), name: nameUCK, object: nil)
 		
-		let nameDCK = Notification.Name(myKeys.categoryDeletedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedN (notification:)), name: nameDCK, object: nil)
-		
+	
 		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
+		
 		
 		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
@@ -102,36 +101,33 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// MARK: - notification functions
 	
-	
-	
-	// CATEGORIES changed
+
+	// Category notification
 	@objc func currentCategoryIDsChangedN (notification : Notification) {
 		
 		if let data = notification.userInfo as? [String : [Int]] {
 			
-			//there will be only one data here, the categoryID
+			//there will be only one data here, the categoryIDs
 			currentCategoryIDs = data["categoryIDs"]!
 			updateDataAndDisplay()
 			
 		}
 	}
+
+	@objc func categoryNameChangedN (notification: Notification) {
+		// if this is the current category, reload the category and then refresh the display
+		
+		if let data = notification.userInfo as? [String : Int] {
+			let changedCategoryID = data["categoryID"]
+			if changedCategoryID == currentCategoryID {
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+		
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// Term notifications
 	@objc func setFavoriteStatusN (notification: Notification) {
 		
 		if let data = notification.userInfo as? [String: Int] {
@@ -209,29 +205,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 	}
 	
-	@objc func categoryDeletedN (notification: Notification){
-		// if the current category is deleted, then change the current category to 1 (All Terms) and reload the data
-		if let data = notification.userInfo as? [String: Int] {
-			
-			let deletedCategoryID = data["categoryID"]
-			if deletedCategoryID == currentCategoryID {
-				currentCategoryID = myConstants.dbCategoryAllTermsID
-				updateDataAndDisplay()
-			}
-		}
-	}
 	
-	@objc func categoryNameChangedN (notification: Notification) {
-		// if this is the current category, reload the category and then refresh the display
-		
-		if let data = notification.userInfo as? [String : Int] {
-			let changedCategoryID = data["categoryID"]
-			if changedCategoryID == currentCategoryID {
-				delegate?.shouldUpdateDisplay()
-			}
-		}
-		
-	}
+
 	
 	// MARK: - update data functions
 	

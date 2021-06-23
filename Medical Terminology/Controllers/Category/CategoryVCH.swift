@@ -14,8 +14,10 @@ protocol CategoryVCHDelegate: AnyObject {
 	func shouldAlertDuplicateCategoryName()
 }
 
-protocol NewCategoryDelegate: AnyObject {
-	func savedNewCategory()
+protocol CategoryEditDelegate: AnyObject {
+	func categoryDeleted (categoryID: Int)
+	func categoryNameChanged (categoryID: Int)
+	func categoryAdded (catetoryID: Int)
 }
 
 class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
@@ -31,6 +33,8 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	// end segue variables
 	
 	weak var delegate: CategoryVCHDelegate?
+	
+	weak var delegateEdit: CategoryEditDelegate
 
 	private var singleLineInputVC : SingleLineInputVC!
 	
