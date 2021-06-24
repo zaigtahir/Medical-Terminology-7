@@ -95,12 +95,12 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		
 	}
 
-	func saveCategory() {
-		let _ = cc.addCategoryPN (category: category)
+	func addNewCategory() {
+		cc.addCategoryPN (category: category)
 		
 	}
 	
-	func deleteCategoryPN () {
+	func deleteCategory () {
 		
 		// delete the category
 		cc.deleteCategory(categoryID: category.categoryID)

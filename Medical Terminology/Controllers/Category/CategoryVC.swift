@@ -167,7 +167,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		if categoryVCH.category.categoryID == -1 {
 			// this is a new category, save it
 			
-			categoryVCH.saveCategory()
+			categoryVCH.addNewCategory()
 			
 		}
 		
@@ -184,7 +184,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		
 		let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in
 			//self.cc.deleteCategoryPN(categoryID: self.categoryVCH.category.categoryID)
-			self.categoryVCH.deleteCategoryPN()
+			self.categoryVCH.deleteCategory()
 			self.navigationController?.popViewController(animated: true)
 		}
 		

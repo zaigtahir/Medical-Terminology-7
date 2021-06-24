@@ -222,7 +222,7 @@ class TermControllerTB {
 	If this is the first new term, it will create it at termID = dbCustomTermStartingID
 	Will return the termID of the added term
 	*/
-	func saveNewTerm (term: TermTB) -> Int {
+	func addNewTerm (term: TermTB) -> Int {
 		
 		var query: String
 		
@@ -235,20 +235,20 @@ class TermControllerTB {
 						example,
 						myNotes,
 						secondCategoryID,
-						thirdCategoryID),
+						thirdCategoryID,
 						audioFile,
 						isStandard,
-						isFavorite
+						isFavorite)
 
 					VALUES	("\(term.name)",
 							"\(term.definition)",
 							"\(term.example)",
 							"\(term.myNotes)",
 							2,
-							\(term.thirdCategoryID))
+							\(term.thirdCategoryID),
 							"\(term.audioFile)",
 							0,
-							\(term.isFavorite ? 1: 0)
+							\(term.isFavorite ? 1: 0))
 					"""
 		} else {
 			
@@ -260,10 +260,10 @@ class TermControllerTB {
 						example,
 						myNotes,
 						secondCategoryID,
-						thirdCategoryID),
+						thirdCategoryID,
 						audioFile,
 						isStandard,
-						isFavorite
+						isFavorite)
 
 					VALUES	(\(myConstants.dbCustomTermStartingID),
 							"\(term.name)",
@@ -271,10 +271,10 @@ class TermControllerTB {
 							"\(term.example)",
 							"\(term.myNotes)",
 							2,
-							\(term.thirdCategoryID))
+							\(term.thirdCategoryID),
 							"\(term.audioFile)",
 							0,
-							\(term.isFavorite ? 1: 0)
+							\(term.isFavorite ? 1: 0))
 					"""
 
 		}
@@ -286,11 +286,7 @@ class TermControllerTB {
 		for c in term.assignedCategories {
 			cc.assignCategoryPN(termID: addedTermID, categoryID: c)
 		}
-		
-		if sc.isDevelopmentMode() {
-			print ("termController saveNewTerm, created new term with ID: \(addedTermID)")
-		}
-		
+				
 		return addedTermID
 		
 	}
@@ -308,7 +304,7 @@ class TermControllerTB {
 					example,
 					myNotes,
 					secondCategoryID,
-					thirdCategoryID),
+					thirdCategoryID,
 					audioFile,
 					isStandard,
 					isFavorite,

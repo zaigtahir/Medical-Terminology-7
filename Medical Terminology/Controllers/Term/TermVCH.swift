@@ -64,11 +64,10 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		}
 	}
 	
-	func saveTerm () {
-		let newTermID = tcTB.saveNewTerm(term: term)
-		if sc.isDevelopmentMode() {
-			print("TermVCH: saveTerm, new termID = \(newTermID)")
-		}
+	func saveNewTerm () {
+		
+		let newTermID = tcTB.addNewTerm(term: term)
+	
 	}
 	
 	// MARK: - notification functions

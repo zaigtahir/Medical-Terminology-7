@@ -215,7 +215,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	@IBAction func leftButtonAction(_ sender: Any) {
 		if termVCH.term.termID == -1 {
-			termVCH.saveTerm()
+			termVCH.saveNewTerm()
 		}
 		// prob change to POP
 		self.dismiss(animated: true, completion: nil)

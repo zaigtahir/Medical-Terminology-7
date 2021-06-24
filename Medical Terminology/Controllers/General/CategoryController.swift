@@ -301,6 +301,7 @@ class CategoryController {
 		
 		myDB.executeStatements(queryInsert)
 		
+		
 		let nName = Notification.Name(myKeys.categoryAddedKey)
 		NotificationCenter.default.post(name: nName, object: self, userInfo: nil)
 		
@@ -332,6 +333,33 @@ class CategoryController {
 		
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : categoryID])
 	}
+	
+	
+	func assignCategory  (termID: Int, categoryID: Int) {
+		
+		let query = "INSERT INTO \(assignedCategories) ('termID', 'categoryID') VALUES (\(termID), \(categoryID))"
+		myDB.executeStatements(query)
+	}
+	
+	func unassignCategory  (termID: Int, categoryID: Int) {
+		
+		let query = "DELETE FROM \(assignedCategories) WHERE termID = \(termID) AND categoryID = \(categoryID)"
+		
+		myDB.executeStatements(query)
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	// MARK: move to different controller
