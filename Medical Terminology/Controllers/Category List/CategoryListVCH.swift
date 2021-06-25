@@ -150,8 +150,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 				NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : selectedCategoryIDs as Any])
 			} else {
 				
-				print ("CategoryListVCH: posting notification myKeys.currentCategoryIDsChanged, make sure to code this in functions that need to respone")
-				
+	
 				let name = Notification.Name(myKeys.termCategoryIDsChanged)
 				NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : selectedCategoryIDs as Any])
 			}

@@ -253,6 +253,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		vc.categoryListVCH.setupAssignCategoryMode(term: term)
 		
+		
 	}
 	
 	private func prepareEditNameSegue (for segue: UIStoryboardSegue) {
