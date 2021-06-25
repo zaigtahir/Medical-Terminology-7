@@ -21,6 +21,18 @@ class MyKeys {
 	// MARK: - CategoryVCH notifications for CATEGORIES
 	let currentCategoryIDsChanged = "com.theappgalaxy.currentCategoresChanged"
 	
+
+	let categoryNameChangedKey = "com.theappgalaxy.categoryNameUpdatedNotification"
+	
+	
+	
+	
+	
+	
+	
+	let termCategoryIDsChanged = "com.theappgalaxy.termCategoryIDsChanged"
+	
+	
 	
 	
 	
@@ -50,11 +62,9 @@ class MyKeys {
 	
 	
 	// MARK: - Category controller notifications
-	let categoryAddedKey = "com.theappgalaxy.categoryAddedNotification"
+
 	
-	let categoryDeletedKey = "com.theappgalaxy.categoryDeletedNotification"
 	
-	let categoryNameChangedKey = "com.theappgalaxy.categoryNameUpdatedNotification"
 	
 	
 	

@@ -157,7 +157,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 		if categoryListVCH.categoryListMode == .selectCategories {
 			categoryListVCH.checkSelectedCategoriesPN ()
 		} else {
-			categoryListVCH.checkAssignedCategories()
+			categoryListVCH.checkSelectedCategoriesPN()
 		}
 		
 		self.dismiss(animated: true, completion: nil)

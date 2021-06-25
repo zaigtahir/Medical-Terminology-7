@@ -17,8 +17,7 @@ protocol CategoryVCHDelegate: AnyObject {
 // this will be used by the CategoryListVCH
 protocol CategoryEditDelegate: AnyObject {
 	func categoryDeleted (categoryID: Int)
-	func categoryNameChanged (categoryID: Int)
-	func categoryAdded (catetoryID: Int)
+	func categoryAdded ()
 }
 
 class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
@@ -96,8 +95,8 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	}
 
 	func addNewCategory() {
-		cc.addCategoryPN (category: category)
-		
+		cc.addCategory (category: category)
+		delegateEdit?.categoryAdded()
 	}
 	
 	func deleteCategory () {
@@ -126,7 +125,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		category.name = cleanString
 		
 		if category.categoryID != -1 {
-			cc.updateCategoryNamePN(categoryID: category.categoryID, newName: cleanString)
+			cc.changeCategoryName(categoryID: category.categoryID, newName: cleanString)
 		}
 		
 		delegate?.shouldUpdateDisplay()

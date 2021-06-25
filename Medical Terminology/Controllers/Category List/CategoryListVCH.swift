@@ -27,11 +27,9 @@ protocol CategoryListVCHDelegate: AnyObject {
 }
 
 class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate, CategoryEditDelegate {
-	
 
 	// REMOVE after modifying other parts of the program
 	var currentCategoryID =  -1
-	
 	
 	
 	// MARK: - TODO: these properties will need to be made PRIVATE as I code the other sections
@@ -73,17 +71,9 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 		/*
 		Need to listen to 3 notifications and address them
-		addCategoryKey
-		deleteCategoryKey
 		changeCategoryNameKey
 		*/
-		
-		let nameACK = Notification.Name(myKeys.categoryAddedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryAddedN (notification:)), name: nameACK, object: nil)
-		
-		let nameDCK = Notification.Name(myKeys.categoryDeletedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedN (notification:)), name: nameDCK, object: nil)
-		
+				
 		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
 		
@@ -98,24 +88,13 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	// MARK: - notification functions
 	
-	@objc func categoryAddedN (notification: Notification) {
-		// refresh the data
-		updateData()
-		delegate?.shouldReloadTable()
-	}
-	
 	@objc func categoryNameChangedN (notification: Notification) {
 		// refresh the lists and table
 		updateData()
 		delegate?.shouldReloadTable()
 		
 	}
-	
-	@objc func categoryDeletedN (notification: Notification) {
-		// refresh the lists and table
-		updateData()
-		delegate?.shouldReloadTable()
-	}
+
 	
 	// END of notification functions
 	
@@ -160,27 +139,26 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	// The categoryListVC calls this when the user presses the done button
 	
 	func checkSelectedCategoriesPN () {
-		// the categoryVC calls this when the user presses the done button
+		
 		if !utilities.areIdentical(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
 			
-			// Fire off a notification of the category change!!
-			let name = Notification.Name(myKeys.currentCategoryIDsChanged)
-			NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : selectedCategoryIDs as Any])
-		}
-		
-	}
-	
-	// MARK: TODO need to work on this for term assignments
-	func checkAssignedCategories () {
-		
-		if utilities.areIdentical(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
-			print("checkAssignedCategories Assigned categories did NOT changed")
-		} else {
-			print("checkAssignedCategories Assigned categories DID not changed, need to code here")
+			// Fire off a notification based on the list based on the categoryListMode
 			
+			if categoryListMode == .selectCategories {
+				
+				let name = Notification.Name(myKeys.currentCategoryIDsChanged)
+				NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : selectedCategoryIDs as Any])
+			} else {
+				
+				print ("CategoryListVCH: posting notification myKeys.currentCategoryIDsChanged, make sure to code this in functions that need to respone")
+				
+				let name = Notification.Name(myKeys.termCategoryIDsChanged)
+				NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : selectedCategoryIDs as Any])
+			}
 		}
 	}
 	
+
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 2
 	}
@@ -357,17 +335,10 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 	}
 	
-	func categoryNameChanged(categoryID: Int) {
-		// if this is the only currentCategoryIDs, send out a notice regarding name change
-		
-		
+	func categoryAdded() {
 		updateData()
 		delegate?.shouldReloadTable()
 		delegate?.shouldUpdateDisplay()
-	}
-	
-	func categoryAdded(catetoryID: Int) {
-		print("in CategoryListVCH categoryAdded")
 	}
 	
 	

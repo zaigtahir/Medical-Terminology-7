@@ -273,7 +273,7 @@ class CategoryController {
 	/**
 	the new category will be added with custom category display order = 1, so need to increment all custom category display order by 1
 	*/
-	func addCategoryPN (category: Category) {
+	func addCategory (category: Category) {
 		// always add with display order = 1
 		// shift display order of other custom categories up by 1 to make room
 		// if no custom category exists, add with id = myConstants.dbCustomCategoryStartingID
@@ -300,11 +300,7 @@ class CategoryController {
 		}
 		
 		myDB.executeStatements(queryInsert)
-		
-		
-		let nName = Notification.Name(myKeys.categoryAddedKey)
-		NotificationCenter.default.post(name: nName, object: self, userInfo: nil)
-		
+			
 	}
 
 	func deleteCategory (categoryID: Int) {
@@ -324,7 +320,7 @@ class CategoryController {
 		myDB.executeStatements(query)
 	}
 	
-	func updateCategoryNamePN (categoryID: Int, newName: String) {
+	func changeCategoryName (categoryID: Int, newName: String) {
 		
 		let query = "UPDATE \(categories) SET name = '\(newName)' WHERE categoryID = \(categoryID)"
 		myDB.executeStatements(query)
@@ -333,7 +329,6 @@ class CategoryController {
 		
 		NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryID" : categoryID])
 	}
-	
 	
 	func assignCategory  (termID: Int, categoryID: Int) {
 		

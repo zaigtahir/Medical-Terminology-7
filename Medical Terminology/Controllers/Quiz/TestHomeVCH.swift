@@ -68,8 +68,6 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 		let nameUCK = Notification.Name(myKeys.unassignCategoryKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(unassignCategoryN(notification:)), name: nameUCK, object: nil)
 		
-		let nameDCK = Notification.Name(myKeys.categoryDeletedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryDeletedN (notification:)), name: nameDCK, object: nil)
 		
 		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
