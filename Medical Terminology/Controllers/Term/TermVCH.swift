@@ -55,8 +55,20 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		editedTerm.definition = initialTerm.definition
 		editedTerm.example = initialTerm.example
 		editedTerm.audioFile = initialTerm.audioFile
-		editedTerm.assignedCategories = initialTerm.assignedCategories
 		editedTerm.isStandard = initialTerm.isStandard
+		
+		// setup categories
+		if initialTerm.termID == -1 {
+			//new term
+			initialTerm.assignedCategories.append(1)	// add All Terms
+			initialTerm.assignedCategories.append(2)	// add My Terms
+			editedTerm.assignedCategories = initialTerm.assignedCategories
+			
+		} else {
+			// not new term
+			initialTerm.assignedCategories = tcTB.getTermCategoryIDs(termID: initialTerm.termID)
+			editedTerm.assignedCategories = initialTerm.assignedCategories
+		}
 		
 	}
 	
@@ -91,7 +103,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		return categoryList
 	}
 	
-
+	
 	// MARK: - SingleLineInputDelegate function
 	
 	func shouldUpdateSingleLineInfo (propertyReference: PropertyReference?, cleanString: String) {
@@ -137,7 +149,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 			print ("fatal error passeed a propertyReference that should not be passed here")
 		}
 		
-
+		
 		delegate?.shouldUpdateDisplay()
 		multiLineInputVC.navigationController?.popViewController(animated: true)
 		
@@ -150,7 +162,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	func saveNewTerm () {
 		
 		let newTermID = tcTB.addNewTerm(term: term)
-	
+		
 	}
 	
 	
@@ -197,7 +209,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		let nc = segue.destination as! UINavigationController
 		let vc = nc.topViewController as! CategoryListVC
 		
-		vc.categoryListVCH.setupAssignCategoryMode(term: term)
+		vc.categoryListVCH.setupAssignCategoryMode(term: editedTerm)
 		
 		
 	}
@@ -205,7 +217,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	private func prepareEditNameSegue (for segue: UIStoryboardSegue) {
 		singleLineInputVC = segue.destination as? SingleLineInputVC
 		singleLineInputVC.textInputVCH.fieldTitle = "TERM NAME"
-		singleLineInputVC.textInputVCH.initialText = term.name
+		singleLineInputVC.textInputVCH.initialText = editedTerm.name
 		singleLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
 		singleLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-"
 		singleLineInputVC.textInputVCH.minLength = 1
@@ -218,7 +230,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	private func prepareEditDefinitionSegue (for segue: UIStoryboardSegue) {
 		multiLineInputVC = segue.destination as? MultiLineInputVC
 		multiLineInputVC.textInputVCH.fieldTitle = "DEFINITION"
-		multiLineInputVC.textInputVCH.initialText = term.definition
+		multiLineInputVC.textInputVCH.initialText = editedTerm.definition
 		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
 		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
 		multiLineInputVC.textInputVCH.minLength = 0
@@ -230,7 +242,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	private func prepareEditExampleSegue (for segue: UIStoryboardSegue) {
 		multiLineInputVC = segue.destination as? MultiLineInputVC
 		multiLineInputVC.textInputVCH.fieldTitle = "EXAMPLE"
-		multiLineInputVC.textInputVCH.initialText = term.example
+		multiLineInputVC.textInputVCH.initialText = editedTerm.example
 		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ."
 		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/.-\n\t"
 		multiLineInputVC.textInputVCH.minLength = 0
@@ -242,7 +254,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	private func prepareEditMyNotesSegue (for segue: UIStoryboardSegue) {
 		multiLineInputVC = segue.destination as? MultiLineInputVC
 		multiLineInputVC.textInputVCH.fieldTitle = "MY NOTES"
-		multiLineInputVC.textInputVCH.initialText = term.myNotes
+		multiLineInputVC.textInputVCH.initialText = editedTerm.myNotes
 		multiLineInputVC.textInputVCH.validationPrompt = "You may use letters, numbers and the following characters: ! , ( ) / ? ."
 		multiLineInputVC.textInputVCH.allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 !,()/?.-\n\t"
 		multiLineInputVC.textInputVCH.minLength = 0

@@ -10,35 +10,20 @@ import UIKit
 
 class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	@IBOutlet weak var nameTitleLabel: UILabel!
-	
 	@IBOutlet weak var headerImage: UIImageView!
-	
 	@IBOutlet weak var nameLabel: UILabel!
-	
 	@IBOutlet weak var definitionLabel: UILabel!
-	
 	@IBOutlet weak var exampleLabel: UILabel!
-	
 	@IBOutlet weak var myNotesLabel: UILabel!
-	
 	@IBOutlet weak var leftButton: UIBarButtonItem!
-	
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
-	
 	@IBOutlet weak var playAudioButton: UIButton!
-	
 	@IBOutlet weak var favoriteButton: ZUIToggleButton!
-	
 	@IBOutlet weak var deleteTermButton: UIButton!
-	
 	@IBOutlet weak var categoriesListTextView: UITextView!
-	
 	@IBOutlet weak var nameEditButton: UIButton!
-	
 	@IBOutlet weak var definitionEditButton: UIButton!
-	
 	@IBOutlet weak var exampleEditButton: UIButton!
-	
 	@IBOutlet weak var myNotesEditButton: UIButton!
 	
 	let termVCH = TermVCH()
@@ -82,6 +67,8 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		favoriteButton.isOn = termVCH.editedTerm.isFavorite
 		
 		cancelButton.isEnabled = true
+		
+		fillFields()
 		
 		if termVCH.editedTerm.termID == -1 {
 			// this is a new term
@@ -151,7 +138,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		// MARK: change the other optional fields like this
 		
-		if termVCH.term.example == "" {
+		if termVCH.editedTerm.example == "" {
 			
 			if termVCH.editedTerm.termID == -1 {
 				exampleLabel.text = "(optional)"
@@ -184,8 +171,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 	}
 
-	
-	
 	
 	func updateDisplayBACK () {
 		
@@ -322,8 +307,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		termVCH.prepare(for: segue, sender: sender)
 	}
-	
-	
 	
 	// MARK: - TermAudioDelegate functions
 	func termAudioStartedPlaying() {
