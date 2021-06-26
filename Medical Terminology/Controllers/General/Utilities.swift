@@ -76,7 +76,8 @@ class Utilities {
 		
 		let a1 = array1.sorted()
 		let a2 = array2.sorted()
-		return a1 == a2
+		let result = a1 == a2
+		return result
 	
 	}
 	

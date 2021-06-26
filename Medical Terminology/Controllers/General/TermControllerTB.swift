@@ -222,11 +222,11 @@ class TermControllerTB {
 	If this is the first new term, it will create it at termID = dbCustomTermStartingID
 	Will return the termID of the added term
 	*/
-	func saveNewTermPN (term: TermTB) {
+	func saveNewTermPN (term: TermTB) -> Int {
 		
 		if term.termID != -1 {
-			print("TermController : saveNewTermPN not allowed to save a new term when termID != -1")
-			return
+			print("TermController : saveNewTermPN not allowed to save a new term when termID != -1, returning 0")
+			return 0
 		}
 		
 		
@@ -296,6 +296,8 @@ class TermControllerTB {
 		// post notification
 		let nName = Notification.Name(myKeys.termAddedKey)
 		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : addedTermID])
+		
+		return addedTermID
 		
 	}
 	

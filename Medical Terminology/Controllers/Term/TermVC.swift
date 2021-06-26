@@ -9,6 +9,7 @@
 import UIKit
 
 class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
+
 	@IBOutlet weak var nameTitleLabel: UILabel!
 	@IBOutlet weak var headerImage: UIImageView!
 	@IBOutlet weak var nameLabel: UILabel!
@@ -55,7 +56,8 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		term name AND definition name is filled: Left button = save.ENABLED, cancel.ENABLED
 		
 		if this is not a new term:
-		there are no edits: left button = Done.ENABLED, cancel.ENABLED
+		there are no edits: left button = Done.ENABLED, cancel.DISABLED
+		
 		there are edits:
 		term name OR definition name is empty: Left button = save.DISABLED, cancel.ENABLED
 		term name AND definition name is filled: Left button = save.ENABLED, cancel.ENABLED
@@ -65,15 +67,15 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		playAudioButton.isEnabled = termVCH.editedTerm.isAudioFilePresent()
 		
 		favoriteButton.isOn = termVCH.editedTerm.isFavorite
-		
-		cancelButton.isEnabled = true
-		
+				
 		fillFields()
 		
 		if termVCH.editedTerm.termID == -1 {
-			// this is a new term
+			// this is a new unsaved term
 			leftButton.title = "Save"
 			leftButton.isEnabled =  termVCH.editedTerm.name  != "" && termVCH.editedTerm.definition != ""
+			cancelButton.isEnabled = true
+			
 			self.title = "Add New Term"
 			headerImage.image = myTheme.imageHeaderAdd
 			
@@ -89,11 +91,13 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 				// term is edited, not saved yet
 				leftButton.title = "Save"
 				leftButton.isEnabled =  termVCH.editedTerm.name  != "" && termVCH.editedTerm.definition != ""
+				cancelButton.isEnabled = true
 				
 			} else {
 				// term is not editied yet
 				leftButton.title = "Done"
 				leftButton.isEnabled = true
+				cancelButton.isEnabled = false
 			}
 			
 			// set title and header image
@@ -185,26 +189,13 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	func termAudioStoppedPlaying() {
 		playAudioButton.setImage(myTheme.imageSpeaker, for: .normal)
 	}
-	
-	@IBAction func cancelButtonAction(_ sender: Any) {
-		self.dismiss(animated: true, completion: nil)
-	}
-	
-	@IBAction func leftButtonAction(_ sender: Any) {
-		if termVCH.editedTerm.termID == -1 {
-			termVCH.saveNewTerm()
-		}
-		// prob change to POP
-		self.dismiss(animated: true, completion: nil)
 		
-	}
-	
 	// MARK: - TermVCH delegate functions
 	func shouldUpdateDisplay() {
 		updateDisplay()
 	}
 	
-	func duplicateTermName() {
+	func shouldShowDuplicateTermNameAlert() {
 		let ac = UIAlertController(title: "Opps!", message: "There is already a term with that name. Please choose a different name.", preferredStyle: .alert)
 		let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
 		
@@ -213,6 +204,25 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		self.present(ac, animated: true, completion: .none)
 		
 	}
+	
+	func shouldShowAddedTermAlert(addedTermID: Int) {
+		
+		//set up the added term to show
+		let initialTerm = tcTB.getTerm(termID: addedTermID)
+		termVCH.setInitialTerm(initialTerm: initialTerm)
+		updateDisplay()
+		
+		let ac = UIAlertController(title: "Success!", message: "Your term was added successfully and will show in alphabetical order", preferredStyle: .alert)
+		let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
+		
+		ac.addAction(ok)
+		
+		self.present(ac, animated: true, completion: nil)
+		
+		}
+	
+	// end delegate functions
+	
 	
 	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
 		
@@ -275,6 +285,38 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			present(ac, animated: true, completion: nil)
 		}
 
+	}
+	
+	@IBAction func cancelButtonAction(_ sender: Any) {
+		self.dismiss(animated: true, completion: nil)
+	}
+	
+	@IBAction func leftButtonAction(_ sender: Any) {
+		
+		/*
+		if new term, save new term -> show success dialog box -> change to new term view
+		
+		if preexisting term and there are edits -> save edits -> change to no edits state
+		
+		if preextisting term and no edits -> just dismiss
+		
+		*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		if termVCH.editedTerm.termID == -1 {
+			termVCH.saveNewTerm()
+		} else {
+			
+		}
 	}
 	
 }

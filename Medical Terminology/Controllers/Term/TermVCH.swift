@@ -12,7 +12,8 @@ import UIKit
 
 protocol TermVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
-	func duplicateTermName()
+	func shouldShowAddedTermAlert(addedTermID: Int)
+	func shouldShowDuplicateTermNameAlert()
 }
 
 class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
@@ -22,6 +23,13 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	var term : TermTB!
 	var currentCategoryID : Int!
 	// to delete
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -83,7 +91,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		if editedTerm.definition != initialTerm.definition {return true}
 		if editedTerm.example != initialTerm.example {return true}
 		if editedTerm.audioFile != initialTerm.audioFile {return true}
-		if utilities.containSameElements(array1: initialTerm.assignedCategories, array2: editedTerm.assignedCategories)  {return true}
+		if !utilities.containSameElements(array1: initialTerm.assignedCategories, array2: editedTerm.assignedCategories)  {return true}
 		
 		return false
 	}
@@ -114,7 +122,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		if !tcTB.termNameIsUnique(name: cleanString, notIncludingTermID: editedTerm.termID) {
 			// this is a duplicate term name!
-			delegate?.duplicateTermName()
+			delegate?.shouldShowDuplicateTermNameAlert()
 			return
 		}
 		
@@ -159,8 +167,9 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	
 	func saveNewTerm () {
 		
-		let newTermID = tcTB.saveNewTermPN(term: editedTerm)
-		
+		let addedTermID = tcTB.saveNewTermPN(term: editedTerm)
+		delegate?.shouldShowAddedTermAlert(addedTermID: addedTermID)
+	
 	}
 	
 	
