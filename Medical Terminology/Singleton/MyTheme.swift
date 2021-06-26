@@ -50,6 +50,7 @@ class MyTheme{
 	
     let colorCorrect = UIColor(named: "color correct")
     let colorIncorrect = UIColor(named: "color incorrect")
+	let colorDestructive = UIColor(named: "color incorrect")
     
     //MARK: Flashcards
     let colorFlashcardHomeButton = UIColor(named: "color main")

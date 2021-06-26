@@ -2770,26 +2770,16 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwC-yL-Pd7">
-                                <rect key="frame" x="20" y="488.33333333333331" width="374" height="29.999999999999943"/>
-                                <state key="normal" title="crash the app (for testing only)"/>
-                                <connections>
-                                    <action selector="crashButtonAction:" destination="hmf-BQ-AFc" eventType="touchUpInside" id="sa7-jX-leF"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mrA-iS-EoP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="VKA-xr-ZvX" firstAttribute="leading" secondItem="i1L-IB-Cn3" secondAttribute="leading" constant="30" id="35f-4j-h8q"/>
                             <constraint firstItem="VKA-xr-ZvX" firstAttribute="top" secondItem="mrA-iS-EoP" secondAttribute="top" constant="30" id="GK8-TQ-MKj"/>
-                            <constraint firstItem="bwC-yL-Pd7" firstAttribute="leading" secondItem="mrA-iS-EoP" secondAttribute="leading" constant="20" id="JRM-EN-nLw"/>
                             <constraint firstItem="mrA-iS-EoP" firstAttribute="bottom" secondItem="zDF-aD-v89" secondAttribute="bottom" constant="30" id="MLv-nR-Oah"/>
                             <constraint firstItem="mrA-iS-EoP" firstAttribute="trailing" secondItem="VKA-xr-ZvX" secondAttribute="trailing" constant="30" id="OdY-BP-5mx"/>
                             <constraint firstItem="mrA-iS-EoP" firstAttribute="trailing" secondItem="zDF-aD-v89" secondAttribute="trailing" constant="30" id="Ufg-Aa-07Q"/>
                             <constraint firstItem="zDF-aD-v89" firstAttribute="leading" secondItem="mrA-iS-EoP" secondAttribute="leading" constant="30" id="WW9-xb-vTC"/>
-                            <constraint firstItem="mrA-iS-EoP" firstAttribute="trailing" secondItem="bwC-yL-Pd7" secondAttribute="trailing" constant="20" id="cle-K7-frr"/>
-                            <constraint firstItem="bwC-yL-Pd7" firstAttribute="top" secondItem="VKA-xr-ZvX" secondAttribute="bottom" constant="20" id="kc9-Ku-e8n"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Info" id="uyt-Mb-ePH"/>
@@ -2799,7 +2789,6 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         <outlet property="appEmail" destination="VM0-gs-ow8" id="xCb-Hy-mkR"/>
                         <outlet property="appTitle" destination="lar-4a-69m" id="jAj-n1-xCh"/>
                         <outlet property="appVersion" destination="fBw-et-DbT" id="ZAK-g4-C3P"/>
-                        <outlet property="crashButton" destination="bwC-yL-Pd7" id="8Kp-rh-uIx"/>
                         <outlet property="seeWebsiteButton" destination="XtQ-VG-eOc" id="fMJ-hi-BIy"/>
                         <outlet property="showScreenSwitch" destination="KZH-mx-gQT" id="ecI-9p-R5u"/>
                     </connections>

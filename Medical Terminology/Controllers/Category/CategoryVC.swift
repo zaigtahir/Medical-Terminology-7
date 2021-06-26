@@ -92,7 +92,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			nameTitleLabel.text = "PREDEFINED CATEGORY"
 			nameEditButton.isHidden = true
 			descriptionEditButton.isHidden = true
-			deleteCategoryButton.isHidden = true
+			deleteCategoryButton.tintColor = myTheme.colorButtonDisabledTint
 			
 			leftButton.title = "Done"
 			cancelButton.isEnabled = false
@@ -102,7 +102,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			nameTitleLabel.text = "MY CATEGORY"
 			nameEditButton.isHidden = false
 			descriptionEditButton.isHidden = false
-			deleteCategoryButton.isHidden = false
+			deleteCategoryButton.tintColor = myTheme.colorDestructive
 			
 			if categoryVCH.category.categoryID == -1 {
 				// category is new
@@ -180,21 +180,37 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	@IBAction func deleteCategoryButtonAction(_ sender: Any) {
 		
-		let ac = UIAlertController(title: "Delete Category?", message: "Are you sure you want to delete this category? Just FYI: When you delete a category, no terms will be deleted", preferredStyle: .alert)
+		switch categoryVCH.category.isStandard {
 		
-		let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in
-			//self.cc.deleteCategoryPN(categoryID: self.categoryVCH.category.categoryID)
-			self.categoryVCH.deleteCategory()
-			self.navigationController?.popViewController(animated: true)
+		case true:
+			
+			let ac = UIAlertController(title: "Predefined Category", message: "This is a predefined category and can not be deleted. Only categories you create may be deleted.", preferredStyle: .alert)
+			
+			let okay = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+				return
+			}
+			
+			ac.addAction(okay)
+			present(ac, animated: true, completion: nil)
+			
+		case false:
+			
+			
+			let ac = UIAlertController(title: "Delete Category?", message: "Are you sure you want to delete this category? Just FYI: When you delete a category, no terms will be deleted", preferredStyle: .alert)
+			
+			let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in
+				//self.cc.deleteCategoryPN(categoryID: self.categoryVCH.category.categoryID)
+				self.categoryVCH.deleteCategory()
+				self.navigationController?.popViewController(animated: true)
+			}
+			
+			let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+				self.navigationController?.popViewController(animated: true)
+			}
+			
+			ac.addAction(cancel)
+			ac.addAction(delete)
+			present(ac, animated: true, completion: nil)
 		}
-		
-		let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-			self.navigationController?.popViewController(animated: true)
-		}
-		
-		ac.addAction(cancel)
-		ac.addAction(delete)
-		present(ac, animated: true, completion: nil)
-
 	}
 }

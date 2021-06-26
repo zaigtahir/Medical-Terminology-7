@@ -84,8 +84,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			
 		} else {
 			
-			
-			
 			// this is not a new term
 			if termVCH.termWasEdited() {
 				// term is edited, not saved yet
@@ -101,7 +99,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			// set title and header image
 			if termVCH.editedTerm.isStandard {
 				self.title = "Predefined Term"
-				deleteTermButton.isEnabled = false
+				deleteTermButton.tintColor = myTheme.colorButtonDisabledTint
 				nameEditButton.isHidden = true
 				definitionEditButton.isHidden = true
 				exampleEditButton.isHidden = true
@@ -110,6 +108,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			} else {
 				self.title = "My Term"
 				nameTitleLabel.text = "MY TERM"
+				deleteTermButton.tintColor = myTheme.colorDestructive
 				nameEditButton.isHidden = false
 				exampleEditButton.isHidden = false
 				definitionEditButton.isHidden = false
@@ -121,136 +120,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	}
 	
 	private func fillFields () {
-		
-		// MARK: fill fields
-		
-		if termVCH.editedTerm.name == "" {
-			nameLabel.text = "New Name"
-		} else {
-			nameLabel.text = termVCH.editedTerm.name
-		}
-		
-		if termVCH.editedTerm.definition == "" {
-			definitionLabel.text = "(required)"
-		} else {
-			definitionLabel.text = termVCH.editedTerm.definition
-		}
-		
-		// MARK: change the other optional fields like this
-		
-		if termVCH.editedTerm.example == "" {
-			
-			if termVCH.editedTerm.termID == -1 {
-				exampleLabel.text = "(optional)"
-			} else {
-				exampleLabel.text = "No example available"
-			}
-			
-		}  else {
-			exampleLabel.text = termVCH.editedTerm.example
-		}
-		
-		
-		if termVCH.editedTerm.myNotes == ""
-		{
-			
-			if termVCH.editedTerm.termID == -1 {
-				myNotesLabel.text = "(optional)"
-			} else {
-				myNotesLabel.text = "No notes available"
-			}
-			
-			
-		} else {
-			myNotesLabel.text = termVCH.editedTerm.myNotes
-		}
-		
-		// MARK: category count will never be 0
-		
-		categoriesListTextView.text = termVCH.getCategoryNamesText()
-		
-	}
-
-	
-	func updateDisplayBACK () {
-		
-		
-		// have to figure out SAVE enable/disable function based on change/no change and name + definition present when in new term mode
-		
-		/*
-		If this is a new term:
-		term name OR definition name is empty: Left button = save.DISABLED, cancel.ENABLED
-		term name AND definition name is filled: Left button = save.ENABLED, cancel.ENABLED
-		
-		if this is an existing term:
-		there are no edits: left button = Done.ENABLED, cancel.ENABLED
-		there are edits:
-		term name OR definition name is empty: Left button = save.DISABLED, cancel.ENABLED
-		term name AND definition name is filled: Left button = save.ENABLED, cancel.ENABLED
-		
-		*/
-		
-		
-		// MARK: update buttons and titles
-		
-		
-		// Aduio button
-		playAudioButton.isEnabled = termVCH.editedTerm.isAudioFilePresent()
-		
-		// Favorite button
-		favoriteButton.isOn = termVCH.editedTerm.isFavorite
-		
-		if termVCH.editedTerm.isStandard {
-			// term is standard
-			self.title = "Term Details"
-			nameTitleLabel.text = "PREDEFINED TERM"
-			
-			leftButton.title = "Done"
-			cancelButton.isEnabled = false
-			
-			deleteTermButton.isEnabled = false
-			
-			nameEditButton.isHidden = true
-			definitionEditButton.isHidden = true
-			exampleEditButton.isHidden = true
-			myNotesEditButton.isHidden = false
-			
-		} else {
-			// term is not standard
-			nameTitleLabel.text = "MY TERM"
-			nameEditButton.isHidden = false
-			exampleEditButton.isHidden = false
-			definitionEditButton.isHidden = false
-			myNotesEditButton.isHidden = false
-			
-			if termVCH.editedTerm.termID == -1 {
-				// term is new
-				self.title = "Add New Term"
-				headerImage.image = myTheme.imageHeaderAdd
-				leftButton.title = "Save"
-				
-				if (termVCH.editedTerm.name != "" && termVCH.editedTerm.definition != "") {
-					leftButton.isEnabled = true
-				} else {
-					leftButton.isEnabled = false
-				}
-				
-				cancelButton.isEnabled = true
-				deleteTermButton.isEnabled = false
-				
-				
-			} else {
-				// term is not new
-				self.title = "My Term Details"
-				
-				leftButton.title = "Done"
-				cancelButton.isEnabled = false
-				
-				deleteTermButton.isEnabled = true
-				
-			}
-		}
-		
 		
 		// MARK: fill fields
 		
@@ -322,7 +191,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	}
 	
 	@IBAction func leftButtonAction(_ sender: Any) {
-		if termVCH.term.termID == -1 {
+		if termVCH.editedTerm.termID == -1 {
 			termVCH.saveNewTerm()
 		}
 		// prob change to POP
@@ -349,19 +218,13 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		favoriteButton.isOn = !favoriteButton.isOn
 		
-		if termVCH.term.termID == -1 {
-			
-			termVCH.term.isFavorite.toggle()
-			
-		} else {
-			let _ = tcTB.toggleFavoriteStatusPN(termID: termVCH.term.termID)
-		}
+		termVCH.editedTerm.isFavorite.toggle()
 	}
 	
 	@IBAction func playAudioButtonAction(_ sender: UIButton) {
 		
-		termVCH.term.delegate = self
-		termVCH.term.playAudio()
+		termVCH.editedTerm.delegate = self
+		termVCH.editedTerm.playAudio()
 	}
 	
 	@IBAction func definitionEditButtonAction(_ sender: Any) {
@@ -381,21 +244,37 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	@IBAction func deleteTermButtonAction(_ sender: Any) {
 		
-		let ac = UIAlertController(title: "Delete This Term?", message: "Are you sure you want to delete this term from ALL categories?", preferredStyle: .alert)
+		switch termVCH.editedTerm.isStandard {
 		
-		let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in
-			self.tcTB.deleteTermPN(termID: self.termVCH.term.termID)
-			self.navigationController?.dismiss(animated: true, completion: nil)
+		case true:
+			
+			let ac = UIAlertController(title: "Predefined Term", message: "This is a predefined term and can not be deleted. Only terms you create may be deleted.", preferredStyle: .alert)
+			
+			let okay = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+				return
+			}
+			
+			ac.addAction(okay)
+			present(ac, animated: true, completion: nil)
+		
+		case false:
+			
+			let ac = UIAlertController(title: "Delete This Term?", message: "Are you sure you want to delete this term from ALL categories?", preferredStyle: .alert)
+			
+			let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in
+				self.tcTB.deleteTermPN(termID: self.termVCH.editedTerm.termID)
+				self.navigationController?.dismiss(animated: true, completion: nil)
+			}
+			
+			let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+				return
+			}
+			
+			ac.addAction(cancel)
+			ac.addAction(delete)
+			present(ac, animated: true, completion: nil)
 		}
-		
-		let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-			return
-		}
-		
-		ac.addAction(cancel)
-		ac.addAction(delete)
-		present(ac, animated: true, completion: nil)
-		
+
 	}
 	
 }

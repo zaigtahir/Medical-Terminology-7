@@ -18,13 +18,50 @@ class MyKeys {
 	let appPurchaseStatus = "appPurchaseStatus"
 	
 	
-	// MARK: - CategoryVCH notifications for CATEGORIES
+	// MARK: - notifications for CATEGORIES
 	let currentCategoryIDsChanged = "com.theappgalaxy.currentCategoresChanged"
 	
-
 	let categoryNameChangedKey = "com.theappgalaxy.categoryNameUpdatedNotification"
 	
+	// MARK: - notifications for TERMS
+	let termAddedKey = "com.theappgalaxy.termAdded"
 	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// havent reprogrammed yet
 	
 	let termCategoryIDsChanged = "com.theappgalaxy.termCategoryIDsChanged"
 	

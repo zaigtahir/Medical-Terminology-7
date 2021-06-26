@@ -217,16 +217,19 @@ class TermControllerTB {
 	
 	/**
 	will save the term to the database creating a new row in the terms table
-	will assign category All Terms, My Terms and any other that are in term.assignedCategories
+	will assign each category in  term.assignedCategories to the assignedCategories table
 	will save the favorite status of the term, as all other status will be false/unanswered
 	If this is the first new term, it will create it at termID = dbCustomTermStartingID
 	Will return the termID of the added term
 	*/
-	func addNewTerm (term: TermTB) -> Int {
+	func saveNewTermPN (term: TermTB) {
 		
-		print("termControllerTB: addNewTerm, to fix coding")
+		if term.termID != -1 {
+			print("TermController : saveNewTermPN not allowed to save a new term when termID != -1")
+			return
+		}
 		
-		/*
+		
 		var query: String
 		
 		if termExists(termID: myConstants.dbCustomTermStartingID) {
@@ -287,12 +290,13 @@ class TermControllerTB {
 		let addedTermID = Int(myDB.lastInsertRowId)
 		
 		for c in term.assignedCategories {
-			cc.assignCategoryPN(termID: addedTermID, categoryID: c)
+			cc.assignCategory(termID: addedTermID, categoryID: c)
 		}
-				
-		return addedTermID
-		*/
-		return 0	// temporary, to get rid of this line
+			
+		// post notification
+		let nName = Notification.Name(myKeys.termAddedKey)
+		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : addedTermID])
+		
 	}
 	
 	/**

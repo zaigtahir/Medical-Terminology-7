@@ -18,7 +18,6 @@ class InfoVC: UIViewController {
     @IBOutlet weak var appEmail: UILabel!
     @IBOutlet weak var showScreenSwitch: UISwitch!
     @IBOutlet weak var seeWebsiteButton: UIButton!
-	@IBOutlet weak var crashButton: UIButton!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +52,4 @@ class InfoVC: UIViewController {
         }
         
     }
-	@IBAction func crashButtonAction(_ sender: Any) {
-		
-		assert(1 == 2, "crash button pressed")
-	}
 }

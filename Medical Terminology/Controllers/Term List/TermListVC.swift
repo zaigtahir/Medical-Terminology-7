@@ -125,16 +125,22 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			case .add:
 				
 				let newTerm = TermTB()
-				newTerm.assignedCategories.append(myConstants.dbCategoryAllTermsID)
-				newTerm.assignedCategories.append(myConstants.dbCategoryMyTermsID)
-				if (termListVCH.currentCategoryID != myConstants.dbCategoryAllTermsID) && (termListVCH.currentCategoryID != myConstants.dbCategoryMyTermsID) {
-					newTerm.assignedCategories.append(termListVCH.currentCategoryID)
+				
+				// assign current categories and 1 & 2
+				newTerm.assignedCategories = termListVCH.currentCategoryIDs
+				
+				if !newTerm.assignedCategories.contains(1) {
+					newTerm.assignedCategories.append(1)
+				}
+				
+				if !newTerm.assignedCategories.contains(2) {
+					newTerm.assignedCategories.append(2)
 				}
 				
 				// sort the category names in the correct sequence
 				cc.sortAssignedCategories(term: newTerm)
 				
-				vc.termVCH.term = newTerm
+				vc.termVCH.setInitialTerm(initialTerm: newTerm)
 			}
 	
 			

@@ -29,7 +29,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	var delegate: TermVCHDelegate?
 	
 	// Updated variables
-	var initialTerm: TermTB!
+	private var initialTerm: TermTB!
 	var editedTerm = TermTB ()
 	
 	
@@ -59,9 +59,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		// setup categories
 		if initialTerm.termID == -1 {
-			//new term
-			initialTerm.assignedCategories.append(1)	// add All Terms
-			initialTerm.assignedCategories.append(2)	// add My Terms
+			//new term, the segue function sets the initialTerm.assignedCategories
 			editedTerm.assignedCategories = initialTerm.assignedCategories
 			
 		} else {
@@ -161,7 +159,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	
 	func saveNewTerm () {
 		
-		let newTermID = tcTB.addNewTerm(term: term)
+		let newTermID = tcTB.saveNewTermPN(term: editedTerm)
 		
 	}
 	
