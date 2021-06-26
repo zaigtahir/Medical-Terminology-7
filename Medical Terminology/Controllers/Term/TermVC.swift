@@ -62,22 +62,147 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	// MARK: - updateDisplay
 	
 	func updateDisplay () {
+		/*
 		
+		Format save/cancel button
+		If this is a new term:
+		term name OR definition name is empty: Left button = save.DISABLED, cancel.ENABLED
+		term name AND definition name is filled: Left button = save.ENABLED, cancel.ENABLED
+		
+		if this is not a new term:
+		there are no edits: left button = Done.ENABLED, cancel.ENABLED
+		there are edits:
+		term name OR definition name is empty: Left button = save.DISABLED, cancel.ENABLED
+		term name AND definition name is filled: Left button = save.ENABLED, cancel.ENABLED
+		
+		*/
+		
+		playAudioButton.isEnabled = termVCH.editedTerm.isAudioFilePresent()
+		
+		favoriteButton.isOn = termVCH.editedTerm.isFavorite
+		
+		cancelButton.isEnabled = true
+		
+		if termVCH.editedTerm.termID == -1 {
+			// this is a new term
+			leftButton.title = "Save"
+			leftButton.isEnabled =  termVCH.editedTerm.name  != "" && termVCH.editedTerm.definition != ""
+			self.title = "Add New Term"
+			headerImage.image = myTheme.imageHeaderAdd
+			
+			nameEditButton.isHidden = false
+			exampleEditButton.isHidden = false
+			definitionEditButton.isHidden = false
+			myNotesEditButton.isHidden = false
+			
+		} else {
+			
+			
+			
+			// this is not a new term
+			if termVCH.termWasEdited() {
+				// term is edited, not saved yet
+				leftButton.title = "Save"
+				leftButton.isEnabled =  termVCH.editedTerm.name  != "" && termVCH.editedTerm.definition != ""
+				
+			} else {
+				// term is not editied yet
+				leftButton.title = "Done"
+				leftButton.isEnabled = true
+			}
+			
+			// set title and header image
+			if termVCH.editedTerm.isStandard {
+				self.title = "Predefined Term"
+				deleteTermButton.isEnabled = false
+				nameEditButton.isHidden = true
+				definitionEditButton.isHidden = true
+				exampleEditButton.isHidden = true
+				myNotesEditButton.isHidden = false
+				
+			} else {
+				self.title = "My Term"
+				nameTitleLabel.text = "MY TERM"
+				nameEditButton.isHidden = false
+				exampleEditButton.isHidden = false
+				definitionEditButton.isHidden = false
+				myNotesEditButton.isHidden = false
+				
+			}
+		}
+
+	}
+	
+	private func fillFields () {
+		
+		// MARK: fill fields
+		
+		if termVCH.editedTerm.name == "" {
+			nameLabel.text = "New Name"
+		} else {
+			nameLabel.text = termVCH.editedTerm.name
+		}
+		
+		if termVCH.editedTerm.definition == "" {
+			definitionLabel.text = "(required)"
+		} else {
+			definitionLabel.text = termVCH.editedTerm.definition
+		}
+		
+		// MARK: change the other optional fields like this
+		
+		if termVCH.term.example == "" {
+			
+			if termVCH.editedTerm.termID == -1 {
+				exampleLabel.text = "(optional)"
+			} else {
+				exampleLabel.text = "No example available"
+			}
+			
+		}  else {
+			exampleLabel.text = termVCH.editedTerm.example
+		}
+		
+		
+		if termVCH.editedTerm.myNotes == ""
+		{
+			
+			if termVCH.editedTerm.termID == -1 {
+				myNotesLabel.text = "(optional)"
+			} else {
+				myNotesLabel.text = "No notes available"
+			}
+			
+			
+		} else {
+			myNotesLabel.text = termVCH.editedTerm.myNotes
+		}
+		
+		// MARK: category count will never be 0
+		
+		categoriesListTextView.text = termVCH.getCategoryNamesText()
+		
+	}
+
+	
+	
+	
+	func updateDisplayBACK () {
+		
+		
+		// have to figure out SAVE enable/disable function based on change/no change and name + definition present when in new term mode
 		
 		/*
-		If term is standard
-		DONE |  CANCEL: disable
-		Hide edit buttons for name, definition, example
-		Show edit buttons for my notes, categories
+		If this is a new term:
+		term name OR definition name is empty: Left button = save.DISABLED, cancel.ENABLED
+		term name AND definition name is filled: Left button = save.ENABLED, cancel.ENABLED
 		
-		If the term is NOT standard, and IS NEW
-		SAVE: enable if name and definition are not blank, otherwise disable
-		CANCEL: enable
-		Show and enable all the edit buttons
+		if this is an existing term:
+		there are no edits: left button = Done.ENABLED, cancel.ENABLED
+		there are edits:
+		term name OR definition name is empty: Left button = save.DISABLED, cancel.ENABLED
+		term name AND definition name is filled: Left button = save.ENABLED, cancel.ENABLED
 		
-		If the term is NOT standard and IS NOT NEW
-		DONE | CANCEL: disable
-		Show and enable all the edit buttons
 		*/
 		
 		
@@ -85,12 +210,12 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		
 		// Aduio button
-		playAudioButton.isEnabled = termVCH.term.isAudioFilePresent()
+		playAudioButton.isEnabled = termVCH.editedTerm.isAudioFilePresent()
 		
 		// Favorite button
-		favoriteButton.isOn = termVCH.term.isFavorite
-				
-		if termVCH.term.isStandard {
+		favoriteButton.isOn = termVCH.editedTerm.isFavorite
+		
+		if termVCH.editedTerm.isStandard {
 			// term is standard
 			self.title = "Term Details"
 			nameTitleLabel.text = "PREDEFINED TERM"
@@ -113,13 +238,13 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			definitionEditButton.isHidden = false
 			myNotesEditButton.isHidden = false
 			
-			if termVCH.term.termID == -1 {
+			if termVCH.editedTerm.termID == -1 {
 				// term is new
 				self.title = "Add New Term"
 				headerImage.image = myTheme.imageHeaderAdd
 				leftButton.title = "Save"
 				
-				if (termVCH.term.name != "" && termVCH.term.definition != "") {
+				if (termVCH.editedTerm.name != "" && termVCH.editedTerm.definition != "") {
 					leftButton.isEnabled = true
 				} else {
 					leftButton.isEnabled = false
@@ -144,37 +269,37 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		// MARK: fill fields
 		
-		if termVCH.term.name == "" {
+		if termVCH.editedTerm.name == "" {
 			nameLabel.text = "New Name"
 		} else {
-			nameLabel.text = termVCH.term.name
+			nameLabel.text = termVCH.editedTerm.name
 		}
 		
-		if termVCH.term.definition == "" {
+		if termVCH.editedTerm.definition == "" {
 			definitionLabel.text = "(required)"
 		} else {
-			definitionLabel.text = termVCH.term.definition
+			definitionLabel.text = termVCH.editedTerm.definition
 		}
 		
 		// MARK: change the other optional fields like this
 		
-		if termVCH.term.example == "" {
+		if termVCH.editedTerm.example == "" {
 			
-			if termVCH.term.termID == -1 {
+			if termVCH.editedTerm.termID == -1 {
 				exampleLabel.text = "(optional)"
 			} else {
 				exampleLabel.text = "No example available"
 			}
 			
 		}  else {
-			exampleLabel.text = termVCH.term.example
+			exampleLabel.text = termVCH.editedTerm.example
 		}
 		
 		
-		if termVCH.term.myNotes == ""
+		if termVCH.editedTerm.myNotes == ""
 		{
 			
-			if termVCH.term.termID == -1 {
+			if termVCH.editedTerm.termID == -1 {
 				myNotesLabel.text = "(optional)"
 			} else {
 				myNotesLabel.text = "No notes available"
@@ -182,7 +307,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			
 			
 		} else {
-			myNotesLabel.text = termVCH.term.myNotes
+			myNotesLabel.text = termVCH.editedTerm.myNotes
 		}
 		
 		// MARK: category count will never be 0
@@ -270,6 +395,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		termVCH.propertyReference  = .myNotes
 		performSegue(withIdentifier: myConstants.segueMultiLineInput, sender: self)
 	}
+	
 	@IBAction func deleteTermButtonAction(_ sender: Any) {
 		
 		let ac = UIAlertController(title: "Delete This Term?", message: "Are you sure you want to delete this term from ALL categories?", preferredStyle: .alert)

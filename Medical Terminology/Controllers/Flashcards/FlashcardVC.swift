@@ -156,7 +156,7 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		
 			vc.termVCH.term = term
 			vc.termVCH.currentCategoryID = flashCardVCH.currentCategoryID
-			vc.termVCH.updateData()
+
 			
 			
 		default:

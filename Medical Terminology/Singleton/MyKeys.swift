@@ -26,10 +26,6 @@ class MyKeys {
 	
 	
 	
-	
-	
-	
-	
 	let termCategoryIDsChanged = "com.theappgalaxy.termCategoryIDsChanged"
 	
 	
@@ -52,13 +48,6 @@ class MyKeys {
 	
 	// MARK: - Term Controller notifications
 	let setFavoriteStatusKey = "com.theappgalaxy.termInformationChangedNotification"
-	
-	let assignCategoryKey = "com.theappgalaxy.termAssignedCategoryNotification"
-	
-	let unassignCategoryKey = "com.theappgalaxy.termUnassignedCategoryNotification"
-
-	
-	
 	
 	
 	// MARK: - Category controller notifications

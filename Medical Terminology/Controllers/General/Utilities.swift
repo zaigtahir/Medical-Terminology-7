@@ -69,7 +69,10 @@ class Utilities {
 	
 	}
 	
-	func areIdentical (array1 : [Int], array2 : [Int]) -> Bool {
+	/**
+	Will return true if each array contains the same elements regardless of order of elements
+	*/
+	func containSameElements (array1 : [Int], array2 : [Int]) -> Bool {
 		
 		let a1 = array1.sorted()
 		let a2 = array2.sorted()

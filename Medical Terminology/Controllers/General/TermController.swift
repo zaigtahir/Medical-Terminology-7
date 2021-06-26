@@ -206,6 +206,10 @@ class TermController {
 	*/
 	func saveNewTerm (term: Term) -> Int {
 		
+		print("TermController: saveNewTerm need code.. actually get rid of this termController ")
+		
+		return 0 // temporary to get rid of
+		/*
 		var query: String
 		
 		if termExists(termID: myConstants.dbCustomTermStartingID) {
@@ -233,6 +237,7 @@ class TermController {
 		}
 		
 		return addedTermID
+*/
 		
 	}
 	
@@ -296,6 +301,10 @@ class TermController {
 	}
 	
 	func deleteTermPN (termID: Int) {
+
+		print("TermController: deleteTermPN, need to code this function")
+		
+		/*
 		// unassign from assignedCategories and PN
 		
 		let ids = self.getTermCategoryIDs(termID: termID)
@@ -307,7 +316,7 @@ class TermController {
 		// delete from the term table. The term deletion does not need to PN
 		let query1 = "DELETE FROM \(terms) WHERE termID = \(termID)"
 		let _ = myDB.executeStatements(query1)
-		
+		*/
 	}
 	
 	

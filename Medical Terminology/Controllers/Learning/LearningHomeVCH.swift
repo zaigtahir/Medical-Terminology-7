@@ -55,13 +55,6 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 		
 		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
-		
-		let nameACK = Notification.Name(myKeys.assignCategoryKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(assignCategoryN(notification:)), name: nameACK, object: nil)
-		
-		let nameUCK = Notification.Name(myKeys.unassignCategoryKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(unassignCategoryN(notification:)), name: nameUCK, object: nil)
-		
 	
 		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)

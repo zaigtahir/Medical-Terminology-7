@@ -85,64 +85,6 @@ class CategoryController {
 		
 	}
 	
-	// MARK: - toggle category functions
-	/**
-	If the category is not already assigned, assign it (and vice versa), update the DB and reload the assigned categories in the term
-	
-	Note, this function is NOT updating the local term assignedCategories property. You will need to update that list when needed
-	
-	*/
-	func toggleCategories (term: Term, categoryID: Int) {
-		
-		if term.assignedCategories.contains(categoryID) {
-			//this category is already assigned to this term, so need to remove it
-			unassignCategoryPN(termID: term.termID, categoryID: categoryID)
-		} else {
-			
-			//this category is not assigned to this term, so need to add it
-			assignCategoryPN(termID: term.termID, categoryID: categoryID)
-		}
-	}
-	
-	/**
-	Update the categories just locally in the term, and nothing is saved to the DB. The categories are sorted.
-	*/
-	func toggleCategoriesNewTermPN (term: TermTB, categoryID: Int) {
-		
-		if term.assignedCategories.contains(categoryID) {
-			
-			// need to remove it
-			if term.assignedCategories.last == categoryID {
-				term.assignedCategories.removeLast()
-			} else {
-				
-				if let indexToRemove = term.assignedCategories.firstIndex(of: categoryID) {
-					
-					term.assignedCategories.remove(at: indexToRemove)
-				}
-			}
-		
-			// send out notification
-			let data = ["termID" : term.termID, "categoryID" : categoryID]
-			let name = Notification.Name(myKeys.unassignCategoryKey)
-			NotificationCenter.default.post(name: name, object: self, userInfo: data)
-			
-		} else {
-			
-			// categoryID is not part of assignedCategories, so add to it
-			term.assignedCategories.append(categoryID)
-			
-			// sort the categories to the usual order
-			sortAssignedCategories(term: term)
-			
-			// send out notification
-			let data = ["termID" : term.termID, "categoryID" : categoryID]
-			let name = Notification.Name(myKeys.assignCategoryKey)
-			NotificationCenter.default.post(name: name, object: self, userInfo: data)
-		}
-	
-	}
-
 	/**
 	Use this to sort the categories in a new term as they are no retrived from the db in my ususual order
 	*/
@@ -341,42 +283,6 @@ class CategoryController {
 		let query = "DELETE FROM \(assignedCategories) WHERE termID = \(termID) AND categoryID = \(categoryID)"
 		
 		myDB.executeStatements(query)
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// MARK: move to different controller
-	func assignCategoryPN (termID: Int, categoryID: Int) {
-		let query = "INSERT INTO \(assignedCategories) ('termID', 'categoryID') VALUES (\(termID), \(categoryID))"
-		myDB.executeStatements(query)
-		
-		// send out notification
-		let data = ["termID" : termID, "categoryID" : categoryID]
-		let name = Notification.Name(myKeys.assignCategoryKey)
-		NotificationCenter.default.post(name: name, object: self, userInfo: data)
-	}
-	
-	func unassignCategoryPN (termID: Int, categoryID: Int) {
-		let query = "DELETE FROM \(assignedCategories) WHERE termID = \(termID) AND categoryID = \(categoryID)"
-		myDB.executeStatements(query)
-		
-		
-		// send out notification
-		let data = ["termID" : termID, "categoryID" : categoryID]
-		let name = Notification.Name(myKeys.unassignCategoryKey)
-		NotificationCenter.default.post(name: name, object: self, userInfo: data)
 	}
 	
 }

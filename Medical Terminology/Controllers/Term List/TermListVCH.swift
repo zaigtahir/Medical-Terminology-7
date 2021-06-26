@@ -77,20 +77,9 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		changeCategoryNameKey
 		*/
 		
-		
-		
-		
-		let nameACK = Notification.Name(myKeys.assignCategoryKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(assignCategoryN(notification:)), name: nameACK, object: nil)
-		
-		let nameUCK = Notification.Name(myKeys.unassignCategoryKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(unassignCategoryN(notification:)), name: nameUCK, object: nil)
-		
 		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
-		
-		
-		
+	
 		
 		// MARK: - Category notifications
 		

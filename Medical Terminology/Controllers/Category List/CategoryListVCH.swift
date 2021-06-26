@@ -140,7 +140,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	func checkSelectedCategoriesPN () {
 		
-		if !utilities.areIdentical(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
+		if !utilities.containSameElements(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
 			
 			// Fire off a notification based on the list based on the categoryListMode
 			

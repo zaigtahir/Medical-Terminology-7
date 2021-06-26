@@ -119,8 +119,8 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			
 			case .view:
 				let term = tcTB.getTerm(termID: termListVCH.termIDForSegue)
-				vc.termVCH.term = term
-				vc.termVCH.updateData()
+				vc.termVCH.setInitialTerm(initialTerm: term)
+
 				
 			case .add:
 				
