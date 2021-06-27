@@ -1227,20 +1227,20 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definition" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJc-sg-B9e">
-                                <rect key="frame" x="20" y="269" width="324" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="20" y="253.00000000000003" width="324" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfb-YM-0Y4">
-                                <rect key="frame" x="20" y="337" width="324" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="20" y="313.33333333333331" width="324" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08w-aP-d8G">
-                                <rect key="frame" x="20" y="189" width="324" height="30"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <rect key="frame" x="20" y="189" width="324" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <color key="textColor" name="color main"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1251,7 +1251,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Yfp-XZ-PcZ"/>
                                 </constraints>
                                 <color key="tintColor" name="color text"/>
-                                <state key="normal" image="chevron.right" catalog="system">
+                                <state key="normal" image="square.and.pencil" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
                                 </state>
                                 <connections>
@@ -1259,55 +1259,55 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx6-uT-apC">
-                                <rect key="frame" x="364" y="249" width="30" height="30"/>
+                                <rect key="frame" x="364" y="233" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="HfV-Kb-Io1"/>
                                     <constraint firstAttribute="height" constant="30" id="fv8-10-Dn6"/>
                                 </constraints>
                                 <color key="tintColor" name="color text"/>
-                                <state key="normal" image="chevron.right" catalog="system"/>
+                                <state key="normal" image="square.and.pencil" catalog="system"/>
                                 <connections>
                                     <action selector="definitionEditButtonAction:" destination="cpZ-GR-xZj" eventType="touchUpInside" id="h8T-Vg-hJW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cie-KH-EBq">
-                                <rect key="frame" x="364" y="317" width="30" height="30"/>
+                                <rect key="frame" x="364" y="293.33333333333331" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cvT-K2-2jn"/>
                                     <constraint firstAttribute="width" constant="30" id="wPZ-93-sIX"/>
                                 </constraints>
                                 <color key="tintColor" name="color text"/>
-                                <state key="normal" image="chevron.right" catalog="system"/>
+                                <state key="normal" image="square.and.pencil" catalog="system"/>
                                 <connections>
                                     <action selector="exampleEditButtonAction:" destination="cpZ-GR-xZj" eventType="touchUpInside" id="Vdj-cJ-M8r"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(none available)" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpt-sA-AtM">
-                                <rect key="frame" x="20" y="405" width="324" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="20" y="373.66666666666669" width="324" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GA-Z8-4QI">
-                                <rect key="frame" x="364" y="448.66666666666669" width="30" height="30"/>
+                                <rect key="frame" x="364" y="419.66666666666669" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GeS-FR-vTb"/>
                                     <constraint firstAttribute="width" constant="30" id="MKX-bb-bG0"/>
                                 </constraints>
                                 <color key="tintColor" name="color text"/>
-                                <state key="normal" image="chevron.right" catalog="system"/>
+                                <state key="normal" image="square.stack.3d.up.fill" catalog="system"/>
                                 <connections>
                                     <segue destination="Ruo-Ko-dgu" kind="presentation" identifier="segueAssignCategory" modalPresentationStyle="fullScreen" id="UJA-hr-35q"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXAMPLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFx-P5-vYB">
-                                <rect key="frame" x="20" y="317" width="324" height="17"/>
+                                <rect key="frame" x="20" y="293.33333333333331" width="324" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEFINITION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RV-F9-egC">
-                                <rect key="frame" x="20" y="249" width="324" height="17"/>
+                                <rect key="frame" x="20" y="233" width="324" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
@@ -1322,34 +1322,34 @@
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY NOTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1K-59-HKd">
-                                <rect key="frame" x="20" y="385" width="324" height="17"/>
+                                <rect key="frame" x="20" y="353.66666666666669" width="324" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ASSIGN CATEGORIES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eX-ez-7nk">
-                                <rect key="frame" x="20" y="448.66666666666669" width="324" height="17"/>
+                                <rect key="frame" x="20" y="419.66666666666669" width="324" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WNQ-fg-GYS">
-                                <rect key="frame" x="364" y="385" width="30" height="30"/>
+                                <rect key="frame" x="364" y="353.66666666666669" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="B08-Ut-G0E"/>
                                     <constraint firstAttribute="height" constant="30" id="u1N-rc-yGQ"/>
                                 </constraints>
                                 <color key="tintColor" name="color text"/>
-                                <state key="normal" image="chevron.right" catalog="system"/>
+                                <state key="normal" image="square.and.pencil" catalog="system"/>
                                 <connections>
                                     <action selector="myNotesEditButtonAction:" destination="cpZ-GR-xZj" eventType="touchUpInside" id="dxq-8C-ovP"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="catetories list. If there are no categories assigned, just leave blank" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0J-BT-Ber">
-                                <rect key="frame" x="20" y="465.66666666666669" width="324" height="220.33333333333331"/>
+                                <rect key="frame" x="20" y="436.66666666666669" width="324" height="249.33333333333331"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" name="color text"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREDEFINED TERM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="264-kK-9dG">
@@ -1377,11 +1377,11 @@
                             <constraint firstItem="cie-KH-EBq" firstAttribute="leading" secondItem="ACE-r7-tgp" secondAttribute="leading" id="D65-R0-fb2"/>
                             <constraint firstItem="6eX-ez-7nk" firstAttribute="trailing" secondItem="264-kK-9dG" secondAttribute="trailing" id="DAQ-tv-2mG"/>
                             <constraint firstItem="6GA-Z8-4QI" firstAttribute="leading" secondItem="ACE-r7-tgp" secondAttribute="leading" id="FQ1-3e-5bP"/>
-                            <constraint firstItem="c1K-59-HKd" firstAttribute="top" secondItem="kfb-YM-0Y4" secondAttribute="bottom" constant="30" id="FRQ-2O-bfz"/>
+                            <constraint firstItem="c1K-59-HKd" firstAttribute="top" secondItem="kfb-YM-0Y4" secondAttribute="bottom" constant="20" id="FRQ-2O-bfz"/>
                             <constraint firstItem="r0J-BT-Ber" firstAttribute="leading" secondItem="264-kK-9dG" secondAttribute="leading" id="HPi-bN-w3h"/>
                             <constraint firstItem="HFx-P5-vYB" firstAttribute="leading" secondItem="264-kK-9dG" secondAttribute="leading" id="JIa-Qu-Jaa"/>
                             <constraint firstItem="08w-aP-d8G" firstAttribute="leading" secondItem="264-kK-9dG" secondAttribute="leading" id="KCw-O7-t4W"/>
-                            <constraint firstItem="HFx-P5-vYB" firstAttribute="top" secondItem="GJc-sg-B9e" secondAttribute="bottom" constant="30" id="LtG-bo-jVf"/>
+                            <constraint firstItem="HFx-P5-vYB" firstAttribute="top" secondItem="GJc-sg-B9e" secondAttribute="bottom" constant="20" id="LtG-bo-jVf"/>
                             <constraint firstItem="264-kK-9dG" firstAttribute="leading" secondItem="K4h-BT-qAI" secondAttribute="leading" constant="20" id="NYI-BF-cmD"/>
                             <constraint firstItem="Lx6-uT-apC" firstAttribute="leading" secondItem="ACE-r7-tgp" secondAttribute="leading" id="Nfx-Bj-40q"/>
                             <constraint firstItem="HFx-P5-vYB" firstAttribute="trailing" secondItem="264-kK-9dG" secondAttribute="trailing" id="OF6-ib-Q35"/>
@@ -1393,7 +1393,7 @@
                             <constraint firstItem="Lx6-uT-apC" firstAttribute="top" secondItem="9RV-F9-egC" secondAttribute="top" id="U6D-9i-3RT"/>
                             <constraint firstItem="6GA-Z8-4QI" firstAttribute="top" secondItem="6eX-ez-7nk" secondAttribute="top" id="USL-vX-7y1"/>
                             <constraint firstItem="c1K-59-HKd" firstAttribute="trailing" secondItem="Qpt-sA-AtM" secondAttribute="trailing" id="VEC-eC-9G0"/>
-                            <constraint firstItem="9RV-F9-egC" firstAttribute="top" secondItem="08w-aP-d8G" secondAttribute="bottom" constant="30" id="WbT-h3-olH"/>
+                            <constraint firstItem="9RV-F9-egC" firstAttribute="top" secondItem="08w-aP-d8G" secondAttribute="bottom" constant="20" id="WbT-h3-olH"/>
                             <constraint firstItem="ACE-r7-tgp" firstAttribute="top" secondItem="264-kK-9dG" secondAttribute="top" id="Wuv-4G-3sQ"/>
                             <constraint firstItem="K4h-BT-qAI" firstAttribute="trailing" secondItem="ACE-r7-tgp" secondAttribute="trailing" constant="20" id="Yqm-I6-SWO"/>
                             <constraint firstItem="GJc-sg-B9e" firstAttribute="trailing" secondItem="9RV-F9-egC" secondAttribute="trailing" id="ZF2-1x-ALs"/>
@@ -3675,7 +3675,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
         <segue reference="i1H-T2-eqP"/>
         <segue reference="MkZ-Rk-3Eg"/>
         <segue reference="HWU-Cd-rtW"/>
-        <segue reference="WdJ-IQ-Ral"/>
+        <segue reference="UJA-hr-35q"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
@@ -3702,6 +3702,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
         <image name="shuffle" catalog="system" width="128" height="93"/>
         <image name="speaker.fill" catalog="system" width="128" height="128"/>
         <image name="square" catalog="system" width="128" height="114"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="124"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="trash" catalog="system" width="121" height="128"/>

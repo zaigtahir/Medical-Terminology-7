@@ -24,7 +24,24 @@ class MyKeys {
 	let categoryNameChangedKey = "com.theappgalaxy.categoryNameUpdatedNotification"
 	
 	// MARK: - notifications for TERMS
-	let termAddedKey = "com.theappgalaxy.termAdded"
+	let termAddedKey = "com.theappgalaxy.termWasAdded"
+
+	let termUpdatedKey = "com.theappgalaxy.termWasAdded"
+	
+	
+	
+	
+	
+	
+	// to remove
+	let termCategoryIDsChanged = "to REMOVE"
+	let termInformationChangedKey = "to remove 2"
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -32,52 +49,6 @@ class MyKeys {
 	
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// havent reprogrammed yet
-	
-	let termCategoryIDsChanged = "com.theappgalaxy.termCategoryIDsChanged"
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	//REMOVE
 	// MARK: - CategoryVCH notifications (TO REMOVE)
@@ -86,17 +57,5 @@ class MyKeys {
 	// MARK: - Term Controller notifications
 	let setFavoriteStatusKey = "com.theappgalaxy.termInformationChangedNotification"
 	
-	
-	// MARK: - Category controller notifications
-
-	
-	
-	
-	
-	
-	
-	
-	
-	let termInformationChangedKey = "com.theappgalaxy.changeTermInfoNotification"
 }
 

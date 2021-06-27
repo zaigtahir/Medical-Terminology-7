@@ -40,6 +40,7 @@ class TermControllerTB {
 	
 	let cc = CategoryController()
 	let sc = SettingsController()
+	let utilities = Utilities()
 	let queries = Queries()
 	
 	func termExists (termID: Int) -> Bool {
@@ -301,6 +302,45 @@ class TermControllerTB {
 		
 	}
 	
+	/*
+	will save updates to the db for this term using it's given ID
+	will send off notifications if the name is changed or assigned categories are changed
+	*/
+	
+	func updateTermPN (term: TermTB) {
+		
+		let initialTerm = getTerm(termID: term.termID)
+		
+		let query = """
+			UPDATE \(terms)
+			SET
+			name = "\(term.name)",
+			definition = "\(term.definition)",
+			example = "\(term.example)",
+			myNotes = "\(term.myNotes)",
+			audiofile = "\(term.audioFile)",
+			isFavorite = "\(term.isFavorite ? 1 : 0)"
+			WHERE
+			termID = \(term.termID)
+		"""
+		
+		myDB.executeStatements(query)
+		
+		// send out notification if the term name or categories have changed
+		// the other changes in values will not affect other parts of the program
+		
+		if (initialTerm.name != term.name) || !utilities.containSameElements(array1: initialTerm.assignedCategories, array2: term.assignedCategories) {
+			
+			print("termControllerTB: updatTermPN, posting termUpdatedKey")
+			
+			let nName = Notification.Name(myKeys.termUpdatedKey)
+			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : term.termID])
+		
+		}
+	
+		
+	}
+	
 	/**
 	Save a term to the db, use when migrating custom terms
 	Copies everything including the termID
@@ -352,45 +392,6 @@ class TermControllerTB {
 	
 	
 	// MARK: - term update functions
-	
-	func updateTermNamePN (termID: Int, name: String) {
-		let query = "UPDATE \(terms) SET name = '\(name)' WHERE termID = \(termID)"
-		myDB.executeStatements(query)
-		
-		// post notification
-		let nName = Notification.Name(myKeys.termInformationChangedKey)
-		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
-	}
-	
-	func updateTermExamplePN (termID: Int, example: String) {
-		let query = "UPDATE \(terms) SET example = '\(example)' WHERE termID = \(termID)"
-		myDB.executeStatements(query)
-		
-		// post notification
-		let nName = Notification.Name(myKeys.termInformationChangedKey)
-		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
-	}
-	
-	func updateTermDefinitionPN (termID: Int, definition: String) {
-		
-		let query = "UPDATE \(terms) SET definition = '\(definition)' WHERE termID = \(termID)"
-		myDB.executeStatements(query)
-		
-		// post notification
-		let nName = Notification.Name(myKeys.termInformationChangedKey)
-		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
-	}
-	
-	func updateTermMyNotesPN (termID: Int, myNotes: String) {
-		
-		let query = "UPDATE \(terms) SET myNotes = '\(myNotes)' WHERE termID = \(termID)"
-		myDB.executeStatements(query)
-		
-		// post notification
-		let nName = Notification.Name(myKeys.termInformationChangedKey)
-		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
-		
-	}
 	
 	func deleteTermPN (termID: Int) {
 		// unassign from assignedCategories and PN

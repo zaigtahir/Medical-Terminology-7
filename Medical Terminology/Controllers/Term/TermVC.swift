@@ -64,43 +64,99 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		*/
 		
-		playAudioButton.isEnabled = termVCH.editedTerm.isAudioFilePresent()
-		
-		favoriteButton.isOn = termVCH.editedTerm.isFavorite
-				
-		fillFields()
-		
-		if termVCH.editedTerm.termID == -1 {
-			// this is a new unsaved term
-			leftButton.title = "Save"
-			leftButton.isEnabled =  termVCH.editedTerm.name  != "" && termVCH.editedTerm.definition != ""
-			cancelButton.isEnabled = true
+
+		func fillFields () {
 			
-			self.title = "Add New Term"
-			headerImage.image = myTheme.imageHeaderAdd
+			// MARK: fill fields
 			
-			nameEditButton.isHidden = false
-			exampleEditButton.isHidden = false
-			definitionEditButton.isHidden = false
-			myNotesEditButton.isHidden = false
-			
-		} else {
-			
-			// this is not a new term
-			if termVCH.termWasEdited() {
-				// term is edited, not saved yet
-				leftButton.title = "Save"
-				leftButton.isEnabled =  termVCH.editedTerm.name  != "" && termVCH.editedTerm.definition != ""
-				cancelButton.isEnabled = true
-				
+			if termVCH.editedTerm.name == "" {
+				nameLabel.text = "New Name"
 			} else {
-				// term is not editied yet
-				leftButton.title = "Done"
-				leftButton.isEnabled = true
-				cancelButton.isEnabled = false
+				nameLabel.text = termVCH.editedTerm.name
 			}
 			
-			// set title and header image
+			if termVCH.editedTerm.definition == "" {
+				definitionLabel.text = "(required)"
+			} else {
+				definitionLabel.text = termVCH.editedTerm.definition
+			}
+			
+			// MARK: change the other optional fields like this
+			
+			if termVCH.editedTerm.example == "" {
+				
+				if termVCH.editedTerm.termID == -1 {
+					exampleLabel.text = "(optional)"
+				} else {
+					exampleLabel.text = "No example available"
+				}
+				
+			}  else {
+				exampleLabel.text = termVCH.editedTerm.example
+			}
+			
+			
+			if termVCH.editedTerm.myNotes == ""
+			{
+				
+				if termVCH.editedTerm.termID == -1 {
+					myNotesLabel.text = "(optional)"
+				} else {
+					myNotesLabel.text = "No notes available"
+				}
+				
+				
+			} else {
+				myNotesLabel.text = termVCH.editedTerm.myNotes
+			}
+			
+			// MARK: category count will never be 0
+			
+			categoriesListTextView.text = termVCH.getCategoryNamesText()
+			
+		}
+		
+		func formatButtons() {
+			
+			/*
+			If the term is edited:
+				name + definition are valid: Save.Enabled, Cancel.Enabled
+				name + definition not valid: Save.Disabled, Cancel.Enabled
+			
+			if the term is NOT edited:
+			new term: Save.Disabled, Cancel.Enabled
+			not new term: Done.Enabled, Cancel.Disabled
+			
+			*/
+			
+			if termVCH.termWasEdited() {
+				// there is a change
+				if termVCH.editedTerm.name != "" && termVCH.editedTerm.definition != "" {
+					// both required fields have data
+					leftButton.title = "Save"
+					leftButton.isEnabled = true
+					cancelButton.isEnabled = true
+				} else {
+					leftButton.title = "Save"
+					leftButton.isEnabled = false
+					cancelButton.isEnabled = true
+				}
+				
+			} else {
+				// there is no change
+				if termVCH.editedTerm.termID == -1 {
+					// is new term
+					leftButton.title = "Save"
+					leftButton.isEnabled = false
+					cancelButton.isEnabled = true
+				} else {
+					leftButton.title = "Done"
+					leftButton.isEnabled = true
+					cancelButton.isEnabled = false
+				}
+			}
+			
+			
 			if termVCH.editedTerm.isStandard {
 				self.title = "Predefined Term"
 				deleteTermButton.tintColor = myTheme.colorButtonDisabledTint
@@ -120,59 +176,14 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 				
 			}
 		}
+		
+		formatButtons()
+		
+		fillFields()
 
 	}
 	
-	private func fillFields () {
-		
-		// MARK: fill fields
-		
-		if termVCH.editedTerm.name == "" {
-			nameLabel.text = "New Name"
-		} else {
-			nameLabel.text = termVCH.editedTerm.name
-		}
-		
-		if termVCH.editedTerm.definition == "" {
-			definitionLabel.text = "(required)"
-		} else {
-			definitionLabel.text = termVCH.editedTerm.definition
-		}
-		
-		// MARK: change the other optional fields like this
-		
-		if termVCH.editedTerm.example == "" {
-			
-			if termVCH.editedTerm.termID == -1 {
-				exampleLabel.text = "(optional)"
-			} else {
-				exampleLabel.text = "No example available"
-			}
-			
-		}  else {
-			exampleLabel.text = termVCH.editedTerm.example
-		}
-		
-		
-		if termVCH.editedTerm.myNotes == ""
-		{
-			
-			if termVCH.editedTerm.termID == -1 {
-				myNotesLabel.text = "(optional)"
-			} else {
-				myNotesLabel.text = "No notes available"
-			}
-			
-			
-		} else {
-			myNotesLabel.text = termVCH.editedTerm.myNotes
-		}
-		
-		// MARK: category count will never be 0
-		
-		categoriesListTextView.text = termVCH.getCategoryNamesText()
-		
-	}
+	
 	
 	// MARK: - Prepare Segue
 	
@@ -204,23 +215,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		self.present(ac, animated: true, completion: .none)
 		
 	}
-	
-	func shouldShowAddedTermAlert(addedTermID: Int) {
-		
-		//set up the added term to show
-		let initialTerm = tcTB.getTerm(termID: addedTermID)
-		termVCH.setInitialTerm(initialTerm: initialTerm)
-		updateDisplay()
-		
-		let ac = UIAlertController(title: "Success!", message: "Your term was added successfully and will show in alphabetical order", preferredStyle: .alert)
-		let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
-		
-		ac.addAction(ok)
-		
-		self.present(ac, animated: true, completion: nil)
-		
-		}
-	
+
 	// end delegate functions
 	
 	
@@ -302,21 +297,29 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		
 		*/
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		if termVCH.editedTerm.termID == -1 {
+			// this is a new term, so save it
 			termVCH.saveNewTerm()
-		} else {
+			updateDisplay()
 			
+			let ac = UIAlertController(title: "Success!", message: "Your term was successfully saved, and it will show up in alphabetical order in the list of terms.", preferredStyle: .alert)
+			let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
+			ac.addAction(ok)
+			self.present(ac, animated: true, completion: nil)
+			
+		} else {
+			// this is not a new term, so check to see it has been editied
+			
+			if termVCH.termWasEdited() {
+				
+				termVCH.updateTermPN()
+				
+			} else {
+				
+				self.navigationController?.dismiss(animated: true, completion: nil)
+				
+			}
 		}
 	}
-	
 }
+

@@ -12,7 +12,6 @@ import UIKit
 
 protocol TermVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
-	func shouldShowAddedTermAlert(addedTermID: Int)
 	func shouldShowDuplicateTermNameAlert()
 }
 
@@ -23,15 +22,6 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	var term : TermTB!
 	var currentCategoryID : Int!
 	// to delete
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	var propertyReference : PropertyReference!
 	var delegate: TermVCHDelegate?
@@ -90,6 +80,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		if editedTerm.name != initialTerm.name {return true}
 		if editedTerm.definition != initialTerm.definition {return true}
 		if editedTerm.example != initialTerm.example {return true}
+		if editedTerm.myNotes != initialTerm.myNotes {return true}
 		if editedTerm.audioFile != initialTerm.audioFile {return true}
 		if !utilities.containSameElements(array1: initialTerm.assignedCategories, array2: editedTerm.assignedCategories)  {return true}
 		
@@ -167,8 +158,23 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	
 	func saveNewTerm () {
 		
+		// saves new term and loads it as the initial term
 		let addedTermID = tcTB.saveNewTermPN(term: editedTerm)
-		delegate?.shouldShowAddedTermAlert(addedTermID: addedTermID)
+		let newTerm  = tcTB.getTerm(termID: addedTermID)
+		
+		setInitialTerm(initialTerm: newTerm)
+	
+	}
+	
+	func updateTermPN () {
+		
+		// will update the db with values from the edited term, and set the etited term as the initial term so that when the display refreshes, the VC will show the saved state
+		
+		tcTB.updateTermPN(term: editedTerm)
+		
+		//reset the editedTerm as the initialTerm
+		setInitialTerm(initialTerm: editedTerm)
+		delegate?.shouldUpdateDisplay()
 	
 	}
 	
