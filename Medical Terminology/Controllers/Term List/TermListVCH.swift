@@ -39,7 +39,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	var showFavoritesOnly = false
 	
-	
 	var searchText : String?
 	
 	var termsList = TermsList()
@@ -66,21 +65,22 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		
 		updateData ()
 		
-		/*
-		Notification keys this controller will need to respond to
 		
-		currentCategoryChangedKey
-		setFavoriteStatusKey
-		assignCategoryKey
-		unassignCategoryKey
-		deleteCategoryKey
-		changeCategoryNameKey
+		/*
+		termAdded
+		termUpdated
+		termDeleted
+		
+		currentCategoryIDsChanged
+		categoryChanged
+		categoryNameChanged
+		categoryDeleted
+		
+		favoriteStatusChanged
 		*/
 		
-		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
-	
 		
+
 		// MARK: - Category notifications
 		
 		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChanged)
@@ -90,12 +90,20 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
 		
+		// MARK: - Term notifications
+		let nameTAN = Notification.Name(myKeys.termAddedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termAddedN(notification:)), name: nameTAN, object: nil)
+		
+		let nameTCN = Notification.Name(myKeys.termChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termChangedN(notification:)), name: nameTCN, object: nil)
+		
+		let nameTDN = Notification.Name(myKeys.termDeletedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termDeletedN(notification:)), name: nameTDN, object: nil)
+		
 		// MARK: - Favorite status notification
 		
 		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
-		
-		
 		
 		
 	}
@@ -173,65 +181,18 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	// MARK: - Term notification functions
 	
-	@objc func termInformationChangedN (notification: Notification) {
-		
-		/*
-		updating just the row causes some misalignment issues unless I use an animation of .fade, but then the row has a slight faid flicker animation which I don't want
-		don't have to reload the data as no termID will change, as the termsList will only contain termIDs. When the cell refreshes, it will get the new term information from the database
-		*/
-		
-		delegate?.shouldReloadTable()
-		delegate?.shouldUpdateDisplay()
+	@objc func termAddedN  (notification: Notification) {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@objc func assignCategoryN (notification : Notification) {
-		
-		if let data = notification.userInfo as? [String : Int] {
-			let categoryID = data["categoryID"]!
-			if categoryID == currentCategoryID {
-				
-				updateDataAndDisplay()
-			}
-		}
-	}
-	
-	@objc func unassignCategoryN (notification : Notification){
-		
-		if let data = notification.userInfo as? [String : Int] {
-			let categoryID = data["categoryID"]!
-			if categoryID == currentCategoryID {
-				updateDataAndDisplay()
-			}
-		}
+	@objc func termChangedN  (notification: Notification) {
 		
 	}
+	
+	@objc func termDeletedN  (notification: Notification) {
+		
+	}
+	
 	
 	
 	// MARK: - Update data function

@@ -153,9 +153,8 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 			let termID  = flashCardVCH.termIDs[cellIndex]
 			
 			let term = tcTB.getTerm(termID: termID)
-		
-			vc.termVCH.term = term
-			vc.termVCH.currentCategoryID = flashCardVCH.currentCategoryID
+
+			vc.termVCH.setInitialTerm(initialTerm: term)
 
 			
 			

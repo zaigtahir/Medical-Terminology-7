@@ -312,7 +312,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			
 			if termVCH.termWasEdited() {
 				
-				termVCH.updateTermPN()
+				termVCH.updateTerm()
 				
 			} else {
 				

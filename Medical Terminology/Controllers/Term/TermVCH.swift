@@ -166,9 +166,9 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 	
 	}
 	
-	func updateTermPN () {
+	func updateTerm () {
 		
-		// will update the db with values from the edited term, and set the etited term as the initial term so that when the display refreshes, the VC will show the saved state
+		// will update the db with values from the edited term, and set the edited term as the initial term so that when the display refreshes, the VC will show the saved state
 		
 		tcTB.updateTermPN(term: editedTerm)
 		

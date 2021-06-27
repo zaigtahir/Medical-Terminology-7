@@ -18,15 +18,44 @@ class MyKeys {
 	let appPurchaseStatus = "appPurchaseStatus"
 	
 	
-	// MARK: - notifications for CATEGORIES
+	// MARK: - notifications for currentCategoryIDs
+	
 	let currentCategoryIDsChanged = "com.theappgalaxy.currentCategoresChanged"
+	
+	// MARK: - notifications for categories
 	
 	let categoryNameChangedKey = "com.theappgalaxy.categoryNameUpdatedNotification"
 	
-	// MARK: - notifications for TERMS
+	let categoryAdded = "com.theappgalaxy.categoryAdded"
+	
+	let categoryDeleted = "com.theappgalaxy.categoryDeleted"
+	
+	// MARK: - notifications for terms
+	
 	let termAddedKey = "com.theappgalaxy.termWasAdded"
 
-	let termUpdatedKey = "com.theappgalaxy.termWasAdded"
+	let termChangedKey = "com.theappgalaxy.termWasAdded"
+	
+	let termDeletedKey = "com.theappgalaxy.termWasDeleted"
+	
+	let termFavoriteStatusChanged = "com.theappgalaxy.termFavoriteStatusChanged"
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

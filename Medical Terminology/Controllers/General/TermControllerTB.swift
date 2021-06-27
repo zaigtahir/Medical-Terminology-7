@@ -333,7 +333,7 @@ class TermControllerTB {
 			
 			print("termControllerTB: updatTermPN, posting termUpdatedKey")
 			
-			let nName = Notification.Name(myKeys.termUpdatedKey)
+			let nName = Notification.Name(myKeys.termChangedKey)
 			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : term.termID])
 		
 		}
@@ -394,20 +394,21 @@ class TermControllerTB {
 	// MARK: - term update functions
 	
 	func deleteTermPN (termID: Int) {
-		// unassign from assignedCategories and PN
-		
-		print("TermControllerTB: deleteTermPN need to code this function")
-		/*
-		let ids = self.getTermCategoryIDs(termID: termID)
-		for id in ids {
-			cc.unassignCategoryPN(termID: termID, categoryID: id)
+
+		let assignedCategoryIDs = self.getTermCategoryIDs(termID: termID)
+
+		// remove the assignments from the assignedCategories table
+		for id in assignedCategoryIDs {
+			cc.unassignCategory(termID: termID, categoryID: id)
 		}
 		
-		
-		// delete from the term table. The term deletion does not need to PN
+		// delete from the term table
 		let query1 = "DELETE FROM \(terms) WHERE termID = \(termID)"
 		let _ = myDB.executeStatements(query1)
-*/
+		
+		// post notification
+		let nName = Notification.Name(myKeys.termDeletedKey)
+		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID, "assignedCategoryIDs" : assignedCategoryIDs])
 		
 	}
 	
