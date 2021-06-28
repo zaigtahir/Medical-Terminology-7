@@ -13,6 +13,7 @@ class ZUIRoundedButton: UIButton {
 	// custom fields to show in the IB
 	@IBInspectable var enabledBackgroundColor : UIColor?
 	@IBInspectable var disabledBackgroundColor : UIColor?
+	@IBInspectable var disabledTintColor : UIColor?
 	
 	override func awakeFromNib() {
 		self.layer.cornerRadius = myConstants.button_cornerRadius
@@ -29,9 +30,18 @@ class ZUIRoundedButton: UIButton {
 		}
 	}
 	
+	func updateTintColor () {
+		if self.isEnabled {
+			self.tintColor = tintColor
+		} else {
+			self.tintColor = disabledTintColor
+		}
+	}
+	
 	override var isEnabled: Bool {
 		didSet {
 			updateBackgroundColor()
+			updateTintColor()
 		}
 	}
 	

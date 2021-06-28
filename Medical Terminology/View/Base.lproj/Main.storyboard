@@ -1213,12 +1213,17 @@
                                             <action selector="isFavoriteButtonAction:" destination="cpZ-GR-xZj" eventType="touchUpInside" id="JQq-Av-qcz"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9JE-si-ovT">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9JE-si-ovT" customClass="ZUIRoundedButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                         <rect key="frame" x="100" y="0.0" width="30" height="22"/>
                                         <color key="tintColor" name="color incorrect"/>
                                         <state key="normal">
                                             <imageReference key="image" image="trash" catalog="system" symbolScale="default"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledTintColor">
+                                                <color key="value" name="color text"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="deleteButton:" destination="48e-e9-509" eventType="touchUpInside" id="BhZ-D4-6fl"/>
                                             <action selector="deleteTermButtonAction:" destination="cpZ-GR-xZj" eventType="touchUpInside" id="FU3-KO-Paj"/>
@@ -1427,7 +1432,7 @@
                         <outlet property="categoriesListTextView" destination="r0J-BT-Ber" id="GVy-to-x2Y"/>
                         <outlet property="definitionEditButton" destination="Lx6-uT-apC" id="cbv-18-4SF"/>
                         <outlet property="definitionLabel" destination="GJc-sg-B9e" id="aSg-g6-jyM"/>
-                        <outlet property="deleteTermButton" destination="9JE-si-ovT" id="j0n-gB-nbc"/>
+                        <outlet property="deleteTermButton" destination="9JE-si-ovT" id="crb-2c-iUq"/>
                         <outlet property="exampleEditButton" destination="cie-KH-EBq" id="8WI-IS-NCd"/>
                         <outlet property="exampleLabel" destination="kfb-YM-0Y4" id="oYV-pl-1ve"/>
                         <outlet property="favoriteButton" destination="wze-wG-I1k" id="gMa-Tm-d5U"/>
@@ -3002,12 +3007,17 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                 <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiL-P8-kWj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiL-P8-kWj" customClass="ZUIRoundedButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
                                 <rect key="frame" x="375" y="103" width="19" height="22"/>
-                                <color key="tintColor" name="color text"/>
+                                <color key="tintColor" name="color incorrect"/>
                                 <state key="normal">
                                     <imageReference key="image" image="trash" catalog="system" symbolScale="default"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledTintColor">
+                                        <color key="value" name="color text"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="deleteButton:" destination="48e-e9-509" eventType="touchUpInside" id="qnO-zO-BMP"/>
                                     <action selector="deleteCategoryButtonAction:" destination="BPm-yE-Jpz" eventType="touchUpInside" id="XtT-Po-wvK"/>
@@ -3074,7 +3084,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="Pcb-KE-zQd" id="olQ-Qb-D9L"/>
-                        <outlet property="deleteCategoryButton" destination="SiL-P8-kWj" id="FcL-Zj-4rA"/>
+                        <outlet property="deleteCategoryButton" destination="SiL-P8-kWj" id="kyg-TP-eJC"/>
                         <outlet property="descriptionEditButton" destination="BWa-bR-57k" id="Hsy-LO-c7e"/>
                         <outlet property="descriptionLabel" destination="1mH-Gk-dde" id="aKx-as-I2X"/>
                         <outlet property="headerImage" destination="jm2-fe-7SJ" id="Hp5-mY-b1P"/>
@@ -3672,8 +3682,8 @@ You will be asked to correctly match the term to it's definition, and also to ma
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="i1H-T2-eqP"/>
-        <segue reference="MkZ-Rk-3Eg"/>
+        <segue reference="FY8-JO-v3w"/>
+        <segue reference="RQg-Yy-Rkk"/>
         <segue reference="HWU-Cd-rtW"/>
         <segue reference="UJA-hr-35q"/>
     </inferredMetricsTieBreakers>

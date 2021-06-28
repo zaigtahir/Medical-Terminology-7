@@ -106,7 +106,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
 		
-		
 	}
 	
 	deinit {

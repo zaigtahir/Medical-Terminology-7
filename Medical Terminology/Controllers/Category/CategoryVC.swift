@@ -16,7 +16,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	@IBOutlet weak var leftButton: UIBarButtonItem!
 	
-	@IBOutlet weak var deleteCategoryButton: UIButton!
+	@IBOutlet weak var deleteCategoryButton: ZUIRoundedButton!
 	
 	@IBOutlet weak var nameTitleLabel: UILabel!
 	
@@ -92,8 +92,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			nameTitleLabel.text = "PREDEFINED CATEGORY"
 			nameEditButton.isHidden = true
 			descriptionEditButton.isHidden = true
-			deleteCategoryButton.tintColor = myTheme.colorButtonDisabledTint
-			
+			deleteCategoryButton.isEnabled = false
 			leftButton.title = "Done"
 			cancelButton.isEnabled = false
 			
@@ -180,22 +179,9 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	@IBAction func deleteCategoryButtonAction(_ sender: Any) {
 		
-		switch categoryVCH.category.isStandard {
+		// only delete a non-standard category
 		
-		case true:
-			
-			let ac = UIAlertController(title: "Predefined Category", message: "This is a predefined category and can not be deleted. Only categories you create may be deleted.", preferredStyle: .alert)
-			
-			let okay = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-				return
-			}
-			
-			ac.addAction(okay)
-			present(ac, animated: true, completion: nil)
-			
-		case false:
-			
-			
+		if !categoryVCH.category.isStandard {
 			let ac = UIAlertController(title: "Delete Category?", message: "Are you sure you want to delete this category? Just FYI: When you delete a category, no terms will be deleted", preferredStyle: .alert)
 			
 			let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in

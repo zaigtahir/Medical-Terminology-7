@@ -49,24 +49,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		updateData()
 		
-		/*
-		Notification keys this controller will need to respond to
-		
-		currentCategoryIDsChangedKey
-		changeCategoryNameKey
-		deleteCategoryKey
-		
-		setFavoriteStatusKey
-		assignCategoryKey
-		unassignCategoryKey
-		termInformationChangedKey
-		*/
-		
-		
-		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
-		
-		
 		// MARK: - Category notifications
 		
 		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChanged)
@@ -75,6 +57,22 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// This is sent only if there is this ONE category in currentCategoryIDs, and the name is changed
 		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
+		
+		// MARK: - Term notifications
+		let nameTAN = Notification.Name(myKeys.termAddedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termAddedN(notification:)), name: nameTAN, object: nil)
+		
+		let nameTCN = Notification.Name(myKeys.termChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termChangedN(notification:)), name: nameTCN, object: nil)
+		
+		
+		let nameTDN = Notification.Name(myKeys.termDeletedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termDeletedN(notification:)), name: nameTDN, object: nil)
+		
+		// MARK: - Favorite status notification
+		
+		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
 		
 		
 	}
@@ -101,6 +99,57 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// if this is the current category, reload the category and then refresh the display
 		delegate?.shouldUpdateDisplay()
 	}
+	
+	// MARK: - Term notification functions
+	
+	@objc func termAddedN  (notification: Notification) {
+		print ("TermListVCH got: termAddedN")
+		if let data = notification.userInfo as? [String: Int] {
+			let affectedTermID = data["termID"]!
+			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
+			
+			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: affectedCategoryIDs) {
+				updateData()
+				delegate?.shouldRefreshCollectionView()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}
+	
+	@objc func termChangedN  (notification: Notification) {
+		print("TermListVCH got: termChangedN")
+		if let data = notification.userInfo as? [String: Int] {
+			let affectedTermID = data["termID"]!
+			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
+			
+			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: affectedCategoryIDs){
+				
+				updateData()
+				delegate?.shouldRefreshCollectionView()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}
+	
+	@objc func termDeletedN  (notification: Notification) {
+		// self, userInfo: ["assignedCategoryIDs" : assignedCategoryIDs])
+		print("TermListVCH got: termDeleteN")
+		if let data = notification.userInfo as? [String: [Int]] {
+			//let assignedCategoryIDs = data["assignedCategoryIDs"] as [Int]
+			
+			let assignedCategoryIDs = data["assignedCategoryIDs"]!
+			
+			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: assignedCategoryIDs) {
+				updateData()
+				delegate?.shouldRefreshCollectionView()
+				delegate?.shouldUpdateDisplay()
+			}
+			
+		}
+		
+		
+	}
+	
 	
 	// MARK: - Favorite notification function
 	
@@ -149,64 +198,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	// MARK: - Term notification functions
-	
-	@objc func termInformationChangedN (notification: Notification) {
-	
-		if let data = notification.userInfo as? [String: Int] {
-			let affectedTermID = data["termID"]!
-			if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
-				delegate?.shouldReloadCellAtIndex(termIDIndex: termIDIndex)
-				delegate?.shouldUpdateDisplay()
-			}
 
-		}
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@objc func assignCategoryN (notification : Notification) {
-		if let data = notification.userInfo as? [String : Int] {
-			let categoryID = data["categoryID"]!
-			if categoryID == currentCategoryID {
-				updateDataAndDisplay()
-			}
-		}
-	}
-	
-	@objc func unassignCategoryN (notification : Notification){
-		
-		if let data = notification.userInfo as? [String : Int] {
-			let categoryID = data["categoryID"]!
-			if categoryID == currentCategoryID {
-				updateDataAndDisplay()
-			}
-		}
-		
-	}
-	
-	
 
 	
 	// MARK: - update data functions

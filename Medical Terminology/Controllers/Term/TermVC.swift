@@ -20,7 +20,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
 	@IBOutlet weak var playAudioButton: UIButton!
 	@IBOutlet weak var favoriteButton: ZUIToggleButton!
-	@IBOutlet weak var deleteTermButton: UIButton!
+	@IBOutlet weak var deleteTermButton: ZUIRoundedButton!
 	@IBOutlet weak var categoriesListTextView: UITextView!
 	@IBOutlet weak var nameEditButton: UIButton!
 	@IBOutlet weak var definitionEditButton: UIButton!
@@ -194,8 +194,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 
 	}
 	
-	
-	
 	// MARK: - Prepare Segue
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -229,7 +227,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 
 	// end delegate functions
 	
-	
 	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
 		
 		favoriteButton.isOn = !favoriteButton.isOn
@@ -260,20 +257,9 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	@IBAction func deleteTermButtonAction(_ sender: Any) {
 		
-		switch termVCH.editedTerm.isStandard {
+		// only proceed if this is a custom term
 		
-		case true:
-			
-			let ac = UIAlertController(title: "Predefined Term", message: "This is a predefined term and can not be deleted. Only terms you create may be deleted.", preferredStyle: .alert)
-			
-			let okay = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-				return
-			}
-			
-			ac.addAction(okay)
-			present(ac, animated: true, completion: nil)
-		
-		case false:
+		if !termVCH.editedTerm.isStandard {
 			
 			let ac = UIAlertController(title: "Delete This Term?", message: "Are you sure you want to delete this term from ALL categories?", preferredStyle: .alert)
 			
@@ -290,7 +276,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			ac.addAction(delete)
 			present(ac, animated: true, completion: nil)
 		}
-
+		
 	}
 	
 	@IBAction func cancelButtonAction(_ sender: Any) {

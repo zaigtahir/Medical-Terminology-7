@@ -57,6 +57,8 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate, TermCategoryIDsD
 		editedTerm.example = initialTerm.example
 		editedTerm.audioFile = initialTerm.audioFile
 		editedTerm.isStandard = initialTerm.isStandard
+		editedTerm.secondCategoryID = initialTerm.secondCategoryID
+		editedTerm.thirdCategoryID = initialTerm.thirdCategoryID
 		
 		editedTerm.assignedCategories = initialTerm.assignedCategories
 	

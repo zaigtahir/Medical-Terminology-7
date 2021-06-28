@@ -209,8 +209,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			if categoryListMode == .assignCategories {
 				categoriesToLock = [1, 2, term.secondCategoryID, term.thirdCategoryID]
 			}
-			
-			
+						
 			cell.formatCategoryCell(category: category, selectedCategoryIDs: selectedCategoryIDs, lockCategoryIDs: categoriesToLock)
 			
 			cell.delegate = self
