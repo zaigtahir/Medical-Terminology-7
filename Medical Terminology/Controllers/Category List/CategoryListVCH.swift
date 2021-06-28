@@ -158,7 +158,6 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			}
 		}
 	}
-	
 
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 2

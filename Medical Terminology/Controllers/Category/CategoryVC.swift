@@ -182,6 +182,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		// only delete a non-standard category
 		
 		if !categoryVCH.category.isStandard {
+			
 			let ac = UIAlertController(title: "Delete Category?", message: "Are you sure you want to delete this category? Just FYI: When you delete a category, no terms will be deleted", preferredStyle: .alert)
 			
 			let delete = UIAlertAction(title: "Delete", style: .destructive) { (UIAlertAction) in

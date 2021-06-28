@@ -104,6 +104,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		// delete the category
 		cc.deleteCategory(categoryID: category.categoryID)
 		
+		// CategoryListVCH will be the delegate
 		delegateEdit?.categoryDeleted(categoryID: category.categoryID)
 		
 	}
