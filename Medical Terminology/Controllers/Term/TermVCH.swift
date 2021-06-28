@@ -15,7 +15,7 @@ protocol TermVCHDelegate: AnyObject {
 	func shouldShowDuplicateTermNameAlert()
 }
 
-class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
+class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate, TermCategoryIDsDelegate {
 	
 	/// Everything will be based on this term. If this termID = -1, this will be considered to be a NEW term that is not saved yet
 	// MARK: to delete later
@@ -44,6 +44,9 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 	}
 	
+	/**
+	The assignedCategories must be initialized before calling
+	*/
 	func setInitialTerm (initialTerm: TermTB) {
 		// copy over the relevant values
 		self .initialTerm = initialTerm
@@ -55,17 +58,8 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		editedTerm.audioFile = initialTerm.audioFile
 		editedTerm.isStandard = initialTerm.isStandard
 		
-		// setup categories
-		if initialTerm.termID == -1 {
-			//new term, the segue function sets the initialTerm.assignedCategories
-			editedTerm.assignedCategories = initialTerm.assignedCategories
-			
-		} else {
-			// not new term
-			initialTerm.assignedCategories = tcTB.getTermCategoryIDs(termID: initialTerm.termID)
-			editedTerm.assignedCategories = initialTerm.assignedCategories
-		}
-		
+		editedTerm.assignedCategories = initialTerm.assignedCategories
+	
 	}
 	
 	deinit {
@@ -170,14 +164,21 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		// will update the db with values from the edited term, and set the edited term as the initial term so that when the display refreshes, the VC will show the saved state
 		
-		tcTB.updateTermPN(term: editedTerm)
-		
 		//reset the editedTerm as the initialTerm
 		setInitialTerm(initialTerm: editedTerm)
+		
+		tcTB.updateTermPN(term: editedTerm)
+	
 		delegate?.shouldUpdateDisplay()
 	
 	}
 	
+	// MARK: - termCategoryIDsChangedDelegate
+	
+	func termCategoryIDsChanged(categoryIDs: [Int]) {
+		editedTerm.assignedCategories = categoryIDs
+		delegate?.shouldUpdateDisplay()
+	}
 	
 	// MARK: - Moved segues
 	
@@ -221,6 +222,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate{
 		
 		let nc = segue.destination as! UINavigationController
 		let vc = nc.topViewController as! CategoryListVC
+		vc.categoryListVCH.assignedCategoryIDsDelegate = self
 		
 		vc.categoryListVCH.setupAssignCategoryMode(term: editedTerm)
 		

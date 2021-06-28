@@ -63,6 +63,9 @@ class TermControllerTB {
 		
 	}
 	
+	/**
+	Will not fill assignedCategories
+	*/
 	func getTerm (termID: Int) -> TermTB {
 		
 		let query = "SELECT * FROM \(terms) WHERE termID = \(termID)"
@@ -70,7 +73,9 @@ class TermControllerTB {
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			resultSet.next()
 			
-			return getTermFromResultSet(resultSet: resultSet)
+			let term = getTermFromResultSet(resultSet: resultSet)
+			term.assignedCategories = getTermCategoryIDs(termID: term.termID)
+			return term
 			
 		} else {
 			print("fatal error could not make result set or get term in getTerm")
@@ -302,15 +307,18 @@ class TermControllerTB {
 		
 	}
 	
-	/*
+	/**
 	will save updates to the db for this term using it's given ID
 	will send off notifications if the name is changed or assigned categories are changed
+	
+	must have the tnew erm's assignCategoreis in place
 	*/
 	
 	func updateTermPN (term: TermTB) {
 		
+		// the starting state of of the term with this ID from the database
 		let initialTerm = getTerm(termID: term.termID)
-		
+	
 		let query = """
 			UPDATE \(terms)
 			SET
@@ -326,18 +334,30 @@ class TermControllerTB {
 		
 		myDB.executeStatements(query)
 		
+		// update the categories if they are different
+		
+		let categoryIDsChanged = !utilities.containSameElements(array1: initialTerm.assignedCategories, array2: term.assignedCategories)
+		
+		if categoryIDsChanged {
+			
+			for cID in initialTerm.assignedCategories {
+				cc.unassignCategory(termID: term.termID, categoryID: cID)
+			}
+			
+			for cID in term.assignedCategories {
+				cc.assignCategory(termID: term.termID, categoryID: cID)
+			}
+		}
+		
+		
 		// send out notification if the term name or categories have changed
 		// the other changes in values will not affect other parts of the program
 		
-		if (initialTerm.name != term.name) || !utilities.containSameElements(array1: initialTerm.assignedCategories, array2: term.assignedCategories) {
-			
-			print("termControllerTB: updatTermPN, posting termUpdatedKey")
+		if (initialTerm.name != term.name) || !categoryIDsChanged {
 			
 			let nName = Notification.Name(myKeys.termChangedKey)
 			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : term.termID])
-		
 		}
-	
 		
 	}
 	
@@ -408,7 +428,7 @@ class TermControllerTB {
 		
 		// post notification
 		let nName = Notification.Name(myKeys.termDeletedKey)
-		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID, "assignedCategoryIDs" : assignedCategoryIDs])
+		NotificationCenter.default.post(name: nName, object: self, userInfo: ["assignedCategoryIDs" : assignedCategoryIDs])
 		
 	}
 	

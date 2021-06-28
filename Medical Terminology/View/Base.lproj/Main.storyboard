@@ -1215,7 +1215,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9JE-si-ovT">
                                         <rect key="frame" x="100" y="0.0" width="30" height="22"/>
-                                        <color key="tintColor" name="color text"/>
+                                        <color key="tintColor" name="color incorrect"/>
                                         <state key="normal">
                                             <imageReference key="image" image="trash" catalog="system" symbolScale="default"/>
                                         </state>
@@ -3723,6 +3723,9 @@ You will be asked to correctly match the term to it's definition, and also to ma
         </namedColor>
         <namedColor name="color inactive icon">
             <color red="0.61599999666213989" green="0.094999998807907104" blue="0.61599999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color incorrect">
+            <color red="0.792156862745098" green="0.28235294117647058" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color main">
             <color red="0.32899999618530273" green="0.48600000143051147" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

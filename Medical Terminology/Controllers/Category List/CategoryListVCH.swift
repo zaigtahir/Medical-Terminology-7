@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-//probably conflict between notifications when i change the cateogry
-
 
 /*
 Fires off a notification if a user changes the currentCategoryID
@@ -24,6 +22,11 @@ protocol CategoryListVCHDelegate: AnyObject {
 	func shouldSegueToNewCategory ()
 	func shouldDismissCategoryMenu ()
 	func shouldShowAlertSelectedLockedCategory (categoryID: Int)
+}
+
+// This is just for the TermVCH to use
+protocol TermCategoryIDsDelegate: AnyObject {
+	func termCategoryIDsChanged (categoryIDs: [Int])
 }
 
 class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate, CategoryEditDelegate {
@@ -65,6 +68,8 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	var customCategories = [Category]()
 	
 	weak var delegate: CategoryListVCHDelegate?
+	
+	weak var assignedCategoryIDsDelegate : TermCategoryIDsDelegate?
 	
 	override init () {
 		super.init()
@@ -139,20 +144,17 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	// The categoryListVC calls this when the user presses the done button
 	
 	func checkSelectedCategoriesPN () {
-		
+	
 		if !utilities.containSameElements(array1: initialCategoryIDs, array2: selectedCategoryIDs) {
-			
-			// Fire off a notification based on the list based on the categoryListMode
-			
+		
 			if categoryListMode == .selectCategories {
-				
+				// post a notification so all controllers can react
 				let name = Notification.Name(myKeys.currentCategoryIDsChanged)
 				NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : selectedCategoryIDs as Any])
-			} else {
 				
-	
-				let name = Notification.Name(myKeys.termCategoryIDsChanged)
-				NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : selectedCategoryIDs as Any])
+			} else {
+				// trigger a delegate method so that the TermVC can update it self
+				assignedCategoryIDsDelegate?.termCategoryIDsChanged(categoryIDs: selectedCategoryIDs)
 			}
 		}
 	}

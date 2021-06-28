@@ -159,7 +159,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			
 			if termVCH.editedTerm.isStandard {
 				self.title = "Predefined Term"
-				deleteTermButton.tintColor = myTheme.colorButtonDisabledTint
 				nameEditButton.isHidden = true
 				definitionEditButton.isHidden = true
 				exampleEditButton.isHidden = true
@@ -168,13 +167,25 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			} else {
 				self.title = "My Term"
 				nameTitleLabel.text = "MY TERM"
-				deleteTermButton.tintColor = myTheme.colorDestructive
 				nameEditButton.isHidden = false
 				exampleEditButton.isHidden = false
 				definitionEditButton.isHidden = false
 				myNotesEditButton.isHidden = false
 				
 			}
+			
+			// format the delete icon
+			if termVCH.editedTerm.isStandard {
+				deleteTermButton.isEnabled = false
+			} else {
+				if termVCH.editedTerm.termID == -1 {
+					deleteTermButton.isEnabled = false
+				} else {
+					deleteTermButton.isEnabled = true
+				}
+			}
+			
+			
 		}
 		
 		formatButtons()

@@ -66,15 +66,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
 		
-	
-		let nameTIC = Notification.Name(myKeys.termInformationChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(termInformationChangedN(notification:)), name: nameTIC, object: nil)
-		
-		
-		
-		
-		
-		
 		
 		// MARK: - Category notifications
 		

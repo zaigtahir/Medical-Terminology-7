@@ -31,53 +31,21 @@ class MyKeys {
 	let categoryDeleted = "com.theappgalaxy.categoryDeleted"
 	
 	// MARK: - notifications for terms
-	
-	let termAddedKey = "com.theappgalaxy.termWasAdded"
 
-	let termChangedKey = "com.theappgalaxy.termWasAdded"
 	
-	let termDeletedKey = "com.theappgalaxy.termWasDeleted"
+	let termAddedKey = "com.theappgalaxy.termAdded"
+
+	let termChangedKey = "com.theappgalaxy.termChanged"
+	
+	let termDeletedKey = "com.theappgalaxy.termDeleted"
 	
 	let termFavoriteStatusChanged = "com.theappgalaxy.termFavoriteStatusChanged"
 	
 	
+	// thi is used in CategoryListVCH... just check ..
+	// im using it when assignign categories to a term.. probably don't need it
+	let termCategoryIDsChanged = "com.theappgalaxy.termCategoryIDsChanged"
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// to remove
-	let termCategoryIDsChanged = "to REMOVE"
-	let termInformationChangedKey = "to remove 2"
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	
 	//REMOVE
 	// MARK: - CategoryVCH notifications (TO REMOVE)

@@ -97,6 +97,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		let nameTCN = Notification.Name(myKeys.termChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termChangedN(notification:)), name: nameTCN, object: nil)
 		
+		
 		let nameTDN = Notification.Name(myKeys.termDeletedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termDeletedN(notification:)), name: nameTDN, object: nil)
 		
@@ -182,14 +183,50 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	// MARK: - Term notification functions
 	
 	@objc func termAddedN  (notification: Notification) {
-		
+		print ("TermListVCH got: termAddedN")
+		if let data = notification.userInfo as? [String: Int] {
+			let affectedTermID = data["termID"]!
+			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
+			
+			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: affectedCategoryIDs) {
+				updateData()
+				delegate?.shouldReloadTable()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
 	}
 	
 	@objc func termChangedN  (notification: Notification) {
-		
+		print("TermListVCH got: termChangedN")
+		if let data = notification.userInfo as? [String: Int] {
+			let affectedTermID = data["termID"]!
+			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
+			
+			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: affectedCategoryIDs){
+				
+				updateData()
+				delegate?.shouldReloadTable()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
 	}
 	
 	@objc func termDeletedN  (notification: Notification) {
+		// self, userInfo: ["assignedCategoryIDs" : assignedCategoryIDs])
+		print("TermListVCH got: termDeleteN")
+		if let data = notification.userInfo as? [String: [Int]] {
+			//let assignedCategoryIDs = data["assignedCategoryIDs"] as [Int]
+			
+			let assignedCategoryIDs = data["assignedCategoryIDs"]!
+			
+			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: assignedCategoryIDs) {
+				updateData()
+				delegate?.shouldReloadTable()
+				delegate?.shouldUpdateDisplay()
+			}
+			
+		}
+		
 		
 	}
 	
@@ -209,15 +246,10 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			let cleanText = tu.removeLeadingTrailingSpaces(string: nonCleanText)
 			
 			self.termsList.makeList(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: cleanText)
-			
-			
 		} else {
 			
 			self.termsList.makeList(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: .none)
 		}
-		
-		
-		
 	}
 	
 	/**

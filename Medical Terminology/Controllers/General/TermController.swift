@@ -264,39 +264,24 @@ class TermController {
 	func updateTermNamePN (termID: Int, name: String) {
 		let query = "UPDATE \(terms) SET name = '\(name)' WHERE termID = \(termID)"
 		myDB.executeStatements(query)
-		
-		// post notification
-		let nName = Notification.Name(myKeys.termInformationChangedKey)
-		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
 	}
 	
 	func updateTermExamplePN (termID: Int, example: String) {
 		let query = "UPDATE \(terms) SET example = '\(example)' WHERE termID = \(termID)"
 		myDB.executeStatements(query)
-		
-		// post notification
-		let nName = Notification.Name(myKeys.termInformationChangedKey)
-		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
 	}
 	
 	func updateTermDefinitionPN (termID: Int, definition: String) {
 		
 		let query = "UPDATE \(terms) SET definition = '\(definition)' WHERE termID = \(termID)"
 		myDB.executeStatements(query)
-		
-		// post notification
-		let nName = Notification.Name(myKeys.termInformationChangedKey)
-		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
+
 	}
 	
 	func updateTermMyNotesPN (termID: Int, myNotes: String) {
 		
 		let query = "UPDATE \(terms) SET myNotes = '\(myNotes)' WHERE termID = \(termID)"
 		myDB.executeStatements(query)
-		
-		// post notification
-		let nName = Notification.Name(myKeys.termInformationChangedKey)
-		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : termID])
 		
 	}
 	
