@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "639A237B-4BAC-4C4F-8E4E-1C4088803AE0"
-            shouldBeEnabled = "Yes"
+            uuid = "93A589F5-5D5F-4FAC-976B-DD711B9B1672"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Medical Terminology/Controllers/Category/CategoryVC.swift"
+            filePath = "Medical Terminology/Controllers/Category List/CategoryListVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "leftButtonAction(_:)"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6DFCC716-FBBD-4A50-BA4D-71B4A52286E8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Medical Terminology/Controllers/Category List/CategoryListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "updateDisplay()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

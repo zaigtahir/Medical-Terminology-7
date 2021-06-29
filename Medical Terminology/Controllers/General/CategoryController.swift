@@ -256,6 +256,21 @@ class CategoryController {
 		
 	}
 	
+	func updateCategory (category: Category) {
+				
+		let query = """
+			UPDATE \(categories)
+			SET
+			name = "\(category.name)",
+			description = "\(category.description)"
+			WHERE
+			categoryID = \(category.categoryID)
+		"""
+		
+		myDB.executeStatements(query)
+		
+	}
+	
 	func updateCategoryDescription (categoryID: Int, description: String) {
 		let query = "UPDATE \(categories) SET description = '\(description)' WHERE categoryID = \(categoryID)"
 		

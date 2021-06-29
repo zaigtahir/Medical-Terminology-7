@@ -148,10 +148,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate, TermCategoryIDsD
 		
 	}
 	
-	
-	// MARK: -old functions
-	
-	
+		
 	func saveNewTerm () {
 		
 		// saves new term and loads it as the initial term

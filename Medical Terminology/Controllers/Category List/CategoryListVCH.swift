@@ -74,10 +74,6 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	override init () {
 		super.init()
 		
-		/*
-		Need to listen to 3 notifications and address them
-		changeCategoryNameKey
-		*/
 				
 		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)

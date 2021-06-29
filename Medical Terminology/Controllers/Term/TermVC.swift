@@ -286,7 +286,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	@IBAction func leftButtonAction(_ sender: Any) {
 		
 		/*
-		if new term, save new term -> show success dialog box -> change to new term view
+		if new term, save new term -> show success dialog box -> change to existing term view
 		
 		if preexisting term and there are edits -> save edits -> change to no edits state
 		
@@ -299,7 +299,7 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			termVCH.saveNewTerm()
 			updateDisplay()
 			
-			let ac = UIAlertController(title: "Success!", message: "Your term was successfully saved, and it will show up in alphabetical order in the list of terms.", preferredStyle: .alert)
+			let ac = UIAlertController(title: "Success!", message: "Your term was saved successfully, and it will show up in alphabetical order in the list of terms.", preferredStyle: .alert)
 			let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
 			ac.addAction(ok)
 			self.present(ac, animated: true, completion: nil)

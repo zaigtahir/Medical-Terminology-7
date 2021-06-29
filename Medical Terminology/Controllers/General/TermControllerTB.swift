@@ -317,7 +317,7 @@ class TermControllerTB {
 	func updateTermPN (term: TermTB) {
 		
 		// the starting state of of the term with this ID from the database
-		let initialTerm = getTerm(termID: term.termID)
+		let originalTerm = getTerm(termID: term.termID)
 	
 		let query = """
 			UPDATE \(terms)
@@ -336,11 +336,11 @@ class TermControllerTB {
 		
 		// update the categories if they are different
 		
-		let categoryIDsChanged = !utilities.containSameElements(array1: initialTerm.assignedCategories, array2: term.assignedCategories)
+		let categoryIDsChanged = !utilities.containSameElements(array1: originalTerm.assignedCategories, array2: term.assignedCategories)
 		
 		if categoryIDsChanged {
 			
-			for cID in initialTerm.assignedCategories {
+			for cID in originalTerm.assignedCategories {
 				cc.unassignCategory(termID: term.termID, categoryID: cID)
 			}
 			
@@ -349,11 +349,12 @@ class TermControllerTB {
 			}
 		}
 		
+		//MARK: this should be in higher controller
 		
 		// send out notification if the term name or categories have changed
 		// the other changes in values will not affect other parts of the program
 		
-		if (initialTerm.name != term.name) || !categoryIDsChanged {
+		if (originalTerm.name != term.name) || !categoryIDsChanged {
 			
 			let nName = Notification.Name(myKeys.termChangedKey)
 			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : term.termID])

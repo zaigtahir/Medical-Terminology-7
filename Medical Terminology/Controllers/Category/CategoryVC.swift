@@ -63,95 +63,104 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	// MARK: - updateDisplay
 	
-	func updateDisplay() {
+	func updateDisplay () {
 		
-		/*
-		If catetory is standard
-		DONE | Cancel: disabled
-		Hide delete icon
-		Hide edit button for name and description
-		
-		If the category is NOT standard, and IS NEW
-		SAVE: enable if name is not blank, otherwise disable
-		CANCEL: enabled
-		Disable delete icon
-		Show edit name and edit description buttons
-		
-		If the category is NOT standard and IS NOT NEW
-		DONE | Cancel: enabled
-		Enable delete icon
-		Show edit name and edit description buttons
-		
-		*/
-		
-		
-		// MARK: update buttons and titles
-		if categoryVCH.category.isStandard {
-			// category is standard
-			self.title = "Category Details"
-			nameTitleLabel.text = "PREDEFINED CATEGORY"
-			nameEditButton.isHidden = true
-			descriptionEditButton.isHidden = true
-			deleteCategoryButton.isEnabled = false
-			leftButton.title = "Done"
-			cancelButton.isEnabled = false
+		func formatButtons() {
 			
-		} else {
-			// category is not standard
-			nameTitleLabel.text = "MY CATEGORY"
-			nameEditButton.isHidden = false
-			descriptionEditButton.isHidden = false
-			deleteCategoryButton.tintColor = myTheme.colorDestructive
+			/*
+			If the category is edited:
+			name is valid: Save.Enabled, Cancel.Enabled
+			name is not valid: Save.Disabled, Cancel.Enabled
 			
-			if categoryVCH.category.categoryID == -1 {
-				// category is new
-				self.title = "Add New Category"
-				headerImage.image = myTheme.imageHeaderAdd
-				deleteCategoryButton.isEnabled = false
+			if the category is NOT edited:
+			new category: Save.Disabled, Cancel.Enabled
+			not new category: Done.Enabled, Cancel.Disabled
+			
+			*/
+			
+			
+			if categoryVCH.categoryWasEdited() {
 				
-				leftButton.title = "Save"
-				
-				if categoryVCH.category.name != "" {
+				if categoryVCH.editedCategory.name != "" {
+					// both required fields have data
+					leftButton.title = "Save"
 					leftButton.isEnabled = true
+					cancelButton.isEnabled = true
 				} else {
+					leftButton.title = "Save"
 					leftButton.isEnabled = false
+					cancelButton.isEnabled = true
 				}
 				
-				cancelButton.isEnabled = true
+			} else {
+				
+				// no edits have been made yet
+				if categoryVCH.editedCategory.categoryID == -1 {
+					// the category is new
+					leftButton.title = "Save"
+					leftButton.isEnabled = false
+					cancelButton.isEnabled = true
+				} else {
+					leftButton.title = "Done"
+					leftButton.isEnabled = true
+					cancelButton.isEnabled = false
+				}
+			}
+	
+			
+			if categoryVCH.editedCategory.isStandard {
+				
+				self.title = "Predefined Category"
+				nameEditButton.isHidden = true
+				descriptionEditButton.isHidden = false
+			} else {
+				self.title = "My Category"
+				nameEditButton.isHidden = false
+				descriptionEditButton.isHidden = false
+			}
+			
+			// format the delete icon
+			if categoryVCH.editedCategory.isStandard {
+				deleteCategoryButton.isEnabled = false
+			} else {
+				if categoryVCH.editedCategory.categoryID == -1 {
+					deleteCategoryButton.isEnabled = false
+				} else {
+					deleteCategoryButton.isEnabled = true
+				}
+			}
+			
+		}
+		
+		func formatFields() {
+			
+			if categoryVCH.editedCategory.name == "" {
+				nameLabel.text = "Category name"
+			} else {
+				nameLabel.text = categoryVCH.editedCategory.name
+			}
+			
+			if categoryVCH.editedCategory.description == "" {
+				
+				if categoryVCH.editedCategory.categoryID == -1 {
+					descriptionLabel.text = "(optional)"
+				} else {
+					descriptionLabel.text = "No description available"
+				}
 				
 			} else {
-				// category is not new
-				self.title = "My Categoroy Details"
-				deleteCategoryButton.isEnabled = true
-				
-				leftButton.title = "Done"
-				cancelButton.isEnabled = false
+				descriptionLabel.text = categoryVCH.editedCategory.description
+			}
+			
+			if categoryVCH.editedCategory.categoryID == -1 {
+				headerImage.image = myTheme.imageHeaderAdd
 			}
 		}
 		
-		// MARK: fill fields
+		formatButtons()
 		
-		if categoryVCH.category.name == "" {
-			nameLabel.text = "New Name"
-		} else {
-			nameLabel.text = categoryVCH.category.name
-		}
+		formatFields()
 		
-		if categoryVCH.category.description == "" {
-			
-			if categoryVCH.category.categoryID == -1 {
-				descriptionLabel.text = "(optional)"
-			} else {
-				descriptionLabel.text = "No description available"
-			}
-			
-		} else {
-			descriptionLabel.text = categoryVCH.category.description
-		}
-		
-		if categoryVCH.category.categoryID == -1 {
-			headerImage.image = myTheme.imageHeaderAdd
-		}
 	}
 	
 	// MARK: - prepare segue
@@ -163,12 +172,71 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	@IBAction func leftButtonAction(_ sender: Any) {
 		
+		print("for now just dismiss the vc")
+		
+		/*
+		
+		if new category, save new category -> show success dialog box -> change to existing category view
+		
+		if preexisting category and there are edits -> save edits -> change to no edits state
+		
+		if preextisting category and no edits -> just dismiss
+		
+		*/
+		
+		if categoryVCH.editedCategory.categoryID == -1 {
+			// this is a new term, so save it
+			categoryVCH.saveNewCategory()
+			updateDisplay()
+			
+			let ac = UIAlertController(title: "Success!", message: "Your category was saved successfully, and it will show up in alphabetical order in the My Categories section.", preferredStyle: .alert)
+			let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
+			ac.addAction(ok)
+			self.present(ac, animated: true, completion: nil)
+			
+		} else {
+			// this is not a new term, so check to see it has been editied
+			
+			if categoryVCH.categoryWasEdited() {
+				
+				categoryVCH.updateCategoryPN()
+				
+			} else {
+				
+				self.navigationController?.dismiss(animated: true, completion: nil)
+				
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
 		if categoryVCH.category.categoryID == -1 {
 			// this is a new category, save it
 			
 			categoryVCH.addNewCategory()
 			
 		}
+		*/
+		
+		
 		
 		self.navigationController?.popViewController(animated: true)
 	}
@@ -179,9 +247,11 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	@IBAction func deleteCategoryButtonAction(_ sender: Any) {
 		
+		print("to code delete category button")
+		
 		// only delete a non-standard category
 		
-		if !categoryVCH.category.isStandard {
+		if !categoryVCH.editedCategory.isStandard {
 			
 			let ac = UIAlertController(title: "Delete Category?", message: "Are you sure you want to delete this category? Just FYI: When you delete a category, no terms will be deleted", preferredStyle: .alert)
 			
