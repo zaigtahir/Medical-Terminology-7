@@ -215,7 +215,7 @@ class CategoryController {
 	/**
 	the new category will be added with custom category display order = 1, so need to increment all custom category display order by 1
 	*/
-	func addCategory (category: Category) {
+	func saveNewCategory (category: Category) -> Int {
 		// always add with display order = 1
 		// shift display order of other custom categories up by 1 to make room
 		// if no custom category exists, add with id = myConstants.dbCustomCategoryStartingID
@@ -242,7 +242,10 @@ class CategoryController {
 		}
 		
 		myDB.executeStatements(queryInsert)
-			
+		
+		let addedCategoryID = Int(myDB.lastInsertRowId)
+		
+		return addedCategoryID
 	}
 
 	func deleteCategory (categoryID: Int) {

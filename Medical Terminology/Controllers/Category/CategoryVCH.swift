@@ -119,7 +119,11 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	}
 
 	func saveNewCategory() {
-		cc.addCategory (category: editedCategory)
+		let addedCategoryID = cc.saveNewCategory (category: editedCategory)
+		
+		let newCategory = cc.getCategory(categoryID: addedCategoryID)
+		
+		setInitialCategory(category: newCategory)
 		
 		// CategoryListVCH will be the delegate
 		delegateEdit?.categoryAdded()

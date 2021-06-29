@@ -189,7 +189,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			categoryVCH.saveNewCategory()
 			updateDisplay()
 			
-			let ac = UIAlertController(title: "Success!", message: "Your category was saved successfully, and it will show up in alphabetical order in the My Categories section.", preferredStyle: .alert)
+			let ac = UIAlertController(title: "Success!", message: "Your category was saved, and it will show up in alphabetical order in the My Categories section.", preferredStyle: .alert)
 			let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
 			ac.addAction(ok)
 			self.present(ac, animated: true, completion: nil)

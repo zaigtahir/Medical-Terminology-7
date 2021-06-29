@@ -153,6 +153,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate, TermCategoryIDsD
 		
 		// saves new term and loads it as the initial term
 		let addedTermID = tcTB.saveNewTermPN(term: editedTerm)
+		
 		let newTerm  = tcTB.getTerm(termID: addedTermID)
 		
 		setInitialTerm(initialTerm: newTerm)
