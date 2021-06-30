@@ -22,7 +22,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	
 	///used to determine if to create a new set or keep current set when going from learning home to learning set
 	var startNewSet = true	//will be used for segue
-	let tc = TermController()
+	let tcTB = TermControllerTB()
 	let cc = CategoryController()
 	let qc = QuestionController()
    
@@ -39,26 +39,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 		
 		updateData()
 		
-		/*
-		Notification keys this controller will need to respond to
 		
-		currentCategoryChangedKey
-		setFavoriteStatusKey
-		assignCategoryKey
-		unassignCategoryKey
-		deleteCategoryKey
-		changeCategoryNameKey
-		*/
-		
-		let nameCCCN = Notification.Name(myKeys.currentCategoryChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryChangedN(notification:)), name: nameCCCN, object: nil)
-		
-		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
-	
-		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
-
 		
 	}
 	
@@ -89,60 +70,6 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 		// a term changed it's favorite status
 		updateData()
 		delegate?.shouldUpdateDisplay()
-	}
-	
-	// MARK: ADD notification for term information changed (different than favorite status changed)
-	
-	@objc func termInformationChangedN (notification: Notification) {
-		// nothing to do for learning home
-	}
-	
-	@objc func assignCategoryN (notification : Notification) {
-		if let data = notification.userInfo as? [String : Int] {
-			let categoryID = data["categoryID"]!
-			if categoryID == currentCategoryID {
-				updateData()
-				delegate?.shouldUpdateDisplay()
-			}
-		}
-	}
-	
-	@objc func unassignCategoryN (notification : Notification){
-		
-		print("fcVCH got unassignCategoryN")
-		
-		if let data = notification.userInfo as? [String : Int] {
-			let categoryID = data["categoryID"]!
-			if categoryID == currentCategoryID {
-				updateData()
-				delegate?.shouldUpdateDisplay()
-			}
-		}
-	}
-	
-	@objc func categoryDeletedN (notification: Notification){
-		// if the current category is deleted, then change the current category to 1 (All Terms) and reload the data
-		if let data = notification.userInfo as? [String: Int] {
-			
-			let deletedCategoryID = data["categoryID"]
-			if deletedCategoryID == currentCategoryID {
-				currentCategoryID = myConstants.dbCategoryAllTermsID
-				updateData()
-				delegate?.shouldUpdateDisplay()
-			}
-		}
-	}
-	
-	@objc func categoryNameChangedN (notification: Notification) {
-		// if this is the current category, reload the category and then refresh the display
-		
-		if let data = notification.userInfo as? [String : Int] {
-			let changedCategoryID = data["categoryID"]
-			if changedCategoryID == currentCategoryID {
-				delegate?.shouldUpdateDisplay()
-			}
-		}
-		
 	}
 	
 	func updateData () {
