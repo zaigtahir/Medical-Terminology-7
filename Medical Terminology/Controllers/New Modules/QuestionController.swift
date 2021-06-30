@@ -379,7 +379,7 @@ class QuestionController {
 	}
 	
 	/// return array of ids where answeredTerm = unanswered OR incorrect
-	func getAvilableTermQuestions (categoryIDs: [Int], numberOfQuestions: Int, showFavoritesOnly: Bool) -> [Question] {
+	func getAvailableTermQuestions (categoryIDs: [Int], numberOfQuestions: Int, showFavoritesOnly: Bool) -> [Question] {
 		
 		var questions = [Question]()
 		

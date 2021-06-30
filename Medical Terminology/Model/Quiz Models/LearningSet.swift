@@ -16,24 +16,21 @@ class LearningSet: QiuzTestBase {
 	
 	/// to save the original termIDs for resetting the learned items when resetting the test
 	private let termIDs : [Int]
-	private var currentCategoryID = 0
+	private var currentCategoryIDs = [1]
 	private let qc = QuestionController()
 	private let tc = TermController()
 	
-	init (categoryID: Int, numberOfTerms: Int, favoritesOnly: Bool) {
+	init (categoryIDs: [Int], numberOfTerms: Int, showFavoritesOnly: Bool) {
 		
 		// will create a learning set with the numberOfTerms if available
 		
-		currentCategoryID = categoryID
+		currentCategoryIDs = categoryIDs
 		
-		print ("LearningSet init getting termIDs")
-		
-		
-		termIDs = qc.getTermIDsAvailableToLearn(categoryID: categoryID, numberOfTerms: numberOfTerms, favoritesOnly: favoritesOnly)
+		termIDs = qc.getTermIDsAvailableToLearn(categoryIDs: categoryIDs, numberOfTerms: numberOfTerms, showFavoritesOnly: showFavoritesOnly)
 
 		// need to clear all learnedTerm and learnedQuestion from the items in the db
-		
-		qc.resetLearned(categoryID: categoryID, termIDs: termIDs)
+				
+		qc.resetLearned(termIDs: termIDs)
 		
 		var questions = [Question]()
 		
@@ -59,14 +56,14 @@ class LearningSet: QiuzTestBase {
 		if question.questionType == .term {
 			if question.learnedTermForItem == true {
 				//set to false in db
-				qc.setLearnedTerm(categoryID: currentCategoryID, termID: question.termID, learned: false)
+				qc.setLearnedTerm(termID: question.termID, learned: false)
 				
 			}
 		} else {
 			//it is definition type question
 			if question.learnedDefinitionForItem == true {
 				//set to false in db
-				qc.setLearnedDefinition(categoryID: currentCategoryID, termID: question.termID, learned: false)
+				qc.setLearnedDefinition(termID: question.termID, learned: false)
 			}
 		}
 		
@@ -98,7 +95,7 @@ class LearningSet: QiuzTestBase {
 		}
 		
 		//save learned state
-		qc.saveLearnedStatus(categoryID: currentCategoryID, question: question)
+		qc.saveLearnedStatus(question: question)
 		
 		//add feedback remarks
 
@@ -118,7 +115,7 @@ class LearningSet: QiuzTestBase {
 	func resetLearningSet () {
 		
 		//reset any learned values in the DB
-		qc.resetLearned(categoryID: currentCategoryID, termIDs: termIDs)
+		qc.resetLearned(termIDs: termIDs)
 		
 		//reload the set with the original questions
 		reset()

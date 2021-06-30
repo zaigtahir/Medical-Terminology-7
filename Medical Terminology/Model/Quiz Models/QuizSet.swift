@@ -12,28 +12,26 @@ class TestSet: QiuzTestBase {
 	
 	/// to save the original termIDs for resetting the learned items when resetting the test
 	private let termIDs = [Int]()
-	private var currentCategoryID = 0
+	private var currentCategoryIDs = [1]
 	private let qc = QuestionController()
 	private let tc = TermController()
 	
-	init (categoryID: Int, numberOfQuestions: Int, favoritesOnly: Bool, questionsTypes: TermComponent) {
+	init (categoryIDs: [Int], numberOfQuestions: Int, showFavoritesOnly: Bool, questionsTypes: TermComponent) {
 		// will create a testset with the numberOfQuesteions if available
 		// will only select questions that are not answered or answered incorrectly
 		
 		// for now just test out term questions
 		var questions = [Question]()
-		currentCategoryID = categoryID
 		
 		switch questionsTypes {
 		
 		case .term:
-			questions = qc.getAvilableTermQuestions(categoryID: currentCategoryID, numberOfQuestions: 2, favoriteOnly: favoritesOnly)
-			
+			questions = qc.getAvailableTermQuestions(categoryIDs: categoryIDs, numberOfQuestions: numberOfQuestions, showFavoritesOnly: showFavoritesOnly)
 		case .definition:
-			questions = qc.getAvailableDefinitionQuestions(categoryID: currentCategoryID, numberOfQuestions: 2, favoriteOnly: favoritesOnly)
+			questions = qc.getAvailableDefinitionQuestions(categoryIDs: categoryIDs, numberOfQuestions: numberOfQuestions, showFavoritesOnly: showFavoritesOnly)
 			
 		case .both:
-			questions = qc.getAvailableQuestions(categoryID: currentCategoryID, numberOfQuestions: numberOfQuestions, favoritesOnly: favoritesOnly)
+			questions = qc.getAvailableQuestions(categoryIDs: categoryIDs, numberOfQuestions: numberOfQuestions, showFavoritesOnly: showFavoritesOnly)
 		}
 		
 		super.init(originalQuestions: questions)
@@ -92,7 +90,7 @@ class TestSet: QiuzTestBase {
 		qc.selectAnswer(question: question, answerIndex: answerIndex)
 		
 		//save answered state
-		qc.saveAnsweredStatus(categoryID: currentCategoryID, question: question)
+		qc.saveAnsweredStatus(question: question)
 		
 		//append question from masterlist to the active list
 		moveQuestion()
@@ -101,8 +99,7 @@ class TestSet: QiuzTestBase {
 	
 	func resetTestSet () {
 		
-		qc.resetAnswers(categoryID: currentCategoryID, termIDs: termIDs
-		)
+		qc.resetAnswers(termIDs: termIDs)
 		//reload the set with the original questions
 		reset()
 

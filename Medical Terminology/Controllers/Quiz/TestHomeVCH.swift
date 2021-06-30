@@ -18,7 +18,7 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 
     private var testSet: TestSet!
 	
-	var currentCategoryID = 1
+	var currentCategoryIDs = [1]
 	var favoritesOnly = false
     var numberOfQuestions = 10
     var questionsType : TermComponent = .both
@@ -75,7 +75,7 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 	}
 	
 	// MARK: - notification functions
-	
+
 	@objc func currentCategoryChangedN (notification : Notification) {
 		
 		if let data = notification.userInfo as? [String : Int] {
@@ -151,7 +151,8 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 		}
 		
 	}
-	
+
+
 	func updateData () {
 		
 		categoryTermsCount = tc.getCount2(categoryID: currentCategoryID, favoritesOnly: false)
@@ -188,8 +189,8 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
     }
     
     func restartOver () {
-		
-		qc.resetAnswers(categoryID: currentCategoryID, questionType: questionsType)
+	
+		qc.resetAnswers(categoryIDs: currentCategoryIDs, questionType: questionsType)
 	
         //clear the test
 		testSet = nil

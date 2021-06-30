@@ -28,7 +28,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	let cc = CategoryController()
 	let qc = QuestionController()
    
-	// counts, use updateData to update these values
+	// counts, use updateData to update these values as these values are used in multiple areas of the LearningHomeVC
 	var favoriteTermsCount = 0
 	var categoryTermsCount = 0
 	var learnedTermsCount = 0
@@ -41,74 +41,46 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 		
 		updateData()
 		
-		
-		
 	}
+	
+	
 	
 	deinit {
 		// remove observer (s)
 		NotificationCenter.default.removeObserver(self)
 	}
 	
-	// MARK: - notification functions
-	
-	@objc func currentCategoryChangedN (notification : Notification) {
-		
-		if let data = notification.userInfo as? [String : Int] {
-			
-			// clear the learning set
-			if learningSet != nil {
-				learningSet = nil
-			}
-			
-			//there will be only one data here, the categoryID
-			currentCategoryID = data["categoryID"]!
-			updateData()
-			delegate?.shouldUpdateDisplay()
-		}
-	}
-	
-	@objc func setFavoriteStatusN (notification: Notification) {
-		// a term changed it's favorite status
-		updateData()
-		delegate?.shouldUpdateDisplay()
-	}
 	
 	func updateData () {
 		
 		// learned terms are terms where both the term and the definitions is learned
-	
-		learnedTermsCount = qc.getLearnedTermsCount(categoryID: currentCategoryID, favoritesOnly: favoritesOnly)
 		
+		
+		
+		categoryTermsCount = tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: false)
+		
+		favoriteTermsCount = tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: true)
+		
+		// add to question controller
+		
+		learnedTermsCount = qc.getLearnedTermsCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly)
+		
+		if showFavoritesOnly {
+			totalTermsCount = favoriteTermsCount
+		} else {
+			totalTermsCount = categoryTermsCount
+		}
 			
 	}
 	
 	
-	// MARK: - count functions
-	func getFavoriteTermsCount () -> Int {
-		//return the count of favorites or this catetory
-		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: true)
-	}
-	
-	func getAllTermsCount () -> Int {
-		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: false)
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// MARK: - notification functions
 	
 	func getNewLearningSet () -> LearningSet {
 		
 		// note number of questions/2 = number of terms which the function needs
+		learningSet = LearningSet(categoryIDs: currentCategoryIDs, numberOfTerms: numberOfQuestions/2, showFavoritesOnly: showFavoritesOnly)
 		
-		learningSet = LearningSet(categoryID: currentCategoryID, numberOfTerms: numberOfQuestions/2, favoritesOnly: favoritesOnly)
 		return learningSet
 	}
 
@@ -126,8 +98,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	}
 
 	func restartOver () {
-		
-		qc.resetLearned(categoryID: currentCategoryID)
+		qc.resetLearned(termIDs: termIDs)
 		
 		// clear the learningSet
 		learningSet = nil

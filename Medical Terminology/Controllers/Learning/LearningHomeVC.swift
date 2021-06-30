@@ -55,9 +55,17 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		
 		favoritesCountLabel.text = "\(learningHomeVCH.favoriteTermsCount)"
 		
-		let c = cc.getCategory(categoryID: learningHomeVCH.currentCategoryID)
-		
-		categoryNameLabel.text = "\(c.name) (\(learningHomeVCH.categoryTermsCount))"
+		if learningHomeVCH.currentCategoryIDs.count == 1 {
+			
+			let c = cc.getCategory(categoryID: learningHomeVCH.currentCategoryIDs[0])
+			
+			categoryNameLabel.text = "\(c.name) (\(learningHomeVCH.totalTermsCount) terms)"
+			
+		} else {
+			
+			categoryNameLabel.text = "\(learningHomeVCH.currentCategoryIDs.count) categories selected (\(learningHomeVCH.totalTermsCount) terms)"
+		}
+	
 		
 		if learningHomeVCH.categoryTermsCount == 0 {
 			// no terms available in this category
@@ -176,9 +184,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC
 			
-			vc.categoryListVCH.categoryListMode = .selectCategories
-			vc.categoryListVCH.currentCategoryID = learningHomeVCH.currentCategoryID
-			
+			vc.categoryListVCH.setupSelectCategoryMode(initialCategories: learningHomeVCH.currentCategoryIDs)
 			
 		default:
 			print("Fatal error got an unexpected segue in LearningHomeVC")
