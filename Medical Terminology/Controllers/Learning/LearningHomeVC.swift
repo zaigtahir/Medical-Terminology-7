@@ -51,7 +51,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 	
 	private func updateDisplay () {
 		
-		favoritesOnlyButton.isOn = learningHomeVCH.favoritesOnly
+		favoritesOnlyButton.isOn = learningHomeVCH.showFavoritesOnly
 		
 		favoritesCountLabel.text = "\(learningHomeVCH.favoriteTermsCount)"
 		
@@ -73,7 +73,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			seeCurrentSetButton.isEnabled = learningHomeVCH.isLearningSetAvailable()
 			
 			
-		} else if learningHomeVCH.favoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
+		} else if learningHomeVCH.showFavoritesOnly && learningHomeVCH.favoriteTermsCount == 0 {
 			
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
@@ -100,7 +100,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			headingLabel.isHidden = true
 			infoIcon.isHidden = true
 			
-			if learningHomeVCH.favoritesOnly {
+			if learningHomeVCH.showFavoritesOnly {
 				messageLabel.text = "You have learned \(learningHomeVCH.learnedTermsCount) out of \(learningHomeVCH.totalTermsCount) favorite terms."
 				
 			} else {
@@ -216,7 +216,7 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 	}
 	
 	@IBAction func favoritesOnlyButton(_ sender: ZUIToggleButton) {
-		learningHomeVCH.favoritesOnly.toggle()
+		learningHomeVCH.showFavoritesOnly.toggle()
 		learningHomeVCH.updateData()
 		updateDisplay()
 	}

@@ -15,9 +15,11 @@ protocol LearningHomeVCHDelegate: AnyObject {
 class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	
 	private var learningSet: LearningSet!
+		
+	// default starting
+	var currentCategoryIDs = [1]
 	
-	var currentCategoryID = 1
-	var favoritesOnly = false
+	var showFavoritesOnly = false
 	var numberOfQuestions = 10
 	
 	///used to determine if to create a new set or keep current set when going from learning home to learning set
@@ -75,22 +77,32 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	func updateData () {
 		
 		// learned terms are terms where both the term and the definitions is learned
-		
-		categoryTermsCount = cc.getCountOfTerms(categoryID: currentCategoryID)
-		
-		favoriteTermsCount = tc.getCount2(categoryID: currentCategoryID, favoritesOnly: true)
-		
-		// add to question controller
-		
+	
 		learnedTermsCount = qc.getLearnedTermsCount(categoryID: currentCategoryID, favoritesOnly: favoritesOnly)
 		
-		if favoritesOnly {
-			totalTermsCount = favoriteTermsCount
-		} else {
-			totalTermsCount = categoryTermsCount
-		}
 			
 	}
+	
+	
+	// MARK: - count functions
+	func getFavoriteTermsCount () -> Int {
+		//return the count of favorites or this catetory
+		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: true)
+	}
+	
+	func getAllTermsCount () -> Int {
+		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: false)
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	func getNewLearningSet () -> LearningSet {
 		
