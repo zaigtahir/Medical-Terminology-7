@@ -51,13 +51,22 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 	
 	private func updateDisplay () {
 		
-		favoritesOnlyButton.isOn = testHomeVCH.favoritesOnly
+		favoritesOnlyButton.isOn = testHomeVCH.showFavoritesOnly
 		
 		favoritesCountLabel.text = "\(testHomeVCH.favoriteTermsCount)"
 		
-		let c = cc.getCategory(categoryID: testHomeVCH.currentCategoryID)
+		if testHomeVCH.currentCategoryIDs.count == 1 {
+			
+			let c = cc.getCategory(categoryID: testHomeVCH.currentCategoryIDs[0])
+			
+			categoryNameLabel.text = "\(c.name) (\(testHomeVCH.totalQuestionsCount) terms)"
+			
+		} else {
+			
+			categoryNameLabel.text = "\(testHomeVCH.currentCategoryIDs.count) categories selected (\(testHomeVCH.totalQuestionsCount) terms)"
+		}
 		
-		categoryNameLabel.text = "\(c.name) (\(testHomeVCH.categoryTermsCount))"
+		
 		
 		if testHomeVCH.categoryTermsCount == 0 {
 			
@@ -73,7 +82,7 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 			seeCurrentSetButton.isEnabled = testHomeVCH.isTestSetAvailable()
 	
 			
-		} else if (testHomeVCH.favoritesOnly && testHomeVCH.favoriteTermsCount == 0) {
+		} else if (testHomeVCH.showFavoritesOnly && testHomeVCH.favoriteTermsCount == 0) {
 			
 			percentLabel.isHidden = true
 			redoButton.isHidden = true
@@ -146,8 +155,7 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! CategoryListVC
 			
-			vc.categoryListVCH.categoryListMode = .selectCategories
-			vc.categoryListVCH.currentCategoryID = testHomeVCH.currentCategoryID
+			vc.categoryListVCH.setupSelectCategoryMode(initialCategories: testHomeVCH.currentCategoryIDs)
 			
 		case myConstants.segueToTest:
 			let nc = segue.destination as! UINavigationController
@@ -167,7 +175,7 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 			vc.delegate = testHomeVCH
 			vc.questionsType = testHomeVCH.questionsType
 			vc.numberOfQuestions = testHomeVCH.numberOfQuestions
-			vc.isFavoriteMode = testHomeVCH.favoritesOnly
+			vc.isFavoriteMode = testHomeVCH.showFavoritesOnly
 			
 		default:
 			print("fatal error no matching segue in testHomeVC prepare function")
@@ -219,7 +227,7 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 	}
 	
 	@IBAction func favoritesOnlyButtonAction(_ sender: Any) {
-		testHomeVCH.favoritesOnly.toggle()
+		testHomeVCH.showFavoritesOnly.toggle()
 		testHomeVCH.updateData()
 		updateDisplay()
 	}
