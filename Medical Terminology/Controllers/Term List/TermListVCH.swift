@@ -121,7 +121,10 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			
 			//there will be only one data here, the categoryID
 			currentCategoryIDs = data["categoryIDs"]!
-			updateDataAndDisplay()
+
+			updateData()
+			delegate?.shouldReloadTable()
+			delegate?.shouldUpdateDisplay()
 			
 		}
 	}
@@ -254,7 +257,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	/**
 	Will update the internal termsList and also use the delegate functions to update the home tableView and display
 	*/
-	func updateDataAndDisplay () {
+	func updateDataAndDisplay22 () {
 		
 		updateData()
 		delegate?.shouldReloadTable()

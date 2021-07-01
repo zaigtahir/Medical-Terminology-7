@@ -47,7 +47,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	override init() {
 		super.init()
 		
-		updateData()
 		
 		// MARK: - Category notifications
 		
@@ -74,6 +73,8 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
 		
+		// update data
+		updateData()
 		
 	}
 	
@@ -90,7 +91,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			
 			//there will be only one data here, the categoryIDs
 			currentCategoryIDs = data["categoryIDs"]!
-			updateDataAndDisplay()
+			updateData()
+			delegate?.shouldRefreshCollectionView()
+			delegate?.shouldUpdateDisplay()
 			
 		}
 	}
@@ -197,10 +200,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
-	// MARK: - Term notification functions
-
-
-	
 	// MARK: - update data functions
 	
 	func updateData () {
@@ -208,18 +207,11 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		termIDs = fc.getFlashcardTermIDs(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, learnedStatus: learnedStatus)
 	}
 	
-	/**
-	Will update the termIDs array and will reload the collection view and display
-	*/
-	func updateDataAndDisplay () {
+	func relearnFlashcards () {
+		fc.resetLearnedFlashcards(categoryIDs: currentCategoryIDs)
 		updateData()
 		delegate?.shouldRefreshCollectionView()
 		delegate?.shouldUpdateDisplay()
-	}
-	
-	func relearnFlashcards () {
-		fc.resetLearnedFlashcards(categoryIDs: currentCategoryIDs)
-		updateDataAndDisplay()
 	}
 	
 	// MARK: - count functions
