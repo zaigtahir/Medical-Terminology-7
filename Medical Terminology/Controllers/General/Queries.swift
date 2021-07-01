@@ -13,8 +13,8 @@ class Queries {
 	// MARK: -WHERE string components
 	
 	func categoryString (categoryIDs: [Int]) -> String {
-		// AND categoryID = 1
-		// AND (categoryID = 2 OR categoryID = 3)
+		// categoryID = 1
+		// (categoryID = 2 OR categoryID = 3)
 		
 		if categoryIDs.count == 0 {
 			return ""
@@ -40,6 +40,8 @@ class Queries {
 	}
 	
 	func favorteString (isFavorite: Bool?) -> String {
+		
+		// "" or "AND isFavorite = n"
 		guard let f = isFavorite else { return "" }
 		return f ? "AND isfavorite = 1" : "AND isfavorite = 0"
 	}

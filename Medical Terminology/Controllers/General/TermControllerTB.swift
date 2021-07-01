@@ -513,15 +513,6 @@ class TermControllerTB {
 	
 	func getTermCount (categoryIDs: [Int], showFavoritesOnly: Bool) -> Int {
 		
-		
-		//select COUNT(*) column_name FROM (SELECT DISTINCT column_name);
-	
-		var favoriteString = ""
-		
-		if showFavoritesOnly {
-			favoriteString = " AND isFavorite = 1"
-		}
-		
 		let query = """
 			SELECT COUNT (*) FROM
 			(SELECT DISTINCT \(assignedCategories).termID
@@ -529,7 +520,7 @@ class TermControllerTB {
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
 			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-			\(favoriteString))
+			\(queries.showFavoritesOnly(show: showFavoritesOnly)))
 			"""
 		
 		var count = 0

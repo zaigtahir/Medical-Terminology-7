@@ -239,10 +239,13 @@ class QuestionController {
 		// These are term where learnedTerm && learnedDefinition != true
 		
 		let query = """
-					SELECT termID FROM \(terms)
+					SELECT DISTINCT \(terms).termID
+					FROM \(terms)
+					JOIN \(assignedCategories)
+					ON \(terms).termID = \(assignedCategories).termID
 					WHERE \(queries.categoryString(categoryIDs: categoryIDs))
 					AND (learnedTerm = 0 OR learnedDefinition = 0)
-					AND \(queries.showFavoritesOnly(show: showFavoritesOnly))
+					\(queries.showFavoritesOnly(show: showFavoritesOnly))
 					ORDER BY RANDOM ()
 					LIMIT \(numberOfTerms)
 					"""

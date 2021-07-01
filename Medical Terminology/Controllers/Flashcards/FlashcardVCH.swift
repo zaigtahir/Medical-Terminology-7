@@ -156,7 +156,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// MARK: - Favorite notification function
 	
-	@objc func setFavoriteStatusN (notification: Notification) {
+	@objc func setFavoriteStatusNBK (notification: Notification) {
 		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
@@ -197,6 +197,21 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 					delegate?.shouldUpdateDisplay()
 				}
 			}
+		}
+	}
+	
+	@objc func setFavoriteStatusN (notification: Notification) {
+	
+		if let data = notification.userInfo as? [String: Int] {
+			let affectedTermID = data["termID"]!
+			
+			let categoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
+			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: categoryIDs) {
+				// a term was affected in the current categories
+				updateData()
+				delegate?.shouldUpdateDisplay()
+			}
+			
 		}
 	}
 	
