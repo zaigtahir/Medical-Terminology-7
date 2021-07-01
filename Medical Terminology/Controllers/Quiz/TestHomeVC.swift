@@ -55,15 +55,17 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 		
 		favoritesCountLabel.text = "\(testHomeVCH.favoriteTermsCount)"
 		
+		
+		
 		if testHomeVCH.currentCategoryIDs.count == 1 {
 			
 			let c = cc.getCategory(categoryID: testHomeVCH.currentCategoryIDs[0])
 			
-			categoryNameLabel.text = "\(c.name) (\(testHomeVCH.totalQuestionsCount) terms)"
+			categoryNameLabel.text = "\(c.name) (\(testHomeVCH.categoryTermsCount) terms)"
 			
 		} else {
 			
-			categoryNameLabel.text = "\(testHomeVCH.currentCategoryIDs.count) categories selected (\(testHomeVCH.totalQuestionsCount) terms)"
+			categoryNameLabel.text = "\(testHomeVCH.currentCategoryIDs.count) categories selected (\(testHomeVCH.categoryTermsCount) terms)"
 		}
 		
 		

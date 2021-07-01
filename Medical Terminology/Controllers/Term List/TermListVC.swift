@@ -43,7 +43,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	
 	func updateDisplay () {
 				
-		let favoriteCount = tcTB.getTermCount(categoryIDs: termListVCH.currentCategoryIDs, showFavoritesOnly: termListVCH.showFavoritesOnly)
+		let favoriteCount = tcTB.getTermCount(categoryIDs: termListVCH.currentCategoryIDs, showFavoritesOnly: true)
 		
 		let totalTermsCount = tcTB.getTermCount(categoryIDs: termListVCH.currentCategoryIDs, showFavoritesOnly: false)
 		
@@ -83,7 +83,6 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 	func shouldRemoveRowAt(indexPath: IndexPath) {
 		tableView.deleteRows(at: [indexPath], with: .automatic)
 	}
-	
 	
 	func shouldClearSearchText () {
 		termListVCH.searchText = ""

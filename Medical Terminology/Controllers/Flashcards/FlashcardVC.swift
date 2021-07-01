@@ -67,13 +67,13 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 	
 	func updateDisplay () {
 		
-		let favoriteCount = flashCardVCH.getFavoriteTermsCount()
-	
+		let favoriteCount = tcTB.getTermCount(categoryIDs: flashCardVCH.currentCategoryIDs, showFavoritesOnly: true)
+		
+		let totalTermsCount = tcTB.getTermCount(categoryIDs: flashCardVCH.currentCategoryIDs, showFavoritesOnly: false)
+		
 		favoritesOnlyButton.isOn = flashCardVCH.showFavoritesOnly
 		
-		favoritesCountLabel.text = "\(favoriteCount)"
-		
-		let totalTermsCount = tcTB.getTermCount(categoryIDs: flashCardVCH.currentCategoryIDs, showFavoritesOnly: flashCardVCH.showFavoritesOnly)
+		favoritesCountLabel.text = String(favoriteCount)
 		
 		if flashCardVCH.currentCategoryIDs.count == 1 {
 			

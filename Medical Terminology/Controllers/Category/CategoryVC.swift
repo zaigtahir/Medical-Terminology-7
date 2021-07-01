@@ -107,14 +107,13 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 				}
 			}
 	
-			
 			if categoryVCH.editedCategory.isStandard {
 				
-				self.title = "Predefined Category"
+				
 				nameEditButton.isHidden = true
 				descriptionEditButton.isHidden = false
 			} else {
-				self.title = "My Category"
+
 				nameEditButton.isHidden = false
 				descriptionEditButton.isHidden = false
 			}
@@ -134,8 +133,17 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		
 		func formatFields() {
 			
+			if categoryVCH.editedCategory.isStandard {
+				self.title = "Predefined Category"
+				nameTitleLabel.text = "Category Name"
+			} else {
+				nameTitleLabel.text = "My Category Name"
+				self.title = "My Category"
+			}
+			
 			if categoryVCH.editedCategory.name == "" {
-				nameLabel.text = "Category name"
+				
+				nameLabel.text = "New Category Name"
 			} else {
 				nameLabel.text = categoryVCH.editedCategory.name
 			}
@@ -153,6 +161,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			}
 			
 			if categoryVCH.editedCategory.categoryID == -1 {
+				
 				headerImage.image = myTheme.imageHeaderAdd
 			}
 		}
@@ -172,7 +181,6 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	@IBAction func leftButtonAction(_ sender: Any) {
 		
-		print("for now just dismiss the vc")
 		
 		/*
 		
@@ -203,42 +211,10 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 				
 			} else {
 				
-				self.navigationController?.dismiss(animated: true, completion: nil)
-				
+				self.navigationController?.popViewController(animated: true)
 			}
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		if categoryVCH.category.categoryID == -1 {
-			// this is a new category, save it
-			
-			categoryVCH.addNewCategory()
-			
-		}
-		*/
-		
-		
-		
-		self.navigationController?.popViewController(animated: true)
 	}
 	
 	@IBAction func cancelButtonAction(_ sender: Any) {

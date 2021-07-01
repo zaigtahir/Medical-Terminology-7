@@ -228,16 +228,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		delegate?.shouldRefreshCollectionView()
 		delegate?.shouldUpdateDisplay()
 	}
-	
-	// MARK: - count functions
-	func getFavoriteTermsCount () -> Int {
-		//return the count of favorites or this catetory
-		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: true)
-	}
-	
-	func getAllTermsCount () -> Int {
-		return tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: false)
-	}
+
 	
 	// MARK: - CollectionViewDataSource Functions
 	

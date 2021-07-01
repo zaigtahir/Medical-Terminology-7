@@ -147,7 +147,7 @@ class QuestionController {
 		question.selectAnswerIndex(answerIndex: answerIndex)
 	}
 	
-	// MARK: - new version of learning related functions
+	// MARK: - Learning related functions
 	
 	func isLearned (termID: Int) -> Bool {
 		//will return true if both learned term and learned defintion are true
@@ -225,12 +225,22 @@ class QuestionController {
 	}
 	
 	func resetLearned(categoryIDs: [Int]) {
+		// reset the learned status if the term appears in any of the categories
 		
 		let query = """
-					UPDATE \(terms)
-					SET learnedTerm = \(AnsweredState.unanswered.rawValue), learnedDefinition = \(AnsweredState.unanswered.rawValue)
-					WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-					"""
+			UPDATE \(terms)
+			SET
+			learnedTerm = \(AnsweredState.unanswered.rawValue),
+			learnedDefinition = \(AnsweredState.unanswered.rawValue)
+			WHERE termID =
+			(SELECT DISTINCT \(assignedCategories).termID
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+			"""
+		
+		print("QC resetLearned query = \(query)")
 		
 		myDB.executeStatements(query)
 	}
@@ -239,16 +249,18 @@ class QuestionController {
 		// These are term where learnedTerm && learnedDefinition != true
 		
 		let query = """
-					SELECT DISTINCT \(terms).termID
-					FROM \(terms)
-					JOIN \(assignedCategories)
-					ON \(terms).termID = \(assignedCategories).termID
-					WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-					AND (learnedTerm = 0 OR learnedDefinition = 0)
-					\(queries.showFavoritesOnly(show: showFavoritesOnly))
-					ORDER BY RANDOM ()
-					LIMIT \(numberOfTerms)
-					"""
+			SELECT DISTINCT \(terms).termID
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+			AND (learnedTerm = 0 OR learnedDefinition = 0)
+			\(queries.showFavoritesOnly(show: showFavoritesOnly))
+			ORDER BY RANDOM ()
+			\(queries.limitToString(limit: numberOfTerms))
+			"""
+		
+		print("QC getTermIDsAvailableToLearn query = \(query)")
 		
 		var ids = [Int]()
 		
@@ -266,11 +278,19 @@ class QuestionController {
 	func getLearnedTermsCount (categoryIDs: [Int], showFavoritesOnly: Bool) -> Int {
 		
 		let query = """
-					SELECT COUNT (*) FROM \(terms)
-					WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-					AND (learnedTerm = 0 OR learnedDefinition = 0)
-					AND \(queries.showFavoritesOnly(show: showFavoritesOnly))
-					"""
+			SELECT COUNT (*) FROM
+			(
+			SELECT DISTINCT \(terms).termID
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+			AND (learnedTerm = 1 AND learnedDefinition = 1)
+			\(queries.showFavoritesOnly(show: showFavoritesOnly))
+			)
+			"""
+		
+		print("QC getLearnedTermsCount query = \(query)")
 		
 		var count = 0
 		
@@ -284,7 +304,8 @@ class QuestionController {
 		return count
 	}
 	
-	// MARK: - new version of test related functions
+	
+	// MARK: - Questions related functions
 	
 	func saveAnsweredStatus (question: Question) {
 		
@@ -353,46 +374,86 @@ class QuestionController {
 		switch questionType {
 		
 		case .term:
+			
 			query = """
-					UPDATE \(assignedCategories)
-					SET answeredTerm = \(AnsweredState.unanswered.rawValue)
-					WHERE
-					\(queries.categoryString(categoryIDs: categoryIDs))
-					"""
+				UPDATE \(terms)
+				SET
+				answeredTerm = \(AnsweredState.unanswered.rawValue)
+				WHERE termID =
+				(
+				SELECT DISTINCT \(assignedCategories).termID
+				FROM \(terms)
+				JOIN \(assignedCategories)
+				ON \(terms).termID = \(assignedCategories).termID
+				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+				}
+				"""
 			
 		case .definition:
+			
 			query = """
-					UPDATE \(assignedCategories)
-					SET answeredDefinition = \(AnsweredState.unanswered.rawValue)
-					WHERE
-					\(queries.categoryString(categoryIDs: categoryIDs))
-					"""
+				UPDATE \(terms)
+				SET
+				answeredDefinition = \(AnsweredState.unanswered.rawValue)
+				WHERE termID =
+				(
+				SELECT DISTINCT \(assignedCategories).termID
+				FROM \(terms)
+				JOIN \(assignedCategories)
+				ON \(terms).termID = \(assignedCategories).termID
+				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+				}
+				"""
 			
 		case .both:
-			query = """
-					UPDATE \(assignedCategories)
-					SET answeredTerm = \(AnsweredState.unanswered.rawValue), answeredDefinition = \(AnsweredState.unanswered.rawValue)
-					WHERE
-					\(queries.categoryString(categoryIDs: categoryIDs))
-					"""
 			
+			query = """
+				UPDATE \(terms)
+				SET
+				answeredTerm = \(AnsweredState.unanswered.rawValue)
+				answeredDefinition = \(AnsweredState.unanswered.rawValue),
+				WHERE termID =
+				(
+				SELECT DISTINCT \(assignedCategories).termID
+				FROM \(terms)
+				JOIN \(assignedCategories)
+				ON \(terms).termID = \(assignedCategories).termID
+				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+				}
+				"""
 		}
 		
 		myDB.executeStatements(query)
 	}
 	
+	
+	
+	
+	////////// START FIXING QUERIES HERE
+	
+	
+	
+	
+	
 	/// return array of ids where answeredTerm = unanswered OR incorrect
 	func getAvailableTermQuestions (categoryIDs: [Int], numberOfQuestions: Int, showFavoritesOnly: Bool) -> [Question] {
 		
 		var questions = [Question]()
+
 		
 		let query = """
-					SELECT termID FROM \(terms)
-					WHERE
-					\(queries.categoryString(categoryIDs: categoryIDs))
-					AND answeredTerm != \(AnsweredState.correct.rawValue))
-					\(queries.showFavoritesOnly(show: showFavoritesOnly))
-					"""
+			SELECT DISTINCT \(terms).termID
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+			AND answeredTerm != \(AnsweredState.correct.rawValue))
+			\(queries.showFavoritesOnly(show: showFavoritesOnly))
+			ORDER BY RANDOM ()
+			\(queries.limitToString(limit: numberOfQuestions))
+			"""
+		
+		print("QC getAvailableTermQuestion query = \(query)")
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			while resultSet.next() {
@@ -410,12 +471,18 @@ class QuestionController {
 		var questions = [Question]()
 		
 		let query = """
-					SELECT termID FROM \(terms)
-					WHERE
-					\(queries.categoryString(categoryIDs: categoryIDs))
-					AND answeredDefinition != \(AnsweredState.correct.rawValue))
-					\(queries.showFavoritesOnly(show: showFavoritesOnly))
-					"""
+			SELECT DISTINCT \(terms).termID
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+			AND answeredDefinition != \(AnsweredState.correct.rawValue))
+			\(queries.showFavoritesOnly(show: showFavoritesOnly))
+			ORDER BY RANDOM ()
+			\(queries.limitToString(limit: numberOfQuestions))
+			"""
+		
+		print("QC getAvailablDefinitionQuestion query = \(query)")
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			while resultSet.next() {
@@ -434,24 +501,32 @@ class QuestionController {
 		var questions = [Question]()
 		
 		let query = """
-		SELECT * FROM
-		(
-		SELECT termID, 1 as type from \(terms)
-		WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-		AND  answeredTerm != \(AnsweredState.correct.rawValue)
-		\(queries.showFavoritesOnly(show: showFavoritesOnly))
+			SELECT * FROM
+			(
+			SELECT DISTINCT \(terms).termID, 1 as type
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+			AND answeredTerm != \(AnsweredState.correct.rawValue))
+			\(queries.showFavoritesOnly(show: showFavoritesOnly))
+			
+			UNION
 
-		UNION
+			SELECT DISTINCT \(terms).termID, 2 as type
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+			AND answeredDefinition != \(AnsweredState.correct.rawValue))
+			\(queries.showFavoritesOnly(show: showFavoritesOnly))
+			)
 
-		SELECT termID, 2 as type from \(terms)
-		WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-		AND  answeredDefinition != \(AnsweredState.correct.rawValue)
-		\(queries.showFavoritesOnly(show: showFavoritesOnly))
-		)
-
-		ORDER BY RANDOM()
-		LIMIT \(numberOfQuestions)
-		"""
+			ORDER BY RANDOM ()
+			\(queries.limitToString(limit: numberOfQuestions))
+			"""
+		
+		print("QC: getAvailableQuestions query = \(query)")
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			
@@ -481,7 +556,7 @@ class QuestionController {
 		switch questionType {
 		
 		case .term, .definition:
-
+			
 			return tcTB.getTermCount(categoryIDs: categoryIDs, showFavoritesOnly: showFavoritesOnly)
 			
 		case .both:
@@ -497,27 +572,52 @@ class QuestionController {
 		switch questionType {
 		
 		case .term:
+			
 			query = """
-				SELECT COUNT (*) termID FROM \(terms)
+				SELECT COUNT (*) FROM
+				(
+				SELECT DISTINCT \(terms).termID
+				FROM \(terms)
+				JOIN \(assignedCategories)
+				ON \(terms).termID = \(assignedCategories).termID
 				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
 				AND answeredTerm = \(AnsweredState.correct.rawValue)
 				\(queries.showFavoritesOnly(show: showFavoritesOnly))
+				)
 				"""
+			
 		case .definition:
+			
 			query = """
-				SELECT COUNT (*) termID FROM \(terms)
+				SELECT COUNT (*) FROM
+				(
+				SELECT DISTINCT \(terms).termID
+				FROM \(terms)
+				JOIN \(assignedCategories)
+				ON \(terms).termID = \(assignedCategories).termID
 				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
 				AND answeredDefinition = \(AnsweredState.correct.rawValue)
 				\(queries.showFavoritesOnly(show: showFavoritesOnly))
+				)
 				"""
+
 		case .both:
 			query = """
-				SELECT COUNT (*) termID FROM \(terms)
+				SELECT COUNT (*) FROM
+				(
+				SELECT DISTINCT \(terms).termID
+				FROM \(terms)
+				JOIN \(assignedCategories)
+				ON \(terms).termID = \(assignedCategories).termID
 				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-				AND ( answeredTerm = \(AnsweredState.correct.rawValue) OR answeredDefinition = \(AnsweredState.correct.rawValue))
+				AND answeredDefinition = \(AnsweredState.correct.rawValue)
+				AND answeredTerm = \(AnsweredState.correct.rawValue)
 				\(queries.showFavoritesOnly(show: showFavoritesOnly))
+				)
 				"""
 		}
+		
+		print("QC getCorrectQuestionsCount query = \(query)")
 		
 		var count = 0
 		

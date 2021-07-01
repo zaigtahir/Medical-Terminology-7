@@ -59,11 +59,11 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 			
 			let c = cc.getCategory(categoryID: learningHomeVCH.currentCategoryIDs[0])
 			
-			categoryNameLabel.text = "\(c.name) (\(learningHomeVCH.totalTermsCount) terms)"
+			categoryNameLabel.text = "\(c.name) (\(learningHomeVCH.categoryTermsCount) terms)"
 			
 		} else {
 			
-			categoryNameLabel.text = "\(learningHomeVCH.currentCategoryIDs.count) categories selected (\(learningHomeVCH.totalTermsCount) terms)"
+			categoryNameLabel.text = "\(learningHomeVCH.currentCategoryIDs.count) categories selected (\(learningHomeVCH.categoryTermsCount) terms)"
 		}
 	
 		
