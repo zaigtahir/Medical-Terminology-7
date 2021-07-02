@@ -120,7 +120,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	@objc func termChangedN  (notification: Notification) {
-		print("TermListVCH got: termChangedN")
+		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
@@ -136,7 +136,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	@objc func termDeletedN  (notification: Notification) {
 		// self, userInfo: ["assignedCategoryIDs" : assignedCategoryIDs])
-		print("TermListVCH got: termDeleteN")
+		
 		if let data = notification.userInfo as? [String: [Int]] {
 			//let assignedCategoryIDs = data["assignedCategoryIDs"] as [Int]
 			

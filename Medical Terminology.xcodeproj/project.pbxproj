@@ -225,6 +225,7 @@
 		5A15062722557B4600717AB8 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				99937AFE26425D9F001E4D4B /* FlashcardController.swift */,
 				994175DD245A38A900E281DB /* AudioFileController.swift */,
 				992E79FC260FBA3100C19D49 /* CategoryController.swift */,
 				99937B13264EA578001E4D4B /* AssignedCategoryController.swift */,
@@ -323,7 +324,6 @@
 				992E79D0260A2ADD00C19D49 /* FlashcardVCH.swift */,
 				992E79D1260A2ADD00C19D49 /* FlashcardVC.swift */,
 				992F87032630B3EC00591CF9 /* NoFlashCardCell.swift */,
-				99937AFE26425D9F001E4D4B /* FlashcardController.swift */,
 			);
 			path = Flashcards;
 			sourceTree = "<group>";

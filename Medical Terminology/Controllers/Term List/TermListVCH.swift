@@ -371,33 +371,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		
 		// Note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed so that all the components of this program can react.
 		// The VCH will listen for that and tell the home view to refresh it's current cell. This is redundant for this case where the user changed the value of the term favorite status on the flash card itself. However, it will be relavent to react to when the user changes this term's favorite status on an other part of the program.
-		
-		
-		
-		
-		
-		
-		
-		/*
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		let isFavorite = tc.getFavoriteStatus(categoryID: currentCategoryID, termID: termID)
-		
-		tc.setFavoriteStatusPN(categoryID: currentCategoryID, termID: termID, isFavorite: !isFavorite)
-		
-		// after the save method broadcasts the notification, this VCH will instruct the homeVC to update it's cell
-		
-		
-		*/
+	
 	}
 }
 
