@@ -184,9 +184,9 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		
 		/*
 		
-		if new category, save new category -> show success dialog box -> change to existing category view
+		if new category, save new category -> show success dialog box -> dismiss
 		
-		if preexisting category and there are edits -> save edits -> change to no edits state
+		if preexisting category and there are edits -> save edits -> dismiss
 		
 		if preextisting category and no edits -> just dismiss
 		
@@ -197,9 +197,15 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			categoryVCH.saveNewCategory()
 			updateDisplay()
 			
-			let ac = UIAlertController(title: "Success!", message: "Your category was saved, and it will show up in alphabetical order in the My Categories section.", preferredStyle: .alert)
-			let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
+			let ac = UIAlertController(title: "Success!", message: "Your category was saved, and it will show in alphabetical order in the My Categories section.", preferredStyle: .alert)
+			
+			let ok = UIAlertAction(title: "OK", style: .cancel) {alertAction in
+
+				self.navigationController?.popViewController(animated: true)
+			}
+			
 			ac.addAction(ok)
+			
 			self.present(ac, animated: true, completion: nil)
 			
 		} else {
@@ -208,6 +214,8 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			if categoryVCH.categoryWasEdited() {
 				
 				categoryVCH.updateCategoryPN()
+				
+				self.navigationController?.popViewController(animated: true)
 				
 			} else {
 				

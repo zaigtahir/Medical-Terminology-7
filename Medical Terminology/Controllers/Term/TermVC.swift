@@ -286,23 +286,32 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	@IBAction func leftButtonAction(_ sender: Any) {
 		
 		/*
-		if new term, save new term -> show success dialog box -> change to existing term view
+		if new term, save new term -> show success dialog box -> dismiss
 		
-		if preexisting term and there are edits -> save edits -> change to no edits state
+		if preexisting term and there are edits -> save edits -> dismiss
 		
 		if preextisting term and no edits -> just dismiss
 		
 		*/
+		
+		
 		
 		if termVCH.editedTerm.termID == -1 {
 			// this is a new term, so save it
 			termVCH.saveNewTerm()
 			updateDisplay()
 			
-			let ac = UIAlertController(title: "Success!", message: "Your term was saved, and it will show up in alphabetical order in the list of terms.", preferredStyle: .alert)
-			let ok = UIAlertAction(title: "OK", style: .cancel, handler: .none)
+			let ac = UIAlertController(title: "Success!", message: "Your term was saved, and it will show in alphabetical order in the list of terms.", preferredStyle: .alert)
+
+			
+			let ok = UIAlertAction(title: "OK", style: .cancel) {alertAction in
+				self.navigationController?.dismiss(animated: true, completion: nil)
+			}
+			
 			ac.addAction(ok)
+			
 			self.present(ac, animated: true, completion: nil)
+			
 			
 		} else {
 			// this is not a new term, so check to see it has been editied
@@ -310,6 +319,8 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 			if termVCH.termWasEdited() {
 				
 				termVCH.updateTerm()
+				
+				self.navigationController?.dismiss(animated: true, completion: nil)
 				
 			} else {
 				
