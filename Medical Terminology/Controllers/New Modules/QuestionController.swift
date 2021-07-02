@@ -18,8 +18,8 @@ class QuestionController {
 	let assignedCategories = myConstants.dbTableAssignedCategories
 	
 	// controllers
-	let tcTB = TermControllerTB()
-	let queries = Queries()
+	private let tcTB = TermControllerTB()
+	private let queries = Queries()
 	
 	/// question is term, answers are definitions which do not include the definition in the term
 	func makeTermQuestion (termID: Int, randomizeAnswers: Bool) -> Question {

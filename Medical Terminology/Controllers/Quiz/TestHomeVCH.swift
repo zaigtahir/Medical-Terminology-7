@@ -25,10 +25,10 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 	
     var startNewTest: Bool = true    //will be used for segue
     
-	let tcTB = TermControllerTB()
-	let cc = CategoryController()
-	let qc = QuestionController()
-	let utilities = Utilities()
+	private let tcTB = TermControllerTB()
+	private let cc = CategoryController()
+	private let qc = QuestionController()
+	private let utilities = Utilities()
 
 	// counts of items
 	var favoriteTermsCount = 0

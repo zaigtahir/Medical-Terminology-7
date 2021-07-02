@@ -14,7 +14,6 @@ class TestSet: QuizTestBase {
 	private let termIDs = [Int]()
 	private var currentCategoryIDs = [1]
 	private let qc = QuestionController()
-	private let tc = TermController()
 	
 	init (categoryIDs: [Int], numberOfQuestions: Int, showFavoritesOnly: Bool, questionsTypes: TermComponent) {
 		// will create a testset with the numberOfQuesteions if available

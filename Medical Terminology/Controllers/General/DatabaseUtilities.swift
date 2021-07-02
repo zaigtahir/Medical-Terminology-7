@@ -8,15 +8,13 @@
 
 import Foundation
 
-// MARK: DO THESE NEED TO BE GLOBAL?
-
 class DatabaseUtilities  {
 	
-	let fileManager = FileManager()
-	let sc = SettingsController()
-	let tc = TermController()
-	let cc = CategoryController()
-	let ac = AssignedCategoryController()
+	private let fileManager = FileManager()
+	private let sc = SettingsController()
+	private let cc = CategoryController()
+	private let ac = AssignedCategoryController()
+	private let tcTB = TermControllerTB()
 	
 	// MARK: shorter table names to make things easier
 	let terms = myConstants.dbTableTerms
@@ -162,7 +160,7 @@ class DatabaseUtilities  {
 		}
 		
 		// variables for back up of custom data
-		var customTerms = [Term] ()
+		var customTerms = [TermTB] ()
 		var customCategories = [Category] ()
 		var assignedCategoriesCustom = [AssignedCategory]()
 		
@@ -176,7 +174,7 @@ class DatabaseUtilities  {
 			var query = "SELECT * FROM \(terms) WHERE termID >= \(myConstants.dbCustomTermStartingID)"
 			if let rsCustomTerms = myDB.executeQuery(query, withArgumentsIn: []) {
 				while rsCustomTerms.next() {
-					customTerms.append(tc.getTermFromResultSet(resultSet: rsCustomTerms))
+					customTerms.append(tcTB.getTermFromResultSet(resultSet: rsCustomTerms))
 				}
 			}
 			
@@ -205,7 +203,7 @@ class DatabaseUtilities  {
 			}
 			
 			for term in customTerms {
-				tc.saveTermForMigration(term: term)
+				tcTB.saveTermForMigration(term: term)
 			}
 			
 			for category in customCategories {
@@ -214,7 +212,7 @@ class DatabaseUtilities  {
 			
 			// restore the assigned category as long as BOTH the termID and the categoryID exist
 			for assignedCategory in assignedCategoriesCustom {
-				if tc.termExists(termID: assignedCategory.termID) && cc.categoryExists(categoryID: assignedCategory.categoryID) {
+				if tcTB.termExists(termID: assignedCategory.termID) && cc.categoryExists(categoryID: assignedCategory.categoryID) {
 					ac.saveAssignedCategoryForMigration(assignedCategory: assignedCategory)
 				}
 				

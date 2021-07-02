@@ -23,10 +23,10 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	
 	///used to determine if to create a new set or keep current set when going from learning home to learning set
 	var startNewSet = true	//will be used for segue
-	let tcTB = TermControllerTB()
-	let cc = CategoryController()
-	let qc = QuestionController()
-	let utilities = Utilities()
+	private let tcTB = TermControllerTB()
+	private let cc = CategoryController()
+	private let qc = QuestionController()
+	private let utilities = Utilities()
    
 	// counts, use updateData to update these values as these values are used in multiple areas of the LearningHomeVC
 	var favoriteTermsCount = 0

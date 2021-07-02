@@ -59,7 +59,6 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	
 	// controllers
 	let cc = CategoryController()
-	let tc = TermController()
 	let utilities = Utilities()
 	
 	// categories to use to fill the category name and counts (not if it's selected or not selected. That is done using the selectedCategories [Int] array)

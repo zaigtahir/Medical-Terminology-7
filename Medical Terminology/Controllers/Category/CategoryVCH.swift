@@ -23,15 +23,11 @@ protocol CategoryEditDelegate: AnyObject {
 class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	// MARK: -seque variables
-	
-	// TO REMOVE
-	//var category : Category!
-	
+
 	// need to set this so that I know what to do when deleting a category
 	var currentCategoryIDs : [Int]!
 	
 	// end segue variables
-	
 	
 	// updated variables
 	private var initialCategory: Category!
@@ -67,8 +63,6 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		
 		return false
 	}
-	
-	
 	
 	// MARK: - segue functions
 	

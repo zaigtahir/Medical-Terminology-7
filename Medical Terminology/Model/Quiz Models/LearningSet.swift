@@ -18,7 +18,6 @@ class LearningSet: QuizTestBase {
 	private let termIDs : [Int]
 	private var currentCategoryIDs = [1]
 	private let qc = QuestionController()
-	private let tc = TermController()
 	
 	init (categoryIDs: [Int], numberOfTerms: Int, showFavoritesOnly: Bool) {
 		

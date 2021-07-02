@@ -30,7 +30,6 @@ class FlashcardCell: UICollectionViewCell, TermAudioDelegate {
 	
 	private var term: 	TermTB!
 	
-	private let tc = TermController()
     private var utilities = Utilities()
 	
     weak var delegate: FlashcardCellDelegate?

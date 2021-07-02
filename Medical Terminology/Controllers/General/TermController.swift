@@ -25,7 +25,7 @@ JOIN  assignCategories2 ON terms.termID = assignCategories2.termID
 WHERE assignCategories2.categoryID = 3
 */
 
-class TermController {
+class TermController777 {
 	
 	// MARK: shorter table names to make things easier
 	let terms = myConstants.dbTableTerms
