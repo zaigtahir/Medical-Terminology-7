@@ -8,7 +8,7 @@
 
 import Foundation
 
-class QiuzTestBase {
+class QuizTestBase {
 	
 	var activeQuestions = [Question]()
 	

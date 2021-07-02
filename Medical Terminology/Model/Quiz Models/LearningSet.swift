@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: change to use TestBase
 
-class LearningSet: QiuzTestBase {
+class LearningSet: QuizTestBase {
 	
 	/// to save the original termIDs for resetting the learned items when resetting the test
 	private let termIDs : [Int]
