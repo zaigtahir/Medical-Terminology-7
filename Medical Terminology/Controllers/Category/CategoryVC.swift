@@ -45,7 +45,9 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		
 		categoryVCH.delegate = self
 		
-		// Do any additional setup after loading the view.UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
+		// test out done numbers
+		let doneNumbers = cc.getDoneCounts(categoryID: categoryVCH.editedCategory.categoryID)
+		
 	}
 	
 	// MARK: - categoryVCH2Delegate
@@ -180,7 +182,6 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	}
 	
 	@IBAction func leftButtonAction(_ sender: Any) {
-		
 		
 		/*
 		

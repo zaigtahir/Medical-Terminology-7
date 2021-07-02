@@ -429,7 +429,8 @@ class QuestionController {
 	
 	
 	
-	////////// START FIXING QUERIES HERE
+	
+	
 	
 	
 	
@@ -611,7 +612,7 @@ class QuestionController {
 				ON \(terms).termID = \(assignedCategories).termID
 				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
 				AND answeredDefinition = \(AnsweredState.correct.rawValue)
-				AND answeredTerm = \(AnsweredState.correct.rawValue)
+				OR answeredTerm = \(AnsweredState.correct.rawValue)
 				\(queries.showFavoritesOnly(show: showFavoritesOnly))
 				)
 				"""

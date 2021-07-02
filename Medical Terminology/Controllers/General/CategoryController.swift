@@ -53,7 +53,6 @@ class CategoryController {
 			return 0
 		}
 	}
-	
 	/*
 	return all categories ordered by displayOrder
 	*/
@@ -79,6 +78,21 @@ class CategoryController {
 			return cs
 		}
 		
+	}
+	
+	/**
+	Will return flashcardsLearned, learned, answeredCorrect count
+	*/
+	func getDoneCounts (categoryID: Int) -> (fcDone: Int, lnDone: Int, anDone: Int) {
+		
+		let fc = FlashcardController()
+		let qc = QuestionController()
+		
+		let doneFCCount = fc.getFlashcardCount(categoryIDs: [categoryID], showFavoritesOnly: false, learnedStatus: true)
+		let doneLearnedCount = qc.getLearnedTermsCount(categoryIDs: [categoryID], showFavoritesOnly: false)
+		let doneAnsweredCount = qc.getCorrectQuestionsCount(categoryIDs: [categoryID], questionType: .both, showFavoritesOnly: false)
+		
+		return (fcDone: doneFCCount, lnDone: doneLearnedCount, anDone: doneAnsweredCount)
 	}
 	
 	/**
@@ -205,7 +219,6 @@ class CategoryController {
 		}
 	}
 
-	
 	// MARK: - Functions that send off program wide notifications
 	
 	/**
