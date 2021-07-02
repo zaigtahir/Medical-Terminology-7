@@ -143,7 +143,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			
 			if categoryVCH.editedCategory.name == "" {
 				
-				nameLabel.text = "New Category Name"
+				nameLabel.text = "New Name"
 			} else {
 				nameLabel.text = categoryVCH.editedCategory.name
 			}

@@ -508,7 +508,7 @@ class QuestionController {
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
 			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-			AND answeredTerm != \(AnsweredState.correct.rawValue))
+			AND answeredTerm != \(AnsweredState.correct.rawValue)
 			\(queries.showFavoritesOnly(show: showFavoritesOnly))
 			
 			UNION
@@ -518,7 +518,7 @@ class QuestionController {
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
 			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-			AND answeredDefinition != \(AnsweredState.correct.rawValue))
+			AND answeredDefinition != \(AnsweredState.correct.rawValue)
 			\(queries.showFavoritesOnly(show: showFavoritesOnly))
 			)
 
