@@ -50,8 +50,6 @@
 		992E79D2260A2ADD00C19D49 /* FlashCardOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79CF260A2ADD00C19D49 /* FlashCardOptionsVC.swift */; };
 		992E79D3260A2ADD00C19D49 /* FlashcardVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79D0260A2ADD00C19D49 /* FlashcardVCH.swift */; };
 		992E79D4260A2ADD00C19D49 /* FlashcardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79D1260A2ADD00C19D49 /* FlashcardVC.swift */; };
-		992E79DF260A43C700C19D49 /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79DD260A43C700C19D49 /* Term.swift */; };
-		992E79E0260A43C700C19D49 /* TermController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79DE260A43C700C19D49 /* TermController.swift */; };
 		992E79E8260B834200C19D49 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79E7260B834200C19D49 /* Category.swift */; };
 		992E79EB260C413D00C19D49 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79EA260C413D00C19D49 /* AddCell.swift */; };
 		992E79FD260FBA3100C19D49 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79FC260FBA3100C19D49 /* CategoryController.swift */; };
@@ -144,8 +142,6 @@
 		992E79CF260A2ADD00C19D49 /* FlashCardOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardOptionsVC.swift; sourceTree = "<group>"; };
 		992E79D0260A2ADD00C19D49 /* FlashcardVCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardVCH.swift; sourceTree = "<group>"; };
 		992E79D1260A2ADD00C19D49 /* FlashcardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardVC.swift; sourceTree = "<group>"; };
-		992E79DD260A43C700C19D49 /* Term.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
-		992E79DE260A43C700C19D49 /* TermController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermController.swift; sourceTree = "<group>"; };
 		992E79E7260B834200C19D49 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		992E79EA260C413D00C19D49 /* AddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
 		992E79FC260FBA3100C19D49 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
@@ -231,7 +227,6 @@
 				99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */,
 				99937ACD263EDAA2001E4D4B /* QuestionController.swift */,
 				994175E1245B5BAE00E281DB /* SettingsController.swift */,
-				992E79DE260A43C700C19D49 /* TermController.swift */,
 				995F3EEC267CC77A004CB13C /* TermControllerTB.swift */,
 				992B56802612870C000457AA /* TextUtilities.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
@@ -402,7 +397,6 @@
 			children = (
 				992E79E7260B834200C19D49 /* Category.swift */,
 				99937B10264EA49F001E4D4B /* AssignedCategory.swift */,
-				992E79DD260A43C700C19D49 /* Term.swift */,
 				99273BBF267CAB6800FD3C0D /* TermTB.swift */,
 				5A2A58F122FCA4F400434910 /* Quiz Models */,
 				99937AD3263F24FB001E4D4B /* Question.swift */,
@@ -602,7 +596,6 @@
 				99A722D5261E7846001DEDBD /* SingleLineInputVC.swift in Sources */,
 				5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */,
 				992B56A4261382BF000457AA /* ValidationVC.swift in Sources */,
-				992E79E0260A43C700C19D49 /* TermController.swift in Sources */,
 				99D55E0A25F6DAD8003ABE0B /* CategoryListVC.swift in Sources */,
 				99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */,
 				5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */,
@@ -617,7 +610,6 @@
 				99D55E1225F7EF92003ABE0B /* CategoryListVCH.swift in Sources */,
 				99D76AE926181C560062CCD4 /* ZUIToggleButton.swift in Sources */,
 				99937B0E264DFFF4001E4D4B /* MigrateDB.swift in Sources */,
-				992E79DF260A43C700C19D49 /* Term.swift in Sources */,
 				99937ACE263EDAA2001E4D4B /* QuestionController.swift in Sources */,
 				5A189C2D216D8E8400929AB8 /* AppDelegate.swift in Sources */,
 				5A2A58DF22F8CE8100434910 /* TestSetVCH.swift in Sources */,
