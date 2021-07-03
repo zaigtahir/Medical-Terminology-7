@@ -270,7 +270,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		// if no terms available in this category
 		
-		let termCount = cc.getCountOfTerms(categoryID: currentCategoryID)
+		let termCount = tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly)
 		
 		if termCount == 0 {
 			cell.headingLabel.text = myConstants.noTermsHeading

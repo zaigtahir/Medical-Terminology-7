@@ -33,10 +33,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	
 	// term based variables
 	var currentCategoryIDs = [1]
-	
-	// TO REMOVE
-	var currentCategoryID = 1
-	
+
 	var showFavoritesOnly = false
 	
 	var searchText : String?
@@ -318,7 +315,7 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	private func configureNoTermCell (cell: NoTermsCell) {
 		// if no terms available in this category
 		
-		let termCount = cc.getCountOfTerms(categoryID: currentCategoryID)
+		let termCount = tcTB.getTermCount(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly)
 		
 		if termCount == 0 {
 			cell.headingLabel.text = myConstants.noTermsHeading

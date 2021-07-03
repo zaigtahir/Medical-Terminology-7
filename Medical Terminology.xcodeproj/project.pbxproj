@@ -42,6 +42,8 @@
 		5AC0C57322D6C83C009965F1 /* LearningHomeVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC0C57222D6C83C009965F1 /* LearningHomeVCH.swift */; };
 		5AD725E6225E4E2F007CED84 /* MyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD725E5225E4E2F007CED84 /* MyTheme.swift */; };
 		5AF85739228F2C27008929D5 /* FlashcardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF85738228F2C27008929D5 /* FlashcardCell.swift */; };
+		9910A67B2690D975004FCF57 /* AssignTermVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910A67A2690D975004FCF57 /* AssignTermVCH.swift */; };
+		991991522690C98800C86222 /* AssignTermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991991512690C98800C86222 /* AssignTermsVC.swift */; };
 		991AC59F262693DF00E52062 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC59E262693DF00E52062 /* CategoryVC.swift */; };
 		991AC5A7262755E300E52062 /* CategoryVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC5A6262755E300E52062 /* CategoryVCH.swift */; };
 		99273BC0267CAB6800FD3C0D /* TermTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99273BBF267CAB6800FD3C0D /* TermTB.swift */; };
@@ -134,6 +136,8 @@
 		5AC0C57222D6C83C009965F1 /* LearningHomeVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningHomeVCH.swift; sourceTree = "<group>"; };
 		5AD725E5225E4E2F007CED84 /* MyTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTheme.swift; sourceTree = "<group>"; };
 		5AF85738228F2C27008929D5 /* FlashcardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardCell.swift; sourceTree = "<group>"; };
+		9910A67A2690D975004FCF57 /* AssignTermVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignTermVCH.swift; sourceTree = "<group>"; };
+		991991512690C98800C86222 /* AssignTermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignTermsVC.swift; sourceTree = "<group>"; };
 		991AC59E262693DF00E52062 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		991AC5A6262755E300E52062 /* CategoryVCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryVCH.swift; sourceTree = "<group>"; };
 		99273BBF267CAB6800FD3C0D /* TermTB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTB.swift; sourceTree = "<group>"; };
@@ -247,6 +251,7 @@
 		5A189C20216D8E8400929AB8 = {
 			isa = PBXGroup;
 			children = (
+				9910A67A2690D975004FCF57 /* AssignTermVCH.swift */,
 				5A189C2B216D8E8400929AB8 /* Medical Terminology */,
 				9983980D25F05B6B00CC0354 /* Frameworks */,
 			);
@@ -375,6 +380,7 @@
 		5A88634C21853DC90013FC8B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				991991552690C9A500C86222 /* AssignTerms */,
 				99A722D3261E7824001DEDBD /* Text Input */,
 				99D76AFE261969880062CCD4 /* Term */,
 				992B56A2261382BF000457AA /* Validation */,
@@ -412,6 +418,14 @@
 				5A189C35216D8E8400929AB8 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		991991552690C9A500C86222 /* AssignTerms */ = {
+			isa = PBXGroup;
+			children = (
+				991991512690C98800C86222 /* AssignTermsVC.swift */,
+			);
+			path = AssignTerms;
 			sourceTree = "<group>";
 		};
 		992B566A2610E8CC000457AA /* Category */ = {
@@ -568,6 +582,7 @@
 				5A367D3422EF513F003A7E4B /* CircularBar.swift in Sources */,
 				5A03478E22D39D0900749EBC /* FMDatabase.m in Sources */,
 				5A2A58DD22F8C35200434910 /* TestSetVC.swift in Sources */,
+				9910A67B2690D975004FCF57 /* AssignTermVCH.swift in Sources */,
 				99937AD1263F23E8001E4D4B /* QuizBase.swift in Sources */,
 				992B56812612870C000457AA /* TextUtilities.swift in Sources */,
 				992E79D4260A2ADD00C19D49 /* FlashcardVC.swift in Sources */,
@@ -578,6 +593,7 @@
 				5A03479622D3EE7500749EBC /* Globals.swift in Sources */,
 				992E79D3260A2ADD00C19D49 /* FlashcardVCH.swift in Sources */,
 				992E79EB260C413D00C19D49 /* AddCell.swift in Sources */,
+				991991522690C98800C86222 /* AssignTermsVC.swift in Sources */,
 				5AC0C57322D6C83C009965F1 /* LearningHomeVCH.swift in Sources */,
 				991AC5A7262755E300E52062 /* CategoryVCH.swift in Sources */,
 				99D76AC52616C9CE0062CCD4 /* TermsList.swift in Sources */,

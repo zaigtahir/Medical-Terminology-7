@@ -111,9 +111,7 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 			
 			let nc = segue.destination as! UINavigationController
 			let vc = nc.topViewController as! TermVC
-			
-			vc.termVCH.currentCategoryID = termListVCH.currentCategoryID
-			
+		
 			switch termListVCH.termEditMode {
 			
 			case .view:

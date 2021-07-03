@@ -36,23 +36,6 @@ class CategoryController {
 		
 	}
 	
-	func getCountOfTerms (categoryID: Int) -> Int {
-		
-		let query = "SELECT COUNT (*) FROM \(assignedCategories) WHERE categoryID = \(categoryID)"
-		
-		
-		
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			resultSet.next()
-			return Int(resultSet.int(forColumnIndex: 0))
-			
-			
-		} else {
-			print ("fatal error making result set in getCountOfTerms, returning 0")
-			return 0
-		}
-	}
 	/*
 	return all categories ordered by displayOrder
 	*/

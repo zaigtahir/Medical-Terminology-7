@@ -47,6 +47,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	// When the term is new, termID = -1
 	// Have the term.assignedCategories filled before assigning the term via the seque. For a new term, termID = -1, and assign category 1 and 2 to the new
 	var term: TermTB!
+
 	
 	
 	// MARK: - local variables
@@ -58,8 +59,9 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	let sectionStandard = 1
 	
 	// controllers
-	let cc = CategoryController()
-	let utilities = Utilities()
+	private let cc = CategoryController()
+	private let utilities = Utilities()
+	private let tcTB = TermControllerTB()
 	
 	// categories to use to fill the category name and counts (not if it's selected or not selected. That is done using the selectedCategories [Int] array)
 	
@@ -196,7 +198,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			}
 			
 			// attach term count
-			category.count = cc.getCountOfTerms(categoryID: category.categoryID)
+			category.count = tcTB.getTermCount(categoryIDs: [category.categoryID], showFavoritesOnly: false)
 			
 			// setup lock categories if I am in the assign category mode
 			var categoriesToLock = [Int]()
