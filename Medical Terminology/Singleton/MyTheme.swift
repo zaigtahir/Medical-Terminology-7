@@ -61,15 +61,15 @@ class MyTheme{
     //let colorLhPbFill = UIColor.systemBackground
 	let colorLhPbFill = UIColor(named: "color main 2")
 	
-	
     //MARK: Learning set
     let colorLsNotAnswered = UIColor(named: "color main 2")
     
     //MARK: Test home
+	
     //colors of test set home
-    let colorPbTestForeground = UIColor(named: "color main")
-    let colorPbTestBackground = UIColor(named: "color pb background")
-	let colorPbTestFillcolor = UIColor(named: "color main")
+    let colorTestPbForeground = UIColor(named: "color main")
+    let colorTestPbBackground = UIColor(named: "color pb background")
+	let colorTestPbFillcolor = UIColor(named: "color main")
     
     //MARK: Test set colors
     let colorQsNotAnswered = UIColor(named: "color main")
@@ -81,6 +81,11 @@ class MyTheme{
 	let colorSelectedRowIndicator = UIColor(named: "color main")
 	
 	let colorLockedCategory = UIColor.systemGray4
+	
+	// MARK: category home progress bars
+	let colorProgressPbForeground = UIColor(named: "color main")
+	let colorProgressPbBackground = UIColor.systemBackground
+	let colorProgressPbFillcolor = UIColor(named: "color main 2")
 	
 	// MARK: row selector images
 	

@@ -20,18 +20,7 @@ class TestSet: QuizTestBase {
 		// will only select questions that are not answered or answered incorrectly
 		
 		// for now just test out term questions
-		var questions = [Question]()
-		
-		switch questionsTypes {
-		
-		case .term:
-			questions = qc.getAvailableTermQuestions(categoryIDs: categoryIDs, numberOfQuestions: numberOfQuestions, showFavoritesOnly: showFavoritesOnly)
-		case .definition:
-			questions = qc.getAvailableDefinitionQuestions(categoryIDs: categoryIDs, numberOfQuestions: numberOfQuestions, showFavoritesOnly: showFavoritesOnly)
-			
-		case .both:
-			questions = qc.getAvailableQuestions(categoryIDs: categoryIDs, numberOfQuestions: numberOfQuestions, showFavoritesOnly: showFavoritesOnly)
-		}
+		let questions = qc.getAvailableQuestions(categoryIDs: categoryIDs, numberOfQuestions: numberOfQuestions, questionType: questionsTypes, showFavoritesOnly: showFavoritesOnly)
 		
 		super.init(originalQuestions: questions)
 	}

@@ -426,64 +426,70 @@ class QuestionController {
 		myDB.executeStatements(query)
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/// return array of ids where answeredTerm = unanswered OR incorrect
-	func getAvailableTermQuestions (categoryIDs: [Int], numberOfQuestions: Int, showFavoritesOnly: Bool) -> [Question] {
+	func getAvailableQuestions (categoryIDs: [Int], numberOfQuestions: Int, questionType: TermComponent, showFavoritesOnly: Bool) -> [Question] {
+		
+		var query : String
 		
 		var questions = [Question]()
+		
+		switch questionType {
+		
+		case .term:
+			
+			query = """
+				SELECT DISTINCT \(terms).termID
+				FROM \(terms)
+				JOIN \(assignedCategories)
+				ON \(terms).termID = \(assignedCategories).termID
+				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+				AND answeredTerm != \(AnsweredState.correct.rawValue))
+				\(queries.showFavoritesOnly(show: showFavoritesOnly))
+				ORDER BY RANDOM ()
+				\(queries.limitToString(limit: numberOfQuestions))
+				"""
+		case .definition:
+			
+			query = """
+				SELECT DISTINCT \(terms).termID
+				FROM \(terms)
+				JOIN \(assignedCategories)
+				ON \(terms).termID = \(assignedCategories).termID
+				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+				AND answeredDefinition != \(AnsweredState.correct.rawValue))
+				\(queries.showFavoritesOnly(show: showFavoritesOnly))
+				ORDER BY RANDOM ()
+				\(queries.limitToString(limit: numberOfQuestions))
+				"""
+		case .both:
+			
+			query = """
+				SELECT * FROM
+				(
+				SELECT DISTINCT \(terms).termID, 1 as type
+				FROM \(terms)
+				JOIN \(assignedCategories)
+				ON \(terms).termID = \(assignedCategories).termID
+				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+				AND answeredTerm != \(AnsweredState.correct.rawValue)
+				\(queries.showFavoritesOnly(show: showFavoritesOnly))
+				
+				UNION
 
-		
-		let query = """
-			SELECT DISTINCT \(terms).termID
-			FROM \(terms)
-			JOIN \(assignedCategories)
-			ON \(terms).termID = \(assignedCategories).termID
-			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-			AND answeredTerm != \(AnsweredState.correct.rawValue))
-			\(queries.showFavoritesOnly(show: showFavoritesOnly))
-			ORDER BY RANDOM ()
-			\(queries.limitToString(limit: numberOfQuestions))
-			"""
-		
-		print("QC getAvailableTermQuestion query = \(query)")
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			while resultSet.next() {
-				let termID = Int(resultSet.int(forColumnIndex: 0))
-				let q = makeTermQuestion(termID: termID, randomizeAnswers: true)
-				questions.append(q)
-			}
+				SELECT DISTINCT \(terms).termID, 2 as type
+				FROM \(terms)
+				JOIN \(assignedCategories)
+				ON \(terms).termID = \(assignedCategories).termID
+				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+				AND answeredDefinition != \(AnsweredState.correct.rawValue)
+				\(queries.showFavoritesOnly(show: showFavoritesOnly))
+				)
+
+				ORDER BY RANDOM ()
+				\(queries.limitToString(limit: numberOfQuestions))
+				"""
 		}
-		return questions
-	}
-	
-	/// return array of ids where answeredDefinition = unanswered OR incorrect
-	func getAvailableDefinitionQuestions (categoryIDs: [Int], numberOfQuestions: Int, showFavoritesOnly: Bool) -> [Question]  {
 		
-		var questions = [Question]()
-		
-		let query = """
-			SELECT DISTINCT \(terms).termID
-			FROM \(terms)
-			JOIN \(assignedCategories)
-			ON \(terms).termID = \(assignedCategories).termID
-			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-			AND answeredDefinition != \(AnsweredState.correct.rawValue))
-			\(queries.showFavoritesOnly(show: showFavoritesOnly))
-			ORDER BY RANDOM ()
-			\(queries.limitToString(limit: numberOfQuestions))
-			"""
-		
-		print("QC getAvailablDefinitionQuestion query = \(query)")
+		print("QC getAvailableQuestions query = \(query)")
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			while resultSet.next() {
@@ -495,61 +501,7 @@ class QuestionController {
 		
 		return questions
 	}
-	
-	/// return array of ids where (answeredTerm = unanswered OR incorrect) OR (answeredDefinition = unanswered OR incorrect)
-	func getAvailableQuestions (categoryIDs: [Int], numberOfQuestions: Int, showFavoritesOnly: Bool) -> [Question]  {
-		
-		var questions = [Question]()
-		
-		let query = """
-			SELECT * FROM
-			(
-			SELECT DISTINCT \(terms).termID, 1 as type
-			FROM \(terms)
-			JOIN \(assignedCategories)
-			ON \(terms).termID = \(assignedCategories).termID
-			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-			AND answeredTerm != \(AnsweredState.correct.rawValue)
-			\(queries.showFavoritesOnly(show: showFavoritesOnly))
-			
-			UNION
 
-			SELECT DISTINCT \(terms).termID, 2 as type
-			FROM \(terms)
-			JOIN \(assignedCategories)
-			ON \(terms).termID = \(assignedCategories).termID
-			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-			AND answeredDefinition != \(AnsweredState.correct.rawValue)
-			\(queries.showFavoritesOnly(show: showFavoritesOnly))
-			)
-
-			ORDER BY RANDOM ()
-			\(queries.limitToString(limit: numberOfQuestions))
-			"""
-		
-		print("QC: getAvailableQuestions query = \(query)")
-		
-		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
-			
-			while resultSet.next() {
-				let termID = Int(resultSet.int(forColumnIndex: 0))
-				let type = Int(resultSet.int(forColumnIndex: 1))
-				
-				var q : Question
-				
-				if type == 1 {
-					q = makeTermQuestion(termID: termID, randomizeAnswers: true)
-				} else {
-					q = makeDefinitionQuestion(termID: termID, randomizeAnswers: true)
-				}
-				
-				questions.append(q)
-			}
-		}
-		
-		return questions
-	}
-	
 	// MARK: - counts
 	
 	func getTotalQuestionsCount (categoryIDs: [Int], questionType: TermComponent, showFavoritesOnly: Bool) -> Int {

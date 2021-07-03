@@ -25,9 +25,9 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 	@IBOutlet weak var optionsButton: UIBarButtonItem!
 	@IBOutlet weak var headingLabel: UILabel!
 	
-	let testHomeVCH = TestHomeVCH()
-	let utilities = Utilities()
-	var progressBar: CircularBar!
+	private let testHomeVCH = TestHomeVCH()
+	private let utilities = Utilities()
+	private var progressBar: CircularBar!
 	
 	private let cc = CategoryController()
 	
@@ -130,9 +130,9 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 		}
 		
 		// format the progress bar
-		let foregroundColor = myTheme.colorPbTestForeground?.cgColor
-		let backgroundColor = myTheme.colorPbTestBackground?.cgColor
-		let fillColor = myTheme.colorPbTestFillcolor?.cgColor
+		let foregroundColor = myTheme.colorTestPbForeground?.cgColor
+		let backgroundColor = myTheme.colorTestPbBackground?.cgColor
+		let fillColor = myTheme.colorTestPbFillcolor?.cgColor
 		
 		let percentText = utilities.getPercentage(number: testHomeVCH.answeredCorrectCount, numberTotal: testHomeVCH.totalQuestionsCount)
 		

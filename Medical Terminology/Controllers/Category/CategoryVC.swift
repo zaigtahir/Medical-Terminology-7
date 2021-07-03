@@ -28,14 +28,36 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	@IBOutlet weak var descriptionEditButton: UIButton!
 	
+	@IBOutlet weak var assignedTermsLabel: UILabel!
+	
+	@IBOutlet weak var overallAllProgressLabel: UILabel!
+	
+	@IBOutlet weak var flashcardProgressLabel: UILabel!
+	
+	@IBOutlet weak var learnedProgressLabel: UILabel!
+	
+	@IBOutlet weak var testProgressLabel: UILabel!
+	@IBOutlet weak var circleBarViewTotalProgress: UIView!
+	@IBOutlet weak var circleBarViewFlashcardsProgress: UIView!
+	@IBOutlet weak var circleBarViewLearnedProgress: UIView!
+	@IBOutlet weak var circleBarViewTestProgress: UIView!
+	
 	var categoryVCH = CategoryVCH()
 	
-	let cc = CategoryController()
-	
+	private let cc = CategoryController()
+	private let tcTB = TermControllerTB()
 	private let tu = TextUtilities()
+	private let utilities = Utilities()
+	
+	private var progressBarTotal : CircularBar!
+	private var progressBarFlashcards : CircularBar!
+	private var progressBarLearning: CircularBar!
+	private var progressBarTest : CircularBar!
 	
 	override func viewDidLoad() {
+		
 		super.viewDidLoad()
+		
 		updateDisplay()
 		
 		//navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
@@ -46,8 +68,52 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		categoryVCH.delegate = self
 		
 		// test out done numbers
-		let doneNumbers = cc.getDoneCounts(categoryID: categoryVCH.editedCategory.categoryID)
 		
+		let progress = cc.getDoneCounts(categoryID: categoryVCH.editedCategory.categoryID)
+		
+		let totalCount = tcTB.getTermCount(categoryIDs: [categoryVCH.editedCategory.categoryID], showFavoritesOnly: false)
+		
+		assignedTermsLabel.text = ("\(totalCount)")
+		
+		overallAllProgressLabel.text = ("Total: \(utilities.getPercentage(number: progress.totalDone, numberTotal: totalCount * 4))% done")
+		
+		flashcardProgressLabel.text =  ("Flashcards: \(utilities.getPercentage(number: progress.fcDone, numberTotal: totalCount))% done")
+		
+		learnedProgressLabel.text = ("Learning: \(utilities.getPercentage(number: progress.lnDone, numberTotal: totalCount))% done")
+		
+		testProgressLabel.text = ("Test: \(utilities.getPercentage(number: progress.anDone, numberTotal: totalCount * 2))% done")
+		
+		// format the progress bar
+		let foregroundColor = myTheme.colorProgressPbForeground?.cgColor
+		let backgroundColor = myTheme.colorProgressPbBackground.cgColor
+		let fillColor = myTheme.colorProgressPbFillcolor?.cgColor
+		
+		
+		// format total progress bar
+		progressBarTotal = CircularBar(referenceView: circleBarViewTotalProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+		
+		progressBarTotal.setStrokeEnd(partialCount: progress.totalDone, totalCount: totalCount * 4)
+		
+		// format the flashcard progress bar
+		progressBarFlashcards = CircularBar(referenceView: circleBarViewFlashcardsProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+		
+		progressBarFlashcards.setStrokeEnd(partialCount: progress.fcDone, totalCount: totalCount)
+		
+		// format the learned progress bar
+		progressBarLearning = CircularBar(referenceView: circleBarViewLearnedProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+		
+		progressBarLearning.setStrokeEnd(partialCount: progress.lnDone, totalCount: totalCount)
+		
+		// format the test progress bar
+		progressBarTest = CircularBar(referenceView: circleBarViewTestProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+		
+		progressBarTest.setStrokeEnd(partialCount: progress.anDone, totalCount: totalCount)
+		
+	}
+	
+	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+		//redraw the progress bar
+		updateDisplay()
 	}
 	
 	// MARK: - categoryVCH2Delegate
@@ -108,14 +174,14 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 					cancelButton.isEnabled = false
 				}
 			}
-	
+			
 			if categoryVCH.editedCategory.isStandard {
 				
 				
 				nameEditButton.isHidden = true
 				descriptionEditButton.isHidden = false
 			} else {
-
+				
 				nameEditButton.isHidden = false
 				descriptionEditButton.isHidden = false
 			}
@@ -136,11 +202,11 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		func formatFields() {
 			
 			if categoryVCH.editedCategory.isStandard {
-				self.title = "Predefined Category"
-				nameTitleLabel.text = "Category Name"
+				self.title = "PREDEFINED CATEGORY"
+				nameTitleLabel.text = "CATEGORY NAME"
 			} else {
-				nameTitleLabel.text = "My Category Name"
-				self.title = "My Category"
+				nameTitleLabel.text = "MY CATEGORY"
+				self.title = "MY CATEGORY NAME"
 			}
 			
 			if categoryVCH.editedCategory.name == "" {
@@ -201,7 +267,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			let ac = UIAlertController(title: "Success!", message: "Your category was saved, and it will show in alphabetical order in the My Categories section.", preferredStyle: .alert)
 			
 			let ok = UIAlertAction(title: "OK", style: .cancel) {alertAction in
-
+				
 				self.navigationController?.popViewController(animated: true)
 			}
 			
