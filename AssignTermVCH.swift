@@ -12,11 +12,24 @@ class AssignTermVCH: NSObject, UITableViewDataSource {
 		
 	var categoryID : Int!
 	
+	var searchText : String?
+	
+	var termsList = TermsList()
+	
 	// 0 = all, 1 = assigned, 2 = unassigned
 	var termStatus = 0
 	
 	
+	// controllers
+	private let tcTB = TermControllerTB()
+	private let cc = CategoryController()
+	private let tu = TextUtilities()
+	private let utilities = Utilities()
+	
+	
+	
 	func updateData () {
+		// Clean up the search text
 		
 	}
 	

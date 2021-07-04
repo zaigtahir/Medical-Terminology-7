@@ -232,6 +232,7 @@
 				99937ACD263EDAA2001E4D4B /* QuestionController.swift */,
 				994175E1245B5BAE00E281DB /* SettingsController.swift */,
 				995F3EEC267CC77A004CB13C /* TermControllerTB.swift */,
+				99D76AC42616C9CE0062CCD4 /* TermsList.swift */,
 				992B56802612870C000457AA /* TextUtilities.swift */,
 				5ABE7220226CB25F005B83C4 /* Utilities.swift */,
 				99937B0D264DFFF4001E4D4B /* MigrateDB.swift */,
@@ -328,7 +329,6 @@
 		5A2A58E422F8DEC900434910 /* Term List */ = {
 			isa = PBXGroup;
 			children = (
-				99D76AC42616C9CE0062CCD4 /* TermsList.swift */,
 				99D76AD12617909A0062CCD4 /* NoTermsCell.swift */,
 				5A4471642284EE85008E3107 /* TermCell.swift */,
 				5A4471542281C655008E3107 /* TermListVCH.swift */,

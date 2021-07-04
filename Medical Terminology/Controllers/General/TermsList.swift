@@ -27,7 +27,7 @@ class TermsList {
 	If containsText = some value, then will wake an alphabetial list of term names or the definition that contains that value
 	*/
 	
-	func makeList (categoryIDs: [Int], showFavoritesOnly: Bool, containsText: String?) {
+	func makeListAssigned (categoryIDs: [Int], showFavoritesOnly: Bool, containsText: String?) {
 		
 		// clear any current values from the termIDsList and count
 		count = 0
@@ -43,6 +43,14 @@ class TermsList {
 			// adding to the list count
 			count = count + termIDs.count
 		}
+	}
+	
+	func makeListUnassiged (categoryID: Int, containsText: String? ) {
+		
+	}
+	
+	func makeListAll (containsText: String?  ) {
+		
 	}
 	
 	func getSectionNames () -> [String] {

@@ -123,7 +123,7 @@ class TermControllerTB {
 		// fire off notification that a term favorite status changed
 		
 		let data = ["termID" : termID]
-				
+		
 		let name = Notification.Name(myKeys.setFavoriteStatusKey)
 		NotificationCenter.default.post(name: name, object: self, userInfo: data)
 	}
@@ -288,7 +288,7 @@ class TermControllerTB {
 							0,
 							\(term.isFavorite ? 1: 0))
 					"""
-
+			
 		}
 		
 		myDB.executeStatements(query)
@@ -298,7 +298,7 @@ class TermControllerTB {
 		for c in term.assignedCategories {
 			cc.assignCategory(termID: addedTermID, categoryID: c)
 		}
-			
+		
 		// post notification
 		let nName = Notification.Name(myKeys.termAddedKey)
 		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : addedTermID])
@@ -318,7 +318,7 @@ class TermControllerTB {
 		
 		// the starting state of of the term with this ID from the database
 		let originalTerm = getTerm(termID: term.termID)
-	
+		
 		let query = """
 			UPDATE \(terms)
 			SET
@@ -415,9 +415,9 @@ class TermControllerTB {
 	// MARK: - term update functions
 	
 	func deleteTermPN (termID: Int) {
-
+		
 		let assignedCategoryIDs = self.getTermCategoryIDs(termID: termID)
-
+		
 		// remove the assignments from the assignedCategories table
 		for id in assignedCategoryIDs {
 			cc.unassignCategory(termID: termID, categoryID: id)
@@ -462,7 +462,7 @@ class TermControllerTB {
 				ids.append(id)
 			}
 		}
-	
+		
 		return ids
 		
 	}
@@ -511,6 +511,48 @@ class TermControllerTB {
 		return ids
 	}
 	
+	func getTermIDs (notCategoryID: Int,  nameStartsWith: String?) -> [Int] {
+		
+		let query : String
+		
+			
+			query = """
+				SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+				FROM \(terms)
+				JOIN \(assignedCategories)
+				ON \(terms).termID = \(assignedCategories).termID
+				WHERE CategoryID != \(notCategoryID)
+				\(queries.nameStartsWithString (search:nameStartsWith))
+				\(queries.orderByNameString(toOrder: true))
+				"""
+		
+		var ids = [Int]()
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+			}
+		}
+		
+		return ids
+
+	}
+	
+	func getTermIDs (nameStartsWith: String) {
+		
+		let s = nameStartsWith
+		
+		let query = """
+			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			WHERE name LIKE '\(s)%' OR name LIKE '-\(s)%'
+			\(queries.orderByNameString(toOrder: true))
+			"""
+	}
+	
 	func getTermCount (categoryIDs: [Int], showFavoritesOnly: Bool) -> Int {
 		
 		let query = """
@@ -532,7 +574,9 @@ class TermControllerTB {
 		
 		return count
 	}
-
+	
+	
+	
 }
 
 

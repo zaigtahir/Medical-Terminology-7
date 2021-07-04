@@ -49,13 +49,10 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 	weak var delegate: TermListVCHDelegate?
 	
 	// controllers
-	let tcTB = TermControllerTB()
-	
-	let cc = CategoryController()
-	
-	let tu = TextUtilities()
-	
-	let utilities = Utilities()
+	private let tcTB = TermControllerTB()
+	private let cc = CategoryController()
+	private let tu = TextUtilities()
+	private let utilities = Utilities()
 	
 	override init() {
 		super.init()
@@ -244,23 +241,13 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			
 			let cleanText = tu.removeLeadingTrailingSpaces(string: nonCleanText)
 			
-			self.termsList.makeList(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: cleanText)
+			self.termsList.makeListAssigned(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: cleanText)
 		} else {
 			
-			self.termsList.makeList(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: .none)
+			self.termsList.makeListAssigned(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: .none)
 		}
 	}
 	
-	/**
-	Will update the internal termsList and also use the delegate functions to update the home tableView and display
-	*/
-	func updateDataAndDisplay22 () {
-		
-		updateData()
-		delegate?.shouldReloadTable()
-		delegate?.shouldUpdateDisplay()
-		
-	}
 	
 	// MARK: - count functions
 	func getFavoriteTermsCount () -> Int {
