@@ -313,7 +313,6 @@ class TermControllerTB {
 	
 	must have the tnew erm's assignCategoreis in place
 	*/
-	
 	func updateTermPN (term: TermTB) {
 		
 		// the starting state of of the term with this ID from the database
@@ -361,7 +360,6 @@ class TermControllerTB {
 		}
 		
 	}
-	
 	/**
 	Save a term to the db, use when migrating custom terms
 	Copies everything including the termID
@@ -411,7 +409,6 @@ class TermControllerTB {
 		}
 	}
 	
-	
 	// MARK: - term update functions
 	
 	func deleteTermPN (termID: Int) {
@@ -432,7 +429,6 @@ class TermControllerTB {
 		NotificationCenter.default.post(name: nName, object: self, userInfo: ["assignedCategoryIDs" : assignedCategoryIDs])
 		
 	}
-	
 	
 	// MARK: - search functions, need to use an array of categoryIDs
 	
@@ -467,9 +463,8 @@ class TermControllerTB {
 		
 	}
 	
-	/**
+	/*
 	Return list of termIDs.
-	use nameStartsWith with nameContains OR containsText and loop through the alphabet to make an alphabetic list
 	containsText searches terms and definitions
 	*/
 	func getTermIDs (categoryIDs: [Int], showFavoritesOnly: Bool, nameStartsWith: String, nameContains: String?, containsText: String?) -> [Int] {
@@ -511,20 +506,19 @@ class TermControllerTB {
 		return ids
 	}
 	
-	func getTermIDs (notCategoryID: Int,  nameStartsWith: String?) -> [Int] {
+	func getTermIDs_AssignTerms_AllTerms (nameStartsWith: String, nameContains: String?) -> [Int] {
 		
-		let query : String
+		let s = nameStartsWith
 		
-			
-			query = """
-				SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
-				FROM \(terms)
-				JOIN \(assignedCategories)
-				ON \(terms).termID = \(assignedCategories).termID
-				WHERE CategoryID != \(notCategoryID)
-				\(queries.nameStartsWithString (search:nameStartsWith))
-				\(queries.orderByNameString(toOrder: true))
-				"""
+		let query = """
+			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			WHERE name LIKE '\(s)%' OR name LIKE '-\(s)%'
+			\(queries.nameContainsString(search: nameContains))
+			\(queries.orderByNameString(toOrder: true))
+			"""
 		
 		var ids = [Int]()
 		
@@ -536,10 +530,9 @@ class TermControllerTB {
 		}
 		
 		return ids
-
 	}
 	
-	func getTermIDs (nameStartsWith: String) {
+	func getTermIDs_AssignTerms_AssignedOnly (assignedCategoryID: Int, nameStartsWith: String, nameContains: String?) -> [Int] {
 		
 		let s = nameStartsWith
 		
@@ -548,9 +541,54 @@ class TermControllerTB {
 			FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
-			WHERE name LIKE '\(s)%' OR name LIKE '-\(s)%'
+			WHERE
+			\(queries.categoryString(categoryIDs: [assignedCategoryID]))
+			AND name LIKE '\(s)%' OR name LIKE '-\(s)%'
+			\(queries.nameContainsString(search: nameContains))
 			\(queries.orderByNameString(toOrder: true))
 			"""
+		
+		var ids = [Int]()
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+			}
+		}
+		
+		return ids
+		
+	}
+	
+	func getTermIDs_AssignTerms_UnassignedOnly (notAssignedCategoryID: Int, nameStartsWith: String, nameContains: String?) -> [Int] {
+		
+		let s = nameStartsWith
+		
+		let query = """
+			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+			FROM \(terms)
+			JOIN \(assignedCategories)
+			ON \(terms).termID = \(assignedCategories).termID
+			WHERE
+			CategoryID != \(notAssignedCategoryID)
+			AND name LIKE '\(s)%' OR name LIKE '-\(s)%'
+			\(queries.nameContainsString(search: nameContains))
+			\(queries.orderByNameString(toOrder: true))
+			"""
+		
+		var ids = [Int]()
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			while resultSet.next() {
+				let id = Int(resultSet.int(forColumnIndex: 0))
+				ids.append(id)
+			}
+		}
+		
+		return ids
+		
+		
 	}
 	
 	func getTermCount (categoryIDs: [Int], showFavoritesOnly: Bool) -> Int {

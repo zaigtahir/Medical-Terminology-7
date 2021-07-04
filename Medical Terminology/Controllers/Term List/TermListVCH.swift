@@ -241,10 +241,10 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			
 			let cleanText = tu.removeLeadingTrailingSpaces(string: nonCleanText)
 			
-			self.termsList.makeListAssigned(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: cleanText)
+			self.termsList.makeList(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: cleanText)
 		} else {
 			
-			self.termsList.makeListAssigned(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: .none)
+			self.termsList.makeList(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, containsText: .none)
 		}
 	}
 	

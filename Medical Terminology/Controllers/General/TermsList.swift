@@ -27,7 +27,7 @@ class TermsList {
 	If containsText = some value, then will wake an alphabetial list of term names or the definition that contains that value
 	*/
 	
-	func makeListAssigned (categoryIDs: [Int], showFavoritesOnly: Bool, containsText: String?) {
+	func makeList (categoryIDs: [Int], showFavoritesOnly: Bool, containsText: String?) {
 		
 		// clear any current values from the termIDsList and count
 		count = 0
@@ -45,12 +45,57 @@ class TermsList {
 		}
 	}
 	
-	func makeListUnassiged (categoryID: Int, containsText: String? ) {
+	func makeListForAssignTerms_AllTerms (nameContains: String) {
+		
+		// clear any current values from the termIDsList and count
+		count = 0
+		termIDsList = [[Int]] ()
+		
+		for s in sectionNames {
+			
+			let termIDs = tcTB.getTermIDs_AssignTerms_AllTerms(nameStartsWith: s, nameContains: nameContains)
+			
+			termIDsList.append(termIDs)
+			
+			// adding to the list count
+			count = count + termIDs.count
+		}
 		
 	}
 	
-	func makeListAll (containsText: String?  ) {
+	func makeListForAssignTerms_AssignedOnly (assignedCategoryID: Int, nameContains: String) {
 		
+		// clear any current values from the termIDsList and count
+		count = 0
+		termIDsList = [[Int]] ()
+		
+		for s in sectionNames {
+			
+			let termIDs = tcTB.getTermIDs_AssignTerms_AssignedOnly(assignedCategoryID: assignedCategoryID, nameStartsWith: s, nameContains: nameContains)
+			
+			termIDsList.append(termIDs)
+			
+			// adding to the list count
+			count = count + termIDs.count
+		}
+		
+	}
+	
+	func makeListForAssignTerms_UnassignedOnly (notAssignedCatetory: Int, nameContains: String) {
+		
+		// clear any current values from the termIDsList and count
+		count = 0
+		termIDsList = [[Int]] ()
+		
+		for s in sectionNames {
+			
+			let termIDs = tcTB.getTermIDs_AssignTerms_UnassignedOnly(notAssignedCategoryID: notAssignedCatetory, nameStartsWith: s, nameContains: nameContains)
+			
+			termIDsList.append(termIDs)
+			
+			// adding to the list count
+			count = count + termIDs.count
+		}
 	}
 	
 	func getSectionNames () -> [String] {
