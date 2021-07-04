@@ -56,6 +56,7 @@ class MyConstants {
 	let segueLearningOptions = "segueToLearningHomeOptions"
 	let segueToTest = "segueToTest"
 	let segueTestOptions = "segueTestOptions"
+	let segueAssignTerms = "segueAssignTerms"
 	
     // question feedback remarks
     let feedbackNotAnswered = "Select An Answer"

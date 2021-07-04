@@ -77,6 +77,11 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		case myConstants.segueMultiLineInput:
 		
 			prepareMultiLineInputVC(segue: segue)
+			
+		case myConstants.segueAssignTerms:
+			
+			prepareAssignTermsVC(segue: segue)
+			
 		default:
 			print("fatal error, called with an unexpecting segue in categoryVC prepare for segue")
 		}
@@ -110,6 +115,12 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		multiLineInputVC.textInputVCH.propertyReference = .definition
 		multiLineInputVC.delegate = self
 		
+	}
+	
+	func prepareAssignTermsVC (segue: UIStoryboardSegue) {
+		print("add code for CategoryVCH: prepareAssignTermVC")
+		let vc = segue.destination as? AssignTermsVC
+		vc?.assignTermsVCH.categoryID = 1
 	}
 
 	func saveNewCategory() {

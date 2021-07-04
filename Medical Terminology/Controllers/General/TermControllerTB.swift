@@ -511,7 +511,7 @@ class TermControllerTB {
 		let s = nameStartsWith
 		
 		let query = """
-			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+			SELECT DISTINCT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
 			FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
@@ -519,7 +519,7 @@ class TermControllerTB {
 			\(queries.nameContainsString(search: nameContains))
 			\(queries.orderByNameString(toOrder: true))
 			"""
-		
+
 		var ids = [Int]()
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -537,7 +537,7 @@ class TermControllerTB {
 		let s = nameStartsWith
 		
 		let query = """
-			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+			SELECT DISTINCT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
 			FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
@@ -566,7 +566,7 @@ class TermControllerTB {
 		let s = nameStartsWith
 		
 		let query = """
-			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+			SELECT DESTINCT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
 			FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID

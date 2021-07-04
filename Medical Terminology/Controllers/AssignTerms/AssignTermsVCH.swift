@@ -35,6 +35,8 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 	var assignedListViewMode = 0
 	var termsList = TermsList()
 	
+	weak var delegate : AssignTermsVCHDelegate?
+	
 	// controllers
 	private let tcTB = TermControllerTB()
 	private let cc = CategoryController()
@@ -54,8 +56,29 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 	*/
 	func updateData () {
 		
-	}
+		
+		// MARK: add code to remove more than 1 space also?
+		// Clean up the search text
+		
+		var cleanText : String?
+		
+		if let nonCleanText = searchText {
+			// there is search text
+			cleanText = tu.removeLeadingTrailingSpaces(string: nonCleanText)
+		}
+		
+		switch assignedListViewMode {
+		
+		case 0:
+			termsList.makeListForAssignTerms_AllTerms(nameContains: cleanText)
+		case 1:
+			termsList.makeListForAssignTerms_AssignedOnly(assignedCategoryID: categoryID, nameContains: cleanText)
+		default:
+			termsList.makeListForAssignTerms_UnassignedOnly(notAssignedCatetory: categoryID, nameContains: cleanText)
+			
+		}
 	
+	}
 	
 	
 	// MARK: - Table functions
@@ -79,14 +102,14 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let termCell = tableView.dequeueReusableCell(withIdentifier: "termCell", for: indexPath) as? TermCell
+		let cell = tableView.dequeueReusableCell(withIdentifier: "assignTermCell", for: indexPath) as? AssignTermCell
 		
 		let termID = termsList.getTermID(indexPath: indexPath)
 		let term = tcTB.getTerm(termID: termID)
 		
-		termCell!.configure(term: term, indexPath: indexPath)
+		cell?.textLabel!.text = term.name
 		
-		return termCell!
+		return cell!
 	}
 	
 	

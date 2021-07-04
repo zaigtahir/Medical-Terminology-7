@@ -45,7 +45,7 @@ class TermsList {
 		}
 	}
 	
-	func makeListForAssignTerms_AllTerms (nameContains: String) {
+	func makeListForAssignTerms_AllTerms (nameContains: String?) {
 		
 		// clear any current values from the termIDsList and count
 		count = 0
@@ -63,7 +63,7 @@ class TermsList {
 		
 	}
 	
-	func makeListForAssignTerms_AssignedOnly (assignedCategoryID: Int, nameContains: String) {
+	func makeListForAssignTerms_AssignedOnly (assignedCategoryID: Int, nameContains: String?) {
 		
 		// clear any current values from the termIDsList and count
 		count = 0
@@ -81,7 +81,7 @@ class TermsList {
 		
 	}
 	
-	func makeListForAssignTerms_UnassignedOnly (notAssignedCatetory: Int, nameContains: String) {
+	func makeListForAssignTerms_UnassignedOnly (notAssignedCatetory: Int, nameContains: String?) {
 		
 		// clear any current values from the termIDsList and count
 		count = 0

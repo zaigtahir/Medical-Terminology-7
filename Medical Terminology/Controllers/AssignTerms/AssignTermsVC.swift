@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AssignTermsVC: UIViewController {
+class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
 
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	
@@ -18,11 +18,12 @@ class AssignTermsVC: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
 	
+	var assignTermsVCH = AssignTermsVCH()
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+		tableView.dataSource = assignTermsVCH
     }
     
 	
@@ -39,5 +40,27 @@ class AssignTermsVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+	
+	// MARK: AssignTermsVCH delegate
+	
+	func shouldReloadTable() {
+		tableView.reloadData()
+	}
+	
+	func shouldUpdateDisplay() {
+	
+	}
+	
+	func shouldReloadRowAt(indexPath: IndexPath) {
+		
+	}
+	
+	func shouldRemoveRowAt(indexPath: IndexPath) {
+		
+	}
+	
+	func shouldClearSearchText() {
+		
+	}
 
 }

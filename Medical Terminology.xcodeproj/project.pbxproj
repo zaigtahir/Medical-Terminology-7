@@ -83,6 +83,7 @@
 		99A723192623A445001DEDBD /* TermVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A723182623A445001DEDBD /* TermVCH.swift */; };
 		99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CCA25E9C97700308140 /* MyKeys.swift */; };
 		99A99CD925EA1F0A00308140 /* DatabaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */; };
+		99AE54CF269212B600D7406A /* AssignTermCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AE54CE269212B600D7406A /* AssignTermCell.swift */; };
 		99D55E0225F6C7B7003ABE0B /* TestCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0125F6C7B7003ABE0B /* TestCVCell.swift */; };
 		99D55E0525F6C7CA003ABE0B /* TestHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0425F6C7CA003ABE0B /* TestHomeVC.swift */; };
 		99D55E0A25F6DAD8003ABE0B /* CategoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D55E0925F6DAD8003ABE0B /* CategoryListVC.swift */; };
@@ -178,6 +179,7 @@
 		99A723182623A445001DEDBD /* TermVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermVCH.swift; sourceTree = "<group>"; };
 		99A99CCA25E9C97700308140 /* MyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeys.swift; sourceTree = "<group>"; };
 		99A99CD825EA1F0A00308140 /* DatabaseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtilities.swift; sourceTree = "<group>"; };
+		99AE54CE269212B600D7406A /* AssignTermCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignTermCell.swift; sourceTree = "<group>"; };
 		99D55E0125F6C7B7003ABE0B /* TestCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCVCell.swift; sourceTree = "<group>"; };
 		99D55E0425F6C7CA003ABE0B /* TestHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHomeVC.swift; sourceTree = "<group>"; };
 		99D55E0925F6DAD8003ABE0B /* CategoryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListVC.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				991991512690C98800C86222 /* AssignTermsVC.swift */,
+				99AE54CE269212B600D7406A /* AssignTermCell.swift */,
 				9910A67E2691FC36004FCF57 /* AssignTermsVCH.swift */,
 			);
 			path = AssignTerms;
@@ -655,6 +658,7 @@
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
 				5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */,
 				99937B11264EA49F001E4D4B /* AssignedCategory.swift in Sources */,
+				99AE54CF269212B600D7406A /* AssignTermCell.swift in Sources */,
 				5AF85739228F2C27008929D5 /* FlashcardCell.swift in Sources */,
 				99273BC0267CAB6800FD3C0D /* TermTB.swift in Sources */,
 				99D55E1725F967AA003ABE0B /* CategoryCell.swift in Sources */,
