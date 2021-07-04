@@ -12,9 +12,11 @@ class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
 
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	
-	@IBOutlet weak var termStatusSwitch: UISegmentedControl!
+	@IBOutlet weak var termsStatusSwitch: UISegmentedControl!
 	
 	@IBOutlet weak var searchBar: UISearchBar!
+	
+	@IBOutlet weak var termsCountLabel: UILabel!
 	
 	@IBOutlet weak var tableView: UITableView!
 	
@@ -25,9 +27,10 @@ class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
 
 		tableView.dataSource = assignTermsVCH
     }
-    
 	
 	func updateDisplay () {
+		
+		termsCountLabel.text = "Terms Count: \(assignTermsVCH.termsList.getCount())"
 		
 	}
 
@@ -62,5 +65,11 @@ class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
 	func shouldClearSearchText() {
 		
 	}
-
+	
+	@IBAction func termsStatusSwitchChanged(_ sender: Any) {
+		assignTermsVCH.assignedListViewMode =  termsStatusSwitch.selectedSegmentIndex
+		assignTermsVCH.updateData()
+		tableView.reloadData()
+		updateDisplay()
+	}
 }

@@ -566,7 +566,7 @@ class TermControllerTB {
 		let s = nameStartsWith
 		
 		let query = """
-			SELECT DESTINCT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+			SELECT DISTINCT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
 			FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
