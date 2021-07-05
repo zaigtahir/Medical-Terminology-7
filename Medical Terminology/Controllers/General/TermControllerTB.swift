@@ -577,39 +577,13 @@ class TermControllerTB {
 	
 	func getTermIDs_AssignTerms_UnassignedOnly (notAssignedCategoryID: Int, nameStartsWith: String, nameContains: String?) -> [Int] {
 		
-		/*
-		-- myTerms will be a table of termIDs that DO NOT have the wanted category assigned
-		
-		DROP TABLE IF EXISTS myTerms;
-		
-		CREATE TEMPORARY TABLE myTerms AS
-		
-		SELECT terms.termID
-		FROM terms
-		WHERE terms.termID
-		NOT IN
-		(
-		SELECT terms.termID
-		FROM terms
-		JOIN assignedCategories
-		ON terms.termID = assignedCategories.termID
-		WHERE
-		(categoryID = 3)
-		)
-		;
-		
-		SELECT terms.termID, terms.name, REPLACE (terms.name, '-' , '') AS noHyphenInName
-		FROM  terms
-		JOIN myTerms ON terms.termID = myTerms.termID
-		WHERE (name LIKE 'a%' OR name LIKE '-a%')
-		AND name LIKE '%an%'
-		ORDER BY LOWER (noHyphenInName)
-		*/
-		
 		let query = """
-					DROP TABLE IF EXISTS myTerms;
-					CREATE TEMPORARY TABLE myTerms AS
+					
+					SELECT \(terms).termID, terms.name, REPLACE (name, '-' , '') AS noHyphenInName
+					FROM \(terms)
+					WHERE \(terms).termID IN
 
+					(
 					SELECT \(terms).termID
 					FROM \(terms)
 					WHERE
@@ -621,17 +595,16 @@ class TermControllerTB {
 						JOIN \(assignedCategories)
 						ON \(terms).termID = \(assignedCategories).termID
 						WHERE categoryID = \(notAssignedCategoryID)
-						);
+						)
+					)
 
-					SELECT \(terms).termID, terms.name, REPLACE (name, '-' , '') AS noHyphenInName
-					FROM \(terms)
-					JOIN myTerms ON \(terms).termID = myTerms.termID = \(terms).termID
-					WHERE
-					(name LIKE '\(nameStartsWith)%' OR name LIKE '-\(nameStartsWith)%')
+					AND (name LIKE '\(nameStartsWith)%' OR name LIKE '-\(nameStartsWith)%')
 					\(queries.nameContainsString(search: nameContains))
 					\(queries.orderByNameString(toOrder: true))
-
 					"""
+	
+		print (query)
+		
 		var ids = [Int]()
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -642,9 +615,7 @@ class TermControllerTB {
 		}
 		
 		return ids
-		
-		
-		
+	
 		
 	}
 	

@@ -118,9 +118,9 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	}
 	
 	func prepareAssignTermsVC (segue: UIStoryboardSegue) {
-		print("add code for CategoryVCH: prepareAssignTermVC")
+		
 		let vc = segue.destination as? AssignTermsVC
-		vc?.assignTermsVCH.categoryID = editedCategory.categoryID
+		vc?.assignTermsVCH.setupCategoryID (categoryID: editedCategory.categoryID)
 	}
 
 	func saveNewCategory() {

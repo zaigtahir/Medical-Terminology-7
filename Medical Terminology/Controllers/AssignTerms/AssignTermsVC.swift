@@ -24,8 +24,8 @@ class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-
 		tableView.dataSource = assignTermsVCH
+		
     }
 	
 	func updateDisplay () {

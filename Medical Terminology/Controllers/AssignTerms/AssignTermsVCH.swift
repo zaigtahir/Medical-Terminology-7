@@ -24,13 +24,12 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 
 {
 	
-	var categoryID = 1
+	var categoryID : Int!
 	var searchText : String?
 	
 	/**
-	0 = all
-	1 = assigned only
-	2 = unassigned only
+	0 = assigned
+	1 = not assigned
 	*/
 	var assignedListViewMode = 0
 	var termsList = TermsList()
@@ -45,8 +44,11 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 	
 	override init() {
 		super.init()
-		
-		updateData ()
+	}
+	
+	func setupCategoryID (categoryID: Int) {
+		self.categoryID = categoryID
+		updateData()
 	}
 	
 	// MARK: - Update data function
@@ -68,10 +70,8 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 		}
 		
 		switch assignedListViewMode {
-		
+
 		case 0:
-			termsList.makeListForAssignTerms_AllTerms(nameContains: cleanText)
-		case 1:
 			termsList.makeListForAssignTerms_AssignedOnly(assignedCategoryID: categoryID, nameContains: cleanText)
 		default:
 			termsList.makeListForAssignTerms_UnassignedOnly(notAssignedCatetory: categoryID, nameContains: cleanText)

@@ -3270,9 +3270,8 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9qm-DP-N0B">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="32"/>
                                         <segments>
-                                            <segment title="All"/>
-                                            <segment title="Assigned"/>
-                                            <segment title="Unassigned"/>
+                                            <segment title="Assigned 1000"/>
+                                            <segment title="Not Assigned 1000"/>
                                         </segments>
                                         <connections>
                                             <action selector="termsStatusSwitchChanged:" destination="dC9-8Q-OSu" eventType="valueChanged" id="hXD-Cz-8Zh"/>
