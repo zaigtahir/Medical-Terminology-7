@@ -3253,34 +3253,8 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="gEZ-pm-VT0">
-                                <rect key="frame" x="20" y="64" width="374" height="24"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpA-Uv-38O">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        <color key="textColor" name="color main"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vxf-Y7-48D">
-                                <rect key="frame" x="20" y="108" width="374" height="31"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9qm-DP-N0B">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="32"/>
-                                        <segments>
-                                            <segment title="Assigned 1000"/>
-                                            <segment title="Not Assigned 1000"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="termsStatusSwitchChanged:" destination="dC9-8Q-OSu" eventType="valueChanged" id="hXD-Cz-8Zh"/>
-                                        </connections>
-                                    </segmentedControl>
-                                </subviews>
-                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IoP-cP-U86">
-                                <rect key="frame" x="20" y="243" width="374" height="473"/>
+                                <rect key="frame" x="20" y="225" width="374" height="491"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="assignTermCell" id="WZN-Yz-Try" customClass="AssignTermCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
@@ -3352,37 +3326,50 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aKM-5f-OjA">
-                                <rect key="frame" x="0.0" y="177" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(1024 terms)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHJ-ei-3Td">
-                                <rect key="frame" x="20" y="149" width="374" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpA-Uv-38O">
+                                <rect key="frame" x="20" y="64" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" name="color main"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xFT-YE-NY3">
+                                <rect key="frame" x="20" y="108" width="374" height="97"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vxf-Y7-48D">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9qm-DP-N0B">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="32"/>
+                                                <segments>
+                                                    <segment title="Assigned 1000"/>
+                                                    <segment title="Not Assigned 1000"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="termsStatusSwitchChanged:" destination="dC9-8Q-OSu" eventType="valueChanged" id="hXD-Cz-8Zh"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aKM-5f-OjA">
+                                        <rect key="frame" x="0.0" y="41" width="374" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RfV-Rc-5bb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Vxf-Y7-48D" firstAttribute="top" secondItem="gEZ-pm-VT0" secondAttribute="bottom" constant="20" id="06a-NO-MOS"/>
-                            <constraint firstItem="sHJ-ei-3Td" firstAttribute="leading" secondItem="RfV-Rc-5bb" secondAttribute="leading" constant="20" id="2pr-sk-whj"/>
-                            <constraint firstItem="Vxf-Y7-48D" firstAttribute="leading" secondItem="RfV-Rc-5bb" secondAttribute="leading" constant="20" id="4b2-gT-REi"/>
-                            <constraint firstItem="gEZ-pm-VT0" firstAttribute="leading" secondItem="RfV-Rc-5bb" secondAttribute="leading" constant="20" id="6Hi-xg-Spf"/>
-                            <constraint firstItem="9qm-DP-N0B" firstAttribute="top" secondItem="UpA-Uv-38O" secondAttribute="bottom" constant="20" id="Coy-Mb-Zul"/>
-                            <constraint firstItem="aKM-5f-OjA" firstAttribute="leading" secondItem="RfV-Rc-5bb" secondAttribute="leading" id="Da2-fC-ael"/>
+                            <constraint firstItem="IoP-cP-U86" firstAttribute="top" secondItem="aKM-5f-OjA" secondAttribute="bottom" constant="20" id="DTJ-5w-qTu"/>
                             <constraint firstItem="RfV-Rc-5bb" firstAttribute="trailing" secondItem="IoP-cP-U86" secondAttribute="trailing" constant="20" id="Egy-lP-1n4"/>
+                            <constraint firstItem="UpA-Uv-38O" firstAttribute="leading" secondItem="RfV-Rc-5bb" secondAttribute="leading" constant="20" id="F7m-Hl-3HV"/>
                             <constraint firstItem="RfV-Rc-5bb" firstAttribute="bottom" secondItem="IoP-cP-U86" secondAttribute="bottom" constant="20" id="Lyd-0j-ZRH"/>
+                            <constraint firstItem="xFT-YE-NY3" firstAttribute="top" secondItem="UpA-Uv-38O" secondAttribute="bottom" constant="20" id="Nki-Cg-GUb"/>
                             <constraint firstItem="IoP-cP-U86" firstAttribute="leading" secondItem="RfV-Rc-5bb" secondAttribute="leading" constant="20" id="Ri2-nE-96h"/>
-                            <constraint firstItem="RfV-Rc-5bb" firstAttribute="trailing" secondItem="gEZ-pm-VT0" secondAttribute="trailing" constant="20" id="TVZ-Uk-bTQ"/>
-                            <constraint firstItem="RfV-Rc-5bb" firstAttribute="trailing" secondItem="aKM-5f-OjA" secondAttribute="trailing" id="dld-E9-QY8"/>
-                            <constraint firstItem="aKM-5f-OjA" firstAttribute="top" secondItem="sHJ-ei-3Td" secondAttribute="bottom" constant="10" id="h0q-qb-ZV9"/>
-                            <constraint firstItem="sHJ-ei-3Td" firstAttribute="top" secondItem="Vxf-Y7-48D" secondAttribute="bottom" constant="10" id="o37-qg-obu"/>
-                            <constraint firstItem="IoP-cP-U86" firstAttribute="top" secondItem="aKM-5f-OjA" secondAttribute="bottom" constant="10" id="qEm-gH-OFt"/>
-                            <constraint firstItem="RfV-Rc-5bb" firstAttribute="trailing" secondItem="sHJ-ei-3Td" secondAttribute="trailing" constant="20" id="sQU-Wq-wZm"/>
-                            <constraint firstItem="gEZ-pm-VT0" firstAttribute="top" secondItem="RfV-Rc-5bb" secondAttribute="top" constant="20" id="vAb-3r-cX9"/>
-                            <constraint firstItem="RfV-Rc-5bb" firstAttribute="trailing" secondItem="Vxf-Y7-48D" secondAttribute="trailing" constant="20" id="xaz-uy-rVR"/>
+                            <constraint firstItem="RfV-Rc-5bb" firstAttribute="trailing" secondItem="UpA-Uv-38O" secondAttribute="trailing" constant="20" id="cWb-fr-txi"/>
+                            <constraint firstItem="UpA-Uv-38O" firstAttribute="top" secondItem="RfV-Rc-5bb" secondAttribute="top" constant="20" id="e5o-uD-twM"/>
+                            <constraint firstItem="RfV-Rc-5bb" firstAttribute="trailing" secondItem="xFT-YE-NY3" secondAttribute="trailing" constant="20" id="mIA-JA-9sr"/>
+                            <constraint firstItem="xFT-YE-NY3" firstAttribute="leading" secondItem="RfV-Rc-5bb" secondAttribute="leading" constant="20" id="u84-48-dXu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9q6-Kg-NbP"/>
@@ -3390,7 +3377,6 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         <outlet property="categoryNameLabel" destination="UpA-Uv-38O" id="9PN-nN-NBl"/>
                         <outlet property="searchBar" destination="aKM-5f-OjA" id="E1z-Xt-hp1"/>
                         <outlet property="tableView" destination="IoP-cP-U86" id="jCq-8n-AFc"/>
-                        <outlet property="termsCountLabel" destination="sHJ-ei-3Td" id="cKq-Qb-EgY"/>
                         <outlet property="termsStatusSwitch" destination="9qm-DP-N0B" id="PEH-QY-8ln"/>
                     </connections>
                 </viewController>

@@ -16,21 +16,33 @@ class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
 	
 	@IBOutlet weak var searchBar: UISearchBar!
 	
-	@IBOutlet weak var termsCountLabel: UILabel!
-	
 	@IBOutlet weak var tableView: UITableView!
 	
 	var assignTermsVCH = AssignTermsVCH()
 	
+	private let tcTB = TermControllerTB()
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		tableView.dataSource = assignTermsVCH
+		updateDisplay()
 		
     }
 	
 	func updateDisplay () {
 		
-		termsCountLabel.text = "Terms Count: \(assignTermsVCH.termsList.getCount())"
+		let totalCount = tcTB.getTermCount()
+		
+		
+		if assignTermsVCH.assignedListViewMode == 0 {
+			// viewing assigned terms
+			
+			termsStatusSwitch.setTitle("Assigned: \(assignTermsVCH.termsList.getCount())", forSegmentAt: 0)
+			termsStatusSwitch.setTitle("Not Assigned: \(totalCount - assignTermsVCH.termsList.getCount())", forSegmentAt: 1)
+		} else {
+			termsStatusSwitch.setTitle("Assigned: \(totalCount - assignTermsVCH.termsList.getCount())", forSegmentAt: 0)
+			termsStatusSwitch.setTitle("Not Assigned: \(assignTermsVCH.termsList.getCount())", forSegmentAt: 1)
+		}
 		
 	}
 

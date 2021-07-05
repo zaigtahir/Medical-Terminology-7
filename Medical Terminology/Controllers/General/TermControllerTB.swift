@@ -643,6 +643,18 @@ class TermControllerTB {
 		return count
 	}
 	
+	func getTermCount () -> Int {
+		let query = "SELECT COUNT (*) FROM \(terms)"
+		
+		var count = 0
+		
+		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
+			resultSet.next()
+			count = Int (resultSet.int(forColumnIndex: 0))
+		}
+		
+		return count
+	}
 	
 	
 }
