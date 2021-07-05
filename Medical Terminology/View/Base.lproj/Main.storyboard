@@ -3292,6 +3292,65 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noAssignedTermsCell" rowHeight="158" id="Zwm-Ly-jrI" customClass="NoTermsCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="71.666667938232422" width="374" height="158"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zwm-Ly-jrI" id="NBE-rB-U3G">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="158"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4j-9t-sqK">
+                                                    <rect key="frame" x="20" y="10" width="334" height="138"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JEg-eK-c5h">
+                                                            <rect key="frame" x="94" y="20" width="220" height="46"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No terms to show" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGb-H8-0Ov">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="220" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <color key="textColor" name="color text"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUf-WY-LnZ">
+                                                                    <rect key="frame" x="0.0" y="28" width="220" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" name="color text"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dVZ-8W-PMf">
+                                                            <rect key="frame" x="10" y="11" width="64" height="62.666666666666671"/>
+                                                            <color key="tintColor" name="color main"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="64" id="4I0-xc-6cU"/>
+                                                                <constraint firstAttribute="height" constant="64" id="PMP-wr-1ac"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="JEg-eK-c5h" firstAttribute="top" secondItem="N4j-9t-sqK" secondAttribute="top" constant="20" id="0Uh-uc-ZKN"/>
+                                                        <constraint firstItem="dVZ-8W-PMf" firstAttribute="leading" secondItem="N4j-9t-sqK" secondAttribute="leading" constant="10" id="Dpa-Aj-jp3"/>
+                                                        <constraint firstItem="JEg-eK-c5h" firstAttribute="leading" secondItem="dVZ-8W-PMf" secondAttribute="trailing" constant="20" id="HzA-7L-cHn"/>
+                                                        <constraint firstAttribute="trailing" secondItem="JEg-eK-c5h" secondAttribute="trailing" constant="20" id="cVD-YA-zTy"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JEg-eK-c5h" secondAttribute="bottom" constant="10" id="t8u-HI-Cjy"/>
+                                                        <constraint firstItem="dVZ-8W-PMf" firstAttribute="top" secondItem="N4j-9t-sqK" secondAttribute="top" constant="10" id="wuj-1C-qaq"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="N4j-9t-sqK" firstAttribute="leading" secondItem="NBE-rB-U3G" secondAttribute="leading" constant="20" id="HoC-Ns-5iM"/>
+                                                <constraint firstItem="N4j-9t-sqK" firstAttribute="top" secondItem="NBE-rB-U3G" secondAttribute="top" constant="10" id="Lae-1i-gxw"/>
+                                                <constraint firstAttribute="trailing" secondItem="N4j-9t-sqK" secondAttribute="trailing" constant="20" id="RxN-FH-ya1"/>
+                                                <constraint firstAttribute="bottom" secondItem="N4j-9t-sqK" secondAttribute="bottom" constant="10" id="Xpa-kx-OUF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="headingLabel" destination="kGb-H8-0Ov" id="IPn-xy-Sj2"/>
+                                            <outlet property="subheadingLabel" destination="QUf-WY-LnZ" id="NAf-jL-eCW"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aKM-5f-OjA">
@@ -3926,8 +3985,8 @@ You will be asked to correctly match the term to it's definition, and also to ma
     <inferredMetricsTieBreakers>
         <segue reference="FY8-JO-v3w"/>
         <segue reference="RQg-Yy-Rkk"/>
-        <segue reference="Nhy-Yr-H6x"/>
-        <segue reference="UJA-hr-35q"/>
+        <segue reference="HWU-Cd-rtW"/>
+        <segue reference="WdJ-IQ-Ral"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>

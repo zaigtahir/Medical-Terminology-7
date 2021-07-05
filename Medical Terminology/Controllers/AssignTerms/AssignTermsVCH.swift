@@ -102,14 +102,25 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCell(withIdentifier: "assignTermCell", for: indexPath) as? AssignTermCell
+		if termsList.getCount() == 0 {
+			
+			let cell = tableView.dequeueReusableCell(withIdentifier: "noAssignedTermsCell", for: indexPath) as? NoTermsCell
 		
-		let termID = termsList.getTermID(indexPath: indexPath)
-		let term = tcTB.getTerm(termID: termID)
+			return cell!
+			
+			
+		} else {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "assignTermCell", for: indexPath) as? AssignTermCell
+			
+			let termID = termsList.getTermID(indexPath: indexPath)
+			let term = tcTB.getTerm(termID: termID)
+			
+			cell?.textLabel!.text = term.name
+			
+			return cell!
+		}
 		
-		cell?.textLabel!.text = term.name
-		
-		return cell!
+
 	}
 	
 	
