@@ -434,6 +434,10 @@ class TermControllerTB {
 	
 	func getTermIDs (categoryIDs: [Int], favoritesOnly: Bool?, orderByName: Bool?, limitTo: Int?) -> [Int] {
 		
+		
+		// need to restructure as sub query?
+		
+		
 		let selectStatement = """
 			SELECT DISTINCT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
 			FROM \(terms)
@@ -468,6 +472,10 @@ class TermControllerTB {
 	containsText searches terms and definitions
 	*/
 	func getTermIDs (categoryIDs: [Int], showFavoritesOnly: Bool, nameStartsWith: String, nameContains: String?, containsText: String?) -> [Int] {
+		
+		// PROBABLY REDO THIS QUERY need to restructure as a sub query
+		
+		
 		
 		var definitionString = ""
 		
@@ -511,15 +519,15 @@ class TermControllerTB {
 		let s = nameStartsWith
 		
 		let query = """
-			SELECT DISTINCT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+
+			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
 			FROM \(terms)
-			JOIN \(assignedCategories)
-			ON \(terms).termID = \(assignedCategories).termID
-			WHERE name LIKE '\(s)%' OR name LIKE '-\(s)%'
+			WHERE
+			(name LIKE '\(s)%' OR name LIKE '-\(s)%')
 			\(queries.nameContainsString(search: nameContains))
 			\(queries.orderByNameString(toOrder: true))
 			"""
-
+		
 		var ids = [Int]()
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -534,16 +542,22 @@ class TermControllerTB {
 	
 	func getTermIDs_AssignTerms_AssignedOnly (assignedCategoryID: Int, nameStartsWith: String, nameContains: String?) -> [Int] {
 		
+		/*
+		Because I will be matching a single category, there will only be distinct term id's returned
+		*/
+		
 		let s = nameStartsWith
 		
 		let query = """
-			SELECT DISTINCT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
+
+			SELECT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
 			FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
 			WHERE
 			\(queries.categoryString(categoryIDs: [assignedCategoryID]))
-			AND name LIKE '\(s)%' OR name LIKE '-\(s)%'
+
+			AND (name LIKE '\(s)%' OR name LIKE '-\(s)%')
 			\(queries.nameContainsString(search: nameContains))
 			\(queries.orderByNameString(toOrder: true))
 			"""
@@ -563,20 +577,61 @@ class TermControllerTB {
 	
 	func getTermIDs_AssignTerms_UnassignedOnly (notAssignedCategoryID: Int, nameStartsWith: String, nameContains: String?) -> [Int] {
 		
-		let s = nameStartsWith
+		/*
+		-- myTerms will be a table of termIDs that DO NOT have the wanted category assigned
+		
+		DROP TABLE IF EXISTS myTerms;
+		
+		CREATE TEMPORARY TABLE myTerms AS
+		
+		SELECT terms.termID
+		FROM terms
+		WHERE terms.termID
+		NOT IN
+		(
+		SELECT terms.termID
+		FROM terms
+		JOIN assignedCategories
+		ON terms.termID = assignedCategories.termID
+		WHERE
+		(categoryID = 3)
+		)
+		;
+		
+		SELECT terms.termID, terms.name, REPLACE (terms.name, '-' , '') AS noHyphenInName
+		FROM  terms
+		JOIN myTerms ON terms.termID = myTerms.termID
+		WHERE (name LIKE 'a%' OR name LIKE '-a%')
+		AND name LIKE '%an%'
+		ORDER BY LOWER (noHyphenInName)
+		*/
 		
 		let query = """
-			SELECT DISTINCT \(terms).termID, REPLACE (name, '-' , '') AS noHyphenInName
-			FROM \(terms)
-			JOIN \(assignedCategories)
-			ON \(terms).termID = \(assignedCategories).termID
-			WHERE
-			CategoryID != \(notAssignedCategoryID)
-			AND name LIKE '\(s)%' OR name LIKE '-\(s)%'
-			\(queries.nameContainsString(search: nameContains))
-			\(queries.orderByNameString(toOrder: true))
-			"""
-		
+					DROP TABLE IF EXISTS myTerms;
+					CREATE TEMPORARY TABLE myTerms AS
+
+					SELECT \(terms).termID
+					FROM \(terms)
+					WHERE
+					\(terms).termID
+					NOT IN
+						(
+						SELECT \(terms).termID
+						FROM \(terms)
+						JOIN \(assignedCategories)
+						ON \(terms).termID = \(assignedCategories).termID
+						WHERE categoryID = \(notAssignedCategoryID)
+						);
+
+					SELECT \(terms).termID, terms.name, REPLACE (name, '-' , '') AS noHyphenInName
+					FROM \(terms)
+					JOIN myTerms ON \(terms).termID = myTerms.termID = \(terms).termID
+					WHERE
+					(name LIKE '\(nameStartsWith)%' OR name LIKE '-\(nameStartsWith)%')
+					\(queries.nameContainsString(search: nameContains))
+					\(queries.orderByNameString(toOrder: true))
+
+					"""
 		var ids = [Int]()
 		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
@@ -589,18 +644,22 @@ class TermControllerTB {
 		return ids
 		
 		
+		
+		
 	}
 	
 	func getTermCount (categoryIDs: [Int], showFavoritesOnly: Bool) -> Int {
 		
 		let query = """
 			SELECT COUNT (*) FROM
-			(SELECT DISTINCT \(assignedCategories).termID
+			(
+			SELECT DISTINCT \(assignedCategories).termID
 			FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
 			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-			\(queries.showFavoritesOnly(show: showFavoritesOnly)))
+			\(queries.showFavoritesOnly(show: showFavoritesOnly))
+			)
 			"""
 		
 		var count = 0

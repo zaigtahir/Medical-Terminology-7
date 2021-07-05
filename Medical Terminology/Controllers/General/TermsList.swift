@@ -77,6 +77,7 @@ class TermsList {
 			
 			// adding to the list count
 			count = count + termIDs.count
+			print ("count: \(count)")
 		}
 		
 	}
