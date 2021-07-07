@@ -73,10 +73,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		let nameTAN = Notification.Name(myKeys.termAddedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termAddedN(notification:)), name: nameTAN, object: nil)
 		
-		let nameTCN = Notification.Name(myKeys.termChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(termChangedN(notification:)), name: nameTCN, object: nil)
-		
-		
 		let nameTDN = Notification.Name(myKeys.termDeletedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termDeletedN(notification:)), name: nameTDN, object: nil)
 		
@@ -170,21 +166,6 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
 			
 			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: affectedCategoryIDs) {
-				updateData()
-				delegate?.shouldReloadTable()
-				delegate?.shouldUpdateDisplay()
-			}
-		}
-	}
-	
-	@objc func termChangedN  (notification: Notification) {
-		
-		if let data = notification.userInfo as? [String: Int] {
-			let affectedTermID = data["termID"]!
-			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
-			
-			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: affectedCategoryIDs){
-				
 				updateData()
 				delegate?.shouldReloadTable()
 				delegate?.shouldUpdateDisplay()

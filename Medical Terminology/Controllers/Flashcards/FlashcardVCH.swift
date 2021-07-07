@@ -60,12 +60,23 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// MARK: - Term notifications
 		let nameTAN = Notification.Name(myKeys.termAddedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termAddedN(notification:)), name: nameTAN, object: nil)
-		
-		let nameTCN = Notification.Name(myKeys.termChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(termChangedN(notification:)), name: nameTCN, object: nil)
-		
+	
 		let nameTDN = Notification.Name(myKeys.termDeletedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termDeletedN(notification:)), name: nameTDN, object: nil)
+		
+		
+		/**
+		let termNameChangedKey = "com.theappgalaxy.termNameChanged"
+		
+		let termCategoryIDsChangedKey = "
+		*/
+		
+		let nameTNC = Notification.Name(myKeys.termNameChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termNameChangedN (notification:)), name: nameTNC, object: nil)
+		
+		let nameCIC = Notification.Name(myKeys.termCategoryIDsChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termCategoryIDsChangedN (notification:)), name: nameTDN, object: nil)
+		
 		
 		// MARK: - Favorite status notification
 		
@@ -118,26 +129,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		}
 	}
 	
-	@objc func termChangedN  (notification: Notification) {
-		
-		// userInfo: ["termID" : [term.termID], "originalCategoryIDs" : originalTerm.assignedCategories])
-		
-		if let data = notification.userInfo as? [String: [Int]] {
-			
-			let termID = data["termID"]![0]
-			let originalCategoryIDs = data["originalIDs"]!
-	
-
-		//	let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
-			
-			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: affectedCategoryIDs){
-				
-				updateData()
-				delegate?.shouldRefreshCollectionView()
-				delegate?.shouldUpdateDisplay()
-			}
-		}
-	}
 	
 	@objc func termDeletedN  (notification: Notification) {
 		// self, userInfo: ["assignedCategoryIDs" : assignedCategoryIDs])
@@ -158,6 +149,13 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 	}
 	
+	@objc func termNameChangedN  (notification: Notification) {
+	
+	}
+
+	@objc func termCategoryIDsChangedN  (notification: Notification) {
+	
+	}
 	
 	// MARK: - Favorite notification function
 	

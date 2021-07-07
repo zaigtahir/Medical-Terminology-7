@@ -31,21 +31,34 @@ class MyKeys {
 	// MARK: - notifications for terms
 	
 	let termAddedKey = "com.theappgalaxy.termAdded"
+
+	/**
+	Trigger this notification when any term fields (including favorite) changes
+	*/
+	let termFieldsChangedKey = "com.theappgalaxy.termNameChanged"
 	
-	let termChangedKey = "com.theappgalaxy.termChanged"
-	
-	
-	
-	let termNameChangedKey = "com.theappgalaxy.termNameChanged"
-	
+	/**
+	Trigger this if the category changes it's id. the category is changing it's categoryID's AND other fields,
+	just trigger the termCategoryIDsChangedN as that function will refresh the data and display
+	*/
 	let termCategoryIDsChangedKey = "com.theappgalaxy.termCategoryIDsChanged"
-	
-	
-	
-	
 	
 	let termDeletedKey = "com.theappgalaxy.termDeleted"
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// GET RID OF THIS
 	/// When favorite is set or unset on a term
 	let termFavoriteStatusChanged = "com.theappgalaxy.termFavoriteStatusChanged"
 	

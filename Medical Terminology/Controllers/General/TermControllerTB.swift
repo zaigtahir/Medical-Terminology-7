@@ -63,6 +63,21 @@ class TermControllerTB {
 		
 	}
 	
+	func termFieldsAreSame (term1: TermTB, term2: TermTB) -> Bool {
+		if term1.termID != term2.termID {return false}
+		if term1.name != term2.name {return false}
+		if term1.definition != term2.definition {return false}
+		if term1.example != term2.example {return false}
+		if term1.myNotes != term2.myNotes {return false}
+		if term1.audioFile != term2.audioFile {return false}
+		
+		return true
+	}
+	
+	
+	
+	
+	
 	/**
 	Will not fill assignedCategories
 	*/
@@ -314,7 +329,6 @@ class TermControllerTB {
 	must have the tnew erm's assignCategoreis in place
 	*/
 
-	
 	func updateTermPN (term: TermTB) {
 		
 		// the starting state of the term with this ID from the database
@@ -348,22 +362,23 @@ class TermControllerTB {
 			for cID in term.assignedCategories {
 				cc.assignCategory(termID: term.termID, categoryID: cID)
 			}
+			
+			// post notification if the categories changed
+			let nName = Notification.Name(myKeys.termCategoryIDsChangedKey)
+			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID": [term.termID], "originalCategoryIDs" : [originalTerm.assignedCategories]])
+			
+			return
 		}
 		
-		// send out notification if the term name or categories have changed
-		// the other changes in values will not affect other parts of the program
+		// if the categories changed, I already posted a notification and returned. The VCH's will reload all the list anyway
+		// so even if there is a change with fields they will get updated anyway
 		
-		if (originalTerm.name != term.name || categoryIDsChanged ) {
-			
-			let nName = Notification.Name(myKeys.termChangedKey)
-			
-			// the termiD is contained in an array as I have the other variables as arrays
- 			// there will only be 1 termID
-			
-			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : [term.termID], "originalCategoryIDs" : originalTerm.assignedCategories])
+		if !termFieldsAreSame(term1: originalTerm, term2: term) {
+			let nName = Notification.Name(myKeys.termFieldsChangedKey)
+			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID": term.termID])
 		}
-		
 	}
+	
 	/**
 	Save a term to the db, use when migrating custom terms
 	Copies everything including the termID

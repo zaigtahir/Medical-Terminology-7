@@ -54,10 +54,6 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 		let nameTAN = Notification.Name(myKeys.termAddedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termAddedN(notification:)), name: nameTAN, object: nil)
 		
-		let nameTCN = Notification.Name(myKeys.termChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(termChangedN(notification:)), name: nameTCN, object: nil)
-		
-		
 		let nameTDN = Notification.Name(myKeys.termDeletedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termDeletedN(notification:)), name: nameTDN, object: nil)
 		
@@ -109,9 +105,6 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 		}
 	}
 	
-	@objc func termChangedN  (notification: Notification) {
-		// term information change does not affect this VC so nothing to do here
-	}
 	
 	@objc func termDeletedN  (notification: Notification) {
 		// self, userInfo: ["assignedCategoryIDs" : assignedCategoryIDs])

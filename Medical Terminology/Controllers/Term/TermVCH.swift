@@ -68,18 +68,13 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate, TermCategoryIDsD
 		NotificationCenter.default.removeObserver(self)
 	}
 	
-	
 	func termWasEdited () -> Bool {
 		// return true if there are any changes
 		
-		if editedTerm.termID != initialTerm.termID {return true}
-		if editedTerm.name != initialTerm.name {return true}
-		if editedTerm.definition != initialTerm.definition {return true}
-		if editedTerm.example != initialTerm.example {return true}
-		if editedTerm.myNotes != initialTerm.myNotes {return true}
-		if editedTerm.audioFile != initialTerm.audioFile {return true}
-		if !utilities.containSameElements(array1: initialTerm.assignedCategories, array2: editedTerm.assignedCategories)  {return true}
+		if !tcTB.termFieldsAreSame(term1: editedTerm, term2: initialTerm) {return true}
 		
+		if !utilities.containSameElements(array1: initialTerm.assignedCategories, array2: editedTerm.assignedCategories)  {return true}
+	
 		return false
 	}
 	
@@ -148,7 +143,6 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate, TermCategoryIDsD
 		
 	}
 	
-		
 	func saveNewTerm () {
 		
 		// saves new term and loads it as the initial term
