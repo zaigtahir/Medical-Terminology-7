@@ -124,7 +124,7 @@ class TermControllerTB {
 		
 		let data = ["termID" : termID]
 		
-		let name = Notification.Name(myKeys.setFavoriteStatusKey)
+		let name = Notification.Name(myKeys.termFavoriteStatusChanged)
 		NotificationCenter.default.post(name: name, object: self, userInfo: data)
 	}
 	

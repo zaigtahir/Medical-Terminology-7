@@ -202,11 +202,11 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		func formatFields() {
 			
 			if categoryVCH.editedCategory.isStandard {
-				self.title = "PREDEFINED CATEGORY"
-				nameTitleLabel.text = "CATEGORY NAME"
+				self.title = "Category"
+				nameTitleLabel.text = "Category Name"
 			} else {
-				nameTitleLabel.text = "MY CATEGORY"
-				self.title = "MY CATEGORY NAME"
+				nameTitleLabel.text = "My Category Name"
+				self.title = "My Category"
 			}
 			
 			if categoryVCH.editedCategory.name == "" {

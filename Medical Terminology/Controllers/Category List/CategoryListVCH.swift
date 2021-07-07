@@ -146,7 +146,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 			if categoryListMode == .selectCategories {
 				// post a notification so all controllers can react
-				let name = Notification.Name(myKeys.currentCategoryIDsChanged)
+				let name = Notification.Name(myKeys.currentCategoryIDsChangedKey)
 				NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : selectedCategoryIDs as Any])
 				
 			} else {
@@ -309,7 +309,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 			// send out notification of change in currentCategoryIDs
 			// Fire off a notification of the category change!!
 			
-			let name = Notification.Name(myKeys.currentCategoryIDsChanged)
+			let name = Notification.Name(myKeys.currentCategoryIDsChangedKey)
 			NotificationCenter.default.post(name: name, object: self, userInfo: ["categoryIDs" : initialCategoryIDs as Any])
 		}
 		

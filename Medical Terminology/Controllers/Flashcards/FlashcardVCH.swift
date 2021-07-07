@@ -50,7 +50,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		// MARK: - Category notifications
 		
-		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChanged)
+		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryIDsChangedN(notification:)), name: nameCCCNK, object: nil)
 		
 		// This is sent only if there is this ONE category in currentCategoryIDs, and the name is changed
@@ -64,14 +64,13 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let nameTCN = Notification.Name(myKeys.termChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termChangedN(notification:)), name: nameTCN, object: nil)
 		
-		
 		let nameTDN = Notification.Name(myKeys.termDeletedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termDeletedN(notification:)), name: nameTDN, object: nil)
 		
 		// MARK: - Favorite status notification
 		
-		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
+		let nameFSC = Notification.Name(myKeys.termFavoriteStatusChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(termFavoriteStatusChangedN (notification:)), name: nameFSC, object: nil)
 		
 		// update data
 		updateData()
@@ -156,51 +155,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	// MARK: - Favorite notification function
 	
-	@objc func setFavoriteStatusNBK (notification: Notification) {
-		
-		if let data = notification.userInfo as? [String: Int] {
-			let affectedTermID = data["termID"]!
-			
-			switch showFavoritesOnly {
-			
-			case true:
-				// seeing favorites only, and a term may have been added or removed from this list so need to reload the whole list
-			
-				let favoriteStatus = tcTB.getFavoriteStatus(termID: affectedTermID)
-				
-				switch favoriteStatus {
-				case true:
-					// term is made favorite from elsewhere in the program, need to reload all data and update the display
-					updateData()
-					delegate?.shouldRefreshCollectionView()
-					delegate?.shouldUpdateDisplay()
-					
-				case false:
-					// term was made unfavorite, need to remove just that data from the model, and animate the removal of the cell in the table
-					
-					if let firstIndex = termIDs.firstIndex(of: affectedTermID) {
-						termIDs = utilities.removeIndex(index: firstIndex, array: termIDs)
-						
-						delegate?.shouldRemoveCellAt (indexPath: IndexPath(row: firstIndex, section: 0))
-						
-						delegate?.shouldUpdateDisplay()
-					}
-					
-				}
-				
-				
-			case false:
-				// if this term id exists in termIDs, need to reload that term from the database and then reload just that term in the collection
-				
-				if let termIDIndex = termIDs.firstIndex(of: affectedTermID) {
-					delegate?.shouldReloadCellAtIndex(termIDIndex: termIDIndex)
-					delegate?.shouldUpdateDisplay()
-				}
-			}
-		}
-	}
-	
-	@objc func setFavoriteStatusN (notification: Notification) {
+	@objc func termFavoriteStatusChangedN (notification: Notification) {
 	
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
@@ -355,7 +310,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		updateData()
 		delegate?.shouldRemoveCurrentCell()
-	//	delegate?.shouldRefreshCollectionView()
 		delegate?.shouldUpdateDisplay()
 	}
 	

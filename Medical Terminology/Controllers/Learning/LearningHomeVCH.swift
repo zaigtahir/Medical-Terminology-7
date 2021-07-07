@@ -41,7 +41,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 		
 		// MARK: - Category notifications
 		
-		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChanged)
+		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryIDsChangedN(notification:)), name: nameCCCNK, object: nil)
 		
 		// This is sent only if there is this ONE category in currentCategoryIDs, and the name is changed
@@ -61,8 +61,8 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 		
 		// MARK: - Favorite status notification
 		
-		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
+		let nameFSC = Notification.Name(myKeys.termFavoriteStatusChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(termFavoriteStatusChangedN (notification:)), name: nameFSC, object: nil)
 		
 		// update data
 		updateData()
@@ -134,7 +134,7 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	
 	// MARK: - Favorite notification function
 	
-	@objc func setFavoriteStatusN (notification: Notification) {
+	@objc func termFavoriteStatusChangedN (notification: Notification) {
 	
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!

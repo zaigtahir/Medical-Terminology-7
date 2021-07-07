@@ -14,7 +14,6 @@ protocol AssignTermsVCHDelegate: AnyObject {
 	
 	func shouldReloadTable()
 	func shouldUpdateDisplay()
-	func shouldReloadRowAt (indexPath: IndexPath)
 	func shouldRemoveRowAt (indexPath: IndexPath)
 	func shouldClearSearchText()
 }
@@ -48,6 +47,7 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 	
 	func setupCategoryID (categoryID: Int) {
 		self.categoryID = categoryID
+	
 		updateData()
 	}
 	
@@ -114,8 +114,8 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 			
 			let termID = termsList.getTermID(indexPath: indexPath)
 			let term = tcTB.getTerm(termID: termID)
-			
-			cell?.textLabel!.text = term.name
+						
+			cell?.configure(termName: term.name, isSelected: assignedListViewMode == 0 , isEnabled: true)
 			
 			return cell!
 		}
@@ -123,9 +123,31 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 
 	}
 	
-	
+	/**
+	This will generate a NOTIFICATION when a catetory is added or removed from the term
+	*/
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		// will need to determine the termID then tell the termListVC to perform the seque to the termVC
+
+		let termID = termsList.getTermID(indexPath: indexPath)
+		
+		if assignedListViewMode == 0 {
+			// clicked on this term in the Assigned view. So, will need to REMOVE this category from the term and send out a notification
+			
+			cc.unassignCategory(termID: termID, categoryID: categoryID)
+			
+		} else {
+			// clicked on this term in the Unassign view. So, will need to ADD this category to the term and send out a notification
+			cc.assignCategory(termID: termID, categoryID: categoryID)
+		}
+			
+		// need to update the data model because the term category assign/unassign changed
+		updateData()
+		
+		// need to remove this row from the tableView
+		delegate?.shouldRemoveRowAt(indexPath: indexPath)
+		
+		delegate?.shouldUpdateDisplay()
+	
 		
 	}
 	

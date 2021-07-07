@@ -22,10 +22,23 @@ class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
 	
 	private let tcTB = TermControllerTB()
 	
+	private let cc = CategoryController()
+	
+	private let utilities = Utilities()
+	
 	override func viewDidLoad() {
-        super.viewDidLoad()
+        
+		super.viewDidLoad()
 		tableView.dataSource = assignTermsVCH
+		tableView.delegate = assignTermsVCH
+		
+		assignTermsVCH.delegate = self
+		
+		categoryNameLabel.text = cc.getCategory(categoryID: assignTermsVCH.categoryID).name
+		
 		updateDisplay()
+		
+		
 		
     }
 	
@@ -63,15 +76,15 @@ class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
 	}
 	
 	func shouldUpdateDisplay() {
-	
+		updateDisplay()
 	}
 	
 	func shouldReloadRowAt(indexPath: IndexPath) {
 		
 	}
 	
-	func shouldRemoveRowAt(indexPath: IndexPath) {
-		
+	func shouldRemoveRowAt(indexPath: IndexPath) {		
+		tableView.deleteRows(at: [indexPath], with: .automatic)
 	}
 	
 	func shouldClearSearchText() {

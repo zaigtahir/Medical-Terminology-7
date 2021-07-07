@@ -58,26 +58,11 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		super.init()
 		
 		updateData ()
-		
-		
-		/*
-		termAdded
-		termUpdated
-		termDeleted
-		
-		currentCategoryIDsChanged
-		categoryChanged
-		categoryNameChanged
-		categoryDeleted
-		
-		favoriteStatusChanged
-		*/
-		
-		
+	
 
 		// MARK: - Category notifications
 		
-		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChanged)
+		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(currentCategoryIDsChangedN(notification:)), name: nameCCCNK, object: nil)
 		
 		// This is sent only if there is this ONE category in currentCategoryIDs, and the name is changed
@@ -97,8 +82,8 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		
 		// MARK: - Favorite status notification
 		
-		let nameSFK = Notification.Name(myKeys.setFavoriteStatusKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(setFavoriteStatusN (notification:)), name: nameSFK, object: nil)
+		let nameFSC = Notification.Name(myKeys.termFavoriteStatusChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(termFavoriteStatusChangedN (notification:)), name: nameFSC, object: nil)
 		
 	}
 	
