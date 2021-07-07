@@ -313,6 +313,8 @@ class TermControllerTB {
 	
 	must have the tnew erm's assignCategoreis in place
 	*/
+
+	
 	func updateTermPN (term: TermTB) {
 		
 		// the starting state of of the term with this ID from the database
@@ -348,15 +350,18 @@ class TermControllerTB {
 			}
 		}
 		
-		//MARK: this should be in higher controller
-		
 		// send out notification if the term name or categories have changed
 		// the other changes in values will not affect other parts of the program
 		
 		if (originalTerm.name != term.name) || !categoryIDsChanged {
 			
 			let nName = Notification.Name(myKeys.termChangedKey)
-			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : term.termID])
+			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : term.termID, "originalCategoryIDs" : originalTerm.assignedCategories, "newCategoryIDs" : term.assignedCategories ])
+			
+			
+			
+			
+			
 		}
 		
 	}

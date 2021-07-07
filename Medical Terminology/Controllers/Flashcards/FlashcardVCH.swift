@@ -120,6 +120,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	@objc func termChangedN  (notification: Notification) {
 		
+		// 
+		
+		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)

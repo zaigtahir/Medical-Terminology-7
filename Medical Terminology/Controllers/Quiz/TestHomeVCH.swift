@@ -134,7 +134,7 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 	
 	// MARK: - Favorite notification function
 	
-	@objc func setFavoriteStatusN (notification: Notification) {
+	@objc func termFavoriteStatusChangedN (notification: Notification) {
 	
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
