@@ -317,7 +317,7 @@ class TermControllerTB {
 	
 	func updateTermPN (term: TermTB) {
 		
-		// the starting state of of the term with this ID from the database
+		// the starting state of the term with this ID from the database
 		let originalTerm = getTerm(termID: term.termID)
 		
 		let query = """
@@ -353,15 +353,14 @@ class TermControllerTB {
 		// send out notification if the term name or categories have changed
 		// the other changes in values will not affect other parts of the program
 		
-		if (originalTerm.name != term.name) || !categoryIDsChanged {
+		if (originalTerm.name != term.name || categoryIDsChanged ) {
 			
 			let nName = Notification.Name(myKeys.termChangedKey)
-			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : term.termID, "originalCategoryIDs" : originalTerm.assignedCategories, "newCategoryIDs" : term.assignedCategories ])
 			
+			// the termiD is contained in an array as I have the other variables as arrays
+ 			// there will only be 1 termID
 			
-			
-			
-			
+			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID" : [term.termID], "originalCategoryIDs" : originalTerm.assignedCategories])
 		}
 		
 	}

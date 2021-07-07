@@ -34,6 +34,16 @@ class MyKeys {
 	
 	let termChangedKey = "com.theappgalaxy.termChanged"
 	
+	
+	
+	let termNameChangedKey = "com.theappgalaxy.termNameChanged"
+	
+	let termCategoryIDsChangedKey = "com.theappgalaxy.termCategoryIDsChanged"
+	
+	
+	
+	
+	
 	let termDeletedKey = "com.theappgalaxy.termDeleted"
 	
 	/// When favorite is set or unset on a term

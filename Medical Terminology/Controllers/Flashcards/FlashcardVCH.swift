@@ -120,12 +120,15 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	@objc func termChangedN  (notification: Notification) {
 		
-		// 
+		// userInfo: ["termID" : [term.termID], "originalCategoryIDs" : originalTerm.assignedCategories])
 		
-		
-		if let data = notification.userInfo as? [String: Int] {
-			let affectedTermID = data["termID"]!
-			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
+		if let data = notification.userInfo as? [String: [Int]] {
+			
+			let termID = data["termID"]![0]
+			let originalCategoryIDs = data["originalIDs"]!
+	
+
+		//	let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
 			
 			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: affectedCategoryIDs){
 				
