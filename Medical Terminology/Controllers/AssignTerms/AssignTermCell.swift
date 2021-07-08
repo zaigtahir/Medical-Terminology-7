@@ -24,15 +24,15 @@ class AssignTermCell: UITableViewCell {
 		termNameLabel.text = termName
 		
 		if isSelected {
-			selectImage.image = myTheme.imageCorrect
+			selectImage.image = myTheme.imageSquareFill
 		} else {
-			selectImage.image = myTheme.imageCircle
+			selectImage.image = myTheme.imageSquare
 		}
 		
 		if isEnabled {
 			termNameLabel.textColor = myTheme.colorText
 			if isSelected {
-				selectImage.tintColor = myTheme.colorCorrect
+				selectImage.tintColor = myTheme.colorMain
 			} else {
 				selectImage.tintColor = myTheme.colorText
 			}

@@ -3209,6 +3209,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Category Detail" id="lhj-8N-3CI">
+                        <barButtonItem key="backBarButtonItem" title="Done" id="LcE-hw-Qaa"/>
                         <barButtonItem key="leftBarButtonItem" title="Done" id="Vje-88-BOl">
                             <connections>
                                 <action selector="leftButtonAction:" destination="BPm-yE-Jpz" id="YpV-iq-GY0"/>
@@ -3243,9 +3244,9 @@ You will be asked to correctly match the term to it's definition, and also to ma
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WXS-WU-Z5u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13453.623188405798" y="-1397.2826086956522"/>
+            <point key="canvasLocation" x="13012" y="-1397"/>
         </scene>
-        <!--Assign TermsVC-->
+        <!--Assign Terms-->
         <scene sceneID="lZG-pL-nNS">
             <objects>
                 <viewController id="dC9-8Q-OSu" customClass="AssignTermsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
@@ -3254,7 +3255,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IoP-cP-U86">
-                                <rect key="frame" x="20" y="225" width="374" height="491"/>
+                                <rect key="frame" x="20" y="254" width="374" height="462"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="assignTermCell" rowHeight="71" id="WZN-Yz-Try" customClass="AssignTermCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
@@ -3353,14 +3354,8 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpA-Uv-38O">
-                                <rect key="frame" x="20" y="64" width="374" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <color key="textColor" name="color main"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xFT-YE-NY3">
-                                <rect key="frame" x="20" y="108" width="374" height="97"/>
+                                <rect key="frame" x="20" y="137" width="374" height="97"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vxf-Y7-48D">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
@@ -3383,23 +3378,40 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                     </searchBar>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ZPh-rW-HVQ">
+                                <rect key="frame" x="20" y="64" width="374" height="43"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZK-Nn-WtD">
+                                        <rect key="frame" x="142" y="0.0" width="90.333333333333314" height="14.333333333333334"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpA-Uv-38O">
+                                        <rect key="frame" x="122.66666666666666" y="21.333333333333329" width="129" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <color key="textColor" name="color text"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RfV-Rc-5bb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IoP-cP-U86" firstAttribute="top" secondItem="aKM-5f-OjA" secondAttribute="bottom" constant="20" id="DTJ-5w-qTu"/>
                             <constraint firstItem="RfV-Rc-5bb" firstAttribute="trailing" secondItem="IoP-cP-U86" secondAttribute="trailing" constant="20" id="Egy-lP-1n4"/>
-                            <constraint firstItem="UpA-Uv-38O" firstAttribute="leading" secondItem="RfV-Rc-5bb" secondAttribute="leading" constant="20" id="F7m-Hl-3HV"/>
+                            <constraint firstItem="ZPh-rW-HVQ" firstAttribute="leading" secondItem="RfV-Rc-5bb" secondAttribute="leading" constant="20" id="JS3-ix-wpg"/>
                             <constraint firstItem="RfV-Rc-5bb" firstAttribute="bottom" secondItem="IoP-cP-U86" secondAttribute="bottom" constant="20" id="Lyd-0j-ZRH"/>
-                            <constraint firstItem="xFT-YE-NY3" firstAttribute="top" secondItem="UpA-Uv-38O" secondAttribute="bottom" constant="20" id="Nki-Cg-GUb"/>
                             <constraint firstItem="IoP-cP-U86" firstAttribute="leading" secondItem="RfV-Rc-5bb" secondAttribute="leading" constant="20" id="Ri2-nE-96h"/>
-                            <constraint firstItem="RfV-Rc-5bb" firstAttribute="trailing" secondItem="UpA-Uv-38O" secondAttribute="trailing" constant="20" id="cWb-fr-txi"/>
-                            <constraint firstItem="UpA-Uv-38O" firstAttribute="top" secondItem="RfV-Rc-5bb" secondAttribute="top" constant="20" id="e5o-uD-twM"/>
+                            <constraint firstItem="ZPh-rW-HVQ" firstAttribute="top" secondItem="RfV-Rc-5bb" secondAttribute="top" constant="20" id="YIB-1k-7cI"/>
+                            <constraint firstItem="RfV-Rc-5bb" firstAttribute="trailing" secondItem="ZPh-rW-HVQ" secondAttribute="trailing" constant="20" id="ku4-Ep-Wwt"/>
                             <constraint firstItem="RfV-Rc-5bb" firstAttribute="trailing" secondItem="xFT-YE-NY3" secondAttribute="trailing" constant="20" id="mIA-JA-9sr"/>
+                            <constraint firstItem="xFT-YE-NY3" firstAttribute="top" secondItem="ZPh-rW-HVQ" secondAttribute="bottom" constant="30" id="nsg-YU-Wiy"/>
                             <constraint firstItem="xFT-YE-NY3" firstAttribute="leading" secondItem="RfV-Rc-5bb" secondAttribute="leading" constant="20" id="u84-48-dXu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="9q6-Kg-NbP"/>
+                    <navigationItem key="navigationItem" title="Assign Terms" id="9q6-Kg-NbP"/>
                     <connections>
                         <outlet property="categoryNameLabel" destination="UpA-Uv-38O" id="9PN-nN-NBl"/>
                         <outlet property="searchBar" destination="aKM-5f-OjA" id="E1z-Xt-hp1"/>
@@ -3409,7 +3421,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tIk-QS-6X7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15376.8115942029" y="-1397.2826086956522"/>
+            <point key="canvasLocation" x="14129" y="-1397"/>
         </scene>
         <!--Categories-->
         <scene sceneID="ZB8-ag-DRz">
@@ -3420,7 +3432,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W5i-R0-UWj">
-                                <rect key="frame" x="0.0" y="176.66666666666669" width="414" height="559.33333333333326"/>
+                                <rect key="frame" x="0.0" y="175.33333333333331" width="414" height="560.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="50" id="51Y-Dh-WQa" customClass="CategoryCell" customModule="Practical_Medical_Terminology" customModuleProvider="target">
@@ -3552,9 +3564,9 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Categories Selected: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjm-Sc-ntb">
-                                <rect key="frame" x="20" y="122.00000000000001" width="374" height="15.666666666666671"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="121.99999999999999" width="374" height="14.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <color key="textColor" name="color text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -3579,6 +3591,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="gbB-2e-HLI">
+                        <barButtonItem key="backBarButtonItem" title="Done" id="G0Q-0B-ELX"/>
                         <barButtonItem key="leftBarButtonItem" title="Done" id="GnI-tT-TmK">
                             <connections>
                                 <action selector="doneButtonAction:" destination="KTC-23-wdb" id="1zs-mY-JsC"/>

@@ -121,7 +121,7 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 				delegate?.shouldUpdateDisplay()
 			}
 		}
-	}	
+	}
 	
 	// END of notification functions
 	
