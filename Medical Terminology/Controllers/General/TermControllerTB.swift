@@ -364,8 +364,10 @@ class TermControllerTB {
 			}
 			
 			// post notification if the categories changed
+			
 			let nName = Notification.Name(myKeys.termCategoryIDsChangedKey)
-			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID": [term.termID], "originalCategoryIDs" : [originalTerm.assignedCategories]])
+			
+			NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID": [term.termID], "originalCategoryIDs" : originalTerm.assignedCategories])
 			
 			return
 		}

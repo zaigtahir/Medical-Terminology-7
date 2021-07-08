@@ -23,7 +23,7 @@ protocol CategoryEditDelegate: AnyObject {
 class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
 	// MARK: -seque variables
-
+	
 	// need to set this so that I know what to do when deleting a category
 	var currentCategoryIDs : [Int]!
 	
@@ -33,20 +33,56 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	private var initialCategory: Category!
 	
 	var editedCategory = Category ()
-
+	
 	weak var delegate: CategoryVCHDelegate?
 	
 	weak var delegateEdit: CategoryEditDelegate?
-
+	
 	private var singleLineInputVC : SingleLineInputVC!
 	
 	private var multiLineInputVC : MultiLineInputVC!
 	
 	private let cc = CategoryController()
 	
+	private let tcTB = TermControllerTB()
+	
+	private let utilities = Utilities()
+	
 	init () {
 		
+		
+		// the only notification this VC needs to respnds to. This notification will be from AssignTermsVCH so that I can refresh
+		// the data here and the CategoryVC can update it's display
+		
+		let nameCIC = Notification.Name(myKeys.termCategoryIDsChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termCategoryIDsChangedN (notification:)), name: nameCIC, object: nil)
+		
+		
 	}
+	
+	deinit {
+		// remove observer (s)
+		NotificationCenter.default.removeObserver(self)
+	}
+	
+	
+	@objc func termCategoryIDsChangedN (notification: Notification) {
+		//userInfo: ["termID": [term.termID], "originalCategoryIDs" : [originalTerm.assignedCategories]])
+		
+		if let data = notification.userInfo as? [String : [Int]] {
+			
+			let termID = data["termID"]![0]
+			let originalCategoryIDs = data["originalCategoryIDs"]!
+			let newCategoryIDs = tcTB.getTermCategoryIDs(termID: termID)
+			
+			if originalCategoryIDs.contains(editedCategory.categoryID) || newCategoryIDs.contains(editedCategory.categoryID) {
+				// this category is affected by the term category change
+				delegate?.shouldUpdateDisplay()
+			}
+			
+		}
+	}
+	
 	
 	func setInitialCategory (category: Category) {
 		self.initialCategory = category
@@ -71,11 +107,11 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		switch segue.identifier {
 		
 		case myConstants.segueSingleLineInput:
-
+			
 			prepareSingleLineInputVC(segue: segue)
-	
+			
 		case myConstants.segueMultiLineInput:
-		
+			
 			prepareMultiLineInputVC(segue: segue)
 			
 		case myConstants.segueAssignTerms:
@@ -88,7 +124,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	}
 	
 	private func prepareSingleLineInputVC (segue: UIStoryboardSegue) {
-
+		
 		// setting the class variable
 		singleLineInputVC = segue.destination as? SingleLineInputVC
 		
@@ -100,7 +136,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		singleLineInputVC.textInputVCH.maxLength = myConstants.maxLengthCategoryName
 		singleLineInputVC.textInputVCH.propertyReference = .none
 		singleLineInputVC.delegate = self
-
+		
 	}
 	
 	func prepareMultiLineInputVC (segue: UIStoryboardSegue) {
@@ -122,7 +158,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		let vc = segue.destination as? AssignTermsVC
 		vc?.assignTermsVCH.setupCategoryID (categoryID: editedCategory.categoryID)
 	}
-
+	
 	func saveNewCategory() {
 		let addedCategoryID = cc.saveNewCategory (category: editedCategory)
 		
@@ -139,15 +175,15 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		// will update the db with values from the edited category, and set the edited category as the initial term so that when the display refreshes, the VC will show the saved state
 		
 		let originalName = initialCategory.name
-	
+		
 		// reset the editedCategory as the initialCategory
 		setInitialCategory(category: editedCategory)
 		
 		cc.updateCategory(category: editedCategory)
 		
 		if originalName != editedCategory.name {
-				let nName = Notification.Name(myKeys.categoryNameChangedKey)
-				NotificationCenter.default.post(name: nName, object: self, userInfo: ["categoryID" : editedCategory.categoryID])
+			let nName = Notification.Name(myKeys.categoryNameChangedKey)
+			NotificationCenter.default.post(name: nName, object: self, userInfo: ["categoryID" : editedCategory.categoryID])
 		}
 		
 		
@@ -192,9 +228,9 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		}
 		
 		editedCategory.description = cleanString
-	
+		
 		delegate?.shouldUpdateDisplay()
-	
+		
 		multiLineInputVC.navigationController?.popViewController(animated: true)
 	}
 	

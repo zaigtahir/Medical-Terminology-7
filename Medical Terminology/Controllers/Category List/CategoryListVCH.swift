@@ -79,6 +79,10 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
 		
+		let nameCIC = Notification.Name(myKeys.termCategoryIDsChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termCategoryIDsChangedN (notification:)), name: nameCIC, object: nil)
+		
+		
 		updateData()
 		
 	}
@@ -97,6 +101,27 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 		
 	}
 
+	@objc func termCategoryIDsChangedN (notification: Notification) {
+		//userInfo: ["termID": [term.termID], "originalCategoryIDs" : [originalTerm.assignedCategories]])
+		
+		if let data = notification.userInfo as? [String : [Int]] {
+			
+			let termID = data["termID"]![0]
+			let originalCategoryIDs = data["originalCategoryIDs"]!
+			let newCategoryIDs = tcTB.getTermCategoryIDs(termID: termID)
+			
+			// if current categories contain any of these categories, need to refresh data and display
+			// this will catch any additions or removals of a term category
+			
+			if utilities.containsElementFrom(mainArray: selectedCategoryIDs, testArray: originalCategoryIDs) || utilities.containsElementFrom(mainArray: selectedCategoryIDs, testArray: newCategoryIDs) {
+				// the current category IDs contain at least one of the category IDs from the originalCategoryIDs or currentCategoryIDs
+				
+				updateData()
+				delegate?.shouldReloadTable()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}	
 	
 	// END of notification functions
 	

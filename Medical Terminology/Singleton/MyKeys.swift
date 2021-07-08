@@ -35,11 +35,14 @@ class MyKeys {
 	/**
 	Trigger this notification when any term fields (including favorite) changes
 	*/
-	let termFieldsChangedKey = "com.theappgalaxy.termNameChanged"
+	let termFieldsChangedKey = "com.theappgalaxy.termFieldsChanged"
 	
 	/**
 	Trigger this if the category changes it's id. the category is changing it's categoryID's AND other fields,
 	just trigger the termCategoryIDsChangedN as that function will refresh the data and display
+	
+	TermController.updateTerm
+	AssignTermsVCH.didSelectRow
 	*/
 	let termCategoryIDsChangedKey = "com.theappgalaxy.termCategoryIDsChanged"
 	

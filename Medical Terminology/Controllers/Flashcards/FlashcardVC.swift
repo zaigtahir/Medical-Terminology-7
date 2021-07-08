@@ -171,6 +171,7 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 	}
 	
 	func shouldRefreshCollectionView() {
+		
 		collectionView.reloadData()
 	}
 	

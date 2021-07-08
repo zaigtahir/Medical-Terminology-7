@@ -64,24 +64,11 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let nameTDN = Notification.Name(myKeys.termDeletedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termDeletedN(notification:)), name: nameTDN, object: nil)
 		
-		
-		/**
-		let termNameChangedKey = "com.theappgalaxy.termNameChanged"
-		
-		let termCategoryIDsChangedKey = "
-		*/
-		
-		let nameTNC = Notification.Name(myKeys.termNameChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(termNameChangedN (notification:)), name: nameTNC, object: nil)
+		let nameTNC = Notification.Name(myKeys.termFieldsChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termFieldsChangedN (notification:)), name: nameTNC, object: nil)
 		
 		let nameCIC = Notification.Name(myKeys.termCategoryIDsChangedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(termCategoryIDsChangedN (notification:)), name: nameTDN, object: nil)
-		
-		
-		// MARK: - Favorite status notification
-		
-		let nameFSC = Notification.Name(myKeys.termFavoriteStatusChanged)
-		NotificationCenter.default.addObserver(self, selector: #selector(termFavoriteStatusChangedN (notification:)), name: nameFSC, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(termCategoryIDsChangedN (notification:)), name: nameCIC, object: nil)
 		
 		// update data
 		updateData()
@@ -116,7 +103,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	// MARK: - Term notification functions
 	
 	@objc func termAddedN  (notification: Notification) {
-		print ("TermListVCH got: termAddedN")
+		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
 			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
@@ -128,7 +115,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			}
 		}
 	}
-	
 	
 	@objc func termDeletedN  (notification: Notification) {
 		// self, userInfo: ["assignedCategoryIDs" : assignedCategoryIDs])
@@ -143,34 +129,42 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 				delegate?.shouldRefreshCollectionView()
 				delegate?.shouldUpdateDisplay()
 			}
-			
 		}
+	}
+	
+	@objc func termFieldsChangedN (notification: Notification) {
 		
-		
-	}
-	
-	@objc func termNameChangedN  (notification: Notification) {
-	
-	}
-
-	@objc func termCategoryIDsChangedN  (notification: Notification) {
-	
-	}
-	
-	// MARK: - Favorite notification function
-	
-	@objc func termFavoriteStatusChangedN (notification: Notification) {
-	
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
+			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
 			
-			let categoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
-			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: categoryIDs) {
-				// a term was affected in the current categories
+			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: affectedCategoryIDs) {
 				updateData()
+				delegate?.shouldRefreshCollectionView()
 				delegate?.shouldUpdateDisplay()
 			}
+		}
+	}
+	
+	@objc func termCategoryIDsChangedN (notification: Notification) {
+		//userInfo: ["termID": [term.termID], "originalCategoryIDs" : [originalTerm.assignedCategories]])
+		
+		if let data = notification.userInfo as? [String : [Int]] {
 			
+			let termID = data["termID"]![0]
+			let originalCategoryIDs = data["originalCategoryIDs"]!
+			let newCategoryIDs = tcTB.getTermCategoryIDs(termID: termID)
+			
+			// if current categories contain any of these categories, need to refresh data and display
+			// this will catch any additions or removals of a term category
+			
+			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: originalCategoryIDs) || utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: newCategoryIDs) {
+				// the current category IDs contain at least one of the category IDs from the originalCategoryIDs or currentCategoryIDs
+				
+				updateData()
+				delegate?.shouldRefreshCollectionView()
+				delegate?.shouldUpdateDisplay()
+			}
 		}
 	}
 	

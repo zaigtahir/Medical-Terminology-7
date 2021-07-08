@@ -9,15 +9,12 @@
 import UIKit
 
 protocol AssignTermsVCHDelegate: AnyObject {
-	//func shouldUpdateDisplay()		// update state of other controls on the flashcard home screen
-	//func reloadTableView()	// reload all the data
 	
 	func shouldReloadTable()
 	func shouldUpdateDisplay()
 	func shouldRemoveRowAt (indexPath: IndexPath)
 	func shouldClearSearchText()
 }
-
 
 class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 
@@ -119,16 +116,17 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 			
 			return cell!
 		}
-		
-
+	
 	}
 	
 	/**
-	This will generate a NOTIFICATION when a catetory is added or removed from the term
+	This will generate a   termCategoryIDsChangedKey NOTIFICATION when a catetory is added or removed from the term
 	*/
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
 		let termID = termsList.getTermID(indexPath: indexPath)
+		
+		let originalCategoryIDs = tcTB.getTermCategoryIDs(termID: termID)
 		
 		if assignedListViewMode == 0 {
 			// clicked on this term in the Assigned view. So, will need to REMOVE this category from the term and send out a notification
@@ -139,9 +137,16 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 			// clicked on this term in the Unassign view. So, will need to ADD this category to the term and send out a notification
 			cc.assignCategory(termID: termID, categoryID: categoryID)
 		}
+		
+		// need to setup to send out a notification of the category change
+		
 			
 		// need to update the data model because the term category assign/unassign changed
 		updateData()
+		
+		let nName = Notification.Name(myKeys.termCategoryIDsChangedKey)
+		
+		NotificationCenter.default.post(name: nName, object: self, userInfo: ["termID": [termID], "originalCategoryIDs" : originalCategoryIDs])
 		
 		// need to remove this row from the tableView
 		delegate?.shouldRemoveRowAt(indexPath: indexPath)

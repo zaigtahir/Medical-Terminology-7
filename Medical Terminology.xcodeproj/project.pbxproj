@@ -427,8 +427,8 @@
 		991991552690C9A500C86222 /* AssignTerms */ = {
 			isa = PBXGroup;
 			children = (
-				991991512690C98800C86222 /* AssignTermsVC.swift */,
 				99AE54CE269212B600D7406A /* AssignTermCell.swift */,
+				991991512690C98800C86222 /* AssignTermsVC.swift */,
 				9910A67E2691FC36004FCF57 /* AssignTermsVCH.swift */,
 			);
 			path = AssignTerms;

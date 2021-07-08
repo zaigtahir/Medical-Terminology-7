@@ -60,55 +60,10 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		
 		updateDisplay()
 		
-		//navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
-		
-		self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "My Title", style: .plain, target: nil, action: nil)
-		
+		//self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "My Title", style: .plain, target: nil, action: nil)
 		
 		categoryVCH.delegate = self
-		
-		// test out done numbers
-		
-		let progress = cc.getDoneCounts(categoryID: categoryVCH.editedCategory.categoryID)
-		
-		let totalCount = tcTB.getTermCount(categoryIDs: [categoryVCH.editedCategory.categoryID], showFavoritesOnly: false)
-		
-		assignedTermsLabel.text = ("\(totalCount)")
-		
-		overallAllProgressLabel.text = ("Total: \(utilities.getPercentage(number: progress.totalDone, numberTotal: totalCount * 4))% done")
-		
-		flashcardProgressLabel.text =  ("Flashcards: \(utilities.getPercentage(number: progress.fcDone, numberTotal: totalCount))% done")
-		
-		learnedProgressLabel.text = ("Learning: \(utilities.getPercentage(number: progress.lnDone, numberTotal: totalCount))% done")
-		
-		testProgressLabel.text = ("Test: \(utilities.getPercentage(number: progress.anDone, numberTotal: totalCount * 2))% done")
-		
-		// format the progress bar
-		let foregroundColor = myTheme.colorProgressPbForeground?.cgColor
-		let backgroundColor = myTheme.colorProgressPbBackground.cgColor
-		let fillColor = myTheme.colorProgressPbFillcolor?.cgColor
-		
-		
-		// format total progress bar
-		progressBarTotal = CircularBar(referenceView: circleBarViewTotalProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
-		
-		progressBarTotal.setStrokeEnd(partialCount: progress.totalDone, totalCount: totalCount * 4)
-		
-		// format the flashcard progress bar
-		progressBarFlashcards = CircularBar(referenceView: circleBarViewFlashcardsProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
-		
-		progressBarFlashcards.setStrokeEnd(partialCount: progress.fcDone, totalCount: totalCount)
-		
-		// format the learned progress bar
-		progressBarLearning = CircularBar(referenceView: circleBarViewLearnedProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
-		
-		progressBarLearning.setStrokeEnd(partialCount: progress.lnDone, totalCount: totalCount)
-		
-		// format the test progress bar
-		progressBarTest = CircularBar(referenceView: circleBarViewTestProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
-		
-		progressBarTest.setStrokeEnd(partialCount: progress.anDone, totalCount: totalCount)
-		
+
 	}
 	
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -234,9 +189,56 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			}
 		}
 		
+		func formatCountsAndPB () {
+			let progress = cc.getDoneCounts(categoryID: categoryVCH.editedCategory.categoryID)
+			
+			let totalCount = tcTB.getTermCount(categoryIDs: [categoryVCH.editedCategory.categoryID], showFavoritesOnly: false)
+			
+			assignedTermsLabel.text = ("\(totalCount)")
+			
+			overallAllProgressLabel.text = ("Total: \(utilities.getPercentage(number: progress.totalDone, numberTotal: totalCount * 4))% done")
+			
+			flashcardProgressLabel.text =  ("Flashcards: \(utilities.getPercentage(number: progress.fcDone, numberTotal: totalCount))% done")
+			
+			learnedProgressLabel.text = ("Learning: \(utilities.getPercentage(number: progress.lnDone, numberTotal: totalCount))% done")
+			
+			testProgressLabel.text = ("Test: \(utilities.getPercentage(number: progress.anDone, numberTotal: totalCount * 2))% done")
+			
+			// format the progress bar
+			let foregroundColor = myTheme.colorProgressPbForeground?.cgColor
+			let backgroundColor = myTheme.colorProgressPbBackground.cgColor
+			let fillColor = myTheme.colorProgressPbFillcolor?.cgColor
+			
+			
+			// format total progress bar
+			progressBarTotal = CircularBar(referenceView: circleBarViewTotalProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+			
+			progressBarTotal.setStrokeEnd(partialCount: progress.totalDone, totalCount: totalCount * 4)
+			
+			// format the flashcard progress bar
+			progressBarFlashcards = CircularBar(referenceView: circleBarViewFlashcardsProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+			
+			progressBarFlashcards.setStrokeEnd(partialCount: progress.fcDone, totalCount: totalCount)
+			
+			// format the learned progress bar
+			progressBarLearning = CircularBar(referenceView: circleBarViewLearnedProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+			
+			progressBarLearning.setStrokeEnd(partialCount: progress.lnDone, totalCount: totalCount)
+			
+			// format the test progress bar
+			progressBarTest = CircularBar(referenceView: circleBarViewTestProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+			
+			progressBarTest.setStrokeEnd(partialCount: progress.anDone, totalCount: totalCount)
+			
+		}
+		
 		formatButtons()
 		
 		formatFields()
+		
+		formatCountsAndPB()
+		
+		
 		
 	}
 	
