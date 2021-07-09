@@ -14,6 +14,7 @@ protocol AssignTermsVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
 	func shouldRemoveRowAt (indexPath: IndexPath)
 	func shouldClearSearchText()
+	func shouldShowAlert(title: String, message: String)
 }
 
 class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
@@ -112,7 +113,8 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 			let termID = termsList.getTermID(indexPath: indexPath)
 			let term = tcTB.getTerm(termID: termID)
 						
-			cell?.configure(termName: term.name, isSelected: assignedListViewMode == 0 , isEnabled: true)
+			//cell?.configure(termName: term.name, isSelected: assignedListViewMode == 0 , isEnabled: true)
+			cell?.configure2(term: term, categoryID: categoryID, isSelected: assignedListViewMode == 0)
 			
 			return cell!
 		}
@@ -126,7 +128,52 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 
 		let termID = termsList.getTermID(indexPath: indexPath)
 		
+		let selectedTerm = tcTB.getTerm(termID: termID)
+		
 		let originalCategoryIDs = tcTB.getTermCategoryIDs(termID: termID)
+		
+		// evaluate locked categories
+		/*
+		category1
+		assigned row: All terms are automatically assigned to this category and may not be removed.
+		unassigned row, no terms will ever show up here
+
+		category 2
+		assigned row: Terms you make are automatically assigned to this category and may not be removed.
+		unassigned row: Only terms you make can be assigned to this category. This this is a predefined term and can not be assigned to “My Terms”
+
+		any other category:
+		if user clicks on predefined category (will always be in assigned row)
+		This is a predefined category for this term and may not be removed.
+		*/
+		
+		
+		if categoryID == 1 {
+			delegate?.shouldShowAlert(title: "Preassigned Term", message: "All terms are automatically assigned to this category and may not be removed")
+			return
+		}
+		
+		if categoryID == 2 {
+			
+			if assignedListViewMode == 0 {
+				// looknig at assigned terms
+				delegate?.shouldShowAlert(title: "Preassigned Term", message: "All terms you creatre are automatically assigned to the the My Terms category, and may not be removed from this category")
+			} else {
+				delegate?.shouldShowAlert(title: "Preassigned Term", message: "You can not add this term to the My Terms category. Any terms you create will automatically be added to the My Terms category.")
+			}
+
+			return
+		}
+		
+		if ( categoryID == selectedTerm.secondCategoryID || categoryID == selectedTerm.thirdCategoryID ) {
+			
+			delegate?.shouldShowAlert(title: "Preassigned Category", message: "This term is preassigned to this category and may not be removed.")
+			
+			return
+		}
+		
+		// now evaluate all other categories
+		
 		
 		if assignedListViewMode == 0 {
 			// clicked on this term in the Assigned view. So, will need to REMOVE this category from the term and send out a notification

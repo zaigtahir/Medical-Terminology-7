@@ -18,6 +18,28 @@ class AssignTermCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+	
+	func configure2 (term: TermTB, categoryID: Int, isSelected: Bool) {
+		
+		// if the category ID = 1, 2, term.
+		
+		termNameLabel.text = term.name
+		
+		if isSelected {
+			selectImage.image = myTheme.imageSquareFill
+		} else {
+			selectImage.image = myTheme.imageSquare
+		}
+		
+		let disableCategoryIDs = [myConstants.dbCategoryAllTermsID, myConstants.dbCategoryMyTermsID, term.secondCategoryID, term.thirdCategoryID]
+		
+		if disableCategoryIDs.contains(categoryID) {
+			selectImage.tintColor = myTheme.colorButtonNoBackgroundDisabledTint
+		} else {
+			selectImage.tintColor = myTheme.colorMain
+		}
+	}
+	
 
 	func configure (termName: String, isSelected: Bool, isEnabled: Bool) {
 		

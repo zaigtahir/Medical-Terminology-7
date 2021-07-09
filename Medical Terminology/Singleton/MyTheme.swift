@@ -24,8 +24,14 @@ class MyTheme{
 	
 	// Button Colors
 	let colorButtonDisabledBackground = (UIColor.systemGray5)
-	let colorButtonEnabledBackground = (UIColor.secondaryLabel)			// use for color of header icons, and image buttons
+	let colorButtonEnabledBackground = (UIColor.secondaryLabel)
+	// use for color of header icons, and image buttons
 	let colorButtonDisabledTint = (UIColor.systemGray2)
+	
+	// use for row selectors that need to be disabled
+	let colorButtonNoBackgroundDisabledTint = (UIColor.systemGray5)
+	
+	
 	let colorButtonEnabledTint = UIColor(named: "color text button")
 	let colorButtonText = UIColor(named: "color text button")
 	

@@ -30,7 +30,7 @@ class CategoryCell: UITableViewCell {
 	}
 	
 	
-	func formatCategoryCell (category: Category, selectedCategoryIDs: [Int], lockCategoryIDs: [Int]) {
+	func configure (category: Category, selectedCategoryIDs: [Int], lockCategoryIDs: [Int]) {
 		
 		self.category = category
 		nameLabel.text = category.name
@@ -70,9 +70,7 @@ class CategoryCell: UITableViewCell {
 		
 		if lockCategoryIDs.contains(category.categoryID) {
 			// this category needs to appear locked
-			selectImage.tintColor = myTheme.colorLockedCategory
-			//nameLabel?.textColor = myTheme.colorLockedCategory
-			//countLabel.textColor = myTheme.colorLockedCategory
+			selectImage.tintColor = myTheme.colorButtonNoBackgroundDisabledTint
 		}
 		
 	}

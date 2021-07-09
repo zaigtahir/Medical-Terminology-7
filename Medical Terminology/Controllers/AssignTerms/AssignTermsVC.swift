@@ -9,7 +9,7 @@
 import UIKit
 
 class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
-
+	
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	
 	@IBOutlet weak var termsStatusSwitch: UISegmentedControl!
@@ -69,7 +69,7 @@ class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
     }
     */
 	
-	// MARK: AssignTermsVCH delegate
+	// MARK: -AssignTermsVCH delegate
 	
 	func shouldReloadTable() {
 		tableView.reloadData()
@@ -89,6 +89,13 @@ class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
 	
 	func shouldClearSearchText() {
 		
+	}
+	
+	func shouldShowAlert(title: String, message: String) {
+		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
+		ac.addAction(okay)
+		self.present(ac, animated: true, completion: nil)
 	}
 	
 	@IBAction func termsStatusSwitchChanged(_ sender: Any) {
