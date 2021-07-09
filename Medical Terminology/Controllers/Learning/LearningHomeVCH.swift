@@ -47,18 +47,22 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 		// This is sent only if there is this ONE category in currentCategoryIDs, and the name is changed
 		let nameCCN = Notification.Name(myKeys.categoryNameChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(categoryNameChangedN(notification:)), name: nameCCN, object: nil)
-		
+
 		// MARK: - Term notifications
 		let nameTAN = Notification.Name(myKeys.termAddedKey)
-		NotificationCenter.default.addObserver(self, selector: #selector(termAddedN(notification:)), name: nameTAN, object: nil)		
+		NotificationCenter.default.addObserver(self, selector: #selector(termAddedN(notification:)), name: nameTAN, object: nil)
 		
 		let nameTDN = Notification.Name(myKeys.termDeletedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termDeletedN(notification:)), name: nameTDN, object: nil)
 		
-		// MARK: - Favorite status notification
+		let nameTNC = Notification.Name(myKeys.termFieldsChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termFieldsChangedN (notification:)), name: nameTNC, object: nil)
 		
-		let nameFSC = Notification.Name(myKeys.termFavoriteStatusChanged)
-		NotificationCenter.default.addObserver(self, selector: #selector(termFavoriteStatusChangedN (notification:)), name: nameFSC, object: nil)
+		let nameCIC = Notification.Name(myKeys.termCategoryIDsChangedKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(termCategoryIDsChangedN (notification:)), name: nameCIC, object: nil)
+		
+		let nameSFK = Notification.Name(myKeys.termFavoriteStatusChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(termFavoriteStatusChangedN (notification:)), name: nameSFK, object: nil)
 		
 		// update data
 		updateData()
@@ -104,7 +108,6 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 			}
 		}
 	}
-	
 
 	@objc func termDeletedN  (notification: Notification) {
 		// self, userInfo: ["assignedCategoryIDs" : assignedCategoryIDs])
@@ -124,21 +127,55 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 		
 	}
 	
-	
-	// MARK: - Favorite notification function
-	
-	@objc func termFavoriteStatusChangedN (notification: Notification) {
-	
+	@objc func termFieldsChangedN (notification: Notification) {
+		
 		if let data = notification.userInfo as? [String: Int] {
 			let affectedTermID = data["termID"]!
+			let affectedCategoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
 			
-			let categoryIDs = tcTB.getTermCategoryIDs(termID: affectedTermID)
-			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: categoryIDs) {
-				// a term was affected in the current categories
+			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: affectedCategoryIDs) {
 				updateData()
 				delegate?.shouldUpdateDisplay()
 			}
+		}
+	}
+	
+	@objc func termCategoryIDsChangedN (notification: Notification) {
+		//userInfo: ["termID": [term.termID], "originalCategoryIDs" : [originalTerm.assignedCategories]])
+		
+		if let data = notification.userInfo as? [String : [Int]] {
 			
+			let termID = data["termID"]![0]
+			let originalCategoryIDs = data["originalCategoryIDs"]!
+			let newCategoryIDs = tcTB.getTermCategoryIDs(termID: termID)
+			
+			// if current categories contain any of these categories, need to refresh data and display
+			// this will catch any additions or removals of a term category
+			
+			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: originalCategoryIDs) || utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: newCategoryIDs) {
+				// the current category IDs contain at least one of the category IDs from the originalCategoryIDs or currentCategoryIDs
+				
+				updateData()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}
+	
+	@objc func termFavoriteStatusChangedN (notification: Notification) {
+		
+		if let data = notification.userInfo as? [String: Int] {
+			
+			let affectedTermID = data["termID"]!
+			
+			let aTerm = tcTB.getTerm(termID: affectedTermID)
+			
+			if !utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: aTerm.assignedCategories) {
+				//this term is not in current categories, so do nothing
+				return
+			} else {
+				updateData()
+				delegate?.shouldUpdateDisplay()
+			}
 		}
 	}
 	

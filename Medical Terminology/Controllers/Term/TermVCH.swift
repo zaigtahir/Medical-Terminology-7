@@ -18,10 +18,6 @@ protocol TermVCHDelegate: AnyObject {
 class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate, TermCategoryIDsDelegate {
 	
 	/// Everything will be based on this term. If this termID = -1, this will be considered to be a NEW term that is not saved yet
-	// MARK: to delete later
-	var term : TermTB!
-	var currentCategoryID : Int!
-	// to delete
 	
 	var propertyReference : PropertyReference!
 	var delegate: TermVCHDelegate?
@@ -56,6 +52,7 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate, TermCategoryIDsD
 		editedTerm.definition = initialTerm.definition
 		editedTerm.example = initialTerm.example
 		editedTerm.audioFile = initialTerm.audioFile
+		editedTerm.isFavorite = initialTerm.isFavorite
 		editedTerm.isStandard = initialTerm.isStandard
 		editedTerm.secondCategoryID = initialTerm.secondCategoryID
 		editedTerm.thirdCategoryID = initialTerm.thirdCategoryID

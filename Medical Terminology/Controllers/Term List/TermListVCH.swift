@@ -79,6 +79,9 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		let nameCIC = Notification.Name(myKeys.termCategoryIDsChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termCategoryIDsChangedN (notification:)), name: nameCIC, object: nil)
 		
+		let nameSFK = Notification.Name(myKeys.termFavoriteStatusChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(termFavoriteStatusChangedN (notification:)), name: nameSFK, object: nil)
+		
 		// update data
 		updateData()
 	}
@@ -177,21 +180,49 @@ class TermListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, ListCel
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@objc func termFavoriteStatusChangedN (notification: Notification) {
+		
+		if let data = notification.userInfo as? [String: Int] {
+			
+			let affectedTermID = data["termID"]!
+			
+			let aTerm = tcTB.getTerm(termID: affectedTermID)
+			
+			if !utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: aTerm.assignedCategories) {
+				//this term is not in current categories, so do nothing
+				return
+			}
+			
+			// this term is part of current categories
+			
+			switch showFavoritesOnly {
+			
+			case true:
+				
+				if aTerm.isFavorite {
+					// this term was made favorite from other VC, so reload the list
+					updateData()
+					delegate?.shouldReloadTable()
+					delegate?.shouldUpdateDisplay()
+					
+				} else {
+					// the term was made unfavorite while viewing favorites list
+					// need to animate a graceful removal
+					
+					if let indexPath = termsList.findIndexOf(termID: affectedTermID) {
+						termsList.removeIndex(indexPath: indexPath)
+						delegate?.shouldRemoveRowAt(indexPath: indexPath)
+						delegate?.shouldUpdateDisplay()
+					}
+				}
+				
+			case false:
+				updateData()
+				delegate?.shouldReloadTable()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}
 	
 	
 	// MARK: - TO REMOVE Favorite notification function

@@ -158,9 +158,9 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			
 			if categoryVCH.editedCategory.isStandard {
 				self.title = "Category"
-				nameTitleLabel.text = "Category Name"
+				nameTitleLabel.text = "CATEGORY NAME"
 			} else {
-				nameTitleLabel.text = "My Category Name"
+				nameTitleLabel.text = "MY CATEGORY NAME"
 				self.title = "My Category"
 			}
 			

@@ -185,6 +185,9 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 				}
 			}
 			
+			// format favorite icon
+			favoriteButton.isOn = termVCH.editedTerm.isFavorite
+			
 			
 		}
 		
