@@ -47,7 +47,6 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	override init() {
 		super.init()
 		
-		
 		// MARK: - Category notifications
 		
 		let nameCCCNK = Notification.Name(myKeys.currentCategoryIDsChangedKey)
@@ -60,7 +59,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		// MARK: - Term notifications
 		let nameTAN = Notification.Name(myKeys.termAddedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termAddedN(notification:)), name: nameTAN, object: nil)
-	
+		
 		let nameTDN = Notification.Name(myKeys.termDeletedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termDeletedN(notification:)), name: nameTDN, object: nil)
 		
@@ -69,6 +68,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		
 		let nameCIC = Notification.Name(myKeys.termCategoryIDsChangedKey)
 		NotificationCenter.default.addObserver(self, selector: #selector(termCategoryIDsChangedN (notification:)), name: nameCIC, object: nil)
+		
+		let nameSFK = Notification.Name(myKeys.termFavoriteStatusChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(termFavoriteStatusChangedN (notification:)), name: nameSFK, object: nil)
 		
 		// update data
 		updateData()
@@ -81,7 +83,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	}
 	
 	// MARK: - Category notification functions
-
+	
 	@objc func currentCategoryIDsChangedN (notification : Notification) {
 		
 		if let data = notification.userInfo as? [String : [Int]] {
@@ -94,11 +96,14 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			
 		}
 	}
-
+	
 	@objc func categoryNameChangedN (notification: Notification) {
 		// if this is the current category, reload the category and then refresh the display
 		delegate?.shouldUpdateDisplay()
 	}
+	
+	// MARK: - Favorite notification function
+	
 	
 	// MARK: - Term notification functions
 	
@@ -167,26 +172,56 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 			}
 		}
 	}
-
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@objc func termFavoriteStatusChangedN (notification: Notification) {
+		
+		if let data = notification.userInfo as? [String: Int] {
+			
+			let affectedTermID = data["termID"]!
+			
+			let aTerm = tcTB.getTerm(termID: affectedTermID)
+			
+			if !utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: aTerm.assignedCategories) {
+				//this term is not in current categories, so do nothing
+				return
+			}
+			
+			// this term is part of current categories
+			
+			switch showFavoritesOnly {
+			
+			case true:
+				
+				if aTerm.isFavorite {
+					// this term was made favorite from other VC, so reload the list
+					updateData()
+					delegate?.shouldRefreshCollectionView()
+					delegate?.shouldUpdateDisplay()
+					
+				} else {
+					// the term was made unfavorite while viewing favorites list
+					// need to animate a graceful removal
+					
+					if let firstIndex = termIDs.firstIndex(of: affectedTermID) {
+						termIDs = utilities.removeIndex(index: firstIndex, array: termIDs)
+						delegate?.shouldRemoveCellAt (indexPath: IndexPath(row: firstIndex, section: 0))
+						delegate?.shouldUpdateDisplay()
+					}
+				}
+				
+			case false:
+				updateData()
+				delegate?.shouldRefreshCollectionView()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}
 	
 	
 	// MARK: - update data functions
 	
 	func updateData () {
-	
+		
 		termIDs = fc.getFlashcardTermIDs(categoryIDs: currentCategoryIDs, showFavoritesOnly: showFavoritesOnly, learnedStatus: learnedStatus)
 	}
 	
@@ -196,7 +231,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		delegate?.shouldRefreshCollectionView()
 		delegate?.shouldUpdateDisplay()
 	}
-
+	
 	
 	// MARK: - CollectionViewDataSource Functions
 	
@@ -220,7 +255,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashCardCell", for: indexPath) as! FlashcardCell
 		
 		// prepare the cell to configure
-	
+		
 		let term = tcTB.getTerm(termID: termIDs[indexPath.row])
 		let countText = "Flashcard: \(indexPath.row + 1) of \(termIDs.count)"
 		let isFavorite = tcTB.getFavoriteStatus(termID: term.termID )
@@ -307,7 +342,7 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 	
 	func pressedFavoriteButton(termID: Int) {
 		// when the user clicks the heart button, it toggles locally, but need to change the value in the database
-	
+		
 		let _ = tcTB.toggleFavoriteStatusPN(termID: termID)
 		
 		// Note the TermController will broadcast the itemInformationChanged notification when the favorite setting is changed so that all the components of this program can react.

@@ -229,9 +229,11 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 	
 	@IBAction func isFavoriteButtonAction(_ sender: ZUIToggleButton) {
 		
+		// local toggle the favorite button
 		favoriteButton.isOn = !favoriteButton.isOn
 		
-		termVCH.editedTerm.isFavorite.toggle()
+		termVCH.favoriteButtonPressed()
+	
 	}
 	
 	@IBAction func playAudioButtonAction(_ sender: UIButton) {
@@ -293,7 +295,6 @@ class TermVC: UIViewController, TermAudioDelegate, TermVCHDelegate {
 		if preextisting term and no edits -> just dismiss
 		
 		*/
-		
 		
 		
 		if termVCH.editedTerm.termID == -1 {

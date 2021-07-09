@@ -33,7 +33,9 @@ class MyKeys {
 	let termAddedKey = "com.theappgalaxy.termAdded"
 
 	/**
-	Trigger this notification when any term fields (including favorite) changes
+	The TermVC will trigger this at any term field change, including favorite change when the user saves the changes
+	If the Term categories change, the TermVC will only send out the termCategoryIDsChangedKey even if fields change, as responding to the termCategoyrIDsChangedKey will
+	refresh all data anyway
 	*/
 	let termFieldsChangedKey = "com.theappgalaxy.termFieldsChanged"
 	
@@ -55,21 +57,14 @@ class MyKeys {
 	
 	let termDeletedKey = "com.theappgalaxy.termDeleted"
 	
+
+	/*
+	The TermController will send this out when a user presses the favorite button
+	Tlashcard
+	TermsList
+	TermVC (this will be an instant save, not requiring saving).
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// GET RID OF THIS
-	/// When favorite is set or unset on a term
+	*/
 	let termFavoriteStatusChanged = "com.theappgalaxy.termFavoriteStatusChanged"
 	
 }

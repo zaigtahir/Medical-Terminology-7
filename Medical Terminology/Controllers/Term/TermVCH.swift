@@ -91,6 +91,53 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate, TermCategoryIDsD
 		return categoryList
 	}
 	
+	func saveNewTerm () {
+		
+		// saves new term and loads it as the initial term
+		let addedTermID = tcTB.saveNewTermPN(term: editedTerm)
+		
+		let newTerm  = tcTB.getTerm(termID: addedTermID)
+		
+		setInitialTerm(initialTerm: newTerm)
+	
+	}
+	
+	func updateTerm () {
+		
+		// will update the db with values from the edited term, and set the edited term as the initial term so that when the display refreshes, the VC will show the saved state
+		
+		//reset the editedTerm as the initialTerm
+		setInitialTerm(initialTerm: editedTerm)
+		
+		tcTB.updateTermPN(term: editedTerm)
+	
+		delegate?.shouldUpdateDisplay()
+	
+	}
+	
+	func favoriteButtonPressed (){
+		
+		/*
+		If it’s a new term, just togggle the editedTerm.isFavorite
+		If it is not a new term:
+		I want the change in favorite status to be instant across the app. So, use the termtoggleFavoriteStatusPN
+		toggle the initial term’s isFavorite also as the changes will be made in the database already so there is no need to update the term in that case
+		*/
+		
+		// The favorite button is already toggled locally
+		
+		if editedTerm.termID == -1 {
+			// this is a new term
+			editedTerm.isFavorite.toggle()
+			
+		} else {
+			// this is not a new term
+			initialTerm.isFavorite.toggle()
+			_ = tcTB.toggleFavoriteStatusPN(termID: editedTerm.termID)
+		}
+	}
+	
+	
 	
 	// MARK: - SingleLineInputDelegate function
 	
@@ -143,29 +190,6 @@ class TermVCH: SingleLineInputDelegate, MultiLineInputDelegate, TermCategoryIDsD
 		
 	}
 	
-	func saveNewTerm () {
-		
-		// saves new term and loads it as the initial term
-		let addedTermID = tcTB.saveNewTermPN(term: editedTerm)
-		
-		let newTerm  = tcTB.getTerm(termID: addedTermID)
-		
-		setInitialTerm(initialTerm: newTerm)
-	
-	}
-	
-	func updateTerm () {
-		
-		// will update the db with values from the edited term, and set the edited term as the initial term so that when the display refreshes, the VC will show the saved state
-		
-		//reset the editedTerm as the initialTerm
-		setInitialTerm(initialTerm: editedTerm)
-		
-		tcTB.updateTermPN(term: editedTerm)
-	
-		delegate?.shouldUpdateDisplay()
-	
-	}
 	
 	// MARK: - termCategoryIDsChangedDelegate
 	
