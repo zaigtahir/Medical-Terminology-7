@@ -45,7 +45,7 @@ class CategoryListVC: UIViewController, CategoryListVCHDelegate {
 			termNameLabel.isHidden = true
 			
 		} else {
-			self.title = "Assign To Categories"
+			self.title = "Assign Categories"
 			selectModeImage.isHidden = true
 			termNameLabel.isHidden = false
 			termNameLabel.text = "For Term: \(categoryListVCH.term.name)"
