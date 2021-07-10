@@ -17,7 +17,8 @@ class CategoryCell: UITableViewCell {
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var selectImage: UIImageView!
 	@IBOutlet weak var informationButton: UIButton!
-	@IBOutlet weak var circleBarView: UIView!
+	
+	@IBOutlet weak var progressBar: UIProgressView!
 	
 	// itialize this with the rowCategory value so that I can use it in the delegate function
 	
@@ -25,8 +26,6 @@ class CategoryCell: UITableViewCell {
 	private let cc = CategoryController()
 	private let utilities = Utilities()
 	private let tcTB = TermControllerTB()
-	
-	private var progressBar : CircularBar!
 	
 	weak var delegate : CategoryCellDelegate?
 	
@@ -45,33 +44,29 @@ class CategoryCell: UITableViewCell {
 		self.category = category
 		nameLabel.text = category.name
 		
-		// format the progress bar
-		let foregroundColor = myTheme.colorProgressPbForeground?.cgColor
-		let backgroundColor = myTheme.colorProgressPbBackground.cgColor
-		let fillColor = myTheme.colorProgressPbFillcolor?.cgColor
-
-		
-		
-		
 		let progress = cc.getDoneCounts(categoryID: category.categoryID)
 		
-		let totalCount = tcTB.getTermCount(categoryIDs: [category.count], showFavoritesOnly: false)
+		let totalCount = tcTB.getTermCount(categoryIDs: [category.categoryID], showFavoritesOnly: false)
+		
+		
+		if totalCount == 0 {
+			progressBar.progress = 0.0
+		} else {
+			let p = Float(progress.totalDone) / Float(totalCount * 4)
+			
+			progressBar.progress = p
+		}
 		
 		let title = "\(utilities.getPercentage(number: progress.totalDone, numberTotal: totalCount * 4))% Done, \(tcTB.getTermCount(categoryIDs: [category.categoryID], showFavoritesOnly: false)) Terms"
 		
 		informationButton.setTitle(title, for: .normal)
-	/*
-		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 1)
 		
-		progressBar.setStrokeEnd(partialCount: progress.totalDone, totalCount: totalCount * 4)
-		*/
 		
-
 		// set initial colors so if a locked-appearing cell is resused, the colors don't stay as the locked colors
 		selectImage.tintColor = myTheme.colorText
 		nameLabel?.textColor = myTheme.colorText
-
-	
+		
+		
 		if category.categoryID == 1 {
 			// this is All Terms category
 			if selectedCategoryIDs.contains(category.categoryID) {
