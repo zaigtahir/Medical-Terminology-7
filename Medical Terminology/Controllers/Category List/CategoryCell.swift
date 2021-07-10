@@ -35,7 +35,7 @@ class CategoryCell: UITableViewCell {
 		super.awakeFromNib()
 		// Initialization code
 		
-		circleBarView.tintColor = UIColor.systemBackground
+		//circleBarView.tintColor = UIColor.systemBackground
 		
 	}
 	
@@ -60,11 +60,11 @@ class CategoryCell: UITableViewCell {
 		let title = "\(utilities.getPercentage(number: progress.totalDone, numberTotal: totalCount * 4))% Done, \(tcTB.getTermCount(categoryIDs: [category.categoryID], showFavoritesOnly: false)) Terms"
 		
 		informationButton.setTitle(title, for: .normal)
-	
+	/*
 		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 1)
 		
 		progressBar.setStrokeEnd(partialCount: progress.totalDone, totalCount: totalCount * 4)
-		
+		*/
 		
 
 		// set initial colors so if a locked-appearing cell is resused, the colors don't stay as the locked colors
