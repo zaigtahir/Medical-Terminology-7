@@ -47,6 +47,7 @@
 		991991522690C98800C86222 /* AssignTermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991991512690C98800C86222 /* AssignTermsVC.swift */; };
 		991AC59F262693DF00E52062 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC59E262693DF00E52062 /* CategoryVC.swift */; };
 		991AC5A7262755E300E52062 /* CategoryVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AC5A6262755E300E52062 /* CategoryVCH.swift */; };
+		991B7E6E269FBE5A005ACBAA /* ProgressCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B7E6D269FBE5A005ACBAA /* ProgressCounts.swift */; };
 		99273BC0267CAB6800FD3C0D /* TermTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99273BBF267CAB6800FD3C0D /* TermTB.swift */; };
 		992B56812612870C000457AA /* TextUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56802612870C000457AA /* TextUtilities.swift */; };
 		992B56A4261382BF000457AA /* ValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B56A3261382BF000457AA /* ValidationVC.swift */; };
@@ -143,6 +144,7 @@
 		991991512690C98800C86222 /* AssignTermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignTermsVC.swift; sourceTree = "<group>"; };
 		991AC59E262693DF00E52062 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		991AC5A6262755E300E52062 /* CategoryVCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryVCH.swift; sourceTree = "<group>"; };
+		991B7E6D269FBE5A005ACBAA /* ProgressCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCounts.swift; sourceTree = "<group>"; };
 		99273BBF267CAB6800FD3C0D /* TermTB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTB.swift; sourceTree = "<group>"; };
 		992B56802612870C000457AA /* TextUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtilities.swift; sourceTree = "<group>"; };
 		992B56A3261382BF000457AA /* ValidationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationVC.swift; sourceTree = "<group>"; };
@@ -295,9 +297,9 @@
 			children = (
 				5A2A58ED22FBC24900434910 /* TestOptionsVC.swift */,
 				5A67C14A231071D900BAA2A0 /* TestDoneCVCell.swift */,
+				99D55E0125F6C7B7003ABE0B /* TestCVCell.swift */,
 				5A2A58DE22F8CE8100434910 /* TestSetVCH.swift */,
 				5A2A58DC22F8C35200434910 /* TestSetVC.swift */,
-				99D55E0125F6C7B7003ABE0B /* TestCVCell.swift */,
 				5A2A58DA22EF7F1400434910 /* TestHomeVCH.swift */,
 				99D55E0425F6C7CA003ABE0B /* TestHomeVC.swift */,
 			);
@@ -405,12 +407,13 @@
 		5A88636F2186AC400013FC8B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5A2A58F122FCA4F400434910 /* Quiz Models */,
 				992E79E7260B834200C19D49 /* Category.swift */,
 				99937B10264EA49F001E4D4B /* AssignedCategory.swift */,
 				99273BBF267CAB6800FD3C0D /* TermTB.swift */,
-				5A2A58F122FCA4F400434910 /* Quiz Models */,
 				99937AD3263F24FB001E4D4B /* Question.swift */,
 				5A15062922557E7C00717AB8 /* Answer.swift */,
+				991B7E6D269FBE5A005ACBAA /* ProgressCounts.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				5A4471652284EE85008E3107 /* TermCell.swift in Sources */,
 				99D55E0525F6C7CA003ABE0B /* TestHomeVC.swift in Sources */,
 				5A15062A22557E7C00717AB8 /* Answer.swift in Sources */,
+				991B7E6E269FBE5A005ACBAA /* ProgressCounts.swift in Sources */,
 				99D76AD22617909A0062CCD4 /* NoTermsCell.swift in Sources */,
 				99937B14264EA578001E4D4B /* AssignedCategoryController.swift in Sources */,
 				99937AD4263F24FB001E4D4B /* Question.swift in Sources */,

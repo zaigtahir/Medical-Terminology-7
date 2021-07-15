@@ -33,6 +33,19 @@ class Utilities {
             return String(format: "%.0f", percent) //formats to one decimal place
         }
     }
+	
+	
+	func getPercentage (number: Float) -> String {
+		
+		if number < 1 || (number > 99 && number < 100) {
+			return String(format: "%.1f", number) //formats to zero decimal place
+		} else   {
+			return String(format: "%.0f", number) //formats to one decimal place
+		}
+	}
+	
+	
+	
     
 	/**
 	Return an array with the first value removed. if the array does not contain the value, just return the original array

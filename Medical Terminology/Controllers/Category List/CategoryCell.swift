@@ -44,20 +44,20 @@ class CategoryCell: UITableViewCell {
 		self.category = category
 		nameLabel.text = category.name
 		
-		let progress = cc.getDoneCounts(categoryID: category.categoryID)
+		let pc = ProgressCounts()
+		pc.update(categoryID: category.categoryID)
 		
-		let totalCount = tcTB.getTermCount(categoryIDs: [category.categoryID], showFavoritesOnly: false)
 		
-		
-		if totalCount == 0 {
+		if pc.totalCategoryTerms == 0 {
 			progressBar.progress = 0.0
 		} else {
-			let p = Float(progress.totalDone) / Float(totalCount * 4)
+			progressBar.progress = pc.totalDone()
 			
-			progressBar.progress = p
+			
 		}
 		
-		let title = "\(utilities.getPercentage(number: progress.totalDone, numberTotal: totalCount * 4))% Done, \(tcTB.getTermCount(categoryIDs: [category.categoryID], showFavoritesOnly: false)) Terms"
+		let title = "\(pc.totalDonePercent())% Done, \(pc.totalCategoryTerms) Terms "
+
 		
 		informationButton.setTitle(title, for: .normal)
 		

@@ -489,12 +489,23 @@ class QuestionController {
 				"""
 		}
 		
-		print("QC getAvailableQuestions query = \(query)")
-		
 		if let resultSet = myDB.executeQuery(query, withArgumentsIn: []) {
 			while resultSet.next() {
+				
 				let termID = Int(resultSet.int(forColumnIndex: 0))
-				let q = makeDefinitionQuestion(termID: termID, randomizeAnswers: true)
+				let type = Int(resultSet.int(forColumnIndex: 1))
+				var q : Question
+				
+				
+				if type == 1 {
+					
+					q = makeTermQuestion(termID: termID, randomizeAnswers: true)
+					
+				} else {
+					
+					q = makeDefinitionQuestion(termID: termID, randomizeAnswers: true)
+				}
+				
 				questions.append(q)
 			}
 		}
@@ -563,8 +574,11 @@ class QuestionController {
 				JOIN \(assignedCategories)
 				ON \(terms).termID = \(assignedCategories).termID
 				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-				AND answeredDefinition = \(AnsweredState.correct.rawValue)
-				OR answeredTerm = \(AnsweredState.correct.rawValue)
+				AND
+					(
+					answeredDefinition = \(AnsweredState.correct.rawValue)
+					OR answeredTerm = \(AnsweredState.correct.rawValue)
+					)
 				\(queries.showFavoritesOnly(show: showFavoritesOnly))
 				)
 				"""

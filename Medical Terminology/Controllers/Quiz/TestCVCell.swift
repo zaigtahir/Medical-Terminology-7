@@ -101,7 +101,7 @@ class TestCVCell: UICollectionViewCell, UITableViewDataSource, AnswerTCellDelega
 		
 		cell.answerText.text = question.answers[indexPath.row].answerText
 		
-		cell.selectAnswerButton.setTitle("  \(indexPath.row + 1)", for: .normal)
+		cell.selectAnswerButton.setTitle("  \(indexPath.row + 1).", for: .normal)
 		
 		cell.rowNumber = indexPath.row
 		

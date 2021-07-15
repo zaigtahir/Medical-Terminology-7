@@ -62,24 +62,7 @@ class CategoryController {
 		}
 		
 	}
-	
-	/**
-	Will return flashcardsLearned, learned, answeredCorrect count
-	*/
-	func getDoneCounts (categoryID: Int) -> (fcDone: Int, lnDone: Int, anDone: Int, totalDone: Int) {
-		
-		let fc = FlashcardController()
-		let qc = QuestionController()
-		
-		let doneFCCount = fc.getFlashcardCount(categoryIDs: [categoryID], showFavoritesOnly: false, learnedStatus: true)
-		let doneLearnedCount = qc.getLearnedTermsCount(categoryIDs: [categoryID], showFavoritesOnly: false)
-		let doneAnsweredCount = qc.getCorrectQuestionsCount(categoryIDs: [categoryID], questionType: .both, showFavoritesOnly: false)
-		 
-		let totalDone = doneFCCount + doneLearnedCount + doneAnsweredCount
-		
-		return (fcDone: doneFCCount, lnDone: doneLearnedCount, anDone: doneAnsweredCount, totalDone: totalDone)
-	}
-	
+
 	/**
 	Use this to sort the categories in a new term as they are no retrived from the db in my ususual order
 	*/

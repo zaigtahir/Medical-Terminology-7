@@ -68,5 +68,5 @@ class CircularBar {
         
         setStokeEnd(strokeEnd: CGFloat(strokeEnd))
     }
-    
+
 }
