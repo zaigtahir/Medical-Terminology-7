@@ -11,36 +11,32 @@ import UIKit
 class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	@IBOutlet weak var headerImage: UIImageView!
-	
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
-	
 	@IBOutlet weak var leftButton: UIBarButtonItem!
-	
 	@IBOutlet weak var deleteCategoryButton: ZUIRoundedButton!
 	
 	@IBOutlet weak var nameTitleLabel: UILabel!
-	
 	@IBOutlet weak var nameLabel: UILabel!
-	
 	@IBOutlet weak var nameEditButton: UIButton!
 	
 	@IBOutlet weak var descriptionLabel: UILabel!
-	
 	@IBOutlet weak var descriptionEditButton: UIButton!
-	
 	@IBOutlet weak var assignedTermsLabel: UILabel!
-	
 	@IBOutlet weak var overallAllProgressLabel: UILabel!
 	
 	@IBOutlet weak var flashcardProgressLabel: UILabel!
-	
 	@IBOutlet weak var learnedProgressLabel: UILabel!
-	
 	@IBOutlet weak var testProgressLabel: UILabel!
 	@IBOutlet weak var circleBarViewTotalProgress: UIView!
+	
 	@IBOutlet weak var circleBarViewFlashcardsProgress: UIView!
 	@IBOutlet weak var circleBarViewLearnedProgress: UIView!
 	@IBOutlet weak var circleBarViewTestProgress: UIView!
+	
+	@IBOutlet weak var redoTotalButton: UIButton!
+	@IBOutlet weak var redoFlashcardsButton: UIButton!
+	@IBOutlet weak var redoLearnedButton: UIButton!
+	@IBOutlet weak var redoTestButton: UIButton!
 	
 	var categoryVCH = CategoryVCH()
 	
@@ -48,6 +44,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	private let tcTB = TermControllerTB()
 	private let tu = TextUtilities()
 	private let pc = ProgressCounts()
+	private let qc = QuestionController()
 	
 	private var progressBarTotal : CircularBar!
 	private var progressBarFlashcards : CircularBar!
@@ -322,4 +319,65 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			present(ac, animated: true, completion: nil)
 		}
 	}
+	
+	@IBAction func redoTotalButtonAction(_ sender: Any) {
+		
+		let ac = UIAlertController(title: "Please Confirm", message: "Are you sure you want to redo ALL items (flashcards, learning, tests)?", preferredStyle: .alert)
+		let yes = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+			// run this code
+		}
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		ac.addAction(cancel)
+		ac.addAction(yes)
+		self.present(ac, animated: true, completion: nil)
+	}
+	
+	@IBAction func redoFlashcardsButtonAction(_ sender: Any) {
+		
+		let ac = UIAlertController(title: "Please Confirm", message: "Are you sure you want to relearn all flashcards?", preferredStyle: .alert)
+		let yes = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+			// run this code
+		}
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		ac.addAction(cancel)
+		ac.addAction(yes)
+		self.present(ac, animated: true, completion: nil)
+		
+	}
+	
+	@IBAction func redoLearnedTermsAction(_ sender: Any) {
+		
+		let ac = UIAlertController(title: "Please Confirm", message: "Are you sure you want to redo all learning questions?", preferredStyle: .alert)
+		
+		let yes = UIAlertAction(title: "Yes", style: .destructive) { [self] (action) in
+			qc.resetLearned(categoryIDs: [self.categoryVCH.editedCategory.categoryID])
+			updateDisplay()
+		}
+		
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
+		ac.addAction(cancel)
+		ac.addAction(yes)
+		self.present(ac, animated: true, completion: nil)
+		
+	}
+	
+	@IBAction func redoTestButtonAction(_ sender: Any) {
+		
+		let ac = UIAlertController(title: "Please Confirm", message: "Are you sure you want to redo all test questions?", preferredStyle: .alert)
+		
+		let yes = UIAlertAction(title: "Yes", style: .destructive) { [self] (action) in
+			qc.resetAnswers(categoryIDs: [self.categoryVCH.editedCategory.categoryID], questionType: .both)
+			updateDisplay()
+		}
+		
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
+		ac.addAction(cancel)
+		ac.addAction(yes)
+		self.present(ac, animated: true, completion: nil)
+	
+	}
+	
+	
 }
