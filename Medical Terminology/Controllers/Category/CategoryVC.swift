@@ -45,6 +45,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	private let tu = TextUtilities()
 	private let pc = ProgressCounts()
 	private let qc = QuestionController()
+	private let fc = FlashcardController()
 	
 	private var progressBarTotal : CircularBar!
 	private var progressBarFlashcards : CircularBar!
@@ -323,8 +324,14 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	@IBAction func redoTotalButtonAction(_ sender: Any) {
 		
 		let ac = UIAlertController(title: "Please Confirm", message: "Are you sure you want to redo ALL items (flashcards, learning, tests)?", preferredStyle: .alert)
-		let yes = UIAlertAction(title: "Yes", style: .destructive) { (action) in
-			// run this code
+		let yes = UIAlertAction(title: "Yes", style: .destructive) { [self] (action) in
+			
+			fc.resetLearnedFlashcards(categoryIDs: [self.categoryVCH.editedCategory.categoryID])
+			qc.resetLearned(categoryIDs: [self.categoryVCH.editedCategory.categoryID])
+			qc.resetAnswers(categoryIDs: [self.categoryVCH.editedCategory.categoryID], questionType: .both)
+			
+			updateDisplay()
+			
 		}
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 		ac.addAction(cancel)
@@ -335,8 +342,9 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	@IBAction func redoFlashcardsButtonAction(_ sender: Any) {
 		
 		let ac = UIAlertController(title: "Please Confirm", message: "Are you sure you want to relearn all flashcards?", preferredStyle: .alert)
-		let yes = UIAlertAction(title: "Yes", style: .destructive) { (action) in
-			// run this code
+		let yes = UIAlertAction(title: "Yes", style: .destructive) { [self] (action) in
+			fc.resetLearnedFlashcards(categoryIDs: [self.categoryVCH.editedCategory.categoryID])
+			updateDisplay()
 		}
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 		ac.addAction(cancel)
