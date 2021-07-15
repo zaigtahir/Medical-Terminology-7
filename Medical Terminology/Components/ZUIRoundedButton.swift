@@ -14,6 +14,7 @@ class ZUIRoundedButton: UIButton {
 	@IBInspectable var enabledBackgroundColor : UIColor?
 	@IBInspectable var disabledBackgroundColor : UIColor?
 	@IBInspectable var disabledTintColor : UIColor?
+	@IBInspectable var enabledTintColor : UIColor?
 	
 	override func awakeFromNib() {
 		self.layer.cornerRadius = myConstants.button_cornerRadius
@@ -32,7 +33,7 @@ class ZUIRoundedButton: UIButton {
 	
 	func updateTintColor () {
 		if self.isEnabled {
-			self.tintColor = tintColor
+			self.tintColor = enabledTintColor
 		} else {
 			self.tintColor = disabledTintColor
 		}

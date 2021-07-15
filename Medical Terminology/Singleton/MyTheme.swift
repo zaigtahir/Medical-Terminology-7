@@ -54,9 +54,9 @@ class MyTheme{
  	
     let colorCardBorder = UIColor(named: "color card border")
 	
-    let colorCorrect = UIColor(named: "color correct")
-    let colorIncorrect = UIColor(named: "color incorrect")
-	let colorDestructive = UIColor(named: "color incorrect")
+    let colorCorrect = UIColor(named: "color green")
+    let colorIncorrect = UIColor(named: "color red")
+	let colorDestructive = UIColor(named: "color red")
     
     //MARK: Flashcards
     let colorFlashcardHomeButton = UIColor(named: "color main")
@@ -89,9 +89,9 @@ class MyTheme{
 	let colorLockedCategory = UIColor.systemGray4
 	
 	// MARK: category home progress bars
-	let colorProgressPbForeground = UIColor(named: "color main")
+	let colorProgressPbForeground = UIColor(named: "color green")
 	let colorProgressPbBackground = UIColor.systemBackground
-	let colorProgressPbFillcolor = UIColor(named: "color main 2")
+	let colorProgressPbFillcolor = UIColor.systemGray5
 	
 	// MARK: row selector images
 	
@@ -116,19 +116,5 @@ class MyTheme{
 
     //progress bar width
     let progressBarWidth = CGFloat(integerLiteral: 15)
-	
-	func formatButtonState (button: UIButton, enabledColor: UIColor) {
-		
-		if button.isEnabled {
-			button.backgroundColor = enabledColor
-			button.tintColor = colorButtonEnabledTint
-			button.setTitleColor(colorButtonEnabledTint, for: .normal)
-			
-		} else {
-			button.backgroundColor = colorButtonDisabledBackground
-			button.tintColor = colorButtonDisabledTint
-			button.setTitleColor(colorButtonDisabledTint, for: .disabled)
-		}
-		
-	}
+
 }

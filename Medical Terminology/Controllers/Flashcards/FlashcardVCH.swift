@@ -355,9 +355,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let fcls = !fc.flashcardIsLearned(termID: termID)
 		
 		fc.setLearnedFlashcard(termID: termID, learnedStatus: fcls)
-		
 		updateData()
 		delegate?.shouldRemoveCurrentCell()
+		
 		delegate?.shouldUpdateDisplay()
 	}
 	

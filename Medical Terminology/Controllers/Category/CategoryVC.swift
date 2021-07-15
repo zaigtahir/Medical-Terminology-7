@@ -209,15 +209,15 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			
 			let backgroundColor = myTheme.colorProgressPbBackground.cgColor
 			
-			let fillColor = myTheme.colorProgressPbFillcolor?.cgColor
+			let fillColor = myTheme.colorProgressPbFillcolor.cgColor
 			
-			progressBarTotal = CircularBar(referenceView: circleBarViewTotalProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+			progressBarTotal = CircularBar(referenceView: circleBarViewTotalProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor, lineWidth: 3)
 			
-			progressBarFlashcards = CircularBar(referenceView: circleBarViewFlashcardsProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+			progressBarFlashcards = CircularBar(referenceView: circleBarViewFlashcardsProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor, lineWidth: 3)
 			
-			progressBarLearning = CircularBar(referenceView: circleBarViewLearnedProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+			progressBarLearning = CircularBar(referenceView: circleBarViewLearnedProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor, lineWidth: 3)
 			
-			progressBarTest = CircularBar(referenceView: circleBarViewTestProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: 3)
+			progressBarTest = CircularBar(referenceView: circleBarViewTestProgress, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor, lineWidth: 3)
 			
 			// set progress bars
 			

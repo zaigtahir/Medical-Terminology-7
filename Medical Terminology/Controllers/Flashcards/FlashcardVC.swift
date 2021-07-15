@@ -20,9 +20,9 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 	@IBOutlet weak var sliderOutlet: UISlider!
 	@IBOutlet weak var learnedStatusSwitch: UISegmentedControl!
 	@IBOutlet weak var relearnAllButton: UIButton!
-	@IBOutlet weak var previousButton: UIButton!
-	@IBOutlet weak var randomButton: UIButton!
-	@IBOutlet weak var nextButton: UIButton!
+	@IBOutlet weak var previousButton: ZUIRoundedButton!
+	@IBOutlet weak var randomButton: ZUIRoundedButton!
+	@IBOutlet weak var nextButton: ZUIRoundedButton!
 	
 	var utilities = Utilities()
 	
@@ -120,11 +120,6 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 		randomButton.isEnabled = scrollController.isRandomButtonEnabled(collectionView: collectionView)
 		nextButton.isEnabled = scrollController.isNextButtonEnabled(collectionView: collectionView)
 		
-		for b in [previousButton, randomButton, nextButton] {
-			
-			myTheme.formatButtonState(button: b!, enabledColor: myTheme.colorFlashcardHomeButton!)
-			
-		}
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -184,7 +179,9 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 	func shouldRemoveCurrentCell() {
 		let cellIndex  = scrollController.getCellIndex(collectionView: collectionView)
 		let indexPath = IndexPath(row: cellIndex, section: 0)
+		let r = indexPath.row
 		collectionView.deleteItems(at: [indexPath])
+		
 	}
 	
 	func shouldReloadCellAtIndex (termIDIndex: Int) {
