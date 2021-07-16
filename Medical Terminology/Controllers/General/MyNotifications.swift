@@ -24,7 +24,6 @@ class MyNotifications {
 	}
 	
 	func resetTestNotification (categoryID: Int, object: Any? ) {
-		
 		let nName = Notification.Name(myKeys.resetTestKey)
 		NotificationCenter.default.post(name: nName, object: object, userInfo: ["categoryID" : categoryID])
 	}

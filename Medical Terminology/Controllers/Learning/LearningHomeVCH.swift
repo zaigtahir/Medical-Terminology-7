@@ -64,6 +64,10 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 		let nameSFK = Notification.Name(myKeys.termFavoriteStatusChanged)
 		NotificationCenter.default.addObserver(self, selector: #selector(termFavoriteStatusChangedN (notification:)), name: nameSFK, object: nil)
 		
+		// MARK: - reset learning from categoryVCH
+		let nameRLH = Notification.Name(myKeys.resetLearningKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(resetLearningN(notification:)), name: nameRLH, object: nil)
+		
 		// update data
 		updateData()
 		
@@ -75,6 +79,15 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 	}
 	
 	
+	/*
+	Some changes that happen from other parts of the program will affect the terms/questions in the quiz set, so in this case will need to reset the quizset
+	
+	-- current catetory changed
+	-- term deleted
+	-- term category changed
+	-- resetLearningN
+	*/
+	
 	// MARK: - Category notification functions
 
 	@objc func currentCategoryIDsChangedN (notification : Notification) {
@@ -83,6 +96,10 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 			
 			//there will be only one data here, the categoryIDs
 			currentCategoryIDs = data["categoryIDs"]!
+			
+			// reset the learnng set as it may be affected
+			learningSet =  nil
+			
 			updateData()
 			delegate?.shouldUpdateDisplay()
 			
@@ -118,13 +135,15 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 			let assignedCategoryIDs = data["assignedCategoryIDs"]!
 			
 			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: assignedCategoryIDs) {
+				
+				// reset the learnng set as it may be affected
+				learningSet =  nil
+				
 				updateData()
 				delegate?.shouldUpdateDisplay()
 			}
 			
 		}
-		
-		
 	}
 	
 	@objc func termFieldsChangedN (notification: Notification) {
@@ -155,6 +174,9 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: originalCategoryIDs) || utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: newCategoryIDs) {
 				// the current category IDs contain at least one of the category IDs from the originalCategoryIDs or currentCategoryIDs
 				
+				// reset the learnng set as it may be affected
+				learningSet =  nil
+				
 				updateData()
 				delegate?.shouldUpdateDisplay()
 			}
@@ -173,6 +195,24 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 				//this term is not in current categories, so do nothing
 				return
 			} else {
+				updateData()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}
+	
+	// MARK: - reset progress by catetoryVC
+	@objc func resetLearningN (notification: Notification ) {
+		// if one of the the current categoryIDs is affected, update the data and display
+		
+		if let data = notification.userInfo as? [String : Int] {
+			let categoryID = data["categoryID"]!
+			
+			if currentCategoryIDs.contains(categoryID) {
+				
+				// reset the learnng set as it may be affected
+				learningSet =  nil
+				
 				updateData()
 				delegate?.shouldUpdateDisplay()
 			}

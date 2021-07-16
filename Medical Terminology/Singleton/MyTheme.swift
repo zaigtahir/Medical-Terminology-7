@@ -91,7 +91,7 @@ class MyTheme{
 	// MARK: category home progress bars
 	let colorProgressPbForeground = UIColor(named: "color green")
 	let colorProgressPbBackground = UIColor.systemBackground
-	let colorProgressPbFillcolor = UIColor.systemGray5
+	let colorProgressPbFillcolor = UIColor.systemGray6
 	
 	// MARK: row selector images
 	

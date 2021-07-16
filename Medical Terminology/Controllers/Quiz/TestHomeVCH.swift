@@ -66,6 +66,10 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 		let nameSFK = Notification.Name(myKeys.termFavoriteStatusChanged)
 		NotificationCenter.default.addObserver(self, selector: #selector(termFavoriteStatusChangedN (notification:)), name: nameSFK, object: nil)
 		
+		// MARK: - reset test questions by categoryVC
+		let nameRTQ = Notification.Name(myKeys.resetTestKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(resetTestN(notification:)), name: nameRTQ, object: nil)
+		
 		// update data
 		updateData()
 	}
@@ -75,6 +79,14 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 		NotificationCenter.default.removeObserver(self)
 	}
 	
+	/*
+	Some changes that happen from other parts of the program will affect the terms/questions in the quiz set, so in this case will need to reset the quizset
+	
+	-- current category changed
+	-- term deleted
+	-- term category changed
+	-- resetTestN
+	*/
 
 	// MARK: - Category notification functions
 
@@ -84,6 +96,10 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 			
 			//there will be only one data here, the categoryIDs
 			currentCategoryIDs = data["categoryIDs"]!
+			
+			// reset the test set as it may be affected
+			testSet =  nil
+			
 			updateData()
 			delegate?.shouldUpdateDisplay()
 			
@@ -119,6 +135,10 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 			let assignedCategoryIDs = data["assignedCategoryIDs"]!
 			
 			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: assignedCategoryIDs) {
+				
+				// reset the test set as it may be affected
+				testSet =  nil
+				
 				updateData()
 				delegate?.shouldUpdateDisplay()
 			}
@@ -156,6 +176,9 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 			if utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: originalCategoryIDs) || utilities.containsElementFrom(mainArray: currentCategoryIDs, testArray: newCategoryIDs) {
 				// the current category IDs contain at least one of the category IDs from the originalCategoryIDs or currentCategoryIDs
 				
+				// reset the test set as it may be affected
+				testSet =  nil
+				
 				updateData()
 				delegate?.shouldUpdateDisplay()
 			}
@@ -174,6 +197,23 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
 				//this term is not in current categories, so do nothing
 				return
 			} else {
+				updateData()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}
+	
+	@objc func resetTestN (notification: Notification) {
+		// if one of the the current categoryIDs is affected, update the data and display
+		
+		if let data = notification.userInfo as? [String : Int] {
+			let categoryID = data["categoryID"]!
+			
+			if currentCategoryIDs.contains(categoryID) {
+				
+				// reset the learnng set as it may be affected
+				testSet =  nil
+				
 				updateData()
 				delegate?.shouldUpdateDisplay()
 			}

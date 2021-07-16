@@ -72,6 +72,9 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 		let nameSFK = Notification.Name(myKeys.termFavoriteStatusChanged)
 		NotificationCenter.default.addObserver(self, selector: #selector(termFavoriteStatusChangedN (notification:)), name: nameSFK, object: nil)
 		
+		let nameRFC = Notification.Name(myKeys.resetFlashcardsKey)
+		NotificationCenter.default.addObserver(self, selector: #selector(resetFlashcardN(notification:)), name: nameRFC, object: nil)
+		
 		// update data
 		updateData()
 		
@@ -210,6 +213,20 @@ class FlashcardVCH: NSObject, UICollectionViewDataSource, FlashcardCellDelegate,
 				}
 				
 			case false:
+				updateData()
+				delegate?.shouldRefreshCollectionView()
+				delegate?.shouldUpdateDisplay()
+			}
+		}
+	}
+	
+	// MARK: - Flashcard reset by categoryVC
+	@objc func resetFlashcardN (notification: Notification ) {
+		// if one of the the current categoryIDs is affected, update the data and display
+		
+		if let data = notification.userInfo as? [String : Int] {
+			let categoryID = data["categoryID"]!
+			if currentCategoryIDs.contains(categoryID) {
 				updateData()
 				delegate?.shouldRefreshCollectionView()
 				delegate?.shouldUpdateDisplay()

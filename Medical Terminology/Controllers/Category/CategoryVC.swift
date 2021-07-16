@@ -19,12 +19,6 @@ if resetting any, send protocol categoryListVCH to refresh the category list
 
 
 
-
-
-
-
-
-
 import UIKit
 
 class CategoryVC: UIViewController, CategoryVCHDelegate {
