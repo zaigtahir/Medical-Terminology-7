@@ -67,5 +67,13 @@ class MyKeys {
 	*/
 	let termFavoriteStatusChanged = "com.theappgalaxy.termFavoriteStatusChanged"
 	
+	
+	let resetFlashcardsKey = "com.theappgalaxy.resetFlashcards"
+	
+	let resetLearningKey = "com.theappgalaxy.resetLearning"
+	
+	let resetTestKey = "com.theappgalaxy.resetTest"
+	
+	
 }
 

@@ -6,6 +6,25 @@
 //  Copyright © 2021 Zaigham Tahir. All rights reserved.
 //
 
+
+/*
+if resetting the flashcards, send notification so flashcard vc can respond
+if resettng the test, send notification so the quiz vc can respond and delete any current quiz set
+if resetting the learning, send notification so the learning vc can respond and delete any current learning set
+
+if resetting any, send protocol categoryListVCH to refresh the category list
+
+
+*/
+
+
+
+
+
+
+
+
+
 import UIKit
 
 class CategoryVC: UIViewController, CategoryVCHDelegate {
@@ -44,9 +63,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	private let tcTB = TermControllerTB()
 	private let tu = TextUtilities()
 	private let pc = ProgressCounts()
-	private let qc = QuestionController()
-	private let fc = FlashcardController()
-	
+
 	private var progressBarTotal : CircularBar!
 	private var progressBarFlashcards : CircularBar!
 	private var progressBarLearning: CircularBar!
@@ -321,18 +338,16 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		}
 	}
 	
+	// MARK: - redo actions
 	@IBAction func redoTotalButtonAction(_ sender: Any) {
 		
 		let ac = UIAlertController(title: "Please Confirm", message: "Are you sure you want to redo ALL items (flashcards, learning, tests)?", preferredStyle: .alert)
-		let yes = UIAlertAction(title: "Yes", style: .destructive) { [self] (action) in
+		let yes = UIAlertAction(title: "Yes", style: .destructive) { (action) in
 			
-			fc.resetLearnedFlashcards(categoryIDs: [self.categoryVCH.editedCategory.categoryID])
-			qc.resetLearned(categoryIDs: [self.categoryVCH.editedCategory.categoryID])
-			qc.resetAnswers(categoryIDs: [self.categoryVCH.editedCategory.categoryID], questionType: .both)
-			
-			updateDisplay()
+			self.categoryVCH.redoAllN()
 			
 		}
+		
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 		ac.addAction(cancel)
 		ac.addAction(yes)
@@ -342,10 +357,11 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	@IBAction func redoFlashcardsButtonAction(_ sender: Any) {
 		
 		let ac = UIAlertController(title: "Please Confirm", message: "Are you sure you want to relearn all flashcards?", preferredStyle: .alert)
-		let yes = UIAlertAction(title: "Yes", style: .destructive) { [self] (action) in
-			fc.resetLearnedFlashcards(categoryIDs: [self.categoryVCH.editedCategory.categoryID])
-			updateDisplay()
+		
+		let yes = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+			self.categoryVCH.redoFlashcardsN()
 		}
+		
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 		ac.addAction(cancel)
 		ac.addAction(yes)
@@ -357,9 +373,8 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		
 		let ac = UIAlertController(title: "Please Confirm", message: "Are you sure you want to redo all learning questions?", preferredStyle: .alert)
 		
-		let yes = UIAlertAction(title: "Yes", style: .destructive) { [self] (action) in
-			qc.resetLearned(categoryIDs: [self.categoryVCH.editedCategory.categoryID])
-			updateDisplay()
+		let yes = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+			self.categoryVCH.redoLearningN()
 		}
 		
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -374,9 +389,8 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		
 		let ac = UIAlertController(title: "Please Confirm", message: "Are you sure you want to redo all test questions?", preferredStyle: .alert)
 		
-		let yes = UIAlertAction(title: "Yes", style: .destructive) { [self] (action) in
-			qc.resetAnswers(categoryIDs: [self.categoryVCH.editedCategory.categoryID], questionType: .both)
-			updateDisplay()
+		let yes = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+			self.categoryVCH.redoTestN()
 		}
 		
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -386,6 +400,4 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 		self.present(ac, animated: true, completion: nil)
 	
 	}
-	
-	
 }

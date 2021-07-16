@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// this is used by the CategoryVC
 protocol CategoryVCHDelegate: AnyObject {
 	func shouldUpdateDisplay()
 	func shouldAlertDuplicateCategoryName()
@@ -18,7 +19,47 @@ protocol CategoryVCHDelegate: AnyObject {
 protocol CategoryEditDelegate: AnyObject {
 	func categoryDeleted (categoryID: Int)
 	func categoryAdded ()
+	func categoryProgressReset ()
+
 }
+
+
+
+/*
+Notification plan for resetting
+
+resetFlashcards
+notification: resetLearnedFlashcards. The FlashcardVCH will respond
+updateDisplay for categoryVC via CategoryVCHDelegate: shouldUpdateDisplay
+updateDisplay for categoryListVC via CategoryEditDelegate: func categoryProgressReset ()
+
+resetLearning
+notificatioin: resetLearning. The LearningHomeVCH will respond
+updateDisplay for categoryVC via CategoryVCHDelegate: shouldUpdateDisplay
+updateDisplay for categoryListVC via CategoryEditDelegate: func categoryProgressReset ()
+
+resetTest
+notification: resetTest. The TestHomeVCH will respond
+updateDisplay for categoryVC via CategoryVCHDelegate: shouldUpdateDisplay
+updateDisplay for categoryListVC via CategoryEditDelegate: func categoryProgressReset ()
+
+
+resetAll
+resetFlashcards
+notification: resetLearnedFlashcards. The FlashcardVCH will respond
+
+notificatioin: resetLearning. The LearningHomeVCH will respond
+updateDisplay for categoryVC
+
+resetTest
+notification: resetTest. The TestHomeVCH will respond
+
+updateDisplay for categoryVC via CategoryVCHDelegate: shouldUpdateDisplay
+updateDisplay for categoryListVC via CategoryEditDelegate: func categoryProgressReset ()
+
+*/
+
+
 
 class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	
@@ -43,10 +84,11 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	private var multiLineInputVC : MultiLineInputVC!
 	
 	private let cc = CategoryController()
-	
 	private let tcTB = TermControllerTB()
-	
 	private let utilities = Utilities()
+	private let qc = QuestionController()
+	private let fc = FlashcardController()
+	private let mn = MyNotifications()
 	
 	init () {
 		
@@ -232,6 +274,49 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		delegate?.shouldUpdateDisplay()
 		
 		multiLineInputVC.navigationController?.popViewController(animated: true)
+	}
+	
+	// MARK: - redo actions
+	
+	
+	func redoFlashcardsN () {
+		fc.resetLearnedFlashcards(categoryIDs: [editedCategory.categoryID])
+		mn.resetFlashcardsNotification(categoryID: editedCategory.categoryID, object: self)
+		
+		delegate?.shouldUpdateDisplay()
+		delegateEdit?.categoryProgressReset()
+	}
+	
+	func redoLearningN () {
+		
+		qc.resetLearned(categoryIDs: [editedCategory.categoryID])
+		mn.resetLearningNotification(categoryID: editedCategory.categoryID, object: self)
+		
+		delegate?.shouldUpdateDisplay()
+		delegateEdit?.categoryProgressReset()
+	}
+	
+	func redoTestN () {
+		qc.resetAnswers(categoryIDs: [editedCategory.categoryID], questionType: .both)
+		mn.resetTestNotification(categoryID: editedCategory.categoryID, object: self)
+		
+		delegate?.shouldUpdateDisplay()
+		delegateEdit?.categoryProgressReset()
+	}
+	
+	func redoAllN () {
+		
+		fc.resetLearnedFlashcards(categoryIDs: [editedCategory.categoryID])
+		mn.resetFlashcardsNotification(categoryID: editedCategory.categoryID, object: self)
+		
+		qc.resetLearned(categoryIDs: [editedCategory.categoryID])
+		mn.resetLearningNotification(categoryID: editedCategory.categoryID, object: self)
+
+		qc.resetAnswers(categoryIDs: [editedCategory.categoryID], questionType: .both)
+		mn.resetTestNotification(categoryID: editedCategory.categoryID, object: self)
+		
+		delegate?.shouldUpdateDisplay()
+		delegateEdit?.categoryProgressReset()
 	}
 	
 	

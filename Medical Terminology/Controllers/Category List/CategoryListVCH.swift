@@ -30,6 +30,7 @@ protocol TermCategoryIDsDelegate: AnyObject {
 }
 
 class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, CategoryCellDelegate, CategoryEditDelegate {
+	
 
 	// REMOVE after modifying other parts of the program
 	var currentCategoryID =  -1
@@ -357,6 +358,12 @@ class CategoryListVCH: NSObject, UITableViewDataSource, UITableViewDelegate, Cat
 	}
 	
 	func categoryAdded() {
+		updateData()
+		delegate?.shouldReloadTable()
+		delegate?.shouldUpdateDisplay()
+	}
+	
+	func categoryProgressReset() {
 		updateData()
 		delegate?.shouldReloadTable()
 		delegate?.shouldUpdateDisplay()
