@@ -131,14 +131,14 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 		
 		// format the progress bar
 		let foregroundColor = myTheme.colorTestPbForeground?.cgColor
-		let backgroundColor = myTheme.colorTestPbBackground?.cgColor
+		let backgroundColor = myTheme.colorTestPbBackground.cgColor
 		let fillColor = myTheme.colorTestPbFillcolor?.cgColor
 		
 		let percentText = utilities.getPercentage(number: testHomeVCH.answeredCorrectCount, numberTotal: testHomeVCH.totalQuestionsCount)
 		
 		percentLabel.text = "\(percentText)% Done"
 		
-		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!, lineWidth: myTheme.progressBarWidth)
+		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!, lineWidth: myTheme.progressBarWidth)
 		
 		progressBar.setStrokeEnd(partialCount: testHomeVCH.answeredCorrectCount, totalCount: testHomeVCH.totalQuestionsCount)
 		
@@ -175,9 +175,7 @@ class TestHomeVC: UIViewController, TestHomeVCHDelegate {
 			
 			let vc = segue.destination as! TestOptionsVC
 			vc.delegate = testHomeVCH
-			vc.questionsType = testHomeVCH.questionsType
 			vc.numberOfQuestions = testHomeVCH.numberOfQuestions
-			vc.isFavoriteMode = testHomeVCH.showFavoritesOnly
 			
 		default:
 			print("fatal error no matching segue in testHomeVC prepare function")

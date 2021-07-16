@@ -14,7 +14,8 @@ protocol TestHomeVCHDelegate: AnyObject {
 
 // as a note: when the user changes a category, will need to reset the current test
 
-class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
+class TestHomeVCH: NSObject, TestOptionsVCDelegate, TestSetVCDelegate {
+
 
     private var testSet: TestSet!
 	
@@ -270,11 +271,11 @@ class TestHomeVCH: NSObject, TestOptionsUpdated, TestSetVCDelegate {
     }
 
     //MARK: - Delegate functions
-    func testOptionsUpdate(numberOfQuestions: Int, questionsTypes: TermComponent, isFavoriteMode: Bool) {
-        //update settings
-        self.numberOfQuestions = numberOfQuestions
-        self.questionsType = questionsTypes
-    }
+
+	func shouldChangeNumberOfQuestions(numberOfQuestions: Int) {
+		self.numberOfQuestions = numberOfQuestions
+	}
+	
 	
 	// MARK: TestSetVCDelegate
 	func doneButtonPressed() {

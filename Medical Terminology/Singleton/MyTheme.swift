@@ -63,7 +63,7 @@ class MyTheme{
     
     //MARK: Learning home
     let colorLhPbForeground = UIColor(named: "color main 2")
-    let colorLhPbBackground = UIColor(named: "color pb background")
+	let colorLhPbBackground = UIColor.systemGray6
 	let colorLhPbFill = UIColor(named: "color main 2")
 	
     //MARK: Learning set
@@ -73,7 +73,7 @@ class MyTheme{
 	
     //colors of test set home
     let colorTestPbForeground = UIColor(named: "color main")
-    let colorTestPbBackground = UIColor(named: "color pb background")
+    let colorTestPbBackground = UIColor.systemGray6
 	let colorTestPbFillcolor = UIColor(named: "color main")
     
     //MARK: Test set colors

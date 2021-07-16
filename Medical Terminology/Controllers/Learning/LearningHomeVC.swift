@@ -120,10 +120,10 @@ class LearningHomeVC: UIViewController, LearningHomeVCHDelegate {
 		}
 		
 		let foregroundColor = myTheme.colorLhPbForeground?.cgColor
-		let backgroundColor = myTheme.colorLhPbBackground?.cgColor
+		let backgroundColor = myTheme.colorLhPbBackground.cgColor
 		let fillColor = myTheme.colorLhPbFill?.cgColor
 		
-		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor!, fillColor: fillColor!
+		progressBar = CircularBar(referenceView: circleBarView, foregroundColor: foregroundColor!, backgroundColor: backgroundColor, fillColor: fillColor!
 								  , lineWidth: myTheme.progressBarWidth)
 		
 		progressBar.setStrokeEnd(partialCount: learningHomeVCH.learnedTermsCount, totalCount: learningHomeVCH.totalTermsCount)

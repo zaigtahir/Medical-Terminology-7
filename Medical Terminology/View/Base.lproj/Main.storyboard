@@ -2613,6 +2613,9 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XGP-wB-Ehn"/>
+                    <connections>
+                        <outlet property="maximumSelector" destination="1FM-mM-d5x" id="Rq8-Ak-FzH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dP0-k4-IFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

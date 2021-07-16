@@ -8,24 +8,17 @@
 
 import UIKit
 
-protocol TestOptionsUpdated: AnyObject {
-    func testOptionsUpdate (numberOfQuestions: Int, questionsTypes: TermComponent, isFavoriteMode: Bool)
+protocol TestOptionsVCDelegate: AnyObject {
+    func shouldChangeNumberOfQuestions (numberOfQuestions: Int)
 }
 
 
 class TestOptionsVC: UIViewController {
     
-    @IBOutlet weak var maxiumLabel: UILabel!
     @IBOutlet weak var maximumSelector: UISegmentedControl!
-    @IBOutlet weak var questionsTypeLabel: UILabel!
-    @IBOutlet weak var questionsTypeSelector: UISegmentedControl!
-    @IBOutlet weak var favoriteSelector: UISegmentedControl!
-    
+   
     var numberOfQuestions = 10
-    var questionsType : TermComponent = .both
-    var isFavoriteMode = false
-    
-    weak var delegate : TestOptionsUpdated?
+    weak var delegate : TestOptionsVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,27 +34,13 @@ class TestOptionsVC: UIViewController {
             maximumSelector.selectedSegmentIndex = 0
         }
         
-        switch questionsType {
-        case .both:
-            questionsTypeSelector.selectedSegmentIndex = 0
-        case .term:
-            questionsTypeSelector.selectedSegmentIndex = 1
-        default:
-            questionsTypeSelector.selectedSegmentIndex = 2
-        }
-        
-        if isFavoriteMode {
-            favoriteSelector.selectedSegmentIndex = 1
-        } else {
-            favoriteSelector.selectedSegmentIndex = 0
-        }
-        
         // Do any additional setup after loading the view.
     }
     
     @IBAction func maximumQuestionsSelectorChanged(_ sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {
+		
         case 0:
             numberOfQuestions = 10
         case 1:
@@ -71,35 +50,7 @@ class TestOptionsVC: UIViewController {
         default:
             numberOfQuestions = 100
         }
+		
+		delegate?.shouldChangeNumberOfQuestions(numberOfQuestions: numberOfQuestions)
     }
-    
-    @IBAction func questionsTypeSelectorChanged(_ sender: UISegmentedControl) {
-        
-        switch sender.selectedSegmentIndex {
-        case 0:
-            questionsType = .both
-            
-        case 1:
-            questionsType = .term
-            
-        default:
-            questionsType = .definition
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        delegate?.testOptionsUpdate(numberOfQuestions: numberOfQuestions, questionsTypes: questionsType, isFavoriteMode: isFavoriteMode)
-        
-    }
-    
-    @IBAction func favoriteSelectorChanged(_ sender: UISegmentedControl) {
-        
-        if sender.selectedSegmentIndex == 0 {
-            isFavoriteMode = false
-        } else {
-            isFavoriteMode = true
-        }
-    }
-    
 }
