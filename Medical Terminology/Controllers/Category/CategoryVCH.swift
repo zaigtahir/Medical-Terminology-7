@@ -297,6 +297,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 	}
 	
 	func redoTestN () {
+		
 		qc.resetAnswers(categoryIDs: [editedCategory.categoryID], questionType: .both)
 		mn.resetTestNotification(categoryID: editedCategory.categoryID, object: self)
 		

@@ -15,7 +15,7 @@ import Foundation
 class LearningSet: QuizTestBase {
 	
 	/// to save the original termIDs for resetting the learned items when resetting the test
-	private let termIDs : [Int]
+	private var termIDs : [Int]
 	private var currentCategoryIDs = [1]
 	private let qc = QuestionController()
 	

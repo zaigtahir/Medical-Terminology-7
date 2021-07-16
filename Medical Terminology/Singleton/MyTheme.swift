@@ -64,7 +64,6 @@ class MyTheme{
     //MARK: Learning home
     let colorLhPbForeground = UIColor(named: "color main 2")
     let colorLhPbBackground = UIColor(named: "color pb background")
-    //let colorLhPbFill = UIColor.systemBackground
 	let colorLhPbFill = UIColor(named: "color main 2")
 	
     //MARK: Learning set

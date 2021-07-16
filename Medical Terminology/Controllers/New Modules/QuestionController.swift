@@ -232,14 +232,16 @@ class QuestionController {
 			SET
 			learnedTerm = \(AnsweredState.unanswered.rawValue),
 			learnedDefinition = \(AnsweredState.unanswered.rawValue)
-			WHERE termID =
-			(SELECT DISTINCT \(assignedCategories).termID
+			WHERE termID IN
+			(
+			SELECT DISTINCT \(assignedCategories).termID
 			FROM \(terms)
 			JOIN \(assignedCategories)
 			ON \(terms).termID = \(assignedCategories).termID
 			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
+			)
 			"""
-		
+	
 		print("QC resetLearned query = \(query)")
 		
 		myDB.executeStatements(query)
@@ -379,14 +381,14 @@ class QuestionController {
 				UPDATE \(terms)
 				SET
 				answeredTerm = \(AnsweredState.unanswered.rawValue)
-				WHERE termID =
+				WHERE termID IN
 				(
 				SELECT DISTINCT \(assignedCategories).termID
 				FROM \(terms)
 				JOIN \(assignedCategories)
 				ON \(terms).termID = \(assignedCategories).termID
 				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-				}
+				)
 				"""
 			
 		case .definition:
@@ -395,14 +397,14 @@ class QuestionController {
 				UPDATE \(terms)
 				SET
 				answeredDefinition = \(AnsweredState.unanswered.rawValue)
-				WHERE termID =
+				WHERE termID IN
 				(
 				SELECT DISTINCT \(assignedCategories).termID
 				FROM \(terms)
 				JOIN \(assignedCategories)
 				ON \(terms).termID = \(assignedCategories).termID
 				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-				}
+				)
 				"""
 			
 		case .both:
@@ -410,18 +412,20 @@ class QuestionController {
 			query = """
 				UPDATE \(terms)
 				SET
-				answeredTerm = \(AnsweredState.unanswered.rawValue)
-				answeredDefinition = \(AnsweredState.unanswered.rawValue),
-				WHERE termID =
+				answeredTerm = \(AnsweredState.unanswered.rawValue),
+				answeredDefinition = \(AnsweredState.unanswered.rawValue)
+				WHERE termID IN
 				(
 				SELECT DISTINCT \(assignedCategories).termID
 				FROM \(terms)
 				JOIN \(assignedCategories)
 				ON \(terms).termID = \(assignedCategories).termID
 				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-				}
+				)
 				"""
 		}
+		
+		print("QuestionController : resetQuestions query: \(query)")
 		
 		myDB.executeStatements(query)
 	}

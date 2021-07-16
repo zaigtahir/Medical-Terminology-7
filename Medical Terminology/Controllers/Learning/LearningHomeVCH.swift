@@ -265,18 +265,13 @@ class LearningHomeVCH: NSObject, LearningOptionsUpdated, LearnSetVCDelegate {
 
 	func restartOver () {
 		
-		print("LearningHOmeVCH : restartOver () need to code")
-		/*
-		
-		qc.resetLearned(termIDs: termIDs)
+		qc.resetLearned(categoryIDs: currentCategoryIDs)
 		
 		// clear the learningSet
 		learningSet = nil
-		
 		updateData()
-		
 		delegate?.shouldUpdateDisplay()
-*/
+
 		
 	}
 	
