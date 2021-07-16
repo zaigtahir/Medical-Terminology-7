@@ -96,7 +96,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	// MARK: - updateDisplay
 	
 	func updateDisplay () {
-		
+				
 		func formatButtons() {
 			
 			/*
@@ -161,6 +161,13 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 				}
 			}
 			
+		}
+		
+		func formatResetButtons () {
+			redoTotalButton.isEnabled = pc.totalProgressCount() > 0 ? true : false
+			redoFlashcardsButton.isEnabled = pc.fcCount > 0 ? true : false
+			redoLearnedButton.isEnabled = pc.lnCount > 0 ? true : false
+			redoTestButton.isEnabled = pc.anCount > 0 ? true : false
 		}
 		
 		func formatFields() {
@@ -240,14 +247,13 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 
 		}
 		
+		pc.update(categoryID: categoryVCH.editedCategory.categoryID)
+		
 		formatButtons()
-		
+		formatResetButtons()
 		formatFields()
-		
 		formatCountsAndPB()
-		
-		
-		
+	
 	}
 	
 	// MARK: - prepare segue

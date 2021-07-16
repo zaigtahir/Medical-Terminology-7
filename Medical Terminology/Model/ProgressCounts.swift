@@ -19,24 +19,39 @@ class ProgressCounts {
 	var lnDone : Float = 0.0
 	var anDone : Float = 0.0
 	
+	var fcCount = 0
+	var lnCount = 0
+	var anCount = 0
+	
 	var totalCategoryTerms = 0
 	
 	func update (categoryID: Int) {
 		
 		totalCategoryTerms = tcTB.getTermCount(categoryIDs: [categoryID], showFavoritesOnly: false)
 		
-		let fCount = fc.getFlashcardCount(categoryIDs: [categoryID], showFavoritesOnly: false, learnedStatus: true)
-		let lCount = qc.getLearnedTermsCount(categoryIDs: [categoryID], showFavoritesOnly: false)
-		let aCount = qc.getCorrectQuestionsCount(categoryIDs: [categoryID], questionType: .both, showFavoritesOnly: false)
+		fcCount = fc.getFlashcardCount(categoryIDs: [categoryID], showFavoritesOnly: false, learnedStatus: true)
+		lnCount = qc.getLearnedTermsCount(categoryIDs: [categoryID], showFavoritesOnly: false)
+		anCount = qc.getCorrectQuestionsCount(categoryIDs: [categoryID], questionType: .both, showFavoritesOnly: false)
 		
-		fcDone = Float(fCount) / Float(totalCategoryTerms)
-		lnDone = Float(lCount) / (Float(totalCategoryTerms) * 2)
-		anDone = Float(aCount) / (Float(totalCategoryTerms) * 2)
-		
+		if totalProgressCount() == 0 {
+			fcDone = 0
+			lnDone = 0
+			anDone = 0
+			
+		} else {
+			
+			fcDone = Float(fcCount) / Float(totalCategoryTerms)
+			lnDone = Float(lnCount) / (Float(totalCategoryTerms) * 2)
+			anDone = Float(anCount) / (Float(totalCategoryTerms) * 2)
+		}
 	}
 	
 	func totalDone () -> Float {
 		return (fcDone + lnDone + anDone) / 3
+	}
+	
+	func totalProgressCount () -> Int {
+		return fcCount + lnCount + anCount
 	}
 	
 	func fcDonePercent () -> String {
@@ -54,5 +69,5 @@ class ProgressCounts {
 	func totalDonePercent () -> String {
 		return utilities.getPercentage(number: totalDone() * 100)
 	}
-
+	
 }
