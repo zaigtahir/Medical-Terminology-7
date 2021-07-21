@@ -113,8 +113,7 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 			let termID = termsList.getTermID(indexPath: indexPath)
 			let term = tcTB.getTerm(termID: termID)
 						
-			//cell?.configure(termName: term.name, isSelected: assignedListViewMode == 0 , isEnabled: true)
-			cell?.configure2(term: term, categoryID: categoryID, isSelected: assignedListViewMode == 0)
+			cell?.configure(term: term, categoryID: categoryID, isSelected: assignedListViewMode == 0)
 			
 			return cell!
 		}
@@ -126,6 +125,11 @@ class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 	*/
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+		
+		// can i get the cell
+		let cell = tableView.cellForRow(at: indexPath) as! AssignTermCell
+		cell.toggleSelectImage()
+		
 		let termID = termsList.getTermID(indexPath: indexPath)
 		
 		let selectedTerm = tcTB.getTerm(termID: termID)

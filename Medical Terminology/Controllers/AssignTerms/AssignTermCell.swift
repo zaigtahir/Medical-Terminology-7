@@ -13,13 +13,12 @@ class AssignTermCell: UITableViewCell {
 	@IBOutlet weak var termNameLabel: UILabel!
 	@IBOutlet weak var selectImage: UIImageView!
 	
-	
 	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 	
-	func configure2 (term: TermTB, categoryID: Int, isSelected: Bool) {
+	func configure (term: TermTB, categoryID: Int, isSelected: Bool) {
 		
 		// if the category ID = 1, 2, term.
 		
@@ -40,28 +39,11 @@ class AssignTermCell: UITableViewCell {
 		}
 	}
 	
-
-	func configure (termName: String, isSelected: Bool, isEnabled: Bool) {
-		
-		termNameLabel.text = termName
-		
-		if isSelected {
-			selectImage.image = myTheme.imageSquareFill
-		} else {
+	func toggleSelectImage() {
+		if selectImage.image == myTheme.imageSquareFill {
 			selectImage.image = myTheme.imageSquare
-		}
-		
-		if isEnabled {
-			termNameLabel.textColor = myTheme.colorText
-			if isSelected {
-				selectImage.tintColor = myTheme.colorMain
-			} else {
-				selectImage.tintColor = myTheme.colorText
-			}
-			
 		} else {
-			termNameLabel.textColor = myTheme.colorButtonDisabledTint
-			selectImage.tintColor = myTheme.colorButtonDisabledTint
+			selectImage.image = myTheme.imageSquareFill
 		}
 	}
 	

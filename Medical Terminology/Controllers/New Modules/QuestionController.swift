@@ -441,12 +441,12 @@ class QuestionController {
 		case .term:
 			
 			query = """
-				SELECT DISTINCT \(terms).termID
+				SELECT DISTINCT \(terms).termID, 1 as type
 				FROM \(terms)
 				JOIN \(assignedCategories)
 				ON \(terms).termID = \(assignedCategories).termID
 				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-				AND answeredTerm != \(AnsweredState.correct.rawValue))
+				AND answeredTerm != \(AnsweredState.correct.rawValue)
 				\(queries.showFavoritesOnly(show: showFavoritesOnly))
 				ORDER BY RANDOM ()
 				\(queries.limitToString(limit: numberOfQuestions))
@@ -454,12 +454,12 @@ class QuestionController {
 		case .definition:
 			
 			query = """
-				SELECT DISTINCT \(terms).termID
+				SELECT DISTINCT \(terms).termID, 2 as type
 				FROM \(terms)
 				JOIN \(assignedCategories)
 				ON \(terms).termID = \(assignedCategories).termID
 				WHERE \(queries.categoryString(categoryIDs: categoryIDs))
-				AND answeredDefinition != \(AnsweredState.correct.rawValue))
+				AND answeredDefinition != \(AnsweredState.correct.rawValue)
 				\(queries.showFavoritesOnly(show: showFavoritesOnly))
 				ORDER BY RANDOM ()
 				\(queries.limitToString(limit: numberOfQuestions))
