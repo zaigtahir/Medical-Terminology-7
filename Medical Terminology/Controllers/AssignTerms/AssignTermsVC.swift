@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
+class AssignTermsVC: UIViewController, AssignTermsVCHDelegate, UISearchBarDelegate {
 	
 	@IBOutlet weak var categoryNameLabel: UILabel!
 	
@@ -33,6 +33,8 @@ class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
 		tableView.delegate = assignTermsVCH
 		
 		assignTermsVCH.delegate = self
+		
+		searchBar.delegate = self
 		
 		categoryNameLabel.text = cc.getCategory(categoryID: assignTermsVCH.categoryID).name
 		
@@ -96,6 +98,32 @@ class AssignTermsVC: UIViewController, AssignTermsVCHDelegate {
 		let okay = UIAlertAction(title: "OK", style: .default, handler: nil)
 		ac.addAction(okay)
 		self.present(ac, animated: true, completion: nil)
+	}
+	
+	// MARK: - Search bar functions and delegates
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+	
+		if searchBar.showsCancelButton == false {
+			searchBar.showsCancelButton = true
+		}
+		
+		assignTermsVCH.searchText = searchBar.text
+		assignTermsVCH.updateData()
+		tableView.reloadData()
+		updateDisplay()
+		
+	}
+	
+	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		
+		searchBar.text = .none
+		searchBar.showsCancelButton = false
+		searchBar.endEditing(true)
+		
+		assignTermsVCH.searchText = ""
+		assignTermsVCH.updateData()
+		tableView.reloadData()
+		updateDisplay()
 	}
 	
 	@IBAction func termsStatusSwitchChanged(_ sender: Any) {

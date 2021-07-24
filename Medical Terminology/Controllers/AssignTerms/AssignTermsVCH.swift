@@ -17,6 +17,7 @@ protocol AssignTermsVCHDelegate: AnyObject {
 	func shouldShowAlert(title: String, message: String)
 }
 
+
 class AssignTermsVCH: NSObject, UITableViewDataSource, UITableViewDelegate
 
 {

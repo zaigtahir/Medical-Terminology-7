@@ -115,9 +115,6 @@ class FlashcardController {
 			)
 		"""
 		
-		
-		print("resetLearnedFlashcards query = \(query)")
-		
 		myDB.executeStatements(query)
 	}
 	

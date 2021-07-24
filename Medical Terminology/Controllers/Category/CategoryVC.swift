@@ -314,8 +314,6 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	@IBAction func deleteCategoryButtonAction(_ sender: Any) {
 		
-		print("to code delete category button")
-		
 		// only delete a non-standard category
 		
 		if !categoryVCH.editedCategory.isStandard {

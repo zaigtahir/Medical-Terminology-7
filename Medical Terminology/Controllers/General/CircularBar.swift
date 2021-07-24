@@ -58,7 +58,22 @@ class CircularBar {
      'strokeEnd' value 0.0 to 1.0
      */
     func setStokeEnd (strokeEnd: CGFloat) {
-        barLayer.strokeEnd = strokeEnd
+		
+		// set a minimum value for strokeEnt as tiny values like 0.1% are too hard to see, and I think it
+		// would be best to see even tiny values
+		
+		let minValue = CGFloat(0.02)
+		var drawValue : CGFloat
+		
+		if strokeEnd == 0 {
+			drawValue = 0
+		} else if (strokeEnd < minValue){
+			drawValue = minValue
+		} else {
+			drawValue = strokeEnd
+		}
+		
+        barLayer.strokeEnd = drawValue
         
     }
     

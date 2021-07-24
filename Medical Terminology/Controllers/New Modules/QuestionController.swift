@@ -241,8 +241,6 @@ class QuestionController {
 			WHERE \(queries.categoryString(categoryIDs: categoryIDs))
 			)
 			"""
-	
-		print("QC resetLearned query = \(query)")
 		
 		myDB.executeStatements(query)
 	}
@@ -261,8 +259,6 @@ class QuestionController {
 			ORDER BY RANDOM ()
 			\(queries.limitToString(limit: numberOfTerms))
 			"""
-		
-		print("QC getTermIDsAvailableToLearn query = \(query)")
 		
 		var ids = [Int]()
 		
@@ -291,8 +287,6 @@ class QuestionController {
 			\(queries.showFavoritesOnly(show: showFavoritesOnly))
 			)
 			"""
-		
-		print("QC getLearnedTermsCount query = \(query)")
 		
 		var count = 0
 		
@@ -424,8 +418,6 @@ class QuestionController {
 				)
 				"""
 		}
-		
-		print("QuestionController : resetQuestions query: \(query)")
 		
 		myDB.executeStatements(query)
 	}
@@ -587,8 +579,6 @@ class QuestionController {
 				)
 				"""
 		}
-		
-		print("QC getCorrectQuestionsCount query = \(query)")
 		
 		var count = 0
 		

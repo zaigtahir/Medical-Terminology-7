@@ -170,6 +170,8 @@ class TermListVC: UIViewController, UISearchBarDelegate, TermListVCHDelegate {
 		tableView.reloadData()
 		updateDisplay()
 	}
+	// MARK: -
+	
 	
 	@IBAction func favoritesOnlyButtonAction(_ sender: ZUIToggleButton) {
 

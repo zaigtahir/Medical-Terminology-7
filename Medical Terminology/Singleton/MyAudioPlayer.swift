@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-class MyAudioPlayer {
+class MyAudioPlayer222 {
     
     private var audioPlayer: AVAudioPlayer?
     

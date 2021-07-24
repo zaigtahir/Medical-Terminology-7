@@ -85,13 +85,13 @@ class LearningSetVCH: NSObject, UICollectionViewDataSource, ScrollControllerDele
 	}
 	
 	func showAgain(questionIndex: Int) {
-		print("user pressed the show again button")
 		
 		learningSet.activeQuestions[questionIndex].showAgain = true
 		
 		learningSet.requeueQuestion(questionIndex: questionIndex)
 		
 		delegate?.shouldUpdateData()
+		
 		delegate?.shouldUpdateDisplay()
 		
 	}

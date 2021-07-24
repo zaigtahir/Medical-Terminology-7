@@ -21,27 +21,29 @@ class Utilities {
     
     func getPercentage (number: Int, numberTotal: Int) -> String {
         
-		if numberTotal == 0 {
+		if ( numberTotal == 0 || number == 0 ){
 			return "0"
 		}
 		
         let percent = Float(number)/Float(numberTotal) * 100
 		
-        if percent < 1 || (percent > 99 && percent < 100) {
-            return String(format: "%.1f", percent) //formats to zero decimal place
-        } else   {
-            return String(format: "%.0f", percent) //formats to one decimal place
-        }
+		return getPercentage(number: percent)
+       
     }
 	
 	
 	func getPercentage (number: Float) -> String {
 		
-		if number < 1 || (number > 99 && number < 100) {
-			return String(format: "%.1f", number) //formats to zero decimal place
-		} else   {
-			return String(format: "%.0f", number) //formats to one decimal place
+		if number == 0 {
+			return String(format: "%.0f", number)
 		}
+	
+		if number < 1.0 {
+			return String(format: "%.2f", number)
+		} else {
+			return String(format: "%.1f", number)
+		}
+		
 	}
 	
 	
