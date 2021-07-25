@@ -31,7 +31,6 @@
 		5A4F854A22B16C2E0016621C /* LearnSetVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854922B16C2E0016621C /* LearnSetVCH.swift */; };
 		5A4F854C22B173B50016621C /* LearnSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854B22B173B40016621C /* LearnSetVC.swift */; };
 		5A4F855022B310F80016621C /* AnswerTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F854F22B310F80016621C /* AnswerTCell.swift */; };
-		5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FF784241207D50036480D /* MyAudioPlayer.swift */; };
 		5A67C14B231071D900BAA2A0 /* TestDoneCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67C14A231071D900BAA2A0 /* TestDoneCVCell.swift */; };
 		5A67C14D231077FA00BAA2A0 /* LearnDoneCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67C14C231077FA00BAA2A0 /* LearnDoneCVCell.swift */; };
 		5A78911323428AFA00F7EC48 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78911223428AFA00F7EC48 /* InfoVC.swift */; };
@@ -129,7 +128,6 @@
 		5A4F854922B16C2E0016621C /* LearnSetVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSetVCH.swift; sourceTree = "<group>"; };
 		5A4F854B22B173B40016621C /* LearnSetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnSetVC.swift; sourceTree = "<group>"; };
 		5A4F854F22B310F80016621C /* AnswerTCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTCell.swift; sourceTree = "<group>"; };
-		5A5FF784241207D50036480D /* MyAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAudioPlayer.swift; sourceTree = "<group>"; };
 		5A67C14A231071D900BAA2A0 /* TestDoneCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoneCVCell.swift; sourceTree = "<group>"; };
 		5A67C14C231077FA00BAA2A0 /* LearnDoneCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDoneCVCell.swift; sourceTree = "<group>"; };
 		5A78911223428AFA00F7EC48 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
@@ -371,7 +369,6 @@
 			children = (
 				5A03479522D3EE7500749EBC /* Globals.swift */,
 				5AD725E5225E4E2F007CED84 /* MyTheme.swift */,
-				5A5FF784241207D50036480D /* MyAudioPlayer.swift */,
 				5A18DF70241E8AD10006825B /* MyConstants.swift */,
 				99A99CCA25E9C97700308140 /* MyKeys.swift */,
 			);
@@ -622,7 +619,6 @@
 				5A4471552281C655008E3107 /* TermListVCH.swift in Sources */,
 				5A88634E218560030013FC8B /* TermListVC.swift in Sources */,
 				99A722D5261E7846001DEDBD /* SingleLineInputVC.swift in Sources */,
-				5A5FF785241207D50036480D /* MyAudioPlayer.swift in Sources */,
 				992B56A4261382BF000457AA /* ValidationVC.swift in Sources */,
 				99D55E0A25F6DAD8003ABE0B /* CategoryListVC.swift in Sources */,
 				99A99CCB25E9C97700308140 /* MyKeys.swift in Sources */,
@@ -822,7 +818,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.70;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
 				PRODUCT_NAME = "Practical Medical Terminology";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
@@ -845,7 +841,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.70;
+				MARKETING_VERSION = 1.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theappgalaxy.pmt;
 				PRODUCT_NAME = "Practical Medical Terminology";

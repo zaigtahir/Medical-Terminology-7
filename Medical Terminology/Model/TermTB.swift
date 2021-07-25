@@ -62,10 +62,10 @@ class TermTB: NSObject, AVAudioPlayerDelegate {
 		let path = Bundle.main.path(forResource: fileName, ofType: nil)!
 		
 		let url = URL(fileURLWithPath: path)
-		print(url.absoluteURL)
 		
 		do {
 			try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+			
 		 }
 		 catch {
 			print("problem with AVAudioSession.sharedInstance")
