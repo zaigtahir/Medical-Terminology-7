@@ -179,7 +179,6 @@ class FlashcardVC: UIViewController, FlashcardVCHDelegate {
 	func shouldRemoveCurrentCell() {
 		let cellIndex  = scrollController.getCellIndex(collectionView: collectionView)
 		let indexPath = IndexPath(row: cellIndex, section: 0)
-		let r = indexPath.row
 		collectionView.deleteItems(at: [indexPath])
 		
 	}
