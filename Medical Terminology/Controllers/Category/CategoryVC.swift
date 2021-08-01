@@ -292,10 +292,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			
 			let ac = UIAlertController(title: "Success!", message: "Your category was saved, and it will show in alphabetical order in the My Categories section.", preferredStyle: .alert)
 			
-			let ok = UIAlertAction(title: "OK", style: .cancel) {alertAction in
-				
-				self.navigationController?.popViewController(animated: true)
-			}
+			let ok = UIAlertAction (title: "OK", style: .default, handler: nil)
 			
 			ac.addAction(ok)
 			
