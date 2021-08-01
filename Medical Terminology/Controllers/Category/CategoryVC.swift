@@ -34,6 +34,7 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 	
 	@IBOutlet weak var descriptionLabel: UILabel!
 	@IBOutlet weak var descriptionEditButton: UIButton!
+	@IBOutlet weak var assignedTermsButton: UIButton!
 	@IBOutlet weak var assignedTermsLabel: UILabel!
 	@IBOutlet weak var overallAllProgressLabel: UILabel!
 	
@@ -110,6 +111,15 @@ class CategoryVC: UIViewController, CategoryVCHDelegate {
 			
 			*/
 			
+			
+			// if new category, disable assign terms
+			if categoryVCH.editedCategory.categoryID == -1 {
+				assignedTermsLabel.isEnabled = false
+				assignedTermsButton.isEnabled = false
+			} else {
+				assignedTermsLabel.isEnabled = true
+				assignedTermsButton.isEnabled = true
+			}
 			
 			if categoryVCH.categoryWasEdited() {
 				
