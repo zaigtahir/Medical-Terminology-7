@@ -303,7 +303,7 @@
                                                         </view>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omV-Qo-ycr">
                                                             <rect key="frame" x="322" y="40" width="51" height="31"/>
-                                                            <color key="onTintColor" name="color correct"/>
+                                                            <color key="onTintColor" name="color green"/>
                                                             <color key="thumbTintColor" name="color thumb tint"/>
                                                             <connections>
                                                                 <action selector="showAnswerSwitchAction:" destination="gjw-m0-0qB" eventType="valueChanged" id="hQE-QF-t94"/>
@@ -488,7 +488,7 @@
                                                         </stackView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xHX-kh-2w7">
                                                             <rect key="frame" x="112.66666666666669" y="80.333333333333329" width="150" height="149.33333333333334"/>
-                                                            <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                                            <color key="tintColor" name="color main 2"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="hrM-up-ibW"/>
                                                                 <constraint firstAttribute="width" constant="150" id="xu9-Xx-9qf"/>
@@ -793,7 +793,7 @@
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
-                                                                    <color key="value" name="color correct"/>
+                                                                    <color key="value" name="color green"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="offTintColor">
                                                                     <color key="value" name="color text"/>
@@ -862,13 +862,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jjk-QL-ciD">
-                                                    <rect key="frame" x="119" y="29.666666666666671" width="150" height="149.66666666666669"/>
-                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                                    <rect key="frame" x="119" y="30" width="150" height="149.33333333333334"/>
+                                                    <color key="tintColor" name="color main 2"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="Idd-eG-7rb"/>
                                                         <constraint firstAttribute="width" constant="150" id="uyf-qa-9ce"/>
                                                     </constraints>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                                                 </imageView>
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ec-hh-elP">
                                                     <rect key="frame" x="20" y="185" width="348" height="145"/>
@@ -2315,7 +2315,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MBi-HA-SBi">
                                                             <rect key="frame" x="322" y="40" width="51" height="31"/>
-                                                            <color key="onTintColor" name="color correct"/>
+                                                            <color key="onTintColor" name="color green"/>
                                                             <color key="thumbTintColor" name="color thumb tint"/>
                                                             <connections>
                                                                 <action selector="showAnswerSwitchAction:" destination="E7q-qs-jyG" eventType="valueChanged" id="V63-DL-h8Q"/>
@@ -3391,7 +3391,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ops-4V-JqJ">
                                                     <rect key="frame" x="10" y="11.666666666666664" width="24" height="48"/>
-                                                    <color key="tintColor" name="color correct"/>
+                                                    <color key="tintColor" name="color green"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="fc8-fC-CTl"/>
                                                     </constraints>
@@ -3614,7 +3614,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                                 </label>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bte-ph-tYE">
                                                     <rect key="frame" x="50" y="75.333333333333329" width="100" height="4"/>
-                                                    <color key="tintColor" name="color correct"/>
+                                                    <color key="tintColor" name="color green"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="cGa-md-Vgg"/>
                                                     </constraints>
@@ -4126,8 +4126,8 @@ You will be asked to correctly match the term to it's definition, and also to ma
     <inferredMetricsTieBreakers>
         <segue reference="FY8-JO-v3w"/>
         <segue reference="RQg-Yy-Rkk"/>
-        <segue reference="HWU-Cd-rtW"/>
-        <segue reference="WdJ-IQ-Ral"/>
+        <segue reference="Nhy-Yr-H6x"/>
+        <segue reference="Sbm-EN-3iq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="appIcon_100" width="100" height="100"/>
@@ -4164,9 +4164,6 @@ You will be asked to correctly match the term to it's definition, and also to ma
         <namedColor name="color card border">
             <color red="0.75300002098083496" green="0.75499999523162842" blue="0.77300000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="color correct">
-            <color red="0.41999998688697815" green="0.70200002193450928" blue="0.071000002324581146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="color favorite">
             <color red="0.9570000171661377" green="0.16500000655651093" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -4184,6 +4181,9 @@ You will be asked to correctly match the term to it's definition, and also to ma
         </namedColor>
         <namedColor name="color main">
             <color red="0.32899999618530273" green="0.48600000143051147" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color main 2">
+            <color red="1" green="0.77999997138977051" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color pb background">
             <color red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

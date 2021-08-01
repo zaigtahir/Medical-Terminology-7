@@ -30,7 +30,8 @@ class MyConstants {
 	let audioFolder = "Audio"       //the subfolder in bundle that will hold the audio files
 	
     // app and website information
-    let appWebsite = "https://www.theappgalaxy.com/prefixesandsuffixes.html"
+    let appWebsite = "https://theappgalaxy.com/practical-medical-terminology/"
+
     let companyWebsite = "https://theappgalaxy.com"
     let copyrightNotice = "Copyright: 2021 by Dr. Tahir"
     let appEmail = "support@theappgalaxy.com"
