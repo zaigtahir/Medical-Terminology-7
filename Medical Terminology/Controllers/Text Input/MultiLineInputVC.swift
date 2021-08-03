@@ -12,6 +12,21 @@ protocol MultiLineInputDelegate: AnyObject {
 	func shouldUpdateMultiLineInfo(propertyReference: PropertyReference?, cleanString: String)
 }
 
+
+/*
+override func viewDidLoad() {
+	   super.viewDidLoad()
+	   // 1
+	   self.myTextView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
+   }
+   
+   // 2
+   @objc func tapDone(sender: Any) {
+	   self.view.endEditing(true)
+   }
+*/
+
+
 class MultiLineInputVC: UIViewController, UITextViewDelegate {
 	
 	//
@@ -51,6 +66,7 @@ class MultiLineInputVC: UIViewController, UITextViewDelegate {
 		textView.layer.borderWidth = 1
 		textView.layer.borderColor = myTheme.colorCardBorder?.cgColor
 		
+		textView.addDoneButton(title: "Done", target: self, selector:  #selector(tapDone(sender:)))
 		
 		titleLabel.text = textInputVCH.fieldTitle
 		validationLabel.text = textInputVCH.validationPrompt
@@ -82,6 +98,11 @@ class MultiLineInputVC: UIViewController, UITextViewDelegate {
 		} else {
 			counterLabel.textColor = myTheme.invalidFieldEntryColor
 		}
+	}
+	
+	// done button on the keyboard
+	@objc func tapDone(sender: Any) {
+		self.view.endEditing(true)
 	}
 	
 	@IBAction func saveButtonAction(_ sender: Any) {
