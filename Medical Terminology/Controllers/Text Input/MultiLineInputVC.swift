@@ -13,20 +13,6 @@ protocol MultiLineInputDelegate: AnyObject {
 }
 
 
-/*
-override func viewDidLoad() {
-	   super.viewDidLoad()
-	   // 1
-	   self.myTextView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
-   }
-   
-   // 2
-   @objc func tapDone(sender: Any) {
-	   self.view.endEditing(true)
-   }
-*/
-
-
 class MultiLineInputVC: UIViewController, UITextViewDelegate {
 	
 	//
@@ -43,7 +29,7 @@ class MultiLineInputVC: UIViewController, UITextViewDelegate {
 	@IBOutlet weak var counterLabel: UILabel!
 	@IBOutlet weak var validationLabel: UILabel!
 	@IBOutlet weak var saveButton: ZUIRoundedButton!
-	@IBOutlet weak var cancelButton: UIButton!
+	@IBOutlet weak var scrollView: UIScrollView!
 	
 	var textInputVCH = TextInputVCH()
 	
@@ -79,7 +65,7 @@ class MultiLineInputVC: UIViewController, UITextViewDelegate {
 		saveButton.isEnabled = false
 		
 	}
-	
+
 	func textViewDidChangeSelection(_ textView: UITextView) {
 		// check for valid text
 		if textInputVCH.textMeetsAllCriteria(inputString: textView.text) {
@@ -113,6 +99,7 @@ class MultiLineInputVC: UIViewController, UITextViewDelegate {
 		
 		delegate?.shouldUpdateMultiLineInfo (propertyReference: textInputVCH.propertyReference, cleanString: cleanText)
 	}
+	
 	@IBAction func cancelButtonAction(_ sender: Any) {
 		self.navigationController?.popViewController(animated: true)
 	}
