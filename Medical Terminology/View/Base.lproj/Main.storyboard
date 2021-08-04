@@ -18,7 +18,7 @@
             <objects>
                 <viewController id="asc-Xo-Hni" customClass="LearningHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I26-NZ-hV3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mhu-Bf-8iU">
@@ -628,7 +628,7 @@
             <objects>
                 <viewController id="1VE-GN-9V0" customClass="FlashcardVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="276-BM-221">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="907"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TVx-7Q-M6g">
@@ -1156,7 +1156,7 @@
             <objects>
                 <viewController id="HXV-3U-7fg" customClass="FlashcardOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZC-07-zje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-wL-ygF">
@@ -1541,7 +1541,7 @@
             <objects>
                 <viewController id="Lyr-cB-l21" customClass="LearningHomeOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e3q-KJ-X3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Col-Y2-oTL">
@@ -1596,12 +1596,12 @@
             </objects>
             <point key="canvasLocation" x="9651" y="518"/>
         </scene>
-        <!--View Controller-->
+        <!--Help ScreenVC-->
         <scene sceneID="fSa-9W-JFO">
             <objects>
-                <viewController id="07A-7c-lDo" sceneMemberID="viewController">
+                <viewController id="07A-7c-lDo" customClass="HelpScreenVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cRK-5N-FyP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NH3-zI-wvk">
@@ -1630,6 +1630,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                             <color key="titleColor" name="color main"/>
                                         </state>
                                         <connections>
+                                            <action selector="seeWebsiteButton:" destination="07A-7c-lDo" eventType="touchUpInside" id="SFs-eR-dSu"/>
                                             <action selector="seeWebsiteButtonAction:" destination="hmf-BQ-AFc" eventType="touchUpInside" id="F9j-cF-DXY"/>
                                         </connections>
                                     </button>
@@ -1656,6 +1657,9 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zTh-0c-KYg"/>
+                    <connections>
+                        <outlet property="seeWebsiteButton" destination="Uo6-lW-s9U" id="J05-It-EKA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tzE-N6-jEk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1666,7 +1670,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
             <objects>
                 <viewController id="wde-Jg-jwX" customClass="TermListVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nwS-q2-QFD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="907"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="100" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tGH-PG-Amh" propertyAccessControl="none">
@@ -1971,7 +1975,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
             <objects>
                 <viewController id="Kng-lT-ZvC" customClass="TestHomeVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0L-1q-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CTA-hV-CoR">
@@ -2584,7 +2588,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
             <objects>
                 <viewController title="New Test Options" id="wjV-cy-SAI" customClass="TestOptionsVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdT-SC-kNa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-rj-lYE">
@@ -2789,7 +2793,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
             <objects>
                 <viewController id="hmf-BQ-AFc" customClass="InfoVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1L-IB-Cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKA-xr-ZvX">
@@ -3824,42 +3828,6 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                     <constraint firstAttribute="width" constant="50" id="tux-vY-kwi"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3q3-aa-K2J">
-                                <rect key="frame" x="157" y="367.33333333333331" width="100" height="70"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1C-16-1MM" customClass="ZUIRoundedButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
-                                        <color key="backgroundColor" name="color main"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="C4f-wS-xDg"/>
-                                        </constraints>
-                                        <state key="normal" title="OK">
-                                            <color key="titleColor" name="color text button"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="enabledBackgroundColor">
-                                                <color key="value" name="color main"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledBackgroundColor">
-                                                <color key="value" systemColor="systemGray5Color"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="saveButtonAction:" destination="cUP-dB-hs5" eventType="touchUpInside" id="ase-c0-DYi"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7a-M0-mdO">
-                                        <rect key="frame" x="0.0" y="40" width="100" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="DIh-gd-cTj"/>
-                                        </constraints>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="cancelButtonAction:" destination="cUP-dB-hs5" eventType="touchUpInside" id="r3j-ua-wfm"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhs-mu-Sca">
                                 <rect key="frame" x="30" y="208" width="354" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -3896,10 +3864,8 @@ You will be asked to correctly match the term to it's definition, and also to ma
                             <constraint firstItem="BqS-2E-1Fq" firstAttribute="centerY" secondItem="pNg-qk-fZp" secondAttribute="centerY" id="JNm-mh-Vqw"/>
                             <constraint firstItem="1bn-Ta-nh2" firstAttribute="trailing" secondItem="Qhs-mu-Sca" secondAttribute="trailing" id="Ns5-Ql-P1Y"/>
                             <constraint firstItem="wV9-95-ClV" firstAttribute="top" secondItem="Qhs-mu-Sca" secondAttribute="bottom" constant="10" id="Ul5-u1-GWn"/>
-                            <constraint firstItem="3q3-aa-K2J" firstAttribute="centerX" secondItem="cnt-qL-rYN" secondAttribute="centerX" id="Uvb-NF-HZD"/>
                             <constraint firstItem="BIh-6e-Esg" firstAttribute="trailing" secondItem="wV9-95-ClV" secondAttribute="trailing" id="X7e-wx-QGQ"/>
                             <constraint firstItem="cnt-qL-rYN" firstAttribute="trailing" secondItem="Qhs-mu-Sca" secondAttribute="trailing" constant="30" id="X7m-ge-RWN"/>
-                            <constraint firstItem="3q3-aa-K2J" firstAttribute="top" secondItem="1bn-Ta-nh2" secondAttribute="bottom" constant="30" id="YvM-GI-iYH"/>
                             <constraint firstItem="pNg-qk-fZp" firstAttribute="centerX" secondItem="cnt-qL-rYN" secondAttribute="centerX" id="end-9I-wM8"/>
                             <constraint firstItem="BqS-2E-1Fq" firstAttribute="centerX" secondItem="pNg-qk-fZp" secondAttribute="centerX" id="f67-o4-01q"/>
                             <constraint firstItem="Qhs-mu-Sca" firstAttribute="leading" secondItem="cnt-qL-rYN" secondAttribute="leading" constant="30" id="gs3-MZ-cwf"/>
@@ -3911,12 +3877,15 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xpQ-9f-LG5">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="dxa-cA-8ug"/>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="dxa-cA-8ug">
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="cUP-dB-hs5" id="QrC-uQ-QGB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="counterLabel" destination="BIh-6e-Esg" id="Ql0-5g-haw"/>
                         <outlet property="headerImage" destination="BqS-2E-1Fq" id="f4D-ZG-VFQ"/>
-                        <outlet property="saveButton" destination="Y1C-16-1MM" id="0GS-Jf-TwL"/>
                         <outlet property="textField" destination="wV9-95-ClV" id="W1J-IV-Q0B"/>
                         <outlet property="titleLabel" destination="Qhs-mu-Sca" id="aCe-LI-wLr"/>
                         <outlet property="validationLabel" destination="1bn-Ta-nh2" id="lGP-UZ-Qsd"/>
@@ -3931,11 +3900,11 @@ You will be asked to correctly match the term to it's definition, and also to ma
             <objects>
                 <viewController id="6nL-Ki-amP" customClass="MultiLineInputVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yHD-dP-8yh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MP3-fK-WPI">
-                                <rect key="frame" x="0.0" y="44" width="414" height="1456"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="1156"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eqv-Vz-Zxo">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
@@ -3962,33 +3931,6 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                                 <color key="textColor" name="color text"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FcX-d8-uLe">
-                                                <rect key="frame" x="157" y="454" width="100" height="30"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzz-Y5-pxF" customClass="ZUIRoundedButton" customModule="Practical_Medical_Terminology" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
-                                                        <color key="backgroundColor" name="color main"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="100" id="j3w-Sh-adT"/>
-                                                        </constraints>
-                                                        <state key="normal" title="OK">
-                                                            <color key="titleColor" name="color text button"/>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="enabledBackgroundColor">
-                                                                <color key="value" name="color main"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledBackgroundColor">
-                                                                <color key="value" systemColor="systemGray5Color"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="saveButtonAction:" destination="6nL-Ki-amP" eventType="touchUpInside" id="C7X-nY-k2q"/>
-                                                            <action selector="saveButtonAction:" destination="cUP-dB-hs5" eventType="touchUpInside" id="x2w-bV-79o"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUA-Wr-dDH">
                                                 <rect key="frame" x="20" y="406" width="374" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -4016,7 +3958,6 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                         <constraints>
                                             <constraint firstItem="bY7-xc-fFb" firstAttribute="top" secondItem="wwR-0w-Kam" secondAttribute="bottom" constant="14" id="2N7-zQ-wWT"/>
                                             <constraint firstItem="bY7-xc-fFb" firstAttribute="leading" secondItem="wwR-0w-Kam" secondAttribute="leading" id="2xD-Qv-5hY"/>
-                                            <constraint firstItem="FcX-d8-uLe" firstAttribute="centerX" secondItem="Eqv-Vz-Zxo" secondAttribute="centerX" id="4BF-7d-zCv"/>
                                             <constraint firstItem="lcz-cT-goV" firstAttribute="centerX" secondItem="Eqv-Vz-Zxo" secondAttribute="centerX" id="4nC-Dq-iYJ"/>
                                             <constraint firstItem="hDs-2Q-LdA" firstAttribute="top" secondItem="bY7-xc-fFb" secondAttribute="bottom" constant="10" id="6KP-bq-ZBm"/>
                                             <constraint firstAttribute="height" constant="1000" id="6dt-FT-4Ih"/>
@@ -4030,7 +3971,6 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                             <constraint firstItem="bY7-xc-fFb" firstAttribute="trailing" secondItem="wwR-0w-Kam" secondAttribute="trailing" id="rMK-Y1-OgE"/>
                                             <constraint firstItem="hDs-2Q-LdA" firstAttribute="leading" secondItem="bY7-xc-fFb" secondAttribute="leading" id="sDn-N2-hta"/>
                                             <constraint firstItem="wwR-0w-Kam" firstAttribute="leading" secondItem="Eqv-Vz-Zxo" secondAttribute="leading" constant="20" id="xJJ-mR-fA1"/>
-                                            <constraint firstItem="FcX-d8-uLe" firstAttribute="top" secondItem="zUA-Wr-dDH" secondAttribute="bottom" constant="30" id="xd1-LF-d7y"/>
                                             <constraint firstItem="wwR-0w-Kam" firstAttribute="top" secondItem="bcU-rO-jpc" secondAttribute="bottom" constant="30" id="yeB-Bg-6er"/>
                                             <constraint firstAttribute="trailing" secondItem="wwR-0w-Kam" secondAttribute="trailing" constant="20" id="zYB-R4-i9T"/>
                                         </constraints>
@@ -4061,11 +4001,10 @@ You will be asked to correctly match the term to it's definition, and also to ma
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <size key="freeformSize" width="414" height="1500"/>
+                    <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="counterLabel" destination="hDs-2Q-LdA" id="xmg-ap-lNE"/>
                         <outlet property="headerImage" destination="lcz-cT-goV" id="rAH-or-Shb"/>
-                        <outlet property="saveButton" destination="dzz-Y5-pxF" id="AfH-Gr-LDn"/>
                         <outlet property="scrollView" destination="MP3-fK-WPI" id="peY-xW-UWX"/>
                         <outlet property="textView" destination="bY7-xc-fFb" id="kyp-Hi-j3A"/>
                         <outlet property="titleLabel" destination="wwR-0w-Kam" id="WZo-9a-aP7"/>
@@ -4114,12 +4053,12 @@ You will be asked to correctly match the term to it's definition, and also to ma
             </objects>
             <point key="canvasLocation" x="7080" y="779"/>
         </scene>
-        <!--View Controller-->
+        <!--Help ScreenVC-->
         <scene sceneID="hjK-fi-Fxw">
             <objects>
-                <viewController id="3FB-A6-WIs" sceneMemberID="viewController">
+                <viewController id="3FB-A6-WIs" customClass="HelpScreenVC" customModule="Practical_Medical_Terminology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="obd-B3-N5d">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bLg-2N-gxy">
@@ -4146,6 +4085,7 @@ You will be asked to correctly match the term to it's definition, and also to ma
                                             <color key="titleColor" name="color main"/>
                                         </state>
                                         <connections>
+                                            <action selector="seeWebsiteButton:" destination="3FB-A6-WIs" eventType="touchUpInside" id="CpW-uj-R0p"/>
                                             <action selector="seeWebsiteButtonAction:" destination="hmf-BQ-AFc" eventType="touchUpInside" id="1y1-xs-pF9"/>
                                         </connections>
                                     </button>
@@ -4172,6 +4112,9 @@ You will be asked to correctly match the term to it's definition, and also to ma
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="M1X-ka-d6d"/>
+                    <connections>
+                        <outlet property="seeWebsiteButton" destination="FSo-v2-8bu" id="Jau-94-QIa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLs-yE-d2G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

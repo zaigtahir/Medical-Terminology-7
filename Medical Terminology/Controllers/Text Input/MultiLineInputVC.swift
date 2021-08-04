@@ -28,7 +28,6 @@ class MultiLineInputVC: UIViewController, UITextViewDelegate {
 	@IBOutlet weak var textView: UITextView!
 	@IBOutlet weak var counterLabel: UILabel!
 	@IBOutlet weak var validationLabel: UILabel!
-	@IBOutlet weak var saveButton: ZUIRoundedButton!
 	@IBOutlet weak var scrollView: UIScrollView!
 	
 	var textInputVCH = TextInputVCH()
@@ -61,19 +60,31 @@ class MultiLineInputVC: UIViewController, UITextViewDelegate {
 		// perform initial validation and set up of controls
 		textViewDidChangeSelection(textView)
 		
-		// no change is made yet as the information is just loaded, so disable the save button
-		saveButton.isEnabled = false
-		
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+
+		if self.isMovingFromParent {
+			let cleanText = textInputVCH.getCleanText(inputString: textView.text)
+			
+			delegate?.shouldUpdateMultiLineInfo (propertyReference: textInputVCH.propertyReference, cleanString: cleanText)
+		}
 	}
 
 	func textViewDidChangeSelection(_ textView: UITextView) {
 		// check for valid text
 		if textInputVCH.textMeetsAllCriteria(inputString: textView.text) {
 			textView.textColor = myTheme.colorText
-			saveButton.isEnabled = true
+			
+			// make save button enabled
+			navigationItem.hidesBackButton = false
+			
 		} else {
 			textView.textColor = myTheme.invalidFieldEntryColor
-			saveButton.isEnabled = false
+			
+			// make save button enabled
+			navigationItem.hidesBackButton = true
 		}
 		
 		// update counter
@@ -90,17 +101,13 @@ class MultiLineInputVC: UIViewController, UITextViewDelegate {
 	@objc func tapDone(sender: Any) {
 		self.view.endEditing(true)
 	}
-	
-	@IBAction func saveButtonAction(_ sender: Any) {
-		
-		// if the text field contains nothing, default to empty string ""
-		
-		let cleanText = textInputVCH.getCleanText(inputString: textView.text)
-		
-		delegate?.shouldUpdateMultiLineInfo (propertyReference: textInputVCH.propertyReference, cleanString: cleanText)
-	}
+
 	
 	@IBAction func cancelButtonAction(_ sender: Any) {
+		
+		//place the original text back
+		textView.text = textInputVCH.initialText
+		
 		self.navigationController?.popViewController(animated: true)
 	}
 }

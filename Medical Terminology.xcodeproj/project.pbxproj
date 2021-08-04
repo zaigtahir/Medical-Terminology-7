@@ -59,6 +59,7 @@
 		992E79FD260FBA3100C19D49 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E79FC260FBA3100C19D49 /* CategoryController.swift */; };
 		992F87042630B3EC00591CF9 /* NoFlashCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992F87032630B3EC00591CF9 /* NoFlashCardCell.swift */; };
 		993DF1B126B9CA7E00668914 /* MyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993DF1B026B9CA7E00668914 /* MyExtensions.swift */; };
+		993DF1B726BB2D9E00668914 /* HelpScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993DF1B626BB2D9E00668914 /* HelpScreenVC.swift */; };
 		994175DE245A38A900E281DB /* AudioFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175DD245A38A900E281DB /* AudioFileController.swift */; };
 		994175E2245B5BAE00E281DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994175E1245B5BAE00E281DB /* SettingsController.swift */; };
 		9950D3DC245E720D0052574A /* WelcomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */; };
@@ -157,6 +158,7 @@
 		992E79FC260FBA3100C19D49 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		992F87032630B3EC00591CF9 /* NoFlashCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFlashCardCell.swift; sourceTree = "<group>"; };
 		993DF1B026B9CA7E00668914 /* MyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtensions.swift; sourceTree = "<group>"; };
+		993DF1B626BB2D9E00668914 /* HelpScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpScreenVC.swift; sourceTree = "<group>"; };
 		994175DD245A38A900E281DB /* AudioFileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileController.swift; sourceTree = "<group>"; };
 		994175E1245B5BAE00E281DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		9950D3DB245E720D0052574A /* WelcomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenVC.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 			children = (
 				5A37F87922E74B18008A5FA5 /* ScrollController.swift */,
 				5A4F854F22B310F80016621C /* AnswerTCell.swift */,
+				993DF1B626BB2D9E00668914 /* HelpScreenVC.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				99937AD7263F25C7001E4D4B /* LearningSet.swift in Sources */,
 				5A4F854822B168870016621C /* LearnCVCell.swift in Sources */,
 				5A03478D22D39D0900749EBC /* FMResultSet.m in Sources */,
+				993DF1B726BB2D9E00668914 /* HelpScreenVC.swift in Sources */,
 				99937B11264EA49F001E4D4B /* AssignedCategory.swift in Sources */,
 				99AE54CF269212B600D7406A /* AssignTermCell.swift in Sources */,
 				5AF85739228F2C27008929D5 /* FlashcardCell.swift in Sources */,
@@ -815,7 +819,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = K33TSXFU97;
 				INFOPLIST_FILE = "Medical Terminology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -838,7 +842,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = K33TSXFU97;
 				INFOPLIST_FILE = "Medical Terminology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

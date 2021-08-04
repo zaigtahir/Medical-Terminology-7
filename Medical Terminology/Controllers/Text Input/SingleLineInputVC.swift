@@ -22,8 +22,7 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 	//  Created by Zaigham Tahir on 4/7/21.
 	//  Copyright © 2021 Zaigham Tahir. All rights reserved.
 	//
-	@IBOutlet weak var saveButton: ZUIRoundedButton!
-	@IBOutlet weak var cancelButton: UIButton!
+	
 	@IBOutlet weak var headerImage: UIImageView!
 	@IBOutlet weak var textField: UITextField!
 	@IBOutlet weak var titleLabel: UILabel!
@@ -53,9 +52,16 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		// perform initial validation and set up of controls
 		textFieldDidChangeSelection(textField)
 		
-		// no change is made yet as the information is just loaded, so disable the save button
-		saveButton.isEnabled = false
-		
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+
+		if self.isMovingFromParent {
+			let cleanText = textInputVCH.getCleanText(inputString: textField.text)
+			
+			delegate?.shouldUpdateSingleLineInfo(propertyReference: textInputVCH.propertyReference, cleanString: cleanText)
+		}
 	}
 	
 	// Only appplies to the text field
@@ -80,10 +86,15 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		// check for valid text
 		if textInputVCH.textMeetsAllCriteria(inputString: textField.text) {
 			textField.textColor = myTheme.colorText
-			saveButton.isEnabled = true
+			
+			// make save button enabled
+			navigationItem.hidesBackButton = false
+		
 		} else {
 			textField.textColor = myTheme.invalidFieldEntryColor
-			saveButton.isEnabled = false
+			// disable the save button
+			navigationItem.hidesBackButton = true
+		
 		}
 		
 		// update counter
@@ -99,16 +110,11 @@ class SingleLineInputVC: UIViewController, UITextFieldDelegate {
 		fillInputPlaceHolder()
 	}
 	
-	@IBAction func saveButtonAction(_ sender: Any) {
-		
-	// if the text field contains nothing, default to empty string ""
-		
-		let cleanText = textInputVCH.getCleanText(inputString: textField.text)
-		
-		delegate?.shouldUpdateSingleLineInfo(propertyReference: textInputVCH.propertyReference, cleanString: cleanText)
-	}
 	
 	@IBAction func cancelButtonAction(_ sender: Any) {
+		
+		//place the original text back
+		textField.text = textInputVCH.initialText
 		self.navigationController?.popViewController(animated: true)
 	}
 }

@@ -31,7 +31,6 @@ class MyConstants {
 	
     // app and website information
     let appWebsite = "https://theappgalaxy.com/practical-medical-terminology/"
-
     let companyWebsite = "https://theappgalaxy.com"
     let copyrightNotice = "Copyright: 2021 by Dr. Tahir"
     let appEmail = "support@theappgalaxy.com"
