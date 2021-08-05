@@ -259,7 +259,7 @@ class CategoryVCH: SingleLineInputDelegate, MultiLineInputDelegate {
 		
 		editedCategory.name = cleanString
 		delegate?.shouldUpdateDisplay()
-		singleLineInputVC.navigationController?.popViewController(animated: true)
+		//singleLineInputVC.navigationController?.popViewController(animated: true)
 	}
 	
 	func shouldUpdateMultiLineInfo(propertyReference: PropertyReference?, cleanString: String) {
