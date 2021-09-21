@@ -402,7 +402,7 @@ class TermControllerTB {
 					learnedDefinition,
 					answeredTerm,
 					answeredDefinition,
-					learnedFlashcard
+					learnedFlashcard)
 
 				VALUES	("\(term.termID)",
 						"\(term.name)",
