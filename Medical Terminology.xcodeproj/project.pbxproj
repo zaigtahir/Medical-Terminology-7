@@ -832,7 +832,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -855,7 +855,7 @@
 				PRODUCT_NAME = "Practical Medical Terminology";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medical Terminology/FMDB/Medical Terminology-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
